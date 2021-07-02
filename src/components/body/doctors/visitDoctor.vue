@@ -1,11 +1,11 @@
 <template class="html">
-    <div class="body">
+    <div class="body" v-if="doctor">
         <!-- home section -->
         <section class="home">
             <div class="content">
-                <h3>{{ first_name }}</h3>
+                <h3>{{ doctor.first_name }} {{ doctor.last_name }}</h3>
                 <p>
-                    {{ description }}
+                    {{ doctor.description }}
                 </p>
             </div>
             <div class="image">
@@ -20,8 +20,8 @@
         <section class="about">
             <img class="image" src="../../../../public/img/img4.jpg" />
             <div class="content">
-                <h3>{{ first_name }}</h3>
-                <p>{{ description }}</p>
+                <h3>{{ doctor.first_name }} {{ doctor.last_name }}</h3>
+                <p>{{ doctor.description }}</p>
             </div>
         </section>
         <!-- <section class="menu">
@@ -70,17 +70,23 @@
 </template>
 
 <script>
-import data from '../../../jeson/data1';
+import { mapState } from 'vuex';
+// import data from '../../../jeson/data1';
 export default {
     name: 'visitDoctor',
-    props: ['id', 'first_name', 'description', 'image'],
+    props: ['id'],
     data() {
         return {
             rating: 0,
-            doctor: data.doctor,
+            // doctor: data.doctor,
         };
     },
-    methods: {},
+    computed: {
+        ...mapState(['DoctorId']),
+    },
+    mounted() {
+        this.$store.dispatch('loadDoctor', this.id);
+    },
 };
 </script>
 

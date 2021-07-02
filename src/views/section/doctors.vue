@@ -9,14 +9,19 @@
             </span>
             <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 stors">
                 <div
-                    v-for="item in doctor"
-                    :key="item.id"
+                    v-for="doctor in Doctors"
+                    :key="doctor.id"
                     class="card mb-3"
                     style="max-width: 540px"
                 >
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <!-- <img :src="item.image" alt="image" height="70" /> -->
+                            <img
+                                src="../../../public/img/aa.jpg"
+                                alt="image"
+                                height="100"
+                                class="mt-3"
+                            />
                             <div class="mt-2">
                                 <img
                                     class="location mr-2"
@@ -34,48 +39,19 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    {{ item.first_name }}
+                                    {{ doctor.first_name }}
+                                    {{ doctor.last_name }}
                                 </h5>
-                                <!-- <h5 class="card-title">title</h5> -->
                                 <p class="card-text">
-                                    This is a wider card with supporting text
-                                    below as a natural lead-in to additional
-                                    content. This content is a little bit
-                                    longer.
+                                    {{ doctor.description }}
                                 </p>
                                 <p class="card-text">
                                     <router-link
-                                        :to="{
-                                            name: 'visitDoctor',
-                                            params: {
-                                                id: item.id,
-                                                first_name: item.first_name,
-                                                image: item.image,
-                                                description: item.description,
-                                            },
-                                        }"
+                                        :to="`/visit_doctor/${doctor.id}/${doctor.first_name}`"
                                         ><button class="button">
                                             <span>Visit </span>
                                         </button></router-link
                                     >
-                                    <!-- <router-link
-                                        :to="{
-                                            name: 'visitDoctor',
-                                            params: {
-                                                id: item.id,
-                                                first_name: item.first_name,
-                                                image: item.image,
-                                                medicaldevice:
-                                                    item.medicaldevice,
-                                                specialty: item.specialty,
-                                                hospital: item.hospital,
-                                                description: item.description,
-                                            },
-                                        }"
-                                        ><button class="button">
-                                            <span>Visit </span>
-                                        </button></router-link
-                                    > -->
                                 </p>
                             </div>
                         </div>
@@ -103,12 +79,12 @@
                         <input type="text" placeholder="Search Doctor Name" />
                     </div>
                     <div>
-                        <div>medicaldevice</div>
+                        <div>Medical Device</div>
                         <div>
                             <div class="form-check">
                                 <ul>
                                     <li
-                                        v-for="items in medicaldevice"
+                                        v-for="items in MedicalDevice"
                                         :key="items.id"
                                     >
                                         <input
@@ -135,7 +111,7 @@
                         <div>hospital</div>
                         <div class="form-check">
                             <ul>
-                                <li v-for="items in hospital" :key="items.id">
+                                <li v-for="items in Hospitals" :key="items.id">
                                     <input
                                         class="form-check-input"
                                         type="checkbox"
@@ -157,7 +133,7 @@
                         <div>specialty</div>
                         <div class="form-check">
                             <ul>
-                                <li v-for="items in specialty" :key="items.id">
+                                <li v-for="items in Specialty" :key="items.id">
                                     <input
                                         class="form-check-input"
                                         type="checkbox"
@@ -182,23 +158,33 @@
 </template>
 
 <script>
-import data from '../../jeson/data1';
+import { mapState } from 'vuex';
+// import data from '../../jeson/data1';
 export default {
     name: 'doctors',
     data() {
         return {
-            doctor: data.doctor,
-            medicaldevice: data.medicaldevice,
-            hospital: data.hospital,
-            specialty: data.specialty,
+            // doctor: data.doctor,
+            // medicaldevice: data.medicaldevice,
+            // hospital: data.hospital,
+            // specialty: data.specialty,
         };
     },
-    props: ['id', 'first_name', 'description', 'image'],
+    props: ['id', 'first_name', 'last_name', 'description', 'image'],
     methods: {
         btnbar: function () {
             document.getElementById('btn').classList.toggle('click');
             document.getElementById('menu').classList.toggle('show');
         },
+    },
+    computed: {
+        ...mapState(['Doctors', 'MedicalDevice', 'Hospitals', 'Specialty']),
+    },
+    mounted() {
+        this.$store.dispatch('loadDoctors');
+        this.$store.dispatch('loadMedicalDevice');
+        this.$store.dispatch('loadHospitals');
+        this.$store.dispatch('loadSpecialty');
     },
 };
 </script>
