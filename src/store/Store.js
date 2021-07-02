@@ -18,6 +18,11 @@ const store = createStore({
         Categories: [],
         CategoryID: null,
         priceArray: [],
+        Doctors: [],
+        MedicalDevice: [],
+        Hospitals: [],
+        Specialty: [],
+        DoctorId: null,
         ////////////////
         // Product: jeson[0].Products,
         stores: data.stores,
@@ -124,6 +129,22 @@ const store = createStore({
             let Categories = state.Categories.filter((v) => v.id != itemsId);
             state.Categories = Categories;
         },
+        //doctors
+        SET_Doctors(state, Doctors) {
+            state.Doctors = Doctors;
+        },
+        SET_DoctorId(state, DoctorId) {
+            state.DoctorId = DoctorId;
+        },
+        SET_MedicalDevice(state, MedicalDevice) {
+            state.MedicalDevice = MedicalDevice;
+        },
+        SET_Hospitals(state, Hospitals) {
+            state.Hospitals = Hospitals;
+        },
+        SET_Specialty(state, Specialty) {
+            state.Specialty = Specialty;
+        },
         //auth
         SET_TOKEN(state, token) {
             state.token = token;
@@ -145,7 +166,7 @@ const store = createStore({
         },
         loadStores({ commit }) {
             axios
-                .get(`/api/stores/getAll`)
+                .get(`/api/stores/getAll?lang=${lang}`)
                 .then((res) => {
                     console.warn('Stores :', res.data.Stores.data);
                     let Stores = res.data.Stores.data;
@@ -157,7 +178,7 @@ const store = createStore({
         },
         loadstore({ commit }, productId) {
             axios
-                .get(`/api/stores/getById/${productId}`)
+                .get(`/api/stores/getById/${productId}?lang=${lang}`)
                 .then((res) => {
                     console.warn('StorebyId :', res.data);
                     let store = res.data.Store;
@@ -205,7 +226,7 @@ const store = createStore({
         },
         loadCategories({ commit }) {
             axios
-                .get(`/api/categories/getAll`)
+                .get(`/api/categories/getAll?lang=${lang}`)
                 .then((res) => {
                     console.warn('Categories :', res.data.Category);
                     let Categories = res.data.Category;
@@ -232,6 +253,70 @@ const store = createStore({
                 `http://edalili.e-dalely.com/public/api/categories/trash/${items.id}`,
                 commit('Delete_Category', items.id)
             );
+        },
+        //doctors
+        loadDoctors({ commit }) {
+            axios
+                .get(`/api/doctor/get?lang=${lang}`)
+                .then((res) => {
+                    console.warn('Doctors :', res.data.doctor.data);
+                    let Doctors = res.data.doctor.data;
+                    commit('SET_Doctors', Doctors);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadMedicalDevice({ commit }) {
+            axios
+                .get(`/api/MedicalDevice/get?lang=${lang}`)
+                .then((res) => {
+                    console.warn(
+                        'MedicalDevice :',
+                        res.data.MedicalDevice.data
+                    );
+                    let MedicalDevice = res.data.MedicalDevice.data;
+                    commit('SET_MedicalDevice', MedicalDevice);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadHospitals({ commit }) {
+            axios
+                .get(`/api/Hospital/get?lang=${lang}`)
+                .then((res) => {
+                    console.warn('Hospitals :', res.data.Hospital.data);
+                    let Hospitals = res.data.Hospital.data;
+                    commit('SET_Hospitals', Hospitals);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadSpecialty({ commit }) {
+            axios
+                .get(`/api/Specialty/get?lang=${lang}`)
+                .then((res) => {
+                    console.warn('Specialty :', res.data.Specialty.data);
+                    let Specialty = res.data.Specialty.data;
+                    commit('SET_Specialty', Specialty);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadDoctor({ commit }, DoctorId) {
+            axios
+                .get(`/api/doctor/getById/${DoctorId}?lang=${lang}`)
+                .then((res) => {
+                    console.warn('DoctorById :', res);
+                    let DoctorId = res;
+                    commit('SET_DoctorId', DoctorId);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
         },
         //auth
         async signIn({ dispatch }, Credentials) {
