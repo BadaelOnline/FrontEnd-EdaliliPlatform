@@ -22,7 +22,7 @@ const store = createStore({
         MedicalDevice: [],
         Hospitals: [],
         Specialty: [],
-        DoctorId: null,
+        doctor: null,
         ////////////////
         // Product: jeson[0].Products,
         stores: data.stores,
@@ -130,11 +130,11 @@ const store = createStore({
             state.Categories = Categories;
         },
         //doctors
-        SET_Doctors(state, Doctors) {
-            state.Doctors = Doctors;
+        SET_Doctors(state, doctor) {
+            state.doctor = doctor;
         },
-        SET_DoctorId(state, DoctorId) {
-            state.DoctorId = DoctorId;
+        SET_Doctor(state, Doctor) {
+            state.Doctor = Doctor;
         },
         SET_MedicalDevice(state, MedicalDevice) {
             state.MedicalDevice = MedicalDevice;
@@ -311,8 +311,8 @@ const store = createStore({
                 .get(`/api/doctor/getById/${DoctorId}?lang=${lang}`)
                 .then((res) => {
                     console.warn('DoctorById :', res);
-                    let DoctorId = res;
-                    commit('SET_DoctorId', DoctorId);
+                    let doctor = res;
+                    commit('SET_Doctor', doctor);
                 })
                 .catch(function (error) {
                     console.log('Error: ', error);

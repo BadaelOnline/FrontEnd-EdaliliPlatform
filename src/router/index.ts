@@ -70,10 +70,9 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/section/doctors.vue'),
     },
     {
-        path: '/visit_doctor/:id/:first_name',
+        path: '/visit_doctor',
         name: 'visitDoctor',
-        component: () =>
-            import('../components/body/doctors/visitDoctor.vue'),
+        component: () => import('../components/body/doctors/visitDoctor.vue'),
     },
     //restaurant
     {
@@ -138,7 +137,6 @@ const routes: Array<RouteRecordRaw> = [
         name: 'child',
         component: () => import('../views/categories/child.vue'),
     },
-    
 ];
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
