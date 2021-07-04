@@ -180,7 +180,7 @@ const store = createStore({
             axios
                 .get(`/api/stores/getById/${productId}?lang=${lang}`)
                 .then((res) => {
-                    console.warn('StorebyId :', res.data);
+                    console.warn('StorebyId :', res);
                     let store = res.data.Store;
                     commit('SET_Store', store);
                 })
