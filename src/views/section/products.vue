@@ -14,7 +14,7 @@
             </div>
         </div>
         <!-- show  products -->
-        <!-- <div class="show-prod">
+         <div class="show-prod">
             <div class="row reower">
                 <BodyProduct
                     v-for="items in Product.slice(0, 4)"
@@ -27,19 +27,19 @@
                 >
                 </BodyProduct>
             </div>
-        </div>  -->
-        <!-- show market-->
-        <!-- <div class="mar">
+        </div>  
+        <!-- show market
+         <div class="mar">
             <div
                 class="show-market"
                 v-for="bran in Brands.slice(0, 5)"
                 :key="bran.id"
             >
-                <img v-lazy="bran.image" />
+                <img :src="bran.image" />
             </div>
         </div> -->
         <!-- show  products -->
-        <!-- <div class="show-prod">
+         <div class="show-prod">
             <div class="row reower">
                 <BodyProduct
                     v-for="items in Product.slice(4, 8)"
@@ -51,7 +51,7 @@
                 >
                 </BodyProduct>
             </div>
-        </div> -->
+        </div> 
 
         <!-- show der -->
         <div class="show-der">
@@ -83,7 +83,7 @@
                 </div>
                 <div class="col-lg-9 col-sm-8 col-xs-12">
                     <div class="carousel-inner carousel-inner1">
-                        <!-- <div class="carousel-item active">
+                         <div class="carousel-item active">
                             <div class="show-prod">
                                 <div class="row">
                                     <BodyProduct
@@ -98,8 +98,8 @@
                                 </div>
                             </div>
                         </div>
-                        -->
-                        <!-- <div class="carousel-item">
+                        
+                        <div class="carousel-item">
                             <div class="show-prod">
                                 <div class="row">
                                     <BodyProduct
@@ -113,13 +113,13 @@
                                     </BodyProduct>
                                 </div>
                             </div>
-                        </div> -->
+                        </div> 
 
-                        <!-- <div class="carousel-item">
+                        <div class="carousel-item">
                             <div class="show-prod">
                                 <div class="row">
                                     <BodyProduct
-                                        v-for="items in Product.slice(8, 12)"
+                                        v-for="items in Product.slice(0, 4)"
                                         :key="items.id"
                                         :id="items.id"
                                         :image="items.image"
@@ -129,7 +129,7 @@
                                     </BodyProduct>
                                 </div>
                             </div>
-                        </div> -->
+                        </div> 
                     </div>
 
                     <a
@@ -185,7 +185,7 @@
             </div>
         </div>
         <!-- second Carousel -->
-        <!-- <div
+         <div
             id="deno"
             class="carousel slide"
             data-ride="carousel"
@@ -198,7 +198,7 @@
                         <div class="show-prod">
                             <div class="row">
                                 <BodyProduct
-                                    v-for="items in Product.slice(12, 16)"
+                                    v-for="items in Product.slice(0, 4)"
                                     :key="items.id"
                                     :id="items.id"
                                     :image="items.image"
@@ -214,7 +214,7 @@
                         <div class="show-prod">
                             <div class="row">
                                 <BodyProduct
-                                    v-for="items in Product.slice(16, 20)"
+                                    v-for="items in Product.slice(4, 8)"
                                     :key="items.id"
                                     :id="items.id"
                                     :image="items.image"
@@ -251,7 +251,7 @@
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
-        </div> -->
+        </div> 
     </div>
 </template>
 <style scoped>
@@ -744,7 +744,7 @@ export default {
     },
     name: 'products',
     components: {
-        // BodyProduct: defineAsyncComponent(() =>import(`@/components/global/BodyProduct.vue`),),
+        BodyProduct: defineAsyncComponent(() =>import(`@/components/global/BodyProduct.vue`),),
         Subscriber: defineAsyncComponent(() =>
             import(`@/components/global/Subscriber.vue`)
         ),
@@ -770,6 +770,6 @@ export default {
         this.$store.dispatch('loadProducts');
         this.$store.dispatch('loadStores');
         this.$store.dispatch('loadBrands');
-    },
+    }
 };
 </script>

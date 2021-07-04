@@ -3,20 +3,15 @@
         <div class="content-pro text-center">
             <router-link
                 class="link"
-                :to="{
-                    name: 'ProductDetails',
-                    params: {
-                        id: this.id,
-                    },
-                }"
-                ><img v-lazy="`${image}`" class="new"
-            /></router-link>
+                :to="`ProductDetails/${id}`">
+                
+                <img :src="`${image}`" class="new"/>  </router-link>
             <router-link
                 class="link"
                 :to="{
                     name: 'ProductDetails',
                     params: {
-                        id: this.id,
+                        id
                     },
                 }"
                 ><div class="name-prod">
@@ -28,7 +23,7 @@
                 :to="{
                     name: 'ProductDetails',
                     params: {
-                        id: this.id,
+                        id
                     },
                 }"
                 ><div class="category">
@@ -244,8 +239,9 @@
 </style>
 <script>
 export default {
-    name: 'Products',
+    name: 'BodyProduct',
     props: ['id', 'name', 'image', 'short_des', 'long_des', 'store'],
+  
     // data () {
     //     return {
     //         details: {

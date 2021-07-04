@@ -52,10 +52,10 @@
             <div class="col-4">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="prod-name">{{ ProductID[0].name }}</h5>
+                        <h5 class="prod-name">{{ ProductID.name }}</h5>
                     </div>
                     <div class="col-12">
-                        <h5 class="prod-dis">{{ ProductID[0].short_des }}</h5>
+                        <h5 class="prod-dis">{{ ProductID.short_des }}</h5>
                     </div>
                 </div>
             </div>
@@ -63,8 +63,7 @@
         <div class="show-prod">
             <div
                 class="store animate__animated animate__fadeInUpBig"
-                v-for="store in ProductID[0].store"
-                :key="store"
+             
             >
                 <div>
                     <img
@@ -74,7 +73,7 @@
                 </div>
                 <div>
                     <h2>
-                        {{ store.title }}
+                        {{ ProductID.store.title }}
                     </h2>
                     <span>{{ 500 }}متر</span>
                 </div>
@@ -89,7 +88,7 @@
                 </div>
 
                 <div>
-                    <h2>{{ store.pivot.price }} ل.س</h2>
+                    <h2>{{ProductID.store.pivot.price }} ل.س</h2>
                 </div>
             </div>
         </div>
@@ -207,7 +206,7 @@ span {
 }
 </style>
 <script>
-import { mapState } from 'vuex';
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -219,16 +218,23 @@ export default {
                 price: this.price,
             },
             sortType: '1',
+             ProductID: {}
         };
     },
     components: {},
 
     props: ['id', 'name', 'short_des', 'long_des', 'price'],
-    computed: {
-        ...mapState(['ProductID']),
-    },
-    mounted() {
-        this.$store.dispatch('loadProduct', this.id);
+       async  created(){
+                  await axios
+                .get(`/api/products/getById/${this.$route.params.id}`)
+                .then((res) => {
+                    console.warn('ProductID :', res.data.product);
+                     this.ProductID = res.data.product;
+                  
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
     },
     methods: {
         sortItem() {
@@ -241,11 +247,11 @@ export default {
                     (prev, curr) => curr.space - prev.space
                 );
             } else if (this.sortType == 'price') {
-                this.$store.state.ProductID[0].store = this.$store.state.ProductID[0].store.sort(
+                this.ProductID.store = this.ProductID.store.sort(
                     (prev, curr) => prev.pivot.price - curr.pivot.price
                 );
             } else if (this.sortType == 'prices') {
-                this.$store.state.ProductID[0].store = this.$store.state.ProductID[0].store.sort(
+                this.ProductID.store = this.ProductID.store.sort(
                     (prev, curr) => curr.pivot.price - prev.pivot.price
                 );
             }
