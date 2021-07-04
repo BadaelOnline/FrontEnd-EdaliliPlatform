@@ -130,8 +130,8 @@ const store = createStore({
             state.Categories = Categories;
         },
         //doctors
-        SET_Doctors(state, doctor) {
-            state.doctor = doctor;
+        SET_Doctors(state, Doctors) {
+            state.Doctors = Doctors;
         },
         SET_Doctor(state, Doctor) {
             state.Doctor = Doctor;
@@ -271,10 +271,7 @@ const store = createStore({
             axios
                 .get(`/api/MedicalDevice/get?lang=${lang}`)
                 .then((res) => {
-                    console.warn(
-                        'MedicalDevice :',
-                        res.data.MedicalDevice.data
-                    );
+                    console.warn('MedicalDevice :', res.data);
                     let MedicalDevice = res.data.MedicalDevice.data;
                     commit('SET_MedicalDevice', MedicalDevice);
                 })
@@ -298,7 +295,7 @@ const store = createStore({
             axios
                 .get(`/api/Specialty/get?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Specialty :', res.data.Specialty.data);
+                    console.warn('Specialty :', res.data);
                     let Specialty = res.data.Specialty.data;
                     commit('SET_Specialty', Specialty);
                 })

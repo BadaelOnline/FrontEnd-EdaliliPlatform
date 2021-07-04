@@ -53,6 +53,93 @@
                 </div>
             </div>
         </section>
+        <section class="menu mt-4">
+            <h1 class="heading"><span>Specialty</span></h1>
+            <div class="box-container">
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>heart</h3>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>heart</h3>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>heart</h3>
+                </div>
+            </div>
+        </section>
+        <section class="meals mt-4">
+            <h1 class="heading"><span>Medicaldevice</span></h1>
+            <div class="box-container">
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Echo</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Echo</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Echo</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="meals mt-4">
+            <h1 class="heading"><span>Hospital</span></h1>
+            <div class="box-container">
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Almazraa</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Almazraa</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Almazraa</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -96,8 +183,126 @@ export default {
 .home {
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
         url(../../../../public/img/undrawdoctors.png) no-repeat;
-    background-size: 100% 100%;
+    background-size: contain;
+    background-position-x: right;
     width: 100%;
     padding: 180px 0;
+}
+/* section {
+    min-height: 100vh;
+    padding: 1rem 10%;
+    padding-top: 8.5rem;
+} */
+.heading {
+    text-align: center;
+    font-size: 4rem;
+    padding: 0 0.5rem;
+    color: #333;
+}
+.heading span {
+    color: var(--yellow);
+}
+
+@media (max-width: 991px) {
+    .html {
+        font-size: 55%;
+    }
+    .home::before,
+    .home::after {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    .home .content {
+        text-align: center;
+    }
+    .home .content h3 {
+        font-size: 4.5rem;
+    }
+}
+.menu .box-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.menu .box-container .box {
+    height: 15rem;
+    width: 20rem;
+    margin: 2rem;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+.menu .box-container .box img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.menu .box-container .box h3 {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(204, 162, 24);
+    text-align: center;
+    font-size: 3rem;
+    opacity: 0;
+}
+.menu .box-container .box:hover h3 {
+    top: 50%;
+    opacity: 1;
+    transition-delay: 0.2s;
+}
+.menu .box-container .box::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, rgba(197, 157, 23, 0.753));
+    transition: 0.2s linear;
+}
+.menu .box-container .box:hover:before {
+    top: 0;
+}
+.meals .box-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.meals .box-container .box {
+    background: #fff;
+    width: 25rem;
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.3rem 0.5rem rgba(184, 126, 20, 0.767);
+    text-align: center;
+}
+.meals .box-container .box img {
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
+}
+.meals .box-container .box h3 {
+    color: #333;
+    font-size: 3rem;
+    font-weight: normal;
+}
+.meals .box-container .box p {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+.meals .box-container .box .price {
+    color: #666;
+    font-size: 2.5rem;
+}
+.meals .box-container .box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 1rem 1rem rgba(184, 126, 20, 0.767);
 }
 </style>

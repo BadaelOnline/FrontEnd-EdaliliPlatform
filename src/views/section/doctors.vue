@@ -8,17 +8,17 @@
                 </a>
             </span>
             <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 stors">
-                <!-- <div
+                <div
                     v-for="doctor in Doctors"
                     :key="doctor.id"
                     class="card mb-3"
                     style="max-width: 540px"
-                > -->
-                <div class="card mb-3" style="max-width: 540px">
+                >
+                    <!-- <div class="card mb-3" style="max-width: 540px"> -->
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img
-                                src="../../../public/img/aa.jpg"
+                                src="../../../public/img/doctor.png"
                                 alt="image"
                                 height="100"
                                 class="mt-3"
@@ -31,7 +31,7 @@
                                 />
                                 <img
                                     class="phone mr-2"
-                                    src="../../../public/img/doctor.png"
+                                    src="../../../public/img/phone.png"
                                     height="15"
                                 />
                                 <i class="whatsapp fab fa-whatsapp"></i>
@@ -40,21 +40,21 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <!-- {{ doctor.first_name }} -->
-                                    <!-- {{ doctor.last_name }} -->
+                                    {{ doctor.first_name }}
+                                    {{ doctor.last_name }}
                                 </h5>
                                 <p class="card-text">
-                                    <!-- {{ doctor.description }} -->
+                                    {{ doctor.description }}
                                 </p>
                                 <p class="card-text">
                                     <!-- <router-link
-                                        :to="`/visit_doctor/${doctor.id}/${doctor.first_name}`"
+                                        :to="`/visit_doctor/${doctor.id}/${doctor.first_name}`" 
                                         > -->
-                                    <button class="button">
-                                        <span>Visit </span>
-                                    </button>
-                                    <!-- </router-link -->
-                                    <!-- > -->
+                                    <router-link :to="`/visit_doctor`">
+                                        <button class="button">
+                                            <span>Visit </span>
+                                        </button>
+                                    </router-link>
                                 </p>
                             </div>
                         </div>
