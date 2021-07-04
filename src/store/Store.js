@@ -9,10 +9,11 @@ const store = createStore({
     state: {
         // APi
         Stores: [],
-        store: null,
+        store: [],
         Sections: [],
         Product: [],
-        ProductID: null,
+        ProductID: [],
+        productById: [],
         Brand: [],
         Brands: [],
         Categories: [],
@@ -192,8 +193,8 @@ const store = createStore({
             axios
                 .get(`/api/products/getAll?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Product :', res.data.Products);
-                    let Product = res.data.Products;
+                    console.warn('Product :', res.data.Products.data);
+                    let Product = res.data.Products.data;
                     commit('SET_Products', Product);
                 })
                 .catch(function (error) {
@@ -204,7 +205,7 @@ const store = createStore({
             axios
                 .get(`/api/products/getById/${ProductID}?lang=${lang}`)
                 .then((res) => {
-                    console.warn('productById :', res.data.product);
+                    console.warn('ProductID :', res.data.product);
                     let ProductID = res.data.product;
                     commit('SET_ProductID', ProductID);
                 })

@@ -5,13 +5,12 @@
                 <div
                     class="col-xs-12"
                     style="direction: rtl"
-                    v-for="prod in ProductID.slice(0, 1)"
-                    :key="prod"
+                 
                 >
                     <div class="content-pro text-center">
                         <img
                             class=""
-                            :src="prod.image"
+                            :src="ProductID.image"
                             style="
                                 width: 250px;
                                 height: 250px;
@@ -19,24 +18,24 @@
                             "
                         />
                         <div class="name-prod">
-                            {{ prod.name }}
+                            {{ ProductID.name }}
                         </div>
                         <div class="category">
-                            {{ prod.long_des }}
+                            {{ ProductID.long_des }}
                         </div>
                         <div class="avilble">
                             <div style="display: inline-block">
                                 متوفر في
-                                {{ ProductID[0].store.length - 1 }} متاجر
+                             {{ ProductID.store.length}}  متاجر
                             </div>
                             <span class="fa fa-check-circle"></span>
                         </div>
                         <div>
                             <span>
-                                {{ minPrice }} ل.س
+                                 {{ minPrice }} ل.س 
                                 <span style="color: #ca0a0a">حتى</span>
                             </span>
-                            <span> {{ maxPrice }} ل.س</span>
+                          <span> {{ maxPrice }} ل.س</span> 
                             <div
                                 class="price"
                                 style="display: inline-block"
@@ -52,7 +51,7 @@
                         <div class="row">
                             <div class="col">
                                 <button
-                                    @click="gotoListView(id, name, short_des)"
+                                    @click="gotoListView(ProductID.id, ProductID.name, ProductID.short_des)"
                                     class="but1"
                                 >
                                     <span>
@@ -225,24 +224,40 @@
 }
 </style>
 <script>
+import axios from "axios";
 export default {
     name: 'ProductDetails',
     data() {
-        return {};
+        return {
+          ProductID: {}
+        };
     },
     components: {},
     props: ['id', 'name', 'image', 'short_des', 'long_des'],
+   async  created(){
+   await axios
+                .get(`/api/products/getById/${this.$route.params.id}`)
+                .then((res) => {
+                    console.warn('ProductID :', res.data.product);
+                     this.ProductID = res.data.product;
+                  
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+
+                 
+    }
+   ,
     computed: {
-        ProductID() {
-            return this.$store.state.ProductID;
-        },
+       
         maxPrice() {
             let maxPrice = 0;
-            let len = this.$store.state.ProductID[0].store.length;
+            let len = this.ProductID.store.length;
             var priceArray = [];
             for (var i = 0; i < len; i++) {
                 priceArray.push(
-                    this.$store.state.ProductID[0].store[i].pivot.price
+                    this.ProductID.store[i].pivot.price
                 );
             }
             maxPrice = Math.max(...priceArray);
@@ -251,11 +266,11 @@ export default {
         },
         minPrice() {
             let minPrice = 0;
-            let len = this.$store.state.ProductID[0].store.length;
+            let len = this.ProductID.store.length;
             var priceArray = [];
             for (var i = 0; i < len; i++) {
                 priceArray.push(
-                    this.$store.state.ProductID[0].store[i].pivot.price
+                    this.ProductID.store[i].pivot.price
                 );
             }
             minPrice = Math.min(...priceArray);
@@ -263,17 +278,17 @@ export default {
 
             return minPrice;
         },
+    
     },
     methods: {
         heartlike: function () {
             document.getElementById('heart').classList.toggle('is-active');
+            console.log(this.ProductID.store)
         },
         gotoListView: function (i, n, s) {
             this.$router.push(`/ListView/${i}/${n}/${s}`);
-        },
-    },
-    mounted() {
-        this.$store.dispatch('loadProduct', this.id);
-    },
+        },  
+
+    }
 };
 </script>

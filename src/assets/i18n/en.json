@@ -12,10 +12,11 @@
     "ProfessionalsTechnicians": "Technicians",
     "PharmaciesMedicines": "Medicines",
     "Doctors": "Doctors",
-    "RestaurantsCafes": "Estaurants",
+    "RestaurantsCafes": "Rstaurants",
     "FestivalPerformances": "Performances",
     "Stores": "Stores",
     "Products": "Products",
+    "Allsections":"All sections",
 
     "//comment2": "appfootter",
     "GetKnowUs": "Get to Know Us",
