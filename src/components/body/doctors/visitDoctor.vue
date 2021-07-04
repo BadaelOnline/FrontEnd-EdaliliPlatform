@@ -1,76 +1,150 @@
-<template class="html">
-    <div class="body" v-if="doctor">
-        <!-- home section -->
+<template>
+    <div>
         <section class="home">
-            <div class="content">
-                <h3>{{ doctor.first_name }} {{ doctor.last_name }}</h3>
-                <p>
-                    {{ doctor.description }}
-                </p>
-            </div>
-            <div class="image">
-                <img
-                    src="../../../../public/img/img6.jpg"
-                    alt="img"
-                    class="rounded-circle"
-                />
+            <div class="container text-white pb-5">
+                <div class="row">
+                    <div class="col-lg-4 col-md-8 col-sm-12 col-12">
+                        <h1>
+                            Dr.
+                            <span style="rgb(248,70,129)">NASHAAT ALARBED</span>
+                        </h1>
+                    </div>
+                </div>
             </div>
         </section>
-        <!-- commit -->
         <section class="about">
-            <img class="image" src="../../../../public/img/img4.jpg" />
-            <div class="content">
-                <h3>{{ doctor.first_name }} {{ doctor.last_name }}</h3>
-                <p>{{ doctor.description }}</p>
-            </div>
-        </section>
-        <!-- <section class="menu">
-            <h1 class="heading"><span>medicaldevice</span></h1>
-            <div class="box-container">
-                <div
-                    class="box"
-                    v-for="item in this.$route.params.medicaldevice"
-                    :key="item.id"
-                >
-                    <img src="../../../../public/img/img2.jpg" alt="" />
-                    <h3>{{ item.name }}</h3>
-                    <p>{{ item.description }}</p>
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img
+                            src="../../../../public/img/doctor.png"
+                            class="img-fluid"
+                            style="border-radius: 40px"
+                        />
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <h1
+                            class="py-5 text-center"
+                            style="color: palevioletred"
+                        >
+                            About Us
+                        </h1>
+                        <p class="text-center pl-5">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Sunt voluptates nihil accusamus, quis nemo,
+                            consequatur vero architecto deleniti velit atque
+                            neque cum pariatur eos minus! Repellat laboriosam
+                            eius eum mollitia.
+                        </p>
+                        <div class="mt-2">
+                            <img
+                                class="location mr-2"
+                                src="../../../../public/img/location.png"
+                                height="15"
+                            />
+                            <img
+                                class="phone mr-2"
+                                src="../../../../public/img/phone.png"
+                                height="15"
+                            />
+                            <i class="whatsapp fab fa-whatsapp"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class="meals">
-            <h1 class="heading"><span>specialty</span></h1>
+        <section class="menu mt-4">
+            <h1 class="heading"><span>Specialty</span></h1>
             <div class="box-container">
-                <div
-                    class="box"
-                    v-for="item in this.$route.params.specialty"
-                    :key="item.id"
-                >
-                    <img src="../../../../public/img/img6.jpg" alt="" />
-                    <h3>{{ item.name }}</h3>
-                    <p>{{ item.description }}</p>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>heart</h3>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>heart</h3>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>heart</h3>
                 </div>
             </div>
         </section>
-        <section class="meals">
-            <h1 class="heading"><span>hospital</span></h1>
+        <section class="meals mt-4">
+            <h1 class="heading"><span>Medicaldevice</span></h1>
             <div class="box-container">
-                <div
-                    class="box"
-                    v-for="item in this.$route.params.hospital"
-                    :key="item.id"
-                >
-                    <img src="../../../../public/img/img6.jpg" alt="" />
-                    <h3>{{ item.name }}</h3>
-                    <p>{{ item.description }}</p>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Echo</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Echo</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Echo</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
                 </div>
             </div>
-        </section> -->
+        </section>
+        <section class="meals mt-4">
+            <h1 class="heading"><span>Hospital</span></h1>
+            <div class="box-container">
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Almazraa</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Almazraa</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+                <div class="box">
+                    <img src="../../../../public/img/doctor.png" alt="" />
+                    <h3>Almazraa</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Provident quos soluta nemo ab, facilis ipsam quaerat
+                        accusamus recusandae ut, dolore saepe culpa itaque sunt
+                        id. Sed provident impedit voluptatibus tenetur?
+                    </p>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+// import { mapState } from 'vuex';
 // import data from '../../../jeson/data1';
 export default {
     name: 'visitDoctor',
@@ -82,10 +156,10 @@ export default {
         };
     },
     computed: {
-        ...mapState(['DoctorId']),
+        // ...mapState(['doctor']),
     },
     mounted() {
-        this.$store.dispatch('loadDoctor', this.id);
+        // this.$store.dispatch('loadDoctor', this.id);
     },
 };
 </script>
@@ -106,103 +180,19 @@ export default {
     background: var(--yellow);
     color: #fff;
 }
-.html {
-    font-size: 62.5%;
-    overflow-x: hidden;
+.home {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
+        url(../../../../public/img/undrawdoctors.png) no-repeat;
+    background-size: contain;
+    background-position-x: right;
+    width: 100%;
+    padding: 180px 0;
 }
-.body {
-    overflow-x: hidden;
-    /* height: 200rem; */
-}
-.html::-webkit-scrollbar {
-    width: 1.4rem;
-}
-.html::-webkit-scrollbar-track {
-    background: #333;
-}
-.html::-webkit-scrollbar-thumb {
-    background: var(--yellow);
-}
-section {
+/* section {
     min-height: 100vh;
     padding: 1rem 10%;
     padding-top: 8.5rem;
-}
-.home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 0;
-    overflow: hidden;
-}
-.home .image {
-    flex: 1 1 39rem;
-}
-.home .image img {
-    width: 100%;
-}
-.home .content {
-    flex: 1 1 39rem;
-}
-.home .content h3 {
-    color: #333;
-    font-size: 6rem;
-}
-.home .content p {
-    color: #666;
-    font-size: 2rem;
-    padding: 1rem 0;
-}
-.home::before,
-.home::after {
-    content: '';
-    position: absolute;
-    top: 3rem;
-    right: -5rem;
-    background: var(--yellow);
-    border-radius: 3rem;
-    transform: rotate(-45deg);
-    height: 35rem;
-    width: 60rem;
-    z-index: -2;
-    animation: animte 1s linear 1;
-}
-@keyframes animte {
-    0% {
-        transform: rotate(45deg) translateY(-40rem);
-    }
-}
-.home::before {
-    top: -7rem;
-    background: #fff;
-    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.1);
-    z-index: -1;
-}
-.about {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: wrap;
-}
-.about .image {
-    flex: 1 1 40rem;
-    height: 50%;
-}
-.about .content {
-    flex: 1 1 40rem;
-    padding: 2rem;
-}
-.about .content h3 {
-    font-size: 4rem;
-    color: #333;
-}
-.about .content p {
-    font-size: 1.6rem;
-    color: #666;
-    padding: 1rem 0;
-}
+} */
 .heading {
     text-align: center;
     font-size: 4rem;
@@ -230,11 +220,6 @@ section {
         font-size: 4.5rem;
     }
 }
-@media (max-width: 500px) {
-    .html {
-        font-size: 50%;
-    }
-}
 .menu .box-container {
     display: flex;
     align-items: center;
@@ -242,8 +227,8 @@ section {
     flex-wrap: wrap;
 }
 .menu .box-container .box {
-    height: 20rem;
-    width: 30rem;
+    height: 15rem;
+    width: 20rem;
     margin: 2rem;
     cursor: pointer;
     overflow: hidden;
