@@ -14,10 +14,11 @@
                     class="card mb-3"
                     style="max-width: 540px"
                 >
+                    <!-- <div class="card mb-3" style="max-width: 540px"> -->
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img
-                                src="../../../public/img/aa.jpg"
+                                src="../../../public/img/doctor.png"
                                 alt="image"
                                 height="100"
                                 class="mt-3"
@@ -46,12 +47,14 @@
                                     {{ doctor.description }}
                                 </p>
                                 <p class="card-text">
-                                    <router-link
-                                        :to="`/visit_doctor/${doctor.id}/${doctor.first_name}`"
-                                        ><button class="button">
+                                    <!-- <router-link
+                                        :to="`/visit_doctor/${doctor.id}/${doctor.first_name}`" 
+                                        > -->
+                                    <router-link :to="`/visit_doctor`">
+                                        <button class="button">
                                             <span>Visit </span>
-                                        </button></router-link
-                                    >
+                                        </button>
+                                    </router-link>
                                 </p>
                             </div>
                         </div>
