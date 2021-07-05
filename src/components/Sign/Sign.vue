@@ -191,6 +191,7 @@ export default {
         },
         submit1() {
             this.register(this.form);
+            console.log(JSON.stringify(this.form))
         },
     },
 };

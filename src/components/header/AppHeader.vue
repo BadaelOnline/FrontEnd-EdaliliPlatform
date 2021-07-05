@@ -92,8 +92,8 @@
                             <div class="map">{{ $t('Selectlocation') }}</div>
 
                             <i class="fa fa-user-circle"> </i>
-                            <template v-if="authenticated" class="user">
-                                <a href="#" class="link">Signout</a>
+                            <template v-if="authenticated" class="user" >
+                                <a href="#" class="link" @click.prevent="signOut">Signout</a>
                             </template>
                             <template v-else class="user">
                                 <router-link class="link" to="/signin">{{
@@ -828,6 +828,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 import jeson from '@/jeson/MOCK_DATA.json';
 export default {
     name: 'AppHeader',
@@ -859,8 +860,15 @@ export default {
             authenticated: 'authenticated',
             // user: 'user',
         }),
+
     },
     methods: {
+        ...mapActions({
+            signOut: 'signOut',
+        }),
+        signOut() {
+            this.signOut()
+             },
         gotocart() {
             this.$router.push(`/Cart`);
         },
