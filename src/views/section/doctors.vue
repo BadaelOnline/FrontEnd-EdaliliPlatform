@@ -50,7 +50,9 @@
                                     <!-- <router-link
                                         :to="`/visit_doctor/${doctor.id}/${doctor.first_name}`" 
                                         > -->
-                                    <router-link :to="`/visit_doctor`">
+                                    <router-link
+                                        :to="`/visit_doctor/${doctor.id}/${doctor.first_name}`"
+                                    >
                                         <button class="button">
                                             <span>Visit </span>
                                         </button>

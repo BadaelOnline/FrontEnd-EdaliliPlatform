@@ -255,17 +255,15 @@
                     class="col-md-6 col-lg-3 col-xs-3 mb-4 column"
                     v-for="catog in storeID.section"
                     :key="catog.id"
-                    :image="catog.image"
-                    :name="catog.name"
                     style="width: 50%"
                 >
                     <div class="card">
                         <div class="txt">
                             <h1>{{ catog.name }}</h1>
                         </div>
-                        <router-link>{{ $t('More') }}</router-link>
+                        <a>{{ $t('More') }}</a>
                         <div class="ico-card mt-2">
-                            <!-- <img :src="catog.image" height="60%" width="80%" /> -->
+                            <img :src="catog.image" height="60%" width="80%" />
                             <i class="fa fa-rebel"></i>
                         </div>
                     </div>
@@ -284,37 +282,36 @@
                 </div>
             </div>
         </div> -->
-        <!-- <div class="mar mb-4">
+        <div class="mar mb-4">
             <div class="all-section">
                 <span class="text">{{ $t('TheFamousBrands') }}</span>
             </div>
             <div
                 class="show-market"
-                v-for="item in store.brand.slice(0, 5)"
+                v-for="item in storeID.brand"
                 :key="item.id"
             >
                 <img :src="item.image" height="20%" width="80%" />
             </div>
-        </div> -->
+        </div>
         <!-- show  products -->
-        <!-- <div class="show-prod">
+        <div class="show-prod">
             <div class="all-section">
                 <span class="text">{{ $t('LatestSearches') }}</span>
             </div>
-            <div class="row mt-2">
+            <!-- <div class="row mt-2">
                 <BodyProductStore
-                    v-for="items in store.product"
-                    :key="items.pr"
+                    v-for="items in storeID.product"
+                    :key="items.id"
                     :id="items.id"
                     :name="items.name"
-                    :image="items.image"
                     :long_des="items.long_des"
                     :short_des="items.short_des"
                     :store_product="items.store_product"
                 >
                 </BodyProductStore>
-            </div>
-        </div> -->
+            </div> -->
+        </div>
         <div
             class="col-lg-12 col-md-12 col-sm-12 mb-5 mt-5 visiter text-center"
         >
@@ -355,7 +352,7 @@ export default {
         ),
     },
     computed: {
-        // ...mapState(['store', 'brands']),
+        // ...mapState([ 'brands']),
     },
     mounted() {
         // this.$store.dispatch('loadstore', this.id);

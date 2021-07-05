@@ -6,7 +6,10 @@
                     <div class="col-lg-4 col-md-8 col-sm-12 col-12">
                         <h1>
                             Dr.
-                            <span style="rgb(248,70,129)">NASHAAT ALARBED</span>
+                            <span style="rgb(248,70,129)"
+                                >{{ doctorID.first_name }}
+                                {{ doctorID.last_name }}</span
+                            >
                         </h1>
                     </div>
                 </div>
@@ -30,11 +33,7 @@
                             About Us
                         </h1>
                         <p class="text-center pl-5">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Sunt voluptates nihil accusamus, quis nemo,
-                            consequatur vero architecto deleniti velit atque
-                            neque cum pariatur eos minus! Repellat laboriosam
-                            eius eum mollitia.
+                            {{ doctorID.description }}
                         </p>
                         <div class="mt-2">
                             <img
@@ -56,51 +55,29 @@
         <section class="menu mt-4">
             <h1 class="heading"><span>Specialty</span></h1>
             <div class="box-container">
-                <div class="box">
+                <div
+                    class="box"
+                    v-for="item in doctorID.specialty"
+                    :key="item.id"
+                >
                     <img src="../../../../public/img/doctor.png" alt="" />
-                    <h3>heart</h3>
-                </div>
-                <div class="box">
-                    <img src="../../../../public/img/doctor.png" alt="" />
-                    <h3>heart</h3>
-                </div>
-                <div class="box">
-                    <img src="../../../../public/img/doctor.png" alt="" />
-                    <h3>heart</h3>
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
                 </div>
             </div>
         </section>
         <section class="meals mt-4">
             <h1 class="heading"><span>Medicaldevice</span></h1>
             <div class="box-container">
-                <div class="box">
+                <div
+                    class="box"
+                    v-for="item in doctorID.medical_device"
+                    :key="item.id"
+                >
                     <img src="../../../../public/img/doctor.png" alt="" />
-                    <h3>Echo</h3>
+                    <h3>{{ item.name }}</h3>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Provident quos soluta nemo ab, facilis ipsam quaerat
-                        accusamus recusandae ut, dolore saepe culpa itaque sunt
-                        id. Sed provident impedit voluptatibus tenetur?
-                    </p>
-                </div>
-                <div class="box">
-                    <img src="../../../../public/img/doctor.png" alt="" />
-                    <h3>Echo</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Provident quos soluta nemo ab, facilis ipsam quaerat
-                        accusamus recusandae ut, dolore saepe culpa itaque sunt
-                        id. Sed provident impedit voluptatibus tenetur?
-                    </p>
-                </div>
-                <div class="box">
-                    <img src="../../../../public/img/doctor.png" alt="" />
-                    <h3>Echo</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Provident quos soluta nemo ab, facilis ipsam quaerat
-                        accusamus recusandae ut, dolore saepe culpa itaque sunt
-                        id. Sed provident impedit voluptatibus tenetur?
+                        {{ item.description }}
                     </p>
                 </div>
             </div>
@@ -146,12 +123,14 @@
 <script>
 // import { mapState } from 'vuex';
 // import data from '../../../jeson/data1';
+import axios from 'axios';
 export default {
     name: 'visitDoctor',
     props: ['id'],
     data() {
         return {
             rating: 0,
+            doctorID: {},
             // doctor: data.doctor,
         };
     },
@@ -160,6 +139,17 @@ export default {
     },
     mounted() {
         // this.$store.dispatch('loadDoctor', this.id);
+    },
+    async created() {
+        await axios
+            .get(`/api/doctor/getById/${this.$route.params.id}`)
+            .then((res) => {
+                console.warn('doctorID :', res.data);
+                this.doctorID = res.data;
+            })
+            .catch(function (error) {
+                console.log('Error: ', error);
+            });
     },
 };
 </script>
