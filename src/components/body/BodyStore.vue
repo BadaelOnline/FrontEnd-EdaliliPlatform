@@ -82,16 +82,6 @@
                                 /></span>
                             </div>
                             <div class="col btnsmall">
-                                <!-- <router-link 
-                                    :to="{
-                                        name: 'visitStore',
-                                        params: {
-                                            id: store.id,
-                                            title: store.title,
-                                             workingHours: store.workingHours,
-                                             section: store.section,
-                                             Product: store.product,
-                                             brand: store.brand,},}">-->
                                 <router-link
                                     :to="`/visitStore/${store.id}/${store.title}`"
                                 >

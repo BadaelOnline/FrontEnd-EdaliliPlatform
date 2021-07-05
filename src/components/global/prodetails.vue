@@ -3,11 +3,7 @@
    >
         <div class="show_prod">
             <div class="row">
-                <div
-                    class="col-xs-12"
-                    style="direction: rtl"
-                 
-                >
+                <div class="col-xs-12" style="direction: rtl">
                     <div class="content-pro text-center">
                         <img
                          
@@ -34,10 +30,10 @@
                         <div >
                       
                             <span>
-                                 {{ minPrice }} ل.س 
+                                {{ minPrice }} ل.س
                                 <span style="color: #ca0a0a">حتى</span>
                             </span>
-                          <span> {{ maxPrice }} ل.س</span> 
+                            <span> {{ maxPrice }} ل.س</span>
                             <div
                                 class="price"
                                 style="display: inline-block"
@@ -226,7 +222,7 @@
 }
 </style>
 <script>
-import axios from "axios";
+import axios from 'axios';
 export default {
     name: 'ProductDetails',
      data() {
@@ -254,7 +250,6 @@ export default {
     }
    ,
     computed: {
-       
         maxPrice() {
             let maxPrice = 0;
 
@@ -283,7 +278,6 @@ export default {
 
             return minPrice;
         },
-    
     },
     methods: {
         heartlike: function () {

@@ -1,5 +1,5 @@
 <template>
-    <div class="visitStore" v-if="store">
+    <div class="visitStore">
         <Cartmini />
         <div
             id="carouselExampleInterval"
@@ -62,7 +62,7 @@
                     <div class="mt-4">{{ $t('SaturdayFriday') }}</div>
                     <div class="mt-3 row">
                         <div class="row">
-                            <div class="mr-2">{{ store.workingHours }}</div>
+                            <div class="mr-2">{{ storeID.workingHours }}</div>
                         </div>
                     </div>
                     <div class="row mt-4">
@@ -79,7 +79,9 @@
                         src="../../../../public/img/market-logo.png"
                         height="100"
                     />
-                    <div class="mt-4 mb-4 title-profile">{{ store.title }}</div>
+                    <div class="mt-4 mb-4 title-profile">
+                        {{ storeID.title }}
+                    </div>
                 </div>
                 <div class="col-lg-3 mt-4 pr-0">
                     <div class="textRight">
@@ -251,19 +253,15 @@
             <div class="row align-middle" style="height: 80%">
                 <div
                     class="col-md-6 col-lg-3 col-xs-3 mb-4 column"
-                    v-for="catog in store.section"
+                    v-for="catog in storeID.section"
                     :key="catog.id"
-                    :slug="catog.slug"
-                    :image="catog.image"
-                    :name="catog.name"
-                    :category="catog.category"
                     style="width: 50%"
                 >
                     <div class="card">
                         <div class="txt">
                             <h1>{{ catog.name }}</h1>
                         </div>
-                        <router-link>{{ $t('More') }}</router-link>
+                        <a>{{ $t('More') }}</a>
                         <div class="ico-card mt-2">
                             <img :src="catog.image" height="60%" width="80%" />
                             <i class="fa fa-rebel"></i>
@@ -272,7 +270,7 @@
                 </div>
             </div>
         </div>
-        <div class="show-der mb-4">
+        <!-- <div class="show-der mb-4">
             <div class="row">
                 <div
                     class="col-lg-6 img text-center"
@@ -283,14 +281,14 @@
                     <img src="../../../../public/img/S1.png" />
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="mar mb-4">
             <div class="all-section">
                 <span class="text">{{ $t('TheFamousBrands') }}</span>
             </div>
             <div
                 class="show-market"
-                v-for="item in store.brand.slice(0, 5)"
+                v-for="item in storeID.brand"
                 :key="item.id"
             >
                 <img :src="item.image" height="20%" width="80%" />
@@ -301,19 +299,18 @@
             <div class="all-section">
                 <span class="text">{{ $t('LatestSearches') }}</span>
             </div>
-            <div class="row mt-2">
+            <!-- <div class="row mt-2">
                 <BodyProductStore
-                    v-for="items in store.product"
-                    :key="items.pr"
+                    v-for="items in storeID.product"
+                    :key="items.id"
                     :id="items.id"
                     :name="items.name"
-                    :image="items.image"
                     :long_des="items.long_des"
                     :short_des="items.short_des"
                     :store_product="items.store_product"
                 >
                 </BodyProductStore>
-            </div>
+            </div> -->
         </div>
         <div
             class="col-lg-12 col-md-12 col-sm-12 mb-5 mt-5 visiter text-center"
@@ -335,24 +332,30 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+// import { mapState } from 'vuex';
 import { defineAsyncComponent } from 'vue';
+import axios from 'axios';
 export default {
     name: 'visitStore',
+    data() {
+        return {
+            storeID: {},
+        };
+    },
     props: ['id'],
     components: {
-        BodyProductStore: defineAsyncComponent(() =>
-            import(`./BodyProductStore.vue`)
-        ),
+        // BodyProductStore: defineAsyncComponent(() =>
+        //     import(`./BodyProductStore.vue`)
+        // ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
         ),
     },
     computed: {
-        ...mapState(['store', 'brands']),
+        // ...mapState([ 'brands']),
     },
     mounted() {
-        this.$store.dispatch('loadstore', this.id);
+        // this.$store.dispatch('loadstore', this.id);
         // <!--        this.$store.dispatch('loadStoreDetailsProduct', this.id);-->
     },
     methods: {
@@ -374,6 +377,17 @@ export default {
         likebtn: function () {
             document.getElementById('likebtn').classList.toggle('');
         },
+    },
+    async created() {
+        await axios
+            .get(`/api/stores/getById/${this.$route.params.id}`)
+            .then((res) => {
+                console.warn('storeID :', res.data.Store);
+                this.storeID = res.data.Store;
+            })
+            .catch(function (error) {
+                console.log('Error: ', error);
+            });
     },
 };
 </script>
