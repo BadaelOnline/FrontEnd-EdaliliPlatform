@@ -344,17 +344,12 @@ const store = createStore({
             //     commit('SET_USER', null);
             // }
         },
-        signOut({ commit }, token) {
-            return axios
-                .post('api/auth/logout', {
-                    headers: {
-                        Authorization: 'Bearer' + token,
-                    },
-                })
-                .then(() => {
-                    commit('SET_TOKEN', null);
-                    commit('SET_USER', null);
-                });
+        signOut({ commit }) {
+            const token = localStorage.getItem('token');
+            return axios.post(`api/auth/logout?${token}`).then(() => {
+                commit('SET_TOKEN', null);
+                commit('SET_USER', null);
+            });
         },
         //Register
         async register({ dispatch }, Credentials) {

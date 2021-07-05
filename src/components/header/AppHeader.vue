@@ -887,7 +887,9 @@ export default {
         ...mapActions({
             signOutActions: 'signOut',
         }),
+        // auth logout
         signOut() {
+            // const token = localStorage.getItem('token')
             this.signOutActions().then(() => {
                 this.$router.replace({
                     name: 'home',
