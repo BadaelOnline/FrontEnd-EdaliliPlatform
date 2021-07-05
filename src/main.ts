@@ -18,13 +18,12 @@ require('./store/subscriber');
 const lang: string = localStorage.getItem('lang') || 'en';
 document.documentElement.lang = lang;
 
-axios.defaults.baseURL = 'http://edalili.e-dalely.com/public '; // 
-
-
-
 store.dispatch('attempt', localStorage.getItem('token')).then(() => {
-
-    const app = createApp(App).use(store).use(router, axios).use(i18n,VueI18n);
+    axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
+    axios.defaults.headers.common = {
+        Authorization: `bearer ${localStorage.getItem('token')}`,
+    };
+    const app = createApp(App).use(store).use(router, axios).use(i18n, VueI18n);
     app.config.globalProperties.axios = axios;
     app.mount('#app');
 });

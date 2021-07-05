@@ -334,8 +334,7 @@ const store = createStore({
                 return;
             }
             // try {
-            // let res = await axios.get('auth/me');
-            //   let res = await axios.get("auth/me", {
+            //   let res = await axios.get("api/auth/me", {
             //     headers: {
             //       Authorization: "Bearer" + token,
             //     },});
@@ -345,12 +344,18 @@ const store = createStore({
             //     commit('SET_USER', null);
             // }
         },
-        //     signOut ({commit}) {
-        //         return axios.post('auth/signout').then(() => {
-        //         commit('SET_TOKEN', null);
-        //             commit('SET_USER', null);
-        //              })
-        //     }
+        signOut({ commit }, token) {
+            return axios
+                .post('api/auth/logout', {
+                    headers: {
+                        Authorization: 'Bearer' + token,
+                    },
+                })
+                .then(() => {
+                    commit('SET_TOKEN', null);
+                    commit('SET_USER', null);
+                });
+        },
         //Register
         async register({ dispatch }, Credentials) {
             let res = await axios.post(
@@ -386,8 +391,7 @@ const store = createStore({
         },
         //auth
         authenticated(state) {
-            return state.token && state.user;
-            // return state.token && state.user;
+            return state.token;
         },
         user(state) {
             return state.user;

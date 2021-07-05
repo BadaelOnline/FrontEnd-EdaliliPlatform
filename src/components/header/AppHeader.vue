@@ -93,7 +93,12 @@
 
                             <i class="fa fa-user-circle"> </i>
                             <template v-if="authenticated" class="user">
-                                <a href="#" class="link">Signout</a>
+                                <a
+                                    @click.prevent="signOut"
+                                    href="#"
+                                    class="link"
+                                    >Signout</a
+                                >
                             </template>
                             <template v-else class="user">
                                 <router-link class="link" to="/signin">{{
@@ -827,7 +832,7 @@
 <!--<script src="../../js/proj.js"></script>-->
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import jeson from '@/jeson/MOCK_DATA.json';
 export default {
     name: 'AppHeader',
@@ -857,7 +862,7 @@ export default {
         },
         ...mapGetters({
             authenticated: 'authenticated',
-            // user: 'user',
+            user: 'user',
         }),
     },
     methods: {
@@ -879,34 +884,16 @@ export default {
             localStorage.setItem('lang', event.target.value);
             window.location.reload();
         },
-        // ...mapActions({
-        //     signOutActions:'signOut'
-        // })
-        // signOut(){ 
-        //     this.signOutActions().then(()=>{
-        //         this.$router.replace({
-        //             name:'home'
-        //         })
-        //     })
-        // }
+        ...mapActions({
+            signOutActions: 'signOut',
+        }),
+        signOut() {
+            this.signOutActions().then(() => {
+                this.$router.replace({
+                    name: 'home',
+                });
+            });
+        },
     },
-
-    //
-    // created(){
-    //  axios.get("http://edalili.e-dalely.com")// axios.get('/routename').then{response=>this.routename=response.data}
-    //  .then(response => {
-    //    this.cities = response.data[0].cities;
-    //  })
-    //  .then(response => {
-    //    this.governorates = response.data[0].governorates;
-    //  })
-    //  .then(response => {
-    //    this.streets = response.data[0].streets;
-    //  })
-    //  .then(response => {
-    //    this.categories = response.data[0].categories;
-    //  })
-    //  }
-    //
 };
 </script>
