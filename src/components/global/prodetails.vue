@@ -1,6 +1,7 @@
 <template>
-    <div class="ProductDetalis" style="background-color: #e9ecf2">
-        <div class="show-prod">
+    <div style="background-color: #e9ecf2"
+   >
+        <div class="show_prod">
             <div class="row">
                 <div
                     class="col-xs-12"
@@ -9,7 +10,7 @@
                 >
                     <div class="content-pro text-center">
                         <img
-                            class=""
+                         
                             :src="ProductID.image"
                             style="
                                 width: 250px;
@@ -17,20 +18,21 @@
                                 border-radius: 10px;
                             "
                         />
-                        <div class="name-prod">
+                        <div>
                             {{ ProductID.name }}
                         </div>
-                        <div class="category">
+                        <div>
                             {{ ProductID.long_des }}
                         </div>
                         <div class="avilble">
                             <div style="display: inline-block">
                                 متوفر في
-                             {{ ProductID.store.length}}  متاجر
+                             {{ stores.length}}  متاجر
                             </div>
                             <span class="fa fa-check-circle"></span>
                         </div>
-                        <div>
+                        <div >
+                      
                             <span>
                                  {{ minPrice }} ل.س 
                                 <span style="color: #ca0a0a">حتى</span>
@@ -51,7 +53,7 @@
                         <div class="row">
                             <div class="col">
                                 <button
-                                    @click="gotoListView(ProductID.id, ProductID.name, ProductID.short_des)"
+                                    @click="gotoListView(ProductID.id)"
                                     class="but1"
                                 >
                                     <span>
@@ -71,10 +73,10 @@
     justify-content: center;
     margin: 0;
 }
-.show-prod .col-4 {
+.show_prod .col-4 {
     max-width: 21%;
 }
-.show-prod h2 {
+.show_prod h2 {
     display: inline-block;
     margin: 0 20px 0 100px;
 }
@@ -138,18 +140,18 @@
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .show-prod .col-12 img {
+    .show_prod .col-12 img {
         width: 220px;
     }
-    .show-prod .col-4 {
+    .show_prod .col-4 {
         padding: 0;
         max-width: 24%;
     }
-    .show-prod .col-4 img {
+    .show_prod .col-4 img {
         height: 55px;
         width: 55px;
     }
-    .show-prod h2 {
+    .show_prod h2 {
         display: inline-block;
         margin: 22px;
         font-size: 20px;
@@ -158,25 +160,25 @@
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .show-prod h2 {
+    .show_prod h2 {
         font-size: 18px;
         margin: 10px;
     }
-    .show-prod .col-12 img {
+    .show_prod .col-12 img {
         width: 300px;
     }
-    .show-prod .col-4 {
+    .show_prod .col-4 {
         padding: 0;
         max-width: 30%;
     }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .show-prod h2 {
+    .show_prod h2 {
         font-size: 20px;
         margin: 22px;
     }
-    .show-prod .col-4 {
+    .show_prod .col-4 {
         padding: 0;
         max-width: 30%;
     }
@@ -227,9 +229,11 @@
 import axios from "axios";
 export default {
     name: 'ProductDetails',
-    data() {
+     data() {
         return {
-          ProductID: {}
+
+             ProductID: {},
+             stores: []
         };
     },
     components: {},
@@ -240,7 +244,7 @@ export default {
                 .then((res) => {
                     console.warn('ProductID :', res.data.product);
                      this.ProductID = res.data.product;
-                  
+                    this.stores = res.data.product.store;
                 })
                 .catch(function (error) {
                     console.log('Error: ', error);
@@ -253,11 +257,12 @@ export default {
        
         maxPrice() {
             let maxPrice = 0;
-            let len = this.ProductID.store.length;
+
+            let len = this.stores.length;
             var priceArray = [];
             for (var i = 0; i < len; i++) {
                 priceArray.push(
-                    this.ProductID.store[i].pivot.price
+                    this.stores[i].pivot.price
                 );
             }
             maxPrice = Math.max(...priceArray);
@@ -266,11 +271,11 @@ export default {
         },
         minPrice() {
             let minPrice = 0;
-            let len = this.ProductID.store.length;
+            let len = this.stores.length;
             var priceArray = [];
             for (var i = 0; i < len; i++) {
                 priceArray.push(
-                    this.ProductID.store[i].pivot.price
+                    this.stores[i].pivot.price
                 );
             }
             minPrice = Math.min(...priceArray);
@@ -283,11 +288,10 @@ export default {
     methods: {
         heartlike: function () {
             document.getElementById('heart').classList.toggle('is-active');
-            console.log(this.ProductID.store)
         },
-        gotoListView: function (i, n, s) {
-            this.$router.push(`/ListView/${i}/${n}/${s}`);
-        },  
+        gotoListView: function (i) {
+            this.$router.push(`/ListView/${i}`);
+        }
 
     }
 };

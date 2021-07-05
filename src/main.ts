@@ -18,7 +18,7 @@ require('./store/subscriber');
 const lang: string = localStorage.getItem('lang') || 'en';
 document.documentElement.lang = lang;
 
-axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
+axios.defaults.baseURL = 'http://127.0.0.1:8000'; // http://edalili.e-dalely.com/public
 
 
 

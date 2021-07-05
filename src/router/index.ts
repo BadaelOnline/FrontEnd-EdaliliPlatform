@@ -17,13 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     },
     /* ProductDetalis */
     {
-        path: '/ProductDetalis/:id',
-        name: 'ProductDetails',
-        component: () => import('../components/global/ProductDetalis.vue'),
-        props: true,
-    },
+        path: '/prodetails/:id',
+        component: () => import("../components/global/prodetails.vue")
+       },
     {
-        path: '/ListView/:id/:name/:short_des',
+        path: '/ListView/:id',
         component: () => import('../components/global/ListView.vue'),
         props: true,
     },

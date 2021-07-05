@@ -1,35 +1,15 @@
 <template>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 coler">
         <div class="content-pro text-center">
-            <router-link
-                class="link"
-                :to="`ProductDetails/${id}`">
+
                 
-                <img :src="`${image}`" class="new"/>  </router-link>
-            <router-link
-                class="link"
-                :to="{
-                    name: 'ProductDetails',
-                    params: {
-                        id
-                    },
-                }"
-                ><div class="name-prod">
+                <img :src="`${image}`" class="new" @click="gotoprodetails(id)"/> 
+            <div class="name-prod" @click="gotoprodetails(id)">
                     {{ name }}
-                </div></router-link
-            >
-            <router-link
-                class="link"
-                :to="{
-                    name: 'ProductDetails',
-                    params: {
-                        id
-                    },
-                }"
-                ><div class="category">
+                </div>
+            <div class="category" @click="gotoprodetails(id)">
                     {{ short_des }}
-                </div></router-link
-            >
+                </div>
 
             <div class="stars">
                 <span class="fa fa-star checked"></span>
@@ -46,7 +26,7 @@
                 <span class="fa fa-check-circle"></span>
             </div>
             <div class="row">
-                <button @click="gotoListView(id, name, short_des)">
+                <button @click="gotoListView(id)">
                     {{ $t('Choose') }}
                 </button>
                 <div class="heart-conten">
@@ -256,8 +236,11 @@ export default {
         // gotodetails: function (i, n, s, l) {
         //     this.$router.push(`ProductDetalis/${i}/${n}/${s}/${l}`);
         // },
-        gotoListView: function (i, n, s) {
-            this.$router.push(`ListView/${i}/${n}/${s}`);
+        gotoListView: function (i) {
+            this.$router.push(`/ListView/${i}`);
+        },
+        gotoprodetails: function (i) {
+            this.$router.push(`/prodetails/${i}`);
         },
         heartlike: function () {
             this.$el.lastChild.lastChild.lastChild.lastChild.classList.toggle(

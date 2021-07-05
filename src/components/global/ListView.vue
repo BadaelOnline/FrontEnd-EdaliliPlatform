@@ -63,7 +63,8 @@
         <div class="show-prod">
             <div
                 class="store animate__animated animate__fadeInUpBig"
-             
+             v-for=" item in ProductID.store"
+             :key="item.pr"
             >
                 <div>
                     <img
@@ -73,7 +74,7 @@
                 </div>
                 <div>
                     <h2>
-                        {{ ProductID.store.title }}
+                        {{ item.title }}
                     </h2>
                     <span>{{ 500 }}متر</span>
                 </div>
@@ -88,7 +89,7 @@
                 </div>
 
                 <div>
-                    <h2>{{ProductID.store.pivot.price }} ل.س</h2>
+                    <h2>{{item.pivot.price }} ل.س</h2>
                 </div>
             </div>
         </div>
@@ -239,11 +240,11 @@ export default {
     methods: {
         sortItem() {
             if (this.sortType == 'space') {
-                this.stores = this.stores.sort(
+               this.ProductID.store = this.ProductID.store.sort(
                     (prev, curr) => prev.space - curr.space
                 );
             } else if (this.sortType == 'spaces') {
-                this.stores = this.stores.sort(
+                this.ProductID.store = this.ProductID.store.sort(
                     (prev, curr) => curr.space - prev.space
                 );
             } else if (this.sortType == 'price') {
