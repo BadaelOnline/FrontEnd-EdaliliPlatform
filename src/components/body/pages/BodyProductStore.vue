@@ -2,32 +2,30 @@
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 coler">
         <div class="borderproduct">
             <div class="product-top">
-                <img :src="image" class="new" />
+                <img src="../../../../public/img/aa.jpg" class="new" />
                 <div class="overlay">
-                    <router-link
+                    <!-- <router-link
                         :to="{
                             name: 'ProductDetailsStore',
                             params: {
                                 id: this.id,
-                                id_store: this.$route.params.id,
-                                title: this.$route.params.title,
                                 name: this.name,
-                                image: this.image,
-                                short_des: this.short_des,
-                                long_des: this.long_des,
-                                store_product: this.store_product,
                             },
                         }"
+                    > -->
+                    <!-- id_store: this.$route.params.id,short_des: this.short_des,
+                                long_des: this.long_des,
+                                store_product: this.store_product,
+                                title: this.$route.params.title, -->
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        title="Quick Shop"
+                        @click="gotoprodetails(id)"
                     >
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            title="Quick Shop"
-                            @click="productDetalis()"
-                        >
-                            <i class="fa fa-eye"></i>
-                        </button>
-                    </router-link>
+                        <i class="fa fa-eye"></i>
+                    </button>
+                    <!-- </router-link> -->
                     <button
                         type="button"
                         class="btn btn-secondary"
@@ -60,7 +58,7 @@
                     {{ short_des }}
                 </div>
                 <div v-for="item in store_product" :key="item.id">
-                    {{ item.price }} s.p
+                    <span style="color: yellow"> {{ item.price }}</span> s.p
                 </div>
                 <div class="row">
                     <div class="heart-conten">
@@ -136,6 +134,9 @@ export default {
                     duration: 1000,
                 }
             );
+        },
+        gotoprodetails: function (i) {
+            this.$router.push(`/ProductDetailsStore/${i}`);
         },
     },
 };

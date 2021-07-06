@@ -334,7 +334,8 @@ const store = createStore({
                 return;
             }
             // try {
-            //   let res = await axios.get("api/auth/me", {
+            // let res = await axios.get('auth/me');
+            //   let res = await axios.get("auth/me", {
             //     headers: {
             //       Authorization: "Bearer" + token,
             //     },});
@@ -387,6 +388,7 @@ const store = createStore({
         //auth
         authenticated(state) {
             return state.token;
+            // return state.token && state.user;
         },
         user(state) {
             return state.user;
