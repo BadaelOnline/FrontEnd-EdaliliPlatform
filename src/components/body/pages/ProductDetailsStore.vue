@@ -2,29 +2,26 @@
     <div class="ProductDetalis" style="background-color: #e9ecf2">
         <Cartmini />
         <!-- ___________________________________________________ -->
-        <div
-            class="col-12 row"
-            v-for="prod in ProductID.slice(0, 1)"
-            :key="prod"
-        >
+        <!-- <div class="col-12 row" v-for="prod in ProductID" :key="prod"> -->
+        <div class="col-12 row">
             <div class="col-6">
                 <div class="row">
                     <div class="col-12">
-                        <img :src="prod.image" />
+                        <img src="../../../../public/img/aa.jpg" />
                     </div>
                 </div>
             </div>
 
             <div class="content-pro text-center col-6">
-                <div>{{ prod.id }}</div>
+                <!-- <div>{{ prod.id }}</div> -->
                 <div class="name-prod">
-                    {{ prod.name }}
+                    {{ ProductID.name }}
                 </div>
                 <div class="category">
-                    {{ prod.long_des }}
+                    <!-- {{ prod.long_des }} -->
                 </div>
                 <div>
-                    <div>{{ ProductID[0].store[prod.id].pivot.price }} s.p</div>
+                    <!-- <div>{{ ProductID[0].store[prod.id].pivot.price }} s.p</div> -->
                     <div class="price" style="display: inline-block"></div>
                 </div>
                 <div class="row">
@@ -49,6 +46,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { defineAsyncComponent } from 'vue';
 export default {
     name: 'ProductDetailsStore',
     data() {
@@ -63,10 +62,13 @@ export default {
                 long_des: this.long_des,
                 store_product: this.store_product,
             },
+            ProductID: {},
         };
     },
     components: {
-        Cartmini: () => import('@/components/cart/Cartmini.vue'),
+        Cartmini: defineAsyncComponent(() =>
+            import(`@/components/cart/Cartmini.vue`)
+        ),
     },
     props: [
         'id',
@@ -77,14 +79,14 @@ export default {
         'store_product',
         'title',
     ],
-    computed: {
-        ProductID() {
-            return this.$store.state.ProductID;
-        },
-    },
-    mounted() {
-        this.$store.dispatch('loadProduct', this.id);
-    },
+    // computed: {
+    //     ProductID() {
+    //         return this.$store.state.ProductID;
+    //     },
+    // },
+    // mounted() {
+    //     this.$store.dispatch('loadProduct', this.id);
+    // },
     methods: {
         increment() {
             this.$store.commit('increment');
@@ -111,6 +113,17 @@ export default {
                 }
             );
         },
+    },
+    async created() {
+        await axios
+            .get(`/api/products/getById/${this.$route.params.id}`)
+            .then((res) => {
+                console.warn('ProductID :', res.data.product);
+                this.ProductID = res.data.product;
+            })
+            .catch(function (error) {
+                console.log('Error: ', error);
+            });
     },
 };
 </script>

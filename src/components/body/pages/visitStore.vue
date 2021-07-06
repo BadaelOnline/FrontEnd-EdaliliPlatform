@@ -299,18 +299,18 @@
             <div class="all-section">
                 <span class="text">{{ $t('LatestSearches') }}</span>
             </div>
-            <!-- <div class="row mt-2">
+            <div class="row mt-2">
                 <BodyProductStore
                     v-for="items in storeID.product"
                     :key="items.id"
                     :id="items.id"
                     :name="items.name"
-                    :long_des="items.long_des"
                     :short_des="items.short_des"
                     :store_product="items.store_product"
+                    :long_des="items.long_des"
                 >
                 </BodyProductStore>
-            </div> -->
+            </div>
         </div>
         <div
             class="col-lg-12 col-md-12 col-sm-12 mb-5 mt-5 visiter text-center"
@@ -332,7 +332,6 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex';
 import { defineAsyncComponent } from 'vue';
 import axios from 'axios';
 export default {
@@ -344,19 +343,12 @@ export default {
     },
     props: ['id'],
     components: {
-        // BodyProductStore: defineAsyncComponent(() =>
-        //     import(`./BodyProductStore.vue`)
-        // ),
+        BodyProductStore: defineAsyncComponent(() =>
+            import(`./BodyProductStore.vue`)
+        ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
         ),
-    },
-    computed: {
-        // ...mapState([ 'brands']),
-    },
-    mounted() {
-        // this.$store.dispatch('loadstore', this.id);
-        // <!--        this.$store.dispatch('loadStoreDetailsProduct', this.id);-->
     },
     methods: {
         heart: function () {
