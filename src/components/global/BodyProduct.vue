@@ -2,8 +2,8 @@
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 coler">
         <div class="content-pro text-center">
 
-                
-                <img :src="`${image}`" class="new" @click="gotoprodetails(id)"/> 
+                <img :src="`${image}`"  v-if="image" class="new" @click="gotoprodetails(id)"/> 
+                <img v-else src="../../../public/img/3.jpg"  class="new" @click="gotoprodetails(id)"/> 
             <div class="name-prod" @click="gotoprodetails(id)">
                     {{ name }}
                 </div>

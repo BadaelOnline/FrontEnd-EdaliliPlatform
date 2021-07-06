@@ -13,15 +13,15 @@
             </div>
 
             <div class="content-pro text-center col-6">
-                <!-- <div>{{ prod.id }}</div> -->
+                 <div>{{ ProductID.id }}</div> 
                 <div class="name-prod">
                     {{ ProductID.name }}
                 </div>
                 <div class="category">
-                    <!-- {{ prod.long_des }} -->
+                     {{ ProductID.long_des }} 
                 </div>
                 <div>
-                    <!-- <div>{{ ProductID[0].store[prod.id].pivot.price }} s.p</div> -->
+                     <div>{{ pivot.price }}s.p</div> 
                     <div class="price" style="display: inline-block"></div>
                 </div>
                 <div class="row">
@@ -52,17 +52,15 @@ export default {
     name: 'ProductDetailsStore',
     data() {
         return {
+            ProductID: [],
+            pivot: {},
             details: {
                 id: this.id,
-                id_store: this.$route.params.id,
+                id_store: this.$route.params.id_store,
                 title: this.$route.params.title,
-                name: this.name,
-                image: this.image,
-                short_des: this.short_des,
-                long_des: this.long_des,
-                store_product: this.store_product,
             },
-            ProductID: {},
+
+             
         };
     },
     components: {
@@ -98,7 +96,7 @@ export default {
             this.$router.push(`/Cart`);
         },
         addToCart() {
-            this.$store.dispatch('addToCart', this.details, this.id);
+            this.$store.dispatch('addToCart', this.ProductID, this.id);
             document.getElementById('cart').animate(
                 [
                     // keyframes
@@ -115,11 +113,12 @@ export default {
         },
     },
     async created() {
-        await axios
-            .get(`/api/products/getById/${this.$route.params.id}`)
+              await axios
+            .get(`/api/stores/getById/${this.details.id_store}`)
             .then((res) => {
-                console.warn('ProductID :', res.data.product);
-                this.ProductID = res.data.product;
+                console.warn('ProductID :', res.data.Store.product[this.$route.params.id -1]);
+                this.ProductID = res.data.Store.product[this.$route.params.id -1];
+                this.pivot = res.data.Store.product[this.$route.params.id -1].pivot;
             })
             .catch(function (error) {
                 console.log('Error: ', error);

@@ -217,8 +217,8 @@ const store = createStore({
             axios
                 .get(`/api/brands/getAll?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Brands :', res.data.Brand);
-                    let Brands = res.data.Brand;
+                    console.warn('Brands :', res.data.Brand.data);
+                    let Brands = res.data.Brand.data;
                     commit('SET_Brands', Brands);
                 })
                 .catch(function (error) {
@@ -323,7 +323,9 @@ const store = createStore({
                 Credentials
             );
             console.log(res.data);
+           
             return dispatch('attempt', res.data.access_token);
+            
         },
         async attempt({ commit, state }, token) {
             if (token) {

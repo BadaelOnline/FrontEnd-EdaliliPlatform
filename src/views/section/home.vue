@@ -6,7 +6,7 @@
         <div class="row align-middle">
             <div
                 class="col-md-6 col-lg-3 col-xs-6 column"
-                v-for="catog in Categories.slice(0, 8)"
+                v-for="catog in Categories"
                 :key="catog.id"
                 :name="catog.name"
                 :image="catog.image"
@@ -19,7 +19,9 @@
                         </div>
                         <a href="#">{{ $t('More') }}</a>
                         <div class="ico-card">
-                            <img :src="image" style="width: 60%" />
+                        <img :src="image"  v-if="image" style="width: 60%" />
+                     <img v-else src="../../../public/img/buty.jpg"  style="width: 60%" />
+               
                             <i class="fa fa-rebel"></i>
                         </div>
                     </div>
@@ -27,7 +29,7 @@
             </div>
         </div>
         <!-- __________________________________________________________________ -->
-        <!-- <div class="contain">
+        <div class="contain">
             <h2 style="margin-top: 3vh">Some Market</h2>
             <div class="row align-middle cont-market">
                 <div
@@ -35,25 +37,27 @@
                     :key="bran.id"
                     class="col-md-3 col-sm-6 column"
                 >
-                    <div class="card-market">
-                        <img class="img-market" v-lazy="bran.image" />
+                    <div class="card-market">                   
+                        <img class="img-market" :src="bran.image"  v-if="image"/>      
+                     <img v-else src="../../../public/img/elc3.png"  style="width: 60%" />
                         <a href="#">more...</a>
                     </div>
                 </div>
             </div>
             <div class="row align-middle cont-market">
                 <div
-                    v-for="bran in Brands.slice(2, 6)"
+                    v-for="bran in Brands.slice(0, 4)"
                     :key="bran.id"
                     class="col-md-3 col-sm-6 column"
                 >
                     <div class="card-market">
-                        <img class="img-market" v-lazy="bran.image" />
+                        <img class="img-market" :src="bran.image"  v-if="image"/>      
+                     <img v-else src="../../../public/img/elc3.png"  style="width: 60%" />
                         <a href="#">more...</a>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div> 
     </div>
 </template>
 <style lang="scss" scoped>
@@ -282,10 +286,12 @@ export default {
     },
 
     computed: {
-        ...mapState(['Categories']),
+        ...mapState(['Categories','Brands']),
     },
     mounted() {
         this.$store.dispatch('loadCategories');
+        this.$store.dispatch('loadBrands');
+        
     },
 };
 </script>

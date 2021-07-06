@@ -163,9 +163,13 @@
 
 <script>
 import { mapActions } from 'vuex';
+
 export default {
+      
     data() {
+  
         return {
+           
             form: {
                 name: '',
                 email: '',
@@ -180,6 +184,9 @@ export default {
         }),
         submit() {
             this.signIn(this.form);
+         
+              
+             
             // .then(() => {
             //     this.$router.replace({
             //         name: 'Dashboard',
@@ -191,6 +198,7 @@ export default {
         },
         submit1() {
             this.register(this.form);
+          
             console.log(JSON.stringify(this.form))
         },
     },
