@@ -28,16 +28,16 @@
                 </BodyProduct>
             </div>
         </div>  
-        <!-- show market
+        <!-- show market-->
          <div class="mar">
             <div
                 class="show-market"
-                v-for="bran in Brands.slice(0, 5)"
+                v-for="bran in brands.slice(2, 7)"
                 :key="bran.id"
             >
                 <img :src="bran.image" />
             </div>
-        </div> -->
+        </div> 
         <!-- show  products -->
          <div class="show-prod">
             <div class="row reower">

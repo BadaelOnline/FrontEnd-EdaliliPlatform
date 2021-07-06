@@ -320,7 +320,6 @@
     margin-left: 1vh;
     font-size: 16px;
 }
-
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .upper-bar .imag img {
@@ -403,7 +402,6 @@
         margin-right: 4px;
     }
 }
-
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .upper-bar .row .col-md-10 {
@@ -412,7 +410,6 @@
     .upper-bar .sel3 {
         margin-left: 2vh;
     }
-
     .upper-bar .customer-select {
         width: 95px;
     }
@@ -463,7 +460,6 @@
     }
 }
 /* End Upper Bar */
-
 /* Start landing */
 .jumbotron {
     text-align: center;
@@ -477,7 +473,6 @@
     -o-background-size: cover;
     background-size: cover;
 }
-
 .jumbotron .input {
     border: none;
     width: 400px;
@@ -526,7 +521,6 @@
 .jumbotron .featuers div:hover {
     color: aliceblue;
 }
-
 .jumbotron .featuers i {
     margin: 0 10px 0 60px;
     color: #635f5f;
@@ -604,7 +598,6 @@
     .jumbotron .search {
         width: 100%;
     }
-
     .jumbotron .search input {
         width: 50%;
         padding: 4px 10px;
@@ -627,7 +620,6 @@
     .jumbotron .featuers i {
         font-size: 17px;
     }
-
     .jumbotron .featuers .shopping:after,
     .jumbotron .featuers .map:after,
     .jumbotron .featuers .user:after {
@@ -639,7 +631,6 @@
     .jumbotron {
         height: 430px;
     }
-
     .jumbotron .featuers div {
         margin-bottom: 10px;
     }
@@ -649,7 +640,6 @@
         font-size: 12px;
         border-radius: 20px;
     }
-
     .jumbotron .featuers .shopping:after,
     .jumbotron .featuers .map:after,
     .jumbotron .featuers .user:after {
@@ -670,7 +660,6 @@
     }
 }
 /* End landing */
-
 /* Start Naver*/
 .naver {
     background-color: #a7a6a6;
@@ -718,16 +707,13 @@
     border-bottom-left-radius: 0px;
     height: 29px;
 }
-
 /* Extra small devices (portrait phones, less than 576px)   */
-
 @media (min-width: 520px) and (max-width: 576.98px) {
     .naver .img::before {
         top: 38px;
         right: 358px;
     }
 }
-
 @media (max-width: 575.98px) {
     .naver .row .btn-light {
         width: 85px;
@@ -742,7 +728,6 @@
     .naver .img::before {
         top: 38px;
     }
-
     .naver .row .products {
         width: 60px;
     }
@@ -791,7 +776,6 @@
         margin-bottom: 10px;
         font-size: 14px;
     }
-
     .naver .row .sell {
         height: 29px;
     }
@@ -802,7 +786,6 @@
         width: 60px;
     }
 }
-
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
     .naver .row .btn-light {

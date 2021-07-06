@@ -3,6 +3,7 @@ import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/signin',
+      
         component: () => import('../components/Sign/Sign.vue'),
     },
     {
@@ -27,7 +28,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         // path: '/ProductDetailsStore/:title/:id_store/:id',
-        path: '/ProductDetailsStore/:id',
+        path: '/ProductDetailsStore/:title/:id_store/:id',
         component: () =>
             import('../components/body/pages/ProductDetailsStore.vue'),
     },
@@ -137,6 +138,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/categories/child.vue'),
     },
 ];
+
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,

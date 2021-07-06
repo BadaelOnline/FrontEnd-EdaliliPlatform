@@ -21,7 +21,7 @@
                         type="button"
                         class="btn btn-secondary"
                         title="Quick Shop"
-                        @click="gotoprodetails(id)"
+                        @click="gotoprodetails(details.title,details.id_store,id)"
                     >
                         <i class="fa fa-eye"></i>
                     </button>
@@ -135,8 +135,8 @@ export default {
                 }
             );
         },
-        gotoprodetails: function (i) {
-            this.$router.push(`/ProductDetailsStore/${i}`);
+        gotoprodetails: function (t,i,n) {
+            this.$router.push(`/ProductDetailsStore/${t}/${i}/${n}`);
         },
     },
 };
