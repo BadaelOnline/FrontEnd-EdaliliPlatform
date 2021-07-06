@@ -92,8 +92,13 @@
                             <div class="map">{{ $t('Selectlocation') }}</div>
 
                             <i class="fa fa-user-circle"> </i>
-                            <template v-if="authenticated" class="user" >
-                                <a href="#" class="link" @click.prevent="signOut">Signout</a>
+                            <template v-if="authenticated" class="user">
+                                <a
+                                    @click.prevent="signOut"
+                                    href="#"
+                                    class="link"
+                                    >Signout</a
+                                >
                             </template>
                             <template v-else class="user">
                                 <router-link class="link" to="/signin">{{
@@ -315,7 +320,6 @@
     margin-left: 1vh;
     font-size: 16px;
 }
-
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .upper-bar .imag img {
@@ -398,7 +402,6 @@
         margin-right: 4px;
     }
 }
-
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .upper-bar .row .col-md-10 {
@@ -407,7 +410,6 @@
     .upper-bar .sel3 {
         margin-left: 2vh;
     }
-
     .upper-bar .customer-select {
         width: 95px;
     }
@@ -458,7 +460,6 @@
     }
 }
 /* End Upper Bar */
-
 /* Start landing */
 .jumbotron {
     text-align: center;
@@ -472,7 +473,6 @@
     -o-background-size: cover;
     background-size: cover;
 }
-
 .jumbotron .input {
     border: none;
     width: 400px;
@@ -521,7 +521,6 @@
 .jumbotron .featuers div:hover {
     color: aliceblue;
 }
-
 .jumbotron .featuers i {
     margin: 0 10px 0 60px;
     color: #635f5f;
@@ -599,7 +598,6 @@
     .jumbotron .search {
         width: 100%;
     }
-
     .jumbotron .search input {
         width: 50%;
         padding: 4px 10px;
@@ -622,7 +620,6 @@
     .jumbotron .featuers i {
         font-size: 17px;
     }
-
     .jumbotron .featuers .shopping:after,
     .jumbotron .featuers .map:after,
     .jumbotron .featuers .user:after {
@@ -634,7 +631,6 @@
     .jumbotron {
         height: 430px;
     }
-
     .jumbotron .featuers div {
         margin-bottom: 10px;
     }
@@ -644,7 +640,6 @@
         font-size: 12px;
         border-radius: 20px;
     }
-
     .jumbotron .featuers .shopping:after,
     .jumbotron .featuers .map:after,
     .jumbotron .featuers .user:after {
@@ -665,7 +660,6 @@
     }
 }
 /* End landing */
-
 /* Start Naver*/
 .naver {
     background-color: #a7a6a6;
@@ -713,16 +707,13 @@
     border-bottom-left-radius: 0px;
     height: 29px;
 }
-
 /* Extra small devices (portrait phones, less than 576px)   */
-
 @media (min-width: 520px) and (max-width: 576.98px) {
     .naver .img::before {
         top: 38px;
         right: 358px;
     }
 }
-
 @media (max-width: 575.98px) {
     .naver .row .btn-light {
         width: 85px;
@@ -737,7 +728,6 @@
     .naver .img::before {
         top: 38px;
     }
-
     .naver .row .products {
         width: 60px;
     }
@@ -786,7 +776,6 @@
         margin-bottom: 10px;
         font-size: 14px;
     }
-
     .naver .row .sell {
         height: 29px;
     }
@@ -797,7 +786,6 @@
         width: 60px;
     }
 }
-
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
     .naver .row .btn-light {
@@ -827,8 +815,7 @@
 <!--<script src="../../js/proj.js"></script>-->
 
 <script>
-import { mapGetters } from 'vuex';
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import jeson from '@/jeson/MOCK_DATA.json';
 export default {
     name: 'AppHeader',
@@ -858,17 +845,10 @@ export default {
         },
         ...mapGetters({
             authenticated: 'authenticated',
-            // user: 'user',
+            user: 'user',
         }),
-
     },
     methods: {
-        ...mapActions({
-            signOut: 'signOut',
-        }),
-        signOut() {
-            this.signOut()
-             },
         gotocart() {
             this.$router.push(`/Cart`);
         },
@@ -887,34 +867,18 @@ export default {
             localStorage.setItem('lang', event.target.value);
             window.location.reload();
         },
-        // ...mapActions({
-        //     signOutActions:'signOut'
-        // })
-        // signOut(){ 
-        //     this.signOutActions().then(()=>{
-        //         this.$router.replace({
-        //             name:'home'
-        //         })
-        //     })
-        // }
+        ...mapActions({
+            signOutActions: 'signOut',
+        }),
+        // auth logout
+        signOut() {
+            // const token = localStorage.getItem('token')
+            this.signOutActions().then(() => {
+                this.$router.replace({
+                    name: 'home',
+                });
+            });
+        },
     },
-
-    //
-    // created(){
-    //  axios.get("http://edalili.e-dalely.com")// axios.get('/routename').then{response=>this.routename=response.data}
-    //  .then(response => {
-    //    this.cities = response.data[0].cities;
-    //  })
-    //  .then(response => {
-    //    this.governorates = response.data[0].governorates;
-    //  })
-    //  .then(response => {
-    //    this.streets = response.data[0].streets;
-    //  })
-    //  .then(response => {
-    //    this.categories = response.data[0].categories;
-    //  })
-    //  }
-    //
 };
 </script>

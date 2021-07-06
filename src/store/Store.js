@@ -319,7 +319,7 @@ const store = createStore({
         //auth
         async signIn({ dispatch }, Credentials) {
             let res = await axios.post(
-                '/api/auth/login',
+                'http://edalili.e-dalely.com/public/api/auth/login',
                 Credentials
             );
             console.log(res.data);
@@ -333,24 +333,23 @@ const store = createStore({
             if (!state.token) {
                 return;
             }
-        //      try {
-        
-        //        let res = await axios.post("api/auth/me", {
-        //          headers: {
-        //            Authorization: "Bearer" + token,
-        //          },});
-        //        commit('SET_USER', res.data);
-        //     } catch (e) {
-        //         commit('SET_TOKEN', null);
-        //         commit('SET_USER', null);
-        //    }
+            // try {
+            //   let res = await axios.get("api/auth/me", {
+            //     headers: {
+            //       Authorization: "Bearer" + token,
+            //     },});
+            //     commit('SET_USER', res.data);
+            // } catch (e) {
+            //     commit('SET_TOKEN', null);
+            //     commit('SET_USER', null);
+            // }
         },
-        async signOut({ commit }) {
+        signOut({ commit }) {
             const token = localStorage.getItem('token');
-            return await axios.post(
-            `/api/auth/logout?${token}`).then(()=> {
+            return axios.post(`api/auth/logout?${token}`).then(() => {
                 commit('SET_TOKEN', null);
-            })
+                commit('SET_USER', null);
+            });
         },
         //Register
         async register({ dispatch }, Credentials) {
@@ -364,16 +363,17 @@ const store = createStore({
         async attempt1({ commit }, token) {
             console.log(token);
             commit('SET_TOKEN1', token);
-        //      try {
-        //      let res = await axios.get("auth/me", {
-        //         headers: {
-        //            Authorization: "Bearer" + token,
-        //          },
-        //        });
-        //       commit("SET_USER", res.data);
-        //    } catch (e) {
-        //        commit("SET_TOKEN", null);
-        //  }
+            // try {
+            //   let res = await axios.get("auth/me", {
+            //     headers: {
+            //       Authorization: "Bearer" + token,
+            //     },
+            //   });
+            //   commit("SET_USER", res.data);
+            // } catch (e) {
+            //   commit("SET_TOKEN", null);
+            //   commit("SET_USER", null);
+            // }
         },
     },
     getters: {
@@ -387,7 +387,6 @@ const store = createStore({
         //auth
         authenticated(state) {
             return state.token;
-            // return state.token && state.user;
         },
         user(state) {
             return state.user;
