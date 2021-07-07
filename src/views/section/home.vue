@@ -3,60 +3,29 @@
         <div class="all-section">
             <h3>{{ $t('AllCategories') }}</h3>
         </div>
-        <div class="row align-middle">
-            <div
-                class="col-md-6 col-lg-3 col-xs-6 column"
+        <div class="row">
+            <div class="card_mark col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"  
                 v-for="catog in Categories"
-                :key="catog.id"
-                :name="catog.name"
-                :image="catog.image"
-                style="width: 50%"
-            >
-                <router-link :to="`/${catog.name}`">
-                    <div class="card">
-                        <div class="txt">
-                            <h1>{{ catog.name }}</h1>
-                        </div>
-                        <a href="#">{{ $t('More') }}</a>
-                        <div class="ico-card">
-                        <img :src="image"  v-if="image" style="width: 60%" />
-                     <img v-else src="../../../public/img/buty.jpg"  style="width: 60%" />
-               
-                            <i class="fa fa-rebel"></i>
-                        </div>
-                    </div>
-                </router-link>
+                :key="catog.id">
+             <img :src="catog.image"  v-if="catog.image"  />
+                <img v-else src="../../../public/img/buty.jpg" />
+                <div> {{catog.name}} </div>
             </div>
+            
         </div>
         <!-- __________________________________________________________________ -->
         <div class="contain">
             <h2 style="margin-top: 3vh">Some Market</h2>
-            <div class="row align-middle cont-market">
-                <div
-                    v-for="bran in Brands.slice(0, 4)"
-                    :key="bran.id"
-                    class="col-md-3 col-sm-6 column"
-                >
-                    <div class="card-market">                   
-                        <img class="img-market" :src="bran.image"  v-if="image"/>      
-                     <img v-else src="../../../public/img/elc3.png"  style="width: 60%" />
-                        <a href="#">more...</a>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="card_mark col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"   v-for="bran in Brands.slice(0, 4)"
+                    :key="bran.id">
+             <img :src="bran.image"  v-if="bran.image"  />
+                <img v-else src="../../../public/img/elc3.png" />
             </div>
-            <div class="row align-middle cont-market">
-                <div
-                    v-for="bran in Brands.slice(0, 4)"
-                    :key="bran.id"
-                    class="col-md-3 col-sm-6 column"
-                >
-                    <div class="card-market">
-                        <img class="img-market" :src="bran.image"  v-if="image"/>      
-                     <img v-else src="../../../public/img/elc3.png"  style="width: 60%" />
-                        <a href="#">more...</a>
-                    </div>
-                </div>
-            </div>
+        </div>
+    
+
+
         </div> 
     </div>
 </template>
@@ -225,52 +194,26 @@
 /* _____________________ market after slider _____________________________ */
 .contain {
     margin-top: 40px;
-    width: 1275px;
+    width: 100%;
 }
-.card-market {
-    display: flex;
-    align-items: end;
-    background-color: #eee;
+.card_mark{
+    margin: 20px 0;
+    cursor: pointer;
 }
-.card-market a {
-    color: #3e3e3f;
-}
-.img-market {
-    border-radius: 5%;
-    margin: auto;
-    height: 180px;
-    width: 185px;
-}
-.cont-market {
-    height: 340px;
+.card_mark img:hover {
+    translate: -20px;
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .cont-market {
-        height: auto;
-    }
-    .landscape-text {
-        font-size: 16vh;
-    }
+  
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .cont-market {
-        height: auto;
-    }
+   
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .card-market {
-        padding: 0;
-        min-height: 170px;
-    }
-    .img-market {
-        border-radius: 50%;
-        margin: auto;
-        height: 150px;
-        width: 125px;
-    }
+ 
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {

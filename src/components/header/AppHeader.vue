@@ -5,15 +5,30 @@
                 <div @click="goto" class="col-md-2 col-sm-12 col-xs-12 imag">
                     <img src="../../../public/img/logo-4.png" />
                 </div>
-                <div class="col-md-10 col-sm-12 col-xs-12 text-center selo">
-                    <div class="customer-select sel4">
+
+                <div class=" parent_select">
+                    <div class="child_1">
+
+                      <div class="customer-select ">                     
                         <select v-model="lang" @change="handleChange($event)">
                             <option value="en">English</option>
                             <option value="ar">العربية</option>
                         </select>
+                        </div>
+                        <div>
+                             <span class="lang">{{ $t('lang') }}</span>
+                        </div>
+
                     </div>
-                    <span class="lang2">نطاق البحث</span>
-                    <div class="customer-select sel1">
+                    <div class="child_2">
+                         
+                    <div>
+                          <i class="fa fa-map-marker"></i>
+                        <span class="lang2"> {{ $t('SearchScope') }}  </span>
+                     
+                       </div>
+                       <div class="child_3">
+                    <div class="customer-select cu2">
                         <select v-model="sortType" c>
                             <option value="1" disabled>المحافظة</option>
                             <option
@@ -25,7 +40,7 @@
                         </select>
                     </div>
 
-                    <div class="customer-select sel2">
+                    <div class="customer-select cu2">
                         <select v-model="sortType">
                             <option value="1" disabled>المدینة/القریة</option>
                             <option v-for="city in cities" :key="city.id">
@@ -33,7 +48,7 @@
                             </option>
                         </select>
                     </div>
-                    <div class="customer-select sel3">
+                                        <div class="customer-select cu2">
                         <select v-model="sortType">
                             <option value="1" disabled>الحي</option>
                             <option v-for="street in streets" :key="street.id">
@@ -41,9 +56,14 @@
                             </option>
                         </select>
                     </div>
-                    <span class="lang">اللغة</span
-                    ><i class="fa fa-map-marker"></i>
+                    </div>
+                    </div>
+
+
                 </div>
+
+
+
             </div>
         </div>
         <!-- End Upper Bar -->
@@ -62,7 +82,7 @@
             <div class="container">
                 <div class="row">
                     <div class="search col-lg-12">
-                        <i class="fa fa-search"></i
+                        <i class="fa fa-search shopping"></i
                         ><input
                             class="input"
                             type="search"
@@ -74,37 +94,50 @@
                             class="featuers animate__animated animate__heartBeat"
                             id="fut"
                         >
-                            <div>
+                            <div class="child_1">
                                 <router-link to="/addStore" class="link">{{
                                     $t('AddPlatform', { locale: lang })
                                 }}</router-link>
                             </div>
-                            <div @click="gotocart()">
-                                <i class="fa fa-shopping-cart"></i>
+                            <div class="cole">|</div>
+                            <div  class="child_2" @click="gotocart()">
+                                <i class="fa fa-shopping-cart shopping"></i>
                                 <span class="cart-count">{{
                                     cartItemCount
                                 }}</span>
-                                <div class="shopping">
+                                <div >
                                     {{ $t('Shoppingcart') }}
                                 </div>
                             </div>
-                            <i class="fa fa-map-marker"></i>
-                            <div class="map">{{ $t('Selectlocation') }}</div>
-
-                            <i class="fa fa-user-circle"> </i>
+                              <div class="cole">|</div>
+                            <div class="child_3 map">
+                                <i class="fa fa-map-marker shopping"></i>{{ $t('Selectlocation') }}
+                             </div>
+                               <div class="cole">|</div>
+                                <div class="child_4">
+                            <i class="fa fa-user-circle shopping"> </i>
                             <template v-if="authenticated" class="user">
                                 <a
                                     @click.prevent="signOut"
                                     href="#"
                                     class="link"
-                                    >Signout</a
+                                    >SignOut</a
                                 >
                             </template>
-                            <template v-else class="user">
+                            <template  v-else  class="user">
                                 <router-link class="link" to="/signin">{{
                                     $t('signin')
                                 }}</router-link>
                             </template>
+                                </div>
+                                  <div class="cole">|</div>
+                                  <div class="child_5">
+                              <i class="fa fa-user-circle shopping"> </i>
+                                <div>
+                                    {{ $t('AddProfile')}}
+                                 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,15 +147,13 @@
 
         <!-- Start navbar-->
         <div id="nav" class="naver">
-            <div class="container" lang="en">
-                <div class="row text-center">
-                    <div class="col-lg-12" style="padding: 0">
+                    <div class="conten">
                         <div>
                             <router-link to="/instrc" exact>
                                 <button type="button" class="btn btn-light">
                                     <a>{{ $t('Factories') }}</a>
                                 </button></router-link
-                            >
+                            > 
                         </div>
                         <div>
                             <router-link to="/company">
@@ -199,34 +230,49 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 </template>
 <style scoped>
 /* ____________________________________ cart icon _______________________________ */
-.cart-count {
-    font-size: 13px;
-    color: #ba8b00;
-    margin-left: -21px;
-    background: #ffffff;
-    height: 19px;
-    border-radius: 50%;
-    width: 17px;
-    position: absolute;
-    margin-top: -10px;
-}
+
 /* ____________________________________app header _______________________________ */
 .upper-bar .imag img {
     cursor: pointer;
 }
+.upper-bar .parent_select {
+        margin-top: 2vh;
+    }
 .upper-bar {
     background-color: #9b9a9a;
     color: #fff;
     padding: 20px;
     width: 100%;
 }
-.upper-bar span {
+.upper-bar .lang,.upper-bar .lang2 {
     font-size: 17px;
+    font-weight: bold;
+    margin: 0 5px;
+
+}
+.upper-bar .parent_select{
+    width: 80%;
+    display: inline-flex;
+    justify-content: space-around;
+}
+.upper-bar .parent_select .child_1{
+    display: inline-flex;
+    width: 15%;
+    justify-content: space-between;
+}
+.upper-bar .parent_select .child_2{
+    display: inline-flex;
+    direction: rtl;
+    width: 55%;
+    justify-content: space-around;
+}
+.upper-bar .parent_select .child_3{
+    width: 60%;
+    display: inline-flex;
+    justify-content: space-between;
 }
 .upper-bar .customer-select {
     display: inline-flex;
@@ -235,6 +281,7 @@
     width: 110px;
     border-radius: 15px;
     position: relative;
+    height: 34px;
 }
 .upper-bar .customer-select select {
     border: none;
@@ -244,29 +291,17 @@
     -o-appearance: none;
     background-color: transparent;
     color: #fff;
-    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
     z-index: 2;
     font-size: 16px;
     position: relative;
-    height: 35px;
     line-height: 2.15;
 }
-.upper-bar .sel1:after {
+.upper-bar .customer-select:after {
     position: absolute;
     content: '>';
-    top: 4px;
-    left: 14px;
-    background-color: transparent;
-    color: #fff;
-    transform: rotate(90deg);
-    /*font-size: 17px;*/
-    z-index: 1;
-    font-size: 20px;
-}
-.upper-bar .sel2:after {
-    position: absolute;
-    content: '>';
-    top: 4px;
+    top: 2px;
     left: 9px;
     background-color: transparent;
     color: #fff;
@@ -275,11 +310,11 @@
     z-index: 1;
     font-size: 20px;
 }
-.upper-bar .sel3:after {
+.upper-bar .cu2:after {
     position: absolute;
-    content: '>';
-    top: 4px;
-    left: 14px;
+    content: '<';
+    top: 2px;
+    left: 9px;
     background-color: transparent;
     color: #fff;
     transform: rotate(90deg);
@@ -287,35 +322,8 @@
     z-index: 1;
     font-size: 20px;
 }
-.upper-bar .sel1 select {
-    width: 125px;
-    padding: 0 28px;
-}
-.upper-bar .sel2 select {
-    width: 140px;
-    padding: 0 16px;
-    font-size: 13px;
-}
-.upper-bar .sel3 select {
-    width: 100px;
-    padding: 0 30px;
-}
-.upper-bar .sel4 select {
-    width: 125px;
-    padding: 0 30px;
-}
-.upper-bar .sel4:after {
-    position: absolute;
-    content: '>';
-    top: 4px;
-    left: 14px;
-    background-color: transparent;
-    color: #fff;
-    transform: rotate(90deg);
-    font-size: 17px;
-    z-index: 1;
-    font-size: 20px;
-}
+
+
 .upper-bar .fa-map-marker {
     margin-left: 1vh;
     font-size: 16px;
@@ -326,48 +334,22 @@
         margin-top: -15px;
         margin-bottom: 10px;
     }
-    .upper-bar .row .col-sm-12 {
-        margin-top: 2vh;
-        text-align: center;
+ .upper-bar .parent_select {
+    width: 100%;
+    display: grid;
     }
-    .upper-bar .selo {
-        width: 50%;
+.upper-bar .parent_select .child_1, .upper-bar .parent_select .child_2{
+    width: 100%;
+    display: block;
+    margin: 10px 0;
     }
-    .upper-bar .customer-select {
-        width: 100px;
-        display: block;
-        margin-bottom: 2vh;
-        margin-left: -40px;
+.upper-bar .parent_select .child_3{
+         width: 100%;
+         display: block;
     }
-    .upper-bar .customer-select select {
-        font-size: 13px;
-        width: 115px;
-        text-align: center;
-    }
-    .upper-bar .row span {
-        font-size: 12px;
-    }
-    .upper-bar .fa-map-marker {
-        font-size: 12px;
-        position: absolute;
-        left: 82px;
-        top: 57px;
-    }
-    .upper-bar .customer-select select:after {
-        left: 12px;
-        top: 7px;
-        font-size: 18px;
-    }
-    .upper-bar .lang {
-        position: absolute;
-        top: 5px;
-        left: 110px;
-    }
-    .upper-bar .lang2 {
-        position: absolute;
-        top: 55px;
-        left: 98px;
-        width: 60px;
+.upper-bar .parent_select .child_3 .cu2{
+         display: block;
+         margin: 5px 0;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
@@ -376,88 +358,55 @@
         margin-top: -15px;
         margin-bottom: 10px;
     }
-    .upper-bar .row .col-sm-12 {
-        margin-top: 2vh;
-        text-align: center;
+        .upper-bar .imag img {
+        margin-top: -15px;
+        margin-bottom: 10px;
     }
-    .upper-bar .customer-select {
-        width: 95px;
+ .upper-bar .parent_select {
+    width: 100%;
+    display: grid;
     }
-    .upper-bar .customer-select select {
-        font-size: 13px;
+.upper-bar .parent_select .child_1, .upper-bar .parent_select .child_2{
+    width: 100%;
+    display: block;
+    margin: 10px 0;
     }
-    .upper-bar .row span {
-        font-size: 14px;
+.upper-bar .parent_select .child_3{
+         width: 100%;
+         display: block;
     }
-    .upper-bar .fa-map-marker {
-        font-size: 13px;
+.upper-bar .parent_select .child_3 .cu2{
+         display: block;
+         margin: 5px 0;
     }
-    .upper-bar .sel2 {
-        margin: 0 1vh;
-    }
-    .upper-bar .sel1 {
-        margin-right: 4px;
-    }
-    .upper-bar .sel4 {
-        margin-right: 4px;
-    }
+
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .upper-bar .row .col-md-10 {
-        margin-top: 2vh;
-    }
-    .upper-bar .sel3 {
-        margin-left: 2vh;
-    }
-    .upper-bar .customer-select {
-        width: 95px;
-    }
-    .upper-bar .sel2 {
-        margin: 0 1vh;
-    }
-    .upper-bar .sel1 {
-        margin-right: 4px;
-    }
-    .upper-bar .sel4 {
-        margin-right: 4px;
-    }
+ .upper-bar .parent_select .child_1 {
+    width: 20%;
+}
+.upper-bar .customer-select select {
+    font-size: 14px;
+}
+.upper-bar .customer-select::after {
+    left: 5px;
+}
+.upper-bar .parent_select .child_2 {
+    width: 65%;
+}
+.upper-bar .parent_select .child_3 {
+    width: 75%;
+}
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .upper-bar .row .col-md-10 {
-        margin-top: 2vh;
-    }
-    .upper-bar .sel3 {
-        margin-left: 25vh;
-    }
-    .upper-bar .sel2 {
-        margin: 0 2vh;
-    }
-    .upper-bar .sel1 {
-        margin-right: 5px;
-    }
-    .upper-bar .sel4 {
-        margin-right: 5px;
-    }
+  .upper-bar .parent_select .child_1 {
+    width: 20%;
 }
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .upper-bar .row .col-md-10 {
-        margin-top: 2vh;
-    }
-    .upper-bar .sel3 {
-        margin-left: 50vh;
-    }
-    .upper-bar .sel2 {
-        margin: 0 2vh;
-    }
-    .upper-bar .sel1 {
-        margin-right: 5px;
-    }
-    .upper-bar .sel4 {
-        margin-right: 5px;
-    }
+.upper-bar .parent_select .child_2 {
+    width: 75%;
+}
 }
 /* End Upper Bar */
 /* Start landing */
@@ -503,55 +452,48 @@
     cursor: pointer;
 }
 .jumbotron .featuers {
-    width: 890px;
+    width: 90%;
+    display: inline-flex;
+    justify-content: space-between;
     margin: auto;
     margin-top: 410px;
     background-color: #bfc0c2;
     padding: 10px 20px;
     color: #635f5f;
 }
+.jumbotron .featuers .cole{
+    font-size: 30px;
+    margin-top: -15px;
+}
+
 .jumbotron .featuers span {
     font-weight: bold;
 }
+.jumbotron .featuers .cart-count {
+    font-size: 13px;
+    color: #ba8b00;
+    margin-left: 23px;
+    background: #ffffff;
+    height: 19px;
+    border-radius: 50%;
+    width: 17px;
+    position: absolute;
+    margin-top: -16px;
+}
 .jumbotron .featuers div {
-    display: inline-block;
-    position: relative;
+    display: inline-flex;
     cursor: pointer;
+    position: relative;
 }
 .jumbotron .featuers div:hover {
     color: aliceblue;
 }
 .jumbotron .featuers i {
-    margin: 0 10px 0 60px;
     color: #635f5f;
     font-size: 20px;
 }
-.jumbotron .featuers .shopping:after {
-    position: absolute;
-    content: '';
-    top: -5px;
-    left: -60px;
-    height: 33px;
-    width: 1px;
-    background-color: #8d8d8d;
-}
-.jumbotron .featuers .map:after {
-    position: absolute;
-    content: '';
-    top: -5px;
-    left: -60px;
-    height: 33px;
-    width: 1px;
-    background-color: #8d8d8d;
-}
-.jumbotron .featuers .user:after {
-    position: absolute;
-    content: '';
-    top: -5px;
-    left: -60px;
-    height: 33px;
-    width: 1px;
-    background-color: #8d8d8d;
+.jumbotron .featuers .shopping {
+    margin: 0 4px;
 }
 .bars,
 .exit-fut {
@@ -561,7 +503,7 @@
 @media (max-width: 575.98px) {
     .jumbotron {
         height: 300px;
-        width: 100%;
+        width: 96%;
     }
     .jumbotron .featuers {
         width: 250px;
@@ -585,8 +527,8 @@
         border-radius: 50%;
         cursor: pointer;
         color: #fff;
-        top: 45%;
-        left: 9%;
+        top: 44%;
+        left: 6%;
         padding: 1px;
         font-weight: bold;
     }
@@ -613,9 +555,23 @@
         height: 34px;
         top: 0;
     }
-    .jumbotron .featuers div {
-        margin-bottom: 10px;
-        display: inline-block;
+    .jumbotron .featuers .cole {
+        display: none;
+    }
+.jumbotron .featuers .child_1,
+.jumbotron .featuers .child_2,
+.jumbotron .featuers .child_3,
+.jumbotron .featuers .child_4,
+.jumbotron .featuers .child_5 {
+        display: block;
+        margin: 5px 0;
+    }
+    .jumbotron .featuers .child_1 div,
+.jumbotron .featuers .child_2 div,
+.jumbotron .featuers .child_3 div,
+.jumbotron .featuers .child_4 div,
+.jumbotron .featuers .child_5 div {
+        display: inline-flex;
     }
     .jumbotron .featuers i {
         font-size: 17px;
@@ -631,25 +587,26 @@
     .jumbotron {
         height: 430px;
     }
-    .jumbotron .featuers div {
-        margin-bottom: 10px;
-    }
-    .jumbotron .featuers {
-        width: 460px;
-        margin-top: 200px;
-        font-size: 12px;
-        border-radius: 20px;
-    }
-    .jumbotron .featuers .shopping:after,
-    .jumbotron .featuers .map:after,
-    .jumbotron .featuers .user:after {
+    .jumbotron .featuers .cole {
         display: none;
     }
+      .jumbotron .featuers div {
+      margin: 10px 0;
+    }
+    .jumbotron .featuers {
+        width: 60%;
+        margin-top: 70px;
+        font-size: 12px;
+        border-radius: 20px;
+        display: grid;
+        justify-content: center;
+    }
+   
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .jumbotron .featuers {
-        width: 740px;
+        width: 100%;
         margin-top: 399px;
         font-size: 12px;
     }
@@ -666,14 +623,16 @@
     padding: 5px 0 5px 0;
     margin: 10px 0 10px 0;
 }
-.naver .container:lang(en) {
-    max-width: 1325px;
+.naver .conten {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-around;
 }
-.naver .row .col-lg-12 div {
+.naver .conten div {
     margin: 0 5px;
     display: inline-block;
 }
-.naver .row .btn-light {
+.naver .btn-light {
     min-width: 70px;
     height: 29px;
     border-radius: 15px;
@@ -683,7 +642,7 @@
 .btn:hover {
     transform: scale3d(1.1, 1.1, 1.1);
 }
-.naver .row .products {
+.naver .products {
     border-radius: 50px;
     height: 28px;
     font-size: 15px;
@@ -693,13 +652,16 @@
     width: 100px;
     border-color: #cc0808;
 }
+.naver .img {
+    position: relative;
+}
 .naver .img::before {
     content: url(../../../public/img/icon-button.png);
     position: absolute;
     top: -1px;
     /*right: 450x;*/
 }
-.naver .row .sell {
+.naver .sell {
     background-color: #f6ef19;
     border-color: #f6ef19;
     margin-left: 30px;
@@ -708,93 +670,101 @@
     height: 29px;
 }
 /* Extra small devices (portrait phones, less than 576px)   */
-@media (min-width: 520px) and (max-width: 576.98px) {
-    .naver .img::before {
-        top: 38px;
-        right: 358px;
-    }
-}
 @media (max-width: 575.98px) {
-    .naver .row .btn-light {
-        width: 85px;
-        height: 29px;
-        margin-bottom: 10px;
-        font-size: 11px;
+    .naver .conten {
+    display: inline;
+
+}
+    .naver  .btn-light {
+    width: 80px;
+    height: 29px;
+    margin-bottom: 10px;
+    font-size: 12px;
+
     }
-    .naver .row .sell {
+    .naver  .sell {
         height: 29px;
-        font-size: 11px;
     }
     .naver .img::before {
         top: 38px;
     }
-    .naver .row .products {
+    .naver  .products {
         width: 60px;
     }
-    .naver .row .medic {
-        width: 90px;
-    }
-}
-@media (min-width: 330px) and (max-width: 414.98px) {
     .naver .img::before {
-        top: 77px;
-    }
-}
-@media (max-width: 329.98px) {
-    .naver .img::before {
-        top: 77px;
-    }
-}
-@media (max-width: 314.98px) {
-    .naver .img::before {
-        top: 116px;
-    }
+    content: url(../../../public/img/icon-button.png);
+    position: absolute;
+    top: -1px;
+    /*right: 450x;*/
+}  
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .naver .row .btn-light {
-        width: 122px;
-        height: 29px;
-        margin-bottom: 10px;
-        font-size: 14px;
+    .naver .conten {
+    display: inline;
+
+}
+    .naver  .btn-light {
+    width: 80px;
+    height: 29px;
+    margin-bottom: 10px;
+    font-size: 12px;
+
     }
-    .naver .row .sell {
+    .naver  .sell {
         height: 29px;
     }
     .naver .img::before {
         top: 38px;
     }
-    .naver .row .products {
+    .naver  .products {
         width: 60px;
     }
+    .naver .img::before {
+    content: url(../../../public/img/icon-button.png);
+    position: absolute;
+    top: -1px;
+    /*right: 450x;*/
+}
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .naver .row .btn-light {
-        width: 122px;
-        height: 29px;
-        margin-bottom: 10px;
-        font-size: 14px;
+    .naver .conten {
+    display: inline;
+
+}
+    .naver  .btn-light {
+    width: 80px;
+    height: 29px;
+    margin-bottom: 10px;
+    font-size: 12px;
+
     }
-    .naver .row .sell {
+    .naver  .sell {
         height: 29px;
     }
     .naver .img::before {
         top: 38px;
     }
-    .naver .row .products {
+    .naver  .products {
         width: 60px;
     }
+    .naver .img::before {
+    content: url(../../../public/img/icon-button.png);
+    position: absolute;
+    top: -1px;
+    /*right: 450x;*/
+}
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .naver .row .btn-light {
+    .naver  .btn-light {
         min-width: 35px;
         height: 25px;
         margin-bottom: 10px;
-        font-size: 13px;
+        font-size: 12px;
     }
-    .naver .row .sell {
+    .naver  .sell {
         height: 29px;
     }
     .naver .img::before {
