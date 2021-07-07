@@ -190,6 +190,7 @@ const store = createStore({
                 });
         },
         loadProducts({ commit }) {
+       
             axios
                 .get(`/api/products/getAll?lang=${lang}`)
                 .then((res) => {
@@ -200,6 +201,9 @@ const store = createStore({
                 .catch(function (error) {
                     console.log('Error: ', error);
                 });
+
+          
+
         },
         loadProduct({ commit }, ProductID) {
             axios
