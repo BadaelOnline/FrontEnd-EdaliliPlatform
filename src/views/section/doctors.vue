@@ -2,11 +2,9 @@
     <div class="container">
         <div class="row">
             <!-- col 1 -->
-            <span class="slide" id="btn">
-                <a>
-                    <i class="fa fa-bars" @click="btnbar()"></i>
-                </a>
-            </span>
+            <span class="slide1" id="btn"
+                ><a><i class="fa fa-bars" @click="btnbar()"></i></a
+            ></span>
             <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 stors">
                 <div
                     v-for="doctor in Doctors"
@@ -18,6 +16,14 @@
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img
+                                v-if="image"
+                                :src="doctor.image"
+                                alt="image"
+                                height="100"
+                                class="mt-3"
+                            />
+                            <img
+                                v-else
                                 src="../../../public/img/doctor.png"
                                 alt="image"
                                 height="100"
@@ -74,13 +80,13 @@
                 />
             </div>
             <!-- col 3  -->
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 sidenav" id="menu">
+            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5 sidenav" id="menu">
                 <div class="backdrop"></div>
                 <div class="sidebar open" id="all">
                     <div>
                         <input type="text" placeholder="Search Doctor Name" />
                     </div>
-                    <div>
+                    <!-- <div>
                         <div>Medical Device</div>
                         <div>
                             <div class="form-check">
@@ -108,7 +114,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div>
                         <div>hospital</div>
                         <div class="form-check">
@@ -131,7 +137,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div>
+                    <!-- <div>
                         <div>specialty</div>
                         <div class="form-check">
                             <ul>
@@ -152,7 +158,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -161,17 +167,8 @@
 
 <script>
 import { mapState } from 'vuex';
-// import data from '../../jeson/data1';
 export default {
     name: 'doctors',
-    data() {
-        return {
-            // doctor: data.doctor,
-            // medicaldevice: data.medicaldevice,
-            // hospital: data.hospital,
-            // specialty: data.specialty,
-        };
-    },
     props: ['id', 'first_name', 'last_name', 'description', 'image'],
     methods: {
         btnbar: function () {
@@ -180,13 +177,11 @@ export default {
         },
     },
     computed: {
-        ...mapState(['Doctors', 'MedicalDevice', 'Hospitals', 'Specialty']),
+        ...mapState(['Doctors', 'Hospitals']),
     },
     mounted() {
         this.$store.dispatch('loadDoctors');
-        this.$store.dispatch('loadMedicalDevice');
         this.$store.dispatch('loadHospitals');
-        this.$store.dispatch('loadSpecialty');
     },
 };
 </script>
@@ -271,8 +266,11 @@ input[type='checkbox'] {
     .backdrop {
         display: none;
     }
+    .slide1 {
+        display: none;
+    }
 }
-@media (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
     .bannerimage {
         display: none;
     }
@@ -282,120 +280,93 @@ input[type='checkbox'] {
     label {
         left: 0px;
     }
-    .slide {
-        /* display: none; */
-        position: absolute;
-        top: 50%;
-        right: 80px;
-        height: 45px;
-        width: 45px;
-        cursor: pointer;
-        transition: right 0.4s ease;
-        /* left: 80%; */
-    }
-    .sidenav {
-        overflow-y: auto;
-        white-space: nowrap;
-        position: absolute;
-        width: 200px;
-        right: -100px;
-        height: 80%;
-        transition: right 0.4s ease;
-    }
-    .slide.click {
-        right: 100px;
-    }
-    .slide .fa-bars {
-        color: #000000;
-    }
-    .slide.click .fa-bars:before {
-        content: '\f00d';
+    .slide1 {
+        display: none;
     }
 }
-@media (max-width: 768px) {
+@media (min-width: 500px) and (max-width: 768px) {
     .bannerimage {
         display: none;
     }
-    .slide {
-        /* position: absolute; */
-        top: 0;
-        right: 50px;
+    input[type='checkbox'] {
+        right: 20px;
+    }
+    label {
+        left: 0px;
+    }
+    .slide1 {
+        position: absolute;
+        right: 10px;
         height: 45px;
         width: 45px;
         cursor: pointer;
         transition: right 0.4s ease;
     }
-    /* .sidenav {
+    .sidenav.show {
+        right: 10px;
+    }
+    .sidenav {
+        position: absolute;
+        width: 50%;
+        right: -400px;
+        height: 80%;
+        margin-top: 20px;
+        transition: right 0.4s ease;
+    }
+    .slide1 .fa-bars {
+        color: #000000;
+    }
+    .slide1.click .fa-bars:before {
+        content: '\f00d';
+    }
+    .sidebar {
         overflow-y: auto;
         white-space: nowrap;
     }
-    .sidebar {
-        position: absolute;
-        width: 200px;
-        right: -15px;
-        height: 50%;
-        transition: right 0.4s ease;
+}
+@media (min-width: 200px) and (max-width: 500px) {
+    .bannerimage {
+        display: none;
     }
-    .slide {
+    input[type='checkbox'] {
+        right: 20px;
+    }
+    label {
+        left: 0px;
+    }
+    .slide1 {
         position: absolute;
-        top: 0;
-        margin-left: 50%;
+        /* left: 30px; */
+        /* top: 800px; */
+        right: 20px;
         height: 45px;
         width: 45px;
         cursor: pointer;
-        transition: right 0.4s ease-in-out;
+        transition: right 0.4s ease;
     }
-    .slide.click {
-        right: 100px;
+    .sidenav.show {
+        right: 10px;
     }
-    .slide .fa-bars {
+    .sidenav {
+        position: absolute;
+        width: 80%;
+        right: -400px;
+        height: 80%;
+        margin-top: 20px;
+        transition: right 0.4s ease;
+    }
+    .slide1 .fa-bars {
         color: #000000;
     }
-    .slide.click .fa-bars:before {
+    .slide1.click .fa-bars:before {
         content: '\f00d';
+    }
+    .sidebar {
+        overflow-y: auto;
+        white-space: nowrap;
     }
     .stors {
-        width: 100%;
-    } */
-}
-@media (max-width: 500px) {
-    .bannerimage {
-        display: none;
+        margin-top: 20px;
     }
-    .sidenav {
-        display: none;
-    }
-    .slide {
-        /* display: none; */
-    }
-    /* .sidenav {
-        overflow-y: auto;
-        white-space: nowrap;
-    }
-    .sidebar {
-        position: absolute;
-        width: 200px;
-        right: -15px;
-        height: 50%;
-        transition: right 0.4s ease;
-    }
-    .slide {
-        position: absolute;
-        top: 0;
-        margin-left: 50%;
-        height: 45px;
-        width: 45px;
-        cursor: pointer;
-        transition: right 0.4s ease-in-out;
-    }
-    .slide.click {
-        right: 100px;
-    }
-    .slide .fa-bars {
-        color: #000000;
-    }
-    .slide.click .fa-bars:before {
-        content: '\f00d';
-    } */
 }
 </style>
