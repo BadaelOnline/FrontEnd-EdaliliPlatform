@@ -47,9 +47,6 @@
                                     {{ doctor.description }}
                                 </p>
                                 <p class="card-text">
-                                    <!-- <router-link
-                                        :to="`/visit_doctor/${doctor.id}/${doctor.first_name}`" 
-                                        > -->
                                     <router-link
                                         :to="`/visit_doctor/${doctor.id}/${doctor.first_name}`"
                                     >
@@ -76,10 +73,10 @@
                     width="100%"
                 />
             </div>
-            <!-- col 3 -->
+            <!-- col 3  -->
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 sidenav" id="menu">
                 <div class="backdrop"></div>
-                <div class="sidebar">
+                <div class="sidebar open" id="all">
                     <div>
                         <input type="text" placeholder="Search Doctor Name" />
                     </div>
@@ -286,7 +283,33 @@ input[type='checkbox'] {
         left: 0px;
     }
     .slide {
-        display: none;
+        /* display: none; */
+        position: absolute;
+        top: 50%;
+        right: 80px;
+        height: 45px;
+        width: 45px;
+        cursor: pointer;
+        transition: right 0.4s ease;
+        /* left: 80%; */
+    }
+    .sidenav {
+        overflow-y: auto;
+        white-space: nowrap;
+        position: absolute;
+        width: 200px;
+        right: -100px;
+        height: 80%;
+        transition: right 0.4s ease;
+    }
+    .slide.click {
+        right: 100px;
+    }
+    .slide .fa-bars {
+        color: #000000;
+    }
+    .slide.click .fa-bars:before {
+        content: '\f00d';
     }
 }
 @media (max-width: 768px) {
@@ -294,7 +317,13 @@ input[type='checkbox'] {
         display: none;
     }
     .slide {
-        display: none;
+        /* position: absolute; */
+        top: 0;
+        right: 50px;
+        height: 45px;
+        width: 45px;
+        cursor: pointer;
+        transition: right 0.4s ease;
     }
     /* .sidenav {
         overflow-y: auto;
@@ -337,7 +366,7 @@ input[type='checkbox'] {
         display: none;
     }
     .slide {
-        display: none;
+        /* display: none; */
     }
     /* .sidenav {
         overflow-y: auto;
