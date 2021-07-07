@@ -86,35 +86,6 @@
                     <div>
                         <input type="text" placeholder="Search Doctor Name" />
                     </div>
-                    <!-- <div>
-                        <div>Medical Device</div>
-                        <div>
-                            <div class="form-check">
-                                <ul>
-                                    <li
-                                        v-for="items in MedicalDevice"
-                                        :key="items.id"
-                                    >
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            value=""
-                                            id="flexCheckChecked"
-                                            style="
-                                                border: 2px dotted #00f;
-                                                display: block;
-                                            "
-                                        />
-                                        <label
-                                            class="mr-5"
-                                            for="flexCheckChecked"
-                                            >{{ items.name }}</label
-                                        >
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> -->
                     <div>
                         <div>hospital</div>
                         <div class="form-check">
@@ -137,29 +108,7 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- <div>
-                        <div>specialty</div>
-                        <div class="form-check">
-                            <ul>
-                                <li v-for="items in Specialty" :key="items.id">
-                                    <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        id="flexCheckChecked"
-                                        style="
-                                            border: 2px dotted #00f;
-                                            display: block;
-                                        "
-                                    />
-                                    <label for="flexCheckChecked">{{
-                                        items.name
-                                    }}</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
-                </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -193,7 +142,6 @@ export default {
     padding: 0;
     width: 100%;
     background-color: #f1f1f1;
-    /* position: fixed; */
     height: 100%;
     overflow: auto;
 }
@@ -221,7 +169,6 @@ input[type='checkbox'] {
     color: #141414;
     text-align: center;
     font-size: 15px;
-    /* padding: 20px; */
     width: 100px;
     transition: all 0.5s;
     cursor: pointer;
@@ -251,14 +198,6 @@ input[type='checkbox'] {
     opacity: 1;
     right: 0;
 }
-/* @media (max-width: 1199px) {
-    .slide {
-        display: none;
-    }
-    .backdrop {
-        display: none;
-    }
-} */
 @media (min-width: 1200px) {
     .slide {
         display: none;
@@ -336,8 +275,6 @@ input[type='checkbox'] {
     }
     .slide1 {
         position: absolute;
-        /* left: 30px; */
-        /* top: 800px; */
         right: 20px;
         height: 45px;
         width: 45px;

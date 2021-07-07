@@ -81,14 +81,19 @@
                                         height="20"
                                 /></span>
                             </div>
-                            <div class="col btnsmall">
+                            <div
+                                class="col btnsmall progress-btn"
+                                data-progress-style="fill-back"
+                                @click="btnVisit()"
+                            >
                                 <router-link
                                     :to="`/visitStore/${store.id}/${store.title}`"
                                 >
                                     <button type="button" class="btn">
-                                        <b class="">{{ $t('visit') }}</b>
-                                    </button></router-link
-                                >
+                                        <b>{{ $t('visit') }}</b>
+                                    </button>
+                                    <div class="progress"></div
+                                ></router-link>
                             </div>
                             <div class="col team-social">
                                 <div class="row">
@@ -318,6 +323,14 @@ export default {
         },
         gotoview: function (i, t, w) {
             this.$router.push(`visitStore/${i}/${t}/${w}`);
+        },
+        btnVisit() {
+            if (!this.hasClass('active')) {
+                this.addClass('active');
+                setTimeout(function () {
+                    this.removeClass('active');
+                }, 10000);
+            }
         },
         fetch() {
             var self = this;
@@ -1248,5 +1261,47 @@ body {
 }
 .rounded-circle:hover {
     transform: scale(1.2);
+}
+.progress-btn {
+    position: relative;
+    /* width: 150px;
+	height: 50px;
+	display: inline-block; */
+    /* background: #f44336; */
+    /* font-family: "RobotoDraft","Roboto",sans-serif; */
+    /* color: #fff; */
+    /* font-weight: normal; */
+    /* font-size: 20px; */
+    transition: all 0.4s ease;
+}
+.progress-btn:not(.active) {
+    cursor: pointer;
+}
+
+.progress-btn .btn {
+    position: absolute;
+    /* left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0; */
+    line-height: 50px;
+    text-align: center;
+    z-index: 10;
+    opacity: 1;
+}
+
+.progress-btn .progress {
+    width: 0%;
+    z-index: 5;
+    /* background: #d32f2f; */
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.progress-btn.active .progress {
+    opacity: 1;
+    animation: progress-anim 10s ease 0s;
+}
+.progress-btn[data-progress-style='indefinite'].active .progress {
+    animation: progress-indefinite-anim 1s infinite linear 0s;
 }
 </style>
