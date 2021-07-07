@@ -1,7 +1,9 @@
 <template>
     <div class="header">
+        <div class="content_loader hidden" id="content_loader"> <div id="loader" class="loader"></div></div> 
+       
         <div class="upper-bar">
-            <div class="row">
+               <div class="row">
                 <div @click="goto" class="col-md-2 col-sm-12 col-xs-12 imag">
                     <img src="../../../public/img/logo-4.png" />
                 </div>
@@ -15,14 +17,14 @@
                             <option value="ar">العربية</option>
                         </select>
                         </div>
-                        <div>
+                        <div class="ap_lang">
                              <span class="lang">{{ $t('lang') }}</span>
                         </div>
 
                     </div>
                     <div class="child_2">
                          
-                    <div>
+                    <div class="ap_scoop">
                           <i class="fa fa-map-marker"></i>
                         <span class="lang2"> {{ $t('SearchScope') }}  </span>
                      
@@ -232,9 +234,43 @@
             </div>
 </template>
 <style scoped>
-/* ____________________________________ cart icon _______________________________ */
+/* ____________________________________ loading  _______________________________ */
+.content_loader{
+    position: absolute;
+    width: 100%;
+    height: 1000%;
+    background-color: #645d5d;
+    z-index: 1000;
+    opacity: .5;
+}
+.hidden{
+display: none;
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+    right: 600px;
+    top: 500px;
 
-/* ____________________________________app header _______________________________ */
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ____________________________________ loading _______________________________ */
 .upper-bar .imag img {
     cursor: pointer;
 }
@@ -262,12 +298,21 @@
     display: inline-flex;
     width: 15%;
     justify-content: space-between;
+    height: 50px;
 }
+.upper-bar .parent_select .child_1 .ap_lang{
+    margin-top: 5px;
+}
+
 .upper-bar .parent_select .child_2{
     display: inline-flex;
     direction: rtl;
     width: 55%;
     justify-content: space-around;
+     height: 50px;
+}
+.upper-bar .parent_select .child_2 .ap_scoop{
+    margin-top: 5px;
 }
 .upper-bar .parent_select .child_3{
     width: 60%;
@@ -440,6 +485,7 @@
     font-size: 17px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    padding-top: 5px;
 }
 .jumbotron .search i {
     background-color: #87948b;
@@ -792,8 +838,10 @@ export default {
     props: ['title', 'description', 'id', 'price'],
     data() {
         const lang = localStorage.getItem('lang') || 'en';
+        const token = localStorage.getItem('token');
         return {
             lang: lang,
+            token: token,
             details: {
                 id: this.id,
                 title: this.title,
@@ -819,6 +867,8 @@ export default {
         }),
     },
     methods: {
+   
+
         gotocart() {
             this.$router.push(`/Cart`);
         },
@@ -843,6 +893,11 @@ export default {
         // auth logout
         signOut() {
             this.signOutActions().then(() => {
+            document.getElementById('content_loader').classList.remove('hidden');
+             
+                 setTimeout(function(){
+   document.getElementById('content_loader').classList.add('hidden');
+                 },3000)
                 this.$router.replace({
                     name: 'home',
                 });
