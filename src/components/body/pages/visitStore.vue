@@ -264,24 +264,13 @@
                         <a>{{ $t('More') }}</a>
                         <div class="ico-card mt-2">
                             <img :src="catog.image" height="60%" width="80%" />
+                            <!-- <img src="../../../../public/img/aa.jpg"/> -->
                             <i class="fa fa-rebel"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="show-der mb-4">
-            <div class="row">
-                <div
-                    class="col-lg-6 img text-center"
-                    v-for="brand in brands.slice(7, 9)"
-                    :key="brand.id"
-                    :image="brand.image"
-                >
-                    <img src="../../../../public/img/S1.png" />
-                </div>
-            </div>
-        </div> -->
         <div class="mar mb-4">
             <div class="all-section">
                 <span class="text">{{ $t('TheFamousBrands') }}</span>
