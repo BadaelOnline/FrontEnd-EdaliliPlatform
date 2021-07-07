@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <!-- col 1 -->
-            <span class="slide" id="btn">
+            <span class="slide1" id="btn">
                 <a>
                     <i class="fa fa-bars" @click="btnbar()"></i>
                 </a>
@@ -78,9 +78,9 @@
                 />
             </div>
             <!-- col 3 -->
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 sidenav" id="menu">
+            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5 sidenav" id="menu">
                 <div class="backdrop"></div>
-                <div class="sidebar">
+                <div class="sidebar open" id="all">
                     <div>
                         <input
                             type="text"
@@ -169,7 +169,6 @@ export default {
     padding: 0;
     width: 100%;
     background-color: #f1f1f1;
-    /* position: fixed; */
     height: 100%;
     overflow: auto;
 }
@@ -227,14 +226,6 @@ input[type='checkbox'] {
     opacity: 1;
     right: 0;
 }
-/* @media (max-width: 1199px) {
-    .slide {
-        display: none;
-    }
-    .backdrop {
-        display: none;
-    }
-} */
 @media (min-width: 1200px) {
     .slide {
         display: none;
@@ -242,8 +233,11 @@ input[type='checkbox'] {
     .backdrop {
         display: none;
     }
+    .slide1 {
+        display: none;
+    }
 }
-@media (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
     .bannerimage {
         display: none;
     }
@@ -253,88 +247,93 @@ input[type='checkbox'] {
     label {
         left: 0px;
     }
-    .slide {
+    .slide1 {
         display: none;
     }
 }
-@media (max-width: 768px) {
+@media (min-width: 500px) and (max-width: 768px) {
     .bannerimage {
         display: none;
     }
-    .slide {
-        display: none;
+    input[type='checkbox'] {
+        right: 20px;
     }
-    /* .sidenav {
-        overflow-y: auto;
-        white-space: nowrap;
+    label {
+        left: 0px;
     }
-    .sidebar {
+    .slide1 {
         position: absolute;
-        width: 200px;
-        right: -15px;
-        height: 50%;
-        transition: right 0.4s ease;
-    }
-    .slide {
-        position: absolute;
-        top: 0;
-        margin-left: 50%;
+        right: 10px;
         height: 45px;
         width: 45px;
         cursor: pointer;
-        transition: right 0.4s ease-in-out;
+        transition: right 0.4s ease;
     }
-    .slide.click {
-        right: 100px;
-    }
-    .slide .fa-bars {
-        color: #000000;
-    }
-    .slide.click .fa-bars:before {
-        content: '\f00d';
-    }
-    .stors {
-        width: 100%;
-    } */
-}
-@media (max-width: 500px) {
-    .bannerimage {
-        display: none;
+    .sidenav.show {
+        right: 10px;
     }
     .sidenav {
-        display: none;
+        position: absolute;
+        width: 50%;
+        right: -400px;
+        height: 80%;
+        margin-top: 20px;
+        transition: right 0.4s ease;
     }
-    .slide {
-        display: none;
+    .slide1 .fa-bars {
+        color: #000000;
     }
-    /* .sidenav {
+    .slide1.click .fa-bars:before {
+        content: '\f00d';
+    }
+    .sidebar {
         overflow-y: auto;
         white-space: nowrap;
     }
-    .sidebar {
-        position: absolute;
-        width: 200px;
-        right: -15px;
-        height: 50%;
-        transition: right 0.4s ease;
+}
+@media (min-width: 200px) and (max-width: 499px) {
+    .bannerimage {
+        display: none;
     }
-    .slide {
+    input[type='checkbox'] {
+        right: 20px;
+    }
+    label {
+        left: 0px;
+    }
+    .slide1 {
         position: absolute;
-        top: 0;
-        margin-left: 50%;
+        /* left: 30px; */
+        /* top: 800px; */
+        right: 20px;
         height: 45px;
         width: 45px;
         cursor: pointer;
-        transition: right 0.4s ease-in-out;
+        transition: right 0.4s ease;
     }
-    .slide.click {
-        right: 100px;
+    .sidenav.show {
+        right: 10px;
     }
-    .slide .fa-bars {
+    .sidenav {
+        position: absolute;
+        width: 80%;
+        right: -400px;
+        height: 80%;
+        margin-top: 20px;
+        transition: right 0.4s ease;
+    }
+    .slide1 .fa-bars {
         color: #000000;
     }
-    .slide.click .fa-bars:before {
+    .slide1.click .fa-bars:before {
         content: '\f00d';
-    } */
+    }
+    .sidebar {
+        overflow-y: auto;
+        white-space: nowrap;
+    }
+    .stors {
+        margin-top: 20px;
+    }
 }
 </style>
