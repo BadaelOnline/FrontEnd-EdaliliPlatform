@@ -152,92 +152,96 @@
         <!-- End landing -->
 
         <!-- Start navbar-->
-        <div id="nav" class="naver">
-            <div class="conten">
-                <div>
-                    <router-link to="/instrc" exact>
-                        <button type="button" class="btn btn-light">
-                            <a>{{ $t('Factories') }}</a>
-                        </button></router-link
-                    >
-                </div>
-                <div>
-                    <router-link to="/company">
-                        <button type="button" class="btn btn-light">
-                            <a>{{ $t('Companies') }}</a>
-                        </button></router-link
-                    >
-                </div>
-                <div>
-                    <router-link to="/professional">
-                        <button type="button" class="btn btn-light">
-                            <a>{{ $t('ProfessionalsTechnicians') }}</a>
-                        </button></router-link
-                    >
-                </div>
-                <div>
-                    <router-link to="/medic">
-                        <button type="button" class="btn btn-light medic">
-                            <a>{{ $t('PharmaciesMedicines') }}</a>
-                        </button></router-link
-                    >
-                </div>
-                <div>
-                    <router-link to="/doctors">
-                        <button type="button" class="btn btn-light">
-                            <a>{{ $t('Doctors') }}</a>
-                        </button></router-link
-                    >
-                </div>
-                <div>
-                    <router-link to="/resturants">
-                        <button type="button" class="btn btn-light">
-                            <a>{{ $t('RestaurantsCafes') }}</a>
-                        </button></router-link
-                    >
-                </div>
-                <div class="img" lang="en">
-                    <router-link to="/festival">
-                        <button type="button" class="btn btn-light sell">
-                            <a>{{ $t('FestivalPerformances') }}</a>
-                        </button></router-link
-                    >
-                </div>
-                <div>
-                    <router-link to="/stores">
-                        <button type="button" class="btn btn-light">
-                            <a>{{ $t('Stores') }}</a>
-                        </button></router-link
-                    >
-                </div>
-                <div>
-                    <router-link to="/products">
-                        <button type="button" class="btn btn-light products">
-                            <a>{{ $t('Products') }}</a>
-                        </button></router-link
-                    >
-                </div>
-                <div>
-                    <router-link to="/">
-                        <button type="button" class="btn btn-light">
-                            <a>{{ $t('Allsections') }}</a>
-                        </button></router-link
-                    >
+        <div  class="naver">
+                    <div  class="conten">
+                        <div>
+                            <router-link to="/instrc" exact>
+                                <button type="button" class="btn btn-light">
+                                    <a>{{ $t('Factories') }}</a>
+                                </button></router-link
+                            > 
+                        </div>
+                        <div>
+                            <router-link to="/company">
+                                <button type="button" class="btn btn-light">
+                                    <a>{{ $t('Companies') }}</a>
+                                </button></router-link
+                            >
+                        </div>
+                        <div >
+                            <router-link to="/professional">
+                                <button type="button" class="btn btn-light">
+                                    <a>{{ $t('ProfessionalsTechnicians') }}</a>
+                                </button></router-link
+                            >
+                        </div>
+                        <div>
+                            <router-link to="/medic">
+                                <button
+                                    type="button"
+                                    class="btn btn-light medic"
+                                >
+                                    <a>{{ $t('PharmaciesMedicines') }}</a>
+                                </button></router-link
+                            >
+                        </div>
+                        <div>
+                            <router-link to="/doctors">
+                                <button type="button" class="btn btn-light">
+                                    <a>{{ $t('Doctors') }}</a>
+                                </button></router-link
+                            >
+                        </div>
+                        <div>
+                            <router-link to="/resturants">
+                                <button type="button" class="btn btn-light">
+                                    <a>{{ $t('RestaurantsCafes') }}</a>
+                                </button></router-link
+                            >
+                        </div>
+                        <div class="img" lang="en">
+                            <router-link to="/festival">
+                                <button
+                                    type="button"
+                                    class="btn btn-light sell"
+                                >
+                                    <a>{{ $t('FestivalPerformances') }}</a>
+                                </button></router-link
+                            >
+                        </div>
+                        <div >
+                            <router-link to="/stores">
+                                <button type="button" class="btn btn-light">
+                                    <a>{{ $t('Stores') }}</a>
+                                </button></router-link
+                            >
+                        </div>
+                        <div >
+                            <router-link to="/products">
+                                <button
+                                    type="button"
+                                    class="btn btn-light products"
+                                >
+                                    <a>{{ $t('Products') }}</a>
+                                </button></router-link
+                            >
+                        </div >
+                        <div > 
+                            <router-link to="/">
+                                <button type="button" class="btn btn-light">
+                                    <a>{{ $t('Allsections') }}</a>
+                                </button></router-link
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+  
 </template>
 <style scoped>
 /* ____________________________________ loading  _______________________________ */
-.btn {
-    box-shadow: 0 9px #999;
-}
-.btn:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-.content_loader {
+
+.content_loader{
     position: absolute;
     width: 100%;
     height: 1000%;
@@ -305,7 +309,7 @@
 }
 .upper-bar .parent_select .child_1 {
     display: inline-flex;
-    width: 15%;
+    width: 17%;
     justify-content: space-between;
     height: 50px;
 }
@@ -908,5 +912,6 @@ export default {
             });
         },
     },
+ 
 };
 </script>

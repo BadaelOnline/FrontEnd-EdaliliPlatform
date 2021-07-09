@@ -168,7 +168,6 @@
 
 <script>
 import { mapActions } from 'vuex';
-
 export default {
       
     data() {
@@ -200,7 +199,6 @@ export default {
             setTimeout(function(){
 window.location.reload();
                  },3000)
-
               
              
             // .then(() => {
@@ -248,14 +246,12 @@ display: none;
   position: absolute;
     right: 600px;
     top: 300px;
-
 }
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -272,11 +268,8 @@ display: none;
     display: flex;
     justify-content: center;
 }
-
 /* Please ❤ this if you like it! */
-
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
-
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -360,7 +353,6 @@ h6 span {
 .checkbox:checked + label:before {
     transform: translateX(44px) rotate(-270deg);
 }
-
 .card-3d-wrap {
     position: relative;
     width: 440px;
@@ -417,7 +409,6 @@ h6 span {
     z-index: 20;
     display: block;
 }
-
 .form-group {
     position: relative;
     display: block;
@@ -460,7 +451,6 @@ h6 span {
     -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
 }
-
 .form-group input:-ms-input-placeholder {
     color: #c4c3ca;
     opacity: 0.7;
@@ -505,7 +495,6 @@ h6 span {
     -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
 }
-
 .btn {
     border-radius: 4px;
     height: 44px;
@@ -546,7 +535,6 @@ h6 span {
     color: #ffeba7;
     box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
-
 .logo {
     position: absolute;
     top: 30px;
