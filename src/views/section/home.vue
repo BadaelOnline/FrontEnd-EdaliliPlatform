@@ -235,7 +235,7 @@ export default {
         ...mapState(['Categories','Brands']),
     },
     mounted() {
-        this.$store.dispatch('loadCategories').then(() => {
+        this.$store.dispatch('loadCategories');
             setInterval(() => {
                    if(window.scrollY > 378){
  document.getElementById('scroll_categories').style.display = 'flex';                   
@@ -243,8 +243,8 @@ export default {
                 }
 
         }, 1);
-                })
-        this.$store.dispatch('loadBrands').then(() => {
+                
+        this.$store.dispatch('loadBrands');
                setInterval(() => {
                    if(window.scrollY > 782){
  document.getElementById('scroll_brands').style.display = 'flex';                   
@@ -252,7 +252,7 @@ export default {
                 }
 
         }, 1);
-                })
+              
   
           
        
