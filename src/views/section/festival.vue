@@ -537,6 +537,11 @@ export default {
         display: none;
     }
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+    .slide {
+        display: none;
+    }
+}
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .parent .card .conten_price .tofer::after {
@@ -544,6 +549,42 @@ export default {
     }
     .slide {
         display: none;
+    }
+}
+@media (min-width: 577px) and (max-width: 767px) {
+     .checked-all {
+        overflow-y: auto;
+        white-space: nowrap;
+    }
+    .categores {
+        margin-right: 0;
+        color: #000000;
+        position: absolute;
+        width: 200px;
+        right: -400px;
+        height: 50%;
+        transition: right 0.4s ease;
+    }
+    .categores.show {
+        right: 0;
+    }
+    .slide {
+        position: absolute;
+        /* top: 0; */
+        right: 10px;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        transition: right 0.4s ease;
+    }
+    .slide.click {
+        right: 220px;
+    }
+    .slide .fa-bars {
+        color: #000000;
+    }
+    .slide.click .fa-bars:before {
+        content: '\f00d';
     }
 }
 /* Extra small devices (portrait phones, less than 576px) */
