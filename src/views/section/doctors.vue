@@ -141,8 +141,7 @@ export default {
         filterSearch() {
             return this.Doctors.filter((doctor) => {
                 return (
-                    doctor.first_name.match(this.search) &
-                    doctor.last_name.match(this.search)
+                    doctor.first_name.match(this.search)
                 );
             });
         },
