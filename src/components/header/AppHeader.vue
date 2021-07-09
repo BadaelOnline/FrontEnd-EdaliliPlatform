@@ -1,71 +1,75 @@
 <template>
     <div class="header">
-        <div class="content_loader hidden" id="content_loader"> <div id="loader" class="loader"></div></div> 
-       
+        <div class="content_loader hidden" id="content_loader">
+            <div id="loader" class="loader"></div>
+        </div>
+
         <div class="upper-bar">
-               <div class="row">
+            <div class="row">
                 <div @click="goto" class="col-md-2 col-sm-12 col-xs-12 imag">
                     <img src="../../../public/img/logo-4.png" />
                 </div>
 
-                <div class=" parent_select">
+                <div class="parent_select">
                     <div class="child_1">
-
-                      <div class="customer-select ">                     
-                        <select v-model="lang" @change="handleChange($event)">
-                            <option value="en">English</option>
-                            <option value="ar">العربية</option>
-                        </select>
+                        <div class="customer-select">
+                            <select
+                                v-model="lang"
+                                @change="handleChange($event)"
+                            >
+                                <option value="en">English</option>
+                                <option value="ar">العربية</option>
+                            </select>
                         </div>
                         <div class="ap_lang">
-                             <span class="lang">{{ $t('lang') }}</span>
+                            <span class="lang">{{ $t('lang') }}</span>
                         </div>
-
                     </div>
                     <div class="child_2">
-                         
-                    <div class="ap_scoop">
-                          <i class="fa fa-map-marker"></i>
-                        <span class="lang2"> {{ $t('SearchScope') }}  </span>
-                     
-                       </div>
-                       <div class="child_3">
-                    <div class="customer-select cu2">
-                        <select v-model="sortType" c>
-                            <option value="1" disabled>المحافظة</option>
-                            <option
-                                v-for="gover in governorates"
-                                :key="gover.id"
-                            >
-                                {{ gover.name }}
-                            </option>
-                        </select>
-                    </div>
+                        <div class="ap_scoop">
+                            <i class="fa fa-map-marker"></i>
+                            <span class="lang2"> {{ $t('SearchScope') }} </span>
+                        </div>
+                        <div class="child_3">
+                            <div class="customer-select cu2">
+                                <select v-model="sortType" c>
+                                    <option value="1" disabled>المحافظة</option>
+                                    <option
+                                        v-for="gover in governorates"
+                                        :key="gover.id"
+                                    >
+                                        {{ gover.name }}
+                                    </option>
+                                </select>
+                            </div>
 
-                    <div class="customer-select cu2">
-                        <select v-model="sortType">
-                            <option value="1" disabled>المدینة/القریة</option>
-                            <option v-for="city in cities" :key="city.id">
-                                {{ city.name }}
-                            </option>
-                        </select>
+                            <div class="customer-select cu2">
+                                <select v-model="sortType">
+                                    <option value="1" disabled>
+                                        المدینة/القریة
+                                    </option>
+                                    <option
+                                        v-for="city in cities"
+                                        :key="city.id"
+                                    >
+                                        {{ city.name }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="customer-select cu2">
+                                <select v-model="sortType">
+                                    <option value="1" disabled>الحي</option>
+                                    <option
+                                        v-for="street in streets"
+                                        :key="street.id"
+                                    >
+                                        {{ street.name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                                        <div class="customer-select cu2">
-                        <select v-model="sortType">
-                            <option value="1" disabled>الحي</option>
-                            <option v-for="street in streets" :key="street.id">
-                                {{ street.name }}
-                            </option>
-                        </select>
-                    </div>
-                    </div>
-                    </div>
-
-
                 </div>
-
-
-
             </div>
         </div>
         <!-- End Upper Bar -->
@@ -102,42 +106,42 @@
                                 }}</router-link>
                             </div>
                             <div class="cole">|</div>
-                            <div  class="child_2" @click="gotocart()">
+                            <div class="child_2" @click="gotocart()">
                                 <i class="fa fa-shopping-cart shopping"></i>
                                 <span class="cart-count">{{
                                     cartItemCount
                                 }}</span>
-                                <div >
+                                <div>
                                     {{ $t('Shoppingcart') }}
                                 </div>
                             </div>
-                              <div class="cole">|</div>
+                            <div class="cole">|</div>
                             <div class="child_3 map">
-                                <i class="fa fa-map-marker shopping"></i>{{ $t('Selectlocation') }}
-                             </div>
-                               <div class="cole">|</div>
-                                <div class="child_4">
-                            <i class="fa fa-user-circle shopping"> </i>
-                            <template v-if="authenticated" class="user">
-                                <a
-                                    @click.prevent="signOut"
-                                    href="#"
-                                    class="link"
-                                    >SignOut</a
-                                >
-                            </template>
-                            <template  v-else  class="user">
-                                <router-link class="link" to="/signin">{{
-                                    $t('signin')
-                                }}</router-link>
-                            </template>
-                                </div>
-                                  <div class="cole">|</div>
-                                  <div class="child_5">
-                              <i class="fa fa-user-circle shopping"> </i>
+                                <i class="fa fa-map-marker shopping"></i
+                                >{{ $t('Selectlocation') }}
+                            </div>
+                            <div class="cole">|</div>
+                            <div class="child_4">
+                                <i class="fa fa-user-circle shopping"> </i>
+                                <template v-if="authenticated" class="user">
+                                    <a
+                                        @click.prevent="signOut"
+                                        href="#"
+                                        class="link"
+                                        >SignOut</a
+                                    >
+                                </template>
+                                <template v-else class="user">
+                                    <router-link class="link" to="/signin">{{
+                                        $t('signin')
+                                    }}</router-link>
+                                </template>
+                            </div>
+                            <div class="cole">|</div>
+                            <div class="child_5">
+                                <i class="fa fa-user-circle shopping"> </i>
                                 <div>
-                                    {{ $t('AddProfile')}}
-                                 
+                                    {{ $t('AddProfile') }}
                                 </div>
                             </div>
                         </div>
@@ -232,6 +236,7 @@
                     </div>
                 </div>
             </div>
+  
 </template>
 <style scoped>
 /* ____________________________________ loading  _______________________________ */
@@ -242,33 +247,40 @@
     height: 1000%;
     background-color: #645d5d;
     z-index: 1000;
-    opacity: .5;
+    opacity: 0.5;
 }
-.hidden{
-display: none;
+.hidden {
+    display: none;
 }
 .loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-  position: absolute;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    position: absolute;
     right: 600px;
     top: 500px;
-
 }
 /* Safari */
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* ____________________________________ loading _______________________________ */
@@ -276,46 +288,46 @@ display: none;
     cursor: pointer;
 }
 .upper-bar .parent_select {
-        margin-top: 2vh;
-    }
+    margin-top: 2vh;
+}
 .upper-bar {
     background-color: #9b9a9a;
     color: #fff;
     padding: 20px;
     width: 100%;
 }
-.upper-bar .lang,.upper-bar .lang2 {
+.upper-bar .lang,
+.upper-bar .lang2 {
     font-size: 17px;
     font-weight: bold;
     margin: 0 5px;
-
 }
-.upper-bar .parent_select{
+.upper-bar .parent_select {
     width: 80%;
     display: inline-flex;
     justify-content: space-around;
 }
-.upper-bar .parent_select .child_1{
+.upper-bar .parent_select .child_1 {
     display: inline-flex;
     width: 17%;
     justify-content: space-between;
     height: 50px;
 }
-.upper-bar .parent_select .child_1 .ap_lang{
+.upper-bar .parent_select .child_1 .ap_lang {
     margin-top: 5px;
 }
 
-.upper-bar .parent_select .child_2{
+.upper-bar .parent_select .child_2 {
     display: inline-flex;
     direction: rtl;
     width: 55%;
     justify-content: space-around;
-     height: 50px;
+    height: 50px;
 }
-.upper-bar .parent_select .child_2 .ap_scoop{
+.upper-bar .parent_select .child_2 .ap_scoop {
     margin-top: 5px;
 }
-.upper-bar .parent_select .child_3{
+.upper-bar .parent_select .child_3 {
     width: 60%;
     display: inline-flex;
     justify-content: space-between;
@@ -369,7 +381,6 @@ display: none;
     font-size: 20px;
 }
 
-
 .upper-bar .fa-map-marker {
     margin-left: 1vh;
     font-size: 16px;
@@ -380,22 +391,23 @@ display: none;
         margin-top: -15px;
         margin-bottom: 10px;
     }
- .upper-bar .parent_select {
-    width: 100%;
-    display: grid;
+    .upper-bar .parent_select {
+        width: 100%;
+        display: grid;
     }
-.upper-bar .parent_select .child_1, .upper-bar .parent_select .child_2{
-    width: 100%;
-    display: block;
-    margin: 10px 0;
+    .upper-bar .parent_select .child_1,
+    .upper-bar .parent_select .child_2 {
+        width: 100%;
+        display: block;
+        margin: 10px 0;
     }
-.upper-bar .parent_select .child_3{
-         width: 100%;
-         display: block;
+    .upper-bar .parent_select .child_3 {
+        width: 100%;
+        display: block;
     }
-.upper-bar .parent_select .child_3 .cu2{
-         display: block;
-         margin: 5px 0;
+    .upper-bar .parent_select .child_3 .cu2 {
+        display: block;
+        margin: 5px 0;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
@@ -404,55 +416,55 @@ display: none;
         margin-top: -15px;
         margin-bottom: 10px;
     }
-        .upper-bar .imag img {
+    .upper-bar .imag img {
         margin-top: -15px;
         margin-bottom: 10px;
     }
- .upper-bar .parent_select {
-    width: 100%;
-    display: grid;
+    .upper-bar .parent_select {
+        width: 100%;
+        display: grid;
     }
-.upper-bar .parent_select .child_1, .upper-bar .parent_select .child_2{
-    width: 100%;
-    display: block;
-    margin: 10px 0;
+    .upper-bar .parent_select .child_1,
+    .upper-bar .parent_select .child_2 {
+        width: 100%;
+        display: block;
+        margin: 10px 0;
     }
-.upper-bar .parent_select .child_3{
-         width: 100%;
-         display: block;
+    .upper-bar .parent_select .child_3 {
+        width: 100%;
+        display: block;
     }
-.upper-bar .parent_select .child_3 .cu2{
-         display: block;
-         margin: 5px 0;
+    .upper-bar .parent_select .child_3 .cu2 {
+        display: block;
+        margin: 5px 0;
     }
-
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
- .upper-bar .parent_select .child_1 {
-    width: 20%;
-}
-.upper-bar .customer-select select {
-    font-size: 14px;
-}
-.upper-bar .customer-select::after {
-    left: 5px;
-}
-.upper-bar .parent_select .child_2 {
-    width: 65%;
-}
-.upper-bar .parent_select .child_3 {
-    width: 75%;
-}
+    .upper-bar .parent_select .child_1 {
+        width: 20%;
+    }
+    .upper-bar .customer-select select {
+        font-size: 14px;
+    }
+    .upper-bar .customer-select::after {
+        left: 5px;
+    }
+    .upper-bar .parent_select .child_2 {
+        width: 65%;
+    }
+    .upper-bar .parent_select .child_3 {
+        width: 75%;
+    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .upper-bar .parent_select .child_1 {
-    width: 20%;
-}
-.upper-bar .parent_select .child_2 {
-    width: 75%;
-}
+    .upper-bar .parent_select .child_1 {
+        width: 20%;
+    }
+    .upper-bar .parent_select .child_2 {
+        width: 75%;
+    }
 }
 /* End Upper Bar */
 /* Start landing */
@@ -508,7 +520,7 @@ display: none;
     padding: 10px 20px;
     color: #635f5f;
 }
-.jumbotron .featuers .cole{
+.jumbotron .featuers .cole {
     font-size: 30px;
     margin-top: -15px;
 }
@@ -605,19 +617,19 @@ display: none;
     .jumbotron .featuers .cole {
         display: none;
     }
-.jumbotron .featuers .child_1,
-.jumbotron .featuers .child_2,
-.jumbotron .featuers .child_3,
-.jumbotron .featuers .child_4,
-.jumbotron .featuers .child_5 {
+    .jumbotron .featuers .child_1,
+    .jumbotron .featuers .child_2,
+    .jumbotron .featuers .child_3,
+    .jumbotron .featuers .child_4,
+    .jumbotron .featuers .child_5 {
         display: block;
         margin: 5px 0;
     }
     .jumbotron .featuers .child_1 div,
-.jumbotron .featuers .child_2 div,
-.jumbotron .featuers .child_3 div,
-.jumbotron .featuers .child_4 div,
-.jumbotron .featuers .child_5 div {
+    .jumbotron .featuers .child_2 div,
+    .jumbotron .featuers .child_3 div,
+    .jumbotron .featuers .child_4 div,
+    .jumbotron .featuers .child_5 div {
         display: inline-flex;
     }
     .jumbotron .featuers i {
@@ -637,8 +649,8 @@ display: none;
     .jumbotron .featuers .cole {
         display: none;
     }
-      .jumbotron .featuers div {
-      margin: 10px 0;
+    .jumbotron .featuers div {
+        margin: 10px 0;
     }
     .jumbotron .featuers {
         width: 60%;
@@ -648,7 +660,6 @@ display: none;
         display: grid;
         justify-content: center;
     }
-   
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -719,99 +730,93 @@ display: none;
 /* Extra small devices (portrait phones, less than 576px)   */
 @media (max-width: 575.98px) {
     .naver .conten {
-    display: inline;
-
-}
-    .naver  .btn-light {
-    width: 80px;
-    height: 29px;
-    margin-bottom: 10px;
-    font-size: 12px;
-
+        display: inline;
     }
-    .naver  .sell {
+    .naver .btn-light {
+        width: 80px;
+        height: 29px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+    .naver .sell {
         height: 29px;
     }
     .naver .img::before {
         top: 38px;
     }
-    .naver  .products {
+    .naver .products {
         width: 60px;
     }
     .naver .img::before {
-    content: url(../../../public/img/icon-button.png);
-    position: absolute;
-    top: -1px;
-    /*right: 450x;*/
-}  
+        content: url(../../../public/img/icon-button.png);
+        position: absolute;
+        top: -1px;
+        /*right: 450x;*/
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
     .naver .conten {
-    display: inline;
-
-}
-    .naver  .btn-light {
-    width: 80px;
-    height: 29px;
-    margin-bottom: 10px;
-    font-size: 12px;
-
+        display: inline;
     }
-    .naver  .sell {
+    .naver .btn-light {
+        width: 80px;
+        height: 29px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+    .naver .sell {
         height: 29px;
     }
     .naver .img::before {
         top: 38px;
     }
-    .naver  .products {
+    .naver .products {
         width: 60px;
     }
     .naver .img::before {
-    content: url(../../../public/img/icon-button.png);
-    position: absolute;
-    top: -1px;
-    /*right: 450x;*/
-}
+        content: url(../../../public/img/icon-button.png);
+        position: absolute;
+        top: -1px;
+        /*right: 450x;*/
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .naver .conten {
-    display: inline;
-
-}
-    .naver  .btn-light {
-    width: 80px;
-    height: 29px;
-    margin-bottom: 10px;
-    font-size: 12px;
-
+        display: inline;
     }
-    .naver  .sell {
+    .naver .btn-light {
+        width: 80px;
+        height: 29px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+    .naver .sell {
         height: 29px;
     }
     .naver .img::before {
         top: 38px;
     }
-    .naver  .products {
+    .naver .products {
         width: 60px;
     }
     .naver .img::before {
-    content: url(../../../public/img/icon-button.png);
-    position: absolute;
-    top: -1px;
-    /*right: 450x;*/
-}
+        content: url(../../../public/img/icon-button.png);
+        position: absolute;
+        top: -1px;
+        /*right: 450x;*/
+    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .naver  .btn-light {
+    .naver .btn-light {
         min-width: 35px;
         height: 25px;
         margin-bottom: 10px;
         font-size: 12px;
     }
-    .naver  .sell {
+    .naver .sell {
         height: 29px;
     }
     .naver .img::before {
@@ -868,8 +873,6 @@ export default {
         }),
     },
     methods: {
-   
-
         gotocart() {
             this.$router.push(`/Cart`);
         },
@@ -894,11 +897,15 @@ export default {
         // auth logout
         signOut() {
             this.signOutActions().then(() => {
-            document.getElementById('content_loader').classList.remove('hidden');
-             
-                 setTimeout(function(){
-   document.getElementById('content_loader').classList.add('hidden');
-                 },3000)
+                document
+                    .getElementById('content_loader')
+                    .classList.remove('hidden');
+
+                setTimeout(function () {
+                    document
+                        .getElementById('content_loader')
+                        .classList.add('hidden');
+                }, 3000);
                 this.$router.replace({
                     name: 'home',
                 });
