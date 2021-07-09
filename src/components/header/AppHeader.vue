@@ -148,8 +148,8 @@
         <!-- End landing -->
 
         <!-- Start navbar-->
-        <div id="nav" class="naver">
-                    <div class="conten">
+        <div  class="naver">
+                    <div  class="conten">
                         <div>
                             <router-link to="/instrc" exact>
                                 <button type="button" class="btn btn-light">
@@ -164,7 +164,7 @@
                                 </button></router-link
                             >
                         </div>
-                        <div>
+                        <div >
                             <router-link to="/professional">
                                 <button type="button" class="btn btn-light">
                                     <a>{{ $t('ProfessionalsTechnicians') }}</a>
@@ -205,14 +205,14 @@
                                 </button></router-link
                             >
                         </div>
-                        <div>
+                        <div >
                             <router-link to="/stores">
                                 <button type="button" class="btn btn-light">
                                     <a>{{ $t('Stores') }}</a>
                                 </button></router-link
                             >
                         </div>
-                        <div>
+                        <div >
                             <router-link to="/products">
                                 <button
                                     type="button"
@@ -221,8 +221,8 @@
                                     <a>{{ $t('Products') }}</a>
                                 </button></router-link
                             >
-                        </div>
-                        <div>
+                        </div >
+                        <div > 
                             <router-link to="/">
                                 <button type="button" class="btn btn-light">
                                     <a>{{ $t('Allsections') }}</a>
@@ -235,6 +235,7 @@
 </template>
 <style scoped>
 /* ____________________________________ loading  _______________________________ */
+
 .content_loader{
     position: absolute;
     width: 100%;
@@ -296,7 +297,7 @@ display: none;
 }
 .upper-bar .parent_select .child_1{
     display: inline-flex;
-    width: 15%;
+    width: 17%;
     justify-content: space-between;
     height: 50px;
 }
@@ -904,5 +905,6 @@ export default {
             });
         },
     },
+ 
 };
 </script>

@@ -192,14 +192,15 @@ export default {
         }),
         submit() {
             this.signIn(this.form);
-        document.getElementById('content_loader').classList.remove('hidden');
+
+          
+                        document.getElementById('content_loader').classList.remove('hidden');
              
                  setTimeout(function(){
    document.getElementById('content_loader').classList.add('hidden');
-                 },3000)
-            setTimeout(function(){
-window.location.reload();
-                 },3000)
+                 },3000);
+
+
 
               
              

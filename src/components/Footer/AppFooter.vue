@@ -78,26 +78,26 @@
                 <img src="../../../public/img/logo-3.png" />
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-2 col-sm-4 text-center">
-                <div class="dlely-card">
+        <div class="content_buttom">
+            <div class="text-icon">
+                <div class="work-uss">
                     <div>E-DALELY Points</div>
                     <img src="../../../public/img/icon-card.png" />
                 </div>
             </div>
-            <div class="col-md-2 col-sm-4 text-center">
+            <div class=" text-ico">
                 <div class="work-us">
                     <div><span>Get It On</span>Google Play</div>
                     <img src="../../../public/img/icon-google-play.png" />
                 </div>
             </div>
-            <div class="col-md-2 col-sm-4 text-center">
+            <div class="text-ico">
                 <div class="work-us" style="padding-top: 3px">
                     <div>App Store</div>
                     <img src="../../../public/img/icon-appel.png" />
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6 visiter text-center">
+            <div class=" visiter text-center">
                 <ul>
                     المتصلین<br />
                     <li>0</li>
@@ -108,7 +108,7 @@
                     <li>5</li>
                 </ul>
             </div>
-            <div class="col-md-3 col-sm-6 visiter text-cnter">
+            <div class="visiter text-cnter">
                 <ul>
                     الزیارات
                     <br />
@@ -144,12 +144,61 @@
     color: #b1afaf;
 }
 .about-us hr {
-    width: 1000px;
+    width: 890px;
     height: 1px;
     background-color: #424243;
-    margin: 40px 0 20px auto;
+    margin: 40px auto 20px auto;
     opacity: 0.7;
 }
+.content_buttom{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-around;
+}
+.about-us .text-icon{
+    padding-top: 10px;
+    width: 170px;
+}
+.about-us .work-uss {
+    background-color: black;
+    color: #fff;
+    border-radius: 10px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 10px;
+    padding-top: 5px;
+    }
+    .about-us .work-uss img {
+    position: absolute;
+    top: 5px;
+    left: 7px;
+}
+.about-us .text-ico{
+    padding-top: 10px;
+    width: 140px;
+}
+.about-us .work-us {
+    background-color: black;
+    color: #fff;
+    border-radius: 10px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 10px;
+    }
+    .about-us .work-us img {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+}
+ .about-us .text-ico div{
+    position: relative;
+}  
 .about-us .imag img {
     position: absolute;
     left: 50px;
@@ -166,33 +215,14 @@
     display: inline-block;
     margin: 0.5vh;
 }
-.about-us .work-us {
-    background-color: black;
-    color: #fff;
-    width: 140px;
-    padding-left: 30px;
-    border-radius: 10px;
-    height: 37px;
-}
+
+
 .about-us .work-us div span {
     font-size: 9px;
     display: block;
 }
-.about-us .work-us img {
-    position: absolute;
-    top: 5px;
-    left: 20px;
-}
-.about-us .dlely-card {
-    background-color: black;
-    color: #fff;
-    width: 140px;
-    font-size: 13px;
-    padding-left: 38px;
-    height: 35px;
-    padding-top: 6px;
-    border-radius: 10px;
-}
+
+
 .about-us .dlely-card img {
     position: absolute;
     left: 18px;
@@ -201,58 +231,60 @@
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .about-us {
-        height: 1045px;
+ .about-us {
+        height: auto;
     }
     .about-us h3 {
-        font-size: 20px;
-        text-align: center;
-        margin-bottom: 15px;
-        margin-top: 20px;
+        font-size: 15px;
+    }
+    .content_buttom{
+    width: 100%;
+    display: grid;
+    justify-content: space-around;
+}
+.about-us .imag  {
+    position: relative;
+
+}
+.about-us .imag img {
+    position: absolute;
+    top: 70px;
+    left: -500px;
+}
+.about-us .work-us {
+  margin-left: 16px;
     }
     .about-us ul {
         padding: 0;
         font-size: 15px;
-        text-align: center;
     }
     .about-us hr {
-        width: 250px;
-        margin-right: 70px;
+        width: 450px;
     }
     .about-us .visiter ul {
-        margin: 10px;
+        font-size: 19px;
+        margin-top: 20px;
     }
-    .about-us .visiter li {
-        width: 13px;
-    }
-    .about-us .work-us {
-        margin: 0 0 20px 60px;
-        width: 140px;
-    }
-    .about-us .work-us img {
-        left: 85px;
-    }
-    .about-us .dlely-card {
-        margin-left: 60px;
-        margin-bottom: 20px;
-        margin-top: 60px;
-    }
-    .about-us .dlely-card img {
-        left: 80px;
-        top: 64px;
-    }
-    .about-us .imag img {
-        position: relative;
-        left: 0;
+    .about-us .visiter ul li {
+        width: 20px;
+        height: 28px;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
     .about-us {
-        height: 465px;
+        height: auto;
     }
     .about-us h3 {
         font-size: 15px;
+    }
+    .content_buttom{
+    width: 100%;
+    display: grid;
+    justify-content: space-around;
+}
+.about-us .work-us {
+  margin-left: 16px;
     }
     .about-us ul {
         padding: 0;
@@ -289,26 +321,26 @@
         width: 13px;
         height: 22px;
     }
-    .about-us .work-us {
-        width: 100px;
-        height: 30px;
-        font-size: 10px;
-        margin-left: 20px;
+.about-us .text-ico{
+    padding-top: 10px;
+    width: 140px;
+}
+.about-us .work-us {
+    background-color: black;
+    color: #fff;
+    border-radius: 10px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 10px;
     }
     .about-us .work-us img {
-        top: 2px;
-        left: 40px;
-    }
-    .about-us .dlely-card {
-        width: 120px;
-        font-size: 10px;
-        height: 30px;
-    }
-    .about-us .dlely-card img {
-        left: 20px;
-        top: 5px;
-        width: 25%;
-    }
+    position: absolute;
+    top: 5px;
+    left: 20px;
+}
 }
 
 /* Large devices (desktops, 992px and up) */
