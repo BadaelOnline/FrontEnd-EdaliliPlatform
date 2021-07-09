@@ -9,7 +9,7 @@
             <!--          store 1-->
             <div
                 class="store mb-4"
-                v-for="store in Stores"
+                v-for="store in filterSearch"
                 :key="store.id"
                 :store="store"
             >
@@ -56,15 +56,17 @@
                     </div>
                 </div>
                 <div class="card-footer" id="card-footer">
-                    <ul
-                        class="flex-row d-inline-flex"
-                        v-for="item in store.section"
-                        :key="item.id"
-                    >
-                        <li class="categorystore mr-2 ml-2">
-                            {{ item.name }}
-                        </li>
-                    </ul>
+                    <div class="scrollmenu">
+                        <ul
+                            class="flex-row d-inline-flex"
+                            v-for="item in store.section"
+                            :key="item.id"
+                        >
+                            <li class="categorystore mr-2 ml-2">
+                                {{ item.name }}
+                            </li>
+                        </ul>
+                    </div>
                     <div class="col">
                         <div class="row img-button">
                             <div class="col dileversmall">
@@ -81,19 +83,14 @@
                                         height="20"
                                 /></span>
                             </div>
-                            <div
-                                class="col btnsmall progress-btn"
-                                data-progress-style="fill-back"
-                                @click="btnVisit()"
-                            >
+                            <div class="col btnsmall">
                                 <router-link
                                     :to="`/visitStore/${store.id}/${store.title}`"
                                 >
                                     <button type="button" class="btn">
                                         <b>{{ $t('visit') }}</b>
                                     </button>
-                                    <div class="progress"></div
-                                ></router-link>
+                                </router-link>
                             </div>
                             <div class="col team-social">
                                 <div class="row">
@@ -124,6 +121,13 @@
                 <span class="text-center span-text text">{{
                     $t('Viewoffers')
                 }}</span>
+                <input
+                    class="search mt-2 mb-2"
+                    type="text"
+                    name="search"
+                    v-model="search"
+                    placeholder="Search Store Name"
+                />
                 <span class="text-center bgcolor">{{
                     $t('Bydepartment')
                 }}</span>
@@ -182,7 +186,7 @@
                 <span class="text-center bgcolor">{{
                     $t('AccordingEvaluation')
                 }}</span>
-                <div class="checklist stars">
+                <div class="checklist star">
                     <div class="row star-right">
                         <span
                             @click="rating = item"
@@ -292,10 +296,16 @@ export default {
             viewProductsInStore: [],
             rating: 0,
             selectedCategory: [],
+            search: '',
         };
     },
     computed: {
         ...mapState(['categories', 'Stores']),
+        filterSearch() {
+            return this.Stores.filter((store) => {
+                return store.title.match(this.search);
+            });
+        },
         // Stores: function() {
         //     if (this.selectedCategory.length == 0)
         //         return this.$store.state.stores;
@@ -323,14 +333,6 @@ export default {
         },
         gotoview: function (i, t, w) {
             this.$router.push(`visitStore/${i}/${t}/${w}`);
-        },
-        btnVisit() {
-            if (!this.hasClass('active')) {
-                this.addClass('active');
-                setTimeout(function () {
-                    this.removeClass('active');
-                }, 10000);
-            }
         },
         fetch() {
             var self = this;
@@ -981,7 +983,8 @@ export default {
     .card-title {
         font-size: 10px;
     }
-    .stars {
+    .stars,
+    .star {
         color: #ffd200;
         list-style: none;
     }
@@ -1115,21 +1118,22 @@ export default {
     }
     .star-right {
         font-size: 20px;
-        margin-left: 60px;
+        margin-left: 80px;
+        margin-top: 10px;
     }
     .star-right2 {
         font-size: 20px;
-        margin-left: 80px;
+        margin-left: 100px;
         margin-top: 10px;
     }
     .star-right3 {
         font-size: 20px;
-        margin-left: 104px;
+        margin-left: 120px;
         margin-top: 10px;
     }
     .star-right4 {
         font-size: 20px;
-        margin-left: 125px;
+        margin-left: 140px;
         margin-top: 10px;
     }
     .star-right5 {
@@ -1187,7 +1191,8 @@ body {
     border-radius: 7px;
     box-shadow: 3px 3px 3px 3px #7a7a52;
 }
-.stars {
+.stars,
+.star {
     color: #ffd200;
     list-style: none;
 }
@@ -1255,6 +1260,10 @@ body {
         inset 2px 2px 4px rgba(109, 108, 104, 0.1),
         inset 2px 2px 8px rgba(216, 215, 211, 0.15);
 }
+.btn:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
 .rounded-circle {
     cursor: pointer;
     transition: all 0.8s ease-in-out;
@@ -1262,46 +1271,41 @@ body {
 .rounded-circle:hover {
     transform: scale(1.2);
 }
-.progress-btn {
-    position: relative;
-    /* width: 150px;
-	height: 50px;
-	display: inline-block; */
-    /* background: #f44336; */
-    /* font-family: "RobotoDraft","Roboto",sans-serif; */
-    /* color: #fff; */
-    /* font-weight: normal; */
-    /* font-size: 20px; */
-    transition: all 0.4s ease;
+div.scrollmenu {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
-.progress-btn:not(.active) {
-    cursor: pointer;
-}
-
-.progress-btn .btn {
-    position: absolute;
-    /* left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0; */
-    line-height: 50px;
+.scrollmenu ul {
+    display: inline-block;
     text-align: center;
-    z-index: 10;
-    opacity: 1;
+    text-decoration: none;
 }
-
-.progress-btn .progress {
-    width: 0%;
-    z-index: 5;
-    /* background: #d32f2f; */
-    opacity: 0;
-    transition: all 0.3s ease;
+.scrollmenu::-webkit-scrollbar-button:single-button {
+    background-color: #bbbbbb;
+    display: block;
+    border-style: solid;
+    height: 13px;
+    width: 16px;
 }
-.progress-btn.active .progress {
-    opacity: 1;
-    animation: progress-anim 10s ease 0s;
+.scrollmenu::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #f5f5f5;
 }
-.progress-btn[data-progress-style='indefinite'].active .progress {
-    animation: progress-indefinite-anim 1s infinite linear 0s;
+.scrollmenu::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5;
+}
+.scrollmenu::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(199, 167, 24, 0.856);
+}
+.search {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.search:focus {
+    width: 100%;
 }
 </style>

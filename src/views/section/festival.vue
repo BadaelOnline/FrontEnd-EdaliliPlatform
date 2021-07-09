@@ -108,21 +108,26 @@
                 </div>
             </div>
         </div>
-        <div class="child3">
+        <span class="slide" id="btn">
+            <a>
+                <i class="fa fa-bars" @click="btnbar()"></i>
+            </a>
+        </span>
+        <div class="child3 categores" id="menu">
             <div class="backdrop"></div>
             <div class="card text-right checked-all open" id="all">
-                <span class="text-center span-text text">{{
+                <span class="text-center span-text text mt-2">{{
                     $t('Viewoffers')
                 }}</span>
                 <span class="text-center bgcolor">{{
                     $t('Bydepartment')
                 }}</span>
-                <div class="checklist">
-                    <label class="textcheck" for="check4">{{
+                <div class="checklist mt-2">
+                    <label class="textcheck mt-2" for="check4">{{
                         $t('All')
                     }}</label>
                     <input
-                        class="categories fa fa-check-square-o"
+                        class="categories fa fa-check-square-o mr-3"
                         type="checkbox"
                         id="check4"
                     />
@@ -134,7 +139,7 @@
                         >
                             {{ category.name }}
                             <input
-                                class="categories"
+                                class="categories mr-3"
                                 type="checkbox"
                                 v-bind:value="category"
                                 id="category"
@@ -146,8 +151,8 @@
                 <span class="text-center bgcolor">{{
                     $t('DependingStoreCompany')
                 }}</span>
-                <div class="checklist">
-                    <div class="">
+                <div class="checklist mr-3">
+                    <div class="mt-2">
                         <label class="textcheck" for="check1">{{
                             $t('ShopicoSupermarket')
                         }}</label
@@ -172,88 +177,6 @@
                 <span class="text-center bgcolor">{{
                     $t('AccordingEvaluation')
                 }}</span>
-                <div class="checklist stars">
-                    <div class="row star-right">
-                        <span
-                            @click="rating = item"
-                            v-for="item in parseInt(rating)"
-                            :key="item"
-                            class="fa fa-star"
-                            aria-hidden="true"
-                        ></span>
-                        <span
-                            @click="rating = item + rating"
-                            v-for="item in 5 - rating"
-                            :key="item"
-                            class="far fa-star"
-                            aria-hidden="true"
-                        ></span>
-                    </div>
-                    <div class="row star-right2">
-                        <span
-                            @click="rating = item"
-                            v-for="item in parseInt(rating)"
-                            :key="item"
-                            class="fa fa-star"
-                            aria-hidden="true"
-                        ></span>
-                        <span
-                            @click="rating = item + rating"
-                            v-for="item in 4 - rating"
-                            :key="item"
-                            class="far fa-star"
-                            aria-hidden="true"
-                        ></span>
-                    </div>
-                    <div class="row star-right3">
-                        <span
-                            @click="rating = item"
-                            v-for="item in parseInt(rating)"
-                            :key="item"
-                            class="fa fa-star"
-                            aria-hidden="true"
-                        ></span>
-                        <span
-                            @click="rating = item + rating"
-                            v-for="item in 3 - rating"
-                            :key="item"
-                            class="far fa-star"
-                            aria-hidden="true"
-                        ></span>
-                    </div>
-                    <div class="row star-right4">
-                        <span
-                            @click="rating = item"
-                            v-for="item in parseInt(rating)"
-                            :key="item"
-                            class="fa fa-star"
-                            aria-hidden="true"
-                        ></span>
-                        <span
-                            @click="rating = item + rate"
-                            v-for="item in 2 - rating"
-                            :key="item"
-                            class="far fa-star"
-                            aria-hidden="true"
-                        ></span>
-                    </div>
-                    <div class="row star-right5">
-                        <span
-                            @click="rating = item"
-                            v-for="item in parseInt(rating)"
-                            :key="item"
-                            class="fa fa-star"
-                            aria-hidden="true"
-                        ></span>
-                        <span
-                            @click="rating = item + rating"
-                            v-for="item in 1 - rating"
-                            :key="item"
-                            class="far fa-star"
-                            aria-hidden="true"
-                        ></span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -556,7 +479,6 @@ export default {
     .parent .child2 {
         width: 90%;
     }
-    .parent .child3,
     .parent .child1 {
         display: none;
     }
@@ -610,10 +532,18 @@ export default {
     font-size: 16px;
     margin-top: 5px;
 }
+@media (min-width: 1200px) {
+    .slide {
+        display: none;
+    }
+}
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .parent .card .conten_price .tofer::after {
         top: 108px;
+    }
+    .slide {
+        display: none;
     }
 }
 /* Extra small devices (portrait phones, less than 576px) */
@@ -643,6 +573,40 @@ export default {
         max-width: 40%;
         padding: 10px 0px 10px 28px;
     }
+    .checked-all {
+        overflow-y: auto;
+        white-space: nowrap;
+    }
+    .categores {
+        margin-right: 0;
+        color: #000000;
+        position: absolute;
+        width: 200px;
+        right: -400px;
+        height: 50%;
+        transition: right 0.4s ease;
+    }
+    .categores.show {
+        right: 0;
+    }
+    .slide {
+        position: absolute;
+        /* top: 0; */
+        right: 10px;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        transition: right 0.4s ease;
+    }
+    .slide.click {
+        right: 220px;
+    }
+    .slide .fa-bars {
+        color: #000000;
+    }
+    .slide.click .fa-bars:before {
+        content: '\f00d';
+    }
 }
 @media (min-width: 200px) and (max-width: 339.98px) {
     .parent .child2 .ch2 .title {
@@ -658,6 +622,40 @@ export default {
     .textFollow {
         max-width: 40%;
         padding: 10px 0px 10px 28px;
+    }
+    .checked-all {
+        overflow-y: auto;
+        white-space: nowrap;
+    }
+    .categores {
+        margin-right: 0;
+        color: #000000;
+        position: absolute;
+        width: 200px;
+        right: -400px;
+        height: 50%;
+        transition: right 0.4s ease;
+    }
+    .categores.show {
+        right: 0;
+    }
+    .slide {
+        position: absolute;
+        /* top: 0; */
+        right: 10px;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        transition: right 0.4s ease;
+    }
+    .slide.click {
+        right: 220px;
+    }
+    .slide .fa-bars {
+        color: #000000;
+    }
+    .slide.click .fa-bars:before {
+        content: '\f00d';
     }
 }
 </style>

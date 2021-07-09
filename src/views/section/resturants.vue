@@ -9,31 +9,38 @@
             </span>
             <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 stors">
                 <div
-                    v-for="item in restaurants"
-                    :key="item.id"
+                    v-for="restaurant in filterSearch"
+                    :key="restaurant.id"
                     class="card mb-3"
                     style="max-width: 540px"
                 >
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            <img :src="item.image" alt="image" height="70" />
-                            <div class="mt-2">
+                        <div class="col-md-4 m-auto">
+                            <img
+                                class="imgprofile"
+                                :src="restaurant.image"
+                                alt="image"
+                                height="70"
+                            />
+                            <div class="mt-3 socialmedia">
                                 <img
-                                    class="location mr-2"
+                                    class="location mr-2 i"
                                     src="../../../public/img/location.png"
                                     height="15"
                                 />
                                 <img
-                                    class="phone mr-2"
+                                    class="phone mr-2 i"
                                     src="../../../public/img/phone.png"
                                     height="15"
                                 />
-                                <i class="whatsapp fab fa-whatsapp"></i>
+                                <i class="whatsapp fab fa-whatsapp i"></i>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">{{ item.title }}</h5>
+                                <h5 class="card-title">
+                                    {{ restaurant.title }}
+                                </h5>
                                 <p class="card-text">
                                     This is a wider card with supporting text
                                     below as a natural lead-in to additional
@@ -45,13 +52,13 @@
                                         :to="{
                                             name: 'visitRestaurant',
                                             params: {
-                                                id: item.id,
-                                                title: item.title,
-                                                image: item.image,
-                                                short_des: item.short_des,
-                                                long_des: item.long_des,
-                                                Meals: item.Meals,
-                                                Menu: item.Menu,
+                                                id: restaurant.id,
+                                                title: restaurant.title,
+                                                image: restaurant.image,
+                                                short_des: restaurant.short_des,
+                                                long_des: restaurant.long_des,
+                                                Meals: restaurant.Meals,
+                                                Menu: restaurant.Menu,
                                             },
                                         }"
                                         ><button class="button">
@@ -83,7 +90,10 @@
                 <div class="sidebar open" id="all">
                     <div>
                         <input
+                            class="search mt-2 mb-2"
                             type="text"
+                            name="search"
+                            v-model="search"
                             placeholder="Search Restaurant Name"
                         />
                     </div>
@@ -151,12 +161,20 @@ export default {
             restaurants: data.restaurants,
             Menus: data.Menu,
             Meal: data.Meals,
+            search: '',
         };
     },
     methods: {
         btnbar: function () {
             document.getElementById('btn').classList.toggle('click');
             document.getElementById('menu').classList.toggle('show');
+        },
+    },
+    computed: {
+        filterSearch() {
+            return this.restaurants.filter((restaurant) => {
+                return restaurant.title.match(this.search);
+            });
         },
     },
 };
@@ -335,5 +353,27 @@ input[type='checkbox'] {
     .stors {
         margin-top: 20px;
     }
+}
+.search {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.search:focus {
+    width: 100%;
+}
+.imgprofile {
+    transition: all 0.4s ease-in-out;
+}
+.imgprofile:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+.socialmedia .i {
+    transition: all 0.4s ease-in-out;
+}
+.socialmedia .i:hover {
+    cursor: pointer;
+    transform: scale(1.5);
 }
 </style>

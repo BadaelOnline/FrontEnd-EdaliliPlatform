@@ -7,7 +7,7 @@
             ></span>
             <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 stors">
                 <div
-                    v-for="doctor in Doctors"
+                    v-for="doctor in filterSearch"
                     :key="doctor.id"
                     class="card mb-3"
                     style="max-width: 540px"
@@ -84,7 +84,13 @@
                 <div class="backdrop"></div>
                 <div class="sidebar open" id="all">
                     <div>
-                        <input type="text" placeholder="Search Doctor Name" />
+                        <input
+                            class="search mt-2 mb-2"
+                            type="text"
+                            name="search"
+                            v-model="search"
+                            placeholder="Search Doctor Name"
+                        />
                     </div>
                     <div>
                         <div>hospital</div>
@@ -108,7 +114,7 @@
                             </ul>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -118,6 +124,11 @@
 import { mapState } from 'vuex';
 export default {
     name: 'doctors',
+    data() {
+        return {
+            search: '',
+        };
+    },
     props: ['id', 'first_name', 'last_name', 'description', 'image'],
     methods: {
         btnbar: function () {
@@ -127,6 +138,14 @@ export default {
     },
     computed: {
         ...mapState(['Doctors', 'Hospitals']),
+        filterSearch() {
+            return this.Doctors.filter((doctor) => {
+                return (
+                    doctor.first_name.match(this.search) &
+                    doctor.last_name.match(this.search)
+                );
+            });
+        },
     },
     mounted() {
         this.$store.dispatch('loadDoctors');
@@ -305,5 +324,13 @@ input[type='checkbox'] {
     .stors {
         margin-top: 20px;
     }
+}
+.search {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.search:focus {
+    width: 100%;
 }
 </style>

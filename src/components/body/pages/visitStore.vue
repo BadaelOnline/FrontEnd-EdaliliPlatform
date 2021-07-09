@@ -263,8 +263,13 @@
                         </div>
                         <a>{{ $t('More') }}</a>
                         <div class="ico-card mt-2">
-                            <img :src="catog.image" height="60%" width="80%" />
-                            <!-- <img src="../../../../public/img/aa.jpg"/> -->
+                            <img
+                                v-if="image"
+                                :src="catog.image"
+                                height="60%"
+                                width="80%"
+                            />
+                            <img v-else src="../../../../public/img/buty.jpg" />
                             <i class="fa fa-rebel"></i>
                         </div>
                     </div>
@@ -280,7 +285,8 @@
                 v-for="item in storeID.brand"
                 :key="item.id"
             >
-                <img :src="item.image" height="20%" width="80%" />
+                <img v-if="image" :src="item.image" height="20%" width="80%" />
+                <img v-else src="../../../../public/img/aa.jpg" />
             </div>
         </div>
         <!-- show  products -->
@@ -2975,7 +2981,7 @@ export default {
 }
 .show-market img {
     border-radius: 5%;
-    margin: 10px 0;
+    margin: 10px 10px;
     transition: all 0.5s;
 }
 .show-market img:hover {
