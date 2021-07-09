@@ -7,7 +7,7 @@
             ></span>
             <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 stors">
                 <div
-                    v-for="doctor in Doctors"
+                    v-for="doctor in filterSearch"
                     :key="doctor.id"
                     class="card mb-3"
                     style="max-width: 540px"
@@ -84,37 +84,14 @@
                 <div class="backdrop"></div>
                 <div class="sidebar open" id="all">
                     <div>
-                        <input type="text" placeholder="Search Doctor Name" />
+                        <input
+                            class="search mt-2 mb-2"
+                            type="text"
+                            name="search"
+                            v-model="search"
+                            placeholder="Search Doctor Name"
+                        />
                     </div>
-                    <!-- <div>
-                        <div>Medical Device</div>
-                        <div>
-                            <div class="form-check">
-                                <ul>
-                                    <li
-                                        v-for="items in MedicalDevice"
-                                        :key="items.id"
-                                    >
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            value=""
-                                            id="flexCheckChecked"
-                                            style="
-                                                border: 2px dotted #00f;
-                                                display: block;
-                                            "
-                                        />
-                                        <label
-                                            class="mr-5"
-                                            for="flexCheckChecked"
-                                            >{{ items.name }}</label
-                                        >
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> -->
                     <div>
                         <div>hospital</div>
                         <div class="form-check">
@@ -137,28 +114,6 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- <div>
-                        <div>specialty</div>
-                        <div class="form-check">
-                            <ul>
-                                <li v-for="items in Specialty" :key="items.id">
-                                    <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        id="flexCheckChecked"
-                                        style="
-                                            border: 2px dotted #00f;
-                                            display: block;
-                                        "
-                                    />
-                                    <label for="flexCheckChecked">{{
-                                        items.name
-                                    }}</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -169,6 +124,11 @@
 import { mapState } from 'vuex';
 export default {
     name: 'doctors',
+    data() {
+        return {
+            search: '',
+        };
+    },
     props: ['id', 'first_name', 'last_name', 'description', 'image'],
     methods: {
         btnbar: function () {
@@ -178,6 +138,14 @@ export default {
     },
     computed: {
         ...mapState(['Doctors', 'Hospitals']),
+        filterSearch() {
+            return this.Doctors.filter((doctor) => {
+                return (
+                    doctor.first_name.match(this.search) &
+                    doctor.last_name.match(this.search)
+                );
+            });
+        },
     },
     mounted() {
         this.$store.dispatch('loadDoctors');
@@ -193,7 +161,6 @@ export default {
     padding: 0;
     width: 100%;
     background-color: #f1f1f1;
-    /* position: fixed; */
     height: 100%;
     overflow: auto;
 }
@@ -221,7 +188,6 @@ input[type='checkbox'] {
     color: #141414;
     text-align: center;
     font-size: 15px;
-    /* padding: 20px; */
     width: 100px;
     transition: all 0.5s;
     cursor: pointer;
@@ -251,14 +217,6 @@ input[type='checkbox'] {
     opacity: 1;
     right: 0;
 }
-/* @media (max-width: 1199px) {
-    .slide {
-        display: none;
-    }
-    .backdrop {
-        display: none;
-    }
-} */
 @media (min-width: 1200px) {
     .slide {
         display: none;
@@ -336,8 +294,6 @@ input[type='checkbox'] {
     }
     .slide1 {
         position: absolute;
-        /* left: 30px; */
-        /* top: 800px; */
         right: 20px;
         height: 45px;
         width: 45px;
@@ -368,5 +324,13 @@ input[type='checkbox'] {
     .stors {
         margin-top: 20px;
     }
+}
+.search {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.search:focus {
+    width: 100%;
 }
 </style>
