@@ -2,9 +2,7 @@
     <div class="content_loader hidden" id="content_loader">
         <div id="loader" class="loader"></div>
     </div>
-    <div class="bar">
-        <button @click="goto()" class="home_button">Home Page</button>
-    </div>
+
     <div class="parent">
         <div>
             <div class="section">
@@ -268,14 +266,7 @@ export default {
         transform: rotate(360deg);
     }
 }
-.home_button {
-    border: navajowhite;
-    background-color: #2a2b38;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 5px;
-}
+
 .parent {
     display: flex;
     justify-content: center;

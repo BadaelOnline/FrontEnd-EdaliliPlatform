@@ -28,12 +28,12 @@
                     </div>
                 </div>
                 <div class="card" style="margin-top: 40px">
-                    <div>
+                    <div class="discription">
                         الشامبو الأفضل لمعالجة القشرة یحتوي على كربونات الزنك ,
                         یساعد على محاربة القشور عن طریق ترطیب فروة الرأس حسم 10
                         % على جمیع أنواع الشامبو
                     </div>
-                    <span>head & shoulders</span>
+                    <span class="name">head & shoulders</span>
                     <hr class="hr" />
                     <div class="conten_price">
                         <div>
@@ -82,11 +82,11 @@
                         </div>
                         <div
                             class="textFollow"
-                            id="textFollow"
-                            @click="heart()"
+                            id="textFollow1"
+                            @click="hearts()"
                         >
-                            <span class="heart" id="heart"></span>
-                            <span class="follow" id="follow"
+                            <span class="heart" id="heart1"></span>
+                            <span class="follow" id="follow1"
                                 >الأعجاب بالعرض</span
                             >
                         </div>
@@ -274,13 +274,17 @@
 <script>
 import { mapState } from 'vuex';
 import axios from 'axios';
+import { defineAsyncComponent } from 'vue';
 export default {
     props: ['id', 'title', 'section', 'Product', 'brand'],
-    components: {
-        WhatsappStore: () => import('@/components/body/whatsapp-store.vue'),
-        PhoneStore: () => import('@/components/body/phone-store'),
-        LocationStore: () => import('@/components/body/location-store'),
-    },
+      components: {
+        WhatsappStore: defineAsyncComponent(() =>import(`@/components/body/whatsapp-store.vue`),),
+        PhoneStore: defineAsyncComponent(() =>
+            import(`@/components/body/phone-store`)
+        ),
+        LocationStore: defineAsyncComponent(() =>
+            import(`@/components/body/location-store`)
+        ),},
     data() {
         return {
             Sections: [],
@@ -318,6 +322,13 @@ export default {
                 .classList.toggle('heart-active');
             document.getElementById('follow').classList.toggle('heart-active');
             document.getElementById('heart').classList.toggle('heart-active');
+        },
+        hearts: function () {
+            document
+                .getElementById('textFollow1')
+                .classList.toggle('heart-active');
+            document.getElementById('follow1').classList.toggle('heart-active');
+            document.getElementById('heart1').classList.toggle('heart-active');
         },
         btnbar: function () {
             document.getElementById('btn').classList.toggle('click');
@@ -386,11 +397,20 @@ export default {
 
 .parent .child2 .date {
     opacity: 0.5;
+    padding-top: 25px;
 }
 .parent .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
+.parent .card .discription{
+    margin: 5px;
+    color: gray;
+}
+.parent .card .name{
+    color: gold;
+}
+
 .parent .card .hr {
     width: 95%;
     margin-left: auto;
@@ -410,7 +430,7 @@ export default {
 .parent .card .conten_price .tofer::after {
     content: url(../../../public/img/icon_tofer.png);
     position: absolute;
-    top: 87px;
+    top: 96px;
     right: 54px;
 }
 .parent .card .conten_price .tofer::before {
@@ -634,7 +654,7 @@ export default {
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .parent .card .conten_price .tofer::after {
-        top: 108px;
+        top: 97px;
     }
     .slide {
         display: none;
@@ -691,7 +711,7 @@ export default {
         right: 70px;
     }
     .parent .card .conten_price .tofer::after {
-        top: 108px;
+        top: 97px;
     }
     .parent .card .conten_price .tofer::before {
         font-size: 15px;
@@ -701,7 +721,7 @@ export default {
     }
     .textFollow {
         max-width: 40%;
-        padding: 10px 0px 10px 28px;
+        padding: 10px 20px 10px 40px;
     }
     .checked-all {
         overflow-y: auto;
