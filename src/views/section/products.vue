@@ -5,7 +5,7 @@
         
         <div class="show-img ">
           
-            <div id="scroll_img" class="row animate__animated animate__fadeInUp">
+            <div  class="row ">
                 <div 
                     class="col-md-6 img"
                     v-for="brand in brands.slice(0, 2)"
@@ -17,7 +17,7 @@
         </div>
         <!-- show  products -->
          <div class="show-prod">
-            <div id="scroll_product1" class="row reower animate__animated animate__fadeInLeft">
+            <div  class="row reower">
                 <BodyProduct
                     v-for="items in Product.slice(0, 4)"
                     :key="items.id"
@@ -31,7 +31,7 @@
             </div>
         </div>  
         <!-- show market-->
-         <div id="scroll_brand1" class="mar animate__animated animate__flipInX">
+         <div class="mar ">
             <div  
                 class="show-market "
                 v-for="bran in brands.slice(2, 7)"
@@ -273,9 +273,7 @@
     transition: all 0.5s;
 
 }
-#scroll_img,#scroll_product1,#scroll_brand1{
-       display: none;
-}
+
 .show-img .row .img:hover {
     transform: scale3d(1.05, 1.05, 1);
 }
@@ -775,32 +773,7 @@ export default {
     mounted() {
         this.$store.dispatch('loadProducts');
         this.$store.dispatch('loadStores');
-        this.$store.dispatch('loadBrands'); 
-        setInterval(() => {
-                   if(window.scrollY > 450){
-            document.getElementById('scroll_img').style.display = 'flex';
-          
-                }
-
-        }, 1);
-        setInterval(() => {
-                   if(window.scrollY > 850){
-            document.getElementById('scroll_product1').style.display = 'flex';
-          
-                }
-
-        }, 1);
-        setInterval(() => {
-                   if(window.scrollY > 1400){
-            document.getElementById('scroll_brand1').style.display = 'flex';
-          
-                }
-
-        }, 1);
-   
-
-
-     
+        this.$store.dispatch('loadBrands');      
     }
    
 };

@@ -1,5 +1,5 @@
 <template>
-    <AppHeader v-if="this.$route.path !== '/signin'" />
+    <AppHeader />
     <div id="app"></div>
     <router-view />
     <AppFooter v-if="this.$route.path !== '/signin'" />
