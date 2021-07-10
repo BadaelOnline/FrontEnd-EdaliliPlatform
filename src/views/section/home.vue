@@ -3,7 +3,7 @@
         <div class="all-section">
             <h3>{{ $t('AllCategories') }}</h3>
         </div>
-        <div id="scroll_categories" class="row animate__animated animate__fadeInUp">
+        <div class="row">
             <div  class="card_mark col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"  
                 v-for="catog in Categories"
                 :key="catog.id">
@@ -16,7 +16,7 @@
         <!-- __________________________________________________________________ -->
         <div class="contain">
             <h2 style="margin-top: 3vh">Some Market</h2>
-        <div id="scroll_brands" class="row animate__animated animate__jackInTheBox">
+        <div  class="row">
             <div class="card_mark col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"   v-for="bran in Brands.slice(0, 4)"
                     :key="bran.id">
              <img :src="bran.image"  v-if="bran.image"  />
@@ -30,9 +30,7 @@
     </div>
 </template>
 <style lang="scss" scoped>
-#scroll_categories,#scroll_brands{
-    display: none;
-}
+
 * {
     transition: 0.5s;
 }
@@ -233,29 +231,6 @@ export default {
 
     computed: {
         ...mapState(['Categories','Brands']),
-    },
-    mounted() {
-        this.$store.dispatch('loadCategories');
-            setInterval(() => {
-                   if(window.scrollY > 378){
- document.getElementById('scroll_categories').style.display = 'flex';                   
-             
-                }
-
-        }, 1);
-                
-        this.$store.dispatch('loadBrands');
-               setInterval(() => {
-                   if(window.scrollY > 782){
- document.getElementById('scroll_brands').style.display = 'flex';                   
-             
-                }
-
-        }, 1);
-              
-  
-          
-       
     }
 };
 </script>
