@@ -119,6 +119,13 @@
                 <span class="text-center span-text text mt-2">{{
                     $t('Viewoffers')
                 }}</span>
+                <input
+                    class="search mt-2 mb-2"
+                    type="text"
+                    name="search"
+                    v-model="search"
+                    placeholder="Search Name"
+                />
                 <span class="text-center bgcolor">{{
                     $t('Bydepartment')
                 }}</span>
@@ -174,9 +181,91 @@
                         <input class="categories" type="checkbox" id="check3" />
                     </div>
                 </div>
-                <span class="text-center bgcolor">{{
+                <span class="text-center bgcolor mb-2">{{
                     $t('AccordingEvaluation')
                 }}</span>
+                <div class="checklist star">
+                    <div class="row star-right">
+                        <span
+                            @click="rating = item"
+                            v-for="item in parseInt(rating)"
+                            :key="item"
+                            class="fa fa-star"
+                            aria-hidden="true"
+                        ></span>
+                        <span
+                            @click="rating = item + rating"
+                            v-for="item in 5 - rating"
+                            :key="item"
+                            class="far fa-star"
+                            aria-hidden="true"
+                        ></span>
+                    </div>
+                    <div class="row star-right2">
+                        <span
+                            @click="rating = item"
+                            v-for="item in parseInt(rating)"
+                            :key="item"
+                            class="fa fa-star"
+                            aria-hidden="true"
+                        ></span>
+                        <span
+                            @click="rating = item + rating"
+                            v-for="item in 4 - rating"
+                            :key="item"
+                            class="far fa-star"
+                            aria-hidden="true"
+                        ></span>
+                    </div>
+                    <div class="row star-right3">
+                        <span
+                            @click="rating = item"
+                            v-for="item in parseInt(rating)"
+                            :key="item"
+                            class="fa fa-star"
+                            aria-hidden="true"
+                        ></span>
+                        <span
+                            @click="rating = item + rating"
+                            v-for="item in 3 - rating"
+                            :key="item"
+                            class="far fa-star"
+                            aria-hidden="true"
+                        ></span>
+                    </div>
+                    <div class="row star-right4">
+                        <span
+                            @click="rating = item"
+                            v-for="item in parseInt(rating)"
+                            :key="item"
+                            class="fa fa-star"
+                            aria-hidden="true"
+                        ></span>
+                        <span
+                            @click="rating = item + rate"
+                            v-for="item in 2 - rating"
+                            :key="item"
+                            class="far fa-star"
+                            aria-hidden="true"
+                        ></span>
+                    </div>
+                    <div class="row star-right5">
+                        <span
+                            @click="rating = item"
+                            v-for="item in parseInt(rating)"
+                            :key="item"
+                            class="fa fa-star"
+                            aria-hidden="true"
+                        ></span>
+                        <span
+                            @click="rating = item + rating"
+                            v-for="item in 1 - rating"
+                            :key="item"
+                            class="far fa-star"
+                            aria-hidden="true"
+                        ></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -552,7 +641,7 @@ export default {
     }
 }
 @media (min-width: 577px) and (max-width: 767px) {
-     .checked-all {
+    .checked-all {
         overflow-y: auto;
         white-space: nowrap;
     }
@@ -698,5 +787,32 @@ export default {
     .slide.click .fa-bars:before {
         content: '\f00d';
     }
+}
+.star {
+    display: grid;
+    justify-content: center;
+}
+.star div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.stars,
+.star {
+    color: #ffd200;
+    list-style: none;
+}
+.fa-star:hover {
+    color: #ffd200;
+    box-shadow: 0 0 40px #eebe22;
+}
+.search {
+    margin: auto;
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.search:focus {
+    width: 100%;
 }
 </style>

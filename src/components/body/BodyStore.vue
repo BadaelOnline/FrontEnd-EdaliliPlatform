@@ -399,32 +399,6 @@ export default {
         font-size: 8px;
         margin-top: 5px;
     }
-    .star-right {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 30px;
-    }
-    .star-right2 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 40px;
-    }
-    .star-right3 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 50px;
-    }
-    .star-right4 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 60px;
-    }
-    .star-right5 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 70px;
-    }
-    /*...................*/
     .categores {
         margin-right: 0;
         color: #000000;
@@ -574,31 +548,6 @@ export default {
         font-size: 10px;
         margin-top: 5px;
     }
-    .star-right {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 70px;
-    }
-    .star-right2 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 80px;
-    }
-    .star-right3 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 90px;
-    }
-    .star-right4 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 100px;
-    }
-    .star-right5 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 110px;
-    }
     /*...................*/
     .categores {
         margin-right: 0;
@@ -734,31 +683,6 @@ export default {
         border: 1px solid #e0e0d1;
         font-size: 10px;
         margin-top: 5px;
-    }
-    .star-right {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 90px;
-    }
-    .star-right2 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 102px;
-    }
-    .star-right3 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 112px;
-    }
-    .star-right4 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 122px;
-    }
-    .star-right5 {
-        margin-top: 8px;
-        font-size: 10px;
-        margin-left: 134px;
     }
     .categores {
         margin-right: 0;
@@ -915,31 +839,6 @@ export default {
         font-size: 10px;
         margin-top: 5px;
     }
-    .star-right {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 60px;
-    }
-    .star-right2 {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 78px;
-    }
-    .star-right3 {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 94px;
-    }
-    .star-right4 {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 110px;
-    }
-    .star-right5 {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 128px;
-    }
     .slide {
         display: none;
     }
@@ -1024,31 +923,6 @@ export default {
         font-size: 12px;
         margin-top: 5px;
     }
-    .star-right {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 40px;
-    }
-    .star-right2 {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 58px;
-    }
-    .star-right3 {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 76px;
-    }
-    .star-right4 {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 94px;
-    }
-    .star-right5 {
-        margin-top: 8px;
-        font-size: 15px;
-        margin-left: 110px;
-    }
     .slide {
         display: none;
     }
@@ -1116,31 +990,14 @@ export default {
         margin-right: 0;
         margin-left: 0;
     }
-    .star-right {
-        font-size: 20px;
-        margin-left: 80px;
-        margin-top: 10px;
+    .star {
+        display: grid;
+        justify-content: center;
     }
-    .star-right2 {
-        font-size: 20px;
-        margin-left: 100px;
-        margin-top: 10px;
-    }
-    .star-right3 {
-        font-size: 20px;
-        margin-left: 120px;
-        margin-top: 10px;
-    }
-    .star-right4 {
-        font-size: 20px;
-        margin-left: 140px;
-        margin-top: 10px;
-    }
-    .star-right5 {
-        font-size: 20px;
-        margin-left: 160px;
-        margin-top: 10px;
-        margin-right: 10px;
+    .star div {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
     }
     .slide {
         display: none;
@@ -1301,11 +1158,21 @@ div.scrollmenu {
     background-color: rgba(199, 167, 24, 0.856);
 }
 .search {
+    margin:auto;
     width: 130px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
 .search:focus {
     width: 100%;
+}
+.star {
+    display: grid;
+    justify-content: center;
+}
+.star div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 </style>

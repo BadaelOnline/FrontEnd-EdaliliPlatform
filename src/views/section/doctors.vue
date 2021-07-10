@@ -9,7 +9,7 @@
                 <div
                     v-for="doctor in filterSearch"
                     :key="doctor.id"
-                    class="card mb-3"
+                    class="card mb-3 doctor"
                     style="max-width: 540px"
                 >
                     <!-- <div class="card mb-3" style="max-width: 540px"> -->
@@ -140,9 +140,7 @@ export default {
         ...mapState(['Doctors', 'Hospitals']),
         filterSearch() {
             return this.Doctors.filter((doctor) => {
-                return (
-                    doctor.first_name.match(this.search)
-                );
+                return doctor.first_name.match(this.search);
             });
         },
     },
@@ -163,7 +161,27 @@ export default {
     height: 100%;
     overflow: auto;
 }
-
+.doctor {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border-radius: 0;
+    box-shadow: 10px 10px 10px #adad85;
+}
+.doctor:hover {
+    border: 1px solid #4b4141;
+    border-radius: 7px;
+    box-shadow: 3px 3px 3px 3px #7a7a52;
+}
+.sidenav {
+    margin-bottom: 10px;
+    border-radius: 0;
+    box-shadow: 10px 10px 10px #adad85;
+}
+.sidenav:hover {
+    border: 1px solid #ffffff;
+    border-radius: 7px;
+    box-shadow: 3px 3px 3px 3px #7a7a52;
+}
 /* Sidebar links */
 .sidebar div {
     display: block;
