@@ -1158,7 +1158,7 @@ div.scrollmenu {
     background-color: rgba(199, 167, 24, 0.856);
 }
 .search {
-    margin:auto;
+    margin: auto;
     width: 130px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
@@ -1173,6 +1173,5 @@ div.scrollmenu {
 .star div {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
 }
 </style>

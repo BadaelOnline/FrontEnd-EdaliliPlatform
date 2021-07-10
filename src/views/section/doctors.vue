@@ -92,11 +92,17 @@
                             placeholder="Search Doctor Name"
                         />
                     </div>
+                    <span class="text-center bgcolor">{{
+                        $t('Bydepartment')
+                    }}</span>
                     <div>
-                        <div>hospital</div>
-                        <div class="form-check">
+                        <div class="bgcolor">hospital</div>
+                        <div class="form-check checklist">
                             <ul>
                                 <li v-for="items in Hospitals" :key="items.id">
+                                    <label for="flexCheckChecked">{{
+                                        items.name
+                                    }}</label>
                                     <input
                                         class="form-check-input"
                                         type="checkbox"
@@ -107,11 +113,93 @@
                                             display: block;
                                         "
                                     />
-                                    <label for="flexCheckChecked">{{
-                                        items.name
-                                    }}</label>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                    <span class="text-center bgcolor">{{
+                        $t('AccordingEvaluation')
+                    }}</span>
+                    <div class="checklist star">
+                        <div class="row star-right">
+                            <span
+                                @click="rating = item"
+                                v-for="item in parseInt(rating)"
+                                :key="item"
+                                class="fa fa-star"
+                                aria-hidden="true"
+                            ></span>
+                            <span
+                                @click="rating = item + rating"
+                                v-for="item in 5 - rating"
+                                :key="item"
+                                class="far fa-star"
+                                aria-hidden="true"
+                            ></span>
+                        </div>
+                        <div class="row star-right2">
+                            <span
+                                @click="rating = item"
+                                v-for="item in parseInt(rating)"
+                                :key="item"
+                                class="fa fa-star"
+                                aria-hidden="true"
+                            ></span>
+                            <span
+                                @click="rating = item + rating"
+                                v-for="item in 4 - rating"
+                                :key="item"
+                                class="far fa-star"
+                                aria-hidden="true"
+                            ></span>
+                        </div>
+                        <div class="row star-right3">
+                            <span
+                                @click="rating = item"
+                                v-for="item in parseInt(rating)"
+                                :key="item"
+                                class="fa fa-star"
+                                aria-hidden="true"
+                            ></span>
+                            <span
+                                @click="rating = item + rating"
+                                v-for="item in 3 - rating"
+                                :key="item"
+                                class="far fa-star"
+                                aria-hidden="true"
+                            ></span>
+                        </div>
+                        <div class="row star-right4">
+                            <span
+                                @click="rating = item"
+                                v-for="item in parseInt(rating)"
+                                :key="item"
+                                class="fa fa-star"
+                                aria-hidden="true"
+                            ></span>
+                            <span
+                                @click="rating = item + rate"
+                                v-for="item in 2 - rating"
+                                :key="item"
+                                class="far fa-star"
+                                aria-hidden="true"
+                            ></span>
+                        </div>
+                        <div class="row star-right5">
+                            <span
+                                @click="rating = item"
+                                v-for="item in parseInt(rating)"
+                                :key="item"
+                                class="fa fa-star"
+                                aria-hidden="true"
+                            ></span>
+                            <span
+                                @click="rating = item + rating"
+                                v-for="item in 1 - rating"
+                                :key="item"
+                                class="far fa-star"
+                                aria-hidden="true"
+                            ></span>
                         </div>
                     </div>
                 </div>
@@ -154,12 +242,19 @@ export default {
 <style scoped>
 /* The side navigation menu */
 .sidebar {
-    margin: 0;
+    margin: auto;
     padding: 0;
-    width: 100%;
-    background-color: #f1f1f1;
+    width: 80%;
     height: 100%;
-    overflow: auto;
+    border-radius: 7px;
+    border: 1px solid #f5f5f0;
+}
+.bgcolor {
+    background-color: #e0e0d1;
+    border-radius: 3px;
+    border: 1px solid #e0e0d1;
+    margin: 10px 0;
+    width: 100%;
 }
 .doctor {
     background-color: #ffffff;
@@ -191,9 +286,8 @@ export default {
 .form-check ul li {
     text-decoration: none;
     list-style: none;
-}
-input[type='checkbox'] {
-    right: 40px;
+    display: flex;
+    justify-content: space-between;
 }
 .sidebar ul li:hover {
     color: #555;
@@ -349,5 +443,27 @@ input[type='checkbox'] {
 }
 .search:focus {
     width: 100%;
+}
+.checklist {
+    background-color: #f5f5f0;
+    border: 1px solid #f5f5f0;
+    border-radius: 7px;
+    box-shadow: 1px 1px 1px 1px #f5f5f0;
+}
+.star {
+    color: #ffd200;
+    list-style: none;
+}
+.fa-star:hover {
+    color: #ffd200;
+    box-shadow: 0 0 40px #eebe22;
+}
+.star {
+    display: grid;
+    justify-content: center;
+}
+.star div {
+    display: flex;
+    justify-content: center;
 }
 </style>

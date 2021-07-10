@@ -103,37 +103,11 @@
                     <span class="text-center bgcolor">{{
                         $t('Bydepartment')
                     }}</span>
+                    <div class="bgcolor">Menu</div>
                     <div>
-                        <div>Menu</div>
-                        <div>
-                            <div class="form-check">
-                                <ul>
-                                    <li v-for="items in Menus" :key="items.id">
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            value=""
-                                            id="flexCheckChecked"
-                                            style="
-                                                border: 2px dotted #00f;
-                                                display: block;
-                                            "
-                                        />
-                                        <label
-                                            class="mr-5"
-                                            for="flexCheckChecked"
-                                            >{{ items.title }}</label
-                                        >
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>Meals</div>
-                        <div class="form-check">
+                        <div class="form-check checklist">
                             <ul>
-                                <li v-for="items in Meal" :key="items.id">
+                                <li v-for="items in Menus" :key="items.id">
                                     <input
                                         class="form-check-input"
                                         type="checkbox"
@@ -144,18 +118,40 @@
                                             display: block;
                                         "
                                     />
-                                    <label for="flexCheckChecked">{{
-                                        items.title
-                                    }}</label>
+                                    <label
+                                        class="mr-5"
+                                        for="flexCheckChecked"
+                                        >{{ items.title }}</label
+                                    >
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                    <div class="bgcolor">Meals</div>
+                    <div class="form-check checklist mt-2 mb-2">
+                        <ul>
+                            <li v-for="items in Meal" :key="items.id">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value=""
+                                    id="flexCheckChecked"
+                                    style="
+                                        border: 2px dotted #00f;
+                                        display: block;
+                                    "
+                                />
+                                <label for="flexCheckChecked">{{
+                                    items.title
+                                }}</label>
+                            </li>
+                        </ul>
                     </div>
                     <span class="text-center bgcolor">{{
                         $t('AccordingEvaluation')
                     }}</span>
                     <div class="checklist star">
-                        <div class="row star-right">
+                        <div class="row">
                             <span
                                 @click="rating = item"
                                 v-for="item in parseInt(rating)"
@@ -171,7 +167,7 @@
                                 aria-hidden="true"
                             ></span>
                         </div>
-                        <div class="row star-right2">
+                        <div class="row">
                             <span
                                 @click="rating = item"
                                 v-for="item in parseInt(rating)"
@@ -187,7 +183,7 @@
                                 aria-hidden="true"
                             ></span>
                         </div>
-                        <div class="row star-right3">
+                        <div class="row">
                             <span
                                 @click="rating = item"
                                 v-for="item in parseInt(rating)"
@@ -203,7 +199,7 @@
                                 aria-hidden="true"
                             ></span>
                         </div>
-                        <div class="row star-right4">
+                        <div class="row">
                             <span
                                 @click="rating = item"
                                 v-for="item in parseInt(rating)"
@@ -219,7 +215,7 @@
                                 aria-hidden="true"
                             ></span>
                         </div>
-                        <div class="row star-right5">
+                        <div class="row">
                             <span
                                 @click="rating = item"
                                 v-for="item in parseInt(rating)"
@@ -275,14 +271,20 @@ export default {
 <style scoped>
 /* The side navigation menu */
 .sidebar {
-    margin: 0;
+    margin: auto;
     padding: 0;
-    width: 100%;
-    background-color: #f1f1f1;
+    width: 80%;
+    border-radius: 7px;
+    border: 1px solid #f5f5f0;
     height: 100%;
-    overflow: auto;
 }
-
+.bgcolor {
+    background-color: #e0e0d1;
+    border-radius: 3px;
+    border: 1px solid #e0e0d1;
+    margin: 10px 0;
+    width: 100%;
+}
 /* Sidebar links */
 .sidebar div {
     display: block;
@@ -416,8 +418,6 @@ input[type='checkbox'] {
     }
     .slide1 {
         position: absolute;
-        /* left: 30px; */
-        /* top: 800px; */
         right: 20px;
         height: 45px;
         width: 45px;
@@ -464,38 +464,20 @@ input[type='checkbox'] {
     margin-bottom: 10px;
     border-radius: 0;
     box-shadow: 10px 10px 10px #adad85;
-    overflow: hidden;
 }
 .sidenav:hover {
-    border: 1px solid #ffffff;
+    border: 1px solid #6b3939;
     border-radius: 7px;
     box-shadow: 3px 3px 3px 3px #7a7a52;
 }
 .textcheck:hover {
     color: #5a5957;
-    /* transform: translate(0, -5px); */
-}
-.stars,
-.star {
-    color: #ffd200;
-    list-style: none;
-}
-.fa-star:hover {
-    color: #ffd200;
-    box-shadow: 0 0 40px #eebe22;
 }
 .checklist {
-    font-size: 15px;
-    margin-top: 20px;
     background-color: #f5f5f0;
     border: 1px solid #f5f5f0;
-    margin-bottom: 10px;
     border-radius: 7px;
     box-shadow: 1px 1px 1px 1px #f5f5f0;
-}
-.checked-all {
-    border-radius: 7px;
-    border: 1px solid #f5f5f0;
 }
 .search {
     width: 130px;
@@ -520,12 +502,11 @@ input[type='checkbox'] {
     transform: scale(1.5);
 }
 .star {
-    display: grid;
-    justify-content: center;
+    color: #ffd200;
+    list-style: none;
 }
-.star div {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+.fa-star:hover {
+    color: #ffd200;
+    box-shadow: 0 0 40px #eebe22;
 }
 </style>
