@@ -1,8 +1,9 @@
 <template>
-<div class="content_loader hidden" id="content_loader"> <div id="loader" class="loader"></div></div>
+    <div class="content_loader hidden" id="content_loader">
+        <div id="loader" class="loader"></div>
+    </div>
 
     <div class="parent">
-
         <div>
             <div class="section">
                 <div class="container">
@@ -167,11 +168,8 @@
 <script>
 import { mapActions } from 'vuex';
 export default {
-      
     data() {
-  
         return {
-           
             form: {
                 name: '',
                 email: '',
@@ -180,77 +178,93 @@ export default {
         };
     },
     methods: {
-
+        goto: function () {
+            this.$router.push(`/`);
+        },
         ...mapActions({
             signIn: 'signIn',
             register: 'register',
         }),
         submit() {
             this.signIn(this.form);
-        document.getElementById('content_loader').classList.remove('hidden');
-             
-                 setTimeout(function(){
-   document.getElementById('content_loader').classList.add('hidden');
-                 },3000)
-            setTimeout(function(){
-window.location.reload();
-                 },3000)
-              
-             
-            // .then(() => {
-            //     this.$router.replace({
-            //         name: 'Dashboard',
-            //     });
-            // })
-            // .catch(() => {
-            //     console.log('failed');
-            // });
+            document
+                .getElementById('content_loader')
+                .classList.remove('hidden');
+
+            setTimeout(function () {
+                document
+                    .getElementById('content_loader')
+                    .classList.add('hidden');
+            }, 3000);
+            setTimeout(function () {
+                window.location.reload();
+            }, 3000);
+            //  .then(() => {
+            //             this.$router.replace({
+            //                 name: 'home',
+            //             });
+            //         })
+            //         .catch(() => {
+            //             console.log('failed');
+            //         });
         },
         submit1() {
             this.register(this.form);
-                     document.getElementById('content_loader').classList.remove('hidden');
-             
-                 setTimeout(function(){
-   document.getElementById('content_loader').classList.add('hidden');
-                 },3000)
-            console.log(JSON.stringify(this.form))
+            document
+                .getElementById('content_loader')
+                .classList.remove('hidden');
+
+            setTimeout(function () {
+                document
+                    .getElementById('content_loader')
+                    .classList.add('hidden');
+            }, 3000);
+            console.log(JSON.stringify(this.form));
         },
     },
 };
 </script>
 
 <style scoped>
-.content_loader{
+.content_loader {
     position: absolute;
     width: 100%;
     height: 1000%;
     background-color: #645d5d;
     z-index: 1000;
-    opacity: .5;
+    opacity: 0.5;
 }
-.hidden{
-display: none;
+.hidden {
+    display: none;
 }
 .loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-  position: absolute;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    position: absolute;
     right: 600px;
     top: 300px;
 }
 /* Safari */
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .parent {
