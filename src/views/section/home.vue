@@ -1,64 +1,8 @@
 <template>
-    <!-- <div class="home">
-        <div class="all-section">
-            <h3>{{ $t('AllCategories') }}</h3>
-        </div>
-        <div class="row">
-            <div  class="card_mark col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"  
-                v-for="catog in Categories"
-                :key="catog.id">
-             <img :src="catog.image"  v-if="catog.image"  />
-                <img v-else src="../../../public/img/buty.jpg" />
-                <div> {{catog.name}} </div>
-            </div>
-            
-        </div>
-        <div class="contain">
-            <h2 style="margin-top: 3vh">Some Market</h2>
-        <div  class="row">
-            <div class="card_mark col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"   v-for="bran in Brands.slice(0, 4)"
-                    :key="bran.id">
-             <img :src="bran.image"  v-if="bran.image"  />
-                <img v-else src="../../../public/img/elc3.png" />
-            </div>
-        </div>
-        </div> 
-    </div> -->
     <div>
-        <!-- Slideshow container -->
-        <div class="slideshow-container">
-            <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade">
-                <div class="numbertext">1 / 3</div>
-                <img src="../../../public/img/buty.jpg" style="width: 100%" />
-                <div class="text">Caption Text</div>
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">2 / 3</div>
-                <img src="../../../public/img/buty.jpg" style="width: 100%" />
-                <div class="text">Caption Two</div>
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">3 / 3</div>
-                <img src="../../../public/img/buty.jpg" style="width: 100%" />
-                <div class="text">Caption Three</div>
-            </div>
-
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br />
-
-        <!-- The dots/circles -->
-        <div style="text-align: center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
+        <!-- section  -->
         <div class="home">
+            <h2 class="heading">Our <span>Section</span></h2>
             <div class="team-area">
                 <div class="single-team">
                     <img src="../../../public/img/buty.jpg" />
@@ -118,17 +62,50 @@
                 </div>
             </div>
         </div>
+        <!-- category -->
+        <!-- Brands -->
+        <div class="brands">
+            <h2 class="heading">Our <span>Brands</span></h2>
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_1.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_2.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_3.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_4.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_5.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/images.jpg" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/images1.jpg" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/images2.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
 import { mapState } from 'vuex';
+
 export default {
     name: 'home',
     props: ['image'],
     data() {
         return {};
     },
-
     computed: {
         ...mapState(['Categories', 'Brands']),
     },
@@ -141,110 +118,16 @@ export default {
     margin: 0;
     padding: 0;
 }
-/* slide */
-/* Slideshow container */
-.slideshow-container {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-    display: none;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Caption text */
-.text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
+.heading {
     text-align: center;
+    font-size: 4rem;
+    padding: 0 0.5rem;
+    color: #333;
 }
-
-/* Number text (1/3 etc) */
-.numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
+.heading span {
+    color: var(--yellow);
 }
-
-/* The dots/bullets/indicators */
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active,
-.dot:hover {
-    background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-    from {
-        opacity: 0.4;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fade {
-    from {
-        opacity: 0.4;
-    }
-    to {
-        opacity: 1;
-    }
-}
+/* section */
 .home {
     display: flex;
     flex-flow: wrap;
@@ -252,7 +135,7 @@ export default {
     justify-content: center;
     background: #fafafa;
     width: 100%;
-    padding: 24px;
+    /* padding: 24px; */
 }
 .team-area {
     display: flex;
@@ -320,181 +203,74 @@ export default {
     font-size: 15px;
     margin-top: 8px;
 }
-</style>
-
-//
-<style lang="scss" scoped>
-// * {
-//     transition: 0.5s;
-// }
-// .home {
-//     background-color: #edefef;
-// }
-// .all-section {
-//     text-align: center;
-//     color: #6c6c77;
-// }
-// .h-100 {
-//     height: 100vh !important;
-// }
-// .align-middle {
-//     position: relative;
-//     top: 50%;
-// }
-// .column {
-//     margin-top: 3rem;
-//     padding-left: 3rem;
-//     &:hover {
-//         padding-left: 0;
-//         .card .txt {
-//             margin-left: 1rem;
-//             h1 {
-//                 color: rgb(8, 8, 8);
-//                 opacity: 1;
-//             }
-//         }
-//         a {
-//             color: rgba(8, 8, 8, 1);
-//             &:after {
-//                 width: 10%;
-//             }
-//         }
-//     }
-// }
-// .card {
-//     min-height: 240px;
-//     margin: 0;
-//     padding: 1.7rem 1.2rem;
-//     border: none;
-//     border-radius: 0;
-//     color: rgba(0, 0, 0, 1);
-//     letter-spacing: 0.05rem;
-//     font-family: 'Oswald', sans-serif;
-//     box-shadow: 0 0 21px rgba(0, 0, 0, 0.27);
-//     .txt {
-//         margin-left: 0;
-//         margin-top: 12rem;
-//         z-index: 1;
-//         h1 {
-//             font-size: 18px;
-//             font-weight: 300;
-//             text-transform: uppercase;
-//         }
-//         p {
-//             font-size: 0.7rem;
-//             font-family: 'Open Sans', sans-serif;
-//             letter-spacing: 0rem;
-//             margin-top: 33px;
-//             opacity: 0;
-//             color: rgba(255, 255, 255, 1);
-//         }
-//     }
-//     @media (max-width: 575.98px) {
-//         .txt {
-//             margin-top: 11rem;
-//         }
-//         .txt h1 {
-//             font-size: 16px;
-//         }
-//     }
-//     @media (max-width: 520.98px) {
-//         .txt {
-//             margin-top: 9rem;
-//         }
-//         .txt h1 {
-//             font-size: 16px;
-//         }
-//     }
-//     @media (max-width: 465.98px) {
-//         .txt {
-//             margin-top: 8rem;
-//         }
-//         .txt h1 {
-//             font-size: 16px;
-//         }
-//     }
-//     @media (max-width: 430.98px) {
-//         .txt {
-//             margin-top: 7rem;
-//         }
-//         .txt h1 {
-//             font-size: 16px;
-//         }
-//     }
-//     @media (max-width: 380.98px) {
-//         .txt {
-//             margin-top: 5rem;
-//         }
-//         .txt h1 {
-//             font-size: 16px;
-//         }
-//     }
-//     @media (max-width: 340.98px) {
-//         .txt {
-//             margin-top: 4rem;
-//         }
-//         .txt h1 {
-//             font-size: 12px;
-//         }
-//     }
-//     @media (max-width: 300.98px) {
-//         .txt {
-//             margin-top: 3rem;
-//         }
-//         .txt h1 {
-//             font-size: 12px;
-//         }
-//     }
-//     a {
-//         z-index: 3;
-//         font-size: 0.7rem;
-//         color: rgba(0, 0, 0, 1);
-//         margin-left: 1rem;
-//         position: relative;
-//         bottom: -0.5rem;
-//         text-transform: uppercase;
-//         &:after {
-//             content: '';
-//             display: inline-block;
-//             height: 0.5em;
-//             width: 0;
-//             margin-right: -100%;
-//             margin-left: 10px;
-//             border-top: 1px solid rgba(255, 255, 255, 1);
-//             transition: 0.5s;
-//         }
-//     }
-//     .ico-card {
-//         position: absolute;
-//         top: 0;
-//         left: 0;
-//         bottom: 0;
-//         right: 0;
-//         width: 100%;
-//         height: 92%;
-//         overflow: hidden;
-//     }
-//     i {
-//         position: relative;
-//         right: -50%;
-//         top: 60%;
-//         font-size: 12rem;
-//         line-height: 0;
-//         opacity: 0.2;
-//         color: rgba(255, 255, 255, 1);
-//         z-index: 0;
-//     }
-// }
-/* _____________________ market after slider _____________________________ */
-// .contain {
-//     margin-top: 40px;
-//     width: 100%;
-// }
-// .card_mark{
-//     margin: 20px 0;
-//     cursor: pointer;
-// }
-// .card_mark img:hover {
-//     translate: -20px;
-// }
+/* Brands */
+.brands {
+    margin: 24px;
+    padding: 24px;
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+}
+.slider {
+    height: 250px;
+    margin: auto;
+    position: relative;
+    width: 90%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+.slide-track {
+    display: flex;
+    width: (250px * 18);
+    animation: scroll 40s linear infinite;
+}
+.slide-track:hover {
+    animation-play-state: paused;
+}
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 9));
+    }
+}
+.slide {
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+}
+.slide img {
+    width: 100%;
+    transition: transform 1s;
+}
+.slide img:hover {
+    transform: translateZ(20px);
+}
+.slide::before,
+.slider::after {
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+.slider::before {
+    left: 0;
+    top: 0;
+}
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
 </style>
