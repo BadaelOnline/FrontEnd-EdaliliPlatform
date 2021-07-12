@@ -63,6 +63,55 @@
             </div>
         </div>
         <!-- category -->
+        <div class="categories">
+            <h2 class="heading">Our <span>Categories</span></h2>
+            <div class="wrapper">
+                <div class="categories-container">
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Brands -->
         <div class="brands">
             <h2 class="heading">Our <span>Brands</span></h2>
@@ -118,14 +167,15 @@ export default {
     margin: 0;
     padding: 0;
 }
+/* slider */
 .heading {
     text-align: center;
-    font-size: 4rem;
+    font-size: 2rem;
     padding: 0 0.5rem;
     color: #333;
 }
 .heading span {
-    color: var(--yellow);
+    color: #ff80b3;
 }
 /* section */
 .home {
@@ -202,6 +252,78 @@ export default {
     letter-spacing: 1px;
     font-size: 15px;
     margin-top: 8px;
+}
+/* categories */
+.categories {
+    margin: 24px;
+    padding: 24px;
+    width: 100%;
+}
+.categories .wrapper {
+    width: 90%;
+    margin: auto;
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-direction: column;
+}
+.categories .wrapper .categories-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.categories .wrapper .categories-container .category {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 100%;
+    transition: 0.5s ease-out;
+}
+.categories .wrapper .categories-container .category::before {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #83818157;
+    position: absolute;
+    z-index: 1;
+}
+.categories .wrapper .categories-container .category img {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+}
+.categories .wrapper .categories-container .category:hover {
+    cursor: pointer;
+}
+.categories .wrapper .categories-container .category:hover img {
+    transform: scale(1.2);
+    transition: 0.5s ease-in;
+}
+.categories .wrapper .categories-container .category .category-body {
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 12rem;
 }
 /* Brands */
 .brands {
