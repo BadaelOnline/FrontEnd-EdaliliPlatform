@@ -1,236 +1,457 @@
 <template>
-    <div class="home">
-        <div class="all-section">
-            <h3>{{ $t('AllCategories') }}</h3>
-        </div>
-        <div class="row">
-            <div  class="card_mark col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"  
-                v-for="catog in Categories"
-                :key="catog.id">
-             <img :src="catog.image"  v-if="catog.image"  />
-                <img v-else src="../../../public/img/buty.jpg" />
-                <div> {{catog.name}} </div>
+    <div>
+        <!-- section  -->
+        <div class="home">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Section</span>
+            </h2>
+            <div
+                data-aos="fade-up-right"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="team-area"
+            >
+                <div class="single-team">
+                    <img src="../../../public/img/buty.jpg" />
+                    <div class="team-text">
+                        <h2>بقالة</h2>
+                        <a>See More</a>
+                    </div>
+                </div>
+                <div class="single-team">
+                    <img src="../../../public/img/buty.jpg" />
+                    <div class="team-text">
+                        <h2>إكسسوارات</h2>
+                        <a>See More</a>
+                    </div>
+                </div>
+                <div class="single-team">
+                    <img src="../../../public/img/buty.jpg" />
+                    <div class="team-text">
+                        <h2>فواكه</h2>
+                        <a>See More</a>
+                    </div>
+                </div>
+                <div class="single-team">
+                    <img src="../../../public/img/buty.jpg" />
+                    <div class="team-text">
+                        <h2>خضار</h2>
+                        <a>See More</a>
+                    </div>
+                </div>
+                <div class="single-team">
+                    <img src="../../../public/img/buty.jpg" />
+                    <div class="team-text">
+                        <h2>خضار</h2>
+                        <a>See More</a>
+                    </div>
+                </div>
+                <div class="single-team">
+                    <img src="../../../public/img/buty.jpg" />
+                    <div class="team-text">
+                        <h2>أزياء</h2>
+                        <a>See More</a>
+                    </div>
+                </div>
+                <div class="single-team">
+                    <img src="../../../public/img/buty.jpg" />
+                    <div class="team-text">
+                        <h2>أدوات منزلية</h2>
+                        <a>See More</a>
+                    </div>
+                </div>
+                <div class="single-team">
+                    <img src="../../../public/img/buty.jpg" />
+                    <div class="team-text">
+                        <h2>إكسسوارات</h2>
+                        <a>See More</a>
+                    </div>
+                </div>
             </div>
-            
         </div>
-        <!-- __________________________________________________________________ -->
-        <div class="contain">
-            <h2 style="margin-top: 3vh">Some Market</h2>
-        <div  class="row">
-            <div class="card_mark col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6"   v-for="bran in Brands.slice(0, 4)"
-                    :key="bran.id">
-             <img :src="bran.image"  v-if="bran.image"  />
-                <img v-else src="../../../public/img/elc3.png" />
+        <!-- category -->
+        <div class="categories">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Categories</span>
+            </h2>
+            <div
+                class="wrapper"
+                data-aos="fade-up-right"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+            >
+                <div class="categories-container">
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <img src="../../../public/img/kitchen.jpg" alt="" />
+                        <div class="category-body">
+                            <h2>بقالة</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    
-
-
-        </div> 
+        <!-- Brands -->
+        <div class="brands">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Brands</span>
+            </h2>
+            <div
+                class="slider"
+                data-aos="fade-left"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+            >
+                <div class="slide-track">
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_1.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_2.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_3.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_4.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/IMG_5.png" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/images.jpg" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/images1.jpg" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="../../../public/img/images2.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
-<style lang="scss" scoped>
-
-* {
-    transition: 0.5s;
-}
-.home {
-    background-color: #edefef;
-}
-.all-section {
-    text-align: center;
-    color: #6c6c77;
-}
-.h-100 {
-    height: 100vh !important;
-}
-.align-middle {
-    position: relative;
-    top: 50%;
-}
-.column {
-    margin-top: 3rem;
-    padding-left: 3rem;
-    &:hover {
-        padding-left: 0;
-        .card .txt {
-            margin-left: 1rem;
-            h1 {
-                color: rgb(8, 8, 8);
-                opacity: 1;
-            }
-        }
-        a {
-            color: rgba(8, 8, 8, 1);
-            &:after {
-                width: 10%;
-            }
-        }
-    }
-}
-.card {
-    min-height: 240px;
-    margin: 0;
-    padding: 1.7rem 1.2rem;
-    border: none;
-    border-radius: 0;
-    color: rgba(0, 0, 0, 1);
-    letter-spacing: 0.05rem;
-    font-family: 'Oswald', sans-serif;
-    box-shadow: 0 0 21px rgba(0, 0, 0, 0.27);
-    .txt {
-        margin-left: 0;
-        margin-top: 12rem;
-        z-index: 1;
-        h1 {
-            font-size: 18px;
-            font-weight: 300;
-            text-transform: uppercase;
-        }
-        p {
-            font-size: 0.7rem;
-            font-family: 'Open Sans', sans-serif;
-            letter-spacing: 0rem;
-            margin-top: 33px;
-            opacity: 0;
-            color: rgba(255, 255, 255, 1);
-        }
-    }
-    @media (max-width: 575.98px) {
-        .txt {
-            margin-top: 11rem;
-        }
-        .txt h1 {
-            font-size: 16px;
-        }
-    }
-    @media (max-width: 520.98px) {
-        .txt {
-            margin-top: 9rem;
-        }
-        .txt h1 {
-            font-size: 16px;
-        }
-    }
-    @media (max-width: 465.98px) {
-        .txt {
-            margin-top: 8rem;
-        }
-        .txt h1 {
-            font-size: 16px;
-        }
-    }
-    @media (max-width: 430.98px) {
-        .txt {
-            margin-top: 7rem;
-        }
-        .txt h1 {
-            font-size: 16px;
-        }
-    }
-    @media (max-width: 380.98px) {
-        .txt {
-            margin-top: 5rem;
-        }
-        .txt h1 {
-            font-size: 16px;
-        }
-    }
-    @media (max-width: 340.98px) {
-        .txt {
-            margin-top: 4rem;
-        }
-        .txt h1 {
-            font-size: 12px;
-        }
-    }
-    @media (max-width: 300.98px) {
-        .txt {
-            margin-top: 3rem;
-        }
-        .txt h1 {
-            font-size: 12px;
-        }
-    }
-    a {
-        z-index: 3;
-        font-size: 0.7rem;
-        color: rgba(0, 0, 0, 1);
-        margin-left: 1rem;
-        position: relative;
-        bottom: -0.5rem;
-        text-transform: uppercase;
-        &:after {
-            content: '';
-            display: inline-block;
-            height: 0.5em;
-            width: 0;
-            margin-right: -100%;
-            margin-left: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 1);
-            transition: 0.5s;
-        }
-    }
-    .ico-card {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 92%;
-        overflow: hidden;
-    }
-    i {
-        position: relative;
-        right: -50%;
-        top: 60%;
-        font-size: 12rem;
-        line-height: 0;
-        opacity: 0.2;
-        color: rgba(255, 255, 255, 1);
-        z-index: 0;
-    }
-}
-/* _____________________ market after slider _____________________________ */
-.contain {
-    margin-top: 40px;
-    width: 100%;
-}
-.card_mark{
-    margin: 20px 0;
-    cursor: pointer;
-}
-.card_mark img:hover {
-    translate: -20px;
-}
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-  
-}
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-   
-}
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
- 
-}
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-}
-</style>
 <script>
 import { mapState } from 'vuex';
+
 export default {
     name: 'home',
     props: ['image'],
     data() {
         return {};
     },
-
     computed: {
-        ...mapState(['Categories','Brands']),
-    }
+        ...mapState(['Categories', 'Brands']),
+    },
 };
 </script>
+
+<style scoped>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* slider */
+.heading {
+    text-align: center;
+    font-size: 2rem;
+    padding: 0 0.5rem;
+    color: #333;
+}
+.heading span {
+    color: #ff80b3;
+}
+/* section */
+.home {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    width: 100%;
+}
+.team-area {
+    display: flex;
+    flex-flow: wrap;
+    width: 95%;
+    justify-content: space-around;
+}
+.single-team {
+    width: 260px;
+    height: 300px;
+    padding: 24px;
+    margin-top: 24px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    transition: 0.6s ease-out;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+.single-team:hover {
+    transform: translateY(15px);
+}
+.single-team:hover::before {
+    opacity: 1;
+}
+.single-team:hover .team-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+.single-team::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #000, transparent);
+    z-index: 2;
+    transition: 0.5s;
+    opacity: 0;
+}
+.single-team img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+.single-team .team-text {
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 0.5s;
+}
+.team-text h2 {
+    margin: 0;
+    letter-spacing: 3px;
+}
+.team-text a {
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin-top: 8px;
+}
+/* categories */
+.categories {
+    margin: 24px;
+    padding: 24px;
+    width: 100%;
+}
+.categories .wrapper {
+    width: 90%;
+    margin: auto;
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-direction: column;
+}
+.categories .wrapper .categories-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.categories .wrapper .categories-container .category {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 100%;
+    transition: 0.5s ease-out;
+}
+.categories .wrapper .categories-container .category::before {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #83818157;
+    position: absolute;
+    z-index: 1;
+}
+.categories .wrapper .categories-container .category img {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+}
+.categories .wrapper .categories-container .category:hover {
+    cursor: pointer;
+}
+.categories .wrapper .categories-container .category:hover img {
+    transform: scale(1.2);
+    transition: 0.5s ease-in;
+}
+.categories .wrapper .categories-container .category .category-body {
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 12rem;
+}
+/* Brands */
+.brands {
+    margin: 24px;
+    padding: 24px;
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+}
+.slider {
+    height: 250px;
+    margin: auto;
+    position: relative;
+    width: 90%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+.slide-track {
+    display: flex;
+    width: (250px * 18);
+    animation: scroll 40s linear infinite;
+}
+.slide-track:hover {
+    animation-play-state: paused;
+}
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 9));
+    }
+}
+.slide {
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+}
+.slide img {
+    width: 100%;
+    transition: transform 1s;
+}
+.slide img:hover {
+    transform: translateZ(20px);
+}
+.slide::before,
+.slider::after {
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+.slider::before {
+    left: 0;
+    top: 0;
+}
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+</style>
