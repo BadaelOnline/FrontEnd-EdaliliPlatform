@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div  class="header">
         <div class="content_loader hidden" id="content_loader">
             <div id="loader" class="loader"></div>
         </div>
@@ -12,7 +12,7 @@
 
                 <div class="parent_select">
                     <div class="child_1">
-                        <div class="customer-select">
+                        <div class="customer-select cu1">
                             <select
                                 v-model="lang"
                                 @change="handleChange($event)"
@@ -78,15 +78,9 @@
             <div class="bars" @click="showfut()">
                 <i class="fa fa-bars"></i>
             </div>
-            <div
-                class="exit-fut animate__animated animate__heartBeat"
-                id="exit-fut"
-                @click="hidefut()"
-            >
-                X
-            </div>
-            <div class="container">
-                <div class="row">
+
+           
+               
                     <div class="search col-lg-12">
                         <i class="fa fa-search shopping"></i
                         ><input
@@ -95,11 +89,13 @@
                             :placeholder="$t('Search')"
                         />
                     </div>
-                    <div class="col-lg-12">
+                    <div class="parent_featuers">
+  
                         <div
                             class="featuers animate__animated animate__heartBeat"
                             id="fut"
                         >
+
                             <div class="child_1">
                                 <router-link to="/addStore" class="link">{{
                                     $t('AddPlatform', { locale: lang })
@@ -146,8 +142,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+               
+          
         </div>
         <!-- End landing -->
 
@@ -356,29 +352,27 @@
     position: relative;
     line-height: 2.15;
 }
-.upper-bar .customer-select:after {
-    position: absolute;
-    content: '>';
-    top: 2px;
-    left: 9px;
-    background-color: transparent;
-    color: #fff;
-    transform: rotate(90deg);
-    /*font-size: 17px;*/
+.upper-bar .cu1:before {
+    font-family: "Font Awesome 5 Free";
+   content: "\f0d7";
+   display: inline-block;
+   vertical-align: middle;
+   font-weight:900;
     z-index: 1;
     font-size: 20px;
+    position: absolute;
+    left: 8px;
 }
-.upper-bar .cu2:after {
-    position: absolute;
-    content: '<';
-    top: 2px;
-    left: 9px;
-    background-color: transparent;
-    color: #fff;
-    transform: rotate(90deg);
-    /*font-size: 17px;*/
+.upper-bar .cu2::after {
+    font-family: "Font Awesome 5 Free";
+   content: "\f0d7";
+   display: inline-block;
+   vertical-align: middle;
+   font-weight:900;
     z-index: 1;
     font-size: 20px;
+    position: absolute;
+    left: 8px;
 }
 
 .upper-bar .fa-map-marker {
@@ -387,6 +381,13 @@
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+        .upper-bar {
+height: 320px;
+    }
+    .upper-bar .imag img {
+        margin-top: -15px;
+        margin-bottom: 10px;
+    }
     .upper-bar .imag img {
         margin-top: -15px;
         margin-bottom: 10px;
@@ -407,11 +408,14 @@
     }
     .upper-bar .parent_select .child_3 .cu2 {
         display: block;
-        margin: 5px 0;
+        margin: 5px 14px 0 0;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
+        .upper-bar {
+height: 320px;
+    }
     .upper-bar .imag img {
         margin-top: -15px;
         margin-bottom: 10px;
@@ -436,22 +440,35 @@
     }
     .upper-bar .parent_select .child_3 .cu2 {
         display: block;
-        margin: 5px 0;
+        margin: 5px 14px 0 0;
     }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
+        .upper-bar .row {
+        justify-content: center;
+    }
+    .upper-bar .parent_select {
+    width: 100%;
+}
+.upper-bar .imag{
+    margin-bottom: 20px;
+}
+.upper-bar .lang, .upper-bar .lang2 {
+    font-size: 15px;
+    font-weight: bold;
+}
     .upper-bar .parent_select .child_1 {
         width: 20%;
     }
     .upper-bar .customer-select select {
-        font-size: 14px;
+        font-size: 16px;
     }
     .upper-bar .customer-select::after {
         left: 5px;
     }
     .upper-bar .parent_select .child_2 {
-        width: 65%;
+        width: 70%;
     }
     .upper-bar .parent_select .child_3 {
         width: 75%;
@@ -480,6 +497,10 @@
     -o-background-size: cover;
     background-size: cover;
 }
+.jumbotron .search{
+    display: flex;
+    justify-content: center;
+}
 .jumbotron .input {
     border: none;
     width: 400px;
@@ -487,18 +508,21 @@
     height: 34px;
 }
 .jumbotron .search:after {
-    position: absolute;
-    content: '>';
-    top: 0;
     background-color: #87948b;
     width: 34px;
     height: 34px;
     color: #fff;
-    transform: rotate(90deg);
-    font-size: 17px;
-    border-top-left-radius: 4px;
+    padding-top: 1px;
+    border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
-    padding-top: 5px;
+    font-family: "Font Awesome 5 Free";
+   content: "\f0d7";
+   display: inline-block;
+   vertical-align: middle;
+   font-weight:900;
+    z-index: 1;
+    font-size: 20px;
+
 }
 .jumbotron .search i {
     background-color: #87948b;
@@ -510,15 +534,21 @@
     color: aliceblue;
     cursor: pointer;
 }
+.parent_featuers{
+        display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    height: 50px;
+}
+
 .jumbotron .featuers {
-    width: 90%;
-    display: inline-flex;
-    justify-content: space-between;
-    margin: auto;
-    margin-top: 410px;
-    background-color: #bfc0c2;
-    padding: 10px 20px;
-    color: #635f5f;
+width: 80%;
+display: inline-flex;
+justify-content: space-between;
+margin: auto;
+background-color: #bfc0c2;
+padding: 10px 20px;
+color: #635f5f;
 }
 .jumbotron .featuers .cole {
     font-size: 30px;
@@ -562,8 +592,19 @@
 @media (max-width: 575.98px) {
     .jumbotron {
         height: 300px;
-        width: 96%;
+        width: 100%;
     }
+    .bars{
+        display: flex;
+        justify-content: flex-start;
+        cursor: pointer;
+    }
+        .parent_featuers {
+    display: flex;
+    width: 100%;
+    height: 850px;
+    justify-content: center;
+}
     .jumbotron .featuers {
         width: 250px;
         position: absolute;
@@ -578,24 +619,7 @@
         margin-right: auto;
         display: block;
     }
-    .exit-fut {
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        background-color: #5daaa6;
-        border-radius: 50%;
-        cursor: pointer;
-        color: #fff;
-        top: 44%;
-        left: 6%;
-        padding: 1px;
-        font-weight: bold;
-    }
-    .bars {
-        display: block;
-        text-align: right;
-        cursor: pointer;
-    }
+ 
     .jumbotron .search {
         width: 100%;
     }
@@ -643,36 +667,94 @@
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .jumbotron {
-        height: 430px;
+       .jumbotron {
+        height: 330px;
+        width: 100%;
+    }
+        .bars{
+        display: flex;
+        justify-content: flex-start;
+         cursor: pointer;
+    }
+    .parent_featuers {
+    display: flex;
+    width: 100%;
+    height: 850px;
+    justify-content: center;
+}
+    .jumbotron .featuers {
+        width: 250px;
+        position: absolute;
+        font-size: 11px;
+        border-radius: 20px;
+        overflow: hidden;
+        display: none;
+    }
+    .jumbotron .show {
+        margin-top: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+  
+    .jumbotron .search {
+        width: 100%;
+    }
+    .jumbotron .search input {
+        width: 50%;
+        padding: 4px 10px;
+        height: 35px;
+    }
+    .jumbotron .search i {
+        height: 35px;
+        width: 34px;
+        padding: 10px 10px;
+    }
+    .jumbotron .search:after {
+        width: 34px;
+        height: 34px;
+        top: 0;
     }
     .jumbotron .featuers .cole {
         display: none;
     }
-    .jumbotron .featuers div {
-        margin: 10px 0;
+    .jumbotron .featuers .child_1,
+    .jumbotron .featuers .child_2,
+    .jumbotron .featuers .child_3,
+    .jumbotron .featuers .child_4,
+    .jumbotron .featuers .child_5 {
+        display: block;
+        margin: 5px 0;
     }
-    .jumbotron .featuers {
-        width: 60%;
-        margin-top: 70px;
-        font-size: 12px;
-        border-radius: 20px;
-        display: grid;
-        justify-content: center;
+    .jumbotron .featuers .child_1 div,
+    .jumbotron .featuers .child_2 div,
+    .jumbotron .featuers .child_3 div,
+    .jumbotron .featuers .child_4 div,
+    .jumbotron .featuers .child_5 div {
+        display: inline-flex;
     }
-}
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .jumbotron .featuers {
-        width: 100%;
-        margin-top: 399px;
-        font-size: 12px;
+    .jumbotron .featuers i {
+        font-size: 17px;
     }
     .jumbotron .featuers .shopping:after,
     .jumbotron .featuers .map:after,
     .jumbotron .featuers .user:after {
-        top: -8px;
+        display: none;
     }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+.jumbotron .featuers {
+    width: 90%;
+    display: inline-flex;
+    justify-content: space-between;
+    margin: auto;
+    background-color: #bfc0c2;
+    padding: 10px 20px;
+    color: #635f5f;
+
+}
 }
 /* End landing */
 /* Start Naver*/
@@ -881,12 +963,8 @@ export default {
         },
         showfut() {
             document.getElementById('fut').classList.toggle('show');
-            document.getElementById('exit-fut').style.display = 'block';
         },
-        hidefut() {
-            document.getElementById('exit-fut').style.display = 'none';
-            document.getElementById('fut').classList.remove('show');
-        },
+
         handleChange(event) {
             localStorage.setItem('lang', event.target.value);
             window.location.reload();
