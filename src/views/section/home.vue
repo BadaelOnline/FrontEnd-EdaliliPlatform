@@ -204,6 +204,21 @@
                 </div>
             </div>
         </div>
+        <!--  -->
+        <div class="Latest-subscribers">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Latest subscribers</span>
+            </h2>
+        </div>
     </div>
 </template>
 <script>
