@@ -2,8 +2,28 @@
     <div>
         <!-- section  -->
         <div class="home">
-            <h2 class="heading">Our <span>Section</span></h2>
-            <div class="team-area">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Section</span>
+            </h2>
+            <div
+                data-aos="fade-up-right"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="team-area"
+            >
                 <div class="single-team">
                     <img src="../../../public/img/buty.jpg" />
                     <div class="team-text">
@@ -64,8 +84,28 @@
         </div>
         <!-- category -->
         <div class="categories">
-            <h2 class="heading">Our <span>Categories</span></h2>
-            <div class="wrapper">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Categories</span>
+            </h2>
+            <div
+                class="wrapper"
+                data-aos="fade-up-right"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+            >
                 <div class="categories-container">
                     <div class="category">
                         <img src="../../../public/img/kitchen.jpg" alt="" />
@@ -114,8 +154,28 @@
         </div>
         <!-- Brands -->
         <div class="brands">
-            <h2 class="heading">Our <span>Brands</span></h2>
-            <div class="slider">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Brands</span>
+            </h2>
+            <div
+                class="slider"
+                data-aos="fade-left"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+            >
                 <div class="slide-track">
                     <div class="slide">
                         <img src="../../../public/img/IMG_1.png" alt="" />
@@ -143,6 +203,21 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <!--  -->
+        <div class="Latest-subscribers">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Latest subscribers</span>
+            </h2>
         </div>
     </div>
 </template>
@@ -185,7 +260,6 @@ export default {
     justify-content: center;
     background: #fafafa;
     width: 100%;
-    /* padding: 24px; */
 }
 .team-area {
     display: flex;
