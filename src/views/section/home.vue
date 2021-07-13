@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- section  -->
         <div class="home">
             <h2
                 data-aos="fade-up"
@@ -200,6 +199,64 @@
                     </div>
                     <div class="slide">
                         <img src="../../../public/img/images2.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="Latest-subscribers">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Latest subscribers</span>
+            </h2>
+            <div
+                class="container"
+                data-aos="fade-up-right"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+            >
+                <div class="card">
+                    <img src="../../../public/img/image.png" />
+                    <div class="blogcontent">
+                        <h3>سنتر الريم</h3>
+                        <p>السويداء</p>
+                        <a class="btn">زيارة</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../../../public/img/image.png" />
+                    <div class="blogcontent">
+                        <h3>سنتر الريم</h3>
+                        <p>السويداء</p>
+                        <a class="btn">زيارة</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../../../public/img/image.png" />
+                    <div class="blogcontent">
+                        <h3>سنتر الريم</h3>
+                        <p>السويداء</p>
+                        <a class="btn">زيارة</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../../../public/img/image.png" />
+                    <div class="blogcontent">
+                        <h3>سنتر الريم</h3>
+                        <p>السويداء</p>
+                        <a class="btn">زيارة</a>
                     </div>
                 </div>
             </div>
@@ -453,5 +510,86 @@ export default {
     right: 0;
     top: 0;
     transform: rotateZ(180deg);
+}
+/*  Latest-subscribers */
+.Latest-subscribers {
+    margin: 24px;
+    padding: 24px;
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+}
+.container .card a {
+    transition: all 0.5s;
+    text-decoration: none;
+    color: #fff;
+}
+.container .card img {
+    border-radius: 50%;
+    height: 50%;
+    width: 50%;
+    transition: all 0.5s;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 24px;
+}
+.card {
+    position: relative;
+    overflow: hidden;
+    max-height: 580px;
+    height: 100%;
+    box-shadow: 0 2px 10px rgb(167, 164, 164);
+    transition: all 0.5s;
+}
+.card:hover {
+    box-shadow: 0 2px 10px rgb(167, 165, 165);
+    transition: all 0.5s;
+}
+.card:hover img {
+    transform: scale(1.1);
+    transition: all 0.4s;
+}
+.blogcontent {
+    position: absolute;
+    left: 0;
+    bottom: -45px;
+    width: 100%;
+    color: #000;
+    padding: 10px 5px;
+    background: linear-gradient(
+        45deg rgb(149, 21, 153) 0% rgba(144, 192, 229, 0.4) 100%
+    );
+    transition: all 0.5s;
+}
+.blogcontent h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+}
+.card:hover .blogcontent {
+    bottom: 0;
+    transition: all 0.5s;
+}
+.blogcontent a {
+    font-size: 14px;
+    font-weight: 500;
+}
+.blogcontent .btn {
+    display: block;
+    padding: 5px 10px;
+    color: #000;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    font-weight: 400;
+}
+.blogcontent .btn:hover {
+    /* background: rgba(52, 152, 219, 1); */
+    transition: all 0.5s;
+    text-decoration: none;
 }
 </style>
