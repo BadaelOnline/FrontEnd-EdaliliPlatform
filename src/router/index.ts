@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     /* ProductDetalis */
     {
-        path: '/prodetails/:id',
+        path: '/:id',
         component: () => import('../components/global/prodetails.vue'),
     },
     {

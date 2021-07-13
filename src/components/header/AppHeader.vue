@@ -103,22 +103,24 @@
                             </div>
                             <div class="cole">|</div>
                             <div class="child_2" @click="gotocart()">
-                                <i class="fa fa-shopping-cart shopping"></i>
+                            
                                 <span class="cart-count">{{
                                     cartItemCount
                                 }}</span>
                                 <div>
                                     {{ $t('Shoppingcart') }}
                                 </div>
+                                    <i class="fa fa-shopping-cart shopping"></i>
                             </div>
                             <div class="cole">|</div>
                             <div class="child_3 map">
+                                {{ $t('Selectlocation') }}
                                 <i class="fa fa-map-marker shopping"></i
-                                >{{ $t('Selectlocation') }}
+                                >
                             </div>
                             <div class="cole">|</div>
                             <div class="child_4">
-                                <i class="fa fa-user-circle shopping"> </i>
+                              
                                 <template v-if="authenticated" class="user">
                                     <a
                                         @click.prevent="signOut"
@@ -127,18 +129,20 @@
                                         >SignOut</a
                                     >
                                 </template>
-                                <template v-else class="user">
-                                    <router-link class="link" to="/signin">{{
+                                <template v-else class="user" style="margin-left: -20px;margin-right: 10px;">
+                                    <router-link @click="scrollto()" class="link" to="/signin">{{
                                         $t('signin')
                                     }}</router-link>
                                 </template>
+                                  <i class="fa fa-user-circle shopping"> </i>
                             </div>
-                            <div class="cole">|</div>
-                            <div class="child_5">
-                                <i class="fa fa-user-circle shopping"> </i>
+                            <div v-if="authenticated" class="cole">|</div>
+                            <div v-if="authenticated" class="child_5">
+                              
                                 <div>
                                     {{ $t('AddProfile') }}
                                 </div>
+                                  <i class="fa fa-user-circle shopping"> </i>
                             </div>
                         </div>
                     </div>
@@ -488,7 +492,7 @@ height: 320px;
 .jumbotron {
     text-align: center;
     position: relative;
-    height: 560px;
+    height: 590px;
     margin-bottom: 10px;
     width: 100%;
     background-image: url('../../../public/img/Screenshot_2020-10-17 E-DALELY Design.png');
@@ -536,9 +540,10 @@ height: 320px;
 }
 .parent_featuers{
         display: flex;
-    width: 100%;
+    width: 95%;
     justify-content: flex-end;
-    height: 50px;
+   height:80px;
+    margin-top: 425px;
 }
 
 .jumbotron .featuers {
@@ -553,6 +558,10 @@ color: #635f5f;
 .jumbotron .featuers .cole {
     font-size: 30px;
     margin-top: -15px;
+    cursor: none;
+}
+.jumbotron .featuers .cole:hover {
+    color: #635f5f;
 }
 
 .jumbotron .featuers span {
@@ -561,7 +570,7 @@ color: #635f5f;
 .jumbotron .featuers .cart-count {
     font-size: 13px;
     color: #ba8b00;
-    margin-left: 23px;
+    margin-left: 115px;
     background: #ffffff;
     height: 19px;
     border-radius: 50%;
@@ -573,6 +582,7 @@ color: #635f5f;
     display: inline-flex;
     cursor: pointer;
     position: relative;
+
 }
 .jumbotron .featuers div:hover {
     color: aliceblue;
@@ -582,12 +592,18 @@ color: #635f5f;
     font-size: 20px;
 }
 .jumbotron .featuers .shopping {
-    margin: 0 4px;
+    margin: 0 10px;
 }
-.bars,
-.exit-fut {
+.bars {
     display: none;
 }
+    .jumbotron .featuers .child_1,
+    .jumbotron .featuers .child_2,
+    .jumbotron .featuers .child_3,
+    .jumbotron .featuers .child_4,
+    .jumbotron .featuers .child_5 {
+    text-shadow:  0px 6px 3px #9f9c9c;
+    }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .jumbotron {
@@ -656,9 +672,7 @@ color: #635f5f;
     .jumbotron .featuers .child_5 div {
         display: inline-flex;
     }
-    .jumbotron .featuers i {
-        font-size: 17px;
-    }
+
     .jumbotron .featuers .shopping:after,
     .jumbotron .featuers .map:after,
     .jumbotron .featuers .user:after {
@@ -955,6 +969,12 @@ export default {
         }),
     },
     methods: {
+        scrollto(){
+window.scrollTo({
+  top: 700,
+  behavior: 'smooth'
+});
+        },
         gotocart() {
             this.$router.push(`/Cart`);
         },
