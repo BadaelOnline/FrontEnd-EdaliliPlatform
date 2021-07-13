@@ -5,6 +5,8 @@ import store from './store/Store';
 import i18n from './js/i18n';
 import VueI18n from 'vue-i18n';
 import axios from 'axios';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import 'animate.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -19,11 +21,13 @@ const lang: string = localStorage.getItem('lang') || 'en';
 document.documentElement.lang = lang;
 
 store.dispatch('attempt', localStorage.getItem('token')).then(() => {
+    Aos.init();
     axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
     axios.defaults.headers.common = {
         Authorization: `bearer ${localStorage.getItem('token')}`,
     };
     const app = createApp(App).use(store).use(router, axios).use(i18n, VueI18n);
     app.config.globalProperties.axios = axios;
+
     app.mount('#app');
 });
