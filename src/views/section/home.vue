@@ -283,7 +283,118 @@
             >
                 Our <span>Products</span>
             </h2>
-            <div class="products"></div>
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -541,6 +652,7 @@ export default {
     flex-flow: wrap;
     margin: 0;
     padding: 0;
+    margin-bottom: 24px;
     align-items: center;
     justify-content: center;
     /* max-width: 1200px; */
@@ -616,14 +728,117 @@ export default {
     transition: all 0.5s;
     text-decoration: none;
 }
-.products {
-    width: 90%;
-    margin: auto;
-    padding-top: 24px;
+/* products */
+.products .container {
     display: flex;
-    justify-content: center;
+    flex-flow: wrap;
     align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin: auto;
     gap: 25px;
-    flex-direction: column;
+    /* margin-top: 24px; */
+    margin-bottom: 20%;
+    position: relative;
+    align-items: flex-end;
+    transition: 0.6s ease-out;
+    justify-content: space-around;
+}
+.product-grid {
+    width: 160px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 0 0 #fff;
+    transition: 0.5 all;
+    margin: 24px;
+    margin-bottom: 80px;
+}
+.product-grid:hover {
+    cursor: pointer;
+    box-shadow: 14px 11px 0 #03aae8;
+}
+.product-grid .product-image {
+    position: relative;
+    overflow: hidden;
+    transition: 0.5 all;
+}
+.product-grid .product-image img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+.product-grid .product-image .social {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+}
+.product-grid .product-image .social li {
+    margin: 0 01 10px;
+    cursor: pointer;
+    transform: translateX(100px);
+    transition: all 0.5s;
+}
+.product-grid:hover .product-image .social li {
+    transform: translateX(0);
+}
+.product-grid .product-image .social li i {
+    color: #666;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    display: block;
+    transition: all 0.5s;
+}
+.product-grid .product-image .social li i:hover {
+    color: #fff;
+    background-color: #03aae8;
+}
+.product-grid .product-content {
+    padding: 20px 10px;
+}
+.product-grid .product-content .title {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0 0 7px;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+}
+.product-grid .product-content p {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0 0 7px;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+}
+.product-grid .product-content .title:hover {
+    color: #03aae8;
+}
+.product-grid .price {
+    color: #03aae8;
+    font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.product-grid .rating {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.product-grid .rating li {
+    color: #ffd200;
+    font-size: 14px;
+    display: inline-block;
 }
 </style>
