@@ -203,7 +203,7 @@
                 </div>
             </div>
         </div>
-        <!--  -->
+        <!-- Latest subscribers -->
         <div class="Latest-subscribers">
             <h2
                 data-aos="fade-up"
@@ -259,7 +259,31 @@
                         <a class="btn">زيارة</a>
                     </div>
                 </div>
+                <div class="card">
+                    <img src="../../../public/img/image.png" />
+                    <div class="blogcontent">
+                        <h3>سنتر الريم</h3>
+                        <p>السويداء</p>
+                        <a class="btn">زيارة</a>
+                    </div>
+                </div>
             </div>
+        </div>
+        <!-- products -->
+        <div class="products">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Products</span>
+            </h2>
+            <div class="products"></div>
         </div>
     </div>
 </template>
@@ -513,21 +537,24 @@ export default {
 }
 /*  Latest-subscribers */
 .Latest-subscribers {
-    margin: 24px;
-    padding: 24px;
-    text-align: center;
-    max-width: 1200px;
+    display: flex;
+    flex-flow: wrap;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    /* max-width: 1200px; */
     width: 100%;
 }
 .container .card a {
     transition: all 0.5s;
     text-decoration: none;
-    color: #fff;
+    color: #000;
 }
 .container .card img {
     border-radius: 50%;
-    height: 50%;
-    width: 50%;
+    height: 80%;
+    width: 80%;
     transition: all 0.5s;
 }
 .container {
@@ -535,8 +562,9 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
     margin-top: 24px;
+    width: 100%;
 }
 .card {
     position: relative;
@@ -561,9 +589,7 @@ export default {
     width: 100%;
     color: #000;
     padding: 10px 5px;
-    background: linear-gradient(
-        45deg rgb(149, 21, 153) 0% rgba(144, 192, 229, 0.4) 100%
-    );
+    background: linear-gradient(#e66465, #9198e5);
     transition: all 0.5s;
 }
 .blogcontent h3 {
@@ -582,14 +608,22 @@ export default {
 .blogcontent .btn {
     display: block;
     padding: 5px 10px;
-    color: #000;
-    border: 1px solid #fff;
     border-radius: 3px;
     font-weight: 400;
+    box-shadow: 0 5px 20px #8b0d70;
 }
 .blogcontent .btn:hover {
-    /* background: rgba(52, 152, 219, 1); */
     transition: all 0.5s;
     text-decoration: none;
+}
+.products {
+    width: 90%;
+    margin: auto;
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-direction: column;
 }
 </style>
