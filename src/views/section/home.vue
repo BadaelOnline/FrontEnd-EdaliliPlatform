@@ -396,6 +396,15 @@
                 </div>
             </div>
         </div>
+        <!-- //  -->
+        <div class="row">
+            <div class="column">something in row 3 column 2</div>
+            <div class="double-column">
+                <div class="blue-column">
+                    Some Text in row 3 double column 1
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -737,30 +746,28 @@ export default {
     width: 95%;
     margin: auto;
     gap: 25px;
-    /* margin-top: 24px; */
-    margin-bottom: 20%;
+    margin-top: 24px;
+    margin-bottom: 24px;
     position: relative;
     align-items: flex-end;
     transition: 0.6s ease-out;
     justify-content: space-around;
 }
 .product-grid {
-    width: 160px;
-    height: 200px;
+    width: 260px;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     background-color: #fff;
-    box-shadow: 0 0 0 #fff;
+    box-shadow: 0 10px 10px #adabab;
     transition: 0.5 all;
-    margin: 24px;
-    margin-bottom: 80px;
 }
 .product-grid:hover {
     cursor: pointer;
-    box-shadow: 14px 11px 0 #03aae8;
+    box-shadow: 14px 11px 0 #e66465;
 }
 .product-grid .product-image {
     position: relative;
@@ -801,7 +808,7 @@ export default {
 }
 .product-grid .product-image .social li i:hover {
     color: #fff;
-    background-color: #03aae8;
+    background-color: #e66465;
 }
 .product-grid .product-content {
     padding: 20px 10px;
@@ -840,5 +847,30 @@ export default {
     color: #ffd200;
     font-size: 14px;
     display: inline-block;
+}
+/*  */
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 24px;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    background-color: red;
+    flex: 1;
+}
+.blue-column {
+    background-color: blue;
+    height: 100px;
+}
+.double-column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 2;
 }
 </style>
