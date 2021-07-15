@@ -89,6 +89,38 @@
                             :placeholder="$t('Search')"
                         />
                     </div>
+                    <div class="form-popup animate__animated animate__swing" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Login</h1>
+    <label for="Name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" v-model="form.name" name="Name" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email"  v-model="form.email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password"  v-model="form.password" name="psw" required>
+
+    <span @click="submit()" class="btn">Login</span>
+    <span @click="registerForm()" class="btn">Create Acount</span>
+    <span class="btn cancel" @click="closeForm()">Close</span>
+  </form> 
+</div>
+<div class="form-popup2 animate__animated animate__swing" id="myForm2">
+ <form  action="/action_page.php" class="form-container2 form_register">
+    <h1>Register</h1>
+    <label for="Name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" v-model="form.name" name="Name" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email"  v-model="form.email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password"  v-model="form.password" name="psw" required>
+
+    <span @click="submit1()" class="btn">Register</span>
+    <span class="btn cancel" @click="closeForm()">Close</span>
+  </form>
+</div>
+
                     <div class="parent_featuers">
   
                         <div
@@ -129,12 +161,15 @@
                                         >SignOut</a
                                     >
                                 </template>
-                                <template v-else class="user" style="margin-left: -20px;margin-right: 10px;">
-                                    <router-link @click="scrollto()" class="link" to="/signin">{{
+                                <template v-else class="user" 
+                                style="margin-left: -20px;margin-right: 10px;">
+                                   <div @click="openForm()">{{
                                         $t('signin')
-                                    }}</router-link>
+                                    }}</div> 
+
                                 </template>
-                                  <i class="fa fa-user-circle shopping"> </i>
+                                  <i  class="fa fa-user-circle shopping"> </i>
+                                  
                             </div>
                             <div v-if="authenticated" class="cole">|</div>
                             <div v-if="authenticated" class="child_5">
@@ -149,6 +184,7 @@
                
           
         </div>
+
         <!-- End landing -->
 
         <!-- Start navbar-->
@@ -239,6 +275,118 @@
   
 </template>
 <style scoped>
+/* ____________________________________ form sign popup  _______________________________ */
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #959393;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 400px;
+  padding: 10px;
+  background-color: #a6a1a1;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover {
+  opacity: 1;
+}
+/* ____________________________________ form register popup  _______________________________ */
+
+/* The popup form - hidden by default */
+.form-popup2 {
+  display: none;
+  position: fixed;
+  bottom: -6px;
+  right: 15px;
+  border: 3px solid #959393;
+  z-index: 8;
+  
+}
+
+/* Add styles to the form container */
+.form-container2 {
+  max-width: 400px;
+  padding: 10px;
+  background-color: #a6a1a1;
+  height: 573px;
+  
+}
+
+/* Full-width input fields */
+.form-container2 input[type=text], .form-container2 input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container2 input[type=text]:focus, .form-container2 input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container2 .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container2 .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container2 .btn:hover{
+  opacity: 1;
+}
 /* ____________________________________ loading  _______________________________ */
 
 .content_loader{
@@ -309,7 +457,7 @@
 }
 .upper-bar .parent_select .child_1 {
     display: inline-flex;
-    width: 17%;
+    width: 20%;
     justify-content: space-between;
     height: 50px;
 }
@@ -463,7 +611,7 @@ height: 320px;
     font-weight: bold;
 }
     .upper-bar .parent_select .child_1 {
-        width: 20%;
+        width: 24%;
     }
     .upper-bar .customer-select select {
         font-size: 16px;
@@ -481,7 +629,7 @@ height: 320px;
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
     .upper-bar .parent_select .child_1 {
-        width: 20%;
+        width: 24%;
     }
     .upper-bar .parent_select .child_2 {
         width: 75%;
@@ -490,6 +638,10 @@ height: 320px;
 /* End Upper Bar */
 /* Start landing */
 .jumbotron {
+    display: grid;
+align-content: space-between;
+padding-top: 50px;
+padding-bottom: 10px;
     text-align: center;
     position: relative;
     height: 590px;
@@ -543,7 +695,7 @@ height: 320px;
     width: 95%;
     justify-content: flex-end;
    height:80px;
-    margin-top: 425px;
+   
 }
 
 .jumbotron .featuers {
@@ -570,13 +722,13 @@ color: #635f5f;
 .jumbotron .featuers .cart-count {
     font-size: 13px;
     color: #ba8b00;
-    margin-left: 115px;
+    margin-left: 88%;
     background: #ffffff;
     height: 19px;
     border-radius: 50%;
     width: 17px;
     position: absolute;
-    margin-top: -16px;
+    margin-top: -11px;
 }
 .jumbotron .featuers div {
     display: inline-flex;
@@ -597,13 +749,7 @@ color: #635f5f;
 .bars {
     display: none;
 }
-    .jumbotron .featuers .child_1,
-    .jumbotron .featuers .child_2,
-    .jumbotron .featuers .child_3,
-    .jumbotron .featuers .child_4,
-    .jumbotron .featuers .child_5 {
-    text-shadow:  0px 6px 3px #9f9c9c;
-    }
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .jumbotron {
@@ -678,6 +824,17 @@ color: #635f5f;
     .jumbotron .featuers .user:after {
         display: none;
     }
+        .jumbotron .featuers .cart-count {
+    font-size: 13px;
+    color: #ba8b00;
+    margin-left: 44%;
+    background: #ffffff;
+    height: 19px;
+    border-radius: 50%;
+    width: 17px;
+    position: absolute;
+    margin-top: -9px;
+}
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -756,6 +913,17 @@ color: #635f5f;
     .jumbotron .featuers .user:after {
         display: none;
     }
+    .jumbotron .featuers .cart-count {
+    font-size: 13px;
+    color: #ba8b00;
+    margin-left: 44%;
+    background: #ffffff;
+    height: 19px;
+    border-radius: 50%;
+    width: 17px;
+    position: absolute;
+    margin-top: -9px;
+}
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -770,6 +938,7 @@ color: #635f5f;
 
 }
 }
+
 /* End landing */
 /* Start Naver*/
 .naver {
@@ -944,6 +1113,11 @@ export default {
         return {
             lang: lang,
             token: token,
+            form: {
+                name: '',
+                email: '',
+                password: '',
+            },
             details: {
                 id: this.id,
                 title: this.title,
@@ -969,12 +1143,20 @@ export default {
         }),
     },
     methods: {
-        scrollto(){
-window.scrollTo({
-  top: 700,
-  behavior: 'smooth'
-});
-        },
+    openForm() {
+  document.getElementById("myForm").style.display = "block";
+  document.getElementById("myForm2").style.display = "block";
+},
+ registerForm() {
+  document.getElementById("myForm").style.zIndex = 8 ;
+  document.getElementById("myForm2").style.zIndex = 9 ;
+
+  
+},
+ closeForm() {
+  document.getElementById("myForm").style.display = "none";
+  document.getElementById("myForm2").style.display = "none";
+},
         gotocart() {
             this.$router.push(`/Cart`);
         },
@@ -1008,6 +1190,48 @@ window.scrollTo({
                     name: 'home',
                 });
             });
+        },
+          ...mapActions({
+            signIn: 'signIn',
+            register: 'register',
+        }),
+        submit() {
+            this.signIn(this.form);
+            document
+                .getElementById('content_loader')
+                .classList.remove('hidden');
+
+            setTimeout(function () {
+                document
+                    .getElementById('content_loader')
+                    .classList.add('hidden');
+            }, 3000);
+            setTimeout(function () {
+                window.location.reload();
+            }, 3000);
+            //  .then(() => {
+            //             this.$router.replace({
+            //                 name: 'home',
+            //             });
+            //         })
+            //         .catch(() => {
+            //             console.log('failed');
+            //         });
+        },
+        submit1() {
+            this.register(this.form);
+            document
+                .getElementById('content_loader')
+                .classList.remove('hidden');
+
+            setTimeout(function () {
+                document
+                    .getElementById('content_loader')
+                    .classList.add('hidden');
+            }, 3000);
+                        setTimeout(function () {
+                window.location.reload();
+            }, 3000);
         },
     },
  

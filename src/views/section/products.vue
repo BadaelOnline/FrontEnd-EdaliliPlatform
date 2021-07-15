@@ -17,7 +17,7 @@
                             data-aos-duration="1000"
                             data-aos-easing="ease-in-out"
                             data-aos-mirror="true"
-                            data-aos-once="false"  :src="brand.image" />
+                            data-aos-once="true"  :src="brand.image" />
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                     data-aos-duration="1000"
                     data-aos-easing="ease-in-out"
                     data-aos-mirror="true"
-                    data-aos-once="false"
+                    data-aos-once="true"
                     :src="bran.image" />
             </div>
         </div> 
@@ -83,7 +83,7 @@
                     data-aos-duration="1000"
                     data-aos-easing="ease-in-out"
                     data-aos-mirror="true"
-                    data-aos-once="false"
+                    data-aos-once="true"
                       :src="brand.image" />
                 </div>
             </div>
@@ -181,7 +181,7 @@
                     data-aos-duration="1000"
                     data-aos-easing="ease-in-out"
                     data-aos-mirror="true"
-                    data-aos-once="false"
+                    data-aos-once="true"
                     >
                         <div
                             v-for="brand in brands.slice(9, 10)"

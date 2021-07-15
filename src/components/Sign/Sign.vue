@@ -221,7 +221,10 @@ export default {
                     .getElementById('content_loader')
                     .classList.add('hidden');
             }, 3000);
-            console.log(JSON.stringify(this.form));
+                        setTimeout(function () {
+                window.location.reload();
+            }, 3000);
+          
         },
     },
 };
