@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div  class="header">
         <div class="content_loader hidden" id="content_loader">
             <div id="loader" class="loader"></div>
         </div>
@@ -12,7 +12,7 @@
 
                 <div class="parent_select">
                     <div class="child_1">
-                        <div class="customer-select">
+                        <div class="customer-select cu1">
                             <select
                                 v-model="lang"
                                 @change="handleChange($event)"
@@ -78,15 +78,9 @@
             <div class="bars" @click="showfut()">
                 <i class="fa fa-bars"></i>
             </div>
-            <div
-                class="exit-fut animate__animated animate__heartBeat"
-                id="exit-fut"
-                @click="hidefut()"
-            >
-                X
-            </div>
-            <div class="container">
-                <div class="row">
+
+           
+               
                     <div class="search col-lg-12">
                         <i class="fa fa-search shopping"></i
                         ><input
@@ -95,11 +89,45 @@
                             :placeholder="$t('Search')"
                         />
                     </div>
-                    <div class="col-lg-12">
+                    <div class="form-popup animate__animated animate__swing" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Login</h1>
+    <label for="Name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" v-model="form.name" name="Name" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email"  v-model="form.email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password"  v-model="form.password" name="psw" required>
+
+    <span @click="submit()" class="btn">Login</span>
+    <span @click="registerForm()" class="btn">Create Acount</span>
+    <span class="btn cancel" @click="closeForm()">Close</span>
+  </form> 
+</div>
+<div class="form-popup2 animate__animated animate__swing" id="myForm2">
+ <form  action="/action_page.php" class="form-container2 form_register">
+    <h1>Register</h1>
+    <label for="Name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" v-model="form.name" name="Name" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email"  v-model="form.email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password"  v-model="form.password" name="psw" required>
+
+    <span @click="submit1()" class="btn">Register</span>
+    <span class="btn cancel" @click="closeForm()">Close</span>
+  </form>
+</div>
+
+                    <div class="parent_featuers">
+  
                         <div
                             class="featuers animate__animated animate__heartBeat"
                             id="fut"
                         >
+
                             <div class="child_1">
                                 <router-link to="/addStore" class="link">{{
                                     $t('AddPlatform', { locale: lang })
@@ -107,22 +135,24 @@
                             </div>
                             <div class="cole">|</div>
                             <div class="child_2" @click="gotocart()">
-                                <i class="fa fa-shopping-cart shopping"></i>
+                            
                                 <span class="cart-count">{{
                                     cartItemCount
                                 }}</span>
                                 <div>
                                     {{ $t('Shoppingcart') }}
                                 </div>
+                                    <i class="fa fa-shopping-cart shopping"></i>
                             </div>
                             <div class="cole">|</div>
                             <div class="child_3 map">
+                                {{ $t('Selectlocation') }}
                                 <i class="fa fa-map-marker shopping"></i
-                                >{{ $t('Selectlocation') }}
+                                >
                             </div>
                             <div class="cole">|</div>
                             <div class="child_4">
-                                <i class="fa fa-user-circle shopping"> </i>
+                              
                                 <template v-if="authenticated" class="user">
                                     <a
                                         @click.prevent="signOut"
@@ -131,24 +161,30 @@
                                         >SignOut</a
                                     >
                                 </template>
-                                <template v-else class="user">
-                                    <router-link class="link" to="/signin">{{
+                                <template v-else class="user" 
+                                style="margin-left: -20px;margin-right: 10px;">
+                                   <div @click="openForm()">{{
                                         $t('signin')
-                                    }}</router-link>
+                                    }}</div> 
+
                                 </template>
+                                  <i  class="fa fa-user-circle shopping"> </i>
+                                  
                             </div>
-                            <div class="cole">|</div>
-                            <div class="child_5">
-                                <i class="fa fa-user-circle shopping"> </i>
+                            <div v-if="authenticated" class="cole">|</div>
+                            <div v-if="authenticated" class="child_5">
+                              
                                 <div>
                                     {{ $t('AddProfile') }}
                                 </div>
+                                  <i class="fa fa-user-circle shopping"> </i>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+               
+          
         </div>
+
         <!-- End landing -->
 
         <!-- Start navbar-->
@@ -239,6 +275,118 @@
   
 </template>
 <style scoped>
+/* ____________________________________ form sign popup  _______________________________ */
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #959393;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 400px;
+  padding: 10px;
+  background-color: #a6a1a1;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover {
+  opacity: 1;
+}
+/* ____________________________________ form register popup  _______________________________ */
+
+/* The popup form - hidden by default */
+.form-popup2 {
+  display: none;
+  position: fixed;
+  bottom: -6px;
+  right: 15px;
+  border: 3px solid #959393;
+  z-index: 8;
+  
+}
+
+/* Add styles to the form container */
+.form-container2 {
+  max-width: 400px;
+  padding: 10px;
+  background-color: #a6a1a1;
+  height: 573px;
+  
+}
+
+/* Full-width input fields */
+.form-container2 input[type=text], .form-container2 input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container2 input[type=text]:focus, .form-container2 input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container2 .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container2 .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container2 .btn:hover{
+  opacity: 1;
+}
 /* ____________________________________ loading  _______________________________ */
 
 .content_loader{
@@ -260,9 +408,9 @@
     height: 120px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
-    position: absolute;
+    position: fixed;
     right: 600px;
-    top: 500px;
+    top: 250px;
 }
 /* Safari */
 @-webkit-keyframes spin {
@@ -309,7 +457,7 @@
 }
 .upper-bar .parent_select .child_1 {
     display: inline-flex;
-    width: 17%;
+    width: 20%;
     justify-content: space-between;
     height: 50px;
 }
@@ -356,29 +504,27 @@
     position: relative;
     line-height: 2.15;
 }
-.upper-bar .customer-select:after {
-    position: absolute;
-    content: '>';
-    top: 2px;
-    left: 9px;
-    background-color: transparent;
-    color: #fff;
-    transform: rotate(90deg);
-    /*font-size: 17px;*/
+.upper-bar .cu1:before {
+    font-family: "Font Awesome 5 Free";
+   content: "\f0d7";
+   display: inline-block;
+   vertical-align: middle;
+   font-weight:900;
     z-index: 1;
     font-size: 20px;
+    position: absolute;
+    left: 8px;
 }
-.upper-bar .cu2:after {
-    position: absolute;
-    content: '<';
-    top: 2px;
-    left: 9px;
-    background-color: transparent;
-    color: #fff;
-    transform: rotate(90deg);
-    /*font-size: 17px;*/
+.upper-bar .cu2::after {
+    font-family: "Font Awesome 5 Free";
+   content: "\f0d7";
+   display: inline-block;
+   vertical-align: middle;
+   font-weight:900;
     z-index: 1;
     font-size: 20px;
+    position: absolute;
+    left: 8px;
 }
 
 .upper-bar .fa-map-marker {
@@ -387,6 +533,13 @@
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+        .upper-bar {
+height: 320px;
+    }
+    .upper-bar .imag img {
+        margin-top: -15px;
+        margin-bottom: 10px;
+    }
     .upper-bar .imag img {
         margin-top: -15px;
         margin-bottom: 10px;
@@ -407,11 +560,14 @@
     }
     .upper-bar .parent_select .child_3 .cu2 {
         display: block;
-        margin: 5px 0;
+        margin: 5px 14px 0 0;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
+        .upper-bar {
+height: 320px;
+    }
     .upper-bar .imag img {
         margin-top: -15px;
         margin-bottom: 10px;
@@ -436,22 +592,35 @@
     }
     .upper-bar .parent_select .child_3 .cu2 {
         display: block;
-        margin: 5px 0;
+        margin: 5px 14px 0 0;
     }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
+        .upper-bar .row {
+        justify-content: center;
+    }
+    .upper-bar .parent_select {
+    width: 100%;
+}
+.upper-bar .imag{
+    margin-bottom: 20px;
+}
+.upper-bar .lang, .upper-bar .lang2 {
+    font-size: 15px;
+    font-weight: bold;
+}
     .upper-bar .parent_select .child_1 {
-        width: 20%;
+        width: 24%;
     }
     .upper-bar .customer-select select {
-        font-size: 14px;
+        font-size: 16px;
     }
     .upper-bar .customer-select::after {
         left: 5px;
     }
     .upper-bar .parent_select .child_2 {
-        width: 65%;
+        width: 70%;
     }
     .upper-bar .parent_select .child_3 {
         width: 75%;
@@ -460,7 +629,7 @@
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
     .upper-bar .parent_select .child_1 {
-        width: 20%;
+        width: 24%;
     }
     .upper-bar .parent_select .child_2 {
         width: 75%;
@@ -469,9 +638,13 @@
 /* End Upper Bar */
 /* Start landing */
 .jumbotron {
+    display: grid;
+align-content: space-between;
+padding-top: 50px;
+padding-bottom: 10px;
     text-align: center;
     position: relative;
-    height: 560px;
+    height: 590px;
     margin-bottom: 10px;
     width: 100%;
     background-image: url('../../../public/img/Screenshot_2020-10-17 E-DALELY Design.png');
@@ -480,6 +653,10 @@
     -o-background-size: cover;
     background-size: cover;
 }
+.jumbotron .search{
+    display: flex;
+    justify-content: center;
+}
 .jumbotron .input {
     border: none;
     width: 400px;
@@ -487,18 +664,21 @@
     height: 34px;
 }
 .jumbotron .search:after {
-    position: absolute;
-    content: '>';
-    top: 0;
     background-color: #87948b;
     width: 34px;
     height: 34px;
     color: #fff;
-    transform: rotate(90deg);
-    font-size: 17px;
-    border-top-left-radius: 4px;
+    padding-top: 1px;
+    border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
-    padding-top: 5px;
+    font-family: "Font Awesome 5 Free";
+   content: "\f0d7";
+   display: inline-block;
+   vertical-align: middle;
+   font-weight:900;
+    z-index: 1;
+    font-size: 20px;
+
 }
 .jumbotron .search i {
     background-color: #87948b;
@@ -510,19 +690,30 @@
     color: aliceblue;
     cursor: pointer;
 }
+.parent_featuers{
+        display: flex;
+    width: 95%;
+    justify-content: flex-end;
+   height:80px;
+   
+}
+
 .jumbotron .featuers {
-    width: 90%;
-    display: inline-flex;
-    justify-content: space-between;
-    margin: auto;
-    margin-top: 410px;
-    background-color: #bfc0c2;
-    padding: 10px 20px;
-    color: #635f5f;
+width: 80%;
+display: inline-flex;
+justify-content: space-between;
+margin: auto;
+background-color: #bfc0c2;
+padding: 10px 20px;
+color: #635f5f;
 }
 .jumbotron .featuers .cole {
     font-size: 30px;
     margin-top: -15px;
+    cursor: none;
+}
+.jumbotron .featuers .cole:hover {
+    color: #635f5f;
 }
 
 .jumbotron .featuers span {
@@ -531,18 +722,19 @@
 .jumbotron .featuers .cart-count {
     font-size: 13px;
     color: #ba8b00;
-    margin-left: 23px;
+    margin-left: 88%;
     background: #ffffff;
     height: 19px;
     border-radius: 50%;
     width: 17px;
     position: absolute;
-    margin-top: -16px;
+    margin-top: -11px;
 }
 .jumbotron .featuers div {
     display: inline-flex;
     cursor: pointer;
     position: relative;
+
 }
 .jumbotron .featuers div:hover {
     color: aliceblue;
@@ -552,18 +744,29 @@
     font-size: 20px;
 }
 .jumbotron .featuers .shopping {
-    margin: 0 4px;
+    margin: 0 10px;
 }
-.bars,
-.exit-fut {
+.bars {
     display: none;
 }
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .jumbotron {
         height: 300px;
-        width: 96%;
+        width: 100%;
     }
+    .bars{
+        display: flex;
+        justify-content: flex-start;
+        cursor: pointer;
+    }
+        .parent_featuers {
+    display: flex;
+    width: 100%;
+    height: 850px;
+    justify-content: center;
+}
     .jumbotron .featuers {
         width: 250px;
         position: absolute;
@@ -578,24 +781,94 @@
         margin-right: auto;
         display: block;
     }
-    .exit-fut {
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        background-color: #5daaa6;
-        border-radius: 50%;
-        cursor: pointer;
-        color: #fff;
-        top: 44%;
-        left: 6%;
-        padding: 1px;
-        font-weight: bold;
+ 
+    .jumbotron .search {
+        width: 100%;
     }
-    .bars {
+    .jumbotron .search input {
+        width: 50%;
+        padding: 4px 10px;
+        height: 35px;
+    }
+    .jumbotron .search i {
+        height: 35px;
+        width: 34px;
+        padding: 10px 10px;
+    }
+    .jumbotron .search:after {
+        width: 34px;
+        height: 34px;
+        top: 0;
+    }
+    .jumbotron .featuers .cole {
+        display: none;
+    }
+    .jumbotron .featuers .child_1,
+    .jumbotron .featuers .child_2,
+    .jumbotron .featuers .child_3,
+    .jumbotron .featuers .child_4,
+    .jumbotron .featuers .child_5 {
         display: block;
-        text-align: right;
-        cursor: pointer;
+        margin: 5px 0;
     }
+    .jumbotron .featuers .child_1 div,
+    .jumbotron .featuers .child_2 div,
+    .jumbotron .featuers .child_3 div,
+    .jumbotron .featuers .child_4 div,
+    .jumbotron .featuers .child_5 div {
+        display: inline-flex;
+    }
+
+    .jumbotron .featuers .shopping:after,
+    .jumbotron .featuers .map:after,
+    .jumbotron .featuers .user:after {
+        display: none;
+    }
+        .jumbotron .featuers .cart-count {
+    font-size: 13px;
+    color: #ba8b00;
+    margin-left: 44%;
+    background: #ffffff;
+    height: 19px;
+    border-radius: 50%;
+    width: 17px;
+    position: absolute;
+    margin-top: -9px;
+}
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+       .jumbotron {
+        height: 330px;
+        width: 100%;
+    }
+        .bars{
+        display: flex;
+        justify-content: flex-start;
+         cursor: pointer;
+    }
+    .parent_featuers {
+    display: flex;
+    width: 100%;
+    height: 850px;
+    justify-content: center;
+}
+    .jumbotron .featuers {
+        width: 250px;
+        position: absolute;
+        font-size: 11px;
+        border-radius: 20px;
+        overflow: hidden;
+        display: none;
+    }
+    .jumbotron .show {
+        margin-top: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+  
     .jumbotron .search {
         width: 100%;
     }
@@ -640,40 +913,32 @@
     .jumbotron .featuers .user:after {
         display: none;
     }
+    .jumbotron .featuers .cart-count {
+    font-size: 13px;
+    color: #ba8b00;
+    margin-left: 44%;
+    background: #ffffff;
+    height: 19px;
+    border-radius: 50%;
+    width: 17px;
+    position: absolute;
+    margin-top: -9px;
 }
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .jumbotron {
-        height: 430px;
-    }
-    .jumbotron .featuers .cole {
-        display: none;
-    }
-    .jumbotron .featuers div {
-        margin: 10px 0;
-    }
-    .jumbotron .featuers {
-        width: 60%;
-        margin-top: 70px;
-        font-size: 12px;
-        border-radius: 20px;
-        display: grid;
-        justify-content: center;
-    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .jumbotron .featuers {
-        width: 100%;
-        margin-top: 399px;
-        font-size: 12px;
-    }
-    .jumbotron .featuers .shopping:after,
-    .jumbotron .featuers .map:after,
-    .jumbotron .featuers .user:after {
-        top: -8px;
-    }
+.jumbotron .featuers {
+    width: 90%;
+    display: inline-flex;
+    justify-content: space-between;
+    margin: auto;
+    background-color: #bfc0c2;
+    padding: 10px 20px;
+    color: #635f5f;
+
 }
+}
+
 /* End landing */
 /* Start Naver*/
 .naver {
@@ -848,6 +1113,11 @@ export default {
         return {
             lang: lang,
             token: token,
+            form: {
+                name: '',
+                email: '',
+                password: '',
+            },
             details: {
                 id: this.id,
                 title: this.title,
@@ -873,6 +1143,20 @@ export default {
         }),
     },
     methods: {
+    openForm() {
+  document.getElementById("myForm").style.display = "block";
+  document.getElementById("myForm2").style.display = "block";
+},
+ registerForm() {
+  document.getElementById("myForm").style.zIndex = 8 ;
+  document.getElementById("myForm2").style.zIndex = 9 ;
+
+  
+},
+ closeForm() {
+  document.getElementById("myForm").style.display = "none";
+  document.getElementById("myForm2").style.display = "none";
+},
         gotocart() {
             this.$router.push(`/Cart`);
         },
@@ -881,12 +1165,8 @@ export default {
         },
         showfut() {
             document.getElementById('fut').classList.toggle('show');
-            document.getElementById('exit-fut').style.display = 'block';
         },
-        hidefut() {
-            document.getElementById('exit-fut').style.display = 'none';
-            document.getElementById('fut').classList.remove('show');
-        },
+
         handleChange(event) {
             localStorage.setItem('lang', event.target.value);
             window.location.reload();
@@ -910,6 +1190,48 @@ export default {
                     name: 'home',
                 });
             });
+        },
+          ...mapActions({
+            signIn: 'signIn',
+            register: 'register',
+        }),
+        submit() {
+            this.signIn(this.form);
+            document
+                .getElementById('content_loader')
+                .classList.remove('hidden');
+
+            setTimeout(function () {
+                document
+                    .getElementById('content_loader')
+                    .classList.add('hidden');
+            }, 3000);
+            setTimeout(function () {
+                window.location.reload();
+            }, 3000);
+            //  .then(() => {
+            //             this.$router.replace({
+            //                 name: 'home',
+            //             });
+            //         })
+            //         .catch(() => {
+            //             console.log('failed');
+            //         });
+        },
+        submit1() {
+            this.register(this.form);
+            document
+                .getElementById('content_loader')
+                .classList.remove('hidden');
+
+            setTimeout(function () {
+                document
+                    .getElementById('content_loader')
+                    .classList.add('hidden');
+            }, 3000);
+                        setTimeout(function () {
+                window.location.reload();
+            }, 3000);
         },
     },
  

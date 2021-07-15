@@ -240,7 +240,7 @@ export default {
             this.$router.push(`/ListView/${i}`);
         },
         gotoprodetails: function (i) {
-            this.$router.push(`/prodetails/${i}`);
+            this.$router.push(`/${i}`);
         },
         heartlike: function () {
             this.$el.lastChild.lastChild.lastChild.lastChild.classList.toggle(

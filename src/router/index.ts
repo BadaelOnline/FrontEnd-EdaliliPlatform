@@ -2,11 +2,6 @@ import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '/signin',
-      
-        component: () => import('../components/Sign/Sign.vue'),
-    },
-    {
         path: '/visitStore/:id/:title',
         component: () => import('../components/body/pages/visitStore.vue'),
     },
@@ -18,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     /* ProductDetalis */
     {
-        path: '/prodetails/:id',
+        path: '/:id',
         component: () => import('../components/global/prodetails.vue'),
     },
     {

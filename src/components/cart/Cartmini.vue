@@ -127,25 +127,26 @@
     font-size: 20px;
 }
 .cart-count {
-    font-size: 15px;
-    color: #ba8b00;
-    padding: 0px 5px;
-    margin-left: -5px;
-    background: #ffffff;
-    height: 21px;
-    border-radius: 50%;
-    width: 20px;
-    position: absolute;
-    margin-top: -13px;
+font-size: 12px;
+color: #ba8b00;
+margin-left: 23px;
+background: #ffffff;
+height: 18px;
+border-radius: 50%;
+width: 17px;
+position: absolute;
+margin-top: -13px;
 }
 .cart-shop-icon {
+    display: flex;
+justify-content: center;
     position: fixed;
     bottom: 10px;
     left: 5px;
     width: 50px;
     height: 50px;
     background-color: #73a580;
-    padding: 13px 10px;
+    padding: 18px 10px;
     border-radius: 50%;
     z-index: 999;
 }

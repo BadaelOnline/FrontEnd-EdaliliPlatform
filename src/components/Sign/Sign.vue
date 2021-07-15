@@ -11,7 +11,7 @@
                         <div class="col-12 text-center align-self-center py-5">
                             <div class="section pb-5 pt-5 pt-sm-2 text-center">
                                 <h6 class="mb-0 pb-3">
-                                    <span>Register</span><span>Log In</span>
+                                    <span>Log In</span><span>Register</span>
                                 </h6>
                                 <input
                                     class="checkbox"
@@ -24,66 +24,6 @@
                                     <div class="card-3d-wrapper">
                                         <form
                                             class="card-front"
-                                            @submit.prevent="submit1"
-                                        >
-                                            <div class="center-wrap">
-                                                <div
-                                                    class="section text-center"
-                                                >
-                                                    <h4 class="mb-4 pb-3">
-                                                        Register
-                                                    </h4>
-                                                    <div class="form-group">
-                                                        <input
-                                                            type="text"
-                                                            name="logname"
-                                                            class="form-style"
-                                                            v-model="form.name"
-                                                            placeholder="Your Full Name"
-                                                        />
-                                                        <i
-                                                            class="input-icon uil uil-user"
-                                                        ></i>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input
-                                                            type="email"
-                                                            name="logemail"
-                                                            class="form-style"
-                                                            v-model="form.email"
-                                                            placeholder="Your Email"
-                                                        />
-                                                        <i
-                                                            class="input-icon uil uil-at"
-                                                        ></i>
-                                                    </div>
-                                                    <div
-                                                        class="form-group mt-2"
-                                                    >
-                                                        <input
-                                                            type="password"
-                                                            name="logpass"
-                                                            class="form-style"
-                                                            v-model="
-                                                                form.password
-                                                            "
-                                                            placeholder="Your Password"
-                                                        />
-                                                        <i
-                                                            class="input-icon uil uil-lock-alt"
-                                                        ></i>
-                                                    </div>
-                                                    <button
-                                                        type="submit"
-                                                        class="btn mt-4"
-                                                    >
-                                                        Register
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <form
-                                            class="card-back"
                                             @submit.prevent="submit"
                                         >
                                             <div class="center-wrap">
@@ -91,7 +31,69 @@
                                                     class="section text-center"
                                                 >
                                                     <h4 class="mb-4 pb-3">
-                                                        Log In
+                                                         Log In
+                                                    </h4>
+                                                    <div class="form-group">
+                                                        <input
+                                                            type="text"
+                                                            name="logname"
+                                                            class="form-style"
+                                                            v-model="form.name"
+                                                            placeholder="Your Full Name"
+                                                        />
+                                                        <i
+                                                            class="input-icon uil uil-user"
+                                                        ></i>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input
+                                                            type="email"
+                                                            name="logemail"
+                                                            class="form-style"
+                                                            v-model="form.email"
+                                                            placeholder="Your Email"
+                                                        />
+                                                        <i
+                                                            class="input-icon uil uil-at"
+                                                        ></i>
+                                                    </div>
+                                                    <div
+                                                        class="form-group mt-2"
+                                                    >
+                                                        <input
+                                                            type="password"
+                                                            name="logpass"
+                                                            class="form-style"
+                                                            v-model="
+                                                                form.password
+                                                            "
+                                                            placeholder="Your Password"
+                                                        />
+                                                        <i
+                                                            class="input-icon uil uil-lock-alt"
+                                                        ></i>
+                                                    </div>
+                                                    <button
+                                                        type="submit"
+                                                        class="btn mt-4"
+                                                    >
+                                                         Log In
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <form
+                                            class="card-back"
+                                           
+                                              @submit.prevent="submit1"
+                                        >
+                                            <div class="center-wrap">
+                                                <div
+                                                    class="section text-center"
+                                                >
+                                                    <h4 class="mb-4 pb-3">
+                                                      
+                                                         Register
                                                     </h4>
                                                     <div class="form-group">
                                                         <input
@@ -139,7 +141,7 @@
                                                         type="submit"
                                                         class="btn mt-4"
                                                     >
-                                                        Log In
+                                                        Register
                                                     </button>
                                                     <p
                                                         class="mb-0 mt-4 text-center"
@@ -219,7 +221,10 @@ export default {
                     .getElementById('content_loader')
                     .classList.add('hidden');
             }, 3000);
-            console.log(JSON.stringify(this.form));
+                        setTimeout(function () {
+                window.location.reload();
+            }, 3000);
+          
         },
     },
 };
@@ -247,7 +252,7 @@ export default {
     animation: spin 2s linear infinite;
     position: absolute;
     right: 600px;
-    top: 300px;
+    top: 50%;
 }
 /* Safari */
 @-webkit-keyframes spin {

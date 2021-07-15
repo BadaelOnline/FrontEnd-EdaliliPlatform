@@ -11,7 +11,13 @@
                     v-for="brand in brands.slice(0, 2)"
                     :key="brand.id"
                 >
-                    <img :src="brand.image" />
+                    <img   data-aos="fade-up"
+                            data-aos-offset="200"
+                            data-aos-delay="50"
+                            data-aos-duration="1000"
+                            data-aos-easing="ease-in-out"
+                            data-aos-mirror="true"
+                            data-aos-once="true"  :src="brand.image" />
                 </div>
             </div>
         </div>
@@ -37,7 +43,14 @@
                 v-for="bran in brands.slice(2, 7)"
                 :key="bran.id"
             >
-                <img :src="bran.image" />
+                <img data-aos="flip-left"
+                    data-aos-offset="200"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="true"
+                    :src="bran.image" />
             </div>
         </div> 
         <!-- show  products -->
@@ -64,7 +77,14 @@
                     :key="brand.id"
                     :image="brand.image"
                 >
-                    <img :src="brand.image" />
+                    <img data-aos="flip-down"
+                    data-aos-offset="200"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="true"
+                      :src="brand.image" />
                 </div>
             </div>
         </div>
@@ -155,6 +175,13 @@
                             margin: 30px 0 0 0;
                             justify-content: space-around;
                         "
+                        data-aos="zoom-in"
+                    data-aos-offset="200"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="true"
                     >
                         <div
                             v-for="brand in brands.slice(9, 10)"
@@ -162,7 +189,8 @@
                             :image="brand.image"
                             class="col-sm-9 imgs"
                         >
-                            <img :src="brand.image" style="width: 100%" />
+                            <img 
+                             :src="brand.image" style="width: 100%" />
                         </div>
                         <div class="two-img">
                             <div
@@ -171,7 +199,8 @@
                                 :image="brand.image"
                                 class="col-sm-1.5 imges1"
                             >
-                                <img :src="brand.image" />
+                                <img 
+                                :src="brand.image" />
                             </div>
                             <div
                                 v-for="brand in brands.slice(11, 12)"
@@ -179,7 +208,8 @@
                                 :image="brand.image"
                                 class="col-sm-1.5 imges2"
                             >
-                                <img :src="brand.image" />
+                                <img 
+                                 :src="brand.image" />
                             </div>
                         </div>
                     </div>
