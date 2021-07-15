@@ -408,9 +408,9 @@
     height: 120px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
-    position: absolute;
+    position: fixed;
     right: 600px;
-    top: 500px;
+    top: 250px;
 }
 /* Safari */
 @-webkit-keyframes spin {
