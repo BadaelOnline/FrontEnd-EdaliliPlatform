@@ -203,7 +203,7 @@
                 </div>
             </div>
         </div>
-        <!--  -->
+        <!-- Latest subscribers -->
         <div class="Latest-subscribers">
             <h2
                 data-aos="fade-up"
@@ -258,6 +258,150 @@
                         <p>السويداء</p>
                         <a class="btn">زيارة</a>
                     </div>
+                </div>
+                <div class="card">
+                    <img src="../../../public/img/image.png" />
+                    <div class="blogcontent">
+                        <h3>سنتر الريم</h3>
+                        <p>السويداء</p>
+                        <a class="btn">زيارة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- products -->
+        <div class="products">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                class="heading"
+            >
+                Our <span>Products</span>
+            </h2>
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="../../../public/img/buty.jpg" />
+                        <ul class="social">
+                            <li><i class="fa fa-eye"></i></li>
+                            <li><i class="fa fa-heart"></i></li>
+                            <li><i class="fa fa-shopping-cart"></i></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title">شامبو</h3>
+                        <p>jnj jknc jdkcnsdj</p>
+                        <div class="price">150 S.P</div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //  -->
+        <div class="row">
+            <div class="column">something in row 3 column 2</div>
+            <div class="double-column">
+                <div class="blue-column">
+                    Some Text in row 3 double column 1
                 </div>
             </div>
         </div>
@@ -513,21 +657,25 @@ export default {
 }
 /*  Latest-subscribers */
 .Latest-subscribers {
-    margin: 24px;
-    padding: 24px;
-    text-align: center;
-    max-width: 1200px;
+    display: flex;
+    flex-flow: wrap;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 24px;
+    align-items: center;
+    justify-content: center;
+    /* max-width: 1200px; */
     width: 100%;
 }
 .container .card a {
     transition: all 0.5s;
     text-decoration: none;
-    color: #fff;
+    color: #000;
 }
 .container .card img {
     border-radius: 50%;
-    height: 50%;
-    width: 50%;
+    height: 80%;
+    width: 80%;
     transition: all 0.5s;
 }
 .container {
@@ -535,8 +683,9 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
     margin-top: 24px;
+    width: 100%;
 }
 .card {
     position: relative;
@@ -561,9 +710,7 @@ export default {
     width: 100%;
     color: #000;
     padding: 10px 5px;
-    background: linear-gradient(
-        45deg rgb(149, 21, 153) 0% rgba(144, 192, 229, 0.4) 100%
-    );
+    background: linear-gradient(#e66465, #9198e5);
     transition: all 0.5s;
 }
 .blogcontent h3 {
@@ -582,14 +729,148 @@ export default {
 .blogcontent .btn {
     display: block;
     padding: 5px 10px;
-    color: #000;
-    border: 1px solid #fff;
     border-radius: 3px;
     font-weight: 400;
+    box-shadow: 0 5px 20px #8b0d70;
 }
 .blogcontent .btn:hover {
-    /* background: rgba(52, 152, 219, 1); */
     transition: all 0.5s;
     text-decoration: none;
+}
+/* products */
+.products .container {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin: auto;
+    gap: 25px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    position: relative;
+    align-items: flex-end;
+    transition: 0.6s ease-out;
+    justify-content: space-around;
+}
+.product-grid {
+    width: 260px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 10px 10px #adabab;
+    transition: 0.5 all;
+}
+.product-grid:hover {
+    cursor: pointer;
+    box-shadow: 14px 11px 0 #e66465;
+}
+.product-grid .product-image {
+    position: relative;
+    overflow: hidden;
+    transition: 0.5 all;
+}
+.product-grid .product-image img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+.product-grid .product-image .social {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+}
+.product-grid .product-image .social li {
+    margin: 0 01 10px;
+    cursor: pointer;
+    transform: translateX(100px);
+    transition: all 0.5s;
+}
+.product-grid:hover .product-image .social li {
+    transform: translateX(0);
+}
+.product-grid .product-image .social li i {
+    color: #666;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    display: block;
+    transition: all 0.5s;
+}
+.product-grid .product-image .social li i:hover {
+    color: #fff;
+    background-color: #e66465;
+}
+.product-grid .product-content {
+    padding: 20px 10px;
+}
+.product-grid .product-content .title {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0 0 7px;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+}
+.product-grid .product-content p {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0 0 7px;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+}
+.product-grid .product-content .title:hover {
+    color: #03aae8;
+}
+.product-grid .price {
+    color: #03aae8;
+    font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.product-grid .rating {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.product-grid .rating li {
+    color: #ffd200;
+    font-size: 14px;
+    display: inline-block;
+}
+/*  */
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 24px;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    background-color: red;
+    flex: 1;
+}
+.blue-column {
+    background-color: blue;
+    height: 100px;
+}
+.double-column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 2;
 }
 </style>
