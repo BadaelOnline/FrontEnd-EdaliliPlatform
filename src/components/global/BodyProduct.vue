@@ -31,7 +31,7 @@
                     {{ $t('Choose') }}
                 </button>
                 <div class="heart-conten">
-                    <div @click="heartlike()" id="heart" class="heart"></div>
+                    <div @click="heartlike()" ref="heart" class="heart"></div>
                 </div>
             </div>
         </div>
@@ -91,10 +91,15 @@
     border-top-left-radius: 5%;
     cursor: pointer;
 }
-.content-pro .name-prod,
+.content-pro .name-prod{
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 .content-pro .category {
     cursor: pointer;
     margin-bottom: 10px;
+    opacity: .7;
 }
 .content-pro .checked {
     color: #dcd741;
@@ -232,7 +237,7 @@ export default {
             this.$router.push(`/products/${i}`);
         },
         heartlike: function () {
-            this.$el.lastChild.lastChild.lastChild.lastChild.classList.toggle(
+            this.$refs.heart.classList.toggle(
                 'is-active'
             );
         },

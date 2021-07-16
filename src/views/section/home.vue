@@ -129,7 +129,7 @@
     </div>
     <div
         id="deno"
-        class="carousel  w-100"
+        class="carousel slide w-100"
         data-ride="carousel"
         style="margin-top: 20%; margin-bottom: 20%"
     >

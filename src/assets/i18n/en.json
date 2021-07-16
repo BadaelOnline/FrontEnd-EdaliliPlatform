@@ -20,6 +20,9 @@
     "AddProfile":"Add Profile ",
     "lang":"Language",
     "SearchScope":"Search Scope",
+    "Governorate":"Governorate",
+    "City":"City",
+    "street":"Street",
 
     "//comment2": "appfootter",
     "GetKnowUs": "Get to Know Us",

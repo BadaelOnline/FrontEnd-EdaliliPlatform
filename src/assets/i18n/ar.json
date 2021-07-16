@@ -42,6 +42,9 @@
     "AddProfile":"أضف حساب",
     "lang":"اللغة",
     "SearchScope":"نطاق البحث",
+    "Governorate":"المحافظة",
+    "City":"المدينة",
+    "street":"الحي",
 
     "//comment3": "home page",
     "AllCategories": "جميع الأقسام",

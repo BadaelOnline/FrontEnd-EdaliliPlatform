@@ -33,7 +33,7 @@
                         <div class="child_3">
                             <div class="customer-select cu2">
                                 <select v-model="sortType" c>
-                                    <option value="1" disabled>المحافظة</option>
+                                    <option value="1" disabled>{{ $t('Governorate') }}</option>
                                     <option
                                         v-for="gover in governorates"
                                         :key="gover.id"
@@ -46,7 +46,7 @@
                             <div class="customer-select cu2">
                                 <select v-model="sortType">
                                     <option value="1" disabled>
-                                        المدینة/القریة
+                                      {{ $t('City') }} 
                                     </option>
                                     <option
                                         v-for="city in cities"
@@ -58,7 +58,7 @@
                             </div>
                             <div class="customer-select cu2">
                                 <select v-model="sortType">
-                                    <option value="1" disabled>الحي</option>
+                                    <option value="1" disabled>   {{ $t('street') }} </option>
                                     <option
                                         v-for="street in streets"
                                         :key="street.id"
@@ -500,7 +500,7 @@
     margin-left: auto;
     margin-right: auto;
     z-index: 2;
-    font-size: 16px;
+    font-size: 15px;
     position: relative;
     line-height: 2.15;
 }
@@ -513,7 +513,7 @@
     z-index: 1;
     font-size: 20px;
     position: absolute;
-    left: 8px;
+    left: 5px;
 }
 .upper-bar .cu2::after {
     font-family: "Font Awesome 5 Free";
@@ -524,7 +524,7 @@
     z-index: 1;
     font-size: 20px;
     position: absolute;
-    left: 8px;
+    left: 5px;
 }
 
 .upper-bar .fa-map-marker {
