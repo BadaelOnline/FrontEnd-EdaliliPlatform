@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>شركات</h1>
+        
     </div>
 </template>
 

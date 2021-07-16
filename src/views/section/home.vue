@@ -129,7 +129,7 @@
     </div>
     <div
         id="deno"
-        class="carousel slide w-100"
+        class="carousel  w-100"
         data-ride="carousel"
         style="margin-top: 20%; margin-bottom: 20%"
     >
@@ -191,7 +191,9 @@
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
+     
     </div>
+ 
 </template>
 <script>
 import { mapState } from 'vuex';
