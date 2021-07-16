@@ -405,7 +405,9 @@
                 </div>
             </div>
         </div>
+     
     </div>
+ 
 </template>
 <script>
 import { mapState } from 'vuex';
@@ -415,6 +417,8 @@ export default {
     props: ['image'],
     data() {
         return {};
+    },components:{
+ 
     },
     computed: {
         ...mapState(['Categories', 'Brands']),

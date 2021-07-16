@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     /* ProductDetalis */
     {
-        path: '/:id',
+        path: '/products/:id',
         component: () => import('../components/global/prodetails.vue'),
     },
     {

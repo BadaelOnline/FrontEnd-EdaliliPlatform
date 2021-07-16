@@ -691,10 +691,10 @@ padding-bottom: 10px;
     cursor: pointer;
 }
 .parent_featuers{
-        display: flex;
+    display: flex;
     width: 95%;
     justify-content: flex-end;
-   height:80px;
+    height:80px;
    
 }
 
@@ -764,7 +764,7 @@ color: #635f5f;
         .parent_featuers {
     display: flex;
     width: 100%;
-    height: 850px;
+    height: 200px;
     justify-content: center;
 }
     .jumbotron .featuers {
@@ -850,7 +850,7 @@ color: #635f5f;
     .parent_featuers {
     display: flex;
     width: 100%;
-    height: 850px;
+    height: 200px;
     justify-content: center;
 }
     .jumbotron .featuers {

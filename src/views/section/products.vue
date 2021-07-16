@@ -69,10 +69,10 @@
         </div> 
 
         <!-- show der -->
-        <div class="show-der">
-            <div class="row">
+        <div class="show-der row">
+            
                 <div
-                    class="col-lg-6 img text-center"
+                    class="col-md-6 col-xs-12 img text-center"
                     v-for="brand in brands.slice(7, 9)"
                     :key="brand.id"
                     :image="brand.image"
@@ -85,31 +85,31 @@
                     data-aos-mirror="true"
                     data-aos-once="true"
                       :src="brand.image" />
-                </div>
+             
             </div>
         </div>
         <!-- --------------------------------------------- -->
-        <div id="demo" class="carousel slide" data-ride="carousel">
+         <div id="demo" class="carousel slide" data-ride="carousel">
             <div class="row">
-                <div class="col-lg-3 col-sm-4 col-xs-12">
-                    <div>
+                <div class="col-lg-3 col-sm-4 col-xs-10">
+                  
                         <span class="last">اخر المشتركین</span>
                         <div class="last-subscriber">
                             <Subscriber
-                                v-for="Store in Stores.slice(0, 6)"
+                                v-for="Store in Stores.slice(0, 9)"
                                 :key="Store.pr"
                                 :title="Store.title"
                             />
                         </div>
-                    </div>
+                   
                 </div>
-                <div class="col-lg-9 col-sm-8 col-xs-12">
+                <div class="col-lg-9 col-sm-8 col-xs-10 carousel-none">
                     <div class="carousel-inner carousel-inner1">
                          <div class="carousel-item active">
                             <div class="show-prod">
                                 <div class="row">
-                                    <BodyProduct
-                                        v-for="items in Product.slice(0, 4)"
+                                    <BodyProduct class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
+                                        v-for="items in Product.slice(0, 3)"
                                         :key="items.id"
                                         :id="items.id"
                                         :short_des="items.short_des"
@@ -124,8 +124,8 @@
                         <div class="carousel-item">
                             <div class="show-prod">
                                 <div class="row">
-                                    <BodyProduct
-                                        v-for="items in Product.slice(4, 8)"
+                                    <BodyProduct class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
+                                        v-for="items in Product.slice(3, 6)"
                                         :key="items.id"
                                         :id="items.id"
                                         :image="items.image"
@@ -140,8 +140,8 @@
                         <div class="carousel-item">
                             <div class="show-prod">
                                 <div class="row">
-                                    <BodyProduct
-                                        v-for="items in Product.slice(0, 4)"
+                                    <BodyProduct class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
+                                        v-for="items in Product.slice(0, 3)"
                                         :key="items.id"
                                         :id="items.id"
                                         :image="items.image"
@@ -215,8 +215,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
         <!-- second Carousel -->
+      
          <div
             id="deno"
             class="carousel slide"
@@ -287,6 +288,9 @@
     </div>
 </template>
 <style scoped>
+.row{
+    justify-content: center;
+}
 .show-img {
     background-image: linear-gradient(180deg, #a6a6a6, #fff);
     width: 100%;
@@ -322,8 +326,9 @@
         width: 80%;
     }
     .show-prod {
-        height: 330px;
+        height: auto;
     }
+ 
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -367,7 +372,7 @@
         display: none;
     }
     .carousel-inner {
-        width: 105%;
+        width: 100%;
     }
     .carousel-inner .row .coler:nth-child(3) {
         display: none;
@@ -429,13 +434,11 @@
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .show-der {
-        height: 240px;
-    }
+    
     .show-der .img img {
         width: 80%;
-        height: 180px;
-        margin-top: 50px;
+        height: 150px;
+      
     }
     .show-der .img:last-child {
         display: none;
@@ -453,7 +456,7 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .show-der .img img {
-        width: 600px;
+        width: 500px;
     }
     .show-der .img:last-child {
         display: none;
@@ -477,7 +480,6 @@
     background-color: #fff;
     width: 100%;
     height: 250px;
-    margin-top: 50px;
     width: calc(96% / 5);
 }
 .show-market img {
@@ -511,8 +513,9 @@
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .show-market {
-        height: 180px;
+        height: 130px;
         width: calc(96% / 3);
+          margin-top: 0;
     }
     .mar .show-market:nth-child(2),
     .mar .show-market:nth-child(3) {
@@ -579,7 +582,8 @@
     color: #5e4949;
 }
 .last-subscriber {
-    height: 680px;
+    height: auto;
+    padding-bottom: 20px;
     background-color: #d4cccc;
     position: relative;
     padding-top: 10px;
@@ -608,14 +612,21 @@
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .carousel-control-next-icon,
+    .carousel-control-next-icon{
+        right: 25px;
+         width: 40px;
+        height: 50px;
+    }
     .carousel-control-prev-icon {
         width: 40px;
         height: 50px;
     }
+    .carousel-none{
+        display: none;
+    }
     .last-subscriber {
         margin-bottom: 50px;
-        width: 100%;
+        width: 94%;
         text-align: center;
         margin-left: 0%;
     }
@@ -625,7 +636,7 @@
     }
     .last-subscriber .subscriber {
         width: 85%;
-        margin: 10px 0 -4px 21px;
+        margin: 10px 0 0 13px;
         font-size: 16px;
     }
     .last-subscriber .subscriber img {
@@ -638,9 +649,7 @@
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
     .last-subscriber {
-        width: 120%;
-        margin-left: -20px;
-        height: 475px;
+        height: auto;
         padding-top: 1px;
     }
     .last-subscriber .subscriber {
@@ -659,7 +668,7 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .last-subscriber {
-        height: 545px;
+        height: auto;
     }
     .last-subscriber .subscriber {
         font-size: 15px;
@@ -779,9 +788,9 @@ export default {
     name: 'products',
     components: {
         BodyProduct: defineAsyncComponent(() =>import(`@/components/global/BodyProduct.vue`),),
-        Subscriber: defineAsyncComponent(() =>
-            import(`@/components/global/Subscriber.vue`)
-        ),
+         Subscriber: defineAsyncComponent(() =>
+             import(`@/components/global/Subscriber.vue`)
+         ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
         ),

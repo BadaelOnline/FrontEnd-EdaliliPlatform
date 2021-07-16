@@ -1,9 +1,10 @@
 <template>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 coler">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 coler">
         <div class="content-pro text-center">
 
                 <img :src="`${image}`"  v-if="image" class="new" @click="gotoprodetails(id)"/> 
                 <img v-else src="../../../public/img/3.jpg"  class="new" @click="gotoprodetails(id)"/> 
+                <div class="contnet_details">
             <div class="name-prod" @click="gotoprodetails(id)">
                     {{ name }}
                 </div>
@@ -34,6 +35,7 @@
                 </div>
             </div>
         </div>
+        </div>
         <!-- 
              <div class="stage row">
               <div @click="addToCart()" class="cart-ico">
@@ -47,26 +49,12 @@
     </div>
 </template>
 <style scoped>
-@media (max-width: 575.98px) {
-    .left,
-    .center,
-    .right {
-        width: 40px;
-        height: 45px;
-    }
-    .left {
-        transform: translateX(-10px) translateZ(-25px) rotateY(-5deg);
-    }
-    .right {
-        transform: translateX(10px) translateZ(-25px) rotateY(5deg);
-    }
-    .text {
-        bottom: -7px;
-        left: 5px;
-        width: 0px;
-        font-size: 13px;
-    }
+.contnet_details{
+    display: grid;
+    justify-content: space-between;
+    height: 270px;
 }
+
 /* body of products */
 .cart-ico {
     margin: auto;
@@ -92,10 +80,7 @@
     border-radius: 5%;
     transition: all 0.5s;
 }
-.content-pro .flex-body-prod {
-    display: flex;
-    flex-flow: column;
-}
+
 
 .content-pro:hover {
     transform: scale3d(1.05, 1.05, 1);
@@ -132,16 +117,20 @@
 .content-pro button:hover {
     background-color: #d3b85f;
 }
+.contnet_details .row{
+    justify-content: center;
+}
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 576.98px) {
+    .coler{
+        width: 70%;
+    }
     .content-pro {
         height: auto;
         margin-top: 2vh;
-        font-size: 4vw;
+        font-size: 14px;
     }
-    .carousel-inner .content-pro {
-        margin-top: -4vh;
-    }
+
     .content-pro .row {
         flex-wrap: nowrap;
     }
@@ -153,7 +142,7 @@
         max-width: 50%;
     }
     .content-pro button {
-        font-size: 4vw;
+       font-size: 14px;
         width: 70px;
         height: 40px;
         margin: 16px 3px;
@@ -165,10 +154,10 @@
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
     .content-pro {
-        font-size: 2.3vw;
+        font-size: 2vw;
     }
     .content-pro button {
-        font-size: 2.3vw;
+        font-size: 2vw;
         width: 80px;
         height: 40px;
         margin: 15px 0 0 auto;
@@ -240,7 +229,7 @@ export default {
             this.$router.push(`/ListView/${i}`);
         },
         gotoprodetails: function (i) {
-            this.$router.push(`/${i}`);
+            this.$router.push(`/products/${i}`);
         },
         heartlike: function () {
             this.$el.lastChild.lastChild.lastChild.lastChild.classList.toggle(
