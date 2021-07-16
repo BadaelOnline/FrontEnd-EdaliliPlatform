@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Cartmini />
         <div class="home">
             <h2
                 data-aos="fade-up"
@@ -50,9 +51,9 @@
             >
                 Our <span>Brands</span>
             </h2>
-            <div class="slider">
+            <div class="slider1">
                 <div class="slide-track">
-                    <div class="slide" v-for="brand in Brands" :key="brand.id">
+                    <div class="slide1" v-for="brand in Brands" :key="brand.id">
                         <img
                             src="../../../public/img/IMG_1.png"
                             :alt="brand.name"
@@ -75,125 +76,75 @@
             >
                 Our <span>Products</span>
             </h2>
-            <div
-                class="container"
-                data-aos="fade-up-right"
-                data-aos-offset="200"
-                data-aos-delay="50"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="true"
-            >
-                <div
-                    class="product-grid"
-                    v-for="product in Product"
-                    :key="product.id"
-                >
-                    <div class="product-image">
-                        <img src="../../../public/img/buty.jpg" />
-                        <ul class="social">
-                            <li>
-                                <i class="fa fa-eye"></i>
-                            </li>
-                            <li><i class="fa fa-heart"></i></li>
-                        </ul>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title">{{ product.name }}</h3>
-                        <p>{{ product.short_des }}</p>
-                        <div class="avilble">
-                            <div style="display: inline-block">
-                                متوفر في {{ product.avalibleStore }} متاجر
+            <div id="deno" class="carousel slide" data-ride="carousel" style="">
+                <div class="col-sm-12" style="padding: 0">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="show-prod">
+                                <div class="row">
+                                    <BodyProduct
+                                        v-for="items in Product.slice(0, 4)"
+                                        :key="items.id"
+                                        :id="items.id"
+                                        :image="items.image"
+                                        :short_des="items.short_des"
+                                        :name="items.name"
+                                    >
+                                    </BodyProduct>
+                                </div>
                             </div>
-                            <span class="fa fa-check-circle"></span>
                         </div>
-                        <ul class="rating">
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                        </ul>
-                        <button>
-                            {{ $t('Choose') }}
-                        </button>
+                        <div class="carousel-item">
+                            <div class="show-prod">
+                                <div class="row">
+                                    <BodyProduct
+                                        v-for="items in Product.slice(4, 8)"
+                                        :key="items.id"
+                                        :id="items.id"
+                                        :image="items.image"
+                                        :short_des="items.short_des"
+                                        :name="items.name"
+                                    >
+                                    </BodyProduct>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="show-prod">
+                                <div class="row">
+                                    <BodyProduct
+                                        v-for="items in Product.slice(0, 4)"
+                                        :key="items.id"
+                                        :id="items.id"
+                                        :image="items.image"
+                                        :short_des="items.short_des"
+                                        :name="items.name"
+                                    >
+                                    </BodyProduct>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <a
+                        class="carousel-control-prev"
+                        href="#deno"
+                        data-slide="prev"
+                    >
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a
+                        class="carousel-control-next"
+                        href="#deno"
+                        data-slide="next"
+                    >
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
                 </div>
             </div>
         </div>
-        <!--  -->
-
-        <!--  -->
-        <!--  -->
     </div>
-    <div
-        id="deno"
-        class="carousel  w-100"
-        data-ride="carousel"
-        style="margin-top: 20%; margin-bottom: 20%"
-    >
-        <div class="col-sm-12" style="padding: 0">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="show-prod">
-                        <div class="row">
-                            <BodyProduct
-                                v-for="items in Product.slice(0, 4)"
-                                :key="items.id"
-                                :id="items.id"
-                                :image="items.image"
-                                :short_des="items.short_des"
-                                :name="items.name"
-                            >
-                            </BodyProduct>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="show-prod">
-                        <div class="row">
-                            <BodyProduct
-                                v-for="items in Product.slice(4, 8)"
-                                :key="items.id"
-                                :id="items.id"
-                                :image="items.image"
-                                :short_des="items.short_des"
-                                :name="items.name"
-                            >
-                            </BodyProduct>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="show-prod">
-                        <div class="row">
-                            <BodyProduct
-                                v-for="items in Product.slice(0, 4)"
-                                :key="items.id"
-                                :id="items.id"
-                                :image="items.image"
-                                :short_des="items.short_des"
-                                :name="items.name"
-                            >
-                            </BodyProduct>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <a class="carousel-control-prev" href="#deno" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#deno" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-        </div>
-     
-    </div>
- 
 </template>
 <script>
 import { mapState } from 'vuex';
@@ -208,9 +159,9 @@ export default {
         BodyProduct: defineAsyncComponent(() =>
             import(`@/components/global/BodyProduct.vue`)
         ),
-        // Cartmini: defineAsyncComponent(() =>
-        //     import(`@/components/cart/Cartmini.vue`)
-        // ),
+        Cartmini: defineAsyncComponent(() =>
+            import(`@/components/cart/Cartmini.vue`)
+        ),
     },
     methods: {
         gotoListView: function (i) {
@@ -336,7 +287,7 @@ export default {
     display: grid;
     place-items: center;
 }
-.slider {
+.slider1 {
     height: 250px;
     margin: auto;
     position: relative;
@@ -361,7 +312,7 @@ export default {
         transform: translateX(calc(-250px * 9));
     }
 }
-.slide {
+.slide1 {
     height: 200px;
     width: 250px;
     display: flex;
@@ -369,15 +320,15 @@ export default {
     padding: 15px;
     perspective: 100px;
 }
-.slide img {
+.slide1 img {
     width: 100%;
     transition: transform 1s;
 }
-.slide img:hover {
+.slide1 img:hover {
     transform: translateZ(20px);
 }
-.slide::before,
-.slider::after {
+.slide1::before,
+.slider1::after {
     background: linear-gradient(
         to right,
         rgba(255, 255, 255, 1) 0%,
@@ -389,179 +340,77 @@ export default {
     width: 15%;
     z-index: 2;
 }
-.slider::before {
+.slider1::before {
     left: 0;
     top: 0;
 }
-.slider::after {
+.slider1::after {
     right: 0;
     top: 0;
     transform: rotateZ(180deg);
 }
-/* products */
-.products {
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
+/* product */
+.row {
     justify-content: center;
-    width: 100%;
-    background: #fafafa;
+    /* margin: 24px; */
 }
-.container {
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 24px;
-    transition: 0.6s ease-out;
+.show-prod {
+    padding: 0 10px;
+    /* margin: 24px; */
 }
-.product-grid {
-    width: 260px;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top: 24px;
-    cursor: pointer;
-    background-color: #fff;
-    box-shadow: 0 10px 10px #adabab;
-    transition: 0.5 all;
-    margin: 24px;
-    margin-top: 24px;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
+@media (max-width: 575.98px) {
+    .show-prod {
+        height: auto;
+    }
+    .carousel-inner {
+        width: 100%;
+    }
+    .carousel-inner .row .coler:nth-child(3) {
+        display: none;
+    }
+    .carousel-inner .row .col-xs-6 {
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+    .carousel-item {
+        margin-bottom: 40px;
+    }
+    .carousel-control-next-icon {
+        right: 25px;
+        width: 40px;
+        height: 50px;
+    }
+    .carousel-control-prev-icon {
+        width: 40px;
+        height: 50px;
+    }
+    .carousel-inner {
+        box-shadow: none;
+        overflow: visible;
+    }
 }
-.product-grid:hover {
-    cursor: pointer;
-    box-shadow: 14px 11px 0 #e66465;
-}
-.product-grid .product-image {
-    position: relative;
-    overflow: hidden;
-    transition: 0.5 all;
-}
-.product-grid .product-image img {
-    width: 100%;
-    height: 100%;
-    transition: all 0.5s;
-}
-.product-grid .product-image .social {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    position: absolute;
-    bottom: 10px;
-    right: 0;
-}
-.product-grid .product-image .social li {
-    margin: 0 01 10px;
-    cursor: pointer;
-    transform: translateX(100px);
-    transition: all 0.5s;
-}
-.product-grid:hover .product-image .social li {
-    transform: translateX(0);
-}
-.product-grid .product-image .social li i {
-    color: #666;
-    background-color: #fff;
-    font-size: 16px;
-    line-height: 40px;
-    height: 40px;
-    width: 40px;
-    display: block;
-    transition: all 0.5s;
-}
-.product-grid .product-image .social li i:hover {
-    color: #fff;
-    background-color: #e66465;
-}
-.product-grid .product-content {
-    padding: 20px 10px;
-}
-.product-grid .product-content .title {
-    font-size: 15px;
-    font-weight: 600;
-    text-transform: capitalize;
-    margin: 0 0 7px;
-    letter-spacing: 1px;
-    transition: all 0.5s;
-}
-.product-grid .product-content p {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: capitalize;
-    margin: 0 0 7px;
-    letter-spacing: 1px;
-    transition: all 0.5s;
-}
-.product-grid .product-content .title:hover {
-    color: #03aae8;
-}
-.product-grid .price {
-    color: #03aae8;
-    font-size: 10px;
-    font-weight: 500;
-    margin-bottom: 6px;
-}
-.product-grid .product-content button {
-    width: 100px;
-    height: 50px;
-    font-size: 1.5vw;
-    border: none;
-    color: #5daaa6;
+.carousel-inner {
     margin: auto;
-    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
 }
-.product-grid .product-content button:hover {
-    background-color: #d3b85f;
+.carousel-item {
+    margin: auto;
 }
-.product-grid .rating {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.carousel-inner .show-prod .row .content-pro {
+    margin-top: 0;
 }
-.product-grid .rating li {
-    color: #ffd200;
-    font-size: 14px;
-    display: inline-block;
-}
-.avilble {
-    color: #19e653;
-}
-</style>
-<style lang="scss" scoped>
-.heart-conten {
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    width: 50px;
+.carousel-control-next,
+.carousel-control-prev {
     height: 50px;
-    margin: 10px auto;
 }
-.product-grid .product-content .heart-conten:hover {
-    background-color: #d3b85f;
-}
-.heart {
-    width: 80px;
-    height: 100px;
-    background: url('../../../public/img/heart.png') no-repeat;
-    background-position: 0 0;
-    cursor: pointer;
-    transition: background-position 1s steps(28);
-    transition-duration: 0s;
-    margin: -22px 0px 0 -25px;
-
-    &.is-active {
-        transition-duration: 1s;
-        background-position: -2800px 0;
-    }
-}
-@media (max-width: 576.98px) {
-    .heart-conten {
-        margin: 10px 0;
-    }
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    border: 1px solid #c7c7c7;
+    border-radius: 50%;
+    width: 54px;
+    height: 95px;
+    top: 250px;
+    position: absolute;
 }
 </style>

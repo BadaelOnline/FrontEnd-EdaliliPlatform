@@ -2,28 +2,30 @@
     <div class="products">
         <Cartmini />
         <!--  show img  -->
-        
-        <div class="show-img ">
-          
-            <div  class="row ">
-                <div 
+
+        <div class="show-img">
+            <div class="row">
+                <div
                     class="col-md-6 img"
                     v-for="brand in brands.slice(0, 2)"
                     :key="brand.id"
                 >
-                    <img   data-aos="fade-up"
-                            data-aos-offset="200"
-                            data-aos-delay="50"
-                            data-aos-duration="1000"
-                            data-aos-easing="ease-in-out"
-                            data-aos-mirror="true"
-                            data-aos-once="true"  :src="brand.image" />
+                    <img
+                        data-aos="fade-up"
+                        data-aos-offset="200"
+                        data-aos-delay="50"
+                        data-aos-duration="1000"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="true"
+                        :src="brand.image"
+                    />
                 </div>
             </div>
         </div>
         <!-- show  products -->
-         <div class="show-prod">
-            <div  class="row reower">
+        <div class="show-prod">
+            <div class="row reower">
                 <BodyProduct
                     v-for="items in Product.slice(0, 4)"
                     :key="items.id"
@@ -35,26 +37,28 @@
                 >
                 </BodyProduct>
             </div>
-        </div>  
+        </div>
         <!-- show market-->
-         <div class="mar ">
-            <div  
-                class="show-market "
+        <div class="mar">
+            <div
+                class="show-market"
                 v-for="bran in brands.slice(2, 7)"
                 :key="bran.id"
             >
-                <img data-aos="flip-left"
+                <img
+                    data-aos="flip-left"
                     data-aos-offset="200"
                     data-aos-delay="50"
                     data-aos-duration="1000"
                     data-aos-easing="ease-in-out"
                     data-aos-mirror="true"
                     data-aos-once="true"
-                    :src="bran.image" />
+                    :src="bran.image"
+                />
             </div>
-        </div> 
+        </div>
         <!-- show  products -->
-         <div class="show-prod">
+        <div class="show-prod">
             <div class="row reower">
                 <BodyProduct
                     v-for="items in Product.slice(4, 8)"
@@ -66,49 +70,48 @@
                 >
                 </BodyProduct>
             </div>
-        </div> 
+        </div>
 
         <!-- show der -->
         <div class="show-der row">
-            
-                <div
-                    class="col-md-6 col-xs-12 img text-center"
-                    v-for="brand in brands.slice(7, 9)"
-                    :key="brand.id"
-                    :image="brand.image"
-                >
-                    <img data-aos="flip-down"
+            <div
+                class="col-md-6 col-xs-12 img text-center"
+                v-for="brand in brands.slice(7, 9)"
+                :key="brand.id"
+                :image="brand.image"
+            >
+                <img
+                    data-aos="flip-down"
                     data-aos-offset="200"
                     data-aos-delay="50"
                     data-aos-duration="1000"
                     data-aos-easing="ease-in-out"
                     data-aos-mirror="true"
                     data-aos-once="true"
-                      :src="brand.image" />
-             
+                    :src="brand.image"
+                />
             </div>
         </div>
         <!-- --------------------------------------------- -->
-         <div id="demo" class="carousel slide" data-ride="carousel">
+        <div id="demo" class="carousel slide" data-ride="carousel">
             <div class="row">
                 <div class="col-lg-3 col-sm-4 col-xs-10">
-                  
-                        <span class="last">اخر المشتركین</span>
-                        <div class="last-subscriber">
-                            <Subscriber
-                                v-for="Store in Stores.slice(0, 9)"
-                                :key="Store.pr"
-                                :title="Store.title"
-                            />
-                        </div>
-                   
+                    <span class="last">اخر المشتركین</span>
+                    <div class="last-subscriber">
+                        <Subscriber
+                            v-for="Store in Stores.slice(0, 9)"
+                            :key="Store.pr"
+                            :title="Store.title"
+                        />
+                    </div>
                 </div>
                 <div class="col-lg-9 col-sm-8 col-xs-10 carousel-none">
                     <div class="carousel-inner carousel-inner1">
-                         <div class="carousel-item active">
+                        <div class="carousel-item active">
                             <div class="show-prod">
                                 <div class="row">
-                                    <BodyProduct class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
+                                    <BodyProduct
+                                        class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
                                         v-for="items in Product.slice(0, 3)"
                                         :key="items.id"
                                         :id="items.id"
@@ -120,11 +123,12 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="carousel-item">
                             <div class="show-prod">
                                 <div class="row">
-                                    <BodyProduct class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
+                                    <BodyProduct
+                                        class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
                                         v-for="items in Product.slice(3, 6)"
                                         :key="items.id"
                                         :id="items.id"
@@ -135,12 +139,13 @@
                                     </BodyProduct>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="carousel-item">
                             <div class="show-prod">
                                 <div class="row">
-                                    <BodyProduct class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
+                                    <BodyProduct
+                                        class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
                                         v-for="items in Product.slice(0, 3)"
                                         :key="items.id"
                                         :id="items.id"
@@ -151,7 +156,7 @@
                                     </BodyProduct>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
 
                     <a
@@ -176,12 +181,12 @@
                             justify-content: space-around;
                         "
                         data-aos="zoom-in"
-                    data-aos-offset="200"
-                    data-aos-delay="50"
-                    data-aos-duration="1000"
-                    data-aos-easing="ease-in-out"
-                    data-aos-mirror="true"
-                    data-aos-once="true"
+                        data-aos-offset="200"
+                        data-aos-delay="50"
+                        data-aos-duration="1000"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="true"
                     >
                         <div
                             v-for="brand in brands.slice(9, 10)"
@@ -189,8 +194,7 @@
                             :image="brand.image"
                             class="col-sm-9 imgs"
                         >
-                            <img 
-                             :src="brand.image" style="width: 100%" />
+                            <img :src="brand.image" style="width: 100%" />
                         </div>
                         <div class="two-img">
                             <div
@@ -199,8 +203,7 @@
                                 :image="brand.image"
                                 class="col-sm-1.5 imges1"
                             >
-                                <img 
-                                :src="brand.image" />
+                                <img :src="brand.image" />
                             </div>
                             <div
                                 v-for="brand in brands.slice(11, 12)"
@@ -208,17 +211,16 @@
                                 :image="brand.image"
                                 class="col-sm-1.5 imges2"
                             >
-                                <img 
-                                 :src="brand.image" />
+                                <img :src="brand.image" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
         <!-- second Carousel -->
-      
-         <div
+
+        <div
             id="deno"
             class="carousel slide"
             data-ride="carousel"
@@ -226,8 +228,7 @@
         >
             <div class="col-sm-12" style="padding: 0">
                 <div class="carousel-inner">
-                 
-                    <div class="carousel-item active">
+                    <div class="carousel-item mr-2 active">
                         <div class="show-prod">
                             <div class="row">
                                 <BodyProduct
@@ -242,8 +243,8 @@
                             </div>
                         </div>
                     </div>
-                
-                    <div class="carousel-item">
+
+                    <div class="carousel-item mr-2">
                         <div class="show-prod">
                             <div class="row">
                                 <BodyProduct
@@ -258,8 +259,8 @@
                             </div>
                         </div>
                     </div>
-                   
-                    <div class="carousel-item">
+
+                    <div class="carousel-item mr-2">
                         <div class="show-prod">
                             <div class="row">
                                 <BodyProduct
@@ -276,7 +277,6 @@
                     </div>
                 </div>
 
-              
                 <a class="carousel-control-prev" href="#deno" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
@@ -284,11 +284,11 @@
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
-        </div> 
+        </div>
     </div>
 </template>
 <style scoped>
-.row{
+.row {
     justify-content: center;
 }
 .show-img {
@@ -305,7 +305,6 @@
 .show-img .row .img {
     text-align: center;
     transition: all 0.5s;
-
 }
 
 .show-img .row .img:hover {
@@ -328,7 +327,6 @@
     .show-prod {
         height: auto;
     }
- 
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -434,11 +432,9 @@
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    
     .show-der .img img {
         width: 80%;
         height: 150px;
-      
     }
     .show-der .img:last-child {
         display: none;
@@ -515,7 +511,7 @@
     .show-market {
         height: 130px;
         width: calc(96% / 3);
-          margin-top: 0;
+        margin-top: 0;
     }
     .mar .show-market:nth-child(2),
     .mar .show-market:nth-child(3) {
@@ -612,16 +608,16 @@
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .carousel-control-next-icon{
+    .carousel-control-next-icon {
         right: 25px;
-         width: 40px;
+        width: 40px;
         height: 50px;
     }
     .carousel-control-prev-icon {
         width: 40px;
         height: 50px;
     }
-    .carousel-none{
+    .carousel-none {
         display: none;
     }
     .last-subscriber {
@@ -787,10 +783,12 @@ export default {
     },
     name: 'products',
     components: {
-        BodyProduct: defineAsyncComponent(() =>import(`@/components/global/BodyProduct.vue`),),
-         Subscriber: defineAsyncComponent(() =>
-             import(`@/components/global/Subscriber.vue`)
-         ),
+        BodyProduct: defineAsyncComponent(() =>
+            import(`@/components/global/BodyProduct.vue`)
+        ),
+        Subscriber: defineAsyncComponent(() =>
+            import(`@/components/global/Subscriber.vue`)
+        ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
         ),
@@ -812,8 +810,7 @@ export default {
     mounted() {
         this.$store.dispatch('loadProducts');
         this.$store.dispatch('loadStores');
-        this.$store.dispatch('loadBrands');      
-    }
-   
+        this.$store.dispatch('loadBrands');
+    },
 };
 </script>
