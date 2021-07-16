@@ -8,7 +8,7 @@
                 data-aos-duration="1000"
                 data-aos-easing="ease-in-out"
                 data-aos-mirror="true"
-                data-aos-once="false"
+                data-aos-once="true"
                 class="heading"
             >
                 Our <span>Section</span>
@@ -20,133 +20,18 @@
                 data-aos-duration="1000"
                 data-aos-easing="ease-in-out"
                 data-aos-mirror="true"
-                data-aos-once="false"
+                data-aos-once="true"
                 class="team-area"
             >
-                <div class="single-team">
+                <div
+                    class="single-team"
+                    v-for="section in Sections"
+                    :key="section.id"
+                >
                     <img src="../../../public/img/buty.jpg" />
                     <div class="team-text">
-                        <h2>بقالة</h2>
+                        <h2>{{ section.name }}</h2>
                         <a>See More</a>
-                    </div>
-                </div>
-                <div class="single-team">
-                    <img src="../../../public/img/buty.jpg" />
-                    <div class="team-text">
-                        <h2>إكسسوارات</h2>
-                        <a>See More</a>
-                    </div>
-                </div>
-                <div class="single-team">
-                    <img src="../../../public/img/buty.jpg" />
-                    <div class="team-text">
-                        <h2>فواكه</h2>
-                        <a>See More</a>
-                    </div>
-                </div>
-                <div class="single-team">
-                    <img src="../../../public/img/buty.jpg" />
-                    <div class="team-text">
-                        <h2>خضار</h2>
-                        <a>See More</a>
-                    </div>
-                </div>
-                <div class="single-team">
-                    <img src="../../../public/img/buty.jpg" />
-                    <div class="team-text">
-                        <h2>خضار</h2>
-                        <a>See More</a>
-                    </div>
-                </div>
-                <div class="single-team">
-                    <img src="../../../public/img/buty.jpg" />
-                    <div class="team-text">
-                        <h2>أزياء</h2>
-                        <a>See More</a>
-                    </div>
-                </div>
-                <div class="single-team">
-                    <img src="../../../public/img/buty.jpg" />
-                    <div class="team-text">
-                        <h2>أدوات منزلية</h2>
-                        <a>See More</a>
-                    </div>
-                </div>
-                <div class="single-team">
-                    <img src="../../../public/img/buty.jpg" />
-                    <div class="team-text">
-                        <h2>إكسسوارات</h2>
-                        <a>See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- category -->
-        <div class="categories">
-            <h2
-                data-aos="fade-up"
-                data-aos-offset="200"
-                data-aos-delay="50"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                class="heading"
-            >
-                Our <span>Categories</span>
-            </h2>
-            <div
-                class="wrapper"
-                data-aos="fade-up-right"
-                data-aos-offset="200"
-                data-aos-delay="50"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-            >
-                <div class="categories-container">
-                    <div class="category">
-                        <img src="../../../public/img/kitchen.jpg" alt="" />
-                        <div class="category-body">
-                            <h2>بقالة</h2>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <img src="../../../public/img/kitchen.jpg" alt="" />
-                        <div class="category-body">
-                            <h2>بقالة</h2>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <img src="../../../public/img/kitchen.jpg" alt="" />
-                        <div class="category-body">
-                            <h2>بقالة</h2>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <img src="../../../public/img/kitchen.jpg" alt="" />
-                        <div class="category-body">
-                            <h2>بقالة</h2>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <img src="../../../public/img/kitchen.jpg" alt="" />
-                        <div class="category-body">
-                            <h2>بقالة</h2>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <img src="../../../public/img/kitchen.jpg" alt="" />
-                        <div class="category-body">
-                            <h2>بقالة</h2>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <img src="../../../public/img/kitchen.jpg" alt="" />
-                        <div class="category-body">
-                            <h2>بقالة</h2>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -160,111 +45,18 @@
                 data-aos-duration="1000"
                 data-aos-easing="ease-in-out"
                 data-aos-mirror="true"
-                data-aos-once="false"
+                data-aos-once="true"
                 class="heading"
             >
                 Our <span>Brands</span>
             </h2>
-            <div
-                class="slider"
-                data-aos="fade-left"
-                data-aos-offset="200"
-                data-aos-delay="50"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-            >
+            <div class="slider">
                 <div class="slide-track">
-                    <div class="slide">
-                        <img src="../../../public/img/IMG_1.png" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="../../../public/img/IMG_2.png" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="../../../public/img/IMG_3.png" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="../../../public/img/IMG_4.png" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="../../../public/img/IMG_5.png" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="../../../public/img/images.jpg" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="../../../public/img/images1.jpg" alt="" />
-                    </div>
-                    <div class="slide">
-                        <img src="../../../public/img/images2.jpg" alt="" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Latest subscribers -->
-        <div class="Latest-subscribers">
-            <h2
-                data-aos="fade-up"
-                data-aos-offset="200"
-                data-aos-delay="50"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-                class="heading"
-            >
-                Our <span>Latest subscribers</span>
-            </h2>
-            <div
-                class="container"
-                data-aos="fade-up-right"
-                data-aos-offset="200"
-                data-aos-delay="50"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
-            >
-                <div class="card">
-                    <img src="../../../public/img/image.png" />
-                    <div class="blogcontent">
-                        <h3>سنتر الريم</h3>
-                        <p>السويداء</p>
-                        <a class="btn">زيارة</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../../../public/img/image.png" />
-                    <div class="blogcontent">
-                        <h3>سنتر الريم</h3>
-                        <p>السويداء</p>
-                        <a class="btn">زيارة</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../../../public/img/image.png" />
-                    <div class="blogcontent">
-                        <h3>سنتر الريم</h3>
-                        <p>السويداء</p>
-                        <a class="btn">زيارة</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../../../public/img/image.png" />
-                    <div class="blogcontent">
-                        <h3>سنتر الريم</h3>
-                        <p>السويداء</p>
-                        <a class="btn">زيارة</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../../../public/img/image.png" />
-                    <div class="blogcontent">
-                        <h3>سنتر الريم</h3>
-                        <p>السويداء</p>
-                        <a class="btn">زيارة</a>
+                    <div class="slide" v-for="brand in Brands" :key="brand.id">
+                        <img
+                            src="../../../public/img/IMG_1.png"
+                            :alt="brand.name"
+                        />
                     </div>
                 </div>
             </div>
@@ -278,25 +70,44 @@
                 data-aos-duration="1000"
                 data-aos-easing="ease-in-out"
                 data-aos-mirror="true"
-                data-aos-once="false"
+                data-aos-once="true"
                 class="heading"
             >
                 Our <span>Products</span>
             </h2>
-            <div class="container">
-                <div class="product-grid">
+            <div
+                class="container"
+                data-aos="fade-up-right"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="true"
+            >
+                <div
+                    class="product-grid"
+                    v-for="product in Product"
+                    :key="product.id"
+                >
                     <div class="product-image">
                         <img src="../../../public/img/buty.jpg" />
                         <ul class="social">
-                            <li><i class="fa fa-eye"></i></li>
+                            <li>
+                                <i class="fa fa-eye"></i>
+                            </li>
                             <li><i class="fa fa-heart"></i></li>
-                            <li><i class="fa fa-shopping-cart"></i></li>
                         </ul>
                     </div>
                     <div class="product-content">
-                        <h3 class="title">شامبو</h3>
-                        <p>jnj jknc jdkcnsdj</p>
-                        <div class="price">150 S.P</div>
+                        <h3 class="title">{{ product.name }}</h3>
+                        <p>{{ product.short_des }}</p>
+                        <div class="avilble">
+                            <div style="display: inline-block">
+                                متوفر في {{ product.avalibleStore }} متاجر
+                            </div>
+                            <span class="fa fa-check-circle"></span>
+                        </div>
                         <ul class="rating">
                             <li class="fa fa-star"></li>
                             <li class="fa fa-star"></li>
@@ -304,106 +115,81 @@
                             <li class="fa fa-star"></li>
                             <li class="fa fa-star"></li>
                         </ul>
-                    </div>
-                </div>
-                <div class="product-grid">
-                    <div class="product-image">
-                        <img src="../../../public/img/buty.jpg" />
-                        <ul class="social">
-                            <li><i class="fa fa-eye"></i></li>
-                            <li><i class="fa fa-heart"></i></li>
-                            <li><i class="fa fa-shopping-cart"></i></li>
-                        </ul>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title">شامبو</h3>
-                        <p>jnj jknc jdkcnsdj</p>
-                        <div class="price">150 S.P</div>
-                        <ul class="rating">
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-grid">
-                    <div class="product-image">
-                        <img src="../../../public/img/buty.jpg" />
-                        <ul class="social">
-                            <li><i class="fa fa-eye"></i></li>
-                            <li><i class="fa fa-heart"></i></li>
-                            <li><i class="fa fa-shopping-cart"></i></li>
-                        </ul>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title">شامبو</h3>
-                        <p>jnj jknc jdkcnsdj</p>
-                        <div class="price">150 S.P</div>
-                        <ul class="rating">
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-grid">
-                    <div class="product-image">
-                        <img src="../../../public/img/buty.jpg" />
-                        <ul class="social">
-                            <li><i class="fa fa-eye"></i></li>
-                            <li><i class="fa fa-heart"></i></li>
-                            <li><i class="fa fa-shopping-cart"></i></li>
-                        </ul>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title">شامبو</h3>
-                        <p>jnj jknc jdkcnsdj</p>
-                        <div class="price">150 S.P</div>
-                        <ul class="rating">
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-grid">
-                    <div class="product-image">
-                        <img src="../../../public/img/buty.jpg" />
-                        <ul class="social">
-                            <li><i class="fa fa-eye"></i></li>
-                            <li><i class="fa fa-heart"></i></li>
-                            <li><i class="fa fa-shopping-cart"></i></li>
-                        </ul>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="title">شامبو</h3>
-                        <p>jnj jknc jdkcnsdj</p>
-                        <div class="price">150 S.P</div>
-                        <ul class="rating">
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                            <li class="fa fa-star"></li>
-                        </ul>
+                        <button>
+                            {{ $t('Choose') }}
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- //  -->
-        <div class="row">
-            <div class="column">something in row 3 column 2</div>
-            <div class="double-column">
-                <div class="blue-column">
-                    Some Text in row 3 double column 1
+        <!--  -->
+
+        <!--  -->
+        <!--  -->
+    </div>
+    <div
+        id="deno"
+        class="carousel  w-100"
+        data-ride="carousel"
+        style="margin-top: 20%; margin-bottom: 20%"
+    >
+        <div class="col-sm-12" style="padding: 0">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="show-prod">
+                        <div class="row">
+                            <BodyProduct
+                                v-for="items in Product.slice(0, 4)"
+                                :key="items.id"
+                                :id="items.id"
+                                :image="items.image"
+                                :short_des="items.short_des"
+                                :name="items.name"
+                            >
+                            </BodyProduct>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="show-prod">
+                        <div class="row">
+                            <BodyProduct
+                                v-for="items in Product.slice(4, 8)"
+                                :key="items.id"
+                                :id="items.id"
+                                :image="items.image"
+                                :short_des="items.short_des"
+                                :name="items.name"
+                            >
+                            </BodyProduct>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="show-prod">
+                        <div class="row">
+                            <BodyProduct
+                                v-for="items in Product.slice(0, 4)"
+                                :key="items.id"
+                                :id="items.id"
+                                :image="items.image"
+                                :short_des="items.short_des"
+                                :name="items.name"
+                            >
+                            </BodyProduct>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <a class="carousel-control-prev" href="#deno" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#deno" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
         </div>
      
     </div>
@@ -411,17 +197,37 @@
 </template>
 <script>
 import { mapState } from 'vuex';
-
+import { defineAsyncComponent } from 'vue';
 export default {
     name: 'home',
     props: ['image'],
     data() {
         return {};
-    },components:{
- 
+    },
+    components: {
+        BodyProduct: defineAsyncComponent(() =>
+            import(`@/components/global/BodyProduct.vue`)
+        ),
+        // Cartmini: defineAsyncComponent(() =>
+        //     import(`@/components/cart/Cartmini.vue`)
+        // ),
+    },
+    methods: {
+        gotoListView: function (i) {
+            this.$router.push(`/ListView/${i}`);
+        },
+        gotoprodetails: function (i) {
+            this.$router.push(`/${i}`);
+        },
     },
     computed: {
-        ...mapState(['Categories', 'Brands']),
+        ...mapState(['Categories', 'Brands', 'Sections', 'Product']),
+    },
+    mounted() {
+        this.$store.dispatch('loadSections');
+        this.$store.dispatch('loadBrands');
+        this.$store.dispatch('loadCategories');
+        this.$store.dispatch('loadProducts');
     },
 };
 </script>
@@ -454,14 +260,19 @@ export default {
 .team-area {
     display: flex;
     flex-flow: wrap;
-    width: 95%;
-    justify-content: space-around;
+    margin: 24px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    /* justify-content: space-arosund; */
 }
 .single-team {
     width: 260px;
     height: 300px;
-    padding: 24px;
+    margin: 24px;
     margin-top: 24px;
+    align-items: center;
+    justify-content: center;
     position: relative;
     display: flex;
     align-items: flex-end;
@@ -516,78 +327,6 @@ export default {
     letter-spacing: 1px;
     font-size: 15px;
     margin-top: 8px;
-}
-/* categories */
-.categories {
-    margin: 24px;
-    padding: 24px;
-    width: 100%;
-}
-.categories .wrapper {
-    width: 90%;
-    margin: auto;
-    padding-top: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    flex-direction: column;
-}
-.categories .wrapper .categories-container {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-.categories .wrapper .categories-container .category {
-    width: 150px;
-    height: 150px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 100%;
-    transition: 0.5s ease-out;
-}
-.categories .wrapper .categories-container .category::before {
-    content: '';
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #83818157;
-    position: absolute;
-    z-index: 1;
-}
-.categories .wrapper .categories-container .category img {
-    border-radius: 50%;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    position: relative;
-}
-.categories .wrapper .categories-container .category:hover {
-    cursor: pointer;
-}
-.categories .wrapper .categories-container .category:hover img {
-    transform: scale(1.2);
-    transition: 0.5s ease-in;
-}
-.categories .wrapper .categories-container .category .category-body {
-    position: absolute;
-    text-align: center;
-    color: #fff;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 12rem;
 }
 /* Brands */
 .brands {
@@ -659,103 +398,23 @@ export default {
     top: 0;
     transform: rotateZ(180deg);
 }
-/*  Latest-subscribers */
-.Latest-subscribers {
+/* products */
+.products {
     display: flex;
     flex-flow: wrap;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 24px;
     align-items: center;
     justify-content: center;
-    /* max-width: 1200px; */
     width: 100%;
-}
-.container .card a {
-    transition: all 0.5s;
-    text-decoration: none;
-    color: #000;
-}
-.container .card img {
-    border-radius: 50%;
-    height: 80%;
-    width: 80%;
-    transition: all 0.5s;
+    background: #fafafa;
 }
 .container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-top: 24px;
-    width: 100%;
-}
-.card {
-    position: relative;
-    overflow: hidden;
-    max-height: 580px;
-    height: 100%;
-    box-shadow: 0 2px 10px rgb(167, 164, 164);
-    transition: all 0.5s;
-}
-.card:hover {
-    box-shadow: 0 2px 10px rgb(167, 165, 165);
-    transition: all 0.5s;
-}
-.card:hover img {
-    transform: scale(1.1);
-    transition: all 0.4s;
-}
-.blogcontent {
-    position: absolute;
-    left: 0;
-    bottom: -45px;
-    width: 100%;
-    color: #000;
-    padding: 10px 5px;
-    background: linear-gradient(#e66465, #9198e5);
-    transition: all 0.5s;
-}
-.blogcontent h3 {
-    font-size: 20px;
-    font-weight: 500;
-    margin: 0;
-}
-.card:hover .blogcontent {
-    bottom: 0;
-    transition: all 0.5s;
-}
-.blogcontent a {
-    font-size: 14px;
-    font-weight: 500;
-}
-.blogcontent .btn {
-    display: block;
-    padding: 5px 10px;
-    border-radius: 3px;
-    font-weight: 400;
-    box-shadow: 0 5px 20px #8b0d70;
-}
-.blogcontent .btn:hover {
-    transition: all 0.5s;
-    text-decoration: none;
-}
-/* products */
-.products .container {
-    display: flex;
     flex-flow: wrap;
     align-items: center;
     justify-content: center;
-    width: 95%;
-    margin: auto;
-    gap: 25px;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    position: relative;
-    align-items: flex-end;
+    width: 100%;
+    margin: 24px;
     transition: 0.6s ease-out;
-    justify-content: space-around;
 }
 .product-grid {
     width: 260px;
@@ -764,10 +423,16 @@ export default {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    margin-top: 24px;
     cursor: pointer;
     background-color: #fff;
     box-shadow: 0 10px 10px #adabab;
     transition: 0.5 all;
+    margin: 24px;
+    margin-top: 24px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
 }
 .product-grid:hover {
     cursor: pointer;
@@ -842,6 +507,18 @@ export default {
     font-weight: 500;
     margin-bottom: 6px;
 }
+.product-grid .product-content button {
+    width: 100px;
+    height: 50px;
+    font-size: 1.5vw;
+    border: none;
+    color: #5daaa6;
+    margin: auto;
+    border-radius: 10px;
+}
+.product-grid .product-content button:hover {
+    background-color: #d3b85f;
+}
 .product-grid .rating {
     margin: 0;
     padding: 0;
@@ -852,29 +529,39 @@ export default {
     font-size: 14px;
     display: inline-block;
 }
-/*  */
-.row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    margin: 24px;
+.avilble {
+    color: #19e653;
 }
-.column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    background-color: red;
-    flex: 1;
+</style>
+<style lang="scss" scoped>
+.heart-conten {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
 }
-.blue-column {
-    background-color: blue;
+.product-grid .product-content .heart-conten:hover {
+    background-color: #d3b85f;
+}
+.heart {
+    width: 80px;
     height: 100px;
+    background: url('../../../public/img/heart.png') no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    transition: background-position 1s steps(28);
+    transition-duration: 0s;
+    margin: -22px 0px 0 -25px;
+
+    &.is-active {
+        transition-duration: 1s;
+        background-position: -2800px 0;
+    }
 }
-.double-column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 2;
+@media (max-width: 576.98px) {
+    .heart-conten {
+        margin: 10px 0;
+    }
 }
 </style>

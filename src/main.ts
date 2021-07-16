@@ -22,6 +22,7 @@ document.documentElement.lang = lang;
 
 store.dispatch('attempt', localStorage.getItem('token')).then(() => {
     Aos.init();
+    // axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
     axios.defaults.baseURL = 'http://admin.e-dalely.com/public';
     axios.defaults.headers.common = {
         Authorization: `bearer ${localStorage.getItem('token')}`,
