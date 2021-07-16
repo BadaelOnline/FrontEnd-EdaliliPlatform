@@ -14,10 +14,10 @@
                                 border-radius: 10px;
                             "
                         />
-                        <div>
+                        <div style="font-weight: bold;">
                             {{ ProductID.name }}
                         </div>
-                        <div>
+                        <div style="opacity: .8">
                             {{ ProductID.long_des }}
                         </div>
                         <div class="avilble">

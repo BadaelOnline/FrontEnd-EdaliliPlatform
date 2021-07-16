@@ -1,5 +1,4 @@
-// module.exports = {
-//     devServer: {
-//         proxy: 'http://edalili.e-dalely.com/public/',
-//     },
-// };
+module.exports = {
+    publicPath: process.env.PUBLIC_URL || "/", 
+    
+  };
