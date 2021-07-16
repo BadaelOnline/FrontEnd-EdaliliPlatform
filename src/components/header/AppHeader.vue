@@ -1,5 +1,5 @@
 <template>
-    <div  class="header">
+    <div class="header">
         <div class="content_loader hidden" id="content_loader">
             <div id="loader" class="loader"></div>
         </div>
@@ -79,317 +79,340 @@
                 <i class="fa fa-bars"></i>
             </div>
 
-           
-               
-                    <div class="search col-lg-12">
-                        <i class="fa fa-search shopping"></i
-                        ><input
-                            class="input"
-                            type="search"
-                            :placeholder="$t('Search')"
-                        />
+            <div class="search col-lg-12">
+                <i class="fa fa-search shopping"></i
+                ><input
+                    class="input"
+                    type="search"
+                    :placeholder="$t('Search')"
+                />
+            </div>
+            <div
+                class="form-popup animate__animated animate__swing"
+                id="myForm"
+            >
+                <form action="/action_page.php" class="form-container">
+                    <h1>Login</h1>
+                    <label for="Name"><b>Name</b></label>
+                    <input
+                        type="text"
+                        placeholder="Enter Name"
+                        v-model="form.name"
+                        name="Name"
+                        required
+                    />
+                    <label for="email"><b>Email</b></label>
+                    <input
+                        type="text"
+                        placeholder="Enter Email"
+                        v-model="form.email"
+                        name="email"
+                        required
+                    />
+
+                    <label for="psw"><b>Password</b></label>
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        v-model="form.password"
+                        name="psw"
+                        required
+                    />
+
+                    <span @click="submit()" class="btn">Login</span>
+                    <span @click="registerForm()" class="btn"
+                        >Create Acount</span
+                    >
+                    <span class="btn cancel" @click="closeForm()">Close</span>
+                </form>
+            </div>
+            <div
+                class="form-popup2 animate__animated animate__swing"
+                id="myForm2"
+            >
+                <form
+                    action="/action_page.php"
+                    class="form-container2 form_register"
+                >
+                    <h1>Register</h1>
+                    <label for="Name"><b>Name</b></label>
+                    <input
+                        type="text"
+                        placeholder="Enter Name"
+                        v-model="form.name"
+                        name="Name"
+                        required
+                    />
+                    <label for="email"><b>Email</b></label>
+                    <input
+                        type="text"
+                        placeholder="Enter Email"
+                        v-model="form.email"
+                        name="email"
+                        required
+                    />
+
+                    <label for="psw"><b>Password</b></label>
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        v-model="form.password"
+                        name="psw"
+                        required
+                    />
+
+                    <span @click="submit1()" class="btn">Register</span>
+                    <span class="btn cancel" @click="closeForm()">Close</span>
+                </form>
+            </div>
+
+            <div class="parent_featuers">
+                <div
+                    class="featuers animate__animated animate__heartBeat"
+                    id="fut"
+                >
+                    <div class="child_1">
+                        <router-link to="/addStore" class="link">{{
+                            $t('AddPlatform', { locale: lang })
+                        }}</router-link>
                     </div>
-                    <div class="form-popup animate__animated animate__swing" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h1>Login</h1>
-    <label for="Name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Name" v-model="form.name" name="Name" required>
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email"  v-model="form.email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password"  v-model="form.password" name="psw" required>
-
-    <span @click="submit()" class="btn">Login</span>
-    <span @click="registerForm()" class="btn">Create Acount</span>
-    <span class="btn cancel" @click="closeForm()">Close</span>
-  </form> 
-</div>
-<div class="form-popup2 animate__animated animate__swing" id="myForm2">
- <form  action="/action_page.php" class="form-container2 form_register">
-    <h1>Register</h1>
-    <label for="Name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Name" v-model="form.name" name="Name" required>
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email"  v-model="form.email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password"  v-model="form.password" name="psw" required>
-
-    <span @click="submit1()" class="btn">Register</span>
-    <span class="btn cancel" @click="closeForm()">Close</span>
-  </form>
-</div>
-
-                    <div class="parent_featuers">
-  
-                        <div
-                            class="featuers animate__animated animate__heartBeat"
-                            id="fut"
-                        >
-
-                            <div class="child_1">
-                                <router-link to="/addStore" class="link">{{
-                                    $t('AddPlatform', { locale: lang })
-                                }}</router-link>
-                            </div>
-                            <div class="cole">|</div>
-                            <div class="child_2" @click="gotocart()">
-                            
-                                <span class="cart-count">{{
-                                    cartItemCount
-                                }}</span>
-                                <div>
-                                    {{ $t('Shoppingcart') }}
-                                </div>
-                                    <i class="fa fa-shopping-cart shopping"></i>
-                            </div>
-                            <div class="cole">|</div>
-                            <div class="child_3 map">
-                                {{ $t('Selectlocation') }}
-                                <i class="fa fa-map-marker shopping"></i
-                                >
-                            </div>
-                            <div class="cole">|</div>
-                            <div class="child_4">
-                              
-                                <template v-if="authenticated" class="user">
-                                    <a
-                                        @click.prevent="signOut"
-                                        href="#"
-                                        class="link"
-                                        >SignOut</a
-                                    >
-                                </template>
-                                <template v-else class="user" 
-                                style="margin-left: -20px;margin-right: 10px;">
-                                   <div @click="openForm()">{{
-                                        $t('signin')
-                                    }}</div> 
-
-                                </template>
-                                  <i  class="fa fa-user-circle shopping"> </i>
-                                  
-                            </div>
-                            <div v-if="authenticated" class="cole">|</div>
-                            <div v-if="authenticated" class="child_5">
-                              
-                                <div>
-                                    {{ $t('AddProfile') }}
-                                </div>
-                                  <i class="fa fa-user-circle shopping"> </i>
-                            </div>
+                    <div class="cole">|</div>
+                    <div class="child_2" @click="gotocart()">
+                        <span class="cart-count">{{ cartItemCount }}</span>
+                        <div>
+                            {{ $t('Shoppingcart') }}
                         </div>
+                        <i class="fa fa-shopping-cart shopping"></i>
                     </div>
-               
-          
+                    <div class="cole">|</div>
+                    <div class="child_3 map">
+                        {{ $t('Selectlocation') }}
+                        <i class="fa fa-map-marker shopping"></i>
+                    </div>
+                    <div class="cole">|</div>
+                    <div class="child_4">
+                        <template v-if="authenticated" class="user">
+                            <a @click.prevent="signOut" href="#" class="link"
+                                >SignOut</a
+                            >
+                        </template>
+                        <template
+                            v-else
+                            class="user"
+                            style="margin-left: -20px; margin-right: 10px"
+                        >
+                            <div @click="openForm()">{{ $t('signin') }}</div>
+                        </template>
+                        <i class="fa fa-user-circle shopping"> </i>
+                    </div>
+                    <div v-if="authenticated" class="cole">|</div>
+                    <div v-if="authenticated" class="child_5">
+                        <div>
+                            {{ $t('Profile') }}
+                        </div>
+                        <i class="fa fa-user-circle shopping"> </i>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- End landing -->
 
         <!-- Start navbar-->
-        <div  class="naver">
-                    <div  class="conten">
-                        <div>
-                            <router-link to="/instrc" exact>
-                                <button type="button" class="btn btn-light">
-                                    <a>{{ $t('Factories') }}</a>
-                                </button></router-link
-                            > 
-                        </div>
-                        <div>
-                            <router-link to="/company">
-                                <button type="button" class="btn btn-light">
-                                    <a>{{ $t('Companies') }}</a>
-                                </button></router-link
-                            >
-                        </div>
-                        <div >
-                            <router-link to="/professional">
-                                <button type="button" class="btn btn-light">
-                                    <a>{{ $t('ProfessionalsTechnicians') }}</a>
-                                </button></router-link
-                            >
-                        </div>
-                        <div>
-                            <router-link to="/medic">
-                                <button
-                                    type="button"
-                                    class="btn btn-light medic"
-                                >
-                                    <a>{{ $t('PharmaciesMedicines') }}</a>
-                                </button></router-link
-                            >
-                        </div>
-                        <div>
-                            <router-link to="/doctors">
-                                <button type="button" class="btn btn-light">
-                                    <a>{{ $t('Doctors') }}</a>
-                                </button></router-link
-                            >
-                        </div>
-                        <div>
-                            <router-link to="/resturants">
-                                <button type="button" class="btn btn-light">
-                                    <a>{{ $t('RestaurantsCafes') }}</a>
-                                </button></router-link
-                            >
-                        </div>
-                        <div class="img" lang="en">
-                            <router-link to="/festival">
-                                <button
-                                    type="button"
-                                    class="btn btn-light sell"
-                                >
-                                    <a>{{ $t('FestivalPerformances') }}</a>
-                                </button></router-link
-                            >
-                        </div>
-                        <div >
-                            <router-link to="/stores">
-                                <button type="button" class="btn btn-light">
-                                    <a>{{ $t('Stores') }}</a>
-                                </button></router-link
-                            >
-                        </div>
-                        <div >
-                            <router-link to="/products">
-                                <button
-                                    type="button"
-                                    class="btn btn-light products"
-                                >
-                                    <a>{{ $t('Products') }}</a>
-                                </button></router-link
-                            >
-                        </div >
-                        <div > 
-                            <router-link to="/">
-                                <button type="button" class="btn btn-light">
-                                    <a>{{ $t('Allsections') }}</a>
-                                </button></router-link
-                            >
-                        </div>
-                    </div>
+        <div class="naver">
+            <div class="conten">
+                <div>
+                    <router-link to="/instrc" exact>
+                        <button type="button" class="btn btn-light">
+                            <a>{{ $t('Factories') }}</a>
+                        </button></router-link
+                    >
+                </div>
+                <div>
+                    <router-link to="/company">
+                        <button type="button" class="btn btn-light">
+                            <a>{{ $t('Companies') }}</a>
+                        </button></router-link
+                    >
+                </div>
+                <div>
+                    <router-link to="/professional">
+                        <button type="button" class="btn btn-light">
+                            <a>{{ $t('ProfessionalsTechnicians') }}</a>
+                        </button></router-link
+                    >
+                </div>
+                <div>
+                    <router-link to="/medic">
+                        <button type="button" class="btn btn-light medic">
+                            <a>{{ $t('PharmaciesMedicines') }}</a>
+                        </button></router-link
+                    >
+                </div>
+                <div>
+                    <router-link to="/doctors">
+                        <button type="button" class="btn btn-light">
+                            <a>{{ $t('Doctors') }}</a>
+                        </button></router-link
+                    >
+                </div>
+                <div>
+                    <router-link to="/resturants">
+                        <button type="button" class="btn btn-light">
+                            <a>{{ $t('RestaurantsCafes') }}</a>
+                        </button></router-link
+                    >
+                </div>
+                <div class="img" lang="en">
+                    <router-link to="/festival">
+                        <button type="button" class="btn btn-light sell">
+                            <a>{{ $t('FestivalPerformances') }}</a>
+                        </button></router-link
+                    >
+                </div>
+                <div>
+                    <router-link to="/stores">
+                        <button type="button" class="btn btn-light">
+                            <a>{{ $t('Stores') }}</a>
+                        </button></router-link
+                    >
+                </div>
+                <div>
+                    <router-link to="/products">
+                        <button type="button" class="btn btn-light products">
+                            <a>{{ $t('Products') }}</a>
+                        </button></router-link
+                    >
+                </div>
+                <div>
+                    <router-link to="/">
+                        <button type="button" class="btn btn-light">
+                            <a>{{ $t('Allsections') }}</a>
+                        </button></router-link
+                    >
                 </div>
             </div>
-  
+        </div>
+    </div>
 </template>
 <style scoped>
 /* ____________________________________ form sign popup  _______________________________ */
 /* The popup form - hidden by default */
 .form-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #959393;
-  z-index: 9;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #959393;
+    z-index: 9;
 }
 
 /* Add styles to the form container */
 .form-container {
-  max-width: 400px;
-  padding: 10px;
-  background-color: #a6a1a1;
+    max-width: 400px;
+    padding: 10px;
+    background-color: #a6a1a1;
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
+.form-container input[type='text'],
+.form-container input[type='password'] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+.form-container input[type='text']:focus,
+.form-container input[type='password']:focus {
+    background-color: #ddd;
+    outline: none;
 }
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
+    background-color: #04aa6d;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
 }
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-  background-color: red;
+    background-color: red;
 }
 
 /* Add some hover effects to buttons */
 .form-container .btn:hover {
-  opacity: 1;
+    opacity: 1;
 }
 /* ____________________________________ form register popup  _______________________________ */
 
 /* The popup form - hidden by default */
 .form-popup2 {
-  display: none;
-  position: fixed;
-  bottom: -6px;
-  right: 15px;
-  border: 3px solid #959393;
-  z-index: 8;
-  
+    display: none;
+    position: fixed;
+    bottom: -6px;
+    right: 15px;
+    border: 3px solid #959393;
+    z-index: 8;
 }
 
 /* Add styles to the form container */
 .form-container2 {
-  max-width: 400px;
-  padding: 10px;
-  background-color: #a6a1a1;
-  height: 573px;
-  
+    max-width: 400px;
+    padding: 10px;
+    background-color: #a6a1a1;
+    height: 573px;
 }
 
 /* Full-width input fields */
-.form-container2 input[type=text], .form-container2 input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
+.form-container2 input[type='text'],
+.form-container2 input[type='password'] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
 }
 
 /* When the inputs get focus, do something */
-.form-container2 input[type=text]:focus, .form-container2 input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+.form-container2 input[type='text']:focus,
+.form-container2 input[type='password']:focus {
+    background-color: #ddd;
+    outline: none;
 }
 
 /* Set a style for the submit/login button */
 .form-container2 .btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
+    background-color: #04aa6d;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
 }
 
 /* Add a red background color to the cancel button */
 .form-container2 .cancel {
-  background-color: red;
+    background-color: red;
 }
 
 /* Add some hover effects to buttons */
-.form-container2 .btn:hover{
-  opacity: 1;
+.form-container2 .btn:hover {
+    opacity: 1;
 }
 /* ____________________________________ loading  _______________________________ */
 
-.content_loader{
+.content_loader {
     position: absolute;
     width: 100%;
     height: 1000%;
@@ -505,22 +528,22 @@
     line-height: 2.15;
 }
 .upper-bar .cu1:before {
-    font-family: "Font Awesome 5 Free";
-   content: "\f0d7";
-   display: inline-block;
-   vertical-align: middle;
-   font-weight:900;
+    font-family: 'Font Awesome 5 Free';
+    content: '\f0d7';
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 900;
     z-index: 1;
     font-size: 20px;
     position: absolute;
     left: 8px;
 }
 .upper-bar .cu2::after {
-    font-family: "Font Awesome 5 Free";
-   content: "\f0d7";
-   display: inline-block;
-   vertical-align: middle;
-   font-weight:900;
+    font-family: 'Font Awesome 5 Free';
+    content: '\f0d7';
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 900;
     z-index: 1;
     font-size: 20px;
     position: absolute;
@@ -533,8 +556,8 @@
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-        .upper-bar {
-height: 320px;
+    .upper-bar {
+        height: 320px;
     }
     .upper-bar .imag img {
         margin-top: -15px;
@@ -565,8 +588,8 @@ height: 320px;
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-        .upper-bar {
-height: 320px;
+    .upper-bar {
+        height: 320px;
     }
     .upper-bar .imag img {
         margin-top: -15px;
@@ -597,19 +620,20 @@ height: 320px;
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-        .upper-bar .row {
+    .upper-bar .row {
         justify-content: center;
     }
     .upper-bar .parent_select {
-    width: 100%;
-}
-.upper-bar .imag{
-    margin-bottom: 20px;
-}
-.upper-bar .lang, .upper-bar .lang2 {
-    font-size: 15px;
-    font-weight: bold;
-}
+        width: 100%;
+    }
+    .upper-bar .imag {
+        margin-bottom: 20px;
+    }
+    .upper-bar .lang,
+    .upper-bar .lang2 {
+        font-size: 15px;
+        font-weight: bold;
+    }
     .upper-bar .parent_select .child_1 {
         width: 24%;
     }
@@ -639,9 +663,9 @@ height: 320px;
 /* Start landing */
 .jumbotron {
     display: grid;
-align-content: space-between;
-padding-top: 50px;
-padding-bottom: 10px;
+    align-content: space-between;
+    padding-top: 50px;
+    padding-bottom: 10px;
     text-align: center;
     position: relative;
     height: 590px;
@@ -653,7 +677,7 @@ padding-bottom: 10px;
     -o-background-size: cover;
     background-size: cover;
 }
-.jumbotron .search{
+.jumbotron .search {
     display: flex;
     justify-content: center;
 }
@@ -671,14 +695,13 @@ padding-bottom: 10px;
     padding-top: 1px;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
-    font-family: "Font Awesome 5 Free";
-   content: "\f0d7";
-   display: inline-block;
-   vertical-align: middle;
-   font-weight:900;
+    font-family: 'Font Awesome 5 Free';
+    content: '\f0d7';
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 900;
     z-index: 1;
     font-size: 20px;
-
 }
 .jumbotron .search i {
     background-color: #87948b;
@@ -690,22 +713,21 @@ padding-bottom: 10px;
     color: aliceblue;
     cursor: pointer;
 }
-.parent_featuers{
-        display: flex;
+.parent_featuers {
+    display: flex;
     width: 95%;
     justify-content: flex-end;
-   height:80px;
-   
+    height: 80px;
 }
 
 .jumbotron .featuers {
-width: 80%;
-display: inline-flex;
-justify-content: space-between;
-margin: auto;
-background-color: #bfc0c2;
-padding: 10px 20px;
-color: #635f5f;
+    width: 80%;
+    display: inline-flex;
+    justify-content: space-between;
+    margin: auto;
+    background-color: #bfc0c2;
+    padding: 10px 20px;
+    color: #635f5f;
 }
 .jumbotron .featuers .cole {
     font-size: 30px;
@@ -734,7 +756,6 @@ color: #635f5f;
     display: inline-flex;
     cursor: pointer;
     position: relative;
-
 }
 .jumbotron .featuers div:hover {
     color: aliceblue;
@@ -756,17 +777,17 @@ color: #635f5f;
         height: 300px;
         width: 100%;
     }
-    .bars{
+    .bars {
         display: flex;
         justify-content: flex-start;
         cursor: pointer;
     }
-        .parent_featuers {
-    display: flex;
-    width: 100%;
-    height: 850px;
-    justify-content: center;
-}
+    .parent_featuers {
+        display: flex;
+        width: 100%;
+        height: 200px;
+        justify-content: center;
+    }
     .jumbotron .featuers {
         width: 250px;
         position: absolute;
@@ -781,7 +802,7 @@ color: #635f5f;
         margin-right: auto;
         display: block;
     }
- 
+
     .jumbotron .search {
         width: 100%;
     }
@@ -824,35 +845,35 @@ color: #635f5f;
     .jumbotron .featuers .user:after {
         display: none;
     }
-        .jumbotron .featuers .cart-count {
-    font-size: 13px;
-    color: #ba8b00;
-    margin-left: 44%;
-    background: #ffffff;
-    height: 19px;
-    border-radius: 50%;
-    width: 17px;
-    position: absolute;
-    margin-top: -9px;
-}
+    .jumbotron .featuers .cart-count {
+        font-size: 13px;
+        color: #ba8b00;
+        margin-left: 44%;
+        background: #ffffff;
+        height: 19px;
+        border-radius: 50%;
+        width: 17px;
+        position: absolute;
+        margin-top: -9px;
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-       .jumbotron {
+    .jumbotron {
         height: 330px;
         width: 100%;
     }
-        .bars{
+    .bars {
         display: flex;
         justify-content: flex-start;
-         cursor: pointer;
+        cursor: pointer;
     }
     .parent_featuers {
-    display: flex;
-    width: 100%;
-    height: 850px;
-    justify-content: center;
-}
+        display: flex;
+        width: 100%;
+        height: 200px;
+        justify-content: center;
+    }
     .jumbotron .featuers {
         width: 250px;
         position: absolute;
@@ -868,7 +889,6 @@ color: #635f5f;
         display: block;
     }
 
-  
     .jumbotron .search {
         width: 100%;
     }
@@ -914,29 +934,28 @@ color: #635f5f;
         display: none;
     }
     .jumbotron .featuers .cart-count {
-    font-size: 13px;
-    color: #ba8b00;
-    margin-left: 44%;
-    background: #ffffff;
-    height: 19px;
-    border-radius: 50%;
-    width: 17px;
-    position: absolute;
-    margin-top: -9px;
-}
+        font-size: 13px;
+        color: #ba8b00;
+        margin-left: 44%;
+        background: #ffffff;
+        height: 19px;
+        border-radius: 50%;
+        width: 17px;
+        position: absolute;
+        margin-top: -9px;
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-.jumbotron .featuers {
-    width: 90%;
-    display: inline-flex;
-    justify-content: space-between;
-    margin: auto;
-    background-color: #bfc0c2;
-    padding: 10px 20px;
-    color: #635f5f;
-
-}
+    .jumbotron .featuers {
+        width: 90%;
+        display: inline-flex;
+        justify-content: space-between;
+        margin: auto;
+        background-color: #bfc0c2;
+        padding: 10px 20px;
+        color: #635f5f;
+    }
 }
 
 /* End landing */
@@ -1143,20 +1162,18 @@ export default {
         }),
     },
     methods: {
-    openForm() {
-  document.getElementById("myForm").style.display = "block";
-  document.getElementById("myForm2").style.display = "block";
-},
- registerForm() {
-  document.getElementById("myForm").style.zIndex = 8 ;
-  document.getElementById("myForm2").style.zIndex = 9 ;
-
-  
-},
- closeForm() {
-  document.getElementById("myForm").style.display = "none";
-  document.getElementById("myForm2").style.display = "none";
-},
+        openForm() {
+            document.getElementById('myForm').style.display = 'block';
+            document.getElementById('myForm2').style.display = 'block';
+        },
+        registerForm() {
+            document.getElementById('myForm').style.zIndex = 8;
+            document.getElementById('myForm2').style.zIndex = 9;
+        },
+        closeForm() {
+            document.getElementById('myForm').style.display = 'none';
+            document.getElementById('myForm2').style.display = 'none';
+        },
         gotocart() {
             this.$router.push(`/Cart`);
         },
@@ -1191,7 +1208,7 @@ export default {
                 });
             });
         },
-          ...mapActions({
+        ...mapActions({
             signIn: 'signIn',
             register: 'register',
         }),
@@ -1229,11 +1246,10 @@ export default {
                     .getElementById('content_loader')
                     .classList.add('hidden');
             }, 3000);
-                        setTimeout(function () {
+            setTimeout(function () {
                 window.location.reload();
             }, 3000);
         },
     },
- 
 };
 </script>

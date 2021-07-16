@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Cartmini />
         <div class="home">
             <h2
                 data-aos="fade-up"
@@ -62,8 +63,6 @@
             </div>
         </div>
         <!-- products -->
-
-        <!--  -->
         <div class="products">
             <h2
                 data-aos="fade-up"
@@ -77,12 +76,7 @@
             >
                 Our <span>Products</span>
             </h2>
-            <div
-                id="deno"
-                class="carousel slide w-100"
-                data-ride="carousel"
-                style="margin-top: 20%; margin-bottom: 20%"
-            >
+            <div id="deno" class="carousel slide" data-ride="carousel" style="">
                 <div class="col-sm-12" style="padding: 0">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -100,7 +94,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="carousel-item">
                             <div class="show-prod">
                                 <div class="row">
@@ -166,9 +159,9 @@ export default {
         BodyProduct: defineAsyncComponent(() =>
             import(`@/components/global/BodyProduct.vue`)
         ),
-        // Cartmini: defineAsyncComponent(() =>
-        //     import(`@/components/cart/Cartmini.vue`)
-        // ),
+        Cartmini: defineAsyncComponent(() =>
+            import(`@/components/cart/Cartmini.vue`)
+        ),
     },
     methods: {
         gotoListView: function (i) {
@@ -355,5 +348,69 @@ export default {
     right: 0;
     top: 0;
     transform: rotateZ(180deg);
+}
+/* product */
+.row {
+    justify-content: center;
+    /* margin: 24px; */
+}
+.show-prod {
+    padding: 0 10px;
+    /* margin: 24px; */
+}
+@media (max-width: 575.98px) {
+    .show-prod {
+        height: auto;
+    }
+    .carousel-inner {
+        width: 100%;
+    }
+    .carousel-inner .row .coler:nth-child(3) {
+        display: none;
+    }
+    .carousel-inner .row .col-xs-6 {
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+    .carousel-item {
+        margin-bottom: 40px;
+    }
+    .carousel-control-next-icon {
+        right: 25px;
+        width: 40px;
+        height: 50px;
+    }
+    .carousel-control-prev-icon {
+        width: 40px;
+        height: 50px;
+    }
+    .carousel-inner {
+        box-shadow: none;
+        overflow: visible;
+    }
+}
+.carousel-inner {
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+.carousel-item {
+    margin: auto;
+}
+.carousel-inner .show-prod .row .content-pro {
+    margin-top: 0;
+}
+.carousel-control-next,
+.carousel-control-prev {
+    height: 50px;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    border: 1px solid #c7c7c7;
+    border-radius: 50%;
+    width: 54px;
+    height: 95px;
+    top: 250px;
+    position: absolute;
 }
 </style>
