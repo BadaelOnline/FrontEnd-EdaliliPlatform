@@ -117,6 +117,9 @@ const store = createStore({
         SET_ProductID(state, ProductID) {
             state.ProductID = ProductID;
         },
+        SET_Sections(state, Sections) {
+            state.Sections = Sections;
+        },
         SET_Brands(state, Brands) {
             state.Brands = Brands;
         },
@@ -190,7 +193,6 @@ const store = createStore({
                 });
         },
         loadProducts({ commit }) {
-       
             axios
                 .get(`/api/products/getAll?lang=${lang}`)
                 .then((res) => {
@@ -201,9 +203,6 @@ const store = createStore({
                 .catch(function (error) {
                     console.log('Error: ', error);
                 });
-
-          
-
         },
         loadProduct({ commit }, ProductID) {
             axios
@@ -212,6 +211,18 @@ const store = createStore({
                     console.warn('ProductID :', res.data.product);
                     let ProductID = res.data.product;
                     commit('SET_ProductID', ProductID);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadSections({ commit }) {
+            axios
+                .get(`/api/sections/getAll?lang=${lang}`)
+                .then((res) => {
+                    console.warn('Sections:', res.data.Section);
+                    let Sections = res.data.Section;
+                    commit('SET_Sections', Sections);
                 })
                 .catch(function (error) {
                     console.log('Error: ', error);
@@ -327,9 +338,8 @@ const store = createStore({
                 Credentials
             );
             console.log(res.data);
-           
+
             return dispatch('attempt', res.data.access_token);
-            
         },
         async attempt({ commit, state }, token) {
             if (token) {
