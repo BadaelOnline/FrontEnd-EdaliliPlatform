@@ -33,7 +33,9 @@
                         <div class="child_3">
                             <div class="customer-select cu2">
                                 <select v-model="sortType" c>
-                                    <option value="1" disabled>المحافظة</option>
+                                    <option value="1" disabled>
+                                        {{ $t('Governorate') }}
+                                    </option>
                                     <option
                                         v-for="gover in governorates"
                                         :key="gover.id"
@@ -46,7 +48,7 @@
                             <div class="customer-select cu2">
                                 <select v-model="sortType">
                                     <option value="1" disabled>
-                                        المدینة/القریة
+                                        {{ $t('City') }}
                                     </option>
                                     <option
                                         v-for="city in cities"
@@ -58,7 +60,9 @@
                             </div>
                             <div class="customer-select cu2">
                                 <select v-model="sortType">
-                                    <option value="1" disabled>الحي</option>
+                                    <option value="1" disabled>
+                                        {{ $t('street') }}
+                                    </option>
                                     <option
                                         v-for="street in streets"
                                         :key="street.id"
@@ -79,6 +83,13 @@
                 <i class="fa fa-bars"></i>
             </div>
 
+            <div class="customer-select cu5">
+                <h5>choose server</h5>
+                <select v-model="server" @change="handleserver($event)">
+                    <option value="edalily">edalily</option>
+                    <option value="admin">admin</option>
+                </select>
+            </div>
             <div class="search col-lg-12">
                 <i class="fa fa-search shopping"></i
                 ><input
@@ -296,6 +307,10 @@
     </div>
 </template>
 <style scoped>
+.cu5 {
+    position: fixed;
+    z-index: 10;
+}
 /* ____________________________________ form sign popup  _______________________________ */
 /* The popup form - hidden by default */
 .form-popup {
@@ -523,7 +538,7 @@
     margin-left: auto;
     margin-right: auto;
     z-index: 2;
-    font-size: 16px;
+    font-size: 15px;
     position: relative;
     line-height: 2.15;
 }
@@ -536,7 +551,7 @@
     z-index: 1;
     font-size: 20px;
     position: absolute;
-    left: 8px;
+    left: 5px;
 }
 .upper-bar .cu2::after {
     font-family: 'Font Awesome 5 Free';
@@ -547,7 +562,7 @@
     z-index: 1;
     font-size: 20px;
     position: absolute;
-    left: 8px;
+    left: 5px;
 }
 
 .upper-bar .fa-map-marker {
@@ -1129,8 +1144,10 @@ export default {
     data() {
         const lang = localStorage.getItem('lang') || 'en';
         const token = localStorage.getItem('token');
+        const server = localStorage.getItem('server') || 'admin';
         return {
             lang: lang,
+            server: server,
             token: token,
             form: {
                 name: '',
@@ -1186,6 +1203,10 @@ export default {
 
         handleChange(event) {
             localStorage.setItem('lang', event.target.value);
+            window.location.reload();
+        },
+        handleserver(event) {
+            localStorage.setItem('server', event.target.value);
             window.location.reload();
         },
         ...mapActions({

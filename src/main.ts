@@ -18,12 +18,18 @@ require('./store/subscriber');
 // store.dispatch('attempt', localStorage.getItem('token'));
 //  axios.defaults.headers['Accept-Language'] = lang;
 const lang: string = localStorage.getItem('lang') || 'en';
+const server: string = localStorage.getItem('server') || 'admin';
 document.documentElement.lang = lang;
-
 store.dispatch('attempt', localStorage.getItem('token')).then(() => {
     Aos.init();
     // axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
-    axios.defaults.baseURL = 'http://admin.e-dalely.com/public';
+    if(server == 'admin'){
+        axios.defaults.baseURL = 'http://admin.e-dalely.com/public';
+    }
+    else if(server == 'edalily'){
+        axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
+    }
+    
     axios.defaults.headers.common = {
         Authorization: `bearer ${localStorage.getItem('token')}`,
     };

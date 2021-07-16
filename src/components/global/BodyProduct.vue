@@ -28,7 +28,6 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                 </div>
-                <div></div>
                 <div class="avilble">
                     <div style="display: inline-block">
                         متوفر في {{ avalibleStore }} متاجر
@@ -42,23 +41,13 @@
                     <div class="heart-conten">
                         <div
                             @click="heartlike()"
-                            id="heart"
+                            ref="heart"
                             class="heart"
                         ></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- 
-             <div class="stage row">
-              <div @click="addToCart()" class="cart-ico">
-                    <button class="cart-button">
-                        <i class="fa fa-shopping-cart"></i>
-                    </button>
-                </div>
-              
-            </div>
-             -->
     </div>
 </template>
 <style scoped>
@@ -67,10 +56,6 @@
     justify-content: space-between;
     height: 270px;
 }
-/* .coler {
-    width: 90%;
-    margin: auto;
-} */
 /* body of products */
 .cart-ico {
     margin: auto;
@@ -107,10 +92,15 @@
     border-top-left-radius: 5%;
     cursor: pointer;
 }
-.content-pro .name-prod,
+.content-pro .name-prod {
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 .content-pro .category {
     cursor: pointer;
     margin-bottom: 10px;
+    opacity: 0.7;
 }
 .content-pro .checked {
     color: #dcd741;
@@ -248,9 +238,7 @@ export default {
             this.$router.push(`/products/${i}`);
         },
         heartlike: function () {
-            this.$el.lastChild.lastChild.lastChild.lastChild.classList.toggle(
-                'is-active'
-            );
+            this.$refs.heart.classList.toggle('is-active');
         },
         /*  addToCart() {
             this.$store.dispatch('addToCart', this.details);

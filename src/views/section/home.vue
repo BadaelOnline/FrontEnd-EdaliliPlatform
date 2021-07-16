@@ -161,7 +161,6 @@ export default {
     width: 100%;
     align-items: center;
     justify-content: center;
-    /* justify-content: space-arosund; */
 }
 .single-team {
     width: 260px;
@@ -305,10 +304,7 @@ export default {
     justify-content: center;
 }
 .show-prod {
-    /* width: 260px; */
-    /* height: 300px; */
     margin: 24px;
-    /* margin-top: 24px; */
     align-items: center;
     justify-content: center;
     position: relative;
