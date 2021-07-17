@@ -1,60 +1,61 @@
 <template>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 coler">
         <div class="content-pro text-center">
-
-                <img :src="`${image}`"  v-if="image" class="new" @click="gotoprodetails(id)"/> 
-                <img v-else src="../../../public/img/3.jpg"  class="new" @click="gotoprodetails(id)"/> 
-                <div class="contnet_details">
-            <div class="name-prod" @click="gotoprodetails(id)">
+            <img
+                :src="`${image}`"
+                v-if="image"
+                class="new"
+                @click="gotoprodetails(id)"
+            />
+            <img
+                v-else
+                src="../../../public/img/3.jpg"
+                class="new"
+                @click="gotoprodetails(id)"
+            />
+            <div class="contnet_details">
+                <div class="name-prod" @click="gotoprodetails(id)">
                     {{ name }}
                 </div>
-            <div class="category" @click="gotoprodetails(id)">
+                <div class="category" @click="gotoprodetails(id)">
                     {{ short_des }}
                 </div>
 
-            <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-            </div>
-            <div></div>
-            <div class="avilble">
-                <div style="display: inline-block">
-                    متوفر في {{ avalibleStore }} متاجر
+                <div class="stars">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
                 </div>
-                <span class="fa fa-check-circle"></span>
-            </div>
-            <div class="row">
-                <button @click="gotoListView(id)">
-                    {{ $t('Choose') }}
-                </button>
-                <div class="heart-conten">
-                    <div @click="heartlike()" ref="heart" class="heart"></div>
+                <div class="avilble">
+                    <div style="display: inline-block">
+                        متوفر في {{ avalibleStore }} متاجر
+                    </div>
+                    <span class="fa fa-check-circle"></span>
                 </div>
-            </div>
-        </div>
-        </div>
-        <!-- 
-             <div class="stage row">
-              <div @click="addToCart()" class="cart-ico">
-                    <button class="cart-button">
-                        <i class="fa fa-shopping-cart"></i>
+                <div class="row">
+                    <button @click="gotoListView(id)">
+                        {{ $t('Choose') }}
                     </button>
+                    <div class="heart-conten">
+                        <div
+                            @click="heartlike()"
+                            ref="heart"
+                            class="heart"
+                        ></div>
+                    </div>
                 </div>
-              
             </div>
-             -->
+        </div>
     </div>
 </template>
 <style scoped>
-.contnet_details{
+.contnet_details {
     display: grid;
     justify-content: space-between;
     height: 270px;
 }
-
 /* body of products */
 .cart-ico {
     margin: auto;
@@ -75,12 +76,12 @@
 .content-pro {
     font-size: 1.2vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-top: 24px;
+    margin-bottom: 24px;
     border-radius: 5%;
     transition: all 0.5s;
+    width: 95%;
 }
-
 
 .content-pro:hover {
     transform: scale3d(1.05, 1.05, 1);
@@ -91,7 +92,7 @@
     border-top-left-radius: 5%;
     cursor: pointer;
 }
-.content-pro .name-prod{
+.content-pro .name-prod {
     cursor: pointer;
     margin-bottom: 10px;
     font-weight: bold;
@@ -99,7 +100,7 @@
 .content-pro .category {
     cursor: pointer;
     margin-bottom: 10px;
-    opacity: .7;
+    opacity: 0.7;
 }
 .content-pro .checked {
     color: #dcd741;
@@ -122,12 +123,12 @@
 .content-pro button:hover {
     background-color: #d3b85f;
 }
-.contnet_details .row{
+.contnet_details .row {
     justify-content: center;
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 576.98px) {
-    .coler{
+    .coler {
         width: 70%;
     }
     .content-pro {
@@ -147,7 +148,7 @@
         max-width: 50%;
     }
     .content-pro button {
-       font-size: 14px;
+        font-size: 14px;
         width: 70px;
         height: 40px;
         margin: 16px 3px;
@@ -215,7 +216,7 @@
 export default {
     name: 'BodyProduct',
     props: ['id', 'name', 'image', 'short_des', 'long_des', 'store'],
-  
+
     // data () {
     //     return {
     //         details: {
@@ -237,9 +238,7 @@ export default {
             this.$router.push(`/products/${i}`);
         },
         heartlike: function () {
-            this.$refs.heart.classList.toggle(
-                'is-active'
-            );
+            this.$refs.heart.classList.toggle('is-active');
         },
         /*  addToCart() {
             this.$store.dispatch('addToCart', this.details);
