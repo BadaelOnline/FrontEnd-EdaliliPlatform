@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'normalize.css';
 import '../public/fontawesome-free-5.15.1-web/css/all.css';
-
+// import VueCardCarousel from
 require('./store/subscriber');
 // store.dispatch('attempt', localStorage.getItem('token'));
 //  axios.defaults.headers['Accept-Language'] = lang;
@@ -23,13 +23,11 @@ document.documentElement.lang = lang;
 store.dispatch('attempt', localStorage.getItem('token')).then(() => {
     Aos.init();
     // axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
-    if(server == 'admin'){
+    if (server == 'admin') {
         axios.defaults.baseURL = 'http://admin.e-dalely.com/public';
-    }
-    else if(server == 'edalily'){
+    } else if (server == 'edalily') {
         axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
     }
-    
     axios.defaults.headers.common = {
         Authorization: `bearer ${localStorage.getItem('token')}`,
     };

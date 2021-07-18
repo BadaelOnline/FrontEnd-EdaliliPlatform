@@ -37,6 +37,39 @@
                 </div>
             </div>
         </div>
+        <!-- products -->
+        <div class="products">
+            <h2
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="true"
+                class="heading"
+            >
+                Our <span>Products</span>
+            </h2>
+            <div class="container">
+                <div class="product-gird">
+                    <div class="product-image">
+                        <a href="" class="image">
+                            <img
+                                class="pic-1"
+                                src="../../../public/img/pro1.png"
+                                alt=""
+                            />
+                            <img
+                                class="pic-2"
+                                src="../../../public/img/pro1-1.png"
+                                alt=""
+                            />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Brands -->
         <div class="brands">
             <h2
@@ -63,7 +96,7 @@
             </div>
         </div>
         <!-- products -->
-        <div class="products">
+        <!-- <div class="products">
             <h2
                 data-aos="fade-up"
                 data-aos-offset="200"
@@ -89,7 +122,7 @@
                     </BodyProduct>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
@@ -97,14 +130,15 @@ import { mapState } from 'vuex';
 import { defineAsyncComponent } from 'vue';
 export default {
     name: 'home',
+
     props: ['image'],
     data() {
         return {};
     },
     components: {
-        BodyProduct: defineAsyncComponent(() =>
-            import(`@/components/global/BodyProduct.vue`)
-        ),
+        // BodyProduct: defineAsyncComponent(() =>
+        //     import(`@/components/global/BodyProduct.vue`)
+        // ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
         ),
@@ -317,4 +351,34 @@ export default {
         height: auto;
     }
 }
+/* product modify */
+/* .products {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    width: 100%;
+}
+.products .container {
+    display: flex;
+    flex-flow: wrap;
+    margin: 24px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.products .container .product-gird {
+    width: 260px;
+    height: 300px;
+    margin: 24px;
+    margin-top: 24px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    transition: 0.6s ease-out;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+} */
 </style>
