@@ -104,14 +104,8 @@
             >
                 <form action="/action_page.php" class="form-container">
                     <h1>Login</h1>
-                    <label for="Name"><b>Name</b></label>
-                    <input
-                        type="text"
-                        placeholder="Enter Name"
-                        v-model="form.name"
-                        name="Name"
-                        required
-                    />
+                     <span class="cancel" @click="closeForm()"><i class="fa fa-window-close fa-2x"></i></span>
+
                     <label for="email"><b>Email</b></label>
                     <input
                         type="text"
@@ -119,22 +113,44 @@
                         v-model="form.email"
                         name="email"
                         required
+                        ref="email"
+                        @keyup="handleEmail()"
                     />
+                <div style="color: red" v-if="statusEmail == false">
+                    <i class="fa fa-window-close"></i>
+             {{form.error}}
+                    </div>
+               <div style="color: green" v-if="statusEmail == true">
+            <i class="fa fa-check-square "></i>
+            correct Email
+                    </div>
 
                     <label for="psw"><b>Password</b></label>
+                   
                     <input
                         type="password"
+                        id="myInput"
                         placeholder="Enter Password"
                         v-model="form.password"
                         name="psw"
+                         ref="pass"
                         required
+                        @keyup="handlePass()"
                     />
-
+                     <input type="checkbox" @change="showPass()">  Show Password 
+            <div style="color: red"  v-if="statusPass == false">
+                  <i class="fas fa-exclamation-triangle"></i>
+              Password must be more 7 characters
+                    </div>
+               <div style="color: green"  v-if="statusPass == true">
+             <i class="fa fa-check-square "></i>
+            Correct Password 
+                    </div>
                     <span @click="submit()" class="btn">Login</span>
                     <span @click="registerForm()" class="btn"
-                        >Create Acount</span
+                        >Register</span
                     >
-                    <span class="btn cancel" @click="closeForm()">Close</span>
+                  
                 </form>
             </div>
             <div
@@ -146,6 +162,7 @@
                     class="form-container2 form_register"
                 >
                     <h1>Register</h1>
+                    <span class="cancel" @click="closeForm()"><i class="fa fa-window-close fa-2x"></i></span>
                     <label for="Name"><b>Name</b></label>
                     <input
                         type="text"
@@ -157,23 +174,44 @@
                     <label for="email"><b>Email</b></label>
                     <input
                         type="text"
+                          ref="email2"
                         placeholder="Enter Email"
                         v-model="form.email"
                         name="email"
                         required
+                          @keyup="handleEmail()"
                     />
+                <div style="color: red" v-if="statusEmail == false">
+                    <i class="fa fa-window-close"></i>
+             {{form.error}}
+                    </div>
+               <div style="color: green" v-if="statusEmail == true">
+            <i class="fa fa-check-square "></i>
+            correct Email
+                    </div>
 
                     <label for="psw"><b>Password</b></label>
                     <input
                         type="password"
+                        ref="pass2"
+                        id="myInput2"
                         placeholder="Enter Password"
                         v-model="form.password"
                         name="psw"
                         required
+                          @keyup="handlePass()"
                     />
-
+            <input type="checkbox" @change="showPass2()">  Show Password 
+            <div style="color: red"  v-if="statusPass == false">
+                  <i class="fas fa-exclamation-triangle"></i>
+              Password must be more 7 characters
+                    </div>
+               <div style="color: green"  v-if="statusPass == true">
+             <i class="fa fa-check-square "></i>
+            Correct Password 
+                    </div>
                     <span @click="submit1()" class="btn">Register</span>
-                    <span class="btn cancel" @click="closeForm()">Close</span>
+                    
                 </form>
             </div>
 
@@ -311,6 +349,10 @@
     position: fixed;
     z-index: 10;
 }
+.warnig_pass{
+   color: red;
+    display: none;
+}
 /* ____________________________________ form sign popup  _______________________________ */
 /* The popup form - hidden by default */
 .form-popup {
@@ -324,9 +366,10 @@
 
 /* Add styles to the form container */
 .form-container {
-    max-width: 400px;
+    width: 450px;
     padding: 10px;
     background-color: #a6a1a1;
+     height:494px;
 }
 
 /* Full-width input fields */
@@ -360,7 +403,14 @@
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-    background-color: red;
+position: absolute;
+left: -2px;
+top: -2px;
+background-color: #d52626;
+color: #fff;
+padding: 5px 10px;
+border-bottom-right-radius: 20px;
+cursor: pointer;
 }
 
 /* Add some hover effects to buttons */
@@ -381,10 +431,10 @@
 
 /* Add styles to the form container */
 .form-container2 {
-    max-width: 400px;
+    width: 450px;
     padding: 10px;
     background-color: #a6a1a1;
-    height: 573px;
+   height: 500px;
 }
 
 /* Full-width input fields */
@@ -418,7 +468,14 @@
 
 /* Add a red background color to the cancel button */
 .form-container2 .cancel {
-    background-color: red;
+position: absolute;
+left: -2px;
+top: -2px;
+background-color: #d52626;
+color: #fff;
+padding: 5px 10px;
+border-bottom-right-radius: 20px;
+cursor: pointer;
 }
 
 /* Add some hover effects to buttons */
@@ -1153,7 +1210,11 @@ export default {
                 name: '',
                 email: '',
                 password: '',
-            },
+                error: '',
+              
+            },        reg: /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
+            statusEmail: null,
+           statusPass: null,
             details: {
                 id: this.id,
                 title: this.title,
@@ -1177,8 +1238,27 @@ export default {
             authenticated: 'authenticated',
             user: 'user',
         }),
+        
     },
     methods: {
+        showPass(){
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+ 
+        },
+        showPass2(){
+            var x = document.getElementById("myInput2");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+ 
+        },
         openForm() {
             document.getElementById('myForm').style.display = 'block';
             document.getElementById('myForm2').style.display = 'block';
@@ -1205,6 +1285,45 @@ export default {
             localStorage.setItem('lang', event.target.value);
             window.location.reload();
         },
+              handleEmail() {
+            if(this.form.email == null || this.form.email == '')
+{
+    this.statusEmail = false;
+  this.form.error = "Please Enter Email";
+   
+ this.$refs.email.style.border = "1px solid red"
+ this.$refs.email2.style.border = "1px solid red"
+   
+}
+else if(!this.reg.test(this.form.email))
+{
+     this.statusEmail = false;
+     this.form.error = "Please Enter Correct Email";
+   this.$refs.email.style.border = "1px solid red"
+    this.$refs.email2.style.border = "1px solid red"
+}
+else if(this.reg.test(this.form.email))
+{
+ this.statusEmail = true
+   this.$refs.email.style.border = "1px solid green"
+   this.$refs.email2.style.border = "1px solid green"
+}
+           
+        },
+        handlePass(){
+            if(this.form.password.length < 8){
+                 this.statusPass= false;
+                 this.$refs.pass.style.border = "1px solid red"
+                 this.$refs.pass2.style.border = "1px solid red"
+            
+            }
+            else{
+                   this.statusPass= true;
+                     this.$refs.pass.style.border = "1px solid green"
+                      this.$refs.pass2.style.border = "1px solid green"
+            }
+
+        },
         handleserver(event) {
             localStorage.setItem('server', event.target.value);
             window.location.reload();
@@ -1214,49 +1333,55 @@ export default {
         }),
         // auth logout
         signOut() {
+
+           
             this.signOutActions().then(() => {
                 document
                     .getElementById('content_loader')
                     .classList.remove('hidden');
 
                 setTimeout(function () {
+                    if(localStorage.getItem('token') == null){
                     document
                         .getElementById('content_loader')
                         .classList.add('hidden');
-                }, 3000);
+                    }
+
+                }, 1000);
                 this.$router.replace({
                     name: 'home',
                 });
             });
+            
+
         },
         ...mapActions({
             signIn: 'signIn',
             register: 'register',
         }),
         submit() {
-            this.signIn(this.form);
+            if( this.statusEmail == true && this.statusPass == true){
+   this.signIn(this.form);
             document
                 .getElementById('content_loader')
                 .classList.remove('hidden');
 
             setTimeout(function () {
-                document
-                    .getElementById('content_loader')
-                    .classList.add('hidden');
+                    if(localStorage.getItem('token') !== null){
+                    document
+                        .getElementById('content_loader')
+                        .classList.add('hidden');
+                    }
             }, 3000);
-            setTimeout(function () {
+                        setTimeout(function () {
                 window.location.reload();
             }, 3000);
-            //  .then(() => {
-            //             this.$router.replace({
-            //                 name: 'home',
-            //             });
-            //         })
-            //         .catch(() => {
-            //             console.log('failed');
-            //         });
+            }
+
+               
         },
         submit1() {
+               if( this.statusEmail == true && this.statusPass == true){
             this.register(this.form);
             document
                 .getElementById('content_loader')
@@ -1270,7 +1395,9 @@ export default {
             setTimeout(function () {
                 window.location.reload();
             }, 3000);
-        },
-    },
+            }
+        }, 
+    }
+    
 };
 </script>
