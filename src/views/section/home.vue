@@ -32,40 +32,7 @@
                     <img src="../../../public/img/buty.jpg" />
                     <div class="team-text">
                         <h2>{{ section.name }}</h2>
-                        <a>See More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- products -->
-        <div class="products">
-            <h2
-                data-aos="fade-up"
-                data-aos-offset="200"
-                data-aos-delay="50"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="true"
-                class="heading"
-            >
-                Our <span>Products</span>
-            </h2>
-            <div class="container">
-                <div class="product-gird">
-                    <div class="product-image">
-                        <a href="" class="image">
-                            <img
-                                class="pic-1"
-                                src="../../../public/img/pro1.png"
-                                alt=""
-                            />
-                            <img
-                                class="pic-2"
-                                src="../../../public/img/pro1-1.png"
-                                alt=""
-                            />
-                        </a>
+                        <a class="more">See More</a>
                     </div>
                 </div>
             </div>
@@ -84,7 +51,25 @@
             >
                 Our <span>Brands</span>
             </h2>
-            <div class="slider1">
+            <div class="mar">
+                <div
+                    class="show-market"
+                    v-for="bran in brands.slice(2, 7)"
+                    :key="bran.id"
+                >
+                    <img
+                        data-aos="flip-left"
+                        data-aos-offset="200"
+                        data-aos-delay="50"
+                        data-aos-duration="1000"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="true"
+                        :src="bran.image"
+                    />
+                </div>
+            </div>
+            <!-- <div class="slider1">
                 <div class="slide-track">
                     <div class="slide1" v-for="brand in Brands" :key="brand.id">
                         <img
@@ -93,10 +78,10 @@
                         />
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- products -->
-        <!-- <div class="products">
+        <div class="products">
             <h2
                 data-aos="fade-up"
                 data-aos-offset="200"
@@ -109,20 +94,19 @@
             >
                 Our <span>Products</span>
             </h2>
-            <div class="show-prod">
+            <div class="container">
                 <div class="row">
-                    <BodyProduct
-                        v-for="items in Product"
+                    <productBody
+                        v-for="items in Product.slice(0, 4)"
                         :key="items.id"
                         :id="items.id"
-                        :image="items.image"
                         :short_des="items.short_des"
                         :name="items.name"
                     >
-                    </BodyProduct>
+                    </productBody>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 <script>
@@ -130,15 +114,14 @@ import { mapState } from 'vuex';
 import { defineAsyncComponent } from 'vue';
 export default {
     name: 'home',
-
     props: ['image'],
     data() {
         return {};
     },
     components: {
-        // BodyProduct: defineAsyncComponent(() =>
-        //     import(`@/components/global/BodyProduct.vue`)
-        // ),
+        productBody: defineAsyncComponent(() =>
+            import(`@/components/global/productBody.vue`)
+        ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
         ),
@@ -152,7 +135,7 @@ export default {
         },
     },
     computed: {
-        ...mapState(['Categories', 'Brands', 'Sections', 'Product']),
+        ...mapState(['Categories', 'Brands', 'brands', 'Sections', 'Product']),
     },
     mounted() {
         this.$store.dispatch('loadSections');
@@ -177,7 +160,7 @@ export default {
     color: #333;
 }
 .heading span {
-    color: #ff80b3;
+    color: #315a6e;
 }
 /* section */
 .home {
@@ -252,11 +235,15 @@ export default {
     margin: 0;
     letter-spacing: 3px;
 }
-.team-text a {
+.team-text .more {
     text-decoration: none;
     letter-spacing: 1px;
+    cursor: pointer;
     font-size: 15px;
     margin-top: 8px;
+}
+.more:hover {
+    text-decoration: underline;
 }
 /* Brands */
 .brands {
@@ -351,34 +338,179 @@ export default {
         height: auto;
     }
 }
-/* product modify */
-/* .products {
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    justify-content: center;
-    background: #fafafa;
-    width: 100%;
-}
+/*  */
+/* products */
 .products .container {
-    display: flex;
-    flex-flow: wrap;
-    margin: 24px;
-    width: 100%;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
-.products .container .product-gird {
-    width: 260px;
-    height: 300px;
+.products .container .product-grid {
     margin: 24px;
     margin-top: 24px;
     align-items: center;
     justify-content: center;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
+    box-shadow: 0 0 0 #fff;
     transition: 0.6s ease-out;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-} */
+}
+.products .container .product-grid:hover {
+    box-shadow: 14px 11px 0 #4a6f81;
+}
+.products .container .product-grid .product-image {
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s all;
+}
+.products .container .product-grid .product-image .image {
+    display: block;
+}
+.products .container .product-grid .product-image img {
+    width: 100%;
+    height: 50%;
+}
+.products .container .product-grid .product-image .pic-2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    transition: 0.5s all;
+}
+.products .container .product-grid .product-image .pic-1 {
+    opacity: 1;
+    transition: 0.5s all;
+}
+.products .container .product-grid:hover .product-image .pic-1 {
+    opacity: 0;
+}
+.products .container .product-grid:hover .product-image .pic-2 {
+    opacity: 1;
+}
+.products .container .product-grid .product-image .social {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+}
+.products .container .product-grid .product-image .social li {
+    margin: 0 0 5px;
+    transform: translateX(100px);
+    transition: 0.5s all;
+}
+.products .container .product-grid:hover .product-image .social li {
+    transform: translateX(0);
+}
+.products .container .product-grid .product-image .social li i {
+    color: #666;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    display: block;
+    transition: 0.5s all;
+}
+.products .container .product-grid .product-image .social li i:hover {
+    color: #fff;
+    background-color: #4a6f81;
+}
+.products .container .product-grid .product-content {
+    padding: 20px 10px;
+    display: block;
+}
+.products .container .product-grid .product-content .title {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    margin: 0 0 7px;
+}
+.products .container .product-grid .product-content .title:hover {
+    color: #315a6e;
+}
+.products .container .product-grid .product-content p {
+    font-size: 15px;
+    margin: 0 0 7px;
+}
+.products .container .product-grid .product-content .rating li {
+    color: #ffd200;
+    font-size: 14px;
+    display: inline-block;
+}
+/* show market */
+.mar {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 24px;
+}
+.show-market {
+    box-shadow: 0 4px 8px 0 #fefefe;
+    width: 100%;
+    height: 250px;
+    width: calc(96% / 5);
+}
+.show-market img {
+    height: 230px;
+    transition: all 0.5s;
+    width: 100%;
+    height: 100%;
+}
+.show-market img:hover {
+    transform: scale3d(1.05, 1.05, 1);
+    cursor: pointer;
+}
+@media (max-width: 576.98px) {
+    .mar {
+        margin-top: 47vh;
+        margin-bottom: 4vh;
+    }
+}
+@media (max-width: 500.98px) {
+    .mar {
+        margin-top: 35vh;
+        margin-bottom: 4vh;
+    }
+}
+@media (max-width: 435.98px) {
+    .mar {
+        margin-top: 5vh;
+        margin-bottom: 4vh;
+    }
+}
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .show-market {
+        height: 130px;
+        width: calc(96% / 3);
+        margin-top: 0;
+    }
+    .mar .show-market:nth-child(2),
+    .mar .show-market:nth-child(3) {
+        display: none;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .show-market {
+        height: 180px;
+        width: calc(96% / 5);
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .show-der .img img {
+        height: 200px;
+        width: 550px;
+        margin-top: 40px;
+        margin-bottom: 100px;
+        text-align: center;
+    }
+    .show-market {
+        height: 200px;
+        width: calc(96% / 5);
+    }
+}
 </style>
