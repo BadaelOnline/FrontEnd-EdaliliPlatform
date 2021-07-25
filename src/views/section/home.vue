@@ -105,6 +105,32 @@
                     >
                     </productBody>
                 </div>
+                <!-- <div class="popup-view">
+                    <div class="popup-card">
+                        <a href=""
+                            ><i
+                                class="fa fa-times close-btn"
+                                @click="closeBtns()"
+                            ></i
+                        ></a>
+                        <div class="product-img">
+                            <img src="../../../public/img/pro1.png" alt="" />
+                        </div>
+                        <div class="info">
+                            <h2>vgvvhnvmhj</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Nihil, ipsam voluptate? Autem
+                                necessitatibus enim reprehenderit excepturi
+                                voluptates praesentium nisi quidem dolore ipsa
+                                et. Ab tempore quam placeat minus voluptatem
+                                inventore.
+                            </p>
+                            <span class="price">120.00 s.p</span>
+                            <a href="" class="add-cart-btn">Add to Cart</a>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -439,6 +465,143 @@ export default {
     color: #ffd200;
     font-size: 14px;
     display: inline-block;
+}
+.products .container .popup-view {
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+}
+.products .container .popup-view .popup-card {
+    position: relative;
+    display: flex;
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+}
+.products .container .popup-view .popup-card .product-img {
+    z-index: 2;
+    /* background: #4a6f81; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 90%;
+    transform: translateY(25px);
+    border-bottom-left-radius: 10px;
+}
+.products .container .popup-view .popup-card .product-img img {
+    z-index: 2;
+    position: relative;
+    width: 450px;
+    left: -45px;
+}
+.products .container .popup-view .popup-card .info {
+    z-index: 2;
+    background: #4a6f81;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40px;
+    border-radius: 10px;
+}
+.products .container .popup-view .popup-card .close-btn {
+    color: #555;
+    z-index: 3;
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
+}
+.products .container .popup-view .popup-card .info h2 {
+    font-size: 40px;
+    line-height: 20px;
+    margin: 10px;
+}
+.products .container .popup-view .popup-card .info p {
+    font-size: 15px;
+    margin: 10px;
+}
+.products .container .popup-view .popup-card .info .price {
+    font-size: 45px;
+    font-weight: 300;
+    margin: 10px;
+}
+.products .container .popup-view .popup-card .info .add-cart-btn {
+    color: #4a6f81;
+    background: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    margin: 10px auto;
+    cursor: pointer;
+    padding: 10px 50px;
+}
+@media (max-width: 900px) {
+    .products .container .popup-view .popup-card {
+        flex-direction: column;
+        width: 550px;
+        height: auto;
+    }
+    .products .container .popup-view .popup-card .product-img {
+        z-index: 3;
+        width: 100%;
+        height: 400px;
+        transform: translateY(0);
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .products .container .popup-view .popup-card .product-img img {
+        left: initial;
+        max-width: 100%;
+        max-height: 80%;
+        bottom: -50px;
+        /* height: 100%; */
+        /* height: 50%; */
+        /* width: 80%; */
+    }
+    .products .container .popup-view .popup-card .info {
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+        /* padding: 20px; */
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .products .container .popup-view .popup-card .info h2 {
+        margin: 20px 5px 5px 5px;
+        font-size: 25px;
+    }
+    .products .container .popup-view .popup-card .info p {
+        margin: 5px;
+        font-size: 13px;
+    }
+    .products .container .popup-view .popup-card .info .price {
+        margin: 5px;
+        font-size: 30px;
+    }
+    .products .container .popup-view .popup-card .info .add-cart-btn {
+        margin: 5px auto;
+        padding: 5px 40px;
+        font-size: 14px;
+    }
+    .products .container .popup-view .popup-card .close-btn {
+        z-index: 6;
+        margin-top: 100px;
+        margin-right: 60px;
+    }
 }
 /* show market */
 .mar {

@@ -24,18 +24,71 @@
             </div>
         </div>
         <!-- show  products -->
-        <div class="show-prod">
-            <div class="row reower">
-                <BodyProduct
-                    v-for="items in Product.slice(0, 4)"
-                    :key="items.id"
-                    :id="items.id"
-                    :image="items.image"
-                    :short_des="items.short_des"
-                    :long_des="items.long_des"
-                    :name="items.name"
-                >
-                </BodyProduct>
+        <!-- second Carousel -->
+
+        <div
+            id="deno"
+            class="carousel slide"
+            data-ride="carousel"
+            style="margin-top: 40px"
+        >
+            <div class="col-sm-12" style="padding: 0">
+                <div class="carousel-inner">
+                    <div class="carousel-item  active">
+                        <div class="show-prod">
+                            <div class="row">
+                                <BodyProduct
+                                    v-for="items in Product.slice(0, 4)"
+                                    :key="items.id"
+                                    :id="items.id"
+                                    :image="items.image"
+                                    :short_des="items.short_des"
+                                    :name="items.name"
+                                >
+                                </BodyProduct>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="show-prod">
+                            <div class="row">
+                                <BodyProduct
+                                    v-for="items in Product.slice(4, 8)"
+                                    :key="items.id"
+                                    :id="items.id"
+                                    :image="items.image"
+                                    :short_des="items.short_des"
+                                    :name="items.name"
+                                >
+                                </BodyProduct>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item ">
+                        <div class="show-prod">
+                            <div class="row">
+                                <BodyProduct
+                                    v-for="items in Product.slice(0, 4)"
+                                    :key="items.id"
+                                    :id="items.id"
+                                    :image="items.image"
+                                    :short_des="items.short_des"
+                                    :name="items.name"
+                                >
+                                </BodyProduct>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#deno" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#deno" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
             </div>
         </div>
         <!-- show market-->
@@ -57,21 +110,7 @@
                 />
             </div>
         </div>
-        <!-- show  products -->
-        <div class="show-prod">
-            <div class="row reower">
-                <BodyProduct
-                    v-for="items in Product.slice(4, 8)"
-                    :key="items.id"
-                    :id="items.id"
-                    :image="items.image"
-                    :short_des="items.short_des"
-                    :name="items.name"
-                >
-                </BodyProduct>
-            </div>
-        </div>
-
+ 
         <!-- show der -->
         <div class="show-der row">
             <div
@@ -93,17 +132,73 @@
             </div>
         </div>
         <!-- --------------------------------------------- -->
-        <div id="demo" class="carousel slide" data-ride="carousel">
+        <div class="content_cubic">
+         <div id="demo" class="carousel slide" data-ride="carousel">
             <div class="row">
                 <div class="col-lg-3 col-sm-4 col-xs-10">
-                    <span class="last">اخر المشتركین</span>
-                    <div class="last-subscriber">
-                        <Subscriber
-                            v-for="Store in Stores.slice(0, 9)"
-                            :key="Store.pr"
-                            :title="Store.title"
-                        />
-                    </div>
+                    <div class="last">اخر المشتركین</div>
+ 
+    <input type="radio" id="radio-front" name="select-face"/>    
+    <input type="radio" checked id="radio-left" name="select-face"/>
+    <input type="radio" id="radio-right" name="select-face"/>
+    <input type="radio" id="radio-top" name="select-face"/>
+    <input type="radio" id="radio-bottom" name="select-face"/>
+    <input type="radio" id="radio-back" name="select-face"/>
+
+<div class="separator"></div>
+
+
+<div class="space3d">
+        
+    
+    <div class="_3dbox">
+      <div class="_3dface _3dface--front">
+         <Subscriber
+         v-for="Store in Stores.slice(0, 1)"
+         :key="Store.pr"
+          :title="Store.title"
+           />
+      </div>
+      <div class="_3dface _3dface--top">         
+          <Subscriber 
+       
+        v-for="Store in Stores.slice(1, 2)"
+        :key="Store.pr"
+        :title="Store.title"
+           /></div>
+      <div class="_3dface _3dface--bottom">         
+        <Subscriber
+        
+         v-for="Store in Stores.slice(2, 3)"
+         :key="Store.pr"
+          :title="Store.title"
+           /></div>
+      <div class="_3dface _3dface--left">         
+          <Subscriber
+           
+         v-for="Store in Stores.slice(3, 4)"
+         :key="Store.pr"
+          :title="Store.title"
+           /></div>
+      <div class="_3dface _3dface--right">         
+          <Subscriber
+           
+         v-for="Store in Stores.slice(4, 5)"
+         :key="Store.pr"
+          :title="Store.title"
+           /></div>
+      <div class="_3dface _3dface--back">         
+          <Subscriber
+           
+         v-for="Store in Stores.slice(5, 6)"
+         :key="Store.pr"
+          :title="Store.title"
+           /></div>
+    </div>
+    
+</div>
+
+<div class="separator"></div>
                 </div>
                 <div class="col-lg-9 col-sm-8 col-xs-10 carousel-none">
                     <div class="carousel-inner carousel-inner1">
@@ -174,7 +269,13 @@
                         <span class="carousel-control-next-icon"></span>
                     </a>
 
-                    <div
+
+                </div>
+            </div>
+        </div>
+           
+        </div>
+                    <!-- <div
                         class="row"
                         style="
                             margin: 30px 0 0 0;
@@ -214,79 +315,153 @@
                                 <img :src="brand.image" />
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- second Carousel -->
-
-        <div
-            id="deno"
-            class="carousel slide"
-            data-ride="carousel"
-            style="margin-top: 40px"
-        >
-            <div class="col-sm-12" style="padding: 0">
-                <div class="carousel-inner">
-                    <div class="carousel-item mr-2 active">
-                        <div class="show-prod">
-                            <div class="row">
-                                <BodyProduct
-                                    v-for="items in Product.slice(0, 4)"
-                                    :key="items.id"
-                                    :id="items.id"
-                                    :image="items.image"
-                                    :short_des="items.short_des"
-                                    :name="items.name"
-                                >
-                                </BodyProduct>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item mr-2">
-                        <div class="show-prod">
-                            <div class="row">
-                                <BodyProduct
-                                    v-for="items in Product.slice(4, 8)"
-                                    :key="items.id"
-                                    :id="items.id"
-                                    :image="items.image"
-                                    :short_des="items.short_des"
-                                    :name="items.name"
-                                >
-                                </BodyProduct>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item mr-2">
-                        <div class="show-prod">
-                            <div class="row">
-                                <BodyProduct
-                                    v-for="items in Product.slice(0, 4)"
-                                    :key="items.id"
-                                    :id="items.id"
-                                    :image="items.image"
-                                    :short_des="items.short_des"
-                                    :name="items.name"
-                                >
-                                </BodyProduct>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <a class="carousel-control-prev" href="#deno" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#deno" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </a>
-            </div>
-        </div>
+                    </div> -->
     </div>
 </template>
+<style lang="scss" scoped>
+$cubeWidth: 200px;
+$cubeHeight: 200px;
+$cubeDepth: $cubeHeight;
+
+.separator {
+  margin-top: 40px;
+}
+ .content_cubic input{
+     margin: 0 5px;
+ } 
+/* 3D Cube */
+.space3d {
+  perspective: 1000px;
+  width: $cubeWidth;
+  height: $cubeHeight;
+  text-align: center;
+  display: inline-block;
+}
+
+._3dbox {
+  display: inline-block;
+  transition: all 0.85s cubic-bezier(0.175,0.885,0.320,1.275);
+
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+//   transform: rotateX(-15deg) rotateY(15deg);
+}
+
+._3dface {
+  overflow: hidden;
+  position: absolute;
+  border: 1px solid #888;
+  background: #FFF;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.1),
+ 0 0 50px rgba(0, 0, 0, 0.3);
+  color: #333;
+  opacity: 0.9;
+}
+._3dface:hover {
+  opacity: 1;
+}
+
+._3dface--front {
+  width: $cubeWidth;
+  height: $cubeHeight;
+  transform: translate3d(0, 0, $cubeDepth / 2);
+}
+  
+._3dface--top {
+  width: $cubeWidth;
+  height: $cubeDepth;
+  transform: rotateX(90deg) translate3d(0, 0, $cubeHeight / 2);
+}
+
+._3dface--bottom {
+  width: $cubeWidth;
+  height: $cubeDepth;
+  transform: rotateX(-90deg) translate3d(0, 0, $cubeHeight / 2);
+}
+
+._3dface--left {
+  width: $cubeDepth;
+  height: $cubeHeight;
+  left: 50%;
+  margin-left: -$cubeDepth / 2;
+  transform: rotateY(-90deg) translate3d(0, 0, $cubeWidth / 2);
+}
+
+
+._3dface--right {
+  width: $cubeDepth;
+  height: $cubeHeight;
+  left: 50%;
+  margin-left: -$cubeDepth / 2;
+  transform: rotateY(90deg) translate3d(0, 0, $cubeWidth / 2);
+}
+
+
+._3dface--back {
+  width: $cubeWidth;
+  height: $cubeHeight;
+  transform: rotateY(180deg) translate3d(0, 0, $cubeDepth / 2);
+}
+
+#radio-left:checked ~ .space3d ._3dbox {
+  transform: rotateY(90deg); 
+  
+}
+  
+#radio-right:checked ~ .space3d ._3dbox {
+  transform: rotateY(-90deg); 
+  
+}
+  
+#radio-bottom:checked ~ .space3d ._3dbox {
+  transform: rotateX(90deg); 
+ 
+}
+
+#radio-top:checked ~ .space3d ._3dbox {
+  transform: rotateX(-90deg); 
+
+}
+  
+#radio-back:checked ~ .space3d ._3dbox {
+  transform: rotateY(180deg); 
+  
+}
+
+  // Apply backgrounds
+  ._3dface--front {
+  background: url('../../../public/img/market-logo2.jpg');
+  background-size: 100%;
+}
+  
+  ._3dface--left {
+  background: url('../../../public/img/market-logo.png');
+  background-size: auto 100%;
+}
+  
+   ._3dface--right {
+  background: url('../../../public/img/market-logo3.jpg');
+  background-size: auto 100%;
+}
+  
+   ._3dface--top {
+  background: url('../../../public/img/market-logo2.jpg');
+  background-size: auto 100%;
+}
+  
+   ._3dface--bottom {
+  background: url('../../../public/img/market-logo.png');
+  background-size: auto 100%;
+}
+  
+  ._3dface--back {
+  background: url('../../../public/img/market-logo3.jpg');
+  background-size: auto 100%;
+}
+</style>
 <style scoped>
 .row {
     justify-content: center;
@@ -418,6 +593,7 @@
 /* Extra large devices (large desktops, 1200px and up)  */
 @media (min-width: 1200px) {
 }
+
 /* End style for product */
 /* --------------------------------------------- */
 .show-der .img img {
@@ -577,14 +753,7 @@
     font-weight: bold;
     color: #5e4949;
 }
-.last-subscriber {
-    height: auto;
-    padding-bottom: 20px;
-    background-color: #d4cccc;
-    position: relative;
-    padding-top: 10px;
-    border-radius: 5px;
-}
+
 .carousel-inner {
     background-color: #ffff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
@@ -620,42 +789,19 @@
     .carousel-none {
         display: none;
     }
-    .last-subscriber {
-        margin-bottom: 50px;
-        width: 94%;
-        text-align: center;
-        margin-left: 0%;
-    }
+ 
     .carousel-inner {
         box-shadow: none;
         overflow: visible;
     }
-    .last-subscriber .subscriber {
-        width: 85%;
-        margin: 10px 0 0 13px;
-        font-size: 16px;
-    }
-    .last-subscriber .subscriber img {
-        right: 15%;
-    }
+  
     .slide .last {
         margin-left: 40px;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .last-subscriber {
-        height: auto;
-        padding-top: 1px;
-    }
-    .last-subscriber .subscriber {
-        font-size: 12px;
-        height: 69px;
-    }
-    .last-subscriber .subscriber img {
-        width: 35px;
-        right: 12px;
-    }
+
     .slide .last {
         margin-left: 35px;
         font-size: 14px;
@@ -663,28 +809,14 @@
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .last-subscriber {
-        height: auto;
-    }
-    .last-subscriber .subscriber {
-        font-size: 15px;
-        height: 79px;
-    }
-    .last-subscriber .subscriber img {
-        right: 18px;
-    }
+ 
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .last-subscriber .subscriber {
-        font-size: 16px;
-    }
-    .last-subscriber .subscriber img {
-        right: 16px;
-    }
+
 }
 /* ------------------------------------------ */
-.two-img {
+/* .two-img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -712,27 +844,28 @@
 }
 .imgs img:hover {
     transform: scale3d(1.05, 1.05, 1);
-}
+} */
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .imges1,
+    /* .imges1,
     .imges2 {
         display: none;
     }
     .imgs {
-        display: none;
-    }
+        max-width: 300px;
+        margin: auto;
+    } */
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .imges1,
+    /* .imges1,
     .imges2 {
         display: none;
-    }
+    } */
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .two-img {
+    /* .two-img {
         height: 240px;
     }
     .imges1 img {
@@ -742,12 +875,12 @@
         width: 100px;
     }
     .imgs {
-        max-width: 550px;
-    }
+        max-width: 400px;
+    } */
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .two-img {
+    /* .two-img {
         height: 335px;
     }
     .imges1 img {
@@ -758,17 +891,21 @@
     }
     .imgs {
         max-width: 550px;
-    }
+    } */
 }
 /* Extra large devices (large desktops, 1200px and up)  */
 @media (min-width: 1200px) {
-    .imges1 img {
+    /* .imges1 img {
         width: 180px;
     }
     .imges2 img {
         width: 180px;
-    }
+    } */
 }
+.carousel-inner1  {
+        box-shadow: none;
+    }
+
 /* ________________________________ End Products _______________________________*/
 </style>
 

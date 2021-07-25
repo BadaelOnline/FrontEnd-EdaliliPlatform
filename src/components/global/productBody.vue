@@ -13,10 +13,22 @@
                         src="../../../public/img/pro1-1.png"
                         alt=""
                     />
+                    <!--  -->
                 </a>
                 <ul class="social">
-                    <li><i class="fa fa-search"></i></li>
-                    <li><i class="fa fa-heart"></i></li>
+                    <li>
+                        <i
+                            class="fa fa-search popup-btn"
+                            @click="popupBtns()"
+                        ></i>
+                    </li>
+                    <li>
+                        <i
+                            class="fa fa-heart heart"
+                            @click="heartlike()"
+                            ref="heart"
+                        ></i>
+                    </li>
                     <li><i class="fa fa-shopping-cart"></i></li>
                     <li><i class="fa fa-link"></i></li>
                 </ul>
@@ -46,6 +58,23 @@
 export default {
     name: 'productBody',
     props: ['id', 'name', 'image', 'short_des', 'long_des', 'store'],
+    methods: {
+        // gotodetails: function (i, n, s, l) {
+        //     this.$router.push(`ProductDetalis/${i}/${n}/${s}/${l}`);
+        // },
+        // gotoListView: function (i) {
+        //     this.$router.push(`/ListView/${i}`);
+        // },
+        // gotoprodetails: function (i) {
+        //     this.$router.push(`/products/${i}`);
+        // },
+        heartlike: function () {
+            this.$refs.heart.classList.toggle('is-active');
+        },
+        popupBtns: function () {
+            document.getElementById('.popup-view').style.opacity = 1;
+        },
+    },
 };
 </script>
 
