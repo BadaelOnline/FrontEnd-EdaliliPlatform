@@ -96,28 +96,103 @@
             </h2>
             <div class="container">
                 <div class="row">
-                    <productBody
+                    <div
+                        class="col-lg-3 col-md-6 col-sm-6"
+                        v-for="items in Product.slice(0, 4)"
+                        :key="items.id"
+                        :id="items.id"
+                        :name="items.name"
+                        :short_des="items.short_des"
+                    >
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="" class="image">
+                                    <img
+                                        class="pic-1"
+                                        src="../../../public/img/pro1.png"
+                                        alt=""
+                                    />
+                                    <img
+                                        class="pic-2"
+                                        src="../../../public/img/pro1-1.png"
+                                        alt=""
+                                    />
+                                    <!--  -->
+                                </a>
+                                <ul class="social">
+                                    <li>
+                                        <i
+                                            class="fa fa-search popup-btn"
+                                            @click="showDetails = true"
+                                        ></i>
+                                    </li>
+                                    <li>
+                                        <i
+                                            class="fa fa-heart heart"
+                                            @click="heartlike()"
+                                            ref="heart"
+                                        ></i>
+                                    </li>
+                                    <li><i class="fa fa-shopping-cart"></i></li>
+                                    <li>
+                                        <i
+                                            class="fa fa-link"
+                                            @click="chooseDetails = true"
+                                        ></i>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">{{ items.name }}</h3>
+                                <p>
+                                    {{ items.short_des }}
+                                </p>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                                <!-- <div class="avilble">
+                    <div>متوفر في {{ avalibleStore }} متاجر</div>
+                    <span class="fa fa-check-circle"></span>
+                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <productBody
                         v-for="items in Product.slice(0, 4)"
                         :key="items.id"
                         :id="items.id"
                         :short_des="items.short_des"
                         :name="items.name"
                     >
-                    </productBody>
+                    </productBody> -->
                 </div>
-                <!-- <div class="popup-view">
+                <div
+                    class="popup-view"
+                    v-if="showDetails"
+                    data-aos="flip-right"
+                    data-aos-offset="200"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                >
                     <div class="popup-card">
-                        <a href=""
-                            ><i
+                        <button style="border: none">
+                            <i
                                 class="fa fa-times close-btn"
-                                @click="closeBtns()"
-                            ></i
-                        ></a>
+                                @click="showDetails = false"
+                            ></i>
+                        </button>
                         <div class="product-img">
                             <img src="../../../public/img/pro1.png" alt="" />
                         </div>
                         <div class="info">
-                            <h2>vgvvhnvmhj</h2>
+                            <h2>cndsxcdsnc</h2>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Nihil, ipsam voluptate? Autem
@@ -127,10 +202,92 @@
                                 inventore.
                             </p>
                             <span class="price">120.00 s.p</span>
-                            <a href="" class="add-cart-btn">Add to Cart</a>
+                            <a class="add-cart-btn">Add to Cart</a>
                         </div>
                     </div>
-                </div> -->
+                </div>
+                <!-- choose -->
+                <div
+                    class="popup-view1"
+                    v-if="chooseDetails"
+                    data-aos="flip-right"
+                    data-aos-offset="200"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                >
+                    <div class="popup-card">
+                        <button style="border: none">
+                            <i
+                                class="fa fa-times close-btn"
+                                @click="chooseDetails = false"
+                            ></i>
+                        </button>
+                        <div class="choose">
+                            <div class="sort col-3">
+                                <input
+                                    id="radio1"
+                                    name="radios"
+                                    value="price"
+                                    type="radio"
+                                    v-model="sortType"
+                                    v-on:change="sortItem()"
+                                />
+                                <label for="radio1">من الأرخص الى الأغلى</label>
+                            </div>
+                            <div class="sort col-3">
+                                <input
+                                    id="radio2"
+                                    name="radios"
+                                    value="prices"
+                                    type="radio"
+                                    v-model="sortType"
+                                    v-on:change="sortItem()"
+                                />
+                                <label for="radio2">من الأغلى الى الأرخص</label>
+                            </div>
+                            <div class="sort col-3">
+                                <input
+                                    type="radio"
+                                    id="radio3"
+                                    name="radios"
+                                    value="space"
+                                    v-model="sortType"
+                                    v-on:change="sortItem()"
+                                />
+                                <label for="radio3">من الأقرب الى الأبعد</label>
+                            </div>
+                            <div class="sort col-3">
+                                <input
+                                    type="radio"
+                                    id="radio4"
+                                    name="radios"
+                                    value="spaces"
+                                    v-model="sortType"
+                                    v-on:change="sortItem()"
+                                />
+                                <label for="radio4">من الأبعد الى الأقرب</label>
+                            </div>
+                        </div>
+                        <div class="product-img">
+                            <img src="../../../public/img/pro1.png" alt="" />
+                        </div>
+                        <div class="info">
+                            <h2>cndsxcdsnc</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Nihil, ipsam voluptate? Autem
+                                necessitatibus enim reprehenderit excepturi
+                                voluptates praesentium nisi quidem dolore ipsa
+                                et. Ab tempore quam placeat minus voluptatem
+                                inventore.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
             </div>
         </div>
     </div>
@@ -142,12 +299,15 @@ export default {
     name: 'home',
     props: ['image'],
     data() {
-        return {};
+        return {
+            showDetails: false,
+            chooseDetails: false,
+        };
     },
     components: {
-        productBody: defineAsyncComponent(() =>
-            import(`@/components/global/productBody.vue`)
-        ),
+        // productBody: defineAsyncComponent(() =>
+        //     import(`@/components/global/productBody.vue`)
+        // ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
         ),
@@ -271,76 +431,6 @@ export default {
 .more:hover {
     text-decoration: underline;
 }
-/* Brands */
-.brands {
-    margin: 24px;
-    padding: 24px;
-    min-height: 100%;
-    display: grid;
-    place-items: center;
-}
-.slider1 {
-    height: 250px;
-    margin: auto;
-    position: relative;
-    width: 90%;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-}
-.slide-track {
-    display: flex;
-    width: (250px * 18);
-    animation: scroll 40s linear infinite;
-}
-.slide-track:hover {
-    animation-play-state: paused;
-}
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-250px * 9));
-    }
-}
-.slide1 {
-    height: 200px;
-    width: 250px;
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    perspective: 100px;
-}
-.slide1 img {
-    width: 100%;
-    transition: transform 1s;
-}
-.slide1 img:hover {
-    transform: translateZ(20px);
-}
-.slide1::before,
-.slider1::after {
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    content: '';
-    height: 100%;
-    position: absolute;
-    width: 15%;
-    z-index: 2;
-}
-.slider1::before {
-    left: 0;
-    top: 0;
-}
-.slider1::after {
-    right: 0;
-    top: 0;
-    transform: rotateZ(180deg);
-}
 /* product */
 .row {
     display: flex;
@@ -444,8 +534,9 @@ export default {
     background-color: #4a6f81;
 }
 .products .container .product-grid .product-content {
-    padding: 20px 10px;
+    padding: 5px 10px;
     display: block;
+    min-height: 150px;
 }
 .products .container .product-grid .product-content .title {
     font-size: 15px;
@@ -466,8 +557,49 @@ export default {
     font-size: 14px;
     display: inline-block;
 }
+/* choose */
+.products .container .popup-view1 {
+    z-index: 2;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+}
+.products .container .popup-view1 .popup-card {
+    position: relative;
+    /* display: flex; */
+    width: 800px;
+    height: 500px;
+    /* margin: 20px; */
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+.products .container .popup-view1 .popup-card .product-img img {
+    z-index: 2;
+    position: relative;
+    width: 450px;
+    /* left: -45px; */
+}
+.products .container .popup-view1 .popup-card .info {
+    z-index: 2;
+    background: #4a6f81;
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 55%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40px;
+    border-radius: 10px;
+}
+/* show */
 .products .container .popup-view {
     z-index: 2;
+    position: fixed;
     right: 0;
     bottom: 0;
     left: 0;
@@ -475,8 +607,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    visibility: hidden;
 }
 .products .container .popup-view .popup-card {
     position: relative;
@@ -495,7 +625,7 @@ export default {
     width: 45%;
     height: 90%;
     transform: translateY(25px);
-    border-bottom-left-radius: 10px;
+    /* border-bottom-left-radius: 10px; */
 }
 .products .container .popup-view .popup-card .product-img img {
     z-index: 2;
@@ -519,8 +649,9 @@ export default {
     z-index: 3;
     position: absolute;
     right: 0;
+    top: 0;
     font-size: 20px;
-    margin: 20px;
+    margin: 10px;
     cursor: pointer;
 }
 .products .container .popup-view .popup-card .info h2 {
