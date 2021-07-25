@@ -7,7 +7,7 @@
         </div>
         <div class="child2">
             <div
-                v-for="store in Stores.slice(0, 10)"
+                v-for="store in Stores.slice(0, 4)"
                 :key="store.pr"
                 :store="store"
                 style="margin-bottom: 50px"
@@ -70,10 +70,9 @@
                         </div>
                         <div
                             class="textFollow"
-                            id="textFollow"
-                            @click="heart()"
+                            @click="toggl"
                         >
-                            <span class="share heart" id="heart"></span>
+                            <span class="share" ></span>
                             <i
                                 class="fas fa-share fa-2x"
                                 style="color: #d7cfcf"
@@ -81,12 +80,11 @@
                             <span class="follow" id="follow">مشاركة العرض</span>
                         </div>
                         <div
-                            class="textFollow"
-                            id="textFollow1"
-                            @click="hearts()"
+                           class="textFollow"
+                           @click="toggle"
                         >
-                            <span class="heart" id="heart1"></span>
-                            <span class="follow" id="follow1"
+                            <span class="heart" :class="{ 'heart-active' : toggled}"></span>
+                            <span class="follow" 
                                 >الأعجاب بالعرض</span
                             >
                         </div>
@@ -202,6 +200,7 @@ export default {
             viewProductsInStore: [],
             rating: 0,
             selectedCategory: [],
+    toggled: false
         };
     },
     computed: {
@@ -227,20 +226,17 @@ export default {
         this.$store.dispatch('loadStores');
     },
     methods: {
-        heart: function () {
-            document
-                .getElementById('textFollow')
-                .classList.toggle('heart-active');
-            document.getElementById('follow').classList.toggle('heart-active');
-            document.getElementById('heart').classList.toggle('heart-active');
-        },
-        hearts: function () {
-            document
-                .getElementById('textFollow1')
-                .classList.toggle('heart-active');
-            document.getElementById('follow1').classList.toggle('heart-active');
-            document.getElementById('heart1').classList.toggle('heart-active');
-        },
+ toggl: function( event ) {
+   event.currentTarget.classList.toggle('heart-active');
+
+  
+ },
+  toggle: function( event ) {
+   event.currentTarget.classList.toggle('heart-active');
+    this.toggled = !this.toggled
+
+  
+ },
         btnbar: function () {
             document.getElementById('btn').classList.toggle('click');
             document.getElementById('menu').classList.toggle('show');
