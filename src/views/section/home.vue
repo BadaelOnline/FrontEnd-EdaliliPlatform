@@ -51,7 +51,25 @@
             >
                 Our <span>Brands</span>
             </h2>
-            <div class="slider1">
+            <div class="mar">
+                <div
+                    class="show-market"
+                    v-for="bran in brands.slice(2, 7)"
+                    :key="bran.id"
+                >
+                    <img
+                        data-aos="flip-left"
+                        data-aos-offset="200"
+                        data-aos-delay="50"
+                        data-aos-duration="1000"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="true"
+                        :src="bran.image"
+                    />
+                </div>
+            </div>
+            <!-- <div class="slider1">
                 <div class="slide-track">
                     <div class="slide1" v-for="brand in Brands" :key="brand.id">
                         <img
@@ -60,7 +78,7 @@
                         />
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- products -->
         <div class="products">
@@ -78,255 +96,42 @@
             </h2>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product-grid">
-                            <div class="product-image">
-                                <a href="" class="image">
-                                    <img
-                                        class="pic-1"
-                                        src="../../../public/img/pro2.png"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="pic-2"
-                                        src="../../../public/img/pro2-2.png"
-                                        alt=""
-                                    />
-                                </a>
-                                <ul class="social">
-                                    <li><i class="fa fa-search"></i></li>
-                                    <li><i class="fa fa-heart"></i></li>
-                                    <li><i class="fa fa-shopping-cart"></i></li>
-                                    <li><i class="fa fa-link"></i></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title">شامبو</h3>
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur
-                                    adipisicing elit. Magni dicta, aperiam
-                                </p>
-                                <ul class="rating">
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product-grid">
-                            <div class="product-image">
-                                <a href="" class="image">
-                                    <img
-                                        class="pic-1"
-                                        src="../../../public/img/pro2.png"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="pic-2"
-                                        src="../../../public/img/pro2-2.png"
-                                        alt=""
-                                    />
-                                </a>
-                                <ul class="social">
-                                    <li><i class="fa fa-search"></i></li>
-                                    <li><i class="fa fa-heart"></i></li>
-                                    <li><i class="fa fa-shopping-cart"></i></li>
-                                    <li><i class="fa fa-link"></i></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title">شامبو</h3>
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur
-                                    adipisicing elit. Magni dicta, aperiam
-                                </p>
-                                <ul class="rating">
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product-grid">
-                            <div class="product-image">
-                                <a href="" class="image">
-                                    <img
-                                        class="pic-1"
-                                        src="../../../public/img/pro2.png"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="pic-2"
-                                        src="../../../public/img/pro2-2.png"
-                                        alt=""
-                                    />
-                                </a>
-                                <ul class="social">
-                                    <li><i class="fa fa-search"></i></li>
-                                    <li><i class="fa fa-heart"></i></li>
-                                    <li><i class="fa fa-shopping-cart"></i></li>
-                                    <li><i class="fa fa-link"></i></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title">شامبو</h3>
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur
-                                    adipisicing elit. Magni dicta, aperiam
-                                </p>
-                                <ul class="rating">
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product-grid">
-                            <div class="product-image">
-                                <a href="" class="image">
-                                    <img
-                                        class="pic-1"
-                                        src="../../../public/img/pro2.png"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="pic-2"
-                                        src="../../../public/img/pro2-2.png"
-                                        alt=""
-                                    />
-                                </a>
-                                <ul class="social">
-                                    <li><i class="fa fa-search"></i></li>
-                                    <li><i class="fa fa-heart"></i></li>
-                                    <li><i class="fa fa-shopping-cart"></i></li>
-                                    <li><i class="fa fa-link"></i></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title">شامبو</h3>
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur
-                                    adipisicing elit. Magni dicta, aperiam
-                                </p>
-                                <ul class="rating">
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product-grid">
-                            <div class="product-image">
-                                <a href="" class="image">
-                                    <img
-                                        class="pic-1"
-                                        src="../../../public/img/pro2.png"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="pic-2"
-                                        src="../../../public/img/pro2-2.png"
-                                        alt=""
-                                    />
-                                </a>
-                                <ul class="social">
-                                    <li><i class="fa fa-search"></i></li>
-                                    <li><i class="fa fa-heart"></i></li>
-                                    <li><i class="fa fa-shopping-cart"></i></li>
-                                    <li><i class="fa fa-link"></i></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title">شامبو</h3>
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur
-                                    adipisicing elit. Magni dicta, aperiam
-                                </p>
-                                <ul class="rating">
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product-grid">
-                            <div class="product-image">
-                                <a href="" class="image">
-                                    <img
-                                        class="pic-1"
-                                        src="../../../public/img/pro2.png"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="pic-2"
-                                        src="../../../public/img/pro2-2.png"
-                                        alt=""
-                                    />
-                                </a>
-                                <ul class="social">
-                                    <li><i class="fa fa-search"></i></li>
-                                    <li><i class="fa fa-heart"></i></li>
-                                    <li><i class="fa fa-shopping-cart"></i></li>
-                                    <li><i class="fa fa-link"></i></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title">شامبو</h3>
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur
-                                    adipisicing elit. Magni dicta, aperiam
-                                </p>
-                                <ul class="rating">
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                    <li class="fa fa-star"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                </div>
-            </div>
-            <!-- <div class="show-prod">
-                <div class="row">
-                    <BodyProduct
-                        v-for="items in Product"
+                    <productBody
+                        v-for="items in Product.slice(0, 4)"
                         :key="items.id"
                         :id="items.id"
-                        :image="items.image"
                         :short_des="items.short_des"
                         :name="items.name"
                     >
-                    </BodyProduct>
+                    </productBody>
                 </div>
-            </div> -->
+                <!-- <div class="popup-view">
+                    <div class="popup-card">
+                        <a href=""
+                            ><i
+                                class="fa fa-times close-btn"
+                                @click="closeBtns()"
+                            ></i
+                        ></a>
+                        <div class="product-img">
+                            <img src="../../../public/img/pro1.png" alt="" />
+                        </div>
+                        <div class="info">
+                            <h2>vgvvhnvmhj</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Nihil, ipsam voluptate? Autem
+                                necessitatibus enim reprehenderit excepturi
+                                voluptates praesentium nisi quidem dolore ipsa
+                                et. Ab tempore quam placeat minus voluptatem
+                                inventore.
+                            </p>
+                            <span class="price">120.00 s.p</span>
+                            <a href="" class="add-cart-btn">Add to Cart</a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
         </div>
     </div>
 </template>
@@ -340,9 +145,9 @@ export default {
         return {};
     },
     components: {
-        // BodyProduct: defineAsyncComponent(() =>
-        //     import(`@/components/global/BodyProduct.vue`)
-        // ),
+        productBody: defineAsyncComponent(() =>
+            import(`@/components/global/productBody.vue`)
+        ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
         ),
@@ -356,7 +161,7 @@ export default {
         },
     },
     computed: {
-        ...mapState(['Categories', 'Brands', 'Sections', 'Product']),
+        ...mapState(['Categories', 'Brands', 'brands', 'Sections', 'Product']),
     },
     mounted() {
         this.$store.dispatch('loadSections');
@@ -559,7 +364,6 @@ export default {
         height: auto;
     }
 }
-
 /*  */
 /* products */
 .products .container {
@@ -661,5 +465,215 @@ export default {
     color: #ffd200;
     font-size: 14px;
     display: inline-block;
+}
+.products .container .popup-view {
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+}
+.products .container .popup-view .popup-card {
+    position: relative;
+    display: flex;
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+}
+.products .container .popup-view .popup-card .product-img {
+    z-index: 2;
+    /* background: #4a6f81; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 90%;
+    transform: translateY(25px);
+    border-bottom-left-radius: 10px;
+}
+.products .container .popup-view .popup-card .product-img img {
+    z-index: 2;
+    position: relative;
+    width: 450px;
+    left: -45px;
+}
+.products .container .popup-view .popup-card .info {
+    z-index: 2;
+    background: #4a6f81;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40px;
+    border-radius: 10px;
+}
+.products .container .popup-view .popup-card .close-btn {
+    color: #555;
+    z-index: 3;
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
+}
+.products .container .popup-view .popup-card .info h2 {
+    font-size: 40px;
+    line-height: 20px;
+    margin: 10px;
+}
+.products .container .popup-view .popup-card .info p {
+    font-size: 15px;
+    margin: 10px;
+}
+.products .container .popup-view .popup-card .info .price {
+    font-size: 45px;
+    font-weight: 300;
+    margin: 10px;
+}
+.products .container .popup-view .popup-card .info .add-cart-btn {
+    color: #4a6f81;
+    background: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    margin: 10px auto;
+    cursor: pointer;
+    padding: 10px 50px;
+}
+@media (max-width: 900px) {
+    .products .container .popup-view .popup-card {
+        flex-direction: column;
+        width: 550px;
+        height: auto;
+    }
+    .products .container .popup-view .popup-card .product-img {
+        z-index: 3;
+        width: 100%;
+        height: 400px;
+        transform: translateY(0);
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .products .container .popup-view .popup-card .product-img img {
+        left: initial;
+        max-width: 100%;
+        max-height: 80%;
+        bottom: -50px;
+        /* height: 100%; */
+        /* height: 50%; */
+        /* width: 80%; */
+    }
+    .products .container .popup-view .popup-card .info {
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+        /* padding: 20px; */
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .products .container .popup-view .popup-card .info h2 {
+        margin: 20px 5px 5px 5px;
+        font-size: 25px;
+    }
+    .products .container .popup-view .popup-card .info p {
+        margin: 5px;
+        font-size: 13px;
+    }
+    .products .container .popup-view .popup-card .info .price {
+        margin: 5px;
+        font-size: 30px;
+    }
+    .products .container .popup-view .popup-card .info .add-cart-btn {
+        margin: 5px auto;
+        padding: 5px 40px;
+        font-size: 14px;
+    }
+    .products .container .popup-view .popup-card .close-btn {
+        z-index: 6;
+        margin-top: 100px;
+        margin-right: 60px;
+    }
+}
+/* show market */
+.mar {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 24px;
+}
+.show-market {
+    box-shadow: 0 4px 8px 0 #fefefe;
+    width: 100%;
+    height: 250px;
+    width: calc(96% / 5);
+}
+.show-market img {
+    height: 230px;
+    transition: all 0.5s;
+    width: 100%;
+    height: 100%;
+}
+.show-market img:hover {
+    transform: scale3d(1.05, 1.05, 1);
+    cursor: pointer;
+}
+@media (max-width: 576.98px) {
+    .mar {
+        margin-top: 47vh;
+        margin-bottom: 4vh;
+    }
+}
+@media (max-width: 500.98px) {
+    .mar {
+        margin-top: 35vh;
+        margin-bottom: 4vh;
+    }
+}
+@media (max-width: 435.98px) {
+    .mar {
+        margin-top: 5vh;
+        margin-bottom: 4vh;
+    }
+}
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .show-market {
+        height: 130px;
+        width: calc(96% / 3);
+        margin-top: 0;
+    }
+    .mar .show-market:nth-child(2),
+    .mar .show-market:nth-child(3) {
+        display: none;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .show-market {
+        height: 180px;
+        width: calc(96% / 5);
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .show-der .img img {
+        height: 200px;
+        width: 550px;
+        margin-top: 40px;
+        margin-bottom: 100px;
+        text-align: center;
+    }
+    .show-market {
+        height: 200px;
+        width: calc(96% / 5);
+    }
 }
 </style>

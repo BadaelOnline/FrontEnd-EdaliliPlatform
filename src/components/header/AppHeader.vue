@@ -32,7 +32,7 @@
                         </div>
                         <div class="child_3">
                             <div class="customer-select cu2">
-                                <select v-model="sortType" c>
+                                <select v-model="sortType">
                                     <option value="1" disabled>
                                         {{ $t('Governorate') }}
                                     </option>
