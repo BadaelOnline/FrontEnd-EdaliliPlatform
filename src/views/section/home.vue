@@ -98,11 +98,11 @@
                 <div class="row">
                     <div
                         class="col-lg-3 col-md-6 col-sm-6"
-                        v-for="items in Product.slice(0, 4)"
-                        :key="items.id"
-                        :id="items.id"
-                        :name="items.name"
-                        :short_des="items.short_des"
+                        v-for="prod in Product.slice(0, 4)"
+                        :key="prod.id"
+                        :id="prod.id"
+                        :name="prod.name"
+                        :short_des="prod.short_des"
                     >
                         <div class="product-grid">
                             <div class="product-image">
@@ -123,7 +123,10 @@
                                     <li>
                                         <i
                                             class="fa fa-search popup-btn"
-                                            @click="showDetails = true"
+                                            @click="
+                                                showDetails = true;
+                                                `${details}`;
+                                            "
                                         ></i>
                                     </li>
                                     <li>
@@ -143,9 +146,9 @@
                                 </ul>
                             </div>
                             <div class="product-content">
-                                <h3 class="title">{{ items.name }}</h3>
+                                <h3 class="title">{{ prod.name }}</h3>
                                 <p>
-                                    {{ items.short_des }}
+                                    {{ prod.short_des }}
                                 </p>
                                 <ul class="rating">
                                     <li class="fa fa-star"></li>
@@ -184,7 +187,7 @@
                             <img src="../../../public/img/pro1.png" alt="" />
                         </div>
                         <div class="info">
-                            <h2>cndsxcdsnc</h2>
+                            <h2>{{prodId}}</h2>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Nihil, ipsam voluptate? Autem
@@ -394,6 +397,12 @@ export default {
         return {
             showDetails: false,
             chooseDetails: false,
+            details: {
+                prodId: this.id,
+                //     name: this.name,
+                //     short_des: this.short_des,
+                //     long_des: this.long_des,
+            },
         };
     },
     components: {
