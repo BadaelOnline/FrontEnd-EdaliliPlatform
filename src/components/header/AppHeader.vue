@@ -800,6 +800,7 @@ cursor: pointer;
     background-color: #bfc0c2;
     padding: 10px 20px;
     color: #635f5f;
+    font-size: 15px;
 }
 .jumbotron .featuers .cole {
     font-size: 30px;
@@ -1036,6 +1037,7 @@ cursor: pointer;
     background-color: #a7a6a6;
     padding: 5px 0 5px 0;
     margin: 10px 0 10px 0;
+    
 }
 .naver .conten {
     display: inline-flex;
@@ -1052,6 +1054,7 @@ cursor: pointer;
     border-radius: 15px;
     color: #635f5f;
     padding: 0 5px;
+    font-size: 14px;
 }
 .btn:hover {
     transform: scale3d(1.1, 1.1, 1.1);
