@@ -19,7 +19,7 @@
                     <li>
                         <i
                             class="fa fa-search popup-btn"
-                            @click="popupBtns()"
+                            @click="showDetails = true"
                         ></i>
                     </li>
                     <li>
@@ -58,6 +58,11 @@
 export default {
     name: 'productBody',
     props: ['id', 'name', 'image', 'short_des', 'long_des', 'store'],
+    data() {
+        return {
+            showDetails: false,
+        };
+    },
     methods: {
         // gotodetails: function (i, n, s, l) {
         //     this.$router.push(`ProductDetalis/${i}/${n}/${s}/${l}`);
