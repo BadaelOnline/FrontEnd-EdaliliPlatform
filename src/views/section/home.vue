@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <Cartmini />
@@ -752,7 +753,6 @@ export default {
     margin: 20px;
 }
 /* for custom scrollbar for webkit browser*/
-
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -974,3 +974,5 @@ export default {
     }
 }
 </style>
+
+ 
