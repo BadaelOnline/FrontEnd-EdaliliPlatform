@@ -123,10 +123,8 @@
                                     <li>
                                         <i
                                             class="fa fa-search popup-btn"
-                                            @click="
-                                                showDetails = true;
-                                                `${details}`;
-                                            "
+                                            @click="showDetails = true"
+                                            v-bind="`${id}`"
                                         ></i>
                                     </li>
                                     <li>
@@ -187,7 +185,7 @@
                             <img src="../../../public/img/pro1.png" alt="" />
                         </div>
                         <div class="info">
-                            <h2>{{prodId}}</h2>
+                            <h2>{{ id }}</h2>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Nihil, ipsam voluptate? Autem
@@ -422,13 +420,21 @@ export default {
         },
     },
     computed: {
-        ...mapState(['Categories', 'Brands', 'brands', 'Sections', 'Product']),
+        ...mapState([
+            'Categories',
+            'Brands',
+            'brands',
+            'Sections',
+            'Product',
+            'ProductID',
+        ]),
     },
     mounted() {
         this.$store.dispatch('loadSections');
         this.$store.dispatch('loadBrands');
         this.$store.dispatch('loadCategories');
         this.$store.dispatch('loadProducts');
+        this.$store.dispatch('loadProduct');
     },
 };
 </script>
@@ -666,7 +672,7 @@ export default {
     bottom: 0;
     left: 0;
     margin: 20px;
-    background-color: #555;
+    background-color: #4a6f81;
     justify-content: center;
     align-items: center;
 }
@@ -690,11 +696,12 @@ export default {
     color: #4a6f81;
     z-index: 3;
     font-size: 20px;
+    padding: 10px;
 }
 .products .container .popup-view1 .popup-card .viewProduct {
     margin: auto;
     margin-bottom: 15px;
-    background-color: #4a6f81;
+    background-color: #fff;
     justify-content: center;
     align-items: center;
     max-width: 450px;
@@ -714,7 +721,7 @@ export default {
 }
 .products .container .popup-view1 h1 {
     font-size: 30px;
-    color: #4a6f81;
+    color: #fff;
     text-transform: uppercase;
     font-weight: 300;
     text-align: center;
@@ -725,7 +732,7 @@ export default {
     table-layout: fixed;
 }
 .products .container .popup-view1 .tbl-header {
-    background-color: #4a6f81;
+    background-color: #fff;
 }
 .products .container .popup-view1 .tbl-content {
     height: 200px;
@@ -745,7 +752,7 @@ export default {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #fff;
+    color: #4a6f81;
     text-transform: uppercase;
 }
 .products .container .popup-view1 td {
@@ -769,7 +776,7 @@ export default {
     -webkit-box-shadow: inset 0 0 6px #4a6f81;
 }
 ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.1);
+    -webkit-box-shadow: inset 0 0 6px #fff;
 }
 /* show */
 .products .container .popup-view {
