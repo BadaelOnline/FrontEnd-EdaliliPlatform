@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <Cartmini />
@@ -161,14 +162,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <productBody
-                        v-for="items in Product.slice(0, 4)"
-                        :key="items.id"
-                        :id="items.id"
-                        :short_des="items.short_des"
-                        :name="items.name"
-                    >
-                    </productBody> -->
                 </div>
                 <div
                     class="popup-view"
@@ -210,7 +203,7 @@
                 <div
                     class="popup-view1"
                     v-if="chooseDetails"
-                    data-aos="flip-right"
+                    data-aos="fade-right"
                     data-aos-offset="200"
                     data-aos-delay="50"
                     data-aos-duration="1000"
@@ -225,66 +218,166 @@
                                 @click="chooseDetails = false"
                             ></i>
                         </button>
-                        <div class="choose">
-                            <div class="sort col-3">
-                                <input
-                                    id="radio1"
-                                    name="radios"
-                                    value="price"
-                                    type="radio"
-                                    v-model="sortType"
-                                    v-on:change="sortItem()"
-                                />
-                                <label for="radio1">من الأرخص الى الأغلى</label>
+                        <section>
+                            <!--for demo wrap-->
+                            <h1>Compare Product</h1>
+                            <div class="choose">
+                                <div class="sort col-3">
+                                    <label for="radio1"
+                                        >من الأرخص الى الأغلى</label
+                                    >
+                                    <input
+                                        id="radio1"
+                                        name="radios"
+                                        value="price"
+                                        type="radio"
+                                        v-model="sortType"
+                                        v-on:change="sortItem()"
+                                    />
+                                </div>
+                                <div class="sort col-3">
+                                    <label for="radio2"
+                                        >من الأغلى الى الأرخص</label
+                                    >
+                                    <input
+                                        id="radio2"
+                                        name="radios"
+                                        value="prices"
+                                        type="radio"
+                                        v-model="sortType"
+                                        v-on:change="sortItem()"
+                                    />
+                                </div>
+                                <div class="sort col-3">
+                                    <label for="radio3"
+                                        >من الأقرب الى الأبعد</label
+                                    >
+                                    <input
+                                        type="radio"
+                                        id="radio3"
+                                        name="radios"
+                                        value="space"
+                                        v-model="sortType"
+                                        v-on:change="sortItem()"
+                                    />
+                                </div>
+                                <div class="sort col-3">
+                                    <label for="radio4"
+                                        >من الأبعد الى الأقرب</label
+                                    >
+                                    <input
+                                        type="radio"
+                                        id="radio4"
+                                        name="radios"
+                                        value="spaces"
+                                        v-model="sortType"
+                                        v-on:change="sortItem()"
+                                    />
+                                </div>
                             </div>
-                            <div class="sort col-3">
-                                <input
-                                    id="radio2"
-                                    name="radios"
-                                    value="prices"
-                                    type="radio"
-                                    v-model="sortType"
-                                    v-on:change="sortItem()"
-                                />
-                                <label for="radio2">من الأغلى الى الأرخص</label>
+                            <div class="card viewProduct">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 image">
+                                        <img
+                                            src="../../../public/img/pro1.png"
+                                            class="card-img"
+                                            alt="..."
+                                        />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                Card title
+                                            </h5>
+                                            <p class="card-text">
+                                                This is a wider card with
+                                                supporting text below as a
+                                                natural lead-in to additional
+                                                content. This content is a
+                                                little bit longer.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="sort col-3">
-                                <input
-                                    type="radio"
-                                    id="radio3"
-                                    name="radios"
-                                    value="space"
-                                    v-model="sortType"
-                                    v-on:change="sortItem()"
-                                />
-                                <label for="radio3">من الأقرب الى الأبعد</label>
+                            <!-- table -->
+                            <div class="tbl-header">
+                                <table
+                                    cellpadding="0"
+                                    cellspacing="0"
+                                    border="0"
+                                >
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Store Name</th>
+                                            <th>Price</th>
+                                            <th>Delivery</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
-                            <div class="sort col-3">
-                                <input
-                                    type="radio"
-                                    id="radio4"
-                                    name="radios"
-                                    value="spaces"
-                                    v-model="sortType"
-                                    v-on:change="sortItem()"
-                                />
-                                <label for="radio4">من الأبعد الى الأقرب</label>
+
+                            <div class="tbl-content">
+                                <table
+                                    cellpadding="0"
+                                    cellspacing="0"
+                                    border="0"
+                                >
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img
+                                                    src="../../../public/img/pro1.png"
+                                                    alt=""
+                                                />
+                                            </td>
+                                            <td>AUSTRALIAN COMPANY</td>
+                                            <td>$1.38</td>
+                                            <td>+2.01</td>
+                                            <td>-0.36%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img
+                                                    src="../../../public/img/pro1.png"
+                                                    alt=""
+                                                />
+                                            </td>
+                                            <td>AUSTRALIAN COMPANY</td>
+                                            <td>$1.38</td>
+                                            <td>+2.01</td>
+                                            <td>-0.36%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img
+                                                    src="../../../public/img/pro1.png"
+                                                    alt=""
+                                                />
+                                            </td>
+                                            <td>AUSTRALIAN COMPANY</td>
+                                            <td>$1.38</td>
+                                            <td>+2.01</td>
+                                            <td>-0.36%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img
+                                                    src="../../../public/img/pro1.png"
+                                                    alt=""
+                                                />
+                                            </td>
+                                            <td>AUSTRALIAN COMPANY</td>
+                                            <td>$1.38</td>
+                                            <td>+2.01</td>
+                                            <td>-0.36%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
-                        <div class="product-img">
-                            <img src="../../../public/img/pro1.png" alt="" />
-                        </div>
-                        <div class="info">
-                            <h2>cndsxcdsnc</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Nihil, ipsam voluptate? Autem
-                                necessitatibus enim reprehenderit excepturi
-                                voluptates praesentium nisi quidem dolore ipsa
-                                et. Ab tempore quam placeat minus voluptatem
-                                inventore.
-                            </p>
-                        </div>
+                        </section>
                     </div>
                 </div>
                 <!--  -->
@@ -564,37 +657,110 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
-    margin: auto;
-    /* display: flex; */
+    margin: 20px;
+    background-color: #555;
     justify-content: center;
     align-items: center;
 }
 .products .container .popup-view1 .popup-card {
     position: relative;
-    /* display: flex; */
-    width: 800px;
-    height: 500px;
-    /* margin: 20px; */
+}
+/* compare */
+.products .container .popup-view1 .choose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.products .container .popup-view1 .choose label {
+    font-size: 15px;
+    color: #fff;
+}
+.products .container .popup-view1 .popup-card .close-btn {
+    font-size: 20px;
+    cursor: pointer;
+    color: #4a6f81;
+    z-index: 3;
+    font-size: 20px;
+}
+.products .container .popup-view1 .popup-card .viewProduct {
     margin: auto;
+    margin-bottom: 15px;
+    background-color: #4a6f81;
+    justify-content: center;
+    align-items: center;
+    max-width: 450px;
+}
+.products .container .popup-view1 .popup-card .viewProduct .image img {
+    border-radius: 50%;
+    width: 50%;
     justify-content: center;
     align-items: center;
 }
-.products .container .popup-view1 .popup-card .product-img img {
-    z-index: 2;
-    position: relative;
-    width: 450px;
-    /* left: -45px; */
+.products .container .popup-view1 .popup-card .viewProduct h5 {
+    font-size: 20px;
+    font-weight: 600;
 }
-.products .container .popup-view1 .popup-card .info {
-    z-index: 2;
-    background: #4a6f81;
-    /* display: flex; */
-    /* flex-direction: column; */
-    width: 55%;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 40px;
-    border-radius: 10px;
+.products .container .popup-view1 .popup-card .viewProduct p {
+    font-size: 15px;
+}
+.products .container .popup-view1 h1 {
+    font-size: 30px;
+    color: #4a6f81;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.products .container .popup-view1 table {
+    width: 100%;
+    table-layout: fixed;
+}
+.products .container .popup-view1 .tbl-header {
+    background-color: #4a6f81;
+}
+.products .container .popup-view1 .tbl-content {
+    height: 200px;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.products .container .popup-view1 .tbl-content table tbody tr td img {
+    border-radius: 50%;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+}
+.products .container .popup-view1 th {
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+}
+.products .container .popup-view1 td {
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    font-size: 12px;
+    color: #fff;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+.products .container .popup-view1 section {
+    margin: 20px;
+}
+/* for custom scrollbar for webkit browser*/
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #4a6f81;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.1);
 }
 /* show */
 .products .container .popup-view {
@@ -808,3 +974,5 @@ export default {
     }
 }
 </style>
+
+ 

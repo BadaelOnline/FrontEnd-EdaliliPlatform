@@ -172,7 +172,7 @@ const store = createStore({
             axios
                 .get(`/api/stores/getAll?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Stores :', res.data.Stores.data);
+                    console.log('Stores :', res.data.Stores.data);
                     let Stores = res.data.Stores.data;
                     commit('SET_Stores', Stores);
                 })
@@ -184,7 +184,7 @@ const store = createStore({
             axios
                 .get(`/api/stores/getById/${productId}?lang=${lang}`)
                 .then((res) => {
-                    console.warn('StorebyId :', res);
+                    console.log('StorebyId :', res);
                     let store = res.data.Store;
                     commit('SET_Store', store);
                 })
@@ -196,7 +196,7 @@ const store = createStore({
             axios
                 .get(`/api/products/getAll?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Product :', res.data.Products.data);
+                    console.log('Product :', res.data.Products.data);
                     let Product = res.data.Products.data;
                     commit('SET_Products', Product);
                 })
@@ -208,7 +208,7 @@ const store = createStore({
             axios
                 .get(`/api/products/getById/${ProductID}?lang=${lang}`)
                 .then((res) => {
-                    console.warn('ProductID :', res.data.product);
+                    console.log('ProductID :', res.data.product);
                     let ProductID = res.data.product;
                     commit('SET_ProductID', ProductID);
                 })
@@ -220,7 +220,7 @@ const store = createStore({
             axios
                 .get(`/api/sections/getAll?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Sections:', res.data.Section);
+                    console.log('Sections:', res.data.Section);
                     let Sections = res.data.Section;
                     commit('SET_Sections', Sections);
                 })
@@ -232,7 +232,7 @@ const store = createStore({
             axios
                 .get(`/api/brands/getAll?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Brands :', res.data.Brand.data);
+                    console.log('Brands :', res.data.Brand.data);
                     let Brands = res.data.Brand.data;
                     commit('SET_Brands', Brands);
                 })
@@ -244,7 +244,7 @@ const store = createStore({
             axios
                 .get(`/api/categories/getAll?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Categories :', res.data.Category);
+                    console.log('Categories :', res.data.Category);
                     let Categories = res.data.Category;
                     commit('SET_Categories', Categories);
                 })
@@ -256,7 +256,7 @@ const store = createStore({
             axios
                 .get(`/api/categories/getById/${CategoryID}?lang=${lang}`)
                 .then((res) => {
-                    console.warn('CategoryID :', res.data.Category);
+                    console.log('CategoryID :', res.data.Category);
                     let CategoryID = res.data.Category;
                     commit('SET_CategoryID', CategoryID);
                 })
@@ -275,7 +275,7 @@ const store = createStore({
             axios
                 .get(`/api/doctor/get?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Doctors :', res.data.doctor.data);
+                    console.log('Doctors :', res.data.doctor.data);
                     let Doctors = res.data.doctor.data;
                     commit('SET_Doctors', Doctors);
                 })
@@ -287,7 +287,7 @@ const store = createStore({
             axios
                 .get(`/api/MedicalDevice/get?lang=${lang}`)
                 .then((res) => {
-                    console.warn('MedicalDevice :', res.data);
+                    console.log('MedicalDevice :', res.data);
                     let MedicalDevice = res.data.MedicalDevice.data;
                     commit('SET_MedicalDevice', MedicalDevice);
                 })
@@ -299,7 +299,7 @@ const store = createStore({
             axios
                 .get(`/api/Hospital/get?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Hospitals :', res.data.Hospital.data);
+                    console.log('Hospitals :', res.data.Hospital.data);
                     let Hospitals = res.data.Hospital.data;
                     commit('SET_Hospitals', Hospitals);
                 })
@@ -311,7 +311,7 @@ const store = createStore({
             axios
                 .get(`/api/Specialty/get?lang=${lang}`)
                 .then((res) => {
-                    console.warn('Specialty :', res.data);
+                    console.log('Specialty :', res.data);
                     let Specialty = res.data.Specialty.data;
                     commit('SET_Specialty', Specialty);
                 })
@@ -323,7 +323,7 @@ const store = createStore({
             axios
                 .get(`/api/doctor/getById/${DoctorId}?lang=${lang}`)
                 .then((res) => {
-                    console.warn('DoctorById :', res);
+                    console.log('DoctorById :', res);
                     let doctor = res;
                     commit('SET_Doctor', doctor);
                 })
@@ -336,8 +336,20 @@ const store = createStore({
             let res = await axios.post(
                 'http://edalili.e-dalely.com/public/api/auth/login',
                 Credentials
-            );
-            console.log(res.data);
+            )
+            .catch(function (error) {
+                if (error.response) {
+                  console.log(error.response.data);
+                  if(error.response.data.error == 'Unauthorized'){
+                      alert("invaild Email Make Sure Your Email");
+                      window.location.reload();
+                  }
+                  console.log(error.response.status);
+                }
+                
+    
+             })
+
 
             return dispatch('attempt', res.data.access_token);
         },

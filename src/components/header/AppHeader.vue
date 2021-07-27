@@ -1,9 +1,15 @@
 <template>
     <div class="header">
-        <div class="content_loader hidden" id="content_loader">
+        <div v-if="!authenticated" class="content_loader hidden" id="content_loader">
             <div id="loader" class="loader"></div>
         </div>
 
+
+<div v-if="authenticated" class="alert animate__animated animate__swing" id="alert">
+   <i class="fa fa-check-square " style="font-size: 22px;margin: 10px;"></i>
+      <span>Success Login</span>
+</div>
+ <!-- #155724 -->
         <div class="upper-bar">
             <div class="row">
                 <div @click="goto" class="col-md-2 col-sm-12 col-xs-12 imag">
@@ -104,7 +110,7 @@
             >
                 <form action="/action_page.php" class="form-container">
                     <h1>Login</h1>
-                     <span class="cancel" @click="closeForm()"><i class="fa fa-window-close fa-2x"></i></span>
+                     <span class="cancel" @click="closeForm()"><i class="fa fa-window-close "></i></span>
 
                     <label for="email"><b>Email</b></label>
                     <input
@@ -162,7 +168,8 @@
                     class="form-container2 form_register"
                 >
                     <h1>Register</h1>
-                    <span class="cancel" @click="closeForm()"><i class="fa fa-window-close fa-2x"></i></span>
+                    <span class="cancel" @click="closeForm()"><i class="fa fa-window-close "></i></span>
+                     <span class="ret" @click="loginrForm()"><i class="fa fa-arrow-left "></i></span>
                     <label for="Name"><b>Name</b></label>
                     <input
                         type="text"
@@ -345,6 +352,19 @@
     </div>
 </template>
 <style scoped>
+.alert{
+    justify-content: center;
+    font-size: 18px;
+    left: 35%;
+    position: fixed;
+    top: 41%;
+    z-index: 77;
+    width: 400px;
+    height: 68px;
+    background-color: #a7d9a7;
+    color: #017701;
+    border-radius: 7px;
+    }
 .cu5 {
     position: fixed;
     z-index: 10;
@@ -362,14 +382,20 @@
     right: 15px;
     border: 3px solid #959393;
     z-index: 9;
+    font-size: 18px;
 }
-
+.form-popup  h1{
+    font-size: 40px;
+}
+.form-popup  span{
+    font-size: 18px;
+}
 /* Add styles to the form container */
 .form-container {
     width: 450px;
     padding: 10px;
     background-color: #a6a1a1;
-     height:494px;
+     height:516px;
 }
 
 /* Full-width input fields */
@@ -427,14 +453,20 @@ cursor: pointer;
     right: 15px;
     border: 3px solid #959393;
     z-index: 8;
+    font-size: 18px;
 }
-
+.form-popup2  h1{
+    font-size: 40px;
+}
+.form-popup2  span{
+    font-size: 18px;
+}
 /* Add styles to the form container */
 .form-container2 {
     width: 450px;
     padding: 10px;
     background-color: #a6a1a1;
-   height: 500px;
+   height: 521px;
 }
 
 /* Full-width input fields */
@@ -477,6 +509,16 @@ padding: 5px 10px;
 border-bottom-right-radius: 20px;
 cursor: pointer;
 }
+.form-container2 .ret{
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    background-color: #3aa8e7;
+    color: #fff;
+    padding: 5px 10px;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+}
 
 /* Add some hover effects to buttons */
 .form-container2 .btn:hover {
@@ -505,7 +547,7 @@ cursor: pointer;
     animation: spin 2s linear infinite;
     position: fixed;
     right: 600px;
-    top: 250px;
+    top: 270px;
 }
 /* Safari */
 @-webkit-keyframes spin {
@@ -1266,9 +1308,16 @@ export default {
             document.getElementById('myForm').style.display = 'block';
             document.getElementById('myForm2').style.display = 'block';
         },
+       closewarn() {
+               document.getElementById('warn').style.display = 'none';
+        },
         registerForm() {
             document.getElementById('myForm').style.zIndex = 8;
             document.getElementById('myForm2').style.zIndex = 9;
+        },
+        loginrForm() {
+            document.getElementById('myForm').style.zIndex = 9;
+            document.getElementById('myForm2').style.zIndex = 8;
         },
         closeForm() {
             document.getElementById('myForm').style.display = 'none';
@@ -1365,20 +1414,12 @@ else if(this.reg.test(this.form.email))
         submit() {
             if( this.statusEmail == true && this.statusPass == true){
    this.signIn(this.form);
-            document
-                .getElementById('content_loader')
-                .classList.remove('hidden');
+                
+      document.getElementById('content_loader').classList.remove('hidden');
+                  setTimeout(function () {
+                   document.getElementById('alert').style.display = 'none';
+            }, 5000);
 
-            setTimeout(function () {
-                    if(localStorage.getItem('token') !== null){
-                    document
-                        .getElementById('content_loader')
-                        .classList.add('hidden');
-                    }
-            }, 3000);
-                        setTimeout(function () {
-                window.location.reload();
-            }, 3000);
             }
 
                
