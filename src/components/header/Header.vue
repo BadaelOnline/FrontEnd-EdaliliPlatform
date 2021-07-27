@@ -1,5 +1,24 @@
 <template>
     <div class="header">
+        <div
+            v-if="!authenticated"
+            class="content_loader hidden"
+            id="content_loader"
+        >
+            <div id="loader" class="loader"></div>
+        </div>
+
+        <div
+            v-if="authenticated"
+            class="alert animate__animated animate__swing"
+            id="alert"
+        >
+            <i
+                class="fa fa-check-square"
+                style="font-size: 22px; margin: 10px"
+            ></i>
+            <span>Success Login</span>
+        </div>
         <!-- NavSelect -->
         <div class="navbar1">
             <div @click="goto" class="imag">
@@ -55,6 +74,13 @@
             </div>
         </div>
         <!-- background -->
+        <div class="customer-select cu5">
+            <h5>choose server</h5>
+            <select v-model="server" @change="handleserver($event)">
+                <option value="edalily">edalily</option>
+                <option value="admin">admin</option>
+            </select>
+        </div>
         <div class="background">
             <div class="search">
                 <i class="fa fa-search shopping"></i
@@ -63,6 +89,126 @@
                     type="search"
                     :placeholder="$t('Search')"
                 />
+            </div>
+            <div
+                class="form-popup animate__animated animate__swing"
+                id="myForm"
+            >
+                <form action="/action_page.php" class="form-container">
+                    <h1>Login</h1>
+                    <span class="cancel" @click="closeForm()"
+                        ><i class="fa fa-window-close"></i
+                    ></span>
+
+                    <label for="email"><b>Email</b></label>
+                    <input
+                        type="text"
+                        placeholder="Enter Email"
+                        v-model="form.email"
+                        name="email"
+                        required
+                        ref="email"
+                        @keyup="handleEmail()"
+                    />
+                    <div style="color: red" v-if="statusEmail == false">
+                        <i class="fa fa-window-close"></i>
+                        {{ form.error }}
+                    </div>
+                    <div style="color: green" v-if="statusEmail == true">
+                        <i class="fa fa-check-square"></i>
+                        correct Email
+                    </div>
+
+                    <label for="psw"><b>Password</b></label>
+
+                    <input
+                        type="password"
+                        id="myInput"
+                        placeholder="Enter Password"
+                        v-model="form.password"
+                        name="psw"
+                        ref="pass"
+                        required
+                        @keyup="handlePass()"
+                    />
+                    <input type="checkbox" @change="showPass()" /> Show Password
+                    <div style="color: red" v-if="statusPass == false">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Password must be more 7 characters
+                    </div>
+                    <div style="color: green" v-if="statusPass == true">
+                        <i class="fa fa-check-square"></i>
+                        Correct Password
+                    </div>
+                    <span @click="submit()" class="btn">Login</span>
+                    <span @click="registerForm()" class="btn">Register</span>
+                </form>
+            </div>
+            <div
+                class="form-popup2 animate__animated animate__swing"
+                id="myForm2"
+            >
+                <form
+                    action="/action_page.php"
+                    class="form-container2 form_register"
+                >
+                    <h1>Register</h1>
+                    <span class="cancel" @click="closeForm()"
+                        ><i class="fa fa-window-close"></i
+                    ></span>
+                    <span class="ret" @click="loginrForm()"
+                        ><i class="fa fa-arrow-left"></i
+                    ></span>
+                    <label for="Name"><b>Name</b></label>
+                    <input
+                        type="text"
+                        placeholder="Enter Name"
+                        v-model="form.name"
+                        name="Name"
+                        required
+                    />
+                    <label for="email"><b>Email</b></label>
+                    <input
+                        type="text"
+                        ref="email2"
+                        placeholder="Enter Email"
+                        v-model="form.email"
+                        name="email"
+                        required
+                        @keyup="handleEmail()"
+                    />
+                    <div style="color: red" v-if="statusEmail == false">
+                        <i class="fa fa-window-close"></i>
+                        {{ form.error }}
+                    </div>
+                    <div style="color: green" v-if="statusEmail == true">
+                        <i class="fa fa-check-square"></i>
+                        correct Email
+                    </div>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input
+                        type="password"
+                        ref="pass2"
+                        id="myInput2"
+                        placeholder="Enter Password"
+                        v-model="form.password"
+                        name="psw"
+                        required
+                        @keyup="handlePass()"
+                    />
+                    <input type="checkbox" @change="showPass2()" /> Show
+                    Password
+                    <div style="color: red" v-if="statusPass == false">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Password must be more 7 characters
+                    </div>
+                    <div style="color: green" v-if="statusPass == true">
+                        <i class="fa fa-check-square"></i>
+                        Correct Password
+                    </div>
+                    <span @click="submit1()" class="btn">Register</span>
+                </form>
             </div>
             <div class="parent_featuers">
                 <div class="child_1">
@@ -108,6 +254,79 @@
                 </div>
             </div>
         </div>
+        <!-- navbarEdalili -->
+        <div class="navbar">
+            <div>
+                <router-link to="/instrc" exact>
+                    <button type="button" class="btn btn-light">
+                        <a>{{ $t('Factories') }}</a>
+                    </button></router-link
+                >
+            </div>
+            <div>
+                <router-link to="/company">
+                    <button type="button" class="btn btn-light">
+                        <a>{{ $t('Companies') }}</a>
+                    </button></router-link
+                >
+            </div>
+            <div>
+                <router-link to="/professional">
+                    <button type="button" class="btn btn-light">
+                        <a>{{ $t('ProfessionalsTechnicians') }}</a>
+                    </button></router-link
+                >
+            </div>
+            <div>
+                <router-link to="/medic">
+                    <button type="button" class="btn btn-light medic">
+                        <a>{{ $t('PharmaciesMedicines') }}</a>
+                    </button></router-link
+                >
+            </div>
+            <div>
+                <router-link to="/doctors">
+                    <button type="button" class="btn btn-light">
+                        <a>{{ $t('Doctors') }}</a>
+                    </button></router-link
+                >
+            </div>
+            <div>
+                <router-link to="/resturants">
+                    <button type="button" class="btn btn-light">
+                        <a>{{ $t('RestaurantsCafes') }}</a>
+                    </button></router-link
+                >
+            </div>
+            <div class="img" lang="en">
+                <router-link to="/festival">
+                    <button type="button" class="btn btn-light sell">
+                        <a>{{ $t('FestivalPerformances') }}</a>
+                    </button></router-link
+                >
+            </div>
+            <div>
+                <router-link to="/stores">
+                    <button type="button" class="btn btn-light">
+                        <a>{{ $t('Stores') }}</a>
+                    </button></router-link
+                >
+            </div>
+            <div>
+                <router-link to="/products">
+                    <button type="button" class="btn btn-light products">
+                        <a>{{ $t('Products') }}</a>
+                    </button></router-link
+                >
+            </div>
+            <div>
+                <router-link to="/">
+                    <button type="button" class="btn btn-light">
+                        <a>{{ $t('Allsections') }}</a>
+                    </button></router-link
+                >
+            </div>
+        </div>
     </div>
 </template>
 
@@ -141,8 +360,6 @@ export default {
                 price: this.price,
             },
             sortType: '1',
-            sortType1: '1',
-            sortType2: '1',
             cities: jeson[0].cities,
             governorates: jeson[0].governorates,
             streets: jeson[0].streets,
@@ -181,9 +398,16 @@ export default {
             document.getElementById('myForm').style.display = 'block';
             document.getElementById('myForm2').style.display = 'block';
         },
+        closewarn() {
+            document.getElementById('warn').style.display = 'none';
+        },
         registerForm() {
             document.getElementById('myForm').style.zIndex = 8;
             document.getElementById('myForm2').style.zIndex = 9;
+        },
+        loginrForm() {
+            document.getElementById('myForm').style.zIndex = 9;
+            document.getElementById('myForm2').style.zIndex = 8;
         },
         closeForm() {
             document.getElementById('myForm').style.display = 'none';
@@ -265,20 +489,13 @@ export default {
         submit() {
             if (this.statusEmail == true && this.statusPass == true) {
                 this.signIn(this.form);
+
                 document
                     .getElementById('content_loader')
                     .classList.remove('hidden');
-
                 setTimeout(function () {
-                    if (localStorage.getItem('token') !== null) {
-                        document
-                            .getElementById('content_loader')
-                            .classList.add('hidden');
-                    }
-                }, 3000);
-                setTimeout(function () {
-                    window.location.reload();
-                }, 3000);
+                    document.getElementById('alert').style.display = 'none';
+                }, 5000);
             }
         },
         submit1() {
@@ -306,9 +523,226 @@ export default {
 * {
     font-size: 15px;
 }
+.alert {
+    justify-content: center;
+    font-size: 18px;
+    left: 35%;
+    position: fixed;
+    top: 41%;
+    z-index: 77;
+    width: 400px;
+    height: 68px;
+    background-color: #a7d9a7;
+    color: #017701;
+    border-radius: 7px;
+}
+.cu5 {
+    position: fixed;
+    z-index: 10;
+}
+.warnig_pass {
+    color: red;
+    display: none;
+}
+/* ____________________________________ form sign popup  _______________________________ */
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #959393;
+    z-index: 9;
+    font-size: 18px;
+}
+.form-popup h1 {
+    font-size: 40px;
+}
+.form-popup span {
+    font-size: 18px;
+}
+/* Add styles to the form container */
+.form-container {
+    width: 450px;
+    padding: 10px;
+    background-color: #a6a1a1;
+    height: 516px;
+}
+
+/* Full-width input fields */
+.form-container input[type='text'],
+.form-container input[type='password'] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type='text']:focus,
+.form-container input[type='password']:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: #04aa6d;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background-color: #d52626;
+    color: #fff;
+    padding: 5px 10px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover {
+    opacity: 1;
+}
+/* ____________________________________ form register popup  _______________________________ */
+
+/* The popup form - hidden by default */
+.form-popup2 {
+    display: none;
+    position: fixed;
+    bottom: -6px;
+    right: 15px;
+    border: 3px solid #959393;
+    z-index: 8;
+    font-size: 18px;
+}
+.form-popup2 h1 {
+    font-size: 40px;
+}
+.form-popup2 span {
+    font-size: 18px;
+}
+/* Add styles to the form container */
+.form-container2 {
+    width: 450px;
+    padding: 10px;
+    background-color: #a6a1a1;
+    height: 521px;
+}
+
+/* Full-width input fields */
+.form-container2 input[type='text'],
+.form-container2 input[type='password'] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container2 input[type='text']:focus,
+.form-container2 input[type='password']:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container2 .btn {
+    background-color: #04aa6d;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container2 .cancel {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background-color: #d52626;
+    color: #fff;
+    padding: 5px 10px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+}
+.form-container2 .ret {
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    background-color: #3aa8e7;
+    color: #fff;
+    padding: 5px 10px;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+}
+
+/* Add some hover effects to buttons */
+.form-container2 .btn:hover {
+    opacity: 1;
+}
+/* ____________________________________ loading  _______________________________ */
+
+.content_loader {
+    position: absolute;
+    width: 100%;
+    height: 1000%;
+    background-color: #645d5d;
+    z-index: 1000;
+    opacity: 0.5;
+}
+.hidden {
+    display: none;
+}
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    position: fixed;
+    right: 600px;
+    top: 270px;
+}
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* header */
 .header {
     height: auto;
-    background-color: #bfc3c6;
+    /* background-color: #bfc3c6; */
 }
 .navbar1 {
     padding: 10px 0;
@@ -389,7 +823,7 @@ select {
     gap: 24px;
     margin: auto;
     height: 40px;
-    width: 50%;
+    width: 80%;
     background-color: #c3c4c8;
 }
 .child_1,
@@ -400,5 +834,8 @@ select {
     justify-content: center;
     align-items: center;
     gap: 15px;
+}
+.navbar {
+    background: #b3b4b6;
 }
 </style>

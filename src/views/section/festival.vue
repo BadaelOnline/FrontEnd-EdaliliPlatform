@@ -226,7 +226,7 @@ export default {
         this.$store.dispatch('loadStores');
     },
     methods: {
- toggl: function( event ) {
+    toggl: function( event ) {
    event.currentTarget.classList.toggle('heart-active');
 
   

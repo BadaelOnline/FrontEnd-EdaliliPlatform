@@ -239,14 +239,6 @@ export default {
 .more:hover {
     text-decoration: underline;
 }
-/* .row {
-    display: flex;
-    flex-flow: wrap;
-    margin: 24px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-} */
 /* products */
 .products .container {
     align-items: center;
