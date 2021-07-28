@@ -487,6 +487,8 @@ $cubeDepth: $cubeHeight;
 }
 .show-img .row .img img {
     margin: 40px 0 40px 0;
+    width: 90%;
+    height: 60%;
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
@@ -513,7 +515,13 @@ $cubeDepth: $cubeHeight;
     }
     .show-img .img img {
         width: 360px;
+        
     }
+    .show-img .row .img img {
+    margin: 40px 0 40px 0;
+    width: 80%;
+    height: 50%;
+}
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
