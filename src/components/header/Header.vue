@@ -21,8 +21,19 @@
         </div>
         <!-- NavSelect -->
         <div class="navbar1">
-            <div @click="goto" class="imag">
-                <img height="30" src="../../../public/img/EDALELYLogo.png" />
+            <div class="menu-content">
+                <ul></ul>
+            </div>
+            <div class="logo">
+                <div class="menu-header">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div @click="goto" class="imag">
+                    <img
+                        height="30"
+                        src="../../../public/img/EDALELYLogo.png"
+                    />
+                </div>
             </div>
             <div class="lang">
                 <div class="">
@@ -95,7 +106,7 @@
                 id="myForm"
             >
                 <form action="/action_page.php" class="form-container">
-                    <h1>Login</h1>
+                    <h1>Log<span>in</span></h1>
                     <span class="cancel" @click="closeForm()"
                         ><i class="fa fa-window-close"></i
                     ></span>
@@ -152,7 +163,7 @@
                     action="/action_page.php"
                     class="form-container2 form_register"
                 >
-                    <h1>Register</h1>
+                    <h1>Regis<span>ter</span></h1>
                     <span class="cancel" @click="closeForm()"
                         ><i class="fa fa-window-close"></i
                     ></span>
@@ -210,6 +221,7 @@
                     <span @click="submit1()" class="btn">Register</span>
                 </form>
             </div>
+            <!--  -->
             <div class="parent_featuers">
                 <div class="child_1">
                     <div class="link">
@@ -218,11 +230,14 @@
                 </div>
                 <div class="cole">|</div>
                 <div class="child_2" @click="gotocart()">
-                    <span class="cart-count">{{ cartItemCount }}</span>
                     <div>
                         {{ $t('Shoppingcart') }}
                     </div>
-                    <i class="fa fa-shopping-cart shopping"></i>
+                    <div class="cartItemCount">
+                        <i class="fa fa-shopping-cart shopping"></i>
+
+                        <span class="cart-count">{{ cartItemCount }}</span>
+                    </div>
                 </div>
                 <div class="cole">|</div>
                 <div class="child_3 map">
@@ -397,6 +412,8 @@ export default {
         openForm() {
             document.getElementById('myForm').style.display = 'block';
             document.getElementById('myForm2').style.display = 'block';
+            document.getElementById('myForm2').classList.add('animate__swing');
+            document.getElementById('myForm').classList.add('animate__swing');
         },
         closewarn() {
             document.getElementById('warn').style.display = 'none';
@@ -410,8 +427,20 @@ export default {
             document.getElementById('myForm2').style.zIndex = 8;
         },
         closeForm() {
-            document.getElementById('myForm').style.display = 'none';
-            document.getElementById('myForm2').style.display = 'none';
+            document
+                .getElementById('myForm2')
+                .classList.add('animate__fadeOut');
+            document.getElementById('myForm').classList.add('animate__fadeOut');
+            setTimeout(function () {
+                document
+                    .getElementById('myForm2')
+                    .classList.remove('animate__fadeOut');
+                document
+                    .getElementById('myForm')
+                    .classList.remove('animate__fadeOut');
+                document.getElementById('myForm').style.display = 'none';
+                document.getElementById('myForm2').style.display = 'none';
+            }, 1000);
         },
         gotocart() {
             this.$router.push(`/Cart`);
@@ -557,6 +586,11 @@ export default {
 }
 .form-popup h1 {
     font-size: 40px;
+    color: var(--red);
+}
+.form-popup h1 span {
+    font-size: 40px;
+    color: var(--blue);
 }
 .form-popup span {
     font-size: 18px;
@@ -568,7 +602,6 @@ export default {
     background-color: #a6a1a1;
     height: 516px;
 }
-
 /* Full-width input fields */
 .form-container input[type='text'],
 .form-container input[type='password'] {
@@ -578,14 +611,12 @@ export default {
     border: none;
     background: #f1f1f1;
 }
-
 /* When the inputs get focus, do something */
 .form-container input[type='text']:focus,
 .form-container input[type='password']:focus {
     background-color: #ddd;
     outline: none;
 }
-
 /* Set a style for the submit/login button */
 .form-container .btn {
     background-color: #04aa6d;
@@ -597,25 +628,22 @@ export default {
     margin-bottom: 10px;
     opacity: 0.8;
 }
-
 /* Add a red background color to the cancel button */
 .form-container .cancel {
     position: absolute;
     left: -2px;
     top: -2px;
-    background-color: #d52626;
+    background-color: var(--red);
     color: #fff;
     padding: 5px 10px;
     border-bottom-right-radius: 20px;
     cursor: pointer;
 }
-
 /* Add some hover effects to buttons */
 .form-container .btn:hover {
     opacity: 1;
 }
 /* ____________________________________ form register popup  _______________________________ */
-
 /* The popup form - hidden by default */
 .form-popup2 {
     display: none;
@@ -628,6 +656,11 @@ export default {
 }
 .form-popup2 h1 {
     font-size: 40px;
+    color: var(--red);
+}
+.form-popup2 h1 span {
+    font-size: 40px;
+    color: var(--blue);
 }
 .form-popup2 span {
     font-size: 18px;
@@ -639,7 +672,6 @@ export default {
     background-color: #a6a1a1;
     height: 521px;
 }
-
 /* Full-width input fields */
 .form-container2 input[type='text'],
 .form-container2 input[type='password'] {
@@ -649,14 +681,12 @@ export default {
     border: none;
     background: #f1f1f1;
 }
-
 /* When the inputs get focus, do something */
 .form-container2 input[type='text']:focus,
 .form-container2 input[type='password']:focus {
     background-color: #ddd;
     outline: none;
 }
-
 /* Set a style for the submit/login button */
 .form-container2 .btn {
     background-color: #04aa6d;
@@ -668,13 +698,12 @@ export default {
     margin-bottom: 10px;
     opacity: 0.8;
 }
-
 /* Add a red background color to the cancel button */
 .form-container2 .cancel {
     position: absolute;
     left: -2px;
     top: -2px;
-    background-color: #d52626;
+    background-color: var(--red);
     color: #fff;
     padding: 5px 10px;
     border-bottom-right-radius: 20px;
@@ -684,19 +713,17 @@ export default {
     position: absolute;
     right: -2px;
     top: -2px;
-    background-color: #3aa8e7;
+    background-color: var(--blue);
     color: #fff;
     padding: 5px 10px;
     border-bottom-left-radius: 20px;
     cursor: pointer;
 }
-
 /* Add some hover effects to buttons */
 .form-container2 .btn:hover {
     opacity: 1;
 }
 /* ____________________________________ loading  _______________________________ */
-
 .content_loader {
     position: absolute;
     width: 100%;
@@ -729,7 +756,6 @@ export default {
         -webkit-transform: rotate(360deg);
     }
 }
-
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -738,7 +764,6 @@ export default {
         transform: rotate(360deg);
     }
 }
-
 /* header */
 .header {
     height: auto;
@@ -774,12 +799,13 @@ export default {
 }
 select {
     border: none;
-    background-color: #6798a6;
-    /* opacity: 80; */
+    background-color: #c3c4c5;
     width: 100px;
-    border: solid #6798a6;
+    border: solid #c3c4c5;
     height: 35px;
     color: #525052f6;
+    cursor: pointer;
+    box-shadow: 10px 0 10px #b5b7b9;
 }
 .background {
     display: grid;
@@ -822,18 +848,19 @@ select {
     gap: 24px;
     margin: auto;
     height: 40px;
-    width: 80%;
+    width: 60%;
     background-color: #c3c4c8;
     color: #525052f6;
 }
 .child_1,
 .child_2,
 .child_3,
-.child_4 {
+.child_4,
+.child_5 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     cursor: pointer;
 }
 .parent_featuers div:hover {
@@ -848,5 +875,68 @@ select {
     background-color: #6798a6;
     color: #525052f6;
     cursor: pointer;
+}
+.navbar button:hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+}
+.child_2 .cart-count {
+    font-size: 13px;
+    color: #ba8b00;
+    background: #ffffff;
+    height: 19px;
+    border-radius: 50%;
+    width: 17px;
+    justify-content: center;
+    align-items: center;
+}
+.background .search .shopping {
+    color: #6798a6;
+}
+.menu-header {
+    display: none;
+}
+@media (max-width: 767px) {
+    .navbar1 {
+        /* display: table; */
+        width: 100%;
+        padding-right: 10px;
+        text-align: right;
+    }
+    .navbar1 .logo,
+    .searchscop,
+    .selectlocation,
+    .lang {
+        display: table;
+        width: 100%;
+        text-align: right;
+    }
+    .logo div{
+        display: flex;
+    }
+    .textlang {
+        display: none;
+    }
+    .selectlocation {
+        display: table;
+        width: 100%;
+    }
+    .searchscop,
+    .selectlocation,
+    .lang {
+        margin: 24px 0;
+        text-align: right;
+    }
+    .menu-header {
+        text-align: right;
+    }
+    .menu-content {
+        display: none;
+    }
+    .fa-bars {
+        border: 1px solid #6798a6;
+        background-color: #6798a6;
+        color: #525052f6;
+        padding: 5px 10px;
+    }
 }
 </style>
