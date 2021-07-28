@@ -246,40 +246,29 @@ export default {
                 price: this.price,
             },
             sortType: '1',
-            ProductID: {},
+            stores: this.store,
         };
     },
-    // async created() {
-    //     await axios
-    //         .get(`/api/products/getById/${this.id}`)
-    //         .then((res) => {
-    //             console.warn('ProductID :', res.data.product);
-    //             this.ProductID = res.data.product;
-    //         })
-    //         .catch(function (error) {
-    //             console.log('Error: ', error);
-    //         });
-    // },
     methods: {
-        // sortItem() {
-        //     if (this.sortType == 'space') {
-        //         this.ProductID.store = this.store.sort(
-        //             (prev, curr) => prev.space - curr.space
-        //         );
-        //     } else if (this.sortType == 'spaces') {
-        //         this.ProductID.store = this.ProductID.store.sort(
-        //             (prev, curr) => curr.space - prev.space
-        //         );
-        //     } else if (this.sortType == 'price') {
-        //         this.ProductID.store = this.ProductID.store.sort(
-        //             (prev, curr) => prev.pivot.price - curr.pivot.price
-        //         );
-        //     } else if (this.sortType == 'prices') {
-        //         this.ProductID.store = this.ProductID.store.sort(
-        //             (prev, curr) => curr.pivot.price - prev.pivot.price
-        //         );
-        //     }
-        // },
+        sortItem() {
+             if (this.sortType == 'space') {
+                 this.stores = this.stores.sort(
+                     (prev, curr) => prev.space - curr.space
+              );
+            } else if (this.sortType == 'spaces') {
+                this.stores = this.stores.sort(
+                   (prev, curr) => curr.space - prev.space
+                 );
+            } else if (this.sortType == 'price') {
+                this.stores = this.stores.sort(
+                    (prev, curr) => prev.pivot.price - curr.pivot.price
+                );
+           } else if (this.sortType == 'prices') {
+                 this.stores = this.stores.sort(
+                     (prev, curr) => curr.pivot.price - prev.pivot.price
+               );
+             }
+        },
     },
 };
 </script>
