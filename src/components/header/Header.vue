@@ -37,7 +37,7 @@
             </div>
             <div class="selectlocation">
                 <div class="">
-                    <select v-model="sortType">
+                    <select>
                         <option value="1" disabled>
                             {{ $t('Governorate') }}
                         </option>
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="">
-                    <select v-model="sortType1">
+                    <select>
                         <option value="1" disabled>
                             {{ $t('City') }}
                         </option>
@@ -58,7 +58,7 @@
                     </select>
                 </div>
                 <div class="">
-                    <select v-model="sortType2">
+                    <select>
                         <option value="1" disabled>
                             {{ $t('street') }}
                         </option>
@@ -212,9 +212,9 @@
             </div>
             <div class="parent_featuers">
                 <div class="child_1">
-                    <router-link to="/addStore" class="link">{{
-                        $t('AddPlatform', { locale: lang })
-                    }}</router-link>
+                    <div class="link">
+                        {{ $t('AddPlatform', { locale: lang }) }}
+                    </div>
                 </div>
                 <div class="cole">|</div>
                 <div class="child_2" @click="gotocart()">
@@ -752,6 +752,7 @@ export default {
     justify-content: center;
     align-items: center;
     gap: 10%;
+    color: #525052f6;
 }
 .lang {
     display: flex;
@@ -773,11 +774,12 @@ export default {
 }
 select {
     border: none;
-    background-color: #eff2f5;
-    opacity: 80;
+    background-color: #6798a6;
+    /* opacity: 80; */
     width: 100px;
-    border: solid #bdb9b9;
+    border: solid #6798a6;
     height: 35px;
+    color: #525052f6;
 }
 .background {
     display: grid;
@@ -808,11 +810,8 @@ select {
 .background .search i {
     /* background-color: #87948b; */
     padding: 10px 10px;
-    /* border-bottom-left-radius: 4px; */
-    /* border-top-left-radius: 4px; */
     width: 35px;
     height: 34px;
-    /* color: aliceblue; */
     cursor: pointer;
 }
 .parent_featuers {
@@ -825,6 +824,7 @@ select {
     height: 40px;
     width: 80%;
     background-color: #c3c4c8;
+    color: #525052f6;
 }
 .child_1,
 .child_2,
@@ -834,8 +834,19 @@ select {
     justify-content: center;
     align-items: center;
     gap: 15px;
+    cursor: pointer;
+}
+.parent_featuers div:hover {
+    color: #6798a6;
 }
 .navbar {
-    background: #b3b4b6;
+    background: #c3c4c8;
+}
+.navbar button {
+    border: none;
+    border: solid #6798a6;
+    background-color: #6798a6;
+    color: #525052f6;
+    cursor: pointer;
 }
 </style>
