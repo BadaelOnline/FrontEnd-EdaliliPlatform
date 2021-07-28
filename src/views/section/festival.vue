@@ -423,7 +423,7 @@ export default {
 }
 .parent .contact .get_offer {
     background-color: #f6ef19;
-    padding: 9px 30px;
+    padding: 7px 30px;
     color: red;
     border-radius: 5px;
     font-weight: bold;

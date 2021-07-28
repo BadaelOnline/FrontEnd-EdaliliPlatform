@@ -119,10 +119,8 @@
                 id="myForm"
             >
                 <form action="/action_page.php" class="form-container">
-                    <h1>Login</h1>
-                    <span class="cancel" @click="closeForm()"
-                        ><i class="fa fa-window-close"></i
-                    ></span>
+                    <h1>Log<span>in</span></h1>
+                     <span class="cancel" @click="closeForm()"><i class="fa fa-window-close "></i></span>
 
                     <label for="email"><b>Email</b></label>
                     <input
@@ -176,13 +174,10 @@
                     action="/action_page.php"
                     class="form-container2 form_register"
                 >
-                    <h1>Register</h1>
-                    <span class="cancel" @click="closeForm()"
-                        ><i class="fa fa-window-close"></i
-                    ></span>
-                    <span class="ret" @click="loginrForm()"
-                        ><i class="fa fa-arrow-left"></i
-                    ></span>
+                  
+                     <h1>Regis<span>ter</span></h1>
+                    <span class="cancel" @click="closeForm()"><i class="fa fa-window-close "></i></span>
+                     <span class="ret" @click="loginrForm()"><i class="fa fa-arrow-left "></i></span>
                     <label for="Name"><b>Name</b></label>
                     <input
                         type="text"
@@ -365,7 +360,8 @@
     </div>
 </template>
 <style scoped>
-.alert {
+
+.alert{
     justify-content: center;
     font-size: 18px;
     left: 35%;
@@ -399,6 +395,11 @@
 }
 .form-popup h1 {
     font-size: 40px;
+    color: var(--red);;
+}
+.form-popup  h1 span{
+    font-size: 40px;
+    color: var(--blue);;
 }
 .form-popup span {
     font-size: 18px;
@@ -407,8 +408,8 @@
 .form-container {
     width: 450px;
     padding: 10px;
-    background-color: #a6a1a1;
-    height: 516px;
+    background-color: #c6c4c4;
+     height:516px;
 }
 
 /* Full-width input fields */
@@ -442,14 +443,14 @@
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    background-color: #d52626;
-    color: #fff;
-    padding: 5px 10px;
-    border-bottom-right-radius: 20px;
-    cursor: pointer;
+position: absolute;
+left: -2px;
+top: -2px;
+background-color: var(--red);
+color: #fff;
+padding: 5px 10px;
+border-bottom-right-radius: 20px;
+cursor: pointer;
 }
 
 /* Add some hover effects to buttons */
@@ -470,6 +471,11 @@
 }
 .form-popup2 h1 {
     font-size: 40px;
+    color: var(--red);
+}
+.form-popup2  h1 span{
+    font-size: 40px;
+    color: var(--blue);
 }
 .form-popup2 span {
     font-size: 18px;
@@ -478,8 +484,8 @@
 .form-container2 {
     width: 450px;
     padding: 10px;
-    background-color: #a6a1a1;
-    height: 521px;
+    background-color: #c6c4c4;
+   height: 521px;
 }
 
 /* Full-width input fields */
@@ -513,20 +519,20 @@
 
 /* Add a red background color to the cancel button */
 .form-container2 .cancel {
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    background-color: #d52626;
-    color: #fff;
-    padding: 5px 10px;
-    border-bottom-right-radius: 20px;
-    cursor: pointer;
+position: absolute;
+left: -2px;
+top: -2px;
+background-color: var(--red);
+color: #fff;
+padding: 5px 10px;
+border-bottom-right-radius: 20px;
+cursor: pointer;
 }
-.form-container2 .ret {
+.form-container2 .ret{
     position: absolute;
     right: -2px;
     top: -2px;
-    background-color: #3aa8e7;
+    background-color: var(--blue);
     color: #fff;
     padding: 5px 10px;
     border-bottom-left-radius: 20px;
@@ -1316,6 +1322,10 @@ export default {
         openForm() {
             document.getElementById('myForm').style.display = 'block';
             document.getElementById('myForm2').style.display = 'block';
+            document.getElementById('myForm2').classList.add("animate__swing");
+            document.getElementById('myForm').classList.add("animate__swing");
+
+
         },
         closewarn() {
             document.getElementById('warn').style.display = 'none';
@@ -1329,8 +1339,14 @@ export default {
             document.getElementById('myForm2').style.zIndex = 8;
         },
         closeForm() {
+            document.getElementById('myForm2').classList.add("animate__fadeOut");
+            document.getElementById('myForm').classList.add("animate__fadeOut");
+            setTimeout(function () {
+            document.getElementById('myForm2').classList.remove("animate__fadeOut");
+            document.getElementById('myForm').classList.remove("animate__fadeOut");
             document.getElementById('myForm').style.display = 'none';
             document.getElementById('myForm2').style.display = 'none';
+            }, 1000);
         },
         gotocart() {
             this.$router.push(`/Cart`);

@@ -655,6 +655,7 @@ $cubeDepth: $cubeHeight;
     background-color: #eee;
     display: flex;
     justify-content: space-around;
+    width: 100%;
 }
 .show-market {
     background-color: #fff;
@@ -674,19 +675,19 @@ $cubeDepth: $cubeHeight;
 }
 @media (max-width: 576.98px) {
     .mar {
-        margin-top: 47vh;
+      
         margin-bottom: 4vh;
     }
 }
 @media (max-width: 500.98px) {
     .mar {
-        margin-top: 35vh;
+       
         margin-bottom: 4vh;
     }
 }
 @media (max-width: 435.98px) {
     .mar {
-        margin-top: 5vh;
+      
         margin-bottom: 4vh;
     }
 }
