@@ -4,6 +4,9 @@
             <div class="colum_baner">
                 <img src="../../../public/img/fistival_baner.png" />
             </div>
+                        <div class="colum_baner">
+                <img src="../../../public/img/fistival_baner.png" />
+            </div>
         </div>
         <div class="child2">
             <div
@@ -33,7 +36,7 @@
                         یساعد على محاربة القشور عن طریق ترطیب فروة الرأس حسم 10
                         % على جمیع أنواع الشامبو
                     </div>
-                    <span class="name">head & shoulders</span>
+                    <span class="name">Head & Shoulders</span>
                     <hr class="hr" />
                     <div class="conten_price">
                         <div>
@@ -106,75 +109,36 @@
                 </div>
             </div>
         </div>
-        <span class="slide" id="btn">
-            <a>
-                <i class="fa fa-bars" @click="btnbar()"></i>
-            </a>
-        </span>
-        <div class="child3 categores" id="menu">
-            <div class="backdrop"></div>
-            <div class="card text-right checked-all open" id="all">
-                <span class="text-center span-text text mt-2">{{
-                    $t('Viewoffers')
-                }}</span>
-                <span class="text-center bgcolor">{{
-                    $t('Bydepartment')
-                }}</span>
-                <div class="checklist mt-2">
-                    <label class="textcheck mt-2" for="check4">{{
-                        $t('All')
-                    }}</label>
-                    <input
-                        class="categories fa fa-check-square-o mr-3"
-                        type="checkbox"
-                        id="check4"
-                    />
-                    <ul>
-                        <li
-                            class="textcheck"
-                            v-for="category in Sections"
-                            :key="category"
-                        >
-                            {{ category.name }}
-                            <input
-                                class="categories mr-3"
-                                type="checkbox"
-                                v-bind:value="category"
-                                id="category"
-                                v-model="selectedCategory"
-                            />
-                        </li>
-                    </ul>
-                </div>
-                <span class="text-center bgcolor">{{
-                    $t('DependingStoreCompany')
-                }}</span>
-                <div class="checklist mr-3">
-                    <div class="mt-2">
-                        <label class="textcheck" for="check1">{{
-                            $t('ShopicoSupermarket')
-                        }}</label
-                        >&nbsp;
-                        <input class="categories" type="checkbox" id="check1" />
-                    </div>
-                    <div class="">
-                        <label class="textcheck" for="check2">{{
-                            $t('PrincessCenter')
-                        }}</label
-                        >&nbsp;
-                        <input class="categories" type="checkbox" id="check2" />
-                    </div>
-                    <div class="">
-                        <label class="textcheck" for="check3">{{
-                            $t('ElectronicsCompany')
-                        }}</label
-                        >&nbsp;
-                        <input class="categories" type="checkbox" id="check3" />
-                    </div>
-                </div>
-                <span class="text-center bgcolor">{{
-                    $t('AccordingEvaluation')
-                }}</span>
+
+        <div class="child3" >
+          <span class="slide" id="menu_btn">
+                <a>
+                    <i class="fa fa-bars" @click="opensidebar()"></i>
+                </a>
+            </span>
+            <div class="side" id="side">
+               
+    <div class="screen">
+         <div class="cancel" @click="closesidebar()"><i class="fa fa-window-close "></i></div>
+            <div class="row">
+
+            
+                <input id="dot" name="dot" type="checkbox" class="dot">
+                <label for="dot" class="dot">  <span>All</span></label>
+              
+
+                <input id="dot2" name="dot" type="checkbox" class="dot">
+                <label for="dot2" class="dot"><span>Grocery</span></label>
+
+                <input id="dot3" name="dot" type="checkbox" class="dot">
+                <label for="dot3" class="dot"><span>Mobile</span></label>
+
+                <input id="dot4" name="dot" type="checkbox" class="dot">
+                <label for="dot4" class="dot"><span>Furniture</span></label>
+
+            </div>
+ 
+</div>
             </div>
         </div>
     </div>
@@ -224,6 +188,22 @@ export default {
     },
     mounted() {
         this.$store.dispatch('loadStores');
+             window.onscroll = function() {  
+        var menu_btn = document.getElementById("menu_btn");
+        var side = document.getElementById("side");   
+        if (window.pageYOffset > 756) {
+            menu_btn.classList.add("fixed");
+             side.classList.add("fixed2");
+        }        
+        else if (window.pageYOffset < 756) {
+            menu_btn.classList.remove("fixed");
+             side.classList.remove("fixed2");
+        }
+};
+
+
+
+      
     },
     methods: {
     toggl: function( event ) {
@@ -237,6 +217,29 @@ export default {
 
   
  },
+       closesidebar(){
+   document.getElementById("side").animate([
+  // keyframes
+  { height: '600px' },
+  { height: '0px' }
+], {
+  // timing options
+  duration: 1000,
+  easing: 'ease-out',
+  
+});
+    
+    setTimeout(function () {
+        document.getElementById('menu_btn').style.display = "block";
+        document.getElementById('side').style.display = "none";
+    }, 1000);
+   
+        },
+        opensidebar(){
+    document.getElementById('side').style.display = "block";
+    document.getElementById('menu_btn').style.display = "none";
+    
+        },
         btnbar: function () {
             document.getElementById('btn').classList.toggle('click');
             document.getElementById('menu').classList.toggle('show');
@@ -260,19 +263,23 @@ export default {
     },
     created() {
         this.fetch();
+                
+ 
     },
 };
+      
 </script>
+
 <style scoped>
 .parent {
     display: flex;
 }
 .parent .child1,
 .parent .child3 {
-    width: 20%;
+    width: 22%;
 }
 .parent .child2 {
-    width: 50%;
+    width: 55%;
     display: grid;
     grid-template-columns: 1fr;
     margin: auto;
@@ -305,6 +312,7 @@ export default {
 .parent .child2 .date {
     opacity: 0.5;
     padding-top: 25px;
+    font-size: 19px;
 }
 .parent .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
@@ -316,6 +324,8 @@ export default {
 }
 .parent .card .name{
     color: gold;
+    text-shadow: 3px 5px 10px #b3a21c;
+    font-size: 19px;
 }
 
 .parent .card .hr {
@@ -331,13 +341,14 @@ export default {
 }
 .parent .card .conten_price .tofer {
     background-color: #f6ef19;
-    padding: 2px 20px;
+    padding: 0 20px;
     color: red;
+    position: relative;
 }
 .parent .card .conten_price .tofer::after {
     content: url(../../../public/img/icon_tofer.png);
     position: absolute;
-    top: 96px;
+    top: -5px;
     right: 54px;
 }
 .parent .card .conten_price .tofer::before {
@@ -347,6 +358,7 @@ export default {
     color: black;
     font-size: 18px;
     opacity: 0.8;
+    width: 75px;
 }
 .parent .card .img_content {
     margin: 40px 0 10px 0;
@@ -413,6 +425,7 @@ export default {
 .parent .action h5 {
     opacity: 0.8;
     text-shadow: 3px 5px 10px #909090;
+    font-size: 1.5em;
 }
 .parent .contact {
     display: flex;
@@ -503,216 +516,140 @@ export default {
 @media (max-width: 576.98px) {
 }
 /* ____________________________________________________  */
+.slide{
+    position: static;
+    top: 67%;
+    right: 2%; 
+    cursor: pointer;
+    font-size: 20px;
+}
+.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  right: -40%;
+}
+.fixed2 {
+  position: fixed;
+  top: 10px;
+  right: 34px;
+}
+.side{
+    width:227px;
+    margin: auto;
+    background-color: #e1e1e1;
+    height: 0px;
+    animation: mymove 2s forwards;
+    display: none;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
+    
+}
+.side .cancel{
+    display: flex;
+    font-size: 22px;
+    color: #5b5b5b;
+    cursor: pointer;
+}
 
-.btn {
-    font-weight: bold;
-    font-size: 1rem;
-    height: 30px;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 50px;
+@keyframes mymove {
+  0%   { height: 0px;}
+
+  100% { height:600px}
 }
-.checked-all {
-    font-size: 16px;
-    color: #000000;
-    overflow-y: auto;
-    white-space: nowrap;
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 576.98px) {
+.parent .child1,
+.parent .child3 {
+    width: 0%;
 }
-.categories {
-    height: 14px;
-    font-size: 16px;
-    color: #000000;
-    list-style: none;
-    margin-bottom: 10px;
-    transition: all 0.8s;
-    margin-left: 10px;
+.parent .child2 {
+    width: 90%;
+ 
 }
-.textcheck {
-    list-style: none;
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #000000;
-    transition: all 0.8s;
 }
-.checked-all .listcategories .categories {
-    color: #000000;
-    margin-right: 10px;
+/* small devices (portrait phones, less than 767px) */
+@media (max-width: 767.98px) {
+.parent .child1,
+.parent .child3 {
+    width: 0%;
 }
-.span-text {
-    font-size: 16px;
+.parent .child2 {
+    width: 90%;
+ 
 }
-.bgcolor {
-    background-color: #e0e0d1;
-    border-radius: 3px;
-    border: 1px solid #e0e0d1;
-    font-size: 16px;
-    margin-top: 5px;
-}
-@media (min-width: 1200px) {
-    .slide {
-        display: none;
-    }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-    .slide {
-        display: none;
-    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .parent .card .conten_price .tofer::after {
-        top: 97px;
-    }
-    .slide {
+.parent .child1{
+   width: 25%;
+}
+.parent .child3 {
+    width: 0%;
+}
+.parent .child2 {
+    width: 70%;
+ 
+}
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+.side{
+    width:185px;  
+}
+}
+</style>
+<style lang="scss" scoped>
+// TODO: More neumorphic UI components, not just buttons and checkboxes/radios.
+
+$baseHue: 215;
+$baseSat: 50%;
+$baseLum: 90;
+$baseColor: hsl($baseHue, $baseSat, $baseLum);
+$bgColor: hsl($baseHue, $baseSat, $baseLum - 2);
+
+.dot {
+    background: linear-gradient(135deg, rgba(247, 251, 255, 0.7) 20%, rgba(0, 0, 0, 0.125) 100%);
+    border: 2px solid $baseColor;
+    border-radius: 16px;
+    box-shadow: 3px 3px 6px 2px rgba(0, 0, 0, 0.1), -3px -3px 5px 1px rgba(247, 251, 255, 0.5);
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    margin: 10px 0;
+}
+
+.row {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    flex-direction: column;
+    
+    input {
         display: none;
+        
+        &:checked {
+ 
+            + .dot {
+                background: linear-gradient(-45deg, rgba(247, 251, 255, 0.4) 20%, rgba(0, 0, 0, 0.2) 100%);
+            }
+        }
     }
 }
-@media (min-width: 577px) and (max-width: 767px) {
-     .checked-all {
-        overflow-y: auto;
-        white-space: nowrap;
-    }
-    .categores {
-        margin-right: 0;
-        color: #000000;
-        position: absolute;
-        width: 200px;
-        right: -400px;
-        height: 50%;
-        transition: right 0.4s ease;
-    }
-    .categores.show {
-        right: 0;
-    }
-    .slide {
-        position: absolute;
-        /* top: 0; */
-        right: 10px;
-        height: 30px;
-        width: 30px;
-        cursor: pointer;
-        transition: right 0.4s ease;
-    }
-    .slide.click {
-        right: 220px;
-    }
-    .slide .fa-bars {
-        color: #000000;
-    }
-    .slide.click .fa-bars:before {
-        content: '\f00d';
-    }
+
+.screen {
+    align-items: center;
+    background: linear-gradient(135deg, #e3e2e2, #777);
+    box-shadow: inset 5px 5px 7px 5px rgba(0, 0, 0, 0.1), inset -5px -5px 7px 5px rgba(247, 251, 255, 0.6);
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
 }
-/* Extra small devices (portrait phones, less than 576px) */
-@media (min-width: 340px) and (max-width: 576.98px) {
-    .parent .child2 .ch2 .title {
-        display: flex;
-        flex-direction: inherit;
-    }
-    .parent .child2 .ch2 .title::after {
-        top: 46px;
-        right: 66px;
-    }
-    .parent .child2 .ch2 .title::before {
-        top: 68px;
-        right: 70px;
-    }
-    .parent .card .conten_price .tofer::after {
-        top: 97px;
-    }
-    .parent .card .conten_price .tofer::before {
-        font-size: 15px;
-    }
-    .parent .card .stars {
-        display: none;
-    }
-    .textFollow {
-        max-width: 40%;
-        padding: 10px 20px 10px 40px;
-    }
-    .checked-all {
-        overflow-y: auto;
-        white-space: nowrap;
-    }
-    .categores {
-        margin-right: 0;
-        color: #000000;
-        position: absolute;
-        width: 200px;
-        right: -400px;
-        height: 50%;
-        transition: right 0.4s ease;
-    }
-    .categores.show {
-        right: 0;
-    }
-    .slide {
-        position: absolute;
-        /* top: 0; */
-        right: 10px;
-        height: 30px;
-        width: 30px;
-        cursor: pointer;
-        transition: right 0.4s ease;
-    }
-    .slide.click {
-        right: 220px;
-    }
-    .slide .fa-bars {
-        color: #000000;
-    }
-    .slide.click .fa-bars:before {
-        content: '\f00d';
-    }
+.dot span{
+    padding-left: 30px;
 }
-@media (min-width: 200px) and (max-width: 339.98px) {
-    .parent .child2 .ch2 .title {
-        display: flex;
-        flex-direction: inherit;
-    }
-    .parent .card .conten_price .tofer::after {
-        top: 129px;
-    }
-    .parent .card .stars {
-        display: none;
-    }
-    .textFollow {
-        max-width: 40%;
-        padding: 10px 0px 10px 28px;
-    }
-    .checked-all {
-        overflow-y: auto;
-        white-space: nowrap;
-    }
-    .categores {
-        margin-right: 0;
-        color: #000000;
-        position: absolute;
-        width: 200px;
-        right: -400px;
-        height: 50%;
-        transition: right 0.4s ease;
-    }
-    .categores.show {
-        right: 0;
-    }
-    .slide {
-        position: absolute;
-        /* top: 0; */
-        right: 10px;
-        height: 30px;
-        width: 30px;
-        cursor: pointer;
-        transition: right 0.4s ease;
-    }
-    .slide.click {
-        right: 220px;
-    }
-    .slide .fa-bars {
-        color: #000000;
-    }
-    .slide.click .fa-bars:before {
-        content: '\f00d';
-    }
-}
+
 </style>
