@@ -452,7 +452,7 @@ export default {
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-    background-color: #04aa6d;
+    background-color: var(--blue);
     color: white;
     padding: 16px 20px;
     border: none;
@@ -528,7 +528,7 @@ export default {
 
 /* Set a style for the submit/login button */
 .form-container2 .btn {
-    background-color: #04aa6d;
+    background-color: var(--blue);
     color: white;
     padding: 16px 20px;
     border: none;
