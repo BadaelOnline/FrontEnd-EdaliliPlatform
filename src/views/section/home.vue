@@ -269,13 +269,13 @@ export default {
 }
 @media (max-width: 576.98px) {
     .mar {
-        margin-top: 47vh;
+        /* margin-top: 47vh; */
         margin-bottom: 4vh;
     }
 }
 @media (max-width: 500.98px) {
     .mar {
-        margin-top: 35vh;
+        /* margin-top: 35vh; */
         margin-bottom: 4vh;
     }
 }

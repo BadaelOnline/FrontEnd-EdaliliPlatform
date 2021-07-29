@@ -1,182 +1,149 @@
 <template>
-    <div class="header">
-        <div
-            v-if="!authenticated"
-            class="content_loader hidden"
-            id="content_loader"
-        >
-            <div id="loader" class="loader"></div>
+    <!-- Start landing -->
+    <div class="jumbotron">
+        <div class="bars" @click="showfut()">
+            <i class="fa fa-bars"></i>
         </div>
 
-        <div
-            v-if="authenticated"
-            class="alert animate__animated animate__swing"
-            id="alert"
-        >
-            <i
-                class="fa fa-check-square"
-                style="font-size: 22px; margin: 10px"
-            ></i>
-            <span>Success Login</span>
-        </div>
-        <!-- NavSelect -->
-        <headerLogo />
-
-        <!-- background -->
-        <banarHeader />
-        <!-- <div class="customer-select cu5">
+        <div class="customer-select cu5">
             <h5>choose server</h5>
             <select v-model="server" @change="handleserver($event)">
                 <option value="edalily">edalily</option>
                 <option value="admin">admin</option>
             </select>
         </div>
-        <div class="background">
-            <div class="search">
-                <i class="fa fa-search shopping"></i
-                ><input
-                    class="input"
-                    type="search"
-                    :placeholder="$t('Search')"
+        <div class="search col-lg-12">
+            <i class="fa fa-search shopping"></i
+            ><input class="input" type="search" :placeholder="$t('Search')" />
+        </div>
+        <div class="form-popup animate__animated animate__swing" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <h1>Log<span>in</span></h1>
+                <span class="cancel" @click="closeForm()"
+                    ><i class="fa fa-window-close"></i
+                ></span>
+
+                <label for="email"><b>Email</b></label>
+                <input
+                    type="text"
+                    placeholder="Enter Email"
+                    v-model="form.email"
+                    name="email"
+                    required
+                    ref="email"
+                    @keyup="handleEmail()"
                 />
-            </div>
-            <div
-                class="form-popup animate__animated animate__swing"
-                id="myForm"
+                <div style="color: red" v-if="statusEmail == false">
+                    <i class="fa fa-window-close"></i>
+                    {{ form.error }}
+                </div>
+                <div style="color: green" v-if="statusEmail == true">
+                    <i class="fa fa-check-square"></i>
+                    correct Email
+                </div>
+
+                <label for="psw"><b>Password</b></label>
+
+                <input
+                    type="password"
+                    id="myInput"
+                    placeholder="Enter Password"
+                    v-model="form.password"
+                    name="psw"
+                    ref="pass"
+                    required
+                    @keyup="handlePass()"
+                />
+                <input type="checkbox" @change="showPass()" /> Show Password
+                <div style="color: red" v-if="statusPass == false">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Password must be more 7 characters
+                </div>
+                <div style="color: green" v-if="statusPass == true">
+                    <i class="fa fa-check-square"></i>
+                    Correct Password
+                </div>
+                <span @click="submit()" class="btn">Login</span>
+                <span @click="registerForm()" class="btn">Register</span>
+            </form>
+        </div>
+        <div class="form-popup2 animate__animated animate__swing" id="myForm2">
+            <form
+                action="/action_page.php"
+                class="form-container2 form_register"
             >
-                <form action="/action_page.php" class="form-container">
-                    <h1>Log<span>in</span></h1>
-                    <span class="cancel" @click="closeForm()"
-                        ><i class="fa fa-window-close"></i
-                    ></span>
+                <h1>Regis<span>ter</span></h1>
+                <span class="cancel" @click="closeForm()"
+                    ><i class="fa fa-window-close"></i
+                ></span>
+                <span class="ret" @click="loginrForm()"
+                    ><i class="fa fa-arrow-left"></i
+                ></span>
+                <label for="Name"><b>Name</b></label>
+                <input
+                    type="text"
+                    placeholder="Enter Name"
+                    v-model="form.name"
+                    name="Name"
+                    required
+                />
+                <label for="email"><b>Email</b></label>
+                <input
+                    type="text"
+                    ref="email2"
+                    placeholder="Enter Email"
+                    v-model="form.email"
+                    name="email"
+                    required
+                    @keyup="handleEmail()"
+                />
+                <div style="color: red" v-if="statusEmail == false">
+                    <i class="fa fa-window-close"></i>
+                    {{ form.error }}
+                </div>
+                <div style="color: green" v-if="statusEmail == true">
+                    <i class="fa fa-check-square"></i>
+                    correct Email
+                </div>
 
-                    <label for="email"><b>Email</b></label>
-                    <input
-                        type="text"
-                        placeholder="Enter Email"
-                        v-model="form.email"
-                        name="email"
-                        required
-                        ref="email"
-                        @keyup="handleEmail()"
-                    />
-                    <div style="color: red" v-if="statusEmail == false">
-                        <i class="fa fa-window-close"></i>
-                        {{ form.error }}
-                    </div>
-                    <div style="color: green" v-if="statusEmail == true">
-                        <i class="fa fa-check-square"></i>
-                        correct Email
-                    </div>
+                <label for="psw"><b>Password</b></label>
+                <input
+                    type="password"
+                    ref="pass2"
+                    id="myInput2"
+                    placeholder="Enter Password"
+                    v-model="form.password"
+                    name="psw"
+                    required
+                    @keyup="handlePass()"
+                />
+                <input type="checkbox" @change="showPass2()" /> Show Password
+                <div style="color: red" v-if="statusPass == false">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Password must be more 7 characters
+                </div>
+                <div style="color: green" v-if="statusPass == true">
+                    <i class="fa fa-check-square"></i>
+                    Correct Password
+                </div>
+                <span @click="submit1()" class="btn">Register</span>
+            </form>
+        </div>
 
-                    <label for="psw"><b>Password</b></label>
-
-                    <input
-                        type="password"
-                        id="myInput"
-                        placeholder="Enter Password"
-                        v-model="form.password"
-                        name="psw"
-                        ref="pass"
-                        required
-                        @keyup="handlePass()"
-                    />
-                    <input type="checkbox" @change="showPass()" /> Show Password
-                    <div style="color: red" v-if="statusPass == false">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        Password must be more 7 characters
-                    </div>
-                    <div style="color: green" v-if="statusPass == true">
-                        <i class="fa fa-check-square"></i>
-                        Correct Password
-                    </div>
-                    <span @click="submit()" class="btn">Login</span>
-                    <span @click="registerForm()" class="btn">Register</span>
-                </form>
-            </div>
-            <div
-                class="form-popup2 animate__animated animate__swing"
-                id="myForm2"
-            >
-                <form
-                    action="/action_page.php"
-                    class="form-container2 form_register"
-                >
-                    <h1>Regis<span>ter</span></h1>
-                    <span class="cancel" @click="closeForm()"
-                        ><i class="fa fa-window-close"></i
-                    ></span>
-                    <span class="ret" @click="loginrForm()"
-                        ><i class="fa fa-arrow-left"></i
-                    ></span>
-                    <label for="Name"><b>Name</b></label>
-                    <input
-                        type="text"
-                        placeholder="Enter Name"
-                        v-model="form.name"
-                        name="Name"
-                        required
-                    />
-                    <label for="email"><b>Email</b></label>
-                    <input
-                        type="text"
-                        ref="email2"
-                        placeholder="Enter Email"
-                        v-model="form.email"
-                        name="email"
-                        required
-                        @keyup="handleEmail()"
-                    />
-                    <div style="color: red" v-if="statusEmail == false">
-                        <i class="fa fa-window-close"></i>
-                        {{ form.error }}
-                    </div>
-                    <div style="color: green" v-if="statusEmail == true">
-                        <i class="fa fa-check-square"></i>
-                        correct Email
-                    </div>
-
-                    <label for="psw"><b>Password</b></label>
-                    <input
-                        type="password"
-                        ref="pass2"
-                        id="myInput2"
-                        placeholder="Enter Password"
-                        v-model="form.password"
-                        name="psw"
-                        required
-                        @keyup="handlePass()"
-                    />
-                    <input type="checkbox" @change="showPass2()" /> Show
-                    Password
-                    <div style="color: red" v-if="statusPass == false">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        Password must be more 7 characters
-                    </div>
-                    <div style="color: green" v-if="statusPass == true">
-                        <i class="fa fa-check-square"></i>
-                        Correct Password
-                    </div>
-                    <span @click="submit1()" class="btn">Register</span>
-                </form>
-            </div> -->
-        <!--  -->
-        <!-- <div class="parent_featuers">
+        <div class="parent_featuers">
+            <div class="featuers animate__animated animate__heartBeat" id="fut">
                 <div class="child_1">
-                    <div class="link">
-                        {{ $t('AddPlatform', { locale: lang }) }}
-                    </div>
+                    <router-link to="/addStore" class="link">{{
+                        $t('AddPlatform', { locale: lang })
+                    }}</router-link>
                 </div>
                 <div class="cole">|</div>
                 <div class="child_2" @click="gotocart()">
+                    <span class="cart-count">{{ cartItemCount }}</span>
                     <div>
                         {{ $t('Shoppingcart') }}
                     </div>
-                    <div class="cartItemCount">
-                        <i class="fa fa-shopping-cart shopping"></i>
-
-                        <span class="cart-count">{{ cartItemCount }}</span>
-                    </div>
+                    <i class="fa fa-shopping-cart shopping"></i>
                 </div>
                 <div class="cole">|</div>
                 <div class="child_3 map">
@@ -207,26 +174,16 @@
                     <i class="fa fa-user-circle shopping"> </i>
                 </div>
             </div>
-        </div> -->
-        <!-- navbarEdalili -->
-        <headerNavbar />
+        </div>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import jeson from '@/jeson/MOCK_DATA.json';
-import banarHeader from '@/components/header/banarHeader.vue';
-import headerLogo from '@/components/header/headerLogo.vue';
-import headerNavbar from '@/components/header/headerNavbar.vue';
 export default {
-    name: 'Header',
-    components: {
-        headerLogo,
-        headerNavbar,
-        banarHeader,
-    },
-    props: ['title', 'description', 'id', 'price'],
+    name: 'banarHeader',
+    // props: ['title', 'description', 'id', 'price'],
     data() {
         const lang = localStorage.getItem('lang') || 'en';
         const token = localStorage.getItem('token');
@@ -425,9 +382,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-    font-size: 15px;
-}
 .alert {
     justify-content: center;
     font-size: 18px;
@@ -475,9 +429,10 @@ export default {
 .form-container {
     width: 450px;
     padding: 10px;
-    background-color: #a6a1a1;
+    background-color: #c6c4c4;
     height: 516px;
 }
+
 /* Full-width input fields */
 .form-container input[type='text'],
 .form-container input[type='password'] {
@@ -487,12 +442,14 @@ export default {
     border: none;
     background: #f1f1f1;
 }
+
 /* When the inputs get focus, do something */
 .form-container input[type='text']:focus,
 .form-container input[type='password']:focus {
     background-color: #ddd;
     outline: none;
 }
+
 /* Set a style for the submit/login button */
 .form-container .btn {
     background-color: #04aa6d;
@@ -504,6 +461,7 @@ export default {
     margin-bottom: 10px;
     opacity: 0.8;
 }
+
 /* Add a red background color to the cancel button */
 .form-container .cancel {
     position: absolute;
@@ -515,11 +473,13 @@ export default {
     border-bottom-right-radius: 20px;
     cursor: pointer;
 }
+
 /* Add some hover effects to buttons */
 .form-container .btn:hover {
     opacity: 1;
 }
 /* ____________________________________ form register popup  _______________________________ */
+
 /* The popup form - hidden by default */
 .form-popup2 {
     display: none;
@@ -545,9 +505,10 @@ export default {
 .form-container2 {
     width: 450px;
     padding: 10px;
-    background-color: #a6a1a1;
+    background-color: #c6c4c4;
     height: 521px;
 }
+
 /* Full-width input fields */
 .form-container2 input[type='text'],
 .form-container2 input[type='password'] {
@@ -557,12 +518,14 @@ export default {
     border: none;
     background: #f1f1f1;
 }
+
 /* When the inputs get focus, do something */
 .form-container2 input[type='text']:focus,
 .form-container2 input[type='password']:focus {
     background-color: #ddd;
     outline: none;
 }
+
 /* Set a style for the submit/login button */
 .form-container2 .btn {
     background-color: #04aa6d;
@@ -574,6 +537,7 @@ export default {
     margin-bottom: 10px;
     opacity: 0.8;
 }
+
 /* Add a red background color to the cancel button */
 .form-container2 .cancel {
     position: absolute;
@@ -595,11 +559,13 @@ export default {
     border-bottom-left-radius: 20px;
     cursor: pointer;
 }
+
 /* Add some hover effects to buttons */
 .form-container2 .btn:hover {
     opacity: 1;
 }
 /* ____________________________________ loading  _______________________________ */
+
 .content_loader {
     position: absolute;
     width: 100%;
@@ -632,6 +598,7 @@ export default {
         -webkit-transform: rotate(360deg);
     }
 }
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -640,20 +607,16 @@ export default {
         transform: rotate(360deg);
     }
 }
-/* header */
-.header {
-    height: auto;
-    margin: 0;
-    padding: 0;
-}
-.background {
+/* Start landing */
+.jumbotron {
     display: grid;
     align-content: space-between;
     padding-top: 50px;
     padding-bottom: 10px;
     text-align: center;
     position: relative;
-    height: 800px;
+    height: 590px;
+    margin-bottom: 5px;
     width: 100%;
     background-image: url('../../../public/img/Screenshot_2020-10-17 E-DALELY Design.png');
     -webkit-background-size: cover;
@@ -661,67 +624,278 @@ export default {
     -o-background-size: cover;
     background-size: cover;
 }
-.background .search {
+.jumbotron .search {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
 }
-.background .input {
+.jumbotron .input {
     border: none;
     width: 400px;
+    padding: 4px 10px 5px 10px;
     height: 34px;
 }
-.background .search i {
+.jumbotron .search i {
+    background-color: #bfc0c2;
     padding: 10px 10px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
     width: 35px;
     height: 34px;
+    color: #6798a6;
     cursor: pointer;
 }
 .parent_featuers {
-    border: solid #c3c4c8;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
+    width: 95%;
+    justify-content: flex-end;
+    height: 80px;
+}
+
+.jumbotron .featuers {
+    width: 80%;
+    display: inline-flex;
+    justify-content: space-between;
     margin: auto;
-    height: auto;
-    width: 60%;
-    background-color: #c3c4c8;
-    color: #525052f6;
+    background-color: #bfc0c2;
+    padding: 10px 20px;
+    color: #635f5f;
+    font-size: 15px;
 }
-.child_1,
-.child_2,
-.child_3,
-.child_4,
-.child_5 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 10px auto;
-    cursor: pointer;
+.jumbotron .featuers .cole {
+    font-size: 30px;
+    margin-top: -15px;
+    cursor: none;
 }
-.parent_featuers div:hover {
-    color: #6798a6;
+.jumbotron .featuers .cole:hover {
+    color: #635f5f;
 }
-.child_2 .cart-count {
+
+.jumbotron .featuers span {
+    font-weight: bold;
+}
+.jumbotron .featuers .cart-count {
     font-size: 13px;
     color: #ba8b00;
+    margin-left: 88%;
     background: #ffffff;
     height: 19px;
     border-radius: 50%;
     width: 17px;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    margin-top: -11px;
 }
-.background .search .shopping {
-    color: #6798a6;
+.jumbotron .featuers div {
+    display: inline-flex;
+    cursor: pointer;
+    position: relative;
 }
-@media (max-width: 767px) {
-    .parent_featuers {
-        gap: 15px;
-        width: 80%;
+.jumbotron .featuers div:hover {
+    color: aliceblue;
+}
+.jumbotron .featuers i {
+    color: #635f5f;
+    font-size: 20px;
+}
+.jumbotron .featuers .shopping {
+    margin: 0 10px;
+}
+.bars {
+    display: none;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .jumbotron {
+        height: 300px;
+        width: 100%;
     }
+    .bars {
+        display: flex;
+        justify-content: flex-start;
+        cursor: pointer;
+    }
+    .parent_featuers {
+        display: flex;
+        width: 100%;
+        height: 200px;
+        justify-content: center;
+    }
+    .jumbotron .featuers {
+        width: 250px;
+        position: absolute;
+        font-size: 11px;
+        border-radius: 20px;
+        overflow: hidden;
+        display: none;
+    }
+    .jumbotron .show {
+        margin-top: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .jumbotron .search {
+        width: 100%;
+    }
+    .jumbotron .search input {
+        width: 50%;
+        padding: 4px 10px;
+        height: 35px;
+    }
+    .jumbotron .search i {
+        height: 35px;
+        width: 34px;
+        padding: 10px 10px;
+    }
+    .jumbotron .search:after {
+        width: 34px;
+        height: 34px;
+        top: 0;
+    }
+    .jumbotron .featuers .cole {
+        display: none;
+    }
+    .jumbotron .featuers .child_1,
+    .jumbotron .featuers .child_2,
+    .jumbotron .featuers .child_3,
+    .jumbotron .featuers .child_4,
+    .jumbotron .featuers .child_5 {
+        display: block;
+        margin: 5px 0;
+    }
+    .jumbotron .featuers .child_1 div,
+    .jumbotron .featuers .child_2 div,
+    .jumbotron .featuers .child_3 div,
+    .jumbotron .featuers .child_4 div,
+    .jumbotron .featuers .child_5 div {
+        display: inline-flex;
+    }
+
+    .jumbotron .featuers .shopping:after,
+    .jumbotron .featuers .map:after,
+    .jumbotron .featuers .user:after {
+        display: none;
+    }
+    .jumbotron .featuers .cart-count {
+        font-size: 13px;
+        color: #ba8b00;
+        margin-left: 44%;
+        background: #ffffff;
+        height: 19px;
+        border-radius: 50%;
+        width: 17px;
+        position: absolute;
+        margin-top: -9px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .jumbotron {
+        height: 330px;
+        width: 100%;
+    }
+    .bars {
+        display: flex;
+        justify-content: flex-start;
+        cursor: pointer;
+    }
+    .parent_featuers {
+        display: flex;
+        width: 100%;
+        height: 200px;
+        justify-content: center;
+    }
+    .jumbotron .featuers {
+        width: 250px;
+        position: absolute;
+        font-size: 11px;
+        border-radius: 20px;
+        overflow: hidden;
+        display: none;
+    }
+    .jumbotron .show {
+        margin-top: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .jumbotron .search {
+        width: 100%;
+    }
+    .jumbotron .search input {
+        width: 50%;
+        padding: 4px 10px;
+        height: 35px;
+    }
+    .jumbotron .search i {
+        height: 35px;
+        width: 34px;
+        padding: 10px 10px;
+    }
+    .jumbotron .search:after {
+        width: 34px;
+        height: 34px;
+        top: 0;
+    }
+    .jumbotron .featuers .cole {
+        display: none;
+    }
+    .jumbotron .featuers .child_1,
+    .jumbotron .featuers .child_2,
+    .jumbotron .featuers .child_3,
+    .jumbotron .featuers .child_4,
+    .jumbotron .featuers .child_5 {
+        display: block;
+        margin: 5px 0;
+    }
+    .jumbotron .featuers .child_1 div,
+    .jumbotron .featuers .child_2 div,
+    .jumbotron .featuers .child_3 div,
+    .jumbotron .featuers .child_4 div,
+    .jumbotron .featuers .child_5 div {
+        display: inline-flex;
+    }
+    .jumbotron .featuers i {
+        font-size: 17px;
+    }
+    .jumbotron .featuers .shopping:after,
+    .jumbotron .featuers .map:after,
+    .jumbotron .featuers .user:after {
+        display: none;
+    }
+    .jumbotron .featuers .cart-count {
+        font-size: 13px;
+        color: #ba8b00;
+        margin-left: 44%;
+        background: #ffffff;
+        height: 19px;
+        border-radius: 50%;
+        width: 17px;
+        position: absolute;
+        margin-top: -9px;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .jumbotron .featuers {
+        width: 90%;
+        display: inline-flex;
+        justify-content: space-between;
+        margin: auto;
+        background-color: #bfc0c2;
+        padding: 10px 20px;
+        color: #635f5f;
+    }
+}
+/* End landing */
+.link {
+    color: #635f5f;
+    text-decoration: none;
+}
+.link:hover {
+    text-decoration: none;
+    color: aliceblue;
 }
 </style>

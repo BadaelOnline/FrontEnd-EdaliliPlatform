@@ -21,15 +21,15 @@ export default class App extends Vue {}
 </script>
 <style lang="scss">
 :root {
-  --blue: #11559d;
-  --red: #df3747;
+    --blue: #11559d;
+    --red: #df3747;
 }
 #app {
     font-family: Zen Tokyo Zoo;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    // color: #11559d;
     font-size: 16px;
 }
 </style>
