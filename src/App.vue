@@ -1,6 +1,6 @@
 <template>
-    <!-- <AppHeader /> -->
-    <Header />
+     <!-- <AppHeader />  -->
+    <Header /> 
     <div id="app"></div>
     <router-view />
     <AppFooter v-if="this.$route.path !== '/signin'" />
@@ -8,13 +8,13 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 // import AppHeader from '@/components/header/AppHeader.vue'; // @ is an alias to /src authentication
-import Header from '@/components/header/Header.vue';
+ import Header from '@/components/header/Header.vue';
 import AppFooter from '@/components/Footer/AppFooter.vue';
 @Options({
     components: {
-        // AppHeader,
+       //  AppHeader,
         AppFooter,
-        Header,
+         Header,
     },
 })
 export default class App extends Vue {}
