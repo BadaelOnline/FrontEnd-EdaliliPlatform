@@ -20,70 +20,7 @@
             <span>Success Login</span>
         </div>
         <!-- NavSelect -->
-        <div class="navbar1">
-            <div class="menu-content">
-                <ul></ul>
-            </div>
-            <div class="logo">
-                <div class="menu-header">
-                    <i class="fa fa-bars"></i>
-                </div>
-                <div @click="goto" class="imag">
-                    <img
-                        height="30"
-                        src="../../../public/img/EDALELYLogo.png"
-                    />
-                </div>
-            </div>
-            <div class="lang">
-                <div class="">
-                    <select v-model="lang" @change="handleChange($event)">
-                        <option value="en">English</option>
-                        <option value="ar">العربية</option>
-                    </select>
-                </div>
-                <div class="textlang">
-                    <span class="">{{ $t('lang') }}</span>
-                </div>
-            </div>
-            <div class="selectlocation">
-                <div class="">
-                    <select>
-                        <option value="1" disabled>
-                            {{ $t('Governorate') }}
-                        </option>
-                        <option v-for="gover in governorates" :key="gover.id">
-                            {{ gover.name }}
-                        </option>
-                    </select>
-                </div>
-
-                <div class="">
-                    <select>
-                        <option value="1" disabled>
-                            {{ $t('City') }}
-                        </option>
-                        <option v-for="city in cities" :key="city.id">
-                            {{ city.name }}
-                        </option>
-                    </select>
-                </div>
-                <div class="">
-                    <select>
-                        <option value="1" disabled>
-                            {{ $t('street') }}
-                        </option>
-                        <option v-for="street in streets" :key="street.id">
-                            {{ street.name }}
-                        </option>
-                    </select>
-                </div>
-            </div>
-            <div class="searchscop">
-                <i class="fa fa-map-marker fa-1x"></i>
-                <span class=""> {{ $t('SearchScope') }} </span>
-            </div>
-        </div>
+        <headerLogo />
         <!-- background -->
         <div class="customer-select cu5">
             <h5>choose server</h5>
@@ -270,86 +207,21 @@
             </div>
         </div>
         <!-- navbarEdalili -->
-        <div class="navbar">
-            <div>
-                <router-link to="/instrc" exact>
-                    <button type="button" class="btn btn-light">
-                        <a>{{ $t('Factories') }}</a>
-                    </button></router-link
-                >
-            </div>
-            <div>
-                <router-link to="/company">
-                    <button type="button" class="btn btn-light">
-                        <a>{{ $t('Companies') }}</a>
-                    </button></router-link
-                >
-            </div>
-            <div>
-                <router-link to="/professional">
-                    <button type="button" class="btn btn-light">
-                        <a>{{ $t('ProfessionalsTechnicians') }}</a>
-                    </button></router-link
-                >
-            </div>
-            <div>
-                <router-link to="/medic">
-                    <button type="button" class="btn btn-light medic">
-                        <a>{{ $t('PharmaciesMedicines') }}</a>
-                    </button></router-link
-                >
-            </div>
-            <div>
-                <router-link to="/doctors">
-                    <button type="button" class="btn btn-light">
-                        <a>{{ $t('Doctors') }}</a>
-                    </button></router-link
-                >
-            </div>
-            <div>
-                <router-link to="/resturants">
-                    <button type="button" class="btn btn-light">
-                        <a>{{ $t('RestaurantsCafes') }}</a>
-                    </button></router-link
-                >
-            </div>
-            <div class="img" lang="en">
-                <router-link to="/festival">
-                    <button type="button" class="btn btn-light sell">
-                        <a>{{ $t('FestivalPerformances') }}</a>
-                    </button></router-link
-                >
-            </div>
-            <div>
-                <router-link to="/stores">
-                    <button type="button" class="btn btn-light">
-                        <a>{{ $t('Stores') }}</a>
-                    </button></router-link
-                >
-            </div>
-            <div>
-                <router-link to="/products">
-                    <button type="button" class="btn btn-light products">
-                        <a>{{ $t('Products') }}</a>
-                    </button></router-link
-                >
-            </div>
-            <div>
-                <router-link to="/">
-                    <button type="button" class="btn btn-light">
-                        <a>{{ $t('Allsections') }}</a>
-                    </button></router-link
-                >
-            </div>
-        </div>
+        <headerNavbar />
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import jeson from '@/jeson/MOCK_DATA.json';
+import headerLogo from '@/components/header/headerLogo.vue';
+import headerNavbar from '@/components/header/headerNavbar.vue';
 export default {
     name: 'Header',
+    components: {
+        headerLogo,
+        headerNavbar,
+    },
     props: ['title', 'description', 'id', 'price'],
     data() {
         const lang = localStorage.getItem('lang') || 'en';
@@ -767,45 +639,8 @@ export default {
 /* header */
 .header {
     height: auto;
-    /* background-color: #bfc3c6; */
-}
-.navbar1 {
-    padding: 10px 0;
-    height: 20%;
-    background-color: #bfc3c6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10%;
-    color: #525052f6;
-}
-.lang {
-    display: flex;
-    gap: 24px;
-}
-.textlang {
-    margin-top: 6px;
-}
-.selectlocation {
-    display: flex;
-    gap: 24px;
-}
-.searchscop {
-    display: flex;
-    gap: 5px;
-}
-.searchscop i {
-    margin-top: 5px;
-}
-select {
-    border: none;
-    background-color: #c3c4c5;
-    width: 100px;
-    border: solid #c3c4c5;
-    height: 35px;
-    color: #525052f6;
-    cursor: pointer;
-    box-shadow: 10px 0 10px #b5b7b9;
+    margin: 0;
+    padding: 0;
 }
 .background {
     display: grid;
@@ -814,8 +649,7 @@ select {
     padding-bottom: 10px;
     text-align: center;
     position: relative;
-    height: 590px;
-    margin-bottom: 10px;
+    height: 800px;
     width: 100%;
     background-image: url('../../../public/img/Screenshot_2020-10-17 E-DALELY Design.png');
     -webkit-background-size: cover;
@@ -834,7 +668,6 @@ select {
     height: 34px;
 }
 .background .search i {
-    /* background-color: #87948b; */
     padding: 10px 10px;
     width: 35px;
     height: 34px;
@@ -843,11 +676,12 @@ select {
 .parent_featuers {
     border: solid #c3c4c8;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 24px;
     margin: auto;
-    height: 40px;
+    height: auto;
     width: 60%;
     background-color: #c3c4c8;
     color: #525052f6;
@@ -861,23 +695,11 @@ select {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin: 10px auto;
     cursor: pointer;
 }
 .parent_featuers div:hover {
     color: #6798a6;
-}
-.navbar {
-    background: #c3c4c8;
-}
-.navbar button {
-    border: none;
-    border: solid #6798a6;
-    background-color: #6798a6;
-    color: #525052f6;
-    cursor: pointer;
-}
-.navbar button:hover {
-    transform: scale3d(1.1, 1.1, 1.1);
 }
 .child_2 .cart-count {
     font-size: 13px;
@@ -892,51 +714,10 @@ select {
 .background .search .shopping {
     color: #6798a6;
 }
-.menu-header {
-    display: none;
-}
 @media (max-width: 767px) {
-    .navbar1 {
-        /* display: table; */
-        width: 100%;
-        padding-right: 10px;
-        text-align: right;
-    }
-    .navbar1 .logo,
-    .searchscop,
-    .selectlocation,
-    .lang {
-        display: table;
-        width: 100%;
-        text-align: right;
-    }
-    .logo div{
-        display: flex;
-    }
-    .textlang {
-        display: none;
-    }
-    .selectlocation {
-        display: table;
-        width: 100%;
-    }
-    .searchscop,
-    .selectlocation,
-    .lang {
-        margin: 24px 0;
-        text-align: right;
-    }
-    .menu-header {
-        text-align: right;
-    }
-    .menu-content {
-        display: none;
-    }
-    .fa-bars {
-        border: 1px solid #6798a6;
-        background-color: #6798a6;
-        color: #525052f6;
-        padding: 5px 10px;
+    .parent_featuers {
+        gap: 15px;
+        width: 80%;
     }
 }
 </style>
