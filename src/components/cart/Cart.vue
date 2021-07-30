@@ -1,13 +1,14 @@
 <template>
     <div class="card">
         <div class="row">
-            <div class="col-sm-9 col-xs-12 cart">
+            <div class="col-xs-12 cart" style="background-color: #ecf0f1;"
+             :class="{' col-sm-9': $store.state.cartItems.length !== 0, 'col-sm-12': $store.state.cartItems.length == 0 }">
                 <div class="title">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h4 style="margin-bottom: 5px">
-                                <b>{{ $t('ShoppingCart') }}</b>
-                            </h4>
+                            <h2 style="margin-bottom: 5px">
+                                <b style="font-size: 24px;opacity: 0.7;">{{ $t('ShoppingCart') }}</b>
+                            </h2>
                         </div>
                     </div>
                 </div>
@@ -59,13 +60,12 @@
                             <span>{{ $t('price') }}: </span>
                             <span
                                 class="price"
-                                v-for="item in items.store_product"
-                                :key="item.id"
-                                >{{ item.price * items.quantity }}</span
+                              
+                                >{{ items.store_product.price}}</span
                             >
                             <span
                                 @click="removeFromCart(items)"
-                                class="close fa fa-trash"
+                                class="close fa fa-trash" style="font-size: 1.7rem;"
                             ></span>
                         </div>
                     </div>
@@ -139,7 +139,7 @@ a
     left: 0
     display: block
     border-radius: 28px
-    background: rgba($primary,.5)
+    background: var(--r)
     width: 56px
     height: 56px
     transition: all .3s ease
@@ -165,13 +165,14 @@ a
   &:hover
     &:before
       width: 100%
-      background: #73a580
+      background: var(--bl)
     svg
       transform: translateX(0)
   &:active
     transform: scale(.96)
 </style>
 <style scoped>
+
 @media (max-width: 767px) {
     .cart {
         padding: 4vh;
@@ -187,7 +188,7 @@ a
     }
 }
 .close:hover {
-    color: red;
+    color: var(--r);
     font-size: 20px;
 }
 .title {
@@ -294,14 +295,14 @@ input:focus::-webkit-input-placeholder {
     border: 2px solid #fff;
     height: auto;
     padding: 2vh;
-    background-color: #73a580;
+    background-color: var(--bl);
 }
 .store span {
     margin-left: 10px;
     color: #fff;
 }
 .btn {
-    background-color: #73a580;
+    background-color: var(--bl);
     color: white;
     width: 100%;
     font-size: 0.8rem;
@@ -314,10 +315,11 @@ input:focus::-webkit-input-placeholder {
 .btnn {
     color: #fff;
     background-color: transparent;
-    background-color: #73a580;
+    background-color: var(--bl);
     transition: all 0.3s ease-in-out;
     border: none;
     border-radius: 9px;
+    padding: 0 8px;
 }
 .quantity {
     font-size: 2vh;
@@ -414,7 +416,8 @@ export default {
             for (var i = 0; i < len; i++) {
                 price +=
                     this.$store.state.cartItems[i].quantity *
-                    this.$store.state.cartItems[i].store_product[0].price;
+                    this.$store.state.cartItems[i].store_product.price;
+                    console.log(typeof( this.$store.state.cartItems[i].store_product))
             }
             console.log(len);
             return price;
