@@ -21,8 +21,8 @@ export default class App extends Vue {}
 </script>
 <style lang="scss">
 :root {
-    --blue: #11559d;
-    --red: #df3747;
+    --bl: #247ba0;
+    --r: #fb3640;
 }
 #app {
     font-family: Zen Tokyo Zoo;

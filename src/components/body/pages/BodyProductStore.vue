@@ -96,7 +96,7 @@ export default {
                 image: this.image,
                 short_des: this.short_des,
                 long_des: this.long_des,
-                store_product: this.store_product,
+                store_product: this.store_product[0],
             },
         };
     },

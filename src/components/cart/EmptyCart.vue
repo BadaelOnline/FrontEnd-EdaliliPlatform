@@ -1,26 +1,23 @@
 <template>
-    <div class="container my-5" style="text-align: center">
-        <img src="../../../public/img/ShoppingCart.jpg" width="200px" />
-        <div class="mt-4">
-            <h4 class="orange-red fw-600">
-                {{ $t('YourCartEmpty') }}
-            </h4>
-            <h5 class="darkblue fw-600">
-                {{ $t('YouGoHomePageViewFoodItems') }}
-            </h5>
-        </div>
-    </div>
+       <div class="unavaible_product" >
+        <img src="../../../public/img/unavalible.jpg">
+       <h2>Ops... Products not available.</h2> 
+      </div>
 </template>
 <style scoped>
-.orange-red {
-    color: #b21f2d;
+.unavaible_product{
+    background-color: #ecf0f1;
+    height: auto;
+    width: 100%;
 }
-.darkblue {
-    color: blue;
+.unavaible_product img{
+   margin-bottom: 25px;
 }
-.fw-600 {
-    font-weight: 600;
-}
+.unavaible_product h2{
+   font-size: 3em;
+    color: gray;
+}  
+
 </style>
 <script>
 export default {

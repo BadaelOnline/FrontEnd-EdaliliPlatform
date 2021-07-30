@@ -6,13 +6,18 @@
                 <div class="col-xs-12" style="direction: rtl">
                     <div class="content-pro text-center">
                         <img
-                         
+                          v-if="image"
                             :src="ProductID.image"
                             style="
                                 width: 250px;
                                 height: 250px;
                                 border-radius: 10px;
                             "
+                        />
+                        <img
+                            v-else
+                            src="../../../public/img/3.jpg"
+                            style="width: 250px;height: 250px;border-radius: 10px;" 
                         />
                         <div style="font-weight: bold;">
                             {{ ProductID.name }}

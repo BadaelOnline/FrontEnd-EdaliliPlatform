@@ -26,7 +26,7 @@
         <!-- show  products -->
         <!-- second Carousel -->
 
-        <div
+        <div v-if="Product.length > 0"
             id="deno"
             class="carousel slide"
             data-ride="carousel"
@@ -132,7 +132,7 @@
             </div>
         </div>
         <!-- --------------------------------------------- -->
-        <div class="content_cubic">
+        <div class="content_cubic" v-if="Product.length > 0">
          <div id="demo" class="carousel slide" data-ride="carousel">
             <div class="row">
                 <div class="col-lg-3 col-sm-4 col-xs-10">
@@ -275,6 +275,11 @@
         </div>
            
         </div>
+
+    <div class="unavaible_product" v-else>
+        <img src="../../../public/img/unavalible.jpg">
+       <h2>Ops... Products not available.</h2> 
+      </div>
                     <!-- <div
                         class="row"
                         style="
@@ -914,7 +919,17 @@ $cubeDepth: $cubeHeight;
 .carousel-inner1  {
         box-shadow: none;
     }
-
+.unavaible_product{
+    background-color: #ecf0f1;
+    height: auto;
+}
+.unavaible_product img{
+   margin-bottom: 25px;
+}
+.unavaible_product h2{
+   font-size: 3em;
+    color: gray;
+}
 /* ________________________________ End Products _______________________________*/
 </style>
 

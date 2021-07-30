@@ -354,8 +354,10 @@ export default {
 }
 .products .container .product-grid .product-content {
     padding: 5px 10px;
-    display: block;
-    min-height: 150px;
+    display: flex;
+    min-height: 185px;
+    justify-content: space-between;
+    flex-direction: column;
 }
 .products .container .product-grid .product-content .title {
     font-size: 15px;

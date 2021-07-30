@@ -392,7 +392,7 @@ export default {
     width: 400px;
     height: 68px;
     background-color: #a7d9a7;
-    color: #017701;
+    color: var(--bl);
     border-radius: 7px;
 }
 .cu5 {
@@ -416,11 +416,11 @@ export default {
 }
 .form-popup h1 {
     font-size: 40px;
-    color: var(--red);
+    color: var(--r);
 }
 .form-popup h1 span {
     font-size: 40px;
-    color: var(--blue);
+    color: var(--bl);
 }
 .form-popup span {
     font-size: 18px;
@@ -452,7 +452,7 @@ export default {
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-    background-color: var(--blue);
+    background-color: var(--bl);
     color: white;
     padding: 16px 20px;
     border: none;
@@ -467,7 +467,7 @@ export default {
     position: absolute;
     left: -2px;
     top: -2px;
-    background-color: var(--red);
+    background-color: var(--r);
     color: #fff;
     padding: 5px 10px;
     border-bottom-right-radius: 20px;
@@ -492,11 +492,11 @@ export default {
 }
 .form-popup2 h1 {
     font-size: 40px;
-    color: var(--red);
+    color: var(--r);
 }
 .form-popup2 h1 span {
     font-size: 40px;
-    color: var(--blue);
+    color: var(--bl);
 }
 .form-popup2 span {
     font-size: 18px;
@@ -528,7 +528,7 @@ export default {
 
 /* Set a style for the submit/login button */
 .form-container2 .btn {
-    background-color: var(--blue);
+    background-color: var(--bl);
     color: white;
     padding: 16px 20px;
     border: none;
@@ -543,7 +543,7 @@ export default {
     position: absolute;
     left: -2px;
     top: -2px;
-    background-color: var(--red);
+    background-color: var(--r);
     color: #fff;
     padding: 5px 10px;
     border-bottom-right-radius: 20px;
@@ -553,7 +553,7 @@ export default {
     position: absolute;
     right: -2px;
     top: -2px;
-    background-color: var(--blue);
+    background-color: var(--bl);
     color: #fff;
     padding: 5px 10px;
     border-bottom-left-radius: 20px;
@@ -580,7 +580,7 @@ export default {
 .loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 16px solid #3498db;
+    border-top: 16px solid var(--bl);
     width: 120px;
     height: 120px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
@@ -641,7 +641,7 @@ export default {
     border-top-left-radius: 4px;
     width: 35px;
     height: 34px;
-    color: #6798a6;
+    color: var(--bl);
     cursor: pointer;
 }
 .parent_featuers {

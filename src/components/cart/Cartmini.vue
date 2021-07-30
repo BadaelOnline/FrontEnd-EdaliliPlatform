@@ -50,13 +50,11 @@
                                 <div class="col-md-2 col-xs-12">
                                     <span
                                         class="price"
-                                        v-for="item in items.store_product"
-                                        :key="item.id"
-                                        >{{ item.price * items.quantity }}</span
+                                        >{{ items.store_product.price}}</span
                                     >
                                     <span
                                         @click="removeFromCart(items)"
-                                        class="close fa fa-trash"
+                                        class="close fa fa-trash " style="font-size: 1.7rem;"
                                     ></span>
                                 </div>
                             </div>
@@ -78,10 +76,11 @@
     </div>
 </template>
 <style scoped>
+
 /* ____________________________ Start Cart Shop ________________________________ */
 .button {
     border-radius: 4px;
-    background-color: #008b8b;
+    background-color: var(--bl);
     border: none;
     color: #ffffff;
     text-align: center;
@@ -145,7 +144,7 @@ justify-content: center;
     left: 5px;
     width: 50px;
     height: 50px;
-    background-color: #73a580;
+    background-color: var(--bl);
     padding: 18px 10px;
     border-radius: 50%;
     z-index: 999;
@@ -158,8 +157,7 @@ justify-content: center;
     overflow-y: scroll;
     height: 200px;
     width: 100%;
-    box-shadow: 0px 4px 20px 0 rgb(255, 216, 6),
-        1px 6px 30px 0px rgba(196, 10, 10, 0.19);
+    box-shadow: 0px 4px 20px 0 rgb(76, 109, 240), 1px 6px 30px 0px rgba(236, 19, 19, 0.19);
     scrollbar-width: thin;
 }
 .vs {
@@ -234,7 +232,7 @@ img {
     border: 2px solid #fff;
     height: 50px;
     padding: 1vh;
-    background-color: darkcyan;
+    background-color: var(--bl);
 }
 .store span {
     margin-left: 10px;
@@ -271,13 +269,13 @@ input:focus::-webkit-input-placeholder {
 .btnn {
     color: #fff;
     background-color: transparent;
-    background-color: darkcyan;
+    background-color: var(--bl);
     transition: all 0.3s ease-in-out;
     border: none;
     border-radius: 9px;
 }
 .btn {
-    background-color: darkcyan;
+    background-color: var(--bl);
     color: white;
     font-size: 0.8rem;
     padding: 1vh;
