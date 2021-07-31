@@ -1,9 +1,9 @@
 <template>
     <!-- Start landing -->
     <div class="jumbotron">
-        <div class="bars" @click="showfut()">
+        <!-- <div class="bars" @click="showfut()">
             <i class="fa fa-bars"></i>
-        </div>
+        </div> -->
 
         <div class="customer-select cu5">
             <h5>choose server</h5>
@@ -16,7 +16,7 @@
             <i class="fa fa-search shopping"></i
             ><input class="input" type="search" :placeholder="$t('Search')" />
         </div>
-        <div class="form-popup animate__animated animate__swing" id="myForm">
+        <!-- <div class="form-popup animate__animated animate__swing" id="myForm">
             <form action="/action_page.php" class="form-container">
                 <h1>Log<span>in</span></h1>
                 <span class="cancel" @click="closeForm()"
@@ -128,29 +128,30 @@
                 </div>
                 <span @click="submit1()" class="btn">Register</span>
             </form>
-        </div>
+        </div> -->
 
         <div class="parent_featuers">
-            <div class="featuers animate__animated animate__heartBeat" id="fut">
+            <!-- <div class="featuers animate__animated animate__heartBeat" id="fut"> -->
+            <div class="featuers">
                 <div class="child_1">
                     <router-link to="/addStore" class="link">{{
                         $t('AddPlatform', { locale: lang })
                     }}</router-link>
                 </div>
                 <div class="cole">|</div>
-                <div class="child_2" @click="gotocart()">
+                <!-- <div class="child_2" @click="gotocart()">
                     <span class="cart-count">{{ cartItemCount }}</span>
                     <div>
                         {{ $t('Shoppingcart') }}
                     </div>
                     <i class="fa fa-shopping-cart shopping"></i>
-                </div>
-                <div class="cole">|</div>
+                </div> -->
+                <!-- <div class="cole">|</div> -->
                 <div class="child_3 map">
                     {{ $t('Selectlocation') }}
                     <i class="fa fa-map-marker shopping"></i>
                 </div>
-                <div class="cole">|</div>
+                <!-- <div class="cole">|</div>
                 <div class="child_4">
                     <template v-if="authenticated" class="user">
                         <a @click.prevent="signOut" href="#" class="link"
@@ -172,7 +173,7 @@
                         {{ $t('Profile') }}
                     </div>
                     <i class="fa fa-user-circle shopping"> </i>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
