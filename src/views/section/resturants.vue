@@ -387,4 +387,5 @@ height: 300px;
 .checked {
     color: #dcd741;
 }
+
 </style>
