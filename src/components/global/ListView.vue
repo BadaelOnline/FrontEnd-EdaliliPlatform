@@ -1,5 +1,5 @@
 <template>
- <Cartmini />
+    <Cartmini />
     <div class="ProductDetalis" style="background-color: #e9ecf2">
         <div class="row">
             <div class="col-12"><h2>أختيار الترتيب</h2></div>
@@ -64,8 +64,8 @@
         <div class="show-prod">
             <div
                 class="store animate__animated animate__fadeInUpBig"
-             v-for=" item in stores"
-             :key="item.pr"
+                v-for="item in stores"
+                :key="item.pr"
             >
                 <div>
                     <img
@@ -80,23 +80,28 @@
                     <span>{{ 500 }}متر</span>
                 </div>
                 <div>
-                    <h2>{{item.pivot.price }} ل.س</h2>
+                    <h2>{{ item.pivot.price }} ل.س</h2>
                 </div>
 
-                <div style="display: flex;justify-content: center;">
-                 
-<div class="menu" onclick="this.classList.toggle('open')">
-  <div @click="addToCart(item.id,item.title,item.pivot)" class="button" title="add to cart"></div>
-  <div @click="VisitStore(item.id,item.title)" class="button" title="visit this store"></div>
-  
-</div>
+                <div style="display: flex; justify-content: center">
+                    <div class="menu" onclick="this.classList.toggle('open')">
+                        <div
+                            @click="addToCart(item.id, item.title, item.pivot)"
+                            class="button"
+                            title="add to cart"
+                        ></div>
+                        <div
+                            @click="VisitStore(item.id, item.title)"
+                            class="button"
+                            title="visit this store"
+                        ></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <style scoped>
-
 .show-prod .store {
     width: 100%;
     direction: rtl;
@@ -213,73 +218,82 @@ span {
     position: relative;
     width: 60px;
     height: 60px;
-  padding: 30px;
-  background: #bfbfd7;
-  border-radius: 100%;
-  cursor: pointer;
-  box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgba(255, 255, 255, 1), inset 0px 0px 4px rgba(255, 255, 255, 0.2), inset 7px 7px 15px rgba(55, 84, 170, 0), inset -7px -7px 20px rgba(255, 255, 255, 0), 0px 0px 4px rgba(255, 255, 255, 0);
-  &::before, &::after {
-    content: "";
-    background: #faf9ff;
-    border-radius: 5px;
-    width: 30px;
-    height: 5px;
-    position: absolute;
-    left: 16px;
-    top: 27px;
-    transition: 0.2s ease;
-    z-index: 1;
-  }
-  &::before {
-    transform: rotate(0deg);
-  }
-  &::after {
-    transform: rotate(-90deg);
-  }
-  &.open {
-    opacity: .9;
+    padding: 30px;
+    background: #bfbfd7;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15),
+        -7px -7px 20px rgba(255, 255, 255, 1),
+        inset 0px 0px 4px rgba(255, 255, 255, 0.2),
+        inset 7px 7px 15px rgba(55, 84, 170, 0),
+        inset -7px -7px 20px rgba(255, 255, 255, 0),
+        0px 0px 4px rgba(255, 255, 255, 0);
+    &::before,
+    &::after {
+        content: '';
+        background: #faf9ff;
+        border-radius: 5px;
+        width: 30px;
+        height: 5px;
+        position: absolute;
+        left: 16px;
+        top: 27px;
+        transition: 0.2s ease;
+        z-index: 1;
+    }
     &::before {
-      transform: rotate(45deg);
+        transform: rotate(0deg);
     }
     &::after {
-      transform: rotate(-45deg);
+        transform: rotate(-90deg);
     }
-    .button {
-      opacity: 1;
-      pointer-events: auto;
-      &:first-of-type {
-        bottom: 40px;
-        right: 70px;
-        background: url("../../../public/img/shoca.png") no-repeat 50%/50% #f3f3fd;
-      }
+    &.open {
+        opacity: 0.9;
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+        .button {
+            opacity: 1;
+            pointer-events: auto;
+            &:first-of-type {
+                bottom: 40px;
+                right: 70px;
+                background: url('../../../public/img/shoca.png') no-repeat 50%/50%
+                    #f3f3fd;
+            }
 
-      &:last-of-type {
-        bottom: 40px;
-        right: -70px;
-        background: url("../../../public/img/visit.png") no-repeat 50% 45%/50% 45% #e8e8f3;
-        transition-delay: .1s;
-      }
+            &:last-of-type {
+                bottom: 40px;
+                right: -70px;
+                background: url('../../../public/img/visit.png') no-repeat 50%
+                    45%/50% 45% #e8e8f3;
+                transition-delay: 0.1s;
+            }
+        }
     }
-  }
 }
 
 .button {
-  padding: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  background: #e8e8f3;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  pointer-events: none;
-  box-shadow: inherit;
-  transition: 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28), 0.2s ease opacity, 0.2s cubic-bezier(.08,.82,.17,1) transform;
-  &:hover {
-    transform: scale(1.1);
-  }
+    padding: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #e8e8f3;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: inherit;
+    transition: 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28), 0.2s ease opacity,
+        0.2s cubic-bezier(0.08, 0.82, 0.17, 1) transform;
+    &:hover {
+        transform: scale(1.1);
+    }
 }
-</style> 
+</style>
 <script>
 import { defineAsyncComponent } from 'vue';
 import axios from 'axios';
@@ -287,46 +301,48 @@ export default {
     data() {
         return {
             sortType: '1',
-             ProductID: {},
-             stores: {},
-           
+            ProductID: {},
+            stores: {},
         };
     },
-    components: {        
+    components: {
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
-        ),},
+        ),
+    },
 
     props: ['id', 'name', 'short_des', 'long_des', 'price'],
-       async  created(){
-                  await axios
-                .get(`/api/products/getById/${this.$route.params.id}`)
-                .then((res) => {
-                    console.warn('ProductID :', res.data.product);
-                     this.ProductID = res.data.product;
-                     this.stores = res.data.product.store;
-                  
-                })
-                .catch(function (error) {
-                    console.log('Error: ', error);
-                });
+    async created() {
+        await axios
+            .get(`/api/products/getById/${this.$route.params.id}`)
+            .then((res) => {
+                console.warn('ProductID :', res.data.product);
+                this.ProductID = res.data.product;
+                this.stores = res.data.product.store;
+            })
+            .catch(function (error) {
+                console.log('Error: ', error);
+            });
     },
     methods: {
-    VisitStore: function (i,t) {
+        VisitStore: function (i, t) {
             this.$router.push(`/visitStore/${i}/${t}`);
         },
-                addToCart(i,t,s) {
-            this.$store.dispatch('addToCart', {
-                id: this.$route.params.id,
-                id_store: i,
-                title: t,
-                name: this.ProductID.name,
-                image: this.ProductID.image,
-                short_des: this.ProductID.short_des,
-                long_des: this.ProductID.long_des,
-                store_product: s
-               
-             }, this.id);
+        addToCart(i, t, s) {
+            this.$store.dispatch(
+                'addToCart',
+                {
+                    id: this.$route.params.id,
+                    id_store: i,
+                    title: t,
+                    name: this.ProductID.name,
+                    image: this.ProductID.image,
+                    short_des: this.ProductID.short_des,
+                    long_des: this.ProductID.long_des,
+                    store_product: s,
+                },
+                this.id
+            );
             document.getElementById('cart').animate(
                 [
                     // keyframes
@@ -343,7 +359,7 @@ export default {
         },
         sortItem() {
             if (this.sortType == 'space') {
-               this.ProductID.store = this.ProductID.store.sort(
+                this.ProductID.store = this.ProductID.store.sort(
                     (prev, curr) => prev.space - curr.space
                 );
             } else if (this.sortType == 'spaces') {

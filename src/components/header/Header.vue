@@ -21,9 +21,10 @@
         </div>
         <!-- NavSelect -->
         <headerLogo />
-
         <!-- background -->
         <banarHeader />
+        <!--  -->
+        <headerNavbar />
         <!-- <div class="customer-select cu5">
             <h5>choose server</h5>
             <select v-model="server" @change="handleserver($event)">
@@ -209,7 +210,6 @@
             </div>
         </div> -->
         <!-- navbarEdalili -->
-        <headerNavbar />
     </div>
 </template>
 
@@ -642,6 +642,7 @@ export default {
 }
 /* header */
 .header {
+    background-color: #c0c4c7;
     height: auto;
     margin: 0;
     padding: 0;
