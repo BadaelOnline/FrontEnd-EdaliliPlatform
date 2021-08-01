@@ -133,25 +133,23 @@
             </form>
         </div>
         <nav>
-            <input type="checkbox" id="check" />
-            <label for="check" class="checkbtn">
-                <i class="fa fa-bars"></i>
-            </label>
+            <div class="logo">
             <img
                 @click="goto"
                 height="40"
                 src="../../../public/img/EDALELYLogo.png"
-            />
-            <ul class="child_1">
-                <li class="customer-select cu1">
-                    <select v-model="lang" @change="handleChange($event)">
+            /></div>
+          <div class="nav_bar"> 
+                <div class="containt_select">
+               <div>
+                    <select class="cu_1" v-model="lang" @change="handleChange($event)">
                         <option value="en">English</option>
                         <option value="ar">العربية</option>
                     </select>
                     <!-- <span class="lang">{{ $t('lang') }}</span> -->
-                </li>
-                <li class="customer-select cu2">
-                    <select>
+              </div>
+               <div>
+                    <select class="cu_2">
                         <option value="1" disabled>
                             {{ $t('Governorate') }}
                         </option>
@@ -159,9 +157,9 @@
                             {{ gover.name }}
                         </option>
                     </select>
-                </li>
-                <li class="customer-select cu2">
-                    <select>
+              </div>
+                   <div>
+                    <select class="cu_3">
                         <option value="1" disabled>
                             {{ $t('City') }}
                         </option>
@@ -169,9 +167,9 @@
                             {{ city.name }}
                         </option>
                     </select>
-                </li>
-                <li class="customer-select cu2">
-                    <select>
+              </div>
+               <div>
+                    <select class="cu_4">
                         <option value="1" disabled>
                             {{ $t('street') }}
                         </option>
@@ -179,7 +177,9 @@
                             {{ street.name }}
                         </option>
                     </select>
-                </li>
+                </div>
+            </div>
+               <ul class="child_1">
                 <li class="hov" @click="gotocart()">
                     <span class="cart-count">{{ cartItemCount }}</span>
                     <span class="mr-2">
@@ -212,135 +212,12 @@
                     <i class="fa fa-user-circle shopping"> </i>
                 </li>
             </ul>
+          
+            </div>
         </nav>
     </div>
 </template>
 
-<!--  -->
-<!-- <div class="upper-bar">
-        <div class="row">
-            <div @click="goto" class="col-md-2 col-sm-12 col-xs-12 imag">
-                <img height="30" src="../../../public/img/EDALELYLogo.png" />
-            </div>
-
-            <div class="parent_select">
-                <div class="child_1">
-                    <div class="customer-select cu1">
-                        <select v-model="lang" @change="handleChange($event)">
-                            <option value="en">English</option>
-                            <option value="ar">العربية</option>
-                        </select>
-                    </div>
-                    <div class="ap_lang">
-                        <span class="lang">{{ $t('lang') }}</span>
-                    </div>
-                </div>
-                <div class="child_2">
-                    <div class="ap_scoop">
-                        <i class="fa fa-map-marker"></i>
-                        <span class="lang2"> {{ $t('SearchScope') }} </span>
-                    </div>
-                    <div class="child_3">
-                        <div class="customer-select cu2">
-                            <select>
-                                <option value="1" disabled>
-                                    {{ $t('Governorate') }}
-                                </option>
-                                <option
-                                    v-for="gover in governorates"
-                                    :key="gover.id"
-                                >
-                                    {{ gover.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="customer-select cu2">
-                            <select>
-                                <option value="1" disabled>
-                                    {{ $t('City') }}
-                                </option>
-                                <option v-for="city in cities" :key="city.id">
-                                    {{ city.name }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="customer-select cu2">
-                            <select>
-                                <option value="1" disabled>
-                                    {{ $t('street') }}
-                                </option>
-                                <option
-                                    v-for="street in streets"
-                                    :key="street.id"
-                                >
-                                    {{ street.name }}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-<!-- End Upper Bar -->
-<!-- <div class="navbar1">
-        <div class="logo">
-            <div @click="goto" class="imag">
-                <img height="30" src="../../../public/img/EDALELYLogo.png" />
-            </div>
-            <div class="lang">
-                <div class="">
-                    <select v-model="lang" @change="handleChange($event)">
-                        <option value="en">English</option>
-                        <option value="ar">العربية</option>
-                    </select>
-                </div>
-                <div class="textlang">
-                    <span class="">{{ $t('lang') }}</span>
-                </div>
-            </div>
-        </div>
-        <div class="location">
-            <div class="selectlocation">
-                <div class="">
-                    <select>
-                        <option value="1" disabled>
-                            {{ $t('Governorate') }}
-                        </option>
-                        <option v-for="gover in governorates" :key="gover.id">
-                            {{ gover.name }}
-                        </option>
-                    </select>
-                </div>
-
-                <div class="">
-                    <select>
-                        <option value="1" disabled>
-                            {{ $t('City') }}
-                        </option>
-                        <option v-for="city in cities" :key="city.id">
-                            {{ city.name }}
-                        </option>
-                    </select>
-                </div>
-                <div class="">
-                    <select>
-                        <option value="1" disabled>
-                            {{ $t('street') }}
-                        </option>
-                        <option v-for="street in streets" :key="street.id">
-                            {{ street.name }}
-                        </option>
-                    </select>
-                </div>
-            </div>
-            <div class="searchscop">
-                <i class="fa fa-map-marker fa-1x"></i>
-                <span class=""> {{ $t('SearchScope') }} </span>
-            </div>
-        </div>
-    </div> -->
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -772,6 +649,15 @@ nav {
     height: auto;
     width: 100%;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+nav .logo{
+ width: 12%;
+}
+nav .nav_bar{
+  width: 88%;
+  display: flex;
 }
 nav img {
     margin-left: 20px;
@@ -779,69 +665,16 @@ nav img {
     float: left;
     cursor: pointer;
 }
+nav .containt_select{
+    width: 58%;
+    display: flex;
+    justify-content: space-around;
+}
 nav ul {
-    float: right;
-    margin-right: 20px;
-}
-/* nav ul .customer-select select {
-    border: none;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -o-appearance: none;
-    background-color: #fff;
-    border-radius: 3px;
-    width: 80px;
-    height: 34px;
-    cursor: pointer;
-    z-index: 2;
-    font-size: 15px;
-    position: relative;
-    line-height: 2.15;
-    justify-content: center;
-    align-items: center;
-} */
-nav ul .customer-select {
-    position: relative;
-    width: 6em;
-    height: 3em;
-    top: 20px;
-    line-height: 3;
-    background: #fff;
-    overflow: hidden;
-    border-radius: 0.25em;
-}
-nav ul .customer-select select {
-    padding: 0 0.2em;
-    color: #000;
-    cursor: pointer;
-}
-nav ul .customer-select select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    outline: 0;
-    box-shadow: none;
-    border: 0 !important;
-    background: #fff;
-    background-image: none;
-}
-nav ul .customer-select select::-ms-expand {
-    display: none;
-}
-nav ul .customer-select::after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0 0.2em;
-    background: #507781;
-    cursor: pointer;
-    pointer-events: none;
-    -webkit-transition: 0.25s all ease;
-    -o-transition: 0.25s all ease;
-    transition: 0.25s all ease;
+   width: 40%;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
 }
 nav ul li {
     display: inline-block;
@@ -865,264 +698,133 @@ nav ul li .cart-count {
     position: absolute;
     margin-top: -10px;
 }
-.checkbtn {
-    font-size: 30px;
-    float: right;
-    line-height: 80px;
-    margin-right: 40px;
-    cursor: pointer;
-    display: none;
-}
-#check {
-    display: none;
-}
-@media (max-width: 1000px) {
-    .checkbtn {
-        display: block;
-        margin: 10px 0;
-        line-height: 20px;
-    }
-    ul {
-        position: fixed;
-        width: 20%;
-        height: 80vh;
-        background: #c0c4c7;
-        top: 50px;
-        left: -100%;
-        text-align: left;
-        z-index: 10;
-        transition: all 0.5s;
-        /* overflow: auto; */
-    }
-    nav ul li {
-        display: block;
-        margin: 20px 0;
-        line-height: 20px;
-        /* justify-content: center; */
-        /* align-items: center; */
-    }
-    #check:checked ~ ul {
-        left: 0;
-    }
-}
-/*
-    nav ul li{
-        display:block;
-        margin:20px 0;
-        line-height:80px;
-    }
-    #check:checked ~ ul{
-        left:0;
-    }
-}
-*/
 
-/* .upper-bar .imag img {
-    cursor: pointer;
-    margin-top: 2vh;
-}
-.upper-bar .parent_select {
-    margin-top: 2vh;
-}
-.upper-bar {
-    background-color: #c0c4c7;
-    color: #635f5f;
-    padding: 20px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-.upper-bar .lang,
-.upper-bar .lang2 {
-    font-size: 17px;
-    margin: 0 5px;
-}
-.upper-bar .parent_select {
-    width: 80%;
+ select {
     display: inline-flex;
-    justify-content: space-around;
-}
-.upper-bar .parent_select .child_1 {
-    display: inline-flex;
-    width: 20%;
-    justify-content: space-between;
-    height: 50px;
-}
-.upper-bar .parent_select .child_1 .ap_lang {
-    margin-top: 5px;
-}
-
-.upper-bar .parent_select .child_2 {
-    display: inline-flex;
-    direction: rtl;
-    width: 55%;
-    justify-content: space-around;
-    height: 50px;
-}
-.upper-bar .parent_select .child_2 .ap_scoop {
-    margin-top: 5px;
-}
-.upper-bar .parent_select .child_3 {
-    width: 60%;
-    display: inline-flex;
-    justify-content: space-between;
-}
-.upper-bar .customer-select {
-    display: inline-flex;
-    border: none;
-    background-color: #e3e4e6;
-    width: 120px;
+    background-color: #959595;
+    border-radius: 15px;
     position: relative;
     height: 34px;
-    cursor: pointer;
-    margin: 0 10px;
-}
-.upper-bar .customer-select select {
+    margin-top: 23px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
     border: none;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
-    background-color: transparent;
-    color: #635f5f;
-    margin-left: auto;
-    margin-right: auto;
+    color: #fff;
     z-index: 2;
-    font-size: 12px;
+    font-size: 15px;
     position: relative;
     line-height: 2.15;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
 }
-.upper-bar .cu1:before {
-    font-family: 'Font Awesome 5 Free';
-    content: '\f0d7';
-    display: inline-block;
-    vertical-align: middle;
-    font-weight: 900;
-    z-index: 1;
-    font-size: 20px;
-    position: absolute;
-    left: 5px;
-    color: #635f5f;
+.containt_select div{
+    position: relative;
 }
-.upper-bar .cu2::after {
+.containt_select div::after {
     font-family: 'Font Awesome 5 Free';
     content: '\f0d7';
     display: inline-block;
     vertical-align: middle;
     font-weight: 900;
-    z-index: 1;
+    z-index: 2;
     font-size: 20px;
     position: absolute;
     left: 5px;
-    color: #635f5f;
+    top: 23px;
+    color: #fff;
+    width: 0;
+    height: 0;
+}
+.cu_1{
+    padding: 0px 22px;
+}
+.cu_2{
+  padding: 0 32px;
+}
+.cu_3{
+    padding: 0px 36px;
 }
 
-.upper-bar .fa-map-marker {
-    margin-left: 1vh;
-    font-size: 16px;
+.cu_4{
+    padding: 0px 32px;
 }
+
+
+/* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .upper-bar {
-        height: 320px;
-    }
-    .upper-bar .imag img {
-        margin-top: -15px;
-        margin-bottom: 10px;
-    }
-    .upper-bar .imag img {
-        margin-top: -15px;
-        margin-bottom: 10px;
-    }
-    .upper-bar .parent_select {
-        width: 100%;
-        display: grid;
-    }
-    .upper-bar .parent_select .child_1,
-    .upper-bar .parent_select .child_2 {
-        width: 100%;
-        display: block;
-        margin: 10px 0;
-    }
-    .upper-bar .parent_select .child_3 {
-        width: 100%;
-        display: block;
-    }
-    .upper-bar .parent_select .child_3 .cu2 {
-        display: block;
-        margin: 5px 14px 0 0;
-    }
+ nav {
+    flex-direction: column;
 }
+nav .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+nav .nav_bar {
+    width: 100%;
+    flex-direction: column;
+}
+nav .containt_select {
+    width: 100%;
+}
+nav ul{
+  width: 100%;
+  justify-content: space-around;
+}
+}
+/* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .upper-bar {
-        height: 320px;
-    }
-    .upper-bar .imag img {
-        margin-top: -15px;
-        margin-bottom: 10px;
-    }
-    .upper-bar .imag img {
-        margin-top: -15px;
-        margin-bottom: 10px;
-    }
-    .upper-bar .parent_select {
-        width: 100%;
-        display: grid;
-    }
-    .upper-bar .parent_select .child_1,
-    .upper-bar .parent_select .child_2 {
-        width: 100%;
-        display: block;
-        margin: 10px 0;
-    }
-    .upper-bar .parent_select .child_3 {
-        width: 100%;
-        display: block;
-    }
-    .upper-bar .parent_select .child_3 .cu2 {
-        display: block;
-        margin: 5px 14px 0 0;
-    }
+ nav {
+    flex-direction: column;
 }
+nav .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+nav .nav_bar {
+    width: 100%;
+    flex-direction: column;
+}
+nav .containt_select {
+    width: 100%;
+}
+nav ul{
+  width: 100%;
+  justify-content: space-around;
+}
+}
+/* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .upper-bar .row {
-        justify-content: center;
-    }
-    .upper-bar .parent_select {
-        width: 100%;
-    }
-    .upper-bar .imag {
-        margin-bottom: 20px;
-    }
-    .upper-bar .lang,
-    .upper-bar .lang2 {
-        font-size: 15px;
-        font-weight: bold;
-    }
-    .upper-bar .parent_select .child_1 {
-        width: 24%;
-    }
-    .upper-bar .customer-select select {
-        font-size: 16px;
-    }
-    .upper-bar .customer-select::after {
-        left: 5px;
-    }
-    .upper-bar .parent_select .child_2 {
-        width: 70%;
-    }
-    .upper-bar .parent_select .child_3 {
-        width: 75%;
-    }
+ nav {
+    flex-direction: column;
 }
+nav .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+nav .nav_bar {
+    width: 100%;
+    flex-direction: column;
+}
+nav .containt_select {
+    width: 100%;
+}
+nav ul{
+  width: 100%;
+  justify-content: space-around;
+}
+}
+/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .upper-bar .parent_select .child_1 {
-        width: 24%;
-    }
-    .upper-bar .parent_select .child_2 {
-        width: 75%;
-    }
-} */
+nav img {
+    margin-left: 2px;
+
+}
+}
 </style>
