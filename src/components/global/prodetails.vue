@@ -289,7 +289,7 @@ export default {
             document.getElementById('heart').classList.toggle('is-active');
         },
         gotoListView: function (i) {
-            this.$router.push(`/ListView/${i}`);
+            this.$router.push(`/Stores_have_Product/${i}`);
         }
 
     }
