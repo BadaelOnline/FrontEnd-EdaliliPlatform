@@ -81,7 +81,7 @@ export default {
 
 <style scoped>
 .navbar {
-    background: #b8b9bb;
+    background-color: #c0c4c7;
 }
 .navbar button {
     border: none;

@@ -211,13 +211,41 @@
                                         <span class="fa fa-check-circle"></span>
                                     </td>
                                     <td>
-                                        <router-link
+                                        <!-- <div style="display: flex; justify-content: center"> -->
+                                        <div
+                                            class="menu"
+                                            onclick="this.classList.toggle('open')"
+                                        >
+                                            <div
+                                                @click="
+                                                    addToCart(
+                                                        item.id,
+                                                        item.title,
+                                                        item.pivot
+                                                    )
+                                                "
+                                                class="button"
+                                                title="add to cart"
+                                            ></div>
+                                            <div
+                                                @click="
+                                                    VisitStore(
+                                                        item.id,
+                                                        item.title
+                                                    )
+                                                "
+                                                class="button"
+                                                title="visit this store"
+                                            ></div>
+                                        </div>
+                                        <!-- </div> -->
+                                        <!-- <router-link
                                             :to="`/visitStore/${item.id}/${item.title}`"
                                         >
                                             <button class="visit">
                                                 {{ $t('visit') }}
                                             </button>
-                                        </router-link>
+                                        </router-link> -->
                                     </td>
                                 </tr>
                             </tbody>
@@ -250,24 +278,56 @@ export default {
         };
     },
     methods: {
+        VisitStore: function (i, t) {
+            this.$router.push(`/visitStore/${i}/${t}`);
+        },
+        addToCart(i, t, s) {
+            this.$store.dispatch(
+                'addToCart',
+                {
+                    id: this.$route.params.id,
+                    id_store: i,
+                    title: t,
+                    name: this.name,
+                    image: this.image,
+                    short_des: this.short_des,
+                    long_des: this.long_des,
+                    store_product: s,
+                },
+                this.id
+            );
+            document.getElementById('cart').animate(
+                [
+                    // keyframes
+                    { transform: 'rotate(-20deg)' },
+                    { transform: 'rotate(20deg)' },
+                    { transform: 'scale(3,3)' },
+                    { transform: 'scale(1,1)' },
+                ],
+                {
+                    // timing options
+                    duration: 1000,
+                }
+            );
+        },
         sortItem() {
-             if (this.sortType == 'space') {
-                 this.stores = this.stores.sort(
-                     (prev, curr) => prev.space - curr.space
-              );
+            if (this.sortType == 'space') {
+                this.stores = this.stores.sort(
+                    (prev, curr) => prev.space - curr.space
+                );
             } else if (this.sortType == 'spaces') {
                 this.stores = this.stores.sort(
-                   (prev, curr) => curr.space - prev.space
-                 );
+                    (prev, curr) => curr.space - prev.space
+                );
             } else if (this.sortType == 'price') {
                 this.stores = this.stores.sort(
                     (prev, curr) => prev.pivot.price - curr.pivot.price
                 );
-           } else if (this.sortType == 'prices') {
-                 this.stores = this.stores.sort(
-                     (prev, curr) => curr.pivot.price - prev.pivot.price
-               );
-             }
+            } else if (this.sortType == 'prices') {
+                this.stores = this.stores.sort(
+                    (prev, curr) => curr.pivot.price - prev.pivot.price
+                );
+            }
         },
     },
 };
@@ -459,7 +519,7 @@ export default {
 }
 .products .container .popup-view1 .tbl-content table tbody tr td img {
     border-radius: 50%;
-    width: 20%;
+    width: 30%;
     justify-content: center;
     align-items: center;
 }
@@ -473,7 +533,7 @@ export default {
     text-transform: uppercase;
 }
 .products .container .popup-view1 td {
-    padding: 10px;
+    padding: 20px;
     justify-content: center;
     align-items: center;
     font-weight: 300;
@@ -501,6 +561,11 @@ export default {
 .products .container .popup-view1 section {
     margin: 20px;
 }
+/* @media (max-width: 858px) {
+    .products .container .popup-view1 td {
+        display: block;
+    }
+} */
 /* for custom scrollbar for webkit browser*/
 
 ::-webkit-scrollbar {
@@ -646,6 +711,88 @@ export default {
         z-index: 6;
         margin-top: 100px;
         margin-right: 60px;
+    }
+}
+</style>
+
+<style lang="scss" scoped>
+.menu {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    padding: 30px;
+    background: #bfbfd7;
+    border-radius: 100%;
+    cursor: pointer;
+    // box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15),
+    //     -7px -7px 20px rgba(255, 255, 255, 1),
+    //     inset 0px 0px 4px rgba(255, 255, 255, 0.2),
+    //     inset 7px 7px 15px rgba(55, 84, 170, 0),
+    //     inset -7px -7px 20px rgba(255, 255, 255, 0),
+    //     0px 0px 4px rgba(255, 255, 255, 0);
+    &::before,
+    &::after {
+        content: '';
+        background: #faf9ff;
+        border-radius: 5px;
+        width: 30px;
+        height: 5px;
+        position: absolute;
+        left: 16px;
+        top: 27px;
+        transition: 0.2s ease;
+        z-index: 1;
+    }
+    &::before {
+        transform: rotate(0deg);
+    }
+    &::after {
+        transform: rotate(-90deg);
+    }
+    &.open {
+        opacity: 0.9;
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+        .button {
+            opacity: 1;
+            pointer-events: auto;
+            &:first-of-type {
+                bottom: 40px;
+                right: 70px;
+                background: url('../../../public/img/shoca.png') no-repeat 50%/50%
+                    #f3f3fd;
+            }
+
+            &:last-of-type {
+                bottom: 40px;
+                right: -70px;
+                background: url('../../../public/img/visit.png') no-repeat 50%
+                    45%/50% 45% #e8e8f3;
+                transition-delay: 0.1s;
+            }
+        }
+    }
+}
+
+.button {
+    padding: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #e8e8f3;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: inherit;
+    transition: 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28), 0.2s ease opacity,
+        0.2s cubic-bezier(0.08, 0.82, 0.17, 1) transform;
+    &:hover {
+        transform: scale(1.1);
     }
 }
 </style>

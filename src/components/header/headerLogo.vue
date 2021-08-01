@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="header">
         <div
             v-if="!authenticated"
             class="content_loader hidden"
@@ -139,15 +139,15 @@
             </label>
             <img
                 @click="goto"
-                height="30"
+                height="40"
                 src="../../../public/img/EDALELYLogo.png"
             />
             <ul class="child_1">
                 <li class="customer-select cu1">
-                    <selects v-model="lang" @change="handleChange($event)">
+                    <select v-model="lang" @change="handleChange($event)">
                         <option value="en">English</option>
                         <option value="ar">العربية</option>
-                    </selects>
+                    </select>
                     <!-- <span class="lang">{{ $t('lang') }}</span> -->
                 </li>
                 <li class="customer-select cu2">
@@ -180,10 +180,6 @@
                         </option>
                     </select>
                 </li>
-                <li class="hov">
-                    <span class="lang2 mr-2"> {{ $t('SearchScope') }} </span>
-                    <i class="fa fa-map-marker"></i>
-                </li>
                 <li class="hov" @click="gotocart()">
                     <span class="cart-count">{{ cartItemCount }}</span>
                     <span class="mr-2">
@@ -191,6 +187,11 @@
                     </span>
                     <i class="fa fa-shopping-cart shopping"></i>
                 </li>
+                <li class="hov lang2">
+                    <span class="lang2 mr-2"> {{ $t('SearchScope') }} </span>
+                    <i class="fa fa-map-marker"></i>
+                </li>
+
                 <li class="hov">
                     <template v-if="authenticated" class="user">
                         <span @click.prevent="signOut" href="#" class="link"
@@ -213,8 +214,10 @@
             </ul>
         </nav>
     </div>
-    <!--  -->
-    <!-- <div class="upper-bar">
+</template>
+
+<!--  -->
+<!-- <div class="upper-bar">
         <div class="row">
             <div @click="goto" class="col-md-2 col-sm-12 col-xs-12 imag">
                 <img height="30" src="../../../public/img/EDALELYLogo.png" />
@@ -280,10 +283,8 @@
             </div>
         </div>
     </div> -->
-
-    <!-- //////////////////////////// -->
-    <!-- End Upper Bar -->
-    <!-- <div class="navbar1">
+<!-- End Upper Bar -->
+<!-- <div class="navbar1">
         <div class="logo">
             <div @click="goto" class="imag">
                 <img height="30" src="../../../public/img/EDALELYLogo.png" />
@@ -340,7 +341,6 @@
             </div>
         </div>
     </div> -->
-</template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -769,7 +769,6 @@ export default {
 }
 /* navbar */
 nav {
-    background: #c0c4c7;
     height: auto;
     width: 100%;
     padding: 0;
@@ -784,55 +783,66 @@ nav ul {
     float: right;
     margin-right: 20px;
 }
-nav ul .customer-select {
-    border: none;
-    /* display: inline-flex;
-    background-color: rgb(135, 128, 128);
-    width: 80px;
-    border-radius: 3px;
-    position: relative;
-    height: 34px;
-    cursor: pointer;
-} */
 /* nav ul .customer-select select {
     border: none;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
-    background-color: transparent;
-    color: #fff;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: #fff;
+    border-radius: 3px;
+    width: 80px;
+    height: 34px;
+    cursor: pointer;
     z-index: 2;
-    /* font-size: 15px; */
+    font-size: 15px;
     position: relative;
     line-height: 2.15;
     justify-content: center;
     align-items: center;
-}
-nav ul .cu1:before {
-    font-family: 'Font Awesome 5 Free';
-    content: '\f0d7';
-    display: inline-block;
-    vertical-align: middle;
-    font-weight: 900;
-    z-index: 1;
-    font-size: 20px;
-    position: absolute;
-    left: 5px;
-}
-nav ul .cu2::after {
-    font-family: 'Font Awesome 5 Free';
-    content: '\f0d7';
-    display: inline-block;
-    vertical-align: middle;
-    font-weight: 900;
-    z-index: 1;
-    font-size: 20px;
-    position: absolute;
-    left: 2px;
 } */
+nav ul .customer-select {
+    position: relative;
+    width: 6em;
+    height: 3em;
+    top: 20px;
+    line-height: 3;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 0.25em;
+}
+nav ul .customer-select select {
+    padding: 0 0.2em;
+    color: #000;
+    cursor: pointer;
+}
+nav ul .customer-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #fff;
+    background-image: none;
+}
+nav ul .customer-select select::-ms-expand {
+    display: none;
+}
+nav ul .customer-select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 0.2em;
+    background: #507781;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: 0.25s all ease;
+    -o-transition: 0.25s all ease;
+    transition: 0.25s all ease;
+}
 nav ul li {
     display: inline-block;
     line-height: 80px;
@@ -846,14 +856,14 @@ nav ul .hov:hover {
 }
 nav ul li .cart-count {
     font-size: 13px;
-    color: #ba8b00;
-    margin-left: 8%;
-    background: #ffffff;
+    color: #507781;
+    margin-left: 100px;
     height: 19px;
-    border-radius: 50%;
     width: 17px;
+    font-size: 15px;
+    font-weight: 900;
     position: absolute;
-    margin-top: -7px;
+    margin-top: -10px;
 }
 .checkbtn {
     font-size: 30px;
@@ -866,7 +876,7 @@ nav ul li .cart-count {
 #check {
     display: none;
 }
-@media (max-width: 858px) {
+@media (max-width: 1000px) {
     .checkbtn {
         display: block;
         margin: 10px 0;
@@ -874,19 +884,22 @@ nav ul li .cart-count {
     }
     ul {
         position: fixed;
-        width: 100%;
+        width: 20%;
         height: 80vh;
         background: #c0c4c7;
         top: 50px;
         left: -100%;
-        text-align: center;
+        text-align: left;
         z-index: 10;
         transition: all 0.5s;
+        /* overflow: auto; */
     }
     nav ul li {
         display: block;
         margin: 20px 0;
         line-height: 20px;
+        /* justify-content: center; */
+        /* align-items: center; */
     }
     #check:checked ~ ul {
         left: 0;
