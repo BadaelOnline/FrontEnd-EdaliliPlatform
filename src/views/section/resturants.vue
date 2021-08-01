@@ -29,20 +29,37 @@
         >
                         <div class="menu" 
                           :style="{background: 'url(' + restaurant.image + ') center no-repeat', backgroundSize : 'cover' }">
-    <div class="title">{{ restaurant.title }} </div>
+                         <div class="title">{{ restaurant.title }} </div>
+
   <div @click="VisitStore(item.id,item.title)" class="button1" title="visit this store">                    <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
-                    <span style="margin: 0 50px;
+                                                <router-link
+                        :to="{
+                        name: 'visitRestaurant',
+                        params: {
+                        id: restaurant.id,
+                        title: restaurant.title,
+                        image: restaurant.image,
+                        short_des: restaurant.short_des,
+                        long_des: restaurant.long_des,
+                        Meals: restaurant.Meals,
+                        Menu: restaurant.Menu,
+                        },}"><span style="margin: 0 50px;
 color: #fffb1f;
-font-size: 20px;letter-spacing: 2px;">Visit</span>
+font-size: 20px;letter-spacing: 2px;">Visit</span></router-link>
                     
                     
                     </div>
   
 </div>
+                    </div>
+
+            <div class="top_title">                    
+                <h2>More Resturant</h2>
+                  
                     </div>
                <div v-for="restaurant in restaurants"
                     :key="restaurant.id"
@@ -124,6 +141,7 @@ export default {
  .img_boarder {
  position: absolute;
  right: 10%;
+ top: 135%;
 } 
 .top_title{
     width: 100%;
@@ -140,6 +158,7 @@ justify-content: center;
     border-bottom-left-radius: 44px;
     color: #cec421;
     text-shadow: 3px 5px 10px #b3a21c;
+    box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px #0f0f0f, inset 0px 0px 4px rgba(17, 17, 17, 0.2), inset 7px 7px 15px rgba(55, 84, 170, 0), inset -7px -7px 20px rgba(255, 255, 255, 0), 0px 0px 4px rgba(255, 255, 255, 0);
 }
 .top_title2{
      width: 100%;
@@ -180,7 +199,7 @@ border-bottom-left-radius: 44px;
 .resturant {
     margin-bottom: 40px;
     border-radius: 0;
-    box-shadow: 10px 10px 10px #adad85;
+    box-shadow: 10px 10px 10px #4d4c4c;
     width: 45%;
     height: 250px; 
 }
@@ -226,6 +245,7 @@ border-bottom-left-radius: 44px;
 </style>
 <style lang="scss" scoped>
 .board {
+    
     margin-top: 20px;
     margin-bottom: 175px;
 	font-size: 2.2rem;
@@ -247,7 +267,7 @@ border-bottom-left-radius: 44px;
 		content: '';
 		position: absolute;
 		width: 100vw;
-		height: 345%;;
+		height: 375%;;
 		left: 0;
 		top: calc(50% + 100px);
 		z-index: -1;
@@ -264,7 +284,7 @@ border-bottom-left-radius: 44px;
 		width: 250px;
 		height: 300px;
 		left: 0;
-		top: calc(123% );
+		top: 125%;
 		filter: drop-shadow(20px 10px 20px rgba(0,0,0,.3));
 	}
 	
@@ -344,7 +364,7 @@ border-radius: 10px;
 width: 80%;
 height: 300px;
   cursor: pointer;
-  box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgba(255, 255, 255, 1), inset 0px 0px 4px rgba(255, 255, 255, 0.2), inset 7px 7px 15px rgba(55, 84, 170, 0), inset -7px -7px 20px rgba(255, 255, 255, 0), 0px 0px 4px rgba(255, 255, 255, 0);
+  box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgb(15, 15, 15), inset 0px 0px 4px rgba(17, 17, 17, 0.2), inset 7px 7px 15px rgba(55, 84, 170, 0), inset -7px -7px 20px rgba(255, 255, 255, 0), 0px 0px 4px rgba(255, 255, 255, 0);
   
   &:hover {
     opacity: .9;
@@ -382,7 +402,10 @@ height: 300px;
 .menu .title{
     background-color: #000000ad;
     color: #cec421;
-    font-size: 25px;
+    font-size: 30px;
+}
+.fa-star{
+    color: #fff;
 }
 .checked {
     color: #dcd741;

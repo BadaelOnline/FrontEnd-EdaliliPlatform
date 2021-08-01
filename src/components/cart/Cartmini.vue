@@ -127,7 +127,7 @@
 }
 .cart-count {
 font-size: 12px;
-color: #ba8b00;
+color: var(--r);
 margin-left: 23px;
 background: #ffffff;
 height: 18px;
