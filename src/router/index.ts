@@ -17,8 +17,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../components/global/prodetails.vue'),
     },
     {
-        path: '/ListView/:id',
-        component: () => import('../components/global/ListView.vue'),
+        path: '/Stores_have_Product/:id',
+        component: () => import('../components/global/Stores_have_Product.vue'),
         props: true,
     },
     {

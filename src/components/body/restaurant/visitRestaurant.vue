@@ -3,9 +3,9 @@
         <!-- home section -->
         <section class="home">
             <div class="content">
-                <h3>{{ this.$route.params.title }}</h3>
+                <h3>{{ $route.params.title }}</h3>
                 <p>
-                    {{ this.$route.params.short_des }}
+                    {{ $route.params.short_des }}
                 </p>
             </div>
             <div class="image">
@@ -20,8 +20,8 @@
         <section class="about">
             <img class="image" src="../../../../public/img/img4.jpg" />
             <div class="content">
-                <h3>{{ this.$route.params.title }}</h3>
-                <p>{{ this.$route.params.long_des }}</p>
+                <h3>{{ $route.params.title }}</h3>
+                <p>{{ $route.params.long_des }}</p>
             </div>
         </section>
         <section class="menu">
@@ -29,7 +29,7 @@
             <div class="box-container">
                 <div
                     class="box"
-                    v-for="item in this.$route.params.Menu"
+                    v-for="item in $route.params.Menu"
                     :key="item.id"
                 >
                     <img src="../../../../public/img/img2.jpg" alt="" />
@@ -42,7 +42,7 @@
             <div class="box-container">
                 <div
                     class="box"
-                    v-for="item in this.$route.params.Meals"
+                    v-for="item in $route.params.Meals"
                     :key="item.id"
                 >
                     <img src="../../../../public/img/img6.jpg" alt="" />

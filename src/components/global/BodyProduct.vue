@@ -232,7 +232,7 @@ export default {
         //     this.$router.push(`ProductDetalis/${i}/${n}/${s}/${l}`);
         // },
         gotoListView: function (i) {
-            this.$router.push(`/ListView/${i}`);
+            this.$router.push(`/Stores_have_Product/${i}`);
         },
         gotoprodetails: function (i) {
             this.$router.push(`/products/${i}`);
