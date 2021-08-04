@@ -1,47 +1,186 @@
 <template>
-    <div>
-        <div class="row">
-            <div class="content">
-                <div class="column1">Some Text in row 3 double column 1</div>
+    <div class="contain">
+        <div class="board">
+            <div class="form__group field">
+                <input
+                    type="input"
+                    class="form__field"
+                    name="search"
+                    id="name"
+                    v-model="search"
+                    required
+                />
+                <label for="name" class="form__label">Search Store</label>
             </div>
-            <div class="column2">
-                <div class="container">
-                    <input type="checkbox" id="check" />
-                    <label for="check" class="open"
-                        ><i class="fa fa-bars"></i
-                    ></label>
-                    <div class="sidebar-wrapper">
-                        <div class="sidebar">
-                            <label for="check" class="close"
-                                ><i class="fa fa-times"></i
-                            ></label>
-                            <nav>
-                                <ul class="menu">
-                                    <li>
-                                        <label for="check">بقالة</label
-                                        ><input type="checkbox" id="check" />
-                                    </li>
-                                    <li>
-                                        <label for="check">بقالة</label
-                                        ><input type="checkbox" id="check" />
-                                    </li>
-                                    <li>
-                                        <label for="check">بقالة</label>
-                                        <input type="checkbox" id="check" />
-                                    </li>
-                                    <li>
-                                        <label for="check">بقالة</label>
-                                        <input type="checkbox" id="check" />
-                                    </li>
-                                    <li>
-                                        <label for="check">بقالة</label
-                                        ><input type="checkbox" id="check" />
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+        </div>
+
+        <div class="content">
+            <div class="banar">
+                <img src="../../../public/img/kitchen.jpg" />
+                <img src="../../../public/img/kitchen.jpg" />
+                <img src="../../../public/img/kitchen.jpg" />
+                <img src="../../../public/img/kitchen.jpg" />
+                <img src="../../../public/img/kitchen.jpg" />
+            </div>
+            <div class="store">
+                <div class="card">
+                    <div class="profile-sidebar">
+                        <img
+                            src="../../../public/img/market-logo.png"
+                            height="150"
+                        />
+                        <ul class="social">
+                            <li>
+                                <a
+                                    ><i
+                                        class="fa fa-map-marker fa-2x"
+                                        aria-label="map"
+                                    ></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a
+                                    ><i
+                                        class="fab fa-whatsapp fa-2x"
+                                        aria-label="whatsapp"
+                                    ></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a
+                                    ><i
+                                        class="fa fa-phone fa-2x"
+                                        aria-label="phone"
+                                    ></i
+                                ></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="profile-main">
+                        <h2 class="profile-name">سنتر الريم</h2>
+                        <p class="profile-position">يبعد 500 م</p>
+                        <p class="profile-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Reprehenderit nemo laudantium facilis non
+                            asperiores dolorem et sed eveniet perspiciatis ad
+                            cupiditate, velit impedit veritatis, sit fugit atque
+                            maiores iusto distinctio.
+                        </p>
                     </div>
                 </div>
+                <!--  -->
+                <div class="card">
+                    <div class="profile-sidebar">
+                        <img
+                            src="../../../public/img/market-logo.png"
+                            height="150"
+                        />
+                        <ul class="social">
+                            <li>
+                                <a
+                                    ><i
+                                        class="fa fa-map-marker fa-2x"
+                                        aria-label="map"
+                                    ></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a
+                                    ><i
+                                        class="fab fa-whatsapp fa-2x"
+                                        aria-label="whatsapp"
+                                    ></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a
+                                    ><i
+                                        class="fa fa-phone fa-2x"
+                                        aria-label="phone"
+                                    ></i
+                                ></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="profile-main">
+                        <h2 class="profile-name">سنتر الريم</h2>
+                        <p class="profile-position">يبعد 500 م</p>
+                        <p class="profile-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Reprehenderit nemo laudantium facilis non
+                            asperiores dolorem et sed eveniet perspiciatis ad
+                            cupiditate, velit impedit veritatis, sit fugit atque
+                            maiores iusto distinctio.
+                        </p>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="card">
+                    <div class="profile-sidebar">
+                        <img
+                            src="../../../public/img/market-logo.png"
+                            height="150"
+                        />
+                        <ul class="social">
+                            <li>
+                                <a
+                                    ><i
+                                        class="fa fa-map-marker fa-2x"
+                                        aria-label="map"
+                                    ></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a
+                                    ><i
+                                        class="fab fa-whatsapp fa-2x"
+                                        aria-label="whatsapp"
+                                    ></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a
+                                    ><i
+                                        class="fa fa-phone fa-2x"
+                                        aria-label="phone"
+                                    ></i
+                                ></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="profile-main">
+                        <h2 class="profile-name">سنتر الريم</h2>
+                        <p class="profile-position">يبعد 500 م</p>
+                        <p class="profile-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Reprehenderit nemo laudantium facilis non
+                            asperiores dolorem et sed eveniet perspiciatis ad
+                            cupiditate, velit impedit veritatis, sit fugit atque
+                            maiores iusto distinctio.
+                        </p>
+                        <button>زيارة</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="head">Section</div>
+                <ul>
+                    <li>
+                        <a><label>بقالة</label><input type="checkbox" /></a>
+                    </li>
+                    <li>
+                        <a><label>خضار</label><input type="checkbox" /></a>
+                    </li>
+                    <li>
+                        <a><label>فواكه</label><input type="checkbox" /></a>
+                    </li>
+                    <li>
+                        <a><label>أكسسوارات</label><input type="checkbox" /></a>
+                    </li>
+                    <li>
+                        <a><label>أزياء</label><input type="checkbox" /></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -59,33 +198,293 @@ export default {
         //     import(`@/components/cart/Cartmini.vue`)
         // ),
     },
+    data() {
+        return {
+            search: '',
+            rating: 0,
+        };
+    },
+    mounted() {
+        this.$store.dispatch('loadStores');
+        window.onscroll = function () {
+            var menu_btn = document.getElementById('menu_btn');
+            var side = document.getElementById('side');
+            if (window.pageYOffset > 756) {
+                menu_btn.classList.add('fixed');
+                side.classList.add('fixed2');
+            } else if (window.pageYOffset < 756) {
+                menu_btn.classList.remove('fixed');
+                side.classList.remove('fixed2');
+            }
+        };
+    },
+    methods: {
+        // toggl: function (event) {
+        //     event.currentTarget.classList.toggle('heart-active');
+        // },
+        // toggle: function (event) {
+        //     event.currentTarget.classList.toggle('heart-active');
+        //     this.toggled = !this.toggled;
+        // },
+        closesidebar() {
+            document.getElementById('side').animate(
+                [
+                    // keyframes
+                    { height: '600px' },
+                    { height: '0px' },
+                ],
+                {
+                    // timing options
+                    duration: 1000,
+                    easing: 'ease-out',
+                }
+            );
+
+            setTimeout(function () {
+                document.getElementById('menu_btn').style.display = 'block';
+                document.getElementById('side').style.display = 'none';
+            }, 1000);
+        },
+        opensidebar() {
+            document.getElementById('side').style.display = 'block';
+            document.getElementById('menu_btn').style.display = 'none';
+        },
+        // btnbar: function () {
+        //     document.getElementById('btn').classList.toggle('click');
+        //     document.getElementById('menu').classList.toggle('show');
+        // },
+        // gotoview: function (i, t, w) {
+        //     this.$router.push(`visitStore/${i}/${t}/${w}`);
+        // },
+    },
 };
 </script>
 
 <style scoped>
-.row {
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 95%;
-}
-.column2 {
-    display: flex;
-    margin-left: 24px;
-    flex-direction: column;
-    height: auto;
-    flex-basis: 100%;
-    flex: 1;
-}
-.column1 {
-    background-color: blue;
-    height: 100px;
+.contain {
+    background: linear-gradient(0.25turn, #536976, #bbd2c5);
 }
 .content {
     display: flex;
+    flex: 1;
+    gap: 10px;
+    padding: 0 20px;
+}
+/* sidebar */
+.sidebar {
+    width: 20%;
+    height: auto;
+    order: 3;
+    padding: 0;
+    margin: 0;
+    right: 0;
+    background: linear-gradient(135deg, #e3e2e2, #777);
+}
+.sidebar .head {
+    color: #536976;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+}
+.sidebar ul {
+    list-style: none;
+}
+.sidebar ul li {
+    display: block;
+}
+.sidebar ul li a {
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    letter-spacing: 1px;
+    position: relative;
+    transition: 0.3s;
+    overflow: hidden;
+    text-transform: capitalize;
+}
+.sidebar ul li a input {
+    width: 70px;
+    font-size: 25px;
+    text-align: center;
+    padding-right: 10px;
+}
+.sidebar ul li a:hover,
+a:active {
+    color: #536976;
+    letter-spacing: 5px;
+}
+/* store */
+.store {
+    flex: 1;
+    order: 2;
+}
+.store .card {
+    margin: auto auto 10px auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+    display: flex;
     flex-direction: column;
-    flex-basis: 100%;
-    flex: 2;
+    background: linear-gradient(0.25turn, #bbd2c5, #536976);
+    color: #000;
+    text-align: center;
+    padding: 2em;
+}
+.store .card .profile-sidebar img {
+    border-radius: 50%;
+    border: 4px solid white;
+}
+.store .card .profile-main .profile-name {
+    font-size: 2rem;
+    line-height: 1.1;
+    letter-spacing: 1px;
+}
+.store .card .profile-main .profile-name:hover {
+    letter-spacing: 5px;
+}
+.store .card .profile-main .profile-name::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 2em;
+    background: #0c505c;
+    opacity: 0.8;
+    margin: 0.7em auto 0.5em;
+    opacity: 0.35;
+}
+.store .card .profile-main .profile-position {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: #0c505c;
+    margin-bottom: 2em;
+}
+.store .card .profile-main .profile-body {
+    font-weight: 300;
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+.store .card .social {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 125px;
+    margin: 10px auto;
+}
+.store .card .social a {
+    color: #0c505c;
+    opacity: 0.6;
+    font-size: 1.125rem;
+    cursor: pointer;
+}
+.store .card .social a:hover,
+.store .card .social a:focus {
+    opacity: 1;
+}
+@media (min-width: 600px) {
+    .store .card {
+        flex-direction: row;
+    }
+}
+.banar {
+    order: 1;
+    width: 20%;
+}
+.banar img {
+    margin: auto auto 30px auto;
+}
+</style>
+
+<style lang="scss" scoped>
+.board {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+    letter-spacing: 0.15em;
+    line-height: 1.5;
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    overflow: hidden;
+    color: #fff;
+
+    &:focus {
+        outline: none;
+    }
+}
+/* ______________________________________________________________________________ */
+$primary: #2c3e50;
+$secondary: #000000ad;
+$white: #fff;
+$gray: #ffffff;
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin: auto;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 80%;
+    border: 0;
+    border-bottom: 2px solid $gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: $white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    &:placeholder-shown ~ .form__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.7rem;
+    color: $gray;
+}
+
+.form__field:focus {
+    ~ .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1.5rem;
+        color: $primary;
+        font-weight: 700;
+    }
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, $primary, $secondary);
+    border-image-slice: 1;
+}
+/* reset input */
+.form__field {
+    &:required,
+    &:invalid {
+        box-shadow: none;
+    }
 }
 </style>
