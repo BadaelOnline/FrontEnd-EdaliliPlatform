@@ -13,7 +13,6 @@
                 <label for="name" class="form__label">Search Store</label>
             </div>
         </div>
-
         <div class="content">
             <div class="banar">
                 <img src="../../../public/img/kitchen.jpg" />
@@ -66,6 +65,7 @@
                             cupiditate, velit impedit veritatis, sit fugit atque
                             maiores iusto distinctio.
                         </p>
+                        <button @click="gotoview()">زيارة</button>
                     </div>
                 </div>
                 <!--  -->
@@ -112,6 +112,7 @@
                             cupiditate, velit impedit veritatis, sit fugit atque
                             maiores iusto distinctio.
                         </p>
+                        <button @click="gotoview()">زيارة</button>
                     </div>
                 </div>
                 <!--  -->
@@ -158,7 +159,7 @@
                             cupiditate, velit impedit veritatis, sit fugit atque
                             maiores iusto distinctio.
                         </p>
-                        <button>زيارة</button>
+                        <button @click="gotoview()">زيارة</button>
                     </div>
                 </div>
             </div>
@@ -187,6 +188,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import axios from 'axios';
 // import { defineAsyncComponent } from 'vue';
 export default {
     name: 'stores',
@@ -200,62 +203,44 @@ export default {
     },
     data() {
         return {
-            search: '',
+            Sections: [],
+            viewProductsInStore: [],
             rating: 0,
+            selectedCategory: [],
+            search: '',
         };
+    },
+    computed: {
+        ...mapState(['categories', 'Stores']),
+        filterSearch() {
+            return this.Stores.filter((store) => {
+                return store.title.match(this.search);
+            });
+        },
     },
     mounted() {
         this.$store.dispatch('loadStores');
-        window.onscroll = function () {
-            var menu_btn = document.getElementById('menu_btn');
-            var side = document.getElementById('side');
-            if (window.pageYOffset > 756) {
-                menu_btn.classList.add('fixed');
-                side.classList.add('fixed2');
-            } else if (window.pageYOffset < 756) {
-                menu_btn.classList.remove('fixed');
-                side.classList.remove('fixed2');
-            }
-        };
     },
     methods: {
-        // toggl: function (event) {
-        //     event.currentTarget.classList.toggle('heart-active');
-        // },
-        // toggle: function (event) {
-        //     event.currentTarget.classList.toggle('heart-active');
-        //     this.toggled = !this.toggled;
-        // },
-        closesidebar() {
-            document.getElementById('side').animate(
-                [
-                    // keyframes
-                    { height: '600px' },
-                    { height: '0px' },
-                ],
-                {
-                    // timing options
-                    duration: 1000,
-                    easing: 'ease-out',
-                }
-            );
-
-            setTimeout(function () {
-                document.getElementById('menu_btn').style.display = 'block';
-                document.getElementById('side').style.display = 'none';
-            }, 1000);
+        fetch() {
+            var self = this;
+            let lang = window.localStorage.getItem('lang');
+            axios
+                .get(`/api/sections/getAll?lang=${lang}`)
+                .then((res) => {
+                    self.Sections = res.data.Section;
+                    console.warn('Data SUCCESS: ', res.data.Section);
+                })
+                .catch(function (error) {
+                    console.warn('------ Error ------: ', error);
+                });
         },
-        opensidebar() {
-            document.getElementById('side').style.display = 'block';
-            document.getElementById('menu_btn').style.display = 'none';
+        gotoview: function () {
+            this.$router.push(`visitStore`);
         },
-        // btnbar: function () {
-        //     document.getElementById('btn').classList.toggle('click');
-        //     document.getElementById('menu').classList.toggle('show');
-        // },
-        // gotoview: function (i, t, w) {
-        //     this.$router.push(`visitStore/${i}/${t}/${w}`);
-        // },
+    },
+    created() {
+        this.fetch();
     },
 };
 </script>
@@ -311,6 +296,7 @@ export default {
     font-size: 25px;
     text-align: center;
     padding-right: 10px;
+    cursor: pointer;
 }
 .sidebar ul li a:hover,
 a:active {
@@ -368,6 +354,24 @@ a:active {
     font-weight: 300;
     opacity: 0.8;
     margin-bottom: 0;
+}
+.store .card .profile-main button {
+    border-radius: 4px;
+    background-color: #0c505c;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: -2px -2px 8px #000;
+}
+.store .card .profile-main button:active {
+    box-shadow: 0 5px #000;
+    transform: translatez(4px);
 }
 .store .card .social {
     display: flex;
