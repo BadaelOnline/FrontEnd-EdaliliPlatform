@@ -96,7 +96,7 @@
                     <div class="week">
                         <div>أوقات الدوام</div>
                         <div>كل أيام الاسبوع</div>
-                        <div>8 صباحاً - 10 ليلاً</div>
+                        <div>8<span>صباحا</span>10<span>ليلا</span></div>
                     </div>
                     <div class="delivery">
                         <div>الخدمات</div>
@@ -130,26 +130,85 @@
         </div>
         <!-- navbar store -->
         <div class="navbar">
-            <div>
+            <div class="btn">
                 <button type="button" class="btn btn-light medic">
                     سياسة المتجر
                 </button>
             </div>
-            <div>
+            <div class="btn">
                 <button type="button" class="btn btn-light">فرص عمل</button>
             </div>
-            <div>
+            <div class="btn">
                 <button type="button" class="btn btn-light">عربة التسوق</button>
             </div>
-            <div>
+            <div class="btn">
                 <button type="button" class="btn btn-light">
                     عروضات المتجر
                 </button>
             </div>
-            <div>
+            <div class="btn">
                 <button type="button" class="btn btn-light">
+                    <i class="fa fa-angle-down mr-2" aria-hidden="true"></i>
                     جميع الأقسام
                 </button>
+                <div class="mega-box">
+                    <div class="content">
+                        <div class="row">
+                            <ul class="mega-links">
+                                <li>stile seal</li>
+                                <li>stile seal 4</li>
+                                <li>stile seal 5</li>
+                                <li>stile seal 6</li>
+                                <li>stile seal 8</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <ul class="mega-links">
+                                <li>stile seal</li>
+                                <li>stile seal 4</li>
+                                <li>stile seal 5</li>
+                                <li>stile seal 6</li>
+                                <li>stile seal 8</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <ul class="mega-links">
+                                <li>stile seal</li>
+                                <li>stile seal 4</li>
+                                <li>stile seal 5</li>
+                                <li>stile seal 6</li>
+                                <li>stile seal 8</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <ul class="mega-links">
+                                <li>stile seal</li>
+                                <li>stile seal 4</li>
+                                <li>stile seal 5</li>
+                                <li>stile seal 6</li>
+                                <li>stile seal 8</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <ul class="mega-links">
+                                <li>stile seal</li>
+                                <li>stile seal 4</li>
+                                <li>stile seal 5</li>
+                                <li>stile seal 6</li>
+                                <li>stile seal 8</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <ul class="mega-links">
+                                <li>stile seal</li>
+                                <li>stile seal 4</li>
+                                <li>stile seal 5</li>
+                                <li>stile seal 6</li>
+                                <li>stile seal 8</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!--  -->
@@ -205,7 +264,7 @@ export default {
     flex: 1;
     flex-direction: row;
     background: linear-gradient(0.25turn, #bbd2c5, #536976);
-    color: #000;
+    color: #fff;
     text-align: center;
     padding: 2em;
 }
@@ -263,6 +322,7 @@ export default {
     flex: 1;
     order: 3;
     flex-direction: column;
+    text-align: right;
 }
 .profile-body .phone div {
     line-height: 2.5;
@@ -290,22 +350,66 @@ export default {
 /* start navbar */
 .navbar {
     margin: 20px 20px;
+    margin-bottom: 30%;
 }
 .navbar button {
     border: none;
     border: solid #315a6e;
     background-color: #315a6e;
-    color: #000;
+    color: #fff;
     cursor: pointer;
     font-size: 15px;
+}
+.navbar .btn:hover .mega-box {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+.mega-box {
+    position: absolute;
+    background: #536976;
+    width: 100%;
+    left: 0;
+    margin: 10px auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.mega-box .content {
+    background: #536976;
+    padding: 25px 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.mega-box .content .row {
+    width: calc(25% - 30px);
+    line-height: 45px;
+}
+.mega-box .content .row .mega-links {
+    list-style: none;
+}
+.mega-box .content .row .mega-links {
+    border-left: 1px solid rgba(255, 255, 255, 0.09);
+}
+.mega-box .content .row .mega-links li {
+    padding: 0 20px;
+    color: #ded9d9;
+    font-size: 17px;
+    display: block;
+    cursor: pointer;
+    transition: 0.5s ease-out;
+}
+.mega-box .content .row .mega-links li:hover {
+    background: #bbd2c5;
 }
 /*  */
 </style>
 
 <style lang="scss" scoped>
 .board {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    // margin-top: 20px;
+    // margin-bottom: 20px;
     font-size: 2.2rem;
     letter-spacing: 0.15em;
     line-height: 1.5;
