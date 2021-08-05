@@ -78,10 +78,10 @@
                         ></a>
                     </li>
                 </ul>
-                <div>السويداء - شمال سينما سرايا مقابل السويداء مول</div>
+                <div>{{ $t('SweidaQanawatRoad') }}</div>
             </div>
             <div class="profile-main">
-                <div class="profile-name">سنتر الريم</div>
+                <div class="profile-name">{{ storeID.title }}</div>
                 <div class="profile-body">
                     <div class="phone">
                         <div>
@@ -95,8 +95,8 @@
                     </div>
                     <div class="week">
                         <div>أوقات الدوام</div>
-                        <div>كل أيام الاسبوع</div>
-                        <div>8<span>صباحا</span>10<span>ليلا</span></div>
+                        <div>{{ $t('SaturdayFriday') }}</div>
+                        <div>{{ storeID.workingHours }}</div>
                     </div>
                     <div class="delivery">
                         <div>الخدمات</div>
@@ -213,180 +213,8 @@
         </div>
         <!-- section -->
         <div class="sec">
-            <div class="section">
-                <header>غذائيات</header>
-                <div class="card1">
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
-            <div class="section">
-                <header>غذائيات</header>
-                <div class="card1">
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
-            <div class="section">
-                <header>غذائيات</header>
+            <div class="section" v-for="item in storeID.section" :key="item.id">
+                <header>{{ item.name }}</header>
                 <div class="card1">
                     <div class="body-section">
                         <div class="box">
@@ -475,8 +303,35 @@
 </template>
 
 <script>
+// import { defineAsyncComponent } from 'vue';
+import axios from 'axios';
 export default {
     name: 'visitStore',
+    data() {
+        return {
+            storeID: {},
+        };
+    },
+    props: ['id'],
+    components: {
+        // BodyProductStore: defineAsyncComponent(() =>
+        //     import(`./BodyProductStore.vue`)
+        // ),
+        // Cartmini: defineAsyncComponent(() =>
+        //     import(`@/components/cart/Cartmini.vue`)
+        // ),
+    },
+    async created() {
+        await axios
+            .get(`/api/stores/getById/${this.$route.params.id}`)
+            .then((res) => {
+                console.warn('storeID :', res.data.Store);
+                this.storeID = res.data.Store;
+            })
+            .catch(function (error) {
+                console.log('Error: ', error);
+            });
+    },
 };
 </script>
 
@@ -680,17 +535,21 @@ export default {
 .section .card1 {
     display: flex;
     gap: 20px;
-    margin: 10px 20px;
+    width: 90%;
+    margin: 10px auto;
     justify-content: center;
     align-items: center;
+    /* overflow-x: auto; */
 }
+/* .section .card1::-webkit-scrollbar {
+    display: none;
+} */
 .section .card1 .body-section .box {
     width: 250px;
     background: #fff;
     box-shadow: 0 0 5px #bababa;
-    overflow: hidden;
     position: relative;
-    margin: 10px auto;
+    margin: 10px 0;
     cursor: pointer;
 }
 .section .card1 .body-section .box img {
