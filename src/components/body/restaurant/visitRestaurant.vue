@@ -7,10 +7,10 @@
           <div class='example'>{{$route.params.title}}</div>
         </div>
 
-  <carousel :items-to-show="1.5" style="margin: 50px 0;">
+  <carousel style="margin: 50px 0;">
     <slide v-for="slide in 10" :key="slide">
  <div class="card 1">
-  <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+  <div class="card_image"> <img src="../../../../public/img/cheese_burger.jpg" /> </div>
   <div class="card_title title-white">
     <p>Foods</p>
   </div>
@@ -48,7 +48,7 @@
 	<button class="btn">
 	 <span class="price">$50</span>
    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-   <span class="buy">Get now</span>
+   <span class="buy">Get Order</span>
  </button>
 	
 </div>
@@ -94,7 +94,7 @@
 	<button class="btn">
 	 <span class="price">$25</span>
    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-   <span class="buy">Get now</span>
+   <span class="buy">Get Order</span>
  </button>
 	
 </div>
@@ -153,11 +153,9 @@ justify-content: center;
   width: 100%;
   height: 100%;
 }
-.carousel ol {
+.carousel .carousel__pagination {
   display: none;
-}
-.carousel__slide {
-  width: 25% !important;
+ 
 }
 .card {
   margin: 30px auto;
@@ -212,7 +210,36 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
     flex-direction: column;
   }
 }
-
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+ .carousel__slide {
+  width: 100% !important;
+}
+}
+/* Small devices (landscape phones, 576px and up)   */
+@media (min-width: 576px) and (max-width: 767.98px) {
+.carousel__slide {
+  width: 50% !important;
+}
+}
+/*  Medium devices (tablets, 768px and up)  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+.carousel__slide {
+  width: 33.3333% !important;
+}
+}
+/*  Large devices (desktops, 992px and up)  */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+   .carousel__slide {
+  width: 25% !important;
+}
+}
+/* Extra large devices (large desktops, 1200px and up)  */
+@media (min-width: 1200px) {
+  .carousel__slide {
+  width: 25% !important;
+}
+}
  /* 22222222222222222222222222222222 */
 @keyframes sway {
     0% {
@@ -307,9 +334,10 @@ letter-spacing: 0.1em;
 	text-align: center;
 	border-radius: 5px;
 	overflow: hidden;
-height: 300px;
-width: 45%;
+  height: 260px;
+  width: 48%;
   padding: 0;
+
 	
 }
 
@@ -322,7 +350,7 @@ width: 45%;
 	padding: 30px;
 	height: 100%;
 	float: left;
-	width: 40%;
+	width: 55%;
 
 }
 
@@ -358,7 +386,7 @@ width: 45%;
 	display: inline-block;
 	margin-left: 0.5em;
 	color: gold;
-	width: 50%;
+	width: 100%;
 }
 
 
@@ -405,7 +433,7 @@ font-family: 'EB Garamond', serif;
 	
 }
 .btn .price, .shopping-cart{
-	background: #333;
+	background: var(--r);
 	border: 0;
 	margin: 0;
 }
@@ -417,7 +445,7 @@ font-family: 'EB Garamond', serif;
 .btn .shopping-cart {
 	transform: translateX(-100%);
   position: absolute;
-	background: #333;
+	background: var(--r);
 	z-index: 1;
   left: 0;
   top: 0;
@@ -469,6 +497,44 @@ font-family: 'EB Garamond', serif;
 
 .product-image:hover img {transition: all 0.3s ease-out;}
 .product-image:hover img {transform: scale(1.2, 1.2);}
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+.contain_products{
+ flex-direction: column;
+}
+.contain_products .container{
+margin-bottom: 50px;
+ width: 90%;
+}
+.control[data-v-5c88657a] {
+    position: absolute;
+    bottom: 5%;
+    left: 13.8%;
+}
+}
+/* Small devices (landscape phones, 576px and up)   */
+@media (min-width: 576px) and (max-width: 767.98px) {
+.contain_products{
+ flex-direction: column;
+}
+.contain_products .container{
+margin-bottom: 50px;
+ width: 90%;
+}
+}
+/*  Medium devices (tablets, 768px and up)  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+.contain_products{
+ flex-direction: column;
+}
+.contain_products .container{
+margin-bottom: 50px;
+ width: 75%;
+}
+}
+
 
 </style>
 

@@ -4,7 +4,7 @@
             <div class="colum_baner">
                 <img src="../../../public/img/fistival_baner.png" />
             </div>
-                        <div class="colum_baner">
+            <div class="colum_baner">
                 <img src="../../../public/img/fistival_baner.png" />
             </div>
         </div>
@@ -71,25 +71,20 @@
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
                         </div>
-                        <div
-                            class="textFollow"
-                            @click="toggl"
-                        >
-                            <span class="share" ></span>
+                        <div class="textFollow" @click="toggl">
+                            <span class="share"></span>
                             <i
                                 class="fas fa-share fa-2x"
                                 style="color: #d7cfcf"
                             ></i>
                             <span class="follow" id="follow">مشاركة العرض</span>
                         </div>
-                        <div
-                           class="textFollow"
-                           @click="toggle"
-                        >
-                            <span class="heart" :class="{ 'heart-active' : toggled}"></span>
-                            <span class="follow" 
-                                >الأعجاب بالعرض</span
-                            >
+                        <div class="textFollow" @click="toggle">
+                            <span
+                                class="heart"
+                                :class="{ 'heart-active': toggled }"
+                            ></span>
+                            <span class="follow">الأعجاب بالعرض</span>
                         </div>
                     </div>
                     <div class="action">
@@ -110,35 +105,57 @@
             </div>
         </div>
 
-        <div class="child3" >
-          <span class="slide" id="menu_btn">
+        <div class="child3">
+            <span class="slide" id="menu_btn">
                 <a>
                     <i class="fa fa-bars" @click="opensidebar()"></i>
                 </a>
             </span>
             <div class="side" id="side">
-               
-    <div class="screen">
-         <div class="cancel" @click="closesidebar()"><i class="fa fa-window-close "></i></div>
-            <div class="row">
+                <div class="screen">
+                    <div class="cancel" @click="closesidebar()">
+                        <i class="fa fa-window-close"></i>
+                    </div>
+                    <div class="row">
+                        <input
+                            id="dot"
+                            name="dot"
+                            type="checkbox"
+                            class="dot"
+                        />
+                        <label for="dot" class="dot"> <span>All</span></label>
 
-            
-                <input id="dot" name="dot" type="checkbox" class="dot">
-                <label for="dot" class="dot">  <span>All</span></label>
-              
+                        <input
+                            id="dot2"
+                            name="dot"
+                            type="checkbox"
+                            class="dot"
+                        />
+                        <label for="dot2" class="dot"
+                            ><span>Grocery</span></label
+                        >
 
-                <input id="dot2" name="dot" type="checkbox" class="dot">
-                <label for="dot2" class="dot"><span>Grocery</span></label>
+                        <input
+                            id="dot3"
+                            name="dot"
+                            type="checkbox"
+                            class="dot"
+                        />
+                        <label for="dot3" class="dot"
+                            ><span>Mobile</span></label
+                        >
 
-                <input id="dot3" name="dot" type="checkbox" class="dot">
-                <label for="dot3" class="dot"><span>Mobile</span></label>
-
-                <input id="dot4" name="dot" type="checkbox" class="dot">
-                <label for="dot4" class="dot"><span>Furniture</span></label>
-
-            </div>
- 
-</div>
+                        <input
+                            id="dot4"
+                            name="dot"
+                            type="checkbox"
+                            class="dot"
+                        />
+                        <label for="dot4" class="dot"
+                            ><span>Furniture</span></label
+                        >
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -150,21 +167,24 @@ import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
 export default {
     props: ['id', 'title', 'section', 'Product', 'brand'],
-      components: {
-        WhatsappStore: defineAsyncComponent(() =>import(`@/components/body/whatsapp-store.vue`),),
+    components: {
+        WhatsappStore: defineAsyncComponent(() =>
+            import(`@/components/body/whatsapp-store.vue`)
+        ),
         PhoneStore: defineAsyncComponent(() =>
             import(`@/components/body/phone-store`)
         ),
         LocationStore: defineAsyncComponent(() =>
             import(`@/components/body/location-store`)
-        ),},
+        ),
+    },
     data() {
         return {
             Sections: [],
             viewProductsInStore: [],
             rating: 0,
             selectedCategory: [],
-    toggled: false
+            toggled: false,
         };
     },
     computed: {
@@ -188,57 +208,48 @@ export default {
     },
     mounted() {
         this.$store.dispatch('loadStores');
-             window.onscroll = function() {  
-        var menu_btn = document.getElementById("menu_btn");
-        var side = document.getElementById("side");   
-        if (window.pageYOffset > 756) {
-            menu_btn.classList.add("fixed");
-             side.classList.add("fixed2");
-        }        
-        else if (window.pageYOffset < 756) {
-            menu_btn.classList.remove("fixed");
-             side.classList.remove("fixed2");
-        }
-};
-
-
-
-      
+        window.onscroll = function () {
+            var menu_btn = document.getElementById('menu_btn');
+            var side = document.getElementById('side');
+            if (window.pageYOffset > 756) {
+                menu_btn.classList.add('fixed');
+                side.classList.add('fixed2');
+            } else if (window.pageYOffset < 756) {
+                menu_btn.classList.remove('fixed');
+                side.classList.remove('fixed2');
+            }
+        };
     },
     methods: {
-    toggl: function( event ) {
-   event.currentTarget.classList.toggle('heart-active');
-
-  
- },
-  toggle: function( event ) {
-   event.currentTarget.classList.toggle('heart-active');
-    this.toggled = !this.toggled
-
-  
- },
-       closesidebar(){
-   document.getElementById("side").animate([
-  // keyframes
-  { height: '600px' },
-  { height: '0px' }
-], {
-  // timing options
-  duration: 1000,
-  easing: 'ease-out',
-  
-});
-    
-    setTimeout(function () {
-        document.getElementById('menu_btn').style.display = "block";
-        document.getElementById('side').style.display = "none";
-    }, 1000);
-   
+        toggl: function (event) {
+            event.currentTarget.classList.toggle('heart-active');
         },
-        opensidebar(){
-    document.getElementById('side').style.display = "block";
-    document.getElementById('menu_btn').style.display = "none";
-    
+        toggle: function (event) {
+            event.currentTarget.classList.toggle('heart-active');
+            this.toggled = !this.toggled;
+        },
+        closesidebar() {
+            document.getElementById('side').animate(
+                [
+                    // keyframes
+                    { height: '600px' },
+                    { height: '0px' },
+                ],
+                {
+                    // timing options
+                    duration: 1000,
+                    easing: 'ease-out',
+                }
+            );
+
+            setTimeout(function () {
+                document.getElementById('menu_btn').style.display = 'block';
+                document.getElementById('side').style.display = 'none';
+            }, 1000);
+        },
+        opensidebar() {
+            document.getElementById('side').style.display = 'block';
+            document.getElementById('menu_btn').style.display = 'none';
         },
         btnbar: function () {
             document.getElementById('btn').classList.toggle('click');
@@ -263,11 +274,8 @@ export default {
     },
     created() {
         this.fetch();
-                
- 
     },
 };
-      
 </script>
 
 <style scoped>
@@ -318,11 +326,11 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
-.parent .card .discription{
+.parent .card .discription {
     margin: 5px;
     color: gray;
 }
-.parent .card .name{
+.parent .card .name {
     color: gold;
     text-shadow: 3px 5px 10px #b3a21c;
     font-size: 19px;
@@ -516,26 +524,26 @@ export default {
 @media (max-width: 576.98px) {
 }
 /* ____________________________________________________  */
-.slide{
+.slide {
     position: static;
     top: 67%;
-    right: 2%; 
+    right: 2%;
     cursor: pointer;
     font-size: 20px;
 }
 .fixed {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  right: -40%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    right: -40%;
 }
 .fixed2 {
-  position: fixed;
-  top: 10px;
-  right: 34px;
+    position: fixed;
+    top: 10px;
+    right: 34px;
 }
-.side{
-    width:227px;
+.side {
+    width: 227px;
     margin: auto;
     background-color: #e1e1e1;
     height: 0px;
@@ -543,9 +551,8 @@ export default {
     display: none;
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
-    
 }
-.side .cancel{
+.side .cancel {
     display: flex;
     font-size: 22px;
     color: #5b5b5b;
@@ -553,50 +560,51 @@ export default {
 }
 
 @keyframes mymove {
-  0%   { height: 0px;}
+    0% {
+        height: 0px;
+    }
 
-  100% { height:600px}
+    100% {
+        height: 600px;
+    }
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 576.98px) {
-.parent .child1,
-.parent .child3 {
-    width: 0%;
-}
-.parent .child2 {
-    width: 90%;
- 
-}
+    .parent .child1,
+    .parent .child3 {
+        width: 0%;
+    }
+    .parent .child2 {
+        width: 90%;
+    }
 }
 /* small devices (portrait phones, less than 767px) */
 @media (max-width: 767.98px) {
-.parent .child1,
-.parent .child3 {
-    width: 0%;
-}
-.parent .child2 {
-    width: 90%;
- 
-}
+    .parent .child1,
+    .parent .child3 {
+        width: 0%;
+    }
+    .parent .child2 {
+        width: 90%;
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-.parent .child1{
-   width: 25%;
-}
-.parent .child3 {
-    width: 0%;
-}
-.parent .child2 {
-    width: 70%;
- 
-}
+    .parent .child1 {
+        width: 25%;
+    }
+    .parent .child3 {
+        width: 0%;
+    }
+    .parent .child2 {
+        width: 70%;
+    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-.side{
-    width:185px;  
-}
+    .side {
+        width: 185px;
+    }
 }
 </style>
 <style lang="scss" scoped>
@@ -609,10 +617,15 @@ $baseColor: hsl($baseHue, $baseSat, $baseLum);
 $bgColor: hsl($baseHue, $baseSat, $baseLum - 2);
 
 .dot {
-    background: linear-gradient(135deg, rgba(247, 251, 255, 0.7) 20%, rgba(0, 0, 0, 0.125) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(247, 251, 255, 0.7) 20%,
+        rgba(0, 0, 0, 0.125) 100%
+    );
     border: 2px solid $baseColor;
     border-radius: 16px;
-    box-shadow: 3px 3px 6px 2px rgba(0, 0, 0, 0.1), -3px -3px 5px 1px rgba(247, 251, 255, 0.5);
+    box-shadow: 3px 3px 6px 2px rgba(0, 0, 0, 0.1),
+        -3px -3px 5px 1px rgba(247, 251, 255, 0.5);
     cursor: pointer;
     height: 25px;
     width: 25px;
@@ -625,14 +638,17 @@ $bgColor: hsl($baseHue, $baseSat, $baseLum - 2);
     justify-content: space-around;
     width: 80%;
     flex-direction: column;
-    
+
     input {
         display: none;
-        
+
         &:checked {
- 
             + .dot {
-                background: linear-gradient(-45deg, rgba(247, 251, 255, 0.4) 20%, rgba(0, 0, 0, 0.2) 100%);
+                background: linear-gradient(
+                    -45deg,
+                    rgba(247, 251, 255, 0.4) 20%,
+                    rgba(0, 0, 0, 0.2) 100%
+                );
             }
         }
     }
@@ -641,15 +657,16 @@ $bgColor: hsl($baseHue, $baseSat, $baseLum - 2);
 .screen {
     align-items: center;
     background: linear-gradient(135deg, #e3e2e2, #777);
-    box-shadow: inset 5px 5px 7px 5px rgba(0, 0, 0, 0.1), inset -5px -5px 7px 5px rgba(247, 251, 255, 0.6);
+    box-shadow: inset 5px 5px 7px 5px rgba(0, 0, 0, 0.1),
+        inset -5px -5px 7px 5px rgba(247, 251, 255, 0.6);
     flex-direction: column;
     height: 300px;
     justify-content: space-around;
     width: 100%;
     height: 100%;
 }
-.dot span{
+.dot span {
     padding-left: 30px;
 }
-
 </style>
+
