@@ -22,7 +22,12 @@
                 <img src="../../../public/img/kitchen.jpg" />
             </div>
             <div class="store">
-                <div class="card">
+                <div
+                    class="card"
+                    v-for="store in Stores"
+                    :key="store.id"
+                    :store="store"
+                >
                     <div class="profile-sidebar">
                         <img
                             src="../../../public/img/market-logo.png"
@@ -54,132 +59,79 @@
                                 ></a>
                             </li>
                         </ul>
+                        <router-link
+                            :to="`/visitstore/${store.id}/${store.title}`"
+                        >
+                            <button type="button" class="btn">
+                                <b>{{ $t('visit') }}</b>
+                            </button>
+                        </router-link>
                     </div>
                     <div class="profile-main">
-                        <h2 class="profile-name">سنتر الريم</h2>
-                        <p class="profile-position">يبعد 500 م</p>
-                        <p class="profile-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Reprehenderit nemo laudantium facilis non
-                            asperiores dolorem et sed eveniet perspiciatis ad
-                            cupiditate, velit impedit veritatis, sit fugit atque
-                            maiores iusto distinctio.
-                        </p>
-                        <button @click="gotoview()">زيارة</button>
-                    </div>
-                </div>
-                <!--  -->
-                <div class="card">
-                    <div class="profile-sidebar">
-                        <img
-                            src="../../../public/img/market-logo.png"
-                            height="150"
-                        />
-                        <ul class="social">
-                            <li>
-                                <a
-                                    ><i
-                                        class="fa fa-map-marker fa-2x"
-                                        aria-label="map"
-                                    ></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a
-                                    ><i
-                                        class="fab fa-whatsapp fa-2x"
-                                        aria-label="whatsapp"
-                                    ></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a
-                                    ><i
-                                        class="fa fa-phone fa-2x"
-                                        aria-label="phone"
-                                    ></i
-                                ></a>
+                        <h2 class="profile-name">{{ store.title }}</h2>
+                        <div class="star-rating">
+                            <input
+                                type="radio"
+                                name="stars"
+                                id="star-a"
+                                value="5"
+                            />
+                            <label for="star-a"></label>
+
+                            <input
+                                type="radio"
+                                name="stars"
+                                id="star-b"
+                                value="4"
+                            />
+                            <label for="star-b"></label>
+
+                            <input
+                                type="radio"
+                                name="stars"
+                                id="star-c"
+                                value="3"
+                            />
+                            <label for="star-c"></label>
+
+                            <input
+                                type="radio"
+                                name="stars"
+                                id="star-d"
+                                value="2"
+                            />
+                            <label for="star-d"></label>
+
+                            <input
+                                type="radio"
+                                name="stars"
+                                id="star-e"
+                                value="1"
+                            />
+                            <label for="star-e"></label>
+                        </div>
+                        <p class="profile-position">{{ $t('It500away') }}</p>
+                        <ul
+                            class="profile-body"
+                            v-for="item in store.section"
+                            :key="item.id"
+                        >
+                            <li class="categorystore">
+                                {{ item.name }}
                             </li>
                         </ul>
-                    </div>
-                    <div class="profile-main">
-                        <h2 class="profile-name">سنتر الريم</h2>
-                        <p class="profile-position">يبعد 500 م</p>
-                        <p class="profile-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Reprehenderit nemo laudantium facilis non
-                            asperiores dolorem et sed eveniet perspiciatis ad
-                            cupiditate, velit impedit veritatis, sit fugit atque
-                            maiores iusto distinctio.
-                        </p>
-                        <button @click="gotoview()">زيارة</button>
-                    </div>
-                </div>
-                <!--  -->
-                <div class="card">
-                    <div class="profile-sidebar">
-                        <img
-                            src="../../../public/img/market-logo.png"
-                            height="150"
-                        />
-                        <ul class="social">
-                            <li>
-                                <a
-                                    ><i
-                                        class="fa fa-map-marker fa-2x"
-                                        aria-label="map"
-                                    ></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a
-                                    ><i
-                                        class="fab fa-whatsapp fa-2x"
-                                        aria-label="whatsapp"
-                                    ></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a
-                                    ><i
-                                        class="fa fa-phone fa-2x"
-                                        aria-label="phone"
-                                    ></i
-                                ></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="profile-main">
-                        <h2 class="profile-name">سنتر الريم</h2>
-                        <p class="profile-position">يبعد 500 م</p>
-                        <p class="profile-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Reprehenderit nemo laudantium facilis non
-                            asperiores dolorem et sed eveniet perspiciatis ad
-                            cupiditate, velit impedit veritatis, sit fugit atque
-                            maiores iusto distinctio.
-                        </p>
-                        <button @click="gotoview()">زيارة</button>
                     </div>
                 </div>
             </div>
+
             <div class="sidebar">
                 <div class="head">Section</div>
                 <ul>
-                    <li>
-                        <a><label>بقالة</label><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                        <a><label>خضار</label><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                        <a><label>فواكه</label><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                        <a><label>أكسسوارات</label><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                        <a><label>أزياء</label><input type="checkbox" /></a>
+                    <li v-for="section in Sections" :key="section.id">
+                        <a
+                            ><label>{{ section.name }}</label
+                            ><input type="checkbox"
+                        /></a>
                     </li>
                 </ul>
             </div>
@@ -282,7 +234,7 @@ export default {
     display: block;
 }
 .sidebar ul li a {
-    padding: 10px 10px;
+    padding: 10px auto;
     text-decoration: none;
     display: block;
     font-size: 18px;
@@ -294,15 +246,16 @@ export default {
 }
 .sidebar ul li a input {
     width: 70px;
-    font-size: 25px;
+    font-size: 18px;
     text-align: center;
-    padding-right: 10px;
+    padding-right: 0;
     cursor: pointer;
 }
 .sidebar ul li a:hover,
 a:active {
     color: #536976;
-    letter-spacing: 5px;
+}
+@media (max-width: 750px) {
 }
 /* store */
 .store {
@@ -322,11 +275,12 @@ a:active {
     padding: 2em;
 }
 .store .card .profile-sidebar {
-    margin: auto;
+    /* margin: auto; */
 }
 .store .card .profile-sidebar img {
     border-radius: 50%;
     border: 4px solid white;
+    top: 0;
 }
 .store .card .profile-main .profile-name {
     font-size: 2rem;
@@ -358,8 +312,11 @@ a:active {
     font-weight: 300;
     opacity: 0.8;
     margin-bottom: 0;
+    list-style: none;
+    display: inline-flex;
+    margin: auto;
 }
-.store .card .profile-main button {
+.store .card .profile-sidebar button {
     border-radius: 4px;
     background-color: #0c505c;
     border: none;
@@ -370,10 +327,11 @@ a:active {
     width: 100px;
     transition: all 0.5s;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 40%;
     box-shadow: -2px -2px 8px #000;
+    bottom: 0;
 }
-.store .card .profile-main button:active {
+.store .card .profile-sidebar button:active {
     box-shadow: 0 5px #000;
     transform: translatez(4px);
 }
@@ -395,6 +353,56 @@ a:active {
 .store .card .social a:hover,
 .store .card .social a:focus {
     opacity: 1;
+}
+/* use reverse flexbox to take advantage of flex-direction: reverse */
+.star-rating {
+    display: flex;
+    align-items: center;
+    width: 160px;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: auto;
+    position: relative;
+}
+/* hide the inputs */
+.star-rating input {
+    display: none;
+}
+/* set properties of all labels */
+.star-rating > label {
+    width: 30px;
+    height: 30px;
+    font-family: Arial;
+    font-size: 30px;
+    transition: 0.2s ease;
+    color: orange;
+}
+/* give label a hover state */
+.star-rating label:hover {
+    color: orange;
+    transition: 0.2s ease;
+}
+.star-rating label:active::before {
+    transform: scale(1.1);
+}
+
+/* set shape of unselected label */
+.star-rating label::before {
+    content: '\2606';
+    position: absolute;
+    top: 0px;
+    line-height: 26px;
+}
+/* set full star shape for checked label and those that come after it */
+.star-rating input:checked ~ label:before {
+    content: '\2605';
+}
+
+@-moz-document url-prefix() {
+    .star-rating input:checked ~ label:before {
+        font-size: 36px;
+        line-height: 21px;
+    }
 }
 @media (min-width: 600px) {
     .store .card {
