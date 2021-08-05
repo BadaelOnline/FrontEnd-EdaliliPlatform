@@ -62,10 +62,7 @@
                                 id: restaurant.id,
                                 title: restaurant.title,
                                 image: restaurant.image,
-                                short_des: restaurant.short_des,
-                                long_des: restaurant.long_des,
-                                Meals: restaurant.Meals,
-                                Menu: restaurant.Menu,
+      
                             },
                         }"
                         ><span

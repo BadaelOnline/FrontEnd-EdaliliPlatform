@@ -22,7 +22,7 @@
         <!-- NavSelect -->
         <headerLogo />
         <!-- background -->
-        <banarHeader />
+       <banarHeader  />   <!--v-if="$route.name == 'home'" -->
         <!--  -->
         <headerNavbar />
         <!-- <div class="customer-select cu5">
