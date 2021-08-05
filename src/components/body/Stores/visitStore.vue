@@ -211,7 +211,266 @@
                 </div>
             </div>
         </div>
-        <!--  -->
+        <!-- section -->
+        <div class="sec">
+            <div class="section">
+                <header>غذائيات</header>
+                <div class="card1">
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="section">
+                <header>غذائيات</header>
+                <div class="card1">
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="section">
+                <header>غذائيات</header>
+                <div class="card1">
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-section">
+                        <div class="box">
+                            <img
+                                src="../../../../public/img/kitchen.jpg"
+                                alt=""
+                            />
+                            <div class="box-content">
+                                <div class="content">
+                                    <!-- <ul class="social">
+                                 <li><a href=""></a></li>
+                             </ul> -->
+                                    <h3 class="title">سمانة</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -350,7 +609,7 @@ export default {
 /* start navbar */
 .navbar {
     margin: 20px 20px;
-    margin-bottom: 30%;
+    /* margin-bottom: 30%; */
 }
 .navbar button {
     border: none;
@@ -364,6 +623,7 @@ export default {
     opacity: 1;
     visibility: visible;
     transition: all 0.3s ease;
+    z-index: 1000;
 }
 .mega-box {
     position: absolute;
@@ -402,6 +662,99 @@ export default {
 }
 .mega-box .content .row .mega-links li:hover {
     background: #bbd2c5;
+}
+/* end navbar store */
+/* start section */
+.section {
+    margin: 20px;
+    border: solid #fff;
+}
+.section header {
+    border: solid #fff;
+    background: linear-gradient(0.25turn, #bbd2c5, #536976);
+    text-align: right;
+    padding: 10px;
+    font-size: 20px;
+    letter-spacing: 5px;
+}
+.section .card1 {
+    display: flex;
+    gap: 20px;
+    margin: 10px 20px;
+    justify-content: center;
+    align-items: center;
+}
+.section .card1 .body-section .box {
+    width: 250px;
+    background: #fff;
+    box-shadow: 0 0 5px #bababa;
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+}
+.section .card1 .body-section .box img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.section .card1 .body-section .box .box-content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.section .card1 .body-section .box .box-content::before,
+.section .card1 .body-section .box .box-content::after {
+    content: '';
+    width: 95%;
+    height: 47%;
+    background: #536976;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: all 0.5s;
+    opacity: 0;
+}
+.section .card1 .body-section .box .box-content::before {
+    top: -20%;
+}
+.section .card1 .body-section .box .box-content::after {
+    bottom: -20%;
+}
+.section .card1 .body-section .box:hover .box-content::before {
+    top: 3%;
+    opacity: 0.8;
+}
+.section .card1 .body-section .box:hover .box-content::after {
+    bottom: 3%;
+    opacity: 0.8;
+}
+.section .card1 .body-section .box .box-content .content {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+    transform: rotate(90deg);
+    opacity: 0;
+    transition: all 0.5s;
+}
+.section .card1 .body-section .box:hover .box-content .content {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+.section .card1 .body-section .box:hover .box-content .content .title {
+    color: #fff;
+    font-size: 22px;
+    letter-spacing: 5px;
+    text-transform: capitalize;
 }
 /*  */
 </style>
