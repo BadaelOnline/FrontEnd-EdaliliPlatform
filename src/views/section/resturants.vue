@@ -42,11 +42,7 @@
                         params: {
                         id: restaurant.id,
                         title: restaurant.title,
-                        image: restaurant.image,
-                        short_des: restaurant.short_des,
-                        long_des: restaurant.long_des,
-                        Meals: restaurant.Meals,
-                        Menu: restaurant.Menu,
+
                         },}"><span style="margin: 0 50px;
 color: #fffb1f;
 font-size: 20px;letter-spacing: 2px;">Visit</span></router-link>
@@ -81,11 +77,6 @@ font-size: 20px;letter-spacing: 2px;">Visit</span></router-link>
                         params: {
                         id: restaurant.id,
                         title: restaurant.title,
-                        image: restaurant.image,
-                        short_des: restaurant.short_des,
-                        long_des: restaurant.long_des,
-                        Meals: restaurant.Meals,
-                        Menu: restaurant.Menu,
                         },}">
                     <button class="button"><span>Visit </span></button></router-link>
                     </div>     
