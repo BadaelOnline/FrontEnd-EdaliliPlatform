@@ -87,7 +87,7 @@
             <div class="container">
                 <div class="row">
                     <productBody
-                        v-for="prod in Product.slice(0, 4)"
+                        v-for="prod in Product"
                         :key="prod.id"
                         :id="prod.id"
                         :name="prod.name"

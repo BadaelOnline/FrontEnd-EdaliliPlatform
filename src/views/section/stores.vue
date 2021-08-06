@@ -15,11 +15,18 @@
         </div>
         <div class="content">
             <div class="banar">
-                <img src="../../../public/img/kitchen.jpg" />
-                <img src="../../../public/img/kitchen.jpg" />
-                <img src="../../../public/img/kitchen.jpg" />
-                <img src="../../../public/img/kitchen.jpg" />
-                <img src="../../../public/img/kitchen.jpg" />
+                <div class="image">
+                    <img src="../../../public/img/kitchen.jpg" />
+                </div>
+                <div class="image">
+                    <img src="../../../public/img/kitchen.jpg" />
+                </div>
+                <div class="image">
+                    <img src="../../../public/img/kitchen.jpg" />
+                </div>
+                <div class="image">
+                    <img src="../../../public/img/kitchen.jpg" />
+                </div>
             </div>
             <div class="store">
                 <div
@@ -59,13 +66,6 @@
                                 ></a>
                             </li>
                         </ul>
-                        <router-link
-                            :to="`/visitstore/${store.id}/${store.title}`"
-                        >
-                            <button type="button" class="btn">
-                                <b>{{ $t('visit') }}</b>
-                            </button>
-                        </router-link>
                     </div>
                     <div class="profile-main">
                         <h2 class="profile-name">{{ store.title }}</h2>
@@ -111,7 +111,7 @@
                             <label for="star-e"></label>
                         </div>
                         <p class="profile-position">{{ $t('It500away') }}</p>
-                        <ul
+                        <!-- <ul
                             class="profile-body"
                             v-for="item in store.section"
                             :key="item.id"
@@ -119,12 +119,19 @@
                             <li class="categorystore">
                                 {{ item.name }}
                             </li>
-                        </ul>
+                        </ul> -->
+                        <router-link
+                            :to="`/visitstore/${store.id}/${store.title}`"
+                        >
+                            <button type="button" class="btn">
+                                <b>{{ $t('visit') }}</b>
+                            </button>
+                        </router-link>
                     </div>
                 </div>
             </div>
 
-            <div class="sidebar">
+            <div id="sidebar" class="sidebar">
                 <div class="head">Section</div>
                 <ul>
                     <li v-for="section in Sections" :key="section.id">
@@ -255,7 +262,7 @@ export default {
 a:active {
     color: #536976;
 }
-@media (max-width: 750px) {
+@media (max-width: 800px) {
 }
 /* store */
 .store {
@@ -275,7 +282,7 @@ a:active {
     padding: 2em;
 }
 .store .card .profile-sidebar {
-    /* margin: auto; */
+    margin: auto;
 }
 .store .card .profile-sidebar img {
     border-radius: 50%;
@@ -290,14 +297,14 @@ a:active {
 .store .card .profile-main .profile-name:hover {
     letter-spacing: 5px;
 }
-.store .card .profile-main .profile-name::after {
+.store .card .profile-main .star-rating::after {
     content: '';
     display: block;
     height: 1px;
     width: 2em;
     background: #0c505c;
     opacity: 0.8;
-    margin: 0.7em auto 0.5em;
+    margin: 0.5em auto 0.5em;
     opacity: 0.35;
 }
 .store .card .profile-main .profile-position {
@@ -311,12 +318,13 @@ a:active {
 .store .card .profile-main .profile-body {
     font-weight: 300;
     opacity: 0.8;
-    margin-bottom: 0;
+    display: flex;
+    /* margin-bottom: 0; */
     list-style: none;
-    display: inline-flex;
-    margin: auto;
+    /* display: inline-block; */
+    /* margin: auto; */
 }
-.store .card .profile-sidebar button {
+.store .card button {
     border-radius: 4px;
     background-color: #0c505c;
     border: none;
@@ -327,11 +335,10 @@ a:active {
     width: 100px;
     transition: all 0.5s;
     cursor: pointer;
-    margin-top: 40%;
     box-shadow: -2px -2px 8px #000;
     bottom: 0;
 }
-.store .card .profile-sidebar button:active {
+.store .card button:active {
     box-shadow: 0 5px #000;
     transform: translatez(4px);
 }
@@ -356,7 +363,7 @@ a:active {
 }
 /* use reverse flexbox to take advantage of flex-direction: reverse */
 .star-rating {
-    display: flex;
+    display: block;
     align-items: center;
     width: 160px;
     flex-direction: row-reverse;
@@ -412,8 +419,9 @@ a:active {
 .banar {
     order: 1;
     width: 20%;
+    display: block;
 }
-.banar img {
+.banar .image {
     margin: auto auto 30px auto;
 }
 @media (max-width: 1000px) {

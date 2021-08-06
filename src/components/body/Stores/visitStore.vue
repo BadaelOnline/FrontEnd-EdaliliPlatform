@@ -213,90 +213,88 @@
         </div>
         <!-- section -->
         <div class="sec">
-            <div class="section" v-for="item in storeID.section" :key="item.id">
+            <div
+                class="section"
+                v-for="item in storeID.section.slice(0, 3)"
+                :key="item.id"
+            >
                 <header>{{ item.name }}</header>
-                <div class="card1">
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
+                <carousel style="margin: 50px 0">
+                    <slide v-for="slide in 10" :key="slide">
+                        <div class="card1">
+                            <div class="body-section">
+                                <div class="box">
+                                    <img
+                                        src="../../../../public/img/kitchen.jpg"
+                                        alt=""
+                                    />
+                                    <div class="box-content">
+                                        <div class="content">
+                                            <h3 class="title">سمانة</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body-section">
+                                <div class="box">
+                                    <img
+                                        src="../../../../public/img/kitchen.jpg"
+                                        alt=""
+                                    />
+                                    <div class="box-content">
+                                        <div class="content">
+                                            <h3 class="title">سمانة</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body-section">
+                                <div class="box">
+                                    <img
+                                        src="../../../../public/img/kitchen.jpg"
+                                        alt=""
+                                    />
+                                    <div class="box-content">
+                                        <div class="content">
+                                            <h3 class="title">سمانة</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body-section">
+                                <div class="box">
+                                    <img
+                                        src="../../../../public/img/kitchen.jpg"
+                                        alt=""
+                                    />
+                                    <div class="box-content">
+                                        <div class="content">
+                                            <h3 class="title">سمانة</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body-section">
+                                <div class="box">
+                                    <img
+                                        src="../../../../public/img/kitchen.jpg"
+                                        alt=""
+                                    />
+                                    <div class="box-content">
+                                        <div class="content">
+                                            <h3 class="title">سمانة</h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-section">
-                        <div class="box">
-                            <img
-                                src="../../../../public/img/kitchen.jpg"
-                                alt=""
-                            />
-                            <div class="box-content">
-                                <div class="content">
-                                    <!-- <ul class="social">
-                                 <li><a href=""></a></li>
-                             </ul> -->
-                                    <h3 class="title">سمانة</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </slide>
+
+                    <template #addons>
+                        <navigation />
+                        <pagination />
+                    </template>
+                </carousel>
             </div>
         </div>
     </div>
@@ -304,6 +302,9 @@
 
 <script>
 // import { defineAsyncComponent } from 'vue';
+// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import axios from 'axios';
 export default {
     name: 'visitStore',
@@ -314,6 +315,10 @@ export default {
     },
     props: ['id'],
     components: {
+        Carousel,
+        Slide,
+        Pagination,
+        Navigation,
         // BodyProductStore: defineAsyncComponent(() =>
         //     import(`./BodyProductStore.vue`)
         // ),
@@ -536,14 +541,10 @@ export default {
     display: flex;
     gap: 20px;
     width: 90%;
-    margin: 10px auto;
+    margin: 20px auto;
     justify-content: center;
     align-items: center;
-    /* overflow-x: auto; */
 }
-/* .section .card1::-webkit-scrollbar {
-    display: none;
-} */
 .section .card1 .body-section .box {
     width: 250px;
     background: #fff;
