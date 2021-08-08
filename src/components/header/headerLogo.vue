@@ -133,91 +133,99 @@
             </form>
         </div>
         <nav>
-            <div class="logo">
-            <img
-                @click="goto"
-                height="40"
-                src="../../../public/img/EDALELYLogo.png"
-            /></div>
-          <div class="nav_bar"> 
+            <div class="nav_bar">
+                <ul class="child_1">
+                    <li class="hov lang2">
+                        <span class="lang2 mr-2">
+                            {{ $t('SearchScope') }}
+                        </span>
+                        <i class="fa fa-map-marker"></i>
+                    </li>
+
+                    <li class="hov">
+                        <template v-if="authenticated" class="user">
+                            <span @click.prevent="signOut" href="#" class="link"
+                                >SignOut</span
+                            >
+                        </template>
+                        <template v-else class="user">
+                            <span class="mr-2" @click="openForm()">{{
+                                $t('signin')
+                            }}</span>
+                            <i class="fa fa-user-circle shopping"> </i>
+                        </template>
+                    </li>
+                    <li class="hov" v-if="authenticated">
+                        <span class="mr-3">
+                            {{ $t('Profile') }}
+                        </span>
+                        <i class="fa fa-user-circle shopping"> </i>
+                    </li>
+                    <li class="hov" @click="gotocart()">
+                        <span class="cart-count">{{ cartItemCount }}</span>
+                        <span class="mr-2">
+                            {{ $t('Shoppingcart') }}
+                        </span>
+                        <i class="fa fa-shopping-cart shopping"></i>
+                    </li>
+                </ul>
                 <div class="containt_select">
-               <div>
-                    <select class="cu_1" v-model="lang" @change="handleChange($event)">
-                        <option value="en">English</option>
-                        <option value="ar">العربية</option>
-                    </select>
-                    <!-- <span class="lang">{{ $t('lang') }}</span> -->
-              </div>
-               <div>
-                    <select class="cu_2">
-                        <option value="1" disabled>
-                            {{ $t('Governorate') }}
-                        </option>
-                        <option v-for="gover in governorates" :key="gover.id">
-                            {{ gover.name }}
-                        </option>
-                    </select>
-              </div>
-                   <div>
-                    <select class="cu_3">
-                        <option value="1" disabled>
-                            {{ $t('City') }}
-                        </option>
-                        <option v-for="city in cities" :key="city.id">
-                            {{ city.name }}
-                        </option>
-                    </select>
-              </div>
-               <div>
-                    <select class="cu_4">
-                        <option value="1" disabled>
-                            {{ $t('street') }}
-                        </option>
-                        <option v-for="street in streets" :key="street.id">
-                            {{ street.name }}
-                        </option>
-                    </select>
+                    <div>
+                        <select
+                            class="cu_1"
+                            v-model="lang"
+                            @change="handleChange($event)"
+                        >
+                            <option value="en">English</option>
+                            <option value="ar">العربية</option>
+                        </select>
+                        <!-- <span class="lang">{{ $t('lang') }}</span> -->
+                    </div>
+                    <div>
+                        <select class="cu_2">
+                            <option value="1" disabled>
+                                {{ $t('Governorate') }}
+                            </option>
+                            <option
+                                v-for="gover in governorates"
+                                :key="gover.id"
+                            >
+                                {{ gover.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="cu_3">
+                            <option value="1" disabled>
+                                {{ $t('City') }}
+                            </option>
+                            <option v-for="city in cities" :key="city.id">
+                                {{ city.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="cu_4">
+                            <option value="1" disabled>
+                                {{ $t('street') }}
+                            </option>
+                            <option v-for="street in streets" :key="street.id">
+                                {{ street.name }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
             </div>
-               <ul class="child_1">
-                <li class="hov" @click="gotocart()">
-                    <span class="cart-count">{{ cartItemCount }}</span>
-                    <span class="mr-2">
-                        {{ $t('Shoppingcart') }}
-                    </span>
-                    <i class="fa fa-shopping-cart shopping"></i>
-                </li>
-                <li class="hov lang2">
-                    <span class="lang2 mr-2"> {{ $t('SearchScope') }} </span>
-                    <i class="fa fa-map-marker"></i>
-                </li>
-
-                <li class="hov">
-                    <template v-if="authenticated" class="user">
-                        <span @click.prevent="signOut" href="#" class="link"
-                            >SignOut</span
-                        >
-                    </template>
-                    <template v-else class="user">
-                        <span class="mr-2" @click="openForm()">{{
-                            $t('signin')
-                        }}</span>
-                        <i class="fa fa-user-circle shopping"> </i>
-                    </template>
-                </li>
-                <li class="hov" v-if="authenticated">
-                    <span class="mr-3">
-                        {{ $t('Profile') }}
-                    </span>
-                    <i class="fa fa-user-circle shopping"> </i>
-                </li>
-            </ul>
-          
+            <div class="logo">
+                <img
+                    @click="goto"
+                    height="40"
+                    src="../../../public/img/Group.png"
+                />
             </div>
         </nav>
     </div>
 </template>
-
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
@@ -652,12 +660,12 @@ nav {
     display: flex;
     justify-content: space-between;
 }
-nav .logo{
- width: 12%;
+nav .logo {
+    width: 12%;
 }
-nav .nav_bar{
-  width: 88%;
-  display: flex;
+nav .nav_bar {
+    width: 88%;
+    display: flex;
 }
 nav img {
     margin-left: 20px;
@@ -665,13 +673,13 @@ nav img {
     float: left;
     cursor: pointer;
 }
-nav .containt_select{
+nav .containt_select {
     width: 58%;
     display: flex;
     justify-content: space-around;
 }
 nav ul {
-   width: 40%;
+    width: 40%;
     padding: 0;
     display: flex;
     justify-content: space-between;
@@ -683,13 +691,14 @@ nav ul li {
 }
 nav ul .hov {
     cursor: pointer;
+    color: #fff;
 }
 nav ul .hov:hover {
-    color: #fff;
+    color: yellow;
 }
 nav ul li .cart-count {
     font-size: 13px;
-    color: #507781;
+    color: #fff;
     margin-left: 100px;
     height: 19px;
     width: 17px;
@@ -699,9 +708,9 @@ nav ul li .cart-count {
     margin-top: -10px;
 }
 
- select {
+select {
     display: inline-flex;
-    background-color: #959595;
+    background-color: #fff;
     border-radius: 15px;
     position: relative;
     height: 34px;
@@ -714,14 +723,14 @@ nav ul li .cart-count {
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
-    color: #fff;
+    color: #1c2c34;
     z-index: 2;
     font-size: 15px;
     position: relative;
     line-height: 2.15;
     cursor: pointer;
 }
-.containt_select div{
+.containt_select div {
     position: relative;
 }
 .containt_select div::after {
@@ -735,96 +744,94 @@ nav ul li .cart-count {
     position: absolute;
     left: 5px;
     top: 23px;
-    color: #fff;
+    color: #000;
     width: 0;
     height: 0;
 }
-.cu_1{
+.cu_1 {
     padding: 0px 22px;
 }
-.cu_2{
-  padding: 0 32px;
+.cu_2 {
+    padding: 0 32px;
 }
-.cu_3{
+.cu_3 {
     padding: 0px 36px;
 }
 
-.cu_4{
+.cu_4 {
     padding: 0px 32px;
 }
 
-
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
- nav {
-    flex-direction: column;
-}
-nav .logo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-nav .nav_bar {
-    width: 100%;
-    flex-direction: column;
-}
-nav .containt_select {
-    width: 100%;
-}
-nav ul{
-  width: 100%;
-  justify-content: space-around;
-}
+    nav {
+        flex-direction: column;
+    }
+    nav .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    nav .nav_bar {
+        width: 100%;
+        flex-direction: column;
+    }
+    nav .containt_select {
+        width: 100%;
+    }
+    nav ul {
+        width: 100%;
+        justify-content: space-around;
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
- nav {
-    flex-direction: column;
-}
-nav .logo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-nav .nav_bar {
-    width: 100%;
-    flex-direction: column;
-}
-nav .containt_select {
-    width: 100%;
-}
-nav ul{
-  width: 100%;
-  justify-content: space-around;
-}
+    nav {
+        flex-direction: column;
+    }
+    nav .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    nav .nav_bar {
+        width: 100%;
+        flex-direction: column;
+    }
+    nav .containt_select {
+        width: 100%;
+    }
+    nav ul {
+        width: 100%;
+        justify-content: space-around;
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
- nav {
-    flex-direction: column;
-}
-nav .logo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-nav .nav_bar {
-    width: 100%;
-    flex-direction: column;
-}
-nav .containt_select {
-    width: 100%;
-}
-nav ul{
-  width: 100%;
-  justify-content: space-around;
-}
+    nav {
+        flex-direction: column;
+    }
+    nav .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    nav .nav_bar {
+        width: 100%;
+        flex-direction: column;
+    }
+    nav .containt_select {
+        width: 100%;
+    }
+    nav ul {
+        width: 100%;
+        justify-content: space-around;
+    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-nav img {
-    margin-left: 2px;
-
-}
+    nav img {
+        margin-left: 2px;
+    }
 }
 </style>

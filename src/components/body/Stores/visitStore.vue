@@ -219,7 +219,7 @@
                 :key="item.id"
             >
                 <header>{{ item.name }}</header>
-                <carousel style="margin: 50px 0">
+                <carousel>
                     <slide v-for="slide in 10" :key="slide">
                         <div class="card1">
                             <div class="body-section">
@@ -541,7 +541,7 @@ export default {
     display: flex;
     gap: 20px;
     width: 90%;
-    margin: 20px auto;
+    margin: 20px 10px;
     justify-content: center;
     align-items: center;
 }
