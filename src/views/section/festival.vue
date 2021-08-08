@@ -162,6 +162,7 @@
 </template>
 
 <script>
+// import $ from 'jquery';
 import { mapState } from 'vuex';
 import axios from 'axios';
 import { defineAsyncComponent } from 'vue';

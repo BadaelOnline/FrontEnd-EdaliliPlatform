@@ -10,6 +10,9 @@ import { Options, Vue } from 'vue-class-component';
 // import AppHeader from '@/components/header/AppHeader.vue'; // @ is an alias to /src authentication
  import Header from '@/components/header/Header.vue';
 import AppFooter from '@/components/Footer/AppFooter.vue';
+// import jQuery from "jquery";
+// const $ = jQuery;
+// window.$ = $;
 @Options({
     components: {
        //  AppHeader,
