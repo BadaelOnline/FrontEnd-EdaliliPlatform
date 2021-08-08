@@ -19,197 +19,9 @@
             ></i>
             <span>Success Login</span>
         </div>
-        <!-- NavSelect -->
-        <headerLogo />
-        <!-- background -->
-       <banarHeader  />   <!--v-if="$route.name == 'home'" -->
-        <!--  -->
-        <headerNavbar />
-        <!-- <div class="customer-select cu5">
-            <h5>choose server</h5>
-            <select v-model="server" @change="handleserver($event)">
-                <option value="edalily">edalily</option>
-                <option value="admin">admin</option>
-            </select>
-        </div>
-        <div class="background">
-            <div class="search">
-                <i class="fa fa-search shopping"></i
-                ><input
-                    class="input"
-                    type="search"
-                    :placeholder="$t('Search')"
-                />
-            </div>
-            <div
-                class="form-popup animate__animated animate__swing"
-                id="myForm"
-            >
-                <form action="/action_page.php" class="form-container">
-                    <h1>Log<span>in</span></h1>
-                    <span class="cancel" @click="closeForm()"
-                        ><i class="fa fa-window-close"></i
-                    ></span>
-
-                    <label for="email"><b>Email</b></label>
-                    <input
-                        type="text"
-                        placeholder="Enter Email"
-                        v-model="form.email"
-                        name="email"
-                        required
-                        ref="email"
-                        @keyup="handleEmail()"
-                    />
-                    <div style="color: red" v-if="statusEmail == false">
-                        <i class="fa fa-window-close"></i>
-                        {{ form.error }}
-                    </div>
-                    <div style="color: green" v-if="statusEmail == true">
-                        <i class="fa fa-check-square"></i>
-                        correct Email
-                    </div>
-
-                    <label for="psw"><b>Password</b></label>
-
-                    <input
-                        type="password"
-                        id="myInput"
-                        placeholder="Enter Password"
-                        v-model="form.password"
-                        name="psw"
-                        ref="pass"
-                        required
-                        @keyup="handlePass()"
-                    />
-                    <input type="checkbox" @change="showPass()" /> Show Password
-                    <div style="color: red" v-if="statusPass == false">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        Password must be more 7 characters
-                    </div>
-                    <div style="color: green" v-if="statusPass == true">
-                        <i class="fa fa-check-square"></i>
-                        Correct Password
-                    </div>
-                    <span @click="submit()" class="btn">Login</span>
-                    <span @click="registerForm()" class="btn">Register</span>
-                </form>
-            </div>
-            <div
-                class="form-popup2 animate__animated animate__swing"
-                id="myForm2"
-            >
-                <form
-                    action="/action_page.php"
-                    class="form-container2 form_register"
-                >
-                    <h1>Regis<span>ter</span></h1>
-                    <span class="cancel" @click="closeForm()"
-                        ><i class="fa fa-window-close"></i
-                    ></span>
-                    <span class="ret" @click="loginrForm()"
-                        ><i class="fa fa-arrow-left"></i
-                    ></span>
-                    <label for="Name"><b>Name</b></label>
-                    <input
-                        type="text"
-                        placeholder="Enter Name"
-                        v-model="form.name"
-                        name="Name"
-                        required
-                    />
-                    <label for="email"><b>Email</b></label>
-                    <input
-                        type="text"
-                        ref="email2"
-                        placeholder="Enter Email"
-                        v-model="form.email"
-                        name="email"
-                        required
-                        @keyup="handleEmail()"
-                    />
-                    <div style="color: red" v-if="statusEmail == false">
-                        <i class="fa fa-window-close"></i>
-                        {{ form.error }}
-                    </div>
-                    <div style="color: green" v-if="statusEmail == true">
-                        <i class="fa fa-check-square"></i>
-                        correct Email
-                    </div>
-
-                    <label for="psw"><b>Password</b></label>
-                    <input
-                        type="password"
-                        ref="pass2"
-                        id="myInput2"
-                        placeholder="Enter Password"
-                        v-model="form.password"
-                        name="psw"
-                        required
-                        @keyup="handlePass()"
-                    />
-                    <input type="checkbox" @change="showPass2()" /> Show
-                    Password
-                    <div style="color: red" v-if="statusPass == false">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        Password must be more 7 characters
-                    </div>
-                    <div style="color: green" v-if="statusPass == true">
-                        <i class="fa fa-check-square"></i>
-                        Correct Password
-                    </div>
-                    <span @click="submit1()" class="btn">Register</span>
-                </form>
-            </div> -->
-        <!--  -->
-        <!-- <div class="parent_featuers">
-                <div class="child_1">
-                    <div class="link">
-                        {{ $t('AddPlatform', { locale: lang }) }}
-                    </div>
-                </div>
-                <div class="cole">|</div>
-                <div class="child_2" @click="gotocart()">
-                    <div>
-                        {{ $t('Shoppingcart') }}
-                    </div>
-                    <div class="cartItemCount">
-                        <i class="fa fa-shopping-cart shopping"></i>
-
-                        <span class="cart-count">{{ cartItemCount }}</span>
-                    </div>
-                </div>
-                <div class="cole">|</div>
-                <div class="child_3 map">
-                    {{ $t('Selectlocation') }}
-                    <i class="fa fa-map-marker shopping"></i>
-                </div>
-                <div class="cole">|</div>
-                <div class="child_4">
-                    <template v-if="authenticated" class="user">
-                        <a @click.prevent="signOut" href="#" class="link"
-                            >SignOut</a
-                        >
-                    </template>
-                    <template
-                        v-else
-                        class="user"
-                        style="margin-left: -20px; margin-right: 10px"
-                    >
-                        <div @click="openForm()">{{ $t('signin') }}</div>
-                    </template>
-                    <i class="fa fa-user-circle shopping"> </i>
-                </div>
-                <div v-if="authenticated" class="cole">|</div>
-                <div v-if="authenticated" class="child_5">
-                    <div>
-                        {{ $t('Profile') }}
-                    </div>
-                    <i class="fa fa-user-circle shopping"> </i>
-                </div>
-            </div>
-        </div> -->
-        <!-- navbarEdalili -->
+        <headerLogo class="navlogo" />
+        <navbarHeader class="navbar" />
+        <banarHeader />
     </div>
 </template>
 
@@ -218,13 +30,13 @@ import { mapGetters, mapActions } from 'vuex';
 import jeson from '@/jeson/MOCK_DATA.json';
 import banarHeader from '@/components/header/banarHeader.vue';
 import headerLogo from '@/components/header/headerLogo.vue';
-import headerNavbar from '@/components/header/headerNavbar.vue';
+import navbarHeader from '@/components/header/navbarHeader.vue';
 export default {
     name: 'Header',
     components: {
         headerLogo,
-        headerNavbar,
         banarHeader,
+        navbarHeader,
     },
     props: ['title', 'description', 'id', 'price'],
     data() {
@@ -646,6 +458,13 @@ export default {
     height: auto;
     margin: 0;
     padding: 0;
+}
+.navlogo {
+    background-color: #1c2c34;
+}
+.navbar {
+    background-color: #243035;
+    /* opacity: 70; */
 }
 .background {
     display: grid;
