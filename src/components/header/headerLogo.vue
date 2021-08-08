@@ -216,6 +216,9 @@
                     </div>
                 </div>
             </div>
+            <!-- <div class="hamburger-menu" @click="menuIcon()">
+                <div class="fa fa-bars menu"></div>
+            </div> -->
             <div class="logo">
                 <img
                     @click="goto"
@@ -659,13 +662,16 @@ nav {
     padding: 0;
     display: flex;
     justify-content: space-between;
+    margin: auto;
 }
 nav .logo {
     width: 12%;
+    margin-right: 20px;
 }
 nav .nav_bar {
     width: 88%;
     display: flex;
+    margin-left: 20px;
 }
 nav img {
     margin-left: 20px;
