@@ -130,11 +130,18 @@
                     </div>
                 </div>
             </div>
-
+            <div class="hamburger-menu" @click="menuIcon()">
+                <div class="fa fa-bars menu"></div>
+                <!-- <div class="fa fa-times close"></div> -->
+            </div>
             <div id="sidebar" class="sidebar">
                 <div class="head">Section</div>
-                <ul>
-                    <li v-for="section in Sections" :key="section.id">
+                <ul class="nav-list">
+                    <li
+                        class="nav-item"
+                        v-for="section in Sections"
+                        :key="section.id"
+                    >
                         <a
                             ><label>{{ section.name }}</label
                             ><input type="checkbox"
@@ -197,6 +204,9 @@ export default {
         gotoview: function () {
             this.$router.push(`visitStore`);
         },
+        menuIcon: function () {
+            document.querySelector('.sidebar').classList.toggle('change');
+        },
     },
     created() {
         this.fetch();
@@ -206,7 +216,7 @@ export default {
 
 <style scoped>
 .contain {
-    background: linear-gradient(0.25turn, #536976, #bbd2c5);
+    background: linear-gradient(0.25turn, #7a7d80, #bbd2c5);
 }
 .content {
     display: flex;
@@ -262,7 +272,47 @@ export default {
 a:active {
     color: #536976;
 }
+.hamburger-menu {
+    display: none;
+}
 @media (max-width: 800px) {
+    .hamburger-menu {
+        width: 25px;
+        height: 20px;
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        z-index: 1000;
+        color: #000;
+    }
+    .menu {
+        width: 25px;
+        height: 20px;
+        position: absolute;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .sidebar {
+        position: absolute;
+        /* right: 10px; */
+        border-radius: 20% 0 0 40%;
+        width: 100%;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    .change {
+        opacity: 1;
+        transform: translateX(-50px);
+    }
+    .store .card {
+        /* width: 90%; */
+        margin: auto 30px;
+    }
 }
 /* store */
 .store {
@@ -273,7 +323,7 @@ a:active {
     margin: auto auto 10px auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
     display: flex;
     flex-direction: column;
     background: linear-gradient(0.25turn, #bbd2c5, #536976);
