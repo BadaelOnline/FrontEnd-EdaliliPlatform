@@ -137,6 +137,9 @@ export default {
 .logo {
     display: none;
 }
+ .navbar {
+     margin: 0;
+ }
 @media (max-width: 1020px) {
     .navbar {
         position: fixed;
@@ -146,7 +149,6 @@ export default {
         right: 0px;
         top: 0;
         bottom: 0;
-        margin: auto;
         transition: width 200ms ease;
     }
     .navbar:hover {

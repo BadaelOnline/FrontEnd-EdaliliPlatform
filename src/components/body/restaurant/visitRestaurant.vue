@@ -170,7 +170,7 @@ export default {
 .body{
   height: 300px;
   background-color: #3c3d3f;
-  margin-top: -19px;
+  
 }
 .countach {
   font-family: 'MonteCarlo', cursive ,'Aref Ruqaa', serif ;

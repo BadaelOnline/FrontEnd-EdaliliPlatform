@@ -490,7 +490,6 @@ a:active {
 
 <style lang="scss" scoped>
 .board {
-    margin-top: 20px;
     margin-bottom: 20px;
     font-size: 2.2rem;
     letter-spacing: 0.15em;

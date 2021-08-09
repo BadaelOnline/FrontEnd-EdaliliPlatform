@@ -454,7 +454,7 @@ export default {
     display: none;
     position: fixed;
     bottom: 0;
-    right: 15px;
+    left: 15px;
     border: 3px solid #959393;
     z-index: 9;
     font-size: 18px;
@@ -530,7 +530,7 @@ export default {
     display: none;
     position: fixed;
     bottom: -6px;
-    right: 15px;
+    left: 15px;
     border: 3px solid #959393;
     z-index: 8;
     font-size: 18px;
