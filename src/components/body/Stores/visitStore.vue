@@ -185,7 +185,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="body-section">
+                            <!-- <div class="body-section">
                                 <div class="box">
                                     <img
                                         src="../../../../public/img/kitchen.jpg"
@@ -223,8 +223,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="body-section">
+                            </div> -->
+                            <!-- <div class="body-section">
                                 <div class="box">
                                     <img
                                         src="../../../../public/img/kitchen.jpg"
@@ -236,7 +236,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </slide>
 
@@ -492,6 +492,39 @@ export default {
     font-size: 20px;
     letter-spacing: 5px;
 }
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .carousel__slide {
+        width: 100% !important;
+    }
+}
+/* Small devices (landscape phones, 576px and up)   */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .carousel__slide {
+        width: 60% !important;
+    }
+}
+/*  Medium devices (tablets, 768px and up)  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .carousel__slide {
+        width: 44.3333% !important;
+    }
+}
+/*  Large devices (desktops, 992px and up)  */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .carousel__slide {
+        width: 40% !important;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up)  */
+@media (min-width: 1200px) {
+    .carousel__slide {
+        width: 30% !important;
+    }
+    /* .section .card1 .body-section .box {
+        width: 200px;
+    } */
+}
 .section .card1 {
     display: flex;
     gap: 20px;
@@ -501,7 +534,7 @@ export default {
     align-items: center;
 }
 .section .card1 .body-section .box {
-    width: 250px;
+    width: 300px;
     background: #fff;
     box-shadow: 0 0 5px #bababa;
     position: relative;
