@@ -31,7 +31,7 @@
             <div class="store">
                 <div
                     class="card"
-                    v-for="store in Stores"
+                    v-for="store in filterSearch"
                     :key="store.id"
                     :store="store"
                 >
@@ -144,7 +144,7 @@
                     >
                         <a
                             ><label>{{ section.name }}</label
-                            ><input type="checkbox"
+                            ><input type="checkbox" 
                         /></a>
                     </li>
                 </ul>
@@ -172,15 +172,18 @@ export default {
             Sections: [],
             viewProductsInStore: [],
             rating: 0,
-            selectedCategory: [],
+            SelectedSection: [],
             search: '',
+          
         };
     },
     computed: {
         ...mapState(['categories', 'Stores']),
+
         filterSearch() {
             return this.Stores.filter((store) => {
-                return store.title.match(this.search);
+                var regex = new RegExp( this.search, 'i' );
+                return store.title.match(regex); 
             });
         },
     },

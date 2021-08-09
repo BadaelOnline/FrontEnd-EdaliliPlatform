@@ -147,7 +147,8 @@ export default {
     computed: {
         filterSearch() {
             return this.restaurants.filter((restaurant) => {
-                return restaurant.title.match(this.search);
+                  var regex = new RegExp( this.search, 'i' );
+                return restaurant.title.match(regex);
             });
         },
     },
