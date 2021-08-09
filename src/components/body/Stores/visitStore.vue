@@ -101,12 +101,7 @@
                     <div class="delivery">
                         <div>الخدمات</div>
                         <div>خدمة توصيل</div>
-                        <div>
-                            <img
-                                src="../../../../public/img/Group.png"
-                                height="20"
-                            />E-Dalely point
-                        </div>
+                        <div>E-Dalely point</div>
                     </div>
                 </div>
                 <div class="profile-footer">
@@ -153,58 +148,13 @@
                 </button>
                 <div class="mega-box">
                     <div class="content">
-                        <div class="row">
+                        <div
+                            class="row"
+                            v-for="item in storeID.section"
+                            :key="item.id"
+                        >
                             <ul class="mega-links">
-                                <li>stile seal</li>
-                                <li>stile seal 4</li>
-                                <li>stile seal 5</li>
-                                <li>stile seal 6</li>
-                                <li>stile seal 8</li>
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <ul class="mega-links">
-                                <li>stile seal</li>
-                                <li>stile seal 4</li>
-                                <li>stile seal 5</li>
-                                <li>stile seal 6</li>
-                                <li>stile seal 8</li>
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <ul class="mega-links">
-                                <li>stile seal</li>
-                                <li>stile seal 4</li>
-                                <li>stile seal 5</li>
-                                <li>stile seal 6</li>
-                                <li>stile seal 8</li>
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <ul class="mega-links">
-                                <li>stile seal</li>
-                                <li>stile seal 4</li>
-                                <li>stile seal 5</li>
-                                <li>stile seal 6</li>
-                                <li>stile seal 8</li>
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <ul class="mega-links">
-                                <li>stile seal</li>
-                                <li>stile seal 4</li>
-                                <li>stile seal 5</li>
-                                <li>stile seal 6</li>
-                                <li>stile seal 8</li>
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <ul class="mega-links">
-                                <li>stile seal</li>
-                                <li>stile seal 4</li>
-                                <li>stile seal 5</li>
-                                <li>stile seal 6</li>
-                                <li>stile seal 8</li>
+                                <li>{{ item.name }}</li>
                             </ul>
                         </div>
                     </div>
@@ -348,19 +298,23 @@ export default {
 .carousel-inner {
     width: 100%;
 }
-.carousel-control-next,
-.carousel-control-prev {
-    height: 50px;
-}
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
     border: 1px solid #c7c7c7;
+    border-radius: 50%;
+    background-color: #caabab;
+    width: 30px;
+    height: 40px;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    /* border: 1px solid #c7c7c7;
     border-radius: 50%;
     width: 54px;
     height: 95px;
     background-color: #caabab;
     top: 250px;
-    position: absolute;
+    position: absolute; */
 }
 .carousel-inner {
     background-color: #ffff;
@@ -499,8 +453,9 @@ export default {
     background: #536976;
     padding: 25px 20px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
     width: 100%;
-    justify-content: space-between;
 }
 .mega-box .content .row {
     width: calc(25% - 30px);
@@ -509,7 +464,7 @@ export default {
 .mega-box .content .row .mega-links {
     list-style: none;
 }
-.mega-box .content .row .mega-links {
+.mega-box .content .row {
     border-left: 1px solid rgba(255, 255, 255, 0.09);
 }
 .mega-box .content .row .mega-links li {
