@@ -229,7 +229,7 @@ export default {
 }
 /* sidebar */
 .sidebar {
-    width: 25%;
+    /* width: 25%; */
     height: auto;
     order: 3;
     padding: 0;
@@ -302,9 +302,8 @@ a:active {
     }
     .sidebar {
         position: absolute;
-        /* right: 10px; */
+        width: 250px;
         border-radius: 20% 0 0 40%;
-        width: 100%;
         opacity: 0;
         transition: all 0.5s ease;
     }
@@ -335,12 +334,16 @@ a:active {
     padding: 2em;
 }
 .store .card .profile-sidebar {
-    margin: auto;
+    margin: auto 0;
+    /* text-align: center; */
 }
 .store .card .profile-sidebar img {
     border-radius: 50%;
     border: 4px solid white;
     top: 0;
+}
+.store .card .profile-main {
+    margin: auto;
 }
 .store .card .profile-main .profile-name {
     font-size: 2rem;
@@ -390,6 +393,7 @@ a:active {
     cursor: pointer;
     box-shadow: -2px -2px 8px #000;
     bottom: 0;
+    transition: all 0.8s ease;
 }
 .store .card button:active {
     box-shadow: 0 5px #000;
@@ -480,9 +484,6 @@ a:active {
 @media (max-width: 1000px) {
     .banar {
         display: none;
-    }
-    .sidebar {
-        width: 30%;
     }
 }
 </style>

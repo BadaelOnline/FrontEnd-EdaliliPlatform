@@ -216,9 +216,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="hamburger-menu" @click="menuIcon()">
-                <div class="fa fa-bars menu"></div>
-            </div> -->
             <div class="logo">
                 <img
                     @click="goto"
