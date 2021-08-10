@@ -379,7 +379,7 @@ export default {
     font-size: 2rem;
     line-height: 1.1;
     letter-spacing: 1px;
-    text-align: right;
+    text-align: center;
 }
 .profile-main .profile-name:hover {
     letter-spacing: 5px;
@@ -418,10 +418,25 @@ export default {
 .profile-footer {
     margin: 10px auto;
 }
+@media (max-width: 800px) {
+    .card {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .profile-body {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+}
 /* end profile store*/
 /* start navbar */
 .navbar {
     margin: 20px 20px;
+    align-items: center;
+    justify-content: center;
     /* margin-bottom: 30%; */
 }
 .navbar button {
