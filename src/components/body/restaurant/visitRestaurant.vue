@@ -1,9 +1,39 @@
 <template>
-    <div class="parent">
-        <div class="cover_resturant">
-            <img src="../../../../public/img/cover_resturant.jpg" />
+<div class="parent">
+  <div class="body">
+      <div class="outer-border">
+         <div class="mid-border">
+            <div class="inner-border">
+              <img class="corner-decoration corner-left-top" src="../../../../public/img/corner-decoration.jpg">
+              <img class="corner-decoration corner-right-top" src="../../../../public/img/corner-decoration.jpg">
+              <img class="corner-decoration corner-right-bottom" src="../../../../public/img/corner-decoration.jpg">
+              <img class="corner-decoration corner-left-bottom" src="../../../../public/img/corner-decoration.jpg">
+              <img class="vertical-decoration top" src="../../../../public/img/horizontally-centered-vertical-decoration.png">
+              <img class="vertical-decoration bottom" src="../../../../public/img/horizontally-centered-vertical-decoration.png">
 
-            <div class="example">{{ $route.params.title }}</div>
+               <!-- Page Content -->
+               <div class="container" style="background: none">
+             
+                  <div class="row">
+                     <div class="col-lg-12 text-center">
+                     
+                        <h1 class="text-uppercase white-text countach">{{$route.params.title}}</h1>
+                       
+                  
+                       
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+</div>
+        <div class="cover_resturant">
+          <img src="../../../../public/img/cover_resturant.jpg">
+         
+        
+          <div class='example'>Open</div>
+           <div class='check_menu'>Check Menu</div>
         </div>
 
         <carousel style="margin: 50px 0">
@@ -117,6 +147,7 @@
 </template>
 
 <script>
+
 // If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
@@ -134,19 +165,174 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa&display=swap');
-/* 1111111111111111111 */
-.parent {
-    background-color: #e8e8e8;
+
+/* 00000000000000000000 */
+.body{
+  height: 300px;
+  background-color: #3c3d3f;
+  margin-top: -19px;
 }
-.cover_resturant {
-    margin-top: -19px;
-    position: relative;
+.countach {
+  font-family: 'MonteCarlo', cursive ,'Aref Ruqaa', serif ;
+	font-weight: 400;
+	font-style: normal;
+  	font-size: 4.5vw;
+    letter-spacing: 4px;
+    padding-top: .5em;
+    color: #fff;
+}
+
+
+.inner-border {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
-.cover_resturant img {
-    width: 100%;
+
+.outer-border {
+	border: 2px solid #DE9B72;
+   	height: 99%;
+    width: 98%;
+    padding: 6px;
+    margin: 0 auto;
+   
+}
+
+
+
+.mid-border {
+    border: 6px solid #DE9B72;
     height: 100%;
+    width: 100%;
+    padding: 6px;
+    margin: auto;
+}
+
+.inner-border {
+	position: relative;
+	border: 2px solid #DE9B72;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+
+/* Decorations */
+.corner-decoration {
+	position: absolute;
+    width: 3em;
+    margin: -3px;
+}
+
+@media (min-width: 768px) {
+	.corner-decoration {
+		width: 3.5em;
+	  	margin: -4px;
+	}
+}
+
+@media (min-width: 992px) {
+	.corner-decoration {
+		width: 4em;
+	  	margin: -5px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.corner-decoration {
+		width: 5em;
+	  	margin: -6px;
+	}
+}
+
+.corner-decoration.corner-left-top {
+	left: 0;
+	top: 0;
+}
+
+.corner-decoration.corner-right-top {
+	top: 0;
+	right: 0;
+	 -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.corner-decoration.corner-right-bottom {
+	right: 0;
+	bottom: 0;
+	 -webkit-transform: scale(-1);
+  	transform: scale(-1);
+}
+
+.corner-decoration.corner-left-bottom {
+	left: 0;
+	bottom: 0;
+	-webkit-transform: scaleY(-1);
+  	transform: scaleY(-1);
+}
+
+
+.vertical-decoration {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 11em;
+}
+
+
+@media (min-width: 768px) {
+	.vertical-decoration {
+		width: 16em;
+	}
+}
+
+
+@media (min-width: 992px) {
+	.vertical-decoration {
+		width: 20em;
+	}
+}
+
+@media (min-width: 1200px) {
+	.vertical-decoration {
+		width: 27em;
+	}
+}
+
+.vertical-decoration.top {
+	top: 0;
+
+}
+
+.vertical-decoration.bottom {
+	bottom: 0;
+	-webkit-transform: scaleY(-1);
+  	transform: scaleY(-1);
+}
+ /* 1111111111111111111 */
+.parent{
+background-color: #e8e8e8;
+ }
+.cover_resturant{ 
+position: relative;
+display: flex;
+justify-content: center;
+height: 55vw;
+}
+.cover_resturant .check_menu{ 
+position: absolute;
+color: #fff;
+bottom: 5%;
+font-size: 4vw;
+border: 2px solid;
+padding: 10px;
+font-family: 'MonteCarlo', cursive ,'Aref Ruqaa', serif ;
+}
+
+.cover_resturant img{ 
+  width: 100%;
+  height: 100%;
 }
 .carousel .carousel__pagination {
     display: none;
@@ -275,6 +461,7 @@ export default {
 }
 
 .example {
+  font-weight: bold;
     position: absolute;
     border-radius: 3px;
     font-family: 'MonteCarlo', cursive, 'Aref Ruqaa', serif;
@@ -318,74 +505,62 @@ export default {
 }
 
 .example::after {
-    content: '';
-    height: 2px;
-    width: 51%;
-    position: absolute;
-    top: -16px;
-    right: 0;
-    z-index: -1;
-    transform: rotate(15deg);
-    background: linear-gradient(
-        to left,
-        transparent 0%,
-        transparent 13%,
-        #aaa954 15%,
-        #827f7f 17%,
-        #e8e5e5 100%
-    );
-}
-/* 333333333333333333333333333333333333333 */
-.contain_products {
+        content: '';
+        height: 2px;
+        width: 51%;
+        position: absolute;
+        top: -16px;
+        right: 0;
+        z-index: -1;
+        transform: rotate(15deg);
+        background: linear-gradient(to left, transparent 0%, transparent 13%, #AAA954 15%, #827f7f 17%, #e8e5e5 100%);
+    }
+    /* 333333333333333333333333333333333333333 */
+.contain_products{
     display: flex;
     justify-content: space-around;
     padding-bottom: 50px;
+  } 
+.contain_products .container{
+	box-shadow: 0 15px 30px 1px grey;
+	background: rgba(255, 255, 255, 0.90);
+	text-align: center;
+	border-radius: 5px;
+	overflow: hidden;
+  height: 260px;
+  width: 48%;
+  padding: 0;
+
+	
 }
-.container {
-    box-shadow: 0 15px 30px 1px grey;
-    background: rgba(255, 255, 255, 0.9);
-    text-align: center;
-    border-radius: 5px;
-    overflow: hidden;
-    height: 260px;
-    width: 48%;
-    padding: 0;
-}
+
 
 .product-details {
-    position: relative;
-    text-align: left;
-    overflow: hidden;
-    padding: 30px;
-    height: 100%;
-    float: left;
-    width: 55%;
+	position: relative;
+	text-align: left;
+	overflow: hidden;
+	padding: 30px;
+	height: 100%;
+	float: left;
+	width: 55%;
+
 }
 
-.container .product-details h1 {
-    font-family: 'Bebas Neue', cursive;
-    display: inline-block;
-    position: relative;
-    font-size: 30px;
-    color: #344055;
-    margin: 0;
+.container .product-details h1{
+	font-family: 'Bebas Neue', cursive;
+	display: inline-block;
+	position: relative;
+	font-size: 30px;
+	color: #344055;
+	margin: 0;
+	
 }
 
-.container .product-details h1:before {
-    position: absolute;
-    content: '';
-    right: 0%;
-    top: 0%;
-    transform: translate(25px, -15px);
-    font-family: 'Bree Serif', serif;
-    display: inline-block;
-    background: #ffe6e6;
-    border-radius: 5px;
-    font-size: 14px;
-    padding: 5px;
-    color: white;
-    margin: 0;
-    animation: chan-sh 6s ease infinite;
+.hint-star {
+	display: inline-block;
+	margin-left: 0.5em;
+	color: gold;
+	width: 100%;
 }
 
 .hint-star {
