@@ -87,11 +87,7 @@
         >
             <div class="menu">
                 <div class="title">{{ store.title }}</div>
-                <div
-                    @click="VisitStore(store.id, store.title)"
-                    class="button1"
-                    title="visit this store"
-                >
+                <div class="button1" title="visit this store">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -101,7 +97,7 @@
                         ><span
                             style="
                                 margin: 0 50px;
-                                color: #fffb1f;
+                                color: #fff;
                                 font-size: 20px;
                                 letter-spacing: 2px;
                             "
@@ -438,6 +434,7 @@ export default {
     margin: auto auto 10px auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     width: 45%;
+    /* max-width: 45%; */
     height: 250px;
     display: flex;
     flex-direction: row;
@@ -531,11 +528,32 @@ export default {
 .store {
     margin-bottom: 40px;
     border-radius: 0;
-    /* box-shadow: 10px 10px 10px #4d4c4c; */
     width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
+}
+@media (max-width: 800px) {
+    .store {
+        display: block;
+    }
+    .store .card {
+        flex-direction: flex;
+        width: 80%;
+        height: auto;
+        margin: 20px auto;
+    }
+}
+@media (max-width: 500px) {
+    .store {
+        display: block;
+    }
+    .store .card {
+        flex-direction: column;
+        width: 80%;
+        height: auto;
+        margin: 20px auto;
+    }
 }
 /* use reverse flexbox to take advantage of flex-direction: reverse */
 .star-rating {
