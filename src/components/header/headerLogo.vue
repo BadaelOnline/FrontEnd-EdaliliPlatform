@@ -453,7 +453,7 @@ export default {
 .form-popup {
     display: none;
     position: fixed;
-    bottom: 0;
+    top: 10%;
     left: 15px;
     border: 3px solid #959393;
     z-index: 9;
@@ -475,7 +475,7 @@ export default {
     width: 450px;
     padding: 10px;
     background-color: #c6c4c4;
-    height: 516px;
+    height: 521px;
 }
 
 /* Full-width input fields */
@@ -493,6 +493,7 @@ export default {
 .form-container input[type='password']:focus {
     background-color: #ddd;
     outline: none;
+    border: 1px solid var(--bl);
 }
 
 /* Set a style for the submit/login button */
@@ -529,7 +530,7 @@ export default {
 .form-popup2 {
     display: none;
     position: fixed;
-    bottom: -6px;
+     top: 10%;
     left: 15px;
     border: 3px solid #959393;
     z-index: 8;
@@ -569,6 +570,7 @@ export default {
 .form-container2 input[type='password']:focus {
     background-color: #ddd;
     outline: none;
+    border: 1px solid var(--bl);
 }
 
 /* Set a style for the submit/login button */

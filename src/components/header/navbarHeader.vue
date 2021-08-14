@@ -180,57 +180,5 @@ export default {
     .navbar:hover .logo {
         transform: rotate(-180deg);
     }
-    /* .navbar {
-        position: fixed;
-        display: block;
-        z-index: 1000;
-        right: 0px;
-        top: 0;
-        bottom: 0;
-        height: auto;
-        margin: 10px auto;
-        justify-content: center;
-        align-items: center;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-    .hov .links {
-        margin: auto;
-        display: flex;
-        gap: 10px;
-        margin: 10px;
-        flex-direction: row-reverse;
-    }
-    .hov {
-        margin: auto;
-        text-align: right;
-    }
-    .linkText {
-        font-size: 16px;
-    }
-    .expand {
-        display: block;
-        width: 2rem;
-        height: 2rem;
-        color: #fff;
-        background-color: #536976;
-        box-shadow: 0 0 0 10px var(--clr-gray300);
-        border-radius: 50%;
-        position: fixed;
-        left: -1rem;
-        right: 120px;
-        top: 1rem;
-        margin: auto;
-        z-index: 1000;
-        cursor: pointer;
-        transform: rotateZ(-180deg);
-        transition: transform 200ms ease-in-out;
-    }
-    .closed .expand {
-        transform: rotateZ(0deg);
-    }
-    .close {
-        opacity: 0;
-    } */
 }
 </style>
