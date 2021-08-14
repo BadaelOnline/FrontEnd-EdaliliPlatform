@@ -464,7 +464,6 @@ font-family: 'MonteCarlo', cursive ,'Aref Ruqaa', serif ;
   font-weight: bold;
     position: absolute;
     border-radius: 3px;
-    display: inline-block;
     font-family: 'MonteCarlo', cursive, 'Aref Ruqaa', serif;
     line-height: 1;
     font-size: 4vw;
@@ -474,7 +473,8 @@ font-family: 'MonteCarlo', cursive ,'Aref Ruqaa', serif ;
     text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #fff,
         0 0 82px #fff, 0 0 92px #fff, 0 0 102px #fff, 0 0 151px #fff;
     letter-spacing: 0.1em;
-
+    display: inline-block;
+    justify-content: center;
     background-repeat: no-repeat;
     animation: sway 5s linear infinite;
     transform-origin: 50% -32px;
@@ -484,6 +484,8 @@ font-family: 'MonteCarlo', cursive ,'Aref Ruqaa', serif ;
         center / 5000px 100px;
 }
 .example::before {
+    display: flex;
+    justify-content: center;
     content: '';
     height: 2px;
     width: 51%;
