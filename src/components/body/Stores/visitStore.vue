@@ -165,7 +165,7 @@
            <header>Our Products</header>
  <!-- Products -->
                           <div class="contain_products">
-            <!-- 1 -->
+         
             <div class="container"                        
                         v-for="prod in storeID.product.slice(0, 4)"
                         :key="prod.id"
