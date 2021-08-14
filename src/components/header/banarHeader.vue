@@ -1,6 +1,6 @@
 <template>
     <!-- Start landing -->
-    <div class="jumbotron">
+    <div class="jumbotron" v-if="$route.name == 'home'">
         <!-- <div class="bars" @click="showfut()">
             <i class="fa fa-bars"></i>
         </div> -->

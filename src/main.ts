@@ -13,10 +13,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'normalize.css';
 import '../public/fontawesome-free-5.15.1-web/css/all.css';
+import "jquery";
+
 // import VueCardCarousel from
 require('./store/subscriber');
 // store.dispatch('attempt', localStorage.getItem('token'));
 //  axios.defaults.headers['Accept-Language'] = lang;
+
 const lang: string = localStorage.getItem('lang') || 'en';
 const server: string = localStorage.getItem('server') || 'admin';
 document.documentElement.lang = lang;
