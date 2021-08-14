@@ -1,6 +1,8 @@
 <template>
-    <div class="contain">
-        <div class="board">
+    <div class="parent">
+       
+<main v-if="filterSearch.length > 0">
+        <div class="board board2">
             <div class="form__group field">
                 <input
                     type="input"
@@ -13,130 +15,55 @@
                 <label for="name" class="form__label">Search Store</label>
             </div>
         </div>
-        <div class="content">
-            <div class="banar">
-                <div class="image">
-                    <img src="../../../public/img/kitchen.jpg" />
-                </div>
-                <div class="image">
-                    <img src="../../../public/img/kitchen.jpg" />
-                </div>
-                <div class="image">
-                    <img src="../../../public/img/kitchen.jpg" />
-                </div>
-                <div class="image">
-                    <img src="../../../public/img/kitchen.jpg" />
-                </div>
-            </div>
-            <div class="store">
-                <div
-                    class="card"
-                    v-for="store in filterSearch"
-                    :key="store.id"
-                    :store="store"
-                >
-                    <div class="profile-sidebar">
-                        <img
-                            src="../../../public/img/market-logo.png"
-                            height="150"
-                        />
-                        <ul class="social">
-                            <li>
-                                <a
-                                    ><i
-                                        class="fa fa-map-marker fa-2x"
-                                        aria-label="map"
-                                    ></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a
-                                    ><i
-                                        class="fab fa-whatsapp fa-2x"
-                                        aria-label="whatsapp"
-                                    ></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a
-                                    ><i
-                                        class="fa fa-phone fa-2x"
-                                        aria-label="phone"
-                                    ></i
-                                ></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="profile-main">
-                        <h2 class="profile-name">{{ store.title }}</h2>
-                        <div class="star-rating">
-                            <input
-                                type="radio"
-                                name="stars"
-                                id="star-a"
-                                value="5"
-                            />
-                            <label for="star-a"></label>
-
-                            <input
-                                type="radio"
-                                name="stars"
-                                id="star-b"
-                                value="4"
-                            />
-                            <label for="star-b"></label>
-
-                            <input
-                                type="radio"
-                                name="stars"
-                                id="star-c"
-                                value="3"
-                            />
-                            <label for="star-c"></label>
-
-                            <input
-                                type="radio"
-                                name="stars"
-                                id="star-d"
-                                value="2"
-                            />
-                            <label for="star-d"></label>
-
-                            <input
-                                type="radio"
-                                name="stars"
-                                id="star-e"
-                                value="1"
-                            />
-                            <label for="star-e"></label>
-                        </div>
-                        <p class="profile-position">{{ $t('It500away') }}</p>
-                        <!-- <ul
-                            class="profile-body"
-                            v-for="item in store.section"
-                            :key="item.id"
-                        >
-                            <li class="categorystore">
-                                {{ item.name }}
-                            </li>
-                        </ul> -->
-                        <router-link
+	<ul id="cards">
+		<li class="cards"                     
+        v-for="store in filterSearch.slice(0,4)"
+        :key="store.id"
+        :store="store">
+			<div class="card__content">
+				<div>
+					<h2>{{ store.title }}</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <div>                    
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span></div>
+					<router-link class="btn btn--accent"
                             :to="`/visitstore/${store.id}/${store.title}`"
-                        >
-                            <button type="button" class="btn">
-                                <b>{{ $t('visit') }}</b>
-                            </button>
-                        </router-link>
-                    </div>
-                </div>
+                        >{{ $t('visit') }}</router-link>
+				</div>
+				<figure>
+					<img src="../../../public/img/market-logo.png" alt="Image description">
+				</figure>
+			</div>
+		</li>
+	
+
+	</ul>
+</main>
+   <div class="unavaible_product" v-else>
+        <img src="../../../public/img/unavalible.jpg">
+       <h2>Ops... Stores not available.</h2> 
+      </div>
+ <div class="filter">        
+     <div class="board">
+            <div class="form__group field">
+                <input
+                    type="input"
+                    class="form__field"
+                    name="search"
+                    id="name"
+                    v-model="search"
+                    required
+                />
+                <label for="name" class="form__label">Search Store</label>
             </div>
-            <div class="hamburger-menu" @click="menuIcon()">
-                <div class="fa fa-bars menu"></div>
-                <!-- <div class="fa fa-times close"></div> -->
-            </div>
-            <div id="sidebar" class="sidebar">
-                <div class="head">Section</div>
-                <ul class="nav-list">
+        </div>
+        <hr style="width: 90%;">
+        <h2>الفئات</h2>
+                        <ul class="nav-list">
                     <li
                         class="nav-item"
                         v-for="section in Sections"
@@ -148,17 +75,68 @@
                         /></a>
                     </li>
                 </ul>
-            </div>
+    <hr style="width: 90%;">
+                 <h2>التقييمات</h2>
+                      <label class="rating">    
+                          <div>            
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    </div>    
+                   <input type="radio" id="rating5" name="radios">
+                    </label>
+                    <label class="rating">    
+                          <div>            
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star "></span>
+                    </div>    
+                      <input type="radio" id="rating4" name="radios">
+                    </label>
+                                          <label class="rating" >    
+                          <div>            
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    </div>    
+                       <input type="radio" id="rating3" name="radios">
+                    </label>
+                                          <label class="rating" >    
+                          <div>            
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    </div>    
+                      <input type="radio" id="rating2" name="radios"> 
+                    </label>
+                                          <label class="rating" >    
+                          <div>            
+                    <span class="fa fa-star checke"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    </div>    
+                     <input type="radio" id="rating1" name="radios">
+                    </label>
+
         </div>
     </div>
 </template>
-
 <script>
 import { mapState } from 'vuex';
 import axios from 'axios';
 // import { defineAsyncComponent } from 'vue';
 export default {
-    name: 'stores',
+    name: 'professional',
     components: {
         // BodyStore: defineAsyncComponent(() =>
         //     import(`@/components/body/BodyStore.vue`)
@@ -216,44 +194,109 @@ export default {
     },
 };
 </script>
-
 <style scoped>
-.contain {
-    background: linear-gradient(0.25turn, #7a7d80, #bbd2c5);
-}
-.content {
+
+.parent{
     display: flex;
-    flex: 1;
-    gap: 10px;
-    padding: 0 20px;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #f4f3f3;
 }
-/* sidebar */
-.sidebar {
-    /* width: 25%; */
-    height: auto;
-    order: 3;
-    padding: 0;
+.filter{
+    width: 25%;
+    background-color: #dfdfdf;
+}
+
+main {
+	width: 60vw;
+	margin: 20px auto;
+}
+#cards {
+	list-style: none;
+	display: grid;
+	grid-template-columns: 1fr;
+	
+}
+.card__content {
+	box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+	background: rgb(255, 255, 255);
+	color: rgb(10, 5, 7);
+	border-radius: 1em;
+	overflow: hidden;
+    margin-bottom: 20px;
+	display: grid;
+	grid-template-areas: "text img";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	align-items: stretch;
+}
+
+.card__content > div {
+	grid-area: text;
+	width: 80%;
+	place-self: center;
+	text-align: left;
+	display: grid;
+	gap: 1em;
+	place-items: start;
+    padding-bottom: 10px;
+}
+
+.card__content > figure {
+	grid-area: img;
+	overflow: hidden;
     margin: 0;
-    right: 0;
-    background: linear-gradient(135deg, #e3e2e2, #777);
 }
-.sidebar .head {
-    color: #536976;
-    font-size: 20px;
-    font-weight: 600;
-    padding: 30px;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 3px;
+
+.card__content > figure > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
-.sidebar ul {
+
+
+.card__content h2 {
+	font-weight: 300;
+	font-size: 2.5vw;
+    background: -webkit-linear-gradient(var(--r), var(--bl));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.card__content p {
+	font-family: sans-serif;
+	font-weight: 300;
+	line-height: 1.42;
+    font-size: 1.5vw;
+    opacity: 0.7;
+}
+.fa-star {
+    color: #cac9c9;
+    font-size: 2vw;
+}
+
+.checked {
+    color: #dcd741;
+}
+.card__content .btn {
+background: linear-gradient(to right, var(--r),var(--bl));
+color: rgb(255 255 255);
+text-decoration: none;
+display: inline-block;
+border-radius: 0.25em;
+padding: 5px 20px;
+font-size: 2vw;
+border: none;
+}
+.filter ul {
     list-style: none;
     text-align: right;
 }
-.sidebar ul li {
+.filter ul li {
     display: block;
+    opacity: .8;
 }
-.sidebar ul li a {
+.filter ul li a {
     padding: 10px auto;
     text-decoration: none;
     display: block;
@@ -264,237 +307,71 @@ export default {
     overflow: hidden;
     text-transform: capitalize;
 }
-.sidebar ul li a input {
+.filter ul li a input {
     width: 70px;
     font-size: 18px;
     text-align: center;
     padding-right: 0;
     cursor: pointer;
 }
-.sidebar ul li a:hover,
+.filter ul li a:hover,
 a:active {
-    color: #536976;
+    color: #bf4848;
 }
-.hamburger-menu {
-    display: none;
-}
-@media (max-width: 800px) {
-    .hamburger-menu {
-        width: 25px;
-        height: 20px;
-        position: absolute;
-        right: 10px;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        z-index: 1000;
-        color: #000;
-    }
-    .menu {
-        width: 25px;
-        height: 20px;
-        position: absolute;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    .sidebar {
-        position: absolute;
-        width: 250px;
-        border-radius: 20% 0 0 40%;
-        opacity: 0;
-        transition: all 0.5s ease;
-    }
-    .change {
-        opacity: 1;
-        transform: translateX(-50px);
-    }
-    .store .card {
-        /* width: 90%; */
-        margin: auto 30px;
-    }
-}
-/* store */
-.store {
-    flex: 1;
-    order: 2;
-}
-.store .card {
-    margin: auto auto 10px auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 650px;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(0.25turn, #bbd2c5, #536976);
-    color: #000;
-    text-align: center;
-    padding: 2em;
-}
-.store .card .profile-sidebar {
-    margin: auto 0;
-    /* text-align: center; */
-}
-.store .card .profile-sidebar img {
-    border-radius: 50%;
-    border: 4px solid white;
-    top: 0;
-}
-.store .card .profile-main {
-    margin: auto;
-}
-.store .card .profile-main .profile-name {
-    font-size: 2rem;
-    line-height: 1.1;
-    letter-spacing: 1px;
-}
-.store .card .profile-main .profile-name:hover {
-    letter-spacing: 5px;
-}
-.store .card .profile-main .star-rating::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 2em;
-    background: #0c505c;
-    opacity: 0.8;
-    margin: 0.5em auto 0.5em;
-    opacity: 0.35;
-}
-.store .card .profile-main .profile-position {
-    margin: 0;
-    text-transform: uppercase;
-    font-size: 1rem;
-    letter-spacing: 3px;
-    color: #0c505c;
-    margin-bottom: 2em;
-}
-.store .card .profile-main .profile-body {
-    font-weight: 300;
-    opacity: 0.8;
-    display: flex;
-    /* margin-bottom: 0; */
-    list-style: none;
-    /* display: inline-block; */
-    /* margin: auto; */
-}
-.store .card button {
-    border-radius: 4px;
-    background-color: #0c505c;
-    border: none;
-    color: #fff;
-    text-align: center;
-    font-size: 12px;
-    padding: 10px;
-    width: 100px;
-    transition: all 0.5s;
-    cursor: pointer;
-    box-shadow: -2px -2px 8px #000;
-    bottom: 0;
-    transition: all 0.8s ease;
-}
-.store .card button:active {
-    box-shadow: 0 5px #000;
-    transform: translatez(4px);
-}
-.store .card .social {
+.rating{
+    margin: 15px 0;
     display: flex;
     justify-content: space-around;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 125px;
-    margin: 10px auto;
+     cursor: pointer;
 }
-.store .card .social a {
-    color: #0c505c;
-    opacity: 0.6;
-    font-size: 1.125rem;
-    cursor: pointer;
+.rating .checke{
+   color: #5f6368;
 }
-.store .card .social a:hover,
-.store .card .social a:focus {
-    opacity: 1;
+.rating:hover .checke{
+   color: #dcd741;
 }
-/* use reverse flexbox to take advantage of flex-direction: reverse */
-.star-rating {
-    display: block;
-    align-items: center;
-    width: 160px;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    margin: auto;
-    position: relative;
-}
-/* hide the inputs */
-.star-rating input {
+.board2{
     display: none;
 }
-/* set properties of all labels */
-.star-rating > label {
-    width: 30px;
-    height: 30px;
-    font-family: Arial;
-    font-size: 30px;
-    transition: 0.2s ease;
-    color: orange;
+.filter .fa-star{
+   font-size: 1vw;
 }
-/* give label a hover state */
-.star-rating label:hover {
-    color: orange;
-    transition: 0.2s ease;
-}
-.star-rating label:active::before {
-    transform: scale(1.1);
-}
-
-/* set shape of unselected label */
-.star-rating label::before {
-    content: '\2606';
-    position: absolute;
-    top: 0px;
-    line-height: 26px;
-}
-/* set full star shape for checked label and those that come after it */
-.star-rating input:checked ~ label:before {
-    content: '\2605';
-}
-
-@-moz-document url-prefix() {
-    .star-rating input:checked ~ label:before {
-        font-size: 36px;
-        line-height: 21px;
-    }
-}
-@media (min-width: 600px) {
-    .store .card {
-        flex-direction: row;
-    }
-}
-.banar {
-    order: 1;
-    width: 20%;
+@media (max-width: 991.98px) {
+.board2{
     display: block;
+    color: #eee;
 }
-.banar .image {
-    margin: auto auto 30px auto;
+.board2 .form__label {
+  color: rgb(70, 69, 69);
 }
-@media (max-width: 1000px) {
-    .banar {
-        display: none;
+.board2 .form__field {
+
+    border-bottom: 2px solid rgb(70, 69, 69);;
     }
+.filter{
+    display: none;
+}
+
+}
+.unavaible_product{
+    background-color: #ecf0f1;
+    height: auto;
+    width: 100%;
+}
+.unavaible_product img{
+   margin-bottom: 25px;
+}
+.unavaible_product h2{
+   font-size: 3em;
+    color: gray;
 }
 </style>
-
 <style lang="scss" scoped>
 .board {
-    margin-bottom: 20px;
     font-size: 2.2rem;
     letter-spacing: 0.15em;
     line-height: 1.5;
-    width: 90%;
+    width: 100%;
     height: auto;
     padding: 20px;
     overflow: hidden;
@@ -504,9 +381,8 @@ a:active {
         outline: none;
     }
 }
-/* ______________________________________________________________________________ */
-$primary: #2c3e50;
-$secondary: #000000ad;
+$primary: #de3016;
+$secondary: #00bad4;
 $white: #fff;
 $gray: #ffffff;
 .form__group {
@@ -514,7 +390,7 @@ $gray: #ffffff;
     padding: 15px 0 0;
     margin: auto;
     margin-top: 10px;
-    width: 50%;
+    width:75%;
 }
 
 .form__field {

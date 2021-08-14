@@ -87,16 +87,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'instrc',
         component: () => import('../views/section/instrc.vue'),
     },
-    // {
-    //     path: '/stores',
-    //     name: 'stores',
-    //     component: () => import('../views/section/stores.vue'),
-    // }
     {
-        path: '/stores',
-        name: 'stores',
-        component: () => import('../views/section/Store.vue'),
+         path: '/stores',
+      name: 'stores',
+         component: () => import('../views/section/stores.vue'),
     },
+  
     /* Categories */
     {
         path: '/buty',

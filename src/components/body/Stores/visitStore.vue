@@ -10,16 +10,16 @@
         >
             <div class="carousel-inner text-center">
                 <div class="carousel-item active" data-interval="2000">
-                    <img
+                    <img style="height: 38vw;"
                         src="../../../../public/img/banner-2.jpg"
-                        class="d-block w-100 h-50"
+                        class="d-block w-100"
                         alt="..."
                     />
                 </div>
                 <div class="carousel-item">
-                    <img
+                    <img style="height: 38vw;"
                         src="../../../../public/img/banner-1.jpg"
-                        class="d-block w-100 h-50"
+                        class="d-block w-100"
                         alt="..."
                     />
                 </div>
@@ -56,7 +56,7 @@
                     src="../../../../public/img/market-logo.png"
                     height="150"
                 />
-                <ul class="social">
+                <ul class="socia">
                     <li>
                         <a
                             ><i
@@ -117,7 +117,7 @@
                                 required
                             />
                             <label for="name" class="form__label"
-                                >Search Store</label
+                                >Search</label
                             >
                         </div>
                     </div>
@@ -162,65 +162,79 @@
                 </div>
             </div>
         </div>
-        <!-- section -->
-        <div class="sec">
-            <div
-                class="section"
-                v-for="item in storeID.section.slice(0, 3)"
-                :key="item.id"
-            >
-                <header>{{ item.name }}</header>
-                <carousel>
-                    <slide v-for="slide in 10" :key="slide">
-                        <div class="card1">
-                            <div class="body-section">
-                                <div class="box">
-                                    <img
-                                        src="../../../../public/img/kitchen.jpg"
-                                        alt=""
-                                    />
-                                    <div class="box-content">
-                                        <div class="content">
-                                            <h3 class="title">سمانة</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </slide>
+       
+           <header>Our Products</header>
+ <!-- Products -->
+                          <div class="contain_products">
+         
+            <div class="container"                        
+                        v-for="prod in Products.slice(0, 4)"
+                        :key="prod.id"
+                        :id="prod.id"
+                        :long_des="prod.long_des"
+                        :store="prod.store">
+                <div class="product-details">
+                    <h1>bliss</h1>
 
-                    <template #addons>
-                        <navigation />
-                        <pagination />
-                    </template>
-                </carousel>
+
+                    <p class="information">
+                        {{prod.short_des}}
+                    </p>
+                    <span class="hint-star star">
+                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                      
+                    </span>
+                    <div class="control">
+                        <button class="btn">
+                            <span class="price">$50</span>
+                            <span class="shopping-cart"
+                                ><i
+                                    class="fa fa-shopping-cart"
+                                    aria-hidden="true"
+                                ></i
+                            ></span>
+                            <span class="buy">Buy Now</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-image">
+                    <img src="../../../../public/img/pro1-1.png" alt="" />
+
+                    <div class="info">
+                        <h2>Description</h2>
+                        <ul>
+                            <li><strong>Price : </strong> $50</li>
+                            <li><strong>Weight : </strong>750 gram</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
+         
+        </div>       
+     
     </div>
 </template>
 
 <script>
-// import { defineAsyncComponent } from 'vue';
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+//   import { defineAsyncComponent } from 'vue';
 import axios from 'axios';
 export default {
     name: 'visitStore',
     data() {
         return {
             storeID: {},
+            Products: []
         };
     },
     props: ['id'],
     components: {
-        Carousel,
-        Slide,
-        Pagination,
-        Navigation,
-        // BodyProductStore: defineAsyncComponent(() =>
-        //     import(`./BodyProductStore.vue`)
-        // ),
+      
+    
         // Cartmini: defineAsyncComponent(() =>
         //     import(`@/components/cart/Cartmini.vue`)
         // ),
@@ -231,6 +245,7 @@ export default {
             .then((res) => {
                 console.warn('storeID :', res.data.Store);
                 this.storeID = res.data.Store;
+                   this.Products = res.data.Store.product;
             })
             .catch(function (error) {
                 console.log('Error: ', error);
@@ -240,6 +255,14 @@ export default {
 </script>
 
 <style scoped>
+.fa-star {
+    color: #cac9c9;
+    font-size: 2rem;
+}
+
+.checked {
+    color: #dcd741;
+}
 /* ///start slide/// */
 .carouselSlide {
     margin: 10px auto;
@@ -335,7 +358,7 @@ export default {
     display: flex;
     flex: 1;
     flex-direction: row;
-    background: linear-gradient(0.25turn, #bbd2c5, #536976);
+    background: linear-gradient(to right,#e85c63, var(--bl));
     color: #fff;
     text-align: center;
     padding: 2em;
@@ -350,7 +373,7 @@ export default {
     border-radius: 50%;
     border: 4px solid white;
 }
-.social {
+.socia {
     display: flex;
     justify-content: space-around;
     list-style: none;
@@ -359,14 +382,14 @@ export default {
     width: 125px;
     margin: 10px auto;
 }
-.social a {
+.socia a {
     color: #0c505c;
     opacity: 0.6;
     font-size: 1.125rem;
     cursor: pointer;
 }
-.social a:hover,
-.social a:focus {
+.socia a:hover,
+.socia a:focus {
     opacity: 1;
 }
 .profile-main {
@@ -441,8 +464,7 @@ export default {
 }
 .navbar button {
     border: none;
-    border: solid #315a6e;
-    background-color: #315a6e;
+   background: linear-gradient(to right,#e85c63, var(--bl));
     color: #fff;
     cursor: pointer;
     font-size: 15px;
@@ -464,7 +486,7 @@ export default {
     transition: all 0.3s ease;
 }
 .mega-box .content {
-    background: #536976;
+  background: linear-gradient(to right,#e85c63, var(--bl));
     padding: 25px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -493,132 +515,235 @@ export default {
     background: #bbd2c5;
 }
 /* end navbar store */
-/* start section */
-.section {
-    margin: 20px;
+
+ header {
     border: solid #fff;
-}
-.section header {
-    border: solid #fff;
-    background: linear-gradient(0.25turn, #bbd2c5, #536976);
-    text-align: right;
+    background: linear-gradient(to right,#e85c63, var(--bl));
+    text-align: center;
     padding: 10px;
     font-size: 20px;
     letter-spacing: 5px;
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: bold;
 }
+.contain_products{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 50px;
+    flex-flow: wrap;
+  } 
+.contain_products .container{
+	box-shadow: 0 15px 30px 1px grey;
+	background: rgba(255, 255, 255, 0.90);
+	text-align: center;
+	border-radius: 5px;
+	overflow: hidden;
+    height: auto;
+    width: 48%;
+    padding: 0;
+    margin-bottom: 30px;
+
+	
+}
+
+
+.product-details {
+	position: relative;
+	text-align: left;
+	overflow: hidden;
+	padding: 30px;
+	height: 100%;
+	float: left;
+	width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container .product-details h1{
+	font-family: 'Bebas Neue', cursive;
+	display: inline-block;
+	position: relative;
+	font-size: 30px;
+	margin: 0;
+	background: -webkit-linear-gradient(var(--r), var(--bl));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hint-star {
+	display: inline-block;
+	margin-left: 0.5em;
+	color: gold;
+	width: 100%;
+}
+
+.hint-star {
+    display: inline-block;
+    margin-left: 0.5em;
+    color: gold;
+    width: 100%;
+}
+
+.container .product-details > p {
+    font-family: 'EB Garamond', serif;
+    text-align: center;
+    font-size: 18px;
+    color: #7d7d7d;
+}
+.product-details .btn {
+    transform: translateY(0px);
+    transition: 0.3s linear;
+    background: #809fff;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #eee;
+    padding: 0;
+    margin: 0;
+}
+
+.product-details .btn:hover {
+    transform: translateY(-6px);
+    background: var(--bl);
+}
+
+.product-details .btn span {
+    font-family: 'Farsan', cursive;
+    transition: transform 0.3s;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    margin: 0;
+}
+.product-details .btn .price,
+.product-details .shopping-cart {
+    background: var(--r);
+    border: 0;
+    margin: 0;
+}
+
+.product-details .btn .price {
+    transform: translateX(-10%);
+    padding-right: 15px;
+}
+
+.product-details .btn .shopping-cart {
+    transform: translateX(-100%);
+    position: absolute;
+    background: var(--r);
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+.product-details .btn .buy {
+    z-index: 3;
+    font-weight: bolder;
+}
+
+.product-details .btn:hover .price {
+    transform: translateX(-110%);
+}
+
+.product-details .btn:hover .shopping-cart {
+    transform: translateX(0%);
+}
+
+.product-image {
+    transition: all 0.3s ease-out;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    float: right;
+    width: 45%;
+    display: inline-block;
+}
+
+.container img {
+    width: 100%;
+    height: 100%;
+}
+
+.info {
+    background: rgba(27, 26, 26, 0.9);
+    font-family: 'Bree Serif', serif;
+    transition: all 0.3s ease-out;
+    transform: translateX(-100%);
+    position: absolute;
+    line-height: 1.8;
+    text-align: left;
+    font-size: 105%;
+    cursor: no-drop;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.info h2 {
+    text-align: center;
+}
+.product-image:hover .info {
+    transform: translateX(0);
+}
+
+.info ul li {
+    transition: 0.3s ease;
+}
+.info ul li:hover {
+    transform: translateX(50px) scale(1.3);
+}
+
+.product-image:hover img {
+    transition: all 0.3s ease-out;
+}
+.product-image:hover img {
+    transform: scale(1.2, 1.2);
+}
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .carousel__slide {
-        width: 100% !important;
+    .contain_products {
+        flex-direction: column;
+    }
+    .contain_products .container {
+        margin-bottom: 50px;
+        width: 90%;
+    }
+    .control[data-v-5c88657a] {
+        position: absolute;
+        bottom: 5%;
+        left: 13.8%;
     }
 }
 /* Small devices (landscape phones, 576px and up)   */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .carousel__slide {
-        width: 60% !important;
+    .contain_products {
+        flex-direction: column;
+    }
+    .contain_products .container {
+        margin-bottom: 50px;
+        width: 90%;
     }
 }
 /*  Medium devices (tablets, 768px and up)  */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .carousel__slide {
-        width: 44.3333% !important;
+    .contain_products {
+        flex-direction: column;
+    }
+    .contain_products .container {
+        margin-bottom: 50px;
+        width: 75%;
     }
 }
-/*  Large devices (desktops, 992px and up)  */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .carousel__slide {
-        width: 40% !important;
-    }
-}
-/* Extra large devices (large desktops, 1200px and up)  */
-@media (min-width: 1200px) {
-    .carousel__slide {
-        width: 30% !important;
-    }
-    /* .section .card1 .body-section .box {
-        width: 200px;
-    } */
-}
-.section .card1 {
-    display: flex;
-    gap: 20px;
-    width: 90%;
-    margin: 20px 10px;
-    justify-content: center;
-    align-items: center;
-}
-.section .card1 .body-section .box {
-    width: 300px;
-    background: #fff;
-    box-shadow: 0 0 5px #bababa;
-    position: relative;
-    margin: 10px 0;
-    cursor: pointer;
-}
-.section .card1 .body-section .box img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-.section .card1 .body-section .box .box-content {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.section .card1 .body-section .box .box-content::before,
-.section .card1 .body-section .box .box-content::after {
-    content: '';
-    width: 95%;
-    height: 47%;
-    background: #536976;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    transition: all 0.5s;
-    opacity: 0;
-}
-.section .card1 .body-section .box .box-content::before {
-    top: -20%;
-}
-.section .card1 .body-section .box .box-content::after {
-    bottom: -20%;
-}
-.section .card1 .body-section .box:hover .box-content::before {
-    top: 3%;
-    opacity: 0.8;
-}
-.section .card1 .body-section .box:hover .box-content::after {
-    bottom: 3%;
-    opacity: 0.8;
-}
-.section .card1 .body-section .box .box-content .content {
-    width: 100%;
-    height: 45px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: 1;
-    transform: rotate(90deg);
-    opacity: 0;
-    transition: all 0.5s;
-}
-.section .card1 .body-section .box:hover .box-content .content {
-    opacity: 1;
-    transform: rotate(0deg);
-}
-.section .card1 .body-section .box:hover .box-content .content .title {
-    color: #fff;
-    font-size: 22px;
-    letter-spacing: 5px;
-    text-transform: capitalize;
-}
-/*  */
+
 </style>
 
 <style lang="scss" scoped>
