@@ -11,6 +11,7 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.12.1",
     "@popperjs/core": "^2.9.2",
+    "@vue/composition-api": "^1.1.1",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "axios": "^0.21.1",
@@ -22,6 +23,7 @@
     "pettier": "^1.1.0",
     "popper.js": "^1.16.1",
     "semantic-ui-vue": "^0.11.0",
+    "swiper": "^6.8.1",
     "vue": "^3.0.0-beta.1",
     "vue-animate-transitions": "^1.1.2",
     "vue-axios": "^3.2.4",
