@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="row">
-            <div class="col-xs-12 cart" style="background-color: #ecf0f1;"
+            <div class="col-xs-12 cart"
              :class="{' col-sm-9': $store.state.cartItems.length !== 0, 'col-sm-12': $store.state.cartItems.length == 0 }">
                 <div class="title">
                     <div class="row">
@@ -29,13 +29,24 @@
                                 : ''
                         "
                     >
-                        <span>
+                    
+                    <div>
+                        <img src="../../../public/img/market-logo3.jpg" />
+                    </div>
+                    <div class="store_title">
+                    <h2>{{ $t('The Seller') }} :</h2>
+                    </div>
+                    <div class="store_title">
+                        <span >
                             {{ items.title }}
                         </span>
                     </div>
+                    
+                    </div>
                     <div class="cart-items">
                         <div class="col-sm-2 col-xs-12">
-                            <img class="img" :src="items.image" />
+                            <img class="img" v-if="items.image" :src="items.image" />
+                            <img v-else src="../../../public/img/products1.jpg" />
                         </div>
                         <div class="col-sm-2 col-xs-3">
                             {{ items.name }}
@@ -61,7 +72,7 @@
                             <span
                                 class="price"
                               
-                                >{{ items.store_product.price}}</span
+                                >{{ items.store_product}}</span
                             >
                             <span
                                 @click="removeFromCart(items)"
@@ -72,7 +83,7 @@
                 </div>
             </div>
             <div class="col-sm-3 col-xs-12 summary" v-if="totalPrice !== 0">
-                <div class="row">
+                <!-- <div class="row">
                     <div :totalPrice="totalPrice" class="col text-right">
                         <span class="price"> {{ totalPrice }}</span>
                         ل.س
@@ -80,10 +91,10 @@
                     <div class="col" style="padding-left: 0">
                         :{{ $t('price') }}
                     </div>
-                </div>
-                <form class="fo">
+                </div> -->
+                <!-- <form class="fo">
                     <p>{{ $t('ShippingCosts') }} 500 ل.س</p>
-                </form>
+                </form> -->
                 <div
                     class="row"
                     style="
@@ -92,14 +103,15 @@
                         margin-bottom: 40px;
                     "
                 >
+                     <div class="col">{{ $t('totalPrice') }}</div>
                     <div class="col text-right">
-                        <span class="price"> {{ totalPrice + 500 }}</span>
+                        <span class="price"> {{ totalPrice  }}</span>
                         ل.س
                     </div>
-                    <div class="col">:{{ $t('priceWithShippingCosts') }}</div>
+               
                 </div>
                 <a class="cta" style="border: none">
-                    <span>Check Out</span>
+                    <span>{{ $t('Check Out') }}</span>
                     <svg width="13px" height="10px" viewBox="0 0 13 10">
                         <path d="M1,5 L11,5"></path>
                         <polyline points="8 1 12 5 8 9"></polyline>
@@ -172,7 +184,10 @@ a
     transform: scale(.96)
 </style>
 <style scoped>
-
+.col-sm-2, .col-xs-12,.col-xs-3{
+    padding: 0;
+    font-size: 16px;
+}
 @media (max-width: 767px) {
     .cart {
         padding: 4vh;
@@ -215,7 +230,7 @@ a
     border-top-left-radius: 1rem;
 }
 .summary {
-    background-color: #ddd;
+    background-color: #00000017;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     padding: 4vh;
@@ -231,29 +246,25 @@ a
     margin: 0;
 }
 .title b {
-    font-size: 1.5rem;
+   font-size: 16;
 }
 .main {
     margin: 0;
     padding: 2vh 0;
     width: 100%;
 }
-.col-2,
-.col {
-    padding: 0 1vh;
-}
+
 a {
     padding: 0 1vh;
     border: 1px solid;
 }
 .close {
     margin-left: auto;
-    font-size: 0.7rem;
+   font-size: 16;
     cursor: pointer;
 }
 img {
-    width: 5.5rem;
-    border-radius: 50%;
+    width: 100%;
     transition: 1s;
 }
 h5 {
@@ -289,23 +300,25 @@ input:focus::-webkit-input-placeholder {
     z-index: 2;
 }
 .store {
-    font-size: 1.5rem;
+    font-size: 2vw;
     text-align: center;
-    width: 100%;
-    border: 2px solid #fff;
+    width: 90%;
+    border: 2px solid #eee;
     height: auto;
     padding: 2vh;
-    background-color: var(--bl);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
 }
-.store span {
-    margin-left: 10px;
-    color: #fff;
+.store .store_title {
+    display: grid;
+    align-content: center;
 }
 .btn {
     background-color: var(--bl);
     color: white;
     width: 100%;
-    font-size: 0.8rem;
+   font-size: 16;
     margin-top: 4vh;
     padding: 1vh;
     border-radius: 2px;
@@ -322,15 +335,15 @@ input:focus::-webkit-input-placeholder {
     padding: 0 8px;
 }
 .quantity {
-    font-size: 2vh;
+   font-size: 16;
     border-color: #fff;
 }
 .cart-quantity {
-    font-size: 13px;
+    font-size: 16px;
 }
 .price {
     font-weight: bold;
-    color: rgb(226, 176, 37);
+    color: var(--bl);
 }
 .btn:focus {
     box-shadow: none;
@@ -365,7 +378,7 @@ a:hover {
     }
     .cart {
         padding: 0;
-        font-size: 12px;
+        font-size: 2vw;
     }
     .cart-items {
         display: inline-block;
@@ -416,7 +429,7 @@ export default {
             for (var i = 0; i < len; i++) {
                 price +=
                     this.$store.state.cartItems[i].quantity *
-                    this.$store.state.cartItems[i].store_product.price;
+                    this.$store.state.cartItems[i].store_product;
                     console.log(typeof( this.$store.state.cartItems[i].store_product))
             }
             console.log(len);

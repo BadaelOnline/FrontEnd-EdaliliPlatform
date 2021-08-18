@@ -1,7 +1,7 @@
 <template>
        <div class="unavaible_product" >
         <img src="../../../public/img/unavalible.jpg">
-       <h2>Ops... Products not available.</h2> 
+       <h2>{{ $t('Cart is Empty') }}</h2> 
       </div>
 </template>
 <style scoped>

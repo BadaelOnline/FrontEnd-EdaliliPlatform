@@ -77,26 +77,45 @@
     "TheFamousBrands": "The most famous brands",
     "LatestSearches": "Latest searches",
     "More": "More",
-    "AddCart": "Add to cart",
     "GoToCart": "Go to the cart",
     "SaturdayFriday": "Saturday - Friday",
     "SweidaQanawatRoad": "Sweida - Qanawat Road",
     "Thevisits": "The visits",
 
     "//comment6": "cart",
+    "Add to Cart": "Add to Cart",
     "ShoppingCart": "Shopping cart",
     "price": "price",
     "ShippingCosts": "Shipping costs",
-    "The priceWithShippingCosts": "The price is with shipping costs",
+    "totalPrice": "Total Price :",
+    "The Seller": "The Seller",
+    "Check Out" : "Check Out",
+    "Cart is Empty": "Cart is Empty",
+    "Continue shopping":"Continue shopping",
+   
 
-    "//comment7": "emptycart",
-    "YourCartEmpty": "Your cart is empty",
-    "YouGoHomePageViewFoodItems": "You can go to home page to view more food items",
-
-    "//comment8": "product",
+    "//comment7": "product",
     "Choose": "Choose",
+    "discription": "discription :",
+    "Name": "Name :",
+    "stores": "stores",
+    "Available in":"available in",
+    "Even":"even",
+    "sorting stores": "sorting stores :",
+    "closest to farthest": "Closest to Farthest",
+    "farthest to closest": "Farthest to Closest",
+    "expensive to cheapest": "Expensive to Cheapest",
+    "cheapest to expensive": "Cheapest to Expensive",
+    "Choose a store to view the product price": "Choose a store to view the product price",
+    "you can not add to cart without select store": "you can't add to cart without select store",
+    "Product Status": "Product Status",
+    "unselect store":"You haven't made a choice yet",
+    "Sp": "S.P",
+    "select store from here": "select store from here",
+    
+   
 
-    "//comment9": "minicart",
+    "//comment8": "minicart",
     "Buynow": "Buy now",
     "Gotocart": "Go to the cart"
 }
