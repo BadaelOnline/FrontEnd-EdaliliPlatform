@@ -1,5 +1,6 @@
 <template>
     <div class="products">
+        
         <Cartmini />
         <!--  show img  -->
 
@@ -27,7 +28,7 @@
         <!-- second Carousel -->
 
 
-      <swiper
+    <swiper
     :slides-per-view="(Product.length / 2) + 1"
     :space-between="50"
     @slideChange="onSlideChange"
@@ -52,16 +53,11 @@
             :image="items.image"
             :short_des="items.short_des"
             :name="items.name">
-            </product>
-            
-                                
-    </swiper-slide>
-   
-    
+            </product>                         
+    </swiper-slide>   
   </swiper>
-   
-  
-     
+
+<!-- Item slider end-->
         <!-- show market-->
         <div class="mar">
             <div
@@ -172,10 +168,9 @@
 <div class="separator"></div>
                 </div>
                 <div class="col-lg-9 col-sm-8 col-xs-10">
-               
-         
-      <swiper v-if="Product.length > 0"
-    :slides-per-view="4"
+              
+    <swiper
+    :slides-per-view="(Product.length / 2) + 1"
     :space-between="50"
     @slideChange="onSlideChange"
   >
@@ -199,14 +194,9 @@
             :image="items.image"
             :short_des="items.short_des"
             :name="items.name">
-            </product>
-            
-                                
-    </swiper-slide>
-   
-    
+            </product>                         
+    </swiper-slide>   
   </swiper>
-
                 </div>
             </div>
         </div>
@@ -217,51 +207,13 @@
         <img src="../../../public/img/unavalible.jpg">
        <h2>Ops... Products not available.</h2> 
       </div>
-                    <!-- <div
-                        class="row"
-                        style="
-                            margin: 30px 0 0 0;
-                            justify-content: space-around;
-                        "
-                        data-aos="zoom-in"
-                        data-aos-offset="200"
-                        data-aos-delay="50"
-                        data-aos-duration="1000"
-                        data-aos-easing="ease-in-out"
-                        data-aos-mirror="true"
-                        data-aos-once="true"
-                    >
-                        <div
-                            v-for="brand in brands.slice(9, 10)"
-                            :key="brand.id"
-                            :image="brand.image"
-                            class="col-sm-9 imgs"
-                        >
-                            <img :src="brand.image" style="width: 100%" />
-                        </div>
-                        <div class="two-img">
-                            <div
-                                v-for="brand in brands.slice(10, 11)"
-                                :key="brand.id"
-                                :image="brand.image"
-                                class="col-sm-1.5 imges1"
-                            >
-                                <img :src="brand.image" />
-                            </div>
-                            <div
-                                v-for="brand in brands.slice(11, 12)"
-                                :key="brand.id"
-                                :image="brand.image"
-                                class="col-sm-1.5 imges2"
-                            >
-                                <img :src="brand.image" />
-                            </div>
-                        </div>
-                    </div> -->
     </div>
 
 </template>
 <style lang="scss" scoped>
+.swiper-slide {
+    width: 180px !important;
+}
 $cubeWidth: 200px;
 $cubeHeight: 200px;
 $cubeDepth: $cubeHeight;
@@ -406,10 +358,6 @@ $cubeDepth: $cubeHeight;
 }
 </style>
 <style scoped>
-.swipre_products{
-    width: 200px !important;
-    margin: 0 23px !important;
-}
 .contain_Product{
     display: flex;
     margin-bottom: 30px;
@@ -418,16 +366,10 @@ $cubeDepth: $cubeHeight;
     scrollbar-width: thin;
     scrollbar-color: #ddd #eee ;
     }
-
-.row {
-    justify-content: center;
-}
 .show-img {
     width: 100%;
     height: 370px;
     border-radius: 7px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
-   
 }
 .show-prod {
     padding: 0 10px;
@@ -552,6 +494,7 @@ $cubeDepth: $cubeHeight;
     display: flex;
     justify-content: space-around;
     width: 100%;
+    margin-top: 2%;
 }
 .show-market {
     background-color: #fff;
@@ -665,12 +608,12 @@ $cubeDepth: $cubeHeight;
     color: gray;
 }
 /* ________________________________ End Products _______________________________*/
+
 </style>
 
 <script>
-  // Import Swiper Vue.js components
+ // Import Swiper Vue.js components
   import { Swiper, SwiperSlide } from 'swiper/vue';
-
   // Import Swiper styles
   import 'swiper/swiper.scss';
 import { mapState } from 'vuex';
@@ -683,9 +626,9 @@ export default {
     },
     name: 'products',
     components: {
-         Swiper,
+      Swiper,
       SwiperSlide,
-               product: defineAsyncComponent(() =>
+        product: defineAsyncComponent(() =>
             import(`@/components/global/product.vue`)
         ),
         
@@ -696,15 +639,14 @@ export default {
             import(`@/components/cart/Cartmini.vue`)
         ),
     },
-       methods: {
+    props: {
+        type: String,
+    },
+    methods: {
       onSlideChange() {
         console.log('slide change');
       },
     },
-    props: {
-        type: String,
-    },
-
     computed: {
         ...mapState([
             'Product',
@@ -719,6 +661,7 @@ export default {
         this.$store.dispatch('loadProducts');
         this.$store.dispatch('loadStores');
         this.$store.dispatch('loadBrands');
+
     },
 };
 </script>

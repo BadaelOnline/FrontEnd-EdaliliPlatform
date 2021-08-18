@@ -1,83 +1,65 @@
 <template>
+  <div id="backcover" class="backcover" @click="backcover()"></div>
     <div>
         <div
-            class="cart-shop-icon"
+            
             @click="totalPrice !== 0 ? showcart() : hidecart()"
             id="cart"
         >
-            <i class="fa fa-shopping-cart"></i>
-            <span class="cart-count">{{ cartItemCount }}</span>
+           
         </div>
-        <div id="cartshop" class="cart-shop">
-            <div class="row">
-                <div class="col-md-12 cart">
-                    <div
-                        v-for="items in cartItems"
-                        :key="items.id"
-                        class="row border-top border-bottom"
-                        style="padding: 10px 0"
-                    >
-                        <div class="cart-items">
-                            <div class="row" style="width: 100%">
-                                <div class="col-md-2 col-xs-12">
-                                    <img class="img" :src="items.image" />
-                                </div>
-                                <div class="col-md-3 col-xs-12">
-                                    {{ items.name }}
-                                </div>
-                                <div class="col-md-3 col-xs-12">
-                                    {{ items.short_des }}
-                                </div>
-                                <div class="col-md-2 col-xs-12 quantity-add">
-                                    <button
-                                        class="btnn"
-                                        @click="removeItem(items)"
-                                    >
-                                        <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <a class="quantity">
-                                        <span class="cart-quantity price">{{
-                                            items.quantity
-                                        }}</span></a
-                                    >
-                                    <button
-                                        class="btnn"
-                                        @click="addItem(items)"
-                                    >
-                                        <i class="fa fa-angle-up"></i>
-                                    </button>
-                                </div>
-                                <div class="col-md-2 col-xs-12">
-                                    <span
-                                        class="price"
-                                        >{{ items.store_product.price}}</span
-                                    >
-                                    <span
-                                        @click="removeFromCart(items)"
-                                        class="close fa fa-trash " style="font-size: 1.7rem;"
-                                    ></span>
-                                </div>
-                            </div>
-                        </div>
+         
+        <div id="cartshop"  class="cart-shop">
+            <div class="contain_details" v-for="items in cartItems.slice(cartItems.length -1,cartItems.length)"
+                        :key="items.id">
+                <div class="name_img">
+                    <div class="img">
+                        <img  v-if="items.image" :src="items.image" />
+                        <img  v-else src="../../../public/img/products1.jpg" />
                     </div>
-                    <div class="col">
-                        <button class="button">
-                            <span>{{ $t('Buynow') }}</span>
+                    <div class="name">
+                        {{ items.name }}
+                    </div>
+                </div>
+                    <div class="discrption">
+                        {{ items.short_des }}
+                    </div>
+                    <div>
+                         <span>{{ $t('price') }}:<span class="price">{{items.store_product}}</span></span>
+                    </div>
+                    
+                    <div class="contain_price">
+                        <span title="delete" @click="removeFromCart(items)" class="close fa fa-trash"></span>
+                     
+                        <span>{{ $t('totalPrice') }}<span class="price">{{totalPrice}}</span></span>
+                      
+                    </div>
+
+            </div> 
+                   
+                    <div>
+                        <button class="button"  @click="backcover()">
+                            <span>{{ $t('Continue shopping') }}</span>
                         </button>
                         <router-link to="/Cart">
                             <button class="button but1">
-                                <span>{{ $t('Gotocart') }}</span>
+                                <span>{{ $t('Check Out') }}</span>
                             </button>
                         </router-link>
                     </div>
-                </div>
+             
             </div>
-        </div>
+     
     </div>
 </template>
 <style scoped>
-
-/* ____________________________ Start Cart Shop ________________________________ */
+.name_img .img img{
+    width: 200px;
+    height: 260px;
+}
+.contain_details div{
+    margin-bottom: 20px;
+}
 .button {
     border-radius: 4px;
     background-color: var(--bl);
@@ -91,7 +73,10 @@
     cursor: pointer;
     margin: 5px;
 }
-
+.contain_price{
+    display: flex;
+    justify-content: space-around;
+}
 .button span {
     cursor: pointer;
     display: inline-block;
@@ -117,154 +102,42 @@
     opacity: 1;
     right: 0;
 }
-
 .close {
     cursor: pointer;
+    font-size: 16px;
 }
 .close:hover {
     color: red;
     font-size: 20px;
 }
-.cart-count {
-font-size: 12px;
-color: var(--r);
-margin-left: 23px;
-background: #ffffff;
-height: 18px;
-border-radius: 50%;
-width: 17px;
-position: absolute;
-margin-top: -13px;
-}
-.cart-shop-icon {
-    display: flex;
-justify-content: center;
-    position: fixed;
-    bottom: 10px;
-    left: 5px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--bl);
-    padding: 18px 10px;
-    border-radius: 50%;
-    z-index: 999;
-}
+
 .cart-shop {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    bottom: 0px;
-    visibility: hidden;
-    z-index: 998;
-    overflow-y: scroll;
-    height: 200px;
+    top: 0px;
+    height: 100%;
+    width: 360px;
+    z-index: 100;
+    left: -360px;
+    transition: all 0.5s;
+}
+.backcover{
+    background-color: rgba(0, 0, 0, 0.178);
+    position: fixed;
     width: 100%;
-    box-shadow: 0px 4px 20px 0 rgb(76, 109, 240), 1px 6px 30px 0px rgba(236, 19, 19, 0.19);
-    scrollbar-width: thin;
+    height: 100%;
+    z-index: 99;
+    top:  0;
+    display: none;
+    
+}
+.cart_vs{
+ left: 0;
 }
 .vs {
-    visibility: visible;
-}
-.title {
-    margin-bottom: 5vh;
-}
-.cart-items {
-    display: inline-flex;
-    width: 100%;
-}
-.col-md-2,
-.col-md-3 {
-    margin: auto;
-    font-size: 17px;
-}
-@media (max-width: 767px) {
-    .card {
-        margin: 3vh auto;
-    }
-    .cart {
-        padding: 4vh;
-    }
-    .summary {
-        border-top-right-radius: unset;
-        border-bottom-left-radius: 1rem;
-    }
-}
-.cart {
-    background-color: #dddcdc;
-    padding: 4vh 5vh;
-}
-.summary {
-    background-color: #ddd;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    padding: 4vh;
-    color: rgb(65, 65, 65);
-}
-.row {
-    margin: 0;
-}
-.title b {
-    font-size: 1.5rem;
-}
-.main {
-    margin: 0;
-    padding: 2vh 0;
-    width: 100%;
-}
-a {
-    padding: 0 1vh;
-}
-.close {
-    margin-left: auto;
-    font-size: 0.7rem;
-}
-img {
-    width: 6.5rem;
-    border-radius: 50%;
-    transition: 1s;
-}
-.img:hover {
-    transform: scale(1.3);
-    z-index: 2;
-}
-.store {
-    font-size: 1rem;
-    text-align: left;
-    width: 100%;
-    border: 2px solid #fff;
-    height: 50px;
-    padding: 1vh;
-    background-color: var(--bl);
-}
-.store span {
-    margin-left: 10px;
-    color: #fff;
-}
-h5 {
-    margin-top: 4vh;
-}
-hr {
-    margin-top: 1.25rem;
-}
-form {
-    padding: 2vh 0;
-}
-select {
-    border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 1.5vh 1vh;
-    margin-bottom: 4vh;
-    outline: none;
-    width: 100%;
-    background-color: rgb(247, 247, 247);
-}
-input {
-    border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 1vh;
-    margin-bottom: 4vh;
-    outline: none;
-    width: 100%;
-    background-color: rgb(247, 247, 247);
-}
-input:focus::-webkit-input-placeholder {
-    color: transparent;
+    display: block;
 }
 .btnn {
     color: #fff;
@@ -274,69 +147,16 @@ input:focus::-webkit-input-placeholder {
     border: none;
     border-radius: 9px;
 }
-.btn {
-    background-color: var(--bl);
-    color: white;
-    font-size: 0.8rem;
-    padding: 1vh;
-    border-radius: 2px;
-    height: 50px;
-    margin: 5vh;
-}
+
 .quantity {
     font-size: 2vh;
     border-color: #fff;
+    margin: 0 15px;
 }
 .price {
     font-weight: bold;
-    color: rgb(202, 150, 6);
+    color: var(--bl);
     font-size: 16px;
-}
-.btn:focus {
-    box-shadow: none;
-    outline: none;
-    box-shadow: none;
-    color: white;
-    -webkit-box-shadow: none;
-    -webkit-user-select: none;
-    transition: none;
-}
-.btn:hover {
-    color: white;
-}
-a {
-    color: black;
-}
-a:hover {
-    color: black;
-    text-decoration: none;
-}
-#code {
-    background-image: linear-gradient(
-            to left,
-            rgba(255, 255, 255, 0.253),
-            rgba(255, 255, 255, 0.185)
-        ),
-        url('https://img.icons8.com/small/16/000000/long-arrow-right.png');
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: center;
-}
-@media (max-width: 575.98px) {
-    .cart {
-        padding: 5px 2px 2px 0;
-    }
-    .close {
-        font-size: 15px;
-    }
-    .close:hover {
-        color: red;
-        font-size: 20px;
-    }
-    .col-md-2,
-    .col-md-3 {
-        margin-top: 1vh;
-    }
 }
 </style>
 
@@ -351,20 +171,28 @@ export default {
         return {};
     },
     methods: {
+        backcover(){
+        var cart = document.getElementById('cartshop');
+        var backcover = document.getElementById('backcover');
+        backcover.classList.remove('vs');
+        cart.classList.remove('cart_vs');
+        },
         showcart: function () {
             var cart = document.getElementById('cartshop');
-            cart.classList.toggle('vs');
+            var backcover = document.getElementById('backcover');
+            backcover.classList.toggle('vs');
+            cart.classList.toggle('cart_vs');
         },
         hidecart: function () {
-            var cart = document.getElementById('cartshop');
+            var cart = document.getElementById('cartshop');     
             cart.classList.remove('vs');
         },
-        addItem(items) {
-            this.$store.dispatch('addToCart', items);
-        },
-        removeItem(items) {
-            this.$store.dispatch('removeItem', items);
-        },
+        // addItem(items) {
+        //     this.$store.dispatch('addToCart', items);
+        // },
+        // removeItem(items) {
+        //     this.$store.dispatch('removeItem', items);
+        // },
         removeFromCart(item) {
             this.$store.commit('removeFromCart', item);
         },
@@ -373,20 +201,25 @@ export default {
         cartItems() {
             return this.$store.state.cartItems;
         },
-        cartItemCount() {
-            return this.$store.state.cartItemCount;
-        },
+        // cartItemCount() {
+        //     return this.$store.state.cartItemCount;
+        // },
         totalPrice() {
             let price = 0;
-            this.$store.state.cartItems.map((el) => {
-                price += el['quantity'] * el['price'];
-            });
+            let len = this.$store.state.cartItems.length;
+            for (var i = 0; i < len; i++) {
+                price +=
+                    this.$store.state.cartItems[i].quantity *
+                    this.$store.state.cartItems[i].store_product;
+                    console.log(typeof( this.$store.state.cartItems[i].store_product))
+            }
+            console.log(len);
             return price;
         },
         ...mapState(['store']),
     },
-    // mounted () {
-    //     this.$store.dispatch('loadstore');
-    // },
+    //  mounted () {
+   
+    //  },
 };
 </script>

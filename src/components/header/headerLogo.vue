@@ -8,17 +8,7 @@
             <div id="loader" class="loader"></div>
         </div>
 
-        <div
-            v-if="authenticated"
-            class="alert animate__animated animate__swing"
-            id="alert"
-        >
-            <i
-                class="fa fa-check-square"
-                style="font-size: 22px; margin: 10px"
-            ></i>
-            <span>Success Login</span>
-        </div>
+      
         <div class="form-popup animate__animated animate__swing" id="myForm">
             <form action="/action_page.php" class="form-container">
                 <h1>Log<span>in</span></h1>
