@@ -885,19 +885,6 @@ export default {
                 },
                 this.id
             );
-            document.getElementById('cart').animate(
-                [
-                    // keyframes
-                    { transform: 'rotate(-20deg)' },
-                    { transform: 'rotate(20deg)' },
-                    { transform: 'scale(3,3)' },
-                    { transform: 'scale(1,1)' },
-                ],
-                {
-                    // timing options
-                    duration: 1000,
-                }
-            );
             this.showcart();
             }
         },

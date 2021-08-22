@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar">
+    <div class="navba">
         <span class="fa fa-angle-double-right logo"></span>
         <div class="links hov">
             <router-link to="/instrc" exact class="links">
@@ -103,60 +103,87 @@
 export default {
     name: 'navbarHeader',
     methods: {
-        expand() {
-            document.querySelector('.navbar').classList.toggle('closed');
-            document.querySelector('.navbar').classList.toggle('close');
-        },
     },
 };
 </script>
 
 <style scoped>
-.expand {
+
+.navba {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    background-color: #1c2c34;
+    position: relative;
+   transition: all 0.5s;
+  
+  
+}
+.navba .logo {
+        display: none;
+
+}
+/* Medium devices (tablets, 768px and up) */
+@media  (max-width: 991.98px) {
+.navba {
+    justify-content: center;
+   width: 5%;
+    border-bottom-right-radius: 10px;
+    height: 40px;
+    flex-flow: wrap; 
+}
+
+.navba div{
     display: none;
 }
-.links {
+.navba .logo {
     display: block;
-    margin: 5px auto;
-    text-decoration: none;
-    transition: all 0.8s ease;
+    color: #fff;
+    transform: rotate(90deg);
+        position: absolute;
+        top: 30%;
+        left: 30%;
+    width: 10px;
+}
+.navba:hover {
+    width: 100%;
+    height:auto;
+}
+.navba:hover .logo{
+    top: 2%;
+    left: 2%;
+    transform: rotate(-90deg);
+}
+
+.navba:hover div{
+    display: block;
+}
 }
 .hov {
     width: 100px;
-}
-.hov:hover,
-.hov:active {
-    transform: scale3d(1.1, 1.1, 1.1);
-    /* background-color: #536976; */
 }
 .linkText {
     color: #fff;
     font-size: 18px;
     margin-top: 10px;
 }
-.logo {
-    display: none;
-}
- .navbar {
-     margin: 0;
- }
-@media (max-width: 1020px) {
+/* @media (max-width: 1030px) {
     .navbar {
         position: fixed;
-        height: 100vh;
-        width: 50px;
+       height: 10px;
+        width: 100%;
         z-index: 1000;
         right: 0px;
-        top: 0;
+        top: 206px;
         bottom: 0;
         transition: width 200ms ease;
+        display: flex;
+        flex-flow: wrap;
     }
     .navbar:hover {
-        width: 200px;
+        height: 120px;
     }
-    .navbar:hover .linkText {
-        display: block;
-    }
+  
     .hov .links {
         margin: auto;
         display: flex;
@@ -180,5 +207,5 @@ export default {
     .navbar:hover .logo {
         transform: rotate(-180deg);
     }
-}
+} */
 </style>

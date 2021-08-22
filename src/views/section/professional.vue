@@ -1,9 +1,5 @@
 <template>
-    <div class="parent">
-  <h2>
-    professional
-  </h2>
-    </div>
+  <h2>asdsad</h2>
 </template>
 <script>
 export default {
@@ -16,6 +12,7 @@ export default {
 };
 </script>
 <style scoped>
+
 
 
 </style>

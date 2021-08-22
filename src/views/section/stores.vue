@@ -1,7 +1,7 @@
 <template>
     <div class="parent">
        
-<main v-if="filterSearch.length > 0">
+<main v-if="filterSearch.length > 0" style="padding:0">
         <div class="board board2">
             <div class="form__group field">
                 <input
@@ -15,15 +15,16 @@
                 <label for="name" class="form__label">Search Store</label>
             </div>
         </div>
-	<ul id="cards">
+	<ul id="cards"  style="padding:0">
 		<li class="cards"                     
-        v-for="store in filterSearch.slice(0,4)"
+        v-for="store in filterSearch"
         :key="store.id"
         :store="store">
 			<div class="card__content">
 				<div>
 					<h2>{{ store.title }}</h2>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+					<p>650 m away.</p>
+                   
                     <div>                    
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -35,6 +36,8 @@
                         >{{ $t('visit') }}</router-link>
 				</div>
 				<figure>
+                    <div v-if="store.is_active == 'Active'" class="open"><img src="../../../public/img/open.svg" alt=""></div>
+                    <div v-else class="cloed"><img src="../../../public/img/closed.svg" alt=""></div>
 					<img src="../../../public/img/market-logo.png" alt="Image description">
 				</figure>
 			</div>
@@ -63,70 +66,79 @@
         </div>
         <hr style="width: 90%;">
         <h2>الفئات</h2>
-                        <ul class="nav-list">
-                    <li
-                        class="nav-item"
-                        v-for="section in Sections"
+            <nav class="menu" v-for="section in Sections"
                         :key="section.id"
-                    >
-                        <a
-                            ><label>{{ section.name }}</label
-                            ><input type="checkbox" 
-                        /></a>
+                        :category="section.category">
+                <ol >
+                    <li class="menu-item" >
+                        <a href="#0">{{section.name}}</a>
+                        <ol class="sub-menu">
+                        <li class="menu-item" v-for="categor in section.category"  :key="categor">{{categor.name}}</li>
+                            
+                        </ol>
                     </li>
-                </ul>
+                                                
+                </ol>
+            </nav>                                        
     <hr style="width: 90%;">
                  <h2>التقييمات</h2>
-                      <label class="rating">    
-                          <div>            
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    </div>    
-                   <input type="radio" id="rating5" name="radios">
-                    </label>
-                    <label class="rating">    
-                          <div>            
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star "></span>
-                    </div>    
-                      <input type="radio" id="rating4" name="radios">
-                    </label>
-                                          <label class="rating" >    
-                          <div>            
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star "></span>
-                    <span class="fa fa-star "></span>
-                    </div>    
-                       <input type="radio" id="rating3" name="radios">
-                    </label>
-                                          <label class="rating" >    
-                          <div>            
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    </div>    
-                      <input type="radio" id="rating2" name="radios"> 
-                    </label>
-                                          <label class="rating" >    
-                          <div>            
-                    <span class="fa fa-star checke"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    </div>    
-                     <input type="radio" id="rating1" name="radios">
-                    </label>
+                 <div>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad">
+    <div class="rad-design"></div>
+    <div class="rad-text">                    
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span></div>
+  </label>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad">
+    <div class="rad-design"></div>
+    <div class="rad-text">  
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star "></span></div>
+  </label>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad">
+    <div class="rad-design"></div>
+    <div class="rad-text">    
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star "></span>
+        <span class="fa fa-star "></span></div>
+  </label>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad">
+    <div class="rad-design"></div>
+    <div class="rad-text">         
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span></div>
+  </label>
+    <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad">
+    <div class="rad-design"></div>
+    <div class="rad-text">         
+        <span class="fa fa-star checke"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span></div>
+  </label>
+
+</div>
 
         </div>
     </div>
@@ -167,6 +179,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('loadStores');
+        
     },
     methods: {
         fetch() {
@@ -176,7 +189,8 @@ export default {
                 .get(`/api/sections/getAll?lang=${lang}`)
                 .then((res) => {
                     self.Sections = res.data.Section;
-                    console.warn('Data SUCCESS: ', res.data.Section);
+                    console.warn('Section: ', res.data.Section);
+                    
                 })
                 .catch(function (error) {
                     console.warn('------ Error ------: ', error);
@@ -204,13 +218,14 @@ export default {
 }
 .filter{
     width: 25%;
-    background-color: #dfdfdf;
+    border-left: 1px solid #ddd;
 }
 
 main {
 	width: 60vw;
 	margin: 20px auto;
 }
+
 #cards {
 	list-style: none;
 	display: grid;
@@ -246,7 +261,16 @@ main {
 	grid-area: img;
 	overflow: hidden;
     margin: 0;
+    position: relative;
 }
+.card__content > figure .open,.card__content > figure .cloed{
+position: absolute;
+
+}
+.card__content > figure .open img,.card__content > figure .cloed img{
+width: 10vw;
+}
+
 
 .card__content > figure > img {
 	width: 100%;
@@ -318,25 +342,31 @@ border: none;
 a:active {
     color: #bf4848;
 }
-.rating{
-    margin: 15px 0;
-    display: flex;
-    justify-content: space-around;
-     cursor: pointer;
-}
-.rating .checke{
-   color: #5f6368;
-}
-.rating:hover .checke{
-   color: #dcd741;
-}
 .board2{
     display: none;
 }
 .filter .fa-star{
    font-size: 1vw;
 }
+/* Medium devices (tablets, 768px and up) */
 @media (max-width: 991.98px) {
+        main {
+	width: 80vw;
+}
+.card__content h2 {
+	font-size: 4vw;
+}
+
+.card__content p {
+    font-size: 3vw;
+}
+.fa-star {
+    color: #cac9c9;
+    font-size: 4vw;
+}
+.card__content .btn {
+font-size: 3vw;
+}
 .board2{
     display: block;
     color: #eee;
@@ -365,6 +395,56 @@ a:active {
    font-size: 3em;
     color: gray;
 }
+.rad-label {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 100px;
+  padding: 14px 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.rad-label:hover,
+.rad-label:focus-within {
+  background: hsla(0, 0%, 80%, .14);
+}
+.rad-label:hover .checke{
+    color: #40afd7;
+}
+.rad-label:focus-within .checke{
+ color: #40afd7;
+}
+.rad-input {
+ position: absolute;
+ opacity: 0;
+  
+}
+.rad-design {
+  width: 22px;
+  height: 22px;
+  border-radius: 100px;
+
+  background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
+  position: relative;
+}
+
+.rad-design::before {
+  content: '';
+
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+
+  background: hsl(0, 0%, 90%);
+  transform: scale(1.1);
+  transition: .3s;
+}
+
+.rad-input:checked+.rad-design::before {
+  transform: scale(0);
+}
 </style>
 <style lang="scss" scoped>
 .board {
@@ -383,8 +463,8 @@ a:active {
 }
 $primary: #de3016;
 $secondary: #00bad4;
-$white: #fff;
-$gray: #ffffff;
+$white: #494c4f;
+$gray: #494c4f;
 .form__group {
     position: relative;
     padding: 15px 0 0;
@@ -448,4 +528,182 @@ $gray: #ffffff;
         box-shadow: none;
     }
 }
+      
 </style>
+<style lang="sass" scoped>
+$black: #2A363B
+$red: #00bcd078
+$red-dark: #C06C84
+$orange: #00bad5
+$yellow: #f53843
+$white: #FFF
+
+@mixin mobile
+  @media screen and (max-width: 600px)
+    @content
+
+.menu
+  background: $red
+  height: 4rem
+  
+  
+  ol
+    list-style-type: none
+    margin: 0 auto
+    padding: 0
+    
+  > ol
+    max-width: 1000px
+    padding: 0 2rem
+    display: flex
+    
+    > .menu-item
+      flex: 1
+      padding: 0.75rem 0
+      
+      &:after
+        content: ''
+        position: absolute
+        width: 4px
+        height: 4px
+        border-radius: 50%
+        bottom: 5px
+        left: calc(50% - 2px)
+        background: $yellow
+        will-change: transform
+        transform: scale(0)
+        transition: transform 0.2s ease
+      
+      &:hover:after
+        transform: scale(1)
+  
+  &-item
+    position: relative
+    line-height: 2.5rem
+    text-align: center
+    color: $white
+    cursor: pointer
+    border-bottom: 1px solid #eee
+    a
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+      display: block
+      color: $white
+    
+    @at-root .sub-menu &
+      padding: 0.75rem 0
+      background: #f53843
+      opacity: 0
+      transform-origin: bottom
+      animation: enter 0.2s ease forwards
+      
+      @for $n from 1 through 3
+        &:nth-child(#{$n})
+          animation-duration: 0.2s + 0.1s * ($n - 1)
+          animation-delay: 0.1s * ($n - 1)
+      
+      &:hover
+        background: $orange
+      
+      a
+        padding: 0 0.75rem
+        
+      @include mobile
+        background: $red-dark
+
+  @include mobile
+    position: relative
+    
+    &:after
+      content: ''
+      position: absolute
+      top: calc(50% - 2px)
+      right: 1rem
+      width: 30px
+      height: 4px
+      background: $white
+      box-shadow: 0 10px $white, 0 -10px $white
+      
+    > ol
+      display: none
+      background: $red
+      flex-direction: column
+      justify-content: center
+      height: 100vh
+      animation: fade 0.2s ease-out
+      
+      > .menu-item
+        flex: 0
+        opacity: 0
+        animation: enter 0.3s ease-out forwards
+        
+        @for $n from 1 through 5
+          &:nth-child(#{$n})
+            animation-delay: 0.1s * ($n - 1)
+        
+        & + .menu-item
+          margin-top: 0.75rem
+          
+        &:after
+          left: auto
+          right: 1rem
+          bottom: calc(50% - 2px)
+        
+        &:hover
+          z-index: 1
+      
+    &:hover
+      > ol
+        display: flex
+      
+      &:after
+        box-shadow: none
+      
+.sub-menu
+  position: absolute
+  width: 100%
+  top: 100%
+  left: 0
+  display: none
+  z-index: 1
+  
+  @at-root .menu-item:hover > &
+    display: block
+    
+  @include mobile
+    width: 100vw
+    left: -2rem
+    top: 50%
+    transform: translateY(-50%)
+  
+html, body
+  font-size: 16px
+  font-family: 'Fira Mono', monospace
+  margin: 0
+  background: $black
+ 
+*
+  box-sizing: border-box
+
+  &:before, &:after
+    box-sizing: inherit
+
+a
+  text-decoration: none
+  
+@keyframes enter
+  from
+    opacity: 0
+    transform: scaleY(0.98) translateY(10px)
+  to
+    opacity: 1
+    transform: none
+    
+@keyframes fade
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+</style> scoped>

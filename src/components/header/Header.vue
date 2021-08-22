@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div id="myHeader" class="header">
         <div
             v-if="!authenticated"
             class="content_loader hidden"
@@ -19,13 +19,14 @@
             ></i>
             <span>Success Login</span>
         </div>
-        <headerLogo class="navlogo" />
-        <navbarHeader class="navbar" />
+        <headerLogo id="navlogo" class="navlogo" />
+        <navbarHeader id="navbar" />
         <banarHeader />
     </div>
 </template>
 
 <script>
+// import $ from 'jquery';
 import { mapGetters, mapActions } from 'vuex';
 import jeson from '@/jeson/MOCK_DATA.json';
 import banarHeader from '@/components/header/banarHeader.vue';
@@ -233,6 +234,26 @@ export default {
             }
         },
     },
+    mounted(){
+        window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var navlogo = document.getElementById("navlogo");
+var navbar= document.getElementById("navbar");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("pad_stick");
+    navlogo.classList.add("sticky");
+    navbar.classList.add("sticky2");
+  } else {
+    header.classList.remove("pad_stick");
+    navlogo.classList.remove("sticky");
+    navbar.classList.remove("sticky2");
+  }
+}
+    }
 };
 </script>
 
@@ -260,156 +281,6 @@ export default {
 .warnig_pass {
     color: red;
     display: none;
-}
-/* ____________________________________ form sign popup  _______________________________ */
-/* The popup form - hidden by default */
-.form-popup {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 3px solid #959393;
-    z-index: 9;
-    font-size: 18px;
-}
-.form-popup h1 {
-    font-size: 40px;
-    color: var(--red);
-}
-.form-popup h1 span {
-    font-size: 40px;
-    color: var(--blue);
-}
-.form-popup span {
-    font-size: 18px;
-}
-/* Add styles to the form container */
-.form-container {
-    width: 450px;
-    padding: 10px;
-    background-color: #a6a1a1;
-    height: 516px;
-}
-/* Full-width input fields */
-.form-container input[type='text'],
-.form-container input[type='password'] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-}
-/* When the inputs get focus, do something */
-.form-container input[type='text']:focus,
-.form-container input[type='password']:focus {
-    background-color: #ddd;
-    outline: none;
-}
-/* Set a style for the submit/login button */
-.form-container .btn {
-    background-color: var(--blue);
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 10px;
-    opacity: 0.8;
-}
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    background-color: var(--red);
-    color: #fff;
-    padding: 5px 10px;
-    border-bottom-right-radius: 20px;
-    cursor: pointer;
-}
-/* Add some hover effects to buttons */
-.form-container .btn:hover {
-    opacity: 1;
-}
-/* ____________________________________ form register popup  _______________________________ */
-/* The popup form - hidden by default */
-.form-popup2 {
-    display: none;
-    position: fixed;
-    bottom: -6px;
-    right: 15px;
-    border: 3px solid #959393;
-    z-index: 8;
-    font-size: 18px;
-}
-.form-popup2 h1 {
-    font-size: 40px;
-    color: var(--red);
-}
-.form-popup2 h1 span {
-    font-size: 40px;
-    color: var(--blue);
-}
-.form-popup2 span {
-    font-size: 18px;
-}
-/* Add styles to the form container */
-.form-container2 {
-    width: 450px;
-    padding: 10px;
-    background-color: #a6a1a1;
-    height: 521px;
-}
-/* Full-width input fields */
-.form-container2 input[type='text'],
-.form-container2 input[type='password'] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-}
-/* When the inputs get focus, do something */
-.form-container2 input[type='text']:focus,
-.form-container2 input[type='password']:focus {
-    background-color: #ddd;
-    outline: none;
-}
-/* Set a style for the submit/login button */
-.form-container2 .btn {
-    background-color: var(--blue);
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 10px;
-    opacity: 0.8;
-}
-/* Add a red background color to the cancel button */
-.form-container2 .cancel {
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    background-color: var(--red);
-    color: #fff;
-    padding: 5px 10px;
-    border-bottom-right-radius: 20px;
-    cursor: pointer;
-}
-.form-container2 .ret {
-    position: absolute;
-    right: -2px;
-    top: -2px;
-    background-color: var(--blue);
-    color: #fff;
-    padding: 5px 10px;
-    border-bottom-left-radius: 20px;
-    cursor: pointer;
-}
-/* Add some hover effects to buttons */
-.form-container2 .btn:hover {
-    opacity: 1;
 }
 /* ____________________________________ loading  _______________________________ */
 .content_loader {
@@ -454,18 +325,43 @@ export default {
 }
 /* header */
 .header {
-    background-color: #c0c4c7;
+    background-color: #f4f3f3;
     height: auto;
     margin: 0;
     padding: 0;
+
+}
+.pad_stick{
+    padding-bottom: 150px;
 }
 .navlogo {
     background-color: #1c2c34;
+     position: sticky;
+     height: 65px;
 }
-.navbar {
-    background-color: #243035;
-    /* opacity: 70; */
+.sticky {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
 }
+.sticky2 {
+  position: fixed;
+  width: 100%;
+  top: 65px;;
+  z-index: 100;
+}
+/* Medium devices (tablets, 768px and up) */
+@media  (max-width: 991.98px) {
+.navlogo {
+    height: auto;
+}
+.sticky2 {
+  position: fixed;
+  width: 5%;
+  top: 207px !important;
+}
+}
+
 .background {
     display: grid;
     align-content: space-between;

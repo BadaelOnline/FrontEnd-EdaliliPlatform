@@ -646,7 +646,7 @@ export default {
 }
 /* navbar */
 nav {
-    height: auto;
+    height: 65px;
     width: 100%;
     padding: 0;
     display: flex;
@@ -655,15 +655,12 @@ nav {
 }
 nav .logo {
     width: 12%;
-    margin-right: 20px;
 }
 nav .nav_bar {
     width: 88%;
     display: flex;
-    margin-left: 20px;
 }
 nav img {
-    margin-left: 20px;
     margin-top: 20px;
     float: left;
     cursor: pointer;
@@ -760,6 +757,7 @@ select {
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     nav {
+        height: auto;
         flex-direction: column;
     }
     nav .logo {
@@ -782,6 +780,7 @@ select {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
     nav {
+         height: auto;
         flex-direction: column;
     }
     nav .logo {
@@ -804,6 +803,7 @@ select {
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     nav {
+          height: auto;
         flex-direction: column;
     }
     nav .logo {

@@ -1,5 +1,7 @@
 <template>
     <div class="visit">
+        <Cartmini />
+         <div ref="cover_black" class="cover_black"  v-if="ShowDetails" @click="ShowDetails = false"></div>
         <!-- banar -->
         <!-- <div class="example">{{ storeID.title }}</div> -->
         <div
@@ -50,7 +52,7 @@
             </a>
         </div>
         <!-- profile store -->
-        <div class="card">
+        <div class="cards">
             <div class="profile-sidebar">
                 <img
                     src="../../../../public/img/market-logo.png"
@@ -164,80 +166,101 @@
         </div>
        
            <header>Our Products</header>
- <!-- Products -->
+    <!-- Products -->
                           <div class="contain_products">
-         
-            <div class="container"                        
-                        v-for="prod in Products.slice(0, 4)"
-                        :key="prod.id"
-                        :id="prod.id"
-                        :long_des="prod.long_des"
-                        :store="prod.store">
-                <div class="product-details">
-                    <h1>bliss</h1>
+                                
+             <div class="small"  v-for="items in Products"  @click="ShowDetails = true;
+              dataDetails(items.id,items.name,items.long_des,items.pivot.price)"
+                        :key="items"
+                        :id="items.id">
+	 <article class="recipe">
+		<div class="pizza-box">
+		   <img :src="`${items.image}`" v-if="items.image" class="new" />
+            <img v-else src="../../../../public/img/products1.jpg" class="new" />
+		</div>
+		<div class="recipe-content">
 
 
-                    <p class="information">
-                        {{prod.short_des}}
-                    </p>
-                    <span class="hint-star star">
-                        <i class="fa fa-star checked" aria-hidden="true"></i>
-                        <i class="fa fa-star checked" aria-hidden="true"></i>
-                        <i class="fa fa-star checked" aria-hidden="true"></i>
-                        <i class="fa fa-star checked" aria-hidden="true"></i>
-                          <i class="fa fa-star" aria-hidden="true"></i>
-                      
-                    </span>
-                    <div class="control">
-                        <button class="btn">
-                            <span class="price">$50</span>
-                            <span class="shopping-cart"
-                                ><i
-                                    class="fa fa-shopping-cart"
-                                    aria-hidden="true"
-                                ></i
-                            ></span>
-                            <span class="buy">Buy Now</span>
-                        </button>
-                    </div>
-                </div>
+			<h1 class="recipe-title"><a> {{items.name}}</a></h1>
 
-                <div class="product-image">
-                    <img src="../../../../public/img/pro1-1.png" alt="" />
+			<p class="recipe-metadata">
+				<span class="recipe-rating">★★★★<span>☆</span></span>
+				<span class="recipe-votes">(12 votes)</span>
+			</p>
 
-                    <div class="info">
-                        <h2>Description</h2>
-                        <ul>
-                            <li><strong>Price : </strong> $50</li>
-                            <li><strong>Weight : </strong>750 gram</li>
-                        </ul>
-                    </div>
-                </div>
+			<p class="recipe-desc">{{items.short_des}}.</p>
+            <p class="recipe-tags">
+				<span class="recipe-tag"> {{items.pivot.price}} S.P</span>
+			</p>
+
+
+		</div>
+	</article>
+</div>
+<div id="details" v-if="ShowDetails" class="contain_details animate__animated animate__backInDown">
+    <div class="imag">
+        <img :src="`${details.image}`" v-if="details.image"  />
+        <img v-else src="../../../../public/img/products1.jpg"  />
+    </div>
+    <div class="details">
+            
+            <div class="name" >
+                <h3 >{{details.name}}</h3>
             </div>
-         
+             <div class="long_des">
+                <p >{{details.long_des}}</p>
+            </div>
+             <div class="rating">
+                <p class="recipe-metadata">
+				    <span class="recipe-rating">★★★★<span>☆</span></span>
+				    <span class="recipe-votes">(12 votes)</span>
+			    </p>
+            </div>
+            <div class="price">
+                <p >{{details.price}} S.P</p>
+            </div>
+            <div class="add">
+            <button class="but1"  
+            @click="addToCart(details.id,details.name,details.short_des,details.long_des,details.price)">
+            
+            <span>{{$t('Add to Cart')}} </span>
+            
+            </button>
+            </div>
+   </div>
+    </div>
+                
+     
         </div>       
      
     </div>
 </template>
 
 <script>
-//   import { defineAsyncComponent } from 'vue';
+//  import $ from 'jquery';
+import { defineAsyncComponent } from 'vue';
 import axios from 'axios';
 export default {
     name: 'visitStore',
     data() {
         return {
             storeID: {},
-            Products: []
+            Products: [],
+            ShowDetails: false,
+            details:{
+                id: null,
+                name: "",
+                long_des: "",
+                price:null
+            }
         };
     },
     props: ['id'],
     components: {
+        Cartmini: defineAsyncComponent(() =>
+            import(`@/components/cart/Cartmini.vue`)
+        ),
       
-    
-        // Cartmini: defineAsyncComponent(() =>
-        //     import(`@/components/cart/Cartmini.vue`)
-        // ),
     },
     async created() {
         await axios
@@ -251,10 +274,116 @@ export default {
                 console.log('Error: ', error);
             });
     },
+    methods:{
+              showcart: function () {
+            var cart = document.getElementById('cartshop');
+            var backcover = document.getElementById('backcover');
+            backcover.classList.toggle('vs');
+            cart.classList.toggle('cart_vs');
+        },
+        dataDetails(i,n,lo,pr){
+            this.details.id = i;
+            this.details.name = n;
+            this.details.long_des = lo;
+            this.details.price = pr;
+         
+        },    
+        addToCart(i,n,sh,lo,s) {
+         
+            this.$store.dispatch(
+                'addToCart',
+                {
+                    id: i,
+                    id_store:  this.$route.params.id,
+                    title: this.$route.params.title,
+                    name: n,
+                    short_des: sh,
+                    long_des: lo,
+                    store_product: s,
+                },
+                this.id
+            );
+            this.showcart();
+            }
+        },
+      
+   
 };
 </script>
 
 <style scoped>
+.visit{
+    position: relative;
+}
+.contain_details{
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+}
+.contain_details .imag{
+    width: 30%;
+}
+.contain_details .imag img{
+    width: 100%;
+    height: 100%;
+}
+.contain_details .details{
+    display: grid;
+    width: 70%;
+}
+.contain_details .details .name,.contain_details .details.long_des,.contain_details .details.rating,.contain_details .details.price{
+    display: grid;
+    align-content: center;
+}
+.contain_details .details .name h3{
+    font-weight: bold;
+}
+.contain_details .details .long_des p{
+    opacity: .8;
+}
+.contain_details .details .price p{
+    color: #007bff;
+}
+.but1 {
+    border-radius: 4px;
+    background-color: #008b8b;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    width: 190px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+.but1 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.but1 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    font-size: 30px;
+}
+.but1:hover span {
+    padding-right: 25px;
+}
+.but1:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
 .fa-star {
     color: #cac9c9;
     font-size: 2rem;
@@ -351,7 +480,7 @@ export default {
 }
 /* end slide */
 /* start profile store */
-.card {
+.cards {
     margin: 20px auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     width: 95%;
@@ -442,7 +571,7 @@ export default {
     margin: 10px auto;
 }
 @media (max-width: 800px) {
-    .card {
+    .cards {
         flex-direction: column;
     }
 }
@@ -527,223 +656,6 @@ export default {
     color: #fff;
     font-weight: bold;
 }
-.contain_products{
-    display: flex;
-    justify-content: space-around;
-    padding-bottom: 50px;
-    flex-flow: wrap;
-  } 
-.contain_products .container{
-	box-shadow: 0 15px 30px 1px grey;
-	background: rgba(255, 255, 255, 0.90);
-	text-align: center;
-	border-radius: 5px;
-	overflow: hidden;
-    height: auto;
-    width: 48%;
-    padding: 0;
-    margin-bottom: 30px;
-
-	
-}
-
-
-.product-details {
-	position: relative;
-	text-align: left;
-	overflow: hidden;
-	padding: 30px;
-	height: 100%;
-	float: left;
-	width: 55%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.container .product-details h1{
-	font-family: 'Bebas Neue', cursive;
-	display: inline-block;
-	position: relative;
-	font-size: 30px;
-	margin: 0;
-	background: -webkit-linear-gradient(var(--r), var(--bl));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hint-star {
-	display: inline-block;
-	margin-left: 0.5em;
-	color: gold;
-	width: 100%;
-}
-
-.hint-star {
-    display: inline-block;
-    margin-left: 0.5em;
-    color: gold;
-    width: 100%;
-}
-
-.container .product-details > p {
-    font-family: 'EB Garamond', serif;
-    text-align: center;
-    font-size: 18px;
-    color: #7d7d7d;
-}
-.product-details .btn {
-    transform: translateY(0px);
-    transition: 0.3s linear;
-    background: #809fff;
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    color: #eee;
-    padding: 0;
-    margin: 0;
-}
-
-.product-details .btn:hover {
-    transform: translateY(-6px);
-    background: var(--bl);
-}
-
-.product-details .btn span {
-    font-family: 'Farsan', cursive;
-    transition: transform 0.3s;
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    margin: 0;
-}
-.product-details .btn .price,
-.product-details .shopping-cart {
-    background: var(--r);
-    border: 0;
-    margin: 0;
-}
-
-.product-details .btn .price {
-    transform: translateX(-10%);
-    padding-right: 15px;
-}
-
-.product-details .btn .shopping-cart {
-    transform: translateX(-100%);
-    position: absolute;
-    background: var(--r);
-    z-index: 1;
-    left: 0;
-    top: 0;
-}
-
-.product-details .btn .buy {
-    z-index: 3;
-    font-weight: bolder;
-}
-
-.product-details .btn:hover .price {
-    transform: translateX(-110%);
-}
-
-.product-details .btn:hover .shopping-cart {
-    transform: translateX(0%);
-}
-
-.product-image {
-    transition: all 0.3s ease-out;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-    float: right;
-    width: 45%;
-    display: inline-block;
-}
-
-.container img {
-    width: 100%;
-    height: 100%;
-}
-
-.info {
-    background: rgba(27, 26, 26, 0.9);
-    font-family: 'Bree Serif', serif;
-    transition: all 0.3s ease-out;
-    transform: translateX(-100%);
-    position: absolute;
-    line-height: 1.8;
-    text-align: left;
-    font-size: 105%;
-    cursor: no-drop;
-    color: #fff;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-}
-
-.info h2 {
-    text-align: center;
-}
-.product-image:hover .info {
-    transform: translateX(0);
-}
-
-.info ul li {
-    transition: 0.3s ease;
-}
-.info ul li:hover {
-    transform: translateX(50px) scale(1.3);
-}
-
-.product-image:hover img {
-    transition: all 0.3s ease-out;
-}
-.product-image:hover img {
-    transform: scale(1.2, 1.2);
-}
-
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-    .contain_products {
-        flex-direction: column;
-    }
-    .contain_products .container {
-        margin-bottom: 50px;
-        width: 90%;
-    }
-    .control[data-v-5c88657a] {
-        position: absolute;
-        bottom: 5%;
-        left: 13.8%;
-    }
-}
-/* Small devices (landscape phones, 576px and up)   */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .contain_products {
-        flex-direction: column;
-    }
-    .contain_products .container {
-        margin-bottom: 50px;
-        width: 90%;
-    }
-}
-/*  Medium devices (tablets, 768px and up)  */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .contain_products {
-        flex-direction: column;
-    }
-    .contain_products .container {
-        margin-bottom: 50px;
-        width: 75%;
-    }
-}
-
 </style>
 
 <style lang="scss" scoped>
@@ -831,4 +743,130 @@ $gray: #ffffff;
         box-shadow: none;
     }
 }
+/* _____________ product ____________________*/
+.recipe,
+.pizza-box {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.pizza-box {
+	flex: 3 1 30ch;
+	height: 200px;
+	overflow: hidden;
+
+	img {
+		max-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		object-fit: cover;
+		object-position: 50% 50%;
+	}
+}
+
+.recipe {
+	border: 2px solid #F2F2F2;
+	border-radius: 8px;
+	overflow: hidden;
+	
+	&-content {
+	padding: 0;
+	flex: 4 1 40ch;
+    display: grid;
+    align-content: space-between;
+    height: 257px;
+	}
+	
+
+	
+	&-title {
+		margin: 0;
+		font-size: clamp(1.4em, 2.1vw);
+		font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+		
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+	}
+	
+	&-metadata {
+		margin: 0;
+	}
+	
+	&-rating {
+		font-size: 1.2em;
+		letter-spacing: 0.05em;
+		color: var(--primary);
+		
+		span {
+			color: var(--grey);
+		}
+	}
+	
+	&-votes {
+		font-size: .825em;
+		font-style: italic;
+		color: var(--lightgrey);
+	}
+	
+	&-save {
+		display: flex;
+		align-items: center;
+		padding: 6px 14px 6px 12px;
+		border-radius: 4px;
+		border: 2px solid currentColor;
+		color: var(--primary);
+		background: none;
+		cursor: pointer;
+		font-weight: bold;
+		width: 100px;
+		svg {
+			margin-right: 6px;
+		}
+	}
+    &-save:hover{
+        background-color: #5ba2ee;
+    }
+}
+
+	.recipe-tags {
+		margin: 0 -8px;
+	}
+
+	.recipe-tag {
+		display: inline-block;
+		margin: 8px;
+		font-size: 1.5em;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: .02em;
+		color: var(--primary);
+	}
+
+/* Body Layout */
+.small {
+	width: 215px !important;
+	padding: 0;
+	cursor: pointer;
+    
+} 
+.contain_products{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 50px;
+    flex-flow: wrap;
+   position: relative;
+  } 
+// products details
+
+.cover_black{
+position: absolute;
+background-color: #0000002b;
+width: 100%;
+height: 100%;
+z-index: 98;
+} 
 </style>
