@@ -1,7 +1,7 @@
 <template>
     <div class="parent">
        
-<main v-if="filterSearch.length > 0" style="padding:0">
+<main v-if="filteredItems.length > 0" style="padding:0">
         <div class="board board2">
             <div class="form__group field">
                 <input
@@ -17,11 +17,12 @@
         </div>
 	<ul id="cards"  style="padding:0">
 		<li class="cards"                     
-        v-for="store in filterSearch"
+        v-for="store in filteredItems"  
         :key="store.id"
         :store="store">
 			<div class="card__content">
 				<div>
+          	<h2>{{ store.id }}</h2>
 					<h2>{{ store.title }}</h2>
 					<p>650 m away.</p>
                    
@@ -70,12 +71,14 @@
                         :key="section.id"
                         :category="section.category">
                 <ol >
+                  <input type="checkbox" v-model="SelectedSection" v-bind:value="section.name">
                     <li class="menu-item" >
-                        <a href="#0">{{section.name}}</a>
-                        <ol class="sub-menu">
+                      
+                        <span style="margin: 0 10px;">{{section.name}}</span>
+                        <!-- <ol class="sub-menu">
                         <li class="menu-item" v-for="categor in section.category"  :key="categor">{{categor.name}}</li>
                             
-                        </ol>
+                        </ol> -->
                     </li>
                                                 
                 </ol>
@@ -160,7 +163,7 @@ export default {
     data() {
         return {
             Sections: [],
-            viewProductsInStore: [],
+           
             rating: 0,
             SelectedSection: [],
             search: '',
@@ -169,19 +172,34 @@ export default {
     },
     computed: {
         ...mapState(['categories', 'Stores']),
+ 
+          filteredItems(){
+      if(this.SelectedSection.length == 0) return this.Stores;
+      return this.Stores.filter(el => {
+        
+            for(var s = 0; s < el.section.length; s++ ){
+              if(this.SelectedSection.includes(el.section[s].name )) 
+              if(this.search.length == 0){
+                return el;
+                 
+              }
+              else{
+              var regex = new RegExp( this.search, 'i' );
+              return el.title.match(regex); 
+              }
+             
+            }
+ 
+       
+      });
 
-        filterSearch() {
-            return this.Stores.filter((store) => {
-                var regex = new RegExp( this.search, 'i' );
-                return store.title.match(regex); 
-            });
-        },
+   }
     },
     mounted() {
-        this.$store.dispatch('loadStores');
-        
+        this.$store.dispatch('loadStores');      
     },
     methods: {
+    
         fetch() {
             var self = this;
             let lang = window.localStorage.getItem('lang');
@@ -209,7 +227,9 @@ export default {
 };
 </script>
 <style scoped>
-
+.menu:hover{
+background-color: #e53d4a;
+}
 .parent{
     display: flex;
     justify-content: space-around;
