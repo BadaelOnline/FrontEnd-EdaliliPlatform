@@ -81,7 +81,7 @@
         <!-- show der -->
         <div class="show-der row">
             <div
-                class="col-md-6 col-xs-12 img text-center"
+                class="col-lg-6 col-xs-12 img text-center"
                 v-for="brand in brands.slice(7, 9)"
                 :key="brand.id"
                 :image="brand.image"

@@ -1,26 +1,26 @@
 <template>
      <!-- <AppHeader />  -->
     <Header /> 
-    <div id="app"></div>
     <router-view />
     <AppFooter v-if="this.$route.path !== '/signin'" />
 </template>
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-// import AppHeader from '@/components/header/AppHeader.vue'; // @ is an alias to /src authentication
- import Header from '@/components/header/Header.vue';
-import AppFooter from '@/components/Footer/AppFooter.vue';
-// import jQuery from "jquery";
-// const $ = jQuery;
-// window.$ = $;
-@Options({
+<script>
+import { defineAsyncComponent } from 'vue';
+// import $  from "jquery";
+export default {
+   name: 'app',
     components: {
-       //  AppHeader,
-        AppFooter,
-         Header,
-    },
-})
-export default class App extends Vue {}
+               Header: defineAsyncComponent(() =>
+            import(`@/components/header/Header.vue`)
+        ),
+         AppFooter: defineAsyncComponent(() =>
+            import(`@/components/Footer/AppFooter.vue`)
+        ),
+},
+
+}
+
+
 </script>
 <style lang="scss">
 :root {

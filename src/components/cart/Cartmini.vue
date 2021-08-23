@@ -119,7 +119,7 @@
     top: 0px;
     height: 100%;
     width: 360px;
-    z-index: 100;
+    z-index: 101;
     left: -360px;
     transition: all 0.5s;
 }
@@ -128,7 +128,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 99;
+    z-index: 100;
     top:  0;
     display: none;
     

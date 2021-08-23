@@ -172,8 +172,8 @@ const store = createStore({
             axios
                 .get(`/api/stores/getAll?lang=${lang}`)
                 .then((res) => {
-                    console.log('Stores :', res.data.Stores.data);
-                    let Stores = res.data.Stores.data;
+                    console.log('Stores :', res.data.Stores);
+                    let Stores = res.data.Stores;
                     commit('SET_Stores', Stores);
                 })
                 .catch(function (error) {
