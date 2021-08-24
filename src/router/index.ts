@@ -18,11 +18,6 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../components/global/prodetails.vue'),
     },
     {
-        path: '/Stores_have_Product/:id',
-        component: () => import('../components/global/Stores_have_Product.vue'),
-        props: true,
-    },
-    {
         // path: '/ProductDetailsStore/:title/:id_store/:id',
         path: '/ProductDetailsStore/:title/:id_store/:id',
         component: () =>

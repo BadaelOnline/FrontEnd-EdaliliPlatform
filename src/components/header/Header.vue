@@ -19,9 +19,9 @@
             ></i>
             <span>Success Login</span>
         </div>
-        <headerLogo id="navlogo" class="navlogo" />
-        <navbarHeader id="navbar" />
-        <banarHeader />
+        <top_header  id="first_header" />
+        <center_header id="navbar" />
+        <bottom_header id="banarHeader" />
     </div>
 </template>
 
@@ -29,15 +29,16 @@
 // import $ from 'jquery';
 import { mapGetters, mapActions } from 'vuex';
 import jeson from '@/jeson/MOCK_DATA.json';
-import banarHeader from '@/components/header/banarHeader.vue';
-import headerLogo from '@/components/header/headerLogo.vue';
-import navbarHeader from '@/components/header/navbarHeader.vue';
+import top_header from '@/components/header/top_header.vue';
+import center_header from '@/components/header/center_header';
+import bottom_header from '@/components/header/bottom_header.vue';
 export default {
     name: 'Header',
     components: {
-        headerLogo,
-        banarHeader,
-        navbarHeader,
+        top_header,
+         center_header,
+        bottom_header,
+       
     },
     props: ['title', 'description', 'id', 'price'],
     data() {
@@ -101,8 +102,8 @@ export default {
         openForm() {
             document.getElementById('myForm').style.display = 'block';
             document.getElementById('myForm2').style.display = 'block';
-            document.getElementById('myForm2').classList.add('animate__swing');
-            document.getElementById('myForm').classList.add('animate__swing');
+            document.getElementById('myForm2').classList.add('animate__fadeInRight');
+            document.getElementById('myForm').classList.add('animate__fadeInRight');
         },
         closewarn() {
             document.getElementById('warn').style.display = 'none';
@@ -235,24 +236,9 @@ export default {
         },
     },
     mounted(){
-        window.onscroll = function() {myFunction()};
+     
 
-var header = document.getElementById("myHeader");
-var navlogo = document.getElementById("navlogo");
-var navbar= document.getElementById("navbar");
-var sticky = header.offsetTop;
 
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("pad_stick");
-    navlogo.classList.add("sticky");
-    navbar.classList.add("sticky2");
-  } else {
-    header.classList.remove("pad_stick");
-    navlogo.classList.remove("sticky");
-    navbar.classList.remove("sticky2");
-  }
-}
     }
 };
 </script>
@@ -325,42 +311,29 @@ function myFunction() {
 }
 /* header */
 .header {
-    background-color: #f4f3f3;
     height: auto;
     margin: 0;
     padding: 0;
 
 }
-.pad_stick{
-    padding-bottom: 150px;
-}
-.navlogo {
-    background-color: #1c2c34;
-     position: sticky;
-     height: 65px;
-}
-.sticky {
+
+/* #first_header {
   position: fixed;
-  width: 100%;
+  top: 0;
   z-index: 100;
-}
-.sticky2 {
-  position: fixed;
   width: 100%;
-  top: 65px;;
-  z-index: 100;
 }
-/* Medium devices (tablets, 768px and up) */
-@media  (max-width: 991.98px) {
-.navlogo {
-    height: auto;
-}
-.sticky2 {
+
+#navbar {
   position: fixed;
-  width: 5%;
-  top: 207px !important;
+  top: 35px;
+  z-index: 100;
+   width: 100%;
 }
-}
+#banarHeader{
+    padding-top: 150px;
+} */
+
 
 .background {
     display: grid;
