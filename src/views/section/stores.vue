@@ -174,7 +174,16 @@ export default {
         ...mapState(['categories', 'Stores']),
  
           filteredItems(){
-      if(this.SelectedSection.length == 0) return this.Stores;
+            // filter stores by search without checbox
+      if(this.SelectedSection.length == 0) 
+      for(var i =0 ;i < 1; i++){
+
+ return this.Stores.filter(el => {
+var regex = new RegExp( this.search, 'i' );
+              return el.title.match(regex); 
+ });
+      }
+       // filter stores by search and checbox
       return this.Stores.filter(el => {
         
             for(var s = 0; s < el.section.length; s++ ){
@@ -188,9 +197,7 @@ export default {
               return el.title.match(regex); 
               }
              
-            }
- 
-       
+            }     
       });
 
    }

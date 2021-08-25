@@ -11,7 +11,7 @@
 				<span class="recipe-tag">Main dish</span>
 			</p>
 
-			<h1 class="recipe-title"><a href="#"> {{ name}}</a></h1>
+			<h1 class="recipe-title"><a> {{ name}}</a></h1>
 
 			<p class="recipe-metadata">
 				<span class="recipe-rating">★★★★<span>☆</span></span>
