@@ -17,20 +17,16 @@
         >
             <div class="col-sm-12" style="padding: 0">
                 <div class="carousel-inner">
-               
                     <div class="carousel-item active" 
                     v-for="brand in brands.slice(brands.length - 5,brands.length - 4)" :key="brand.id">
                     <img :src="brand.image">
                  
                     </div>
-               
                     <div class="carousel-item" v-for="brand in brands.slice(brands.length - 4,brands.length)" :key="brand.id">
                         <img :src="brand.image">
                       
-                    </div>
-                   
+                    </div>   
                 </div>
-
                 <!-- Left and right controls -->
                 <a class="carousel-control-prev" href="#deno" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
