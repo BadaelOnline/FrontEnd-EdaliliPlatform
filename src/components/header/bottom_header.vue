@@ -19,12 +19,12 @@
                 <div class="carousel-inner">
                
                     <div class="carousel-item active" 
-                    v-for="brand in brands.slice(0,1)" :key="brand.id">
+                    v-for="brand in brands.slice(brands.length - 5,brands.length - 4)" :key="brand.id">
                     <img :src="brand.image">
                  
                     </div>
                
-                    <div class="carousel-item" v-for="brand in brands.slice(1,4)" :key="brand.id">
+                    <div class="carousel-item" v-for="brand in brands.slice(brands.length - 4,brands.length)" :key="brand.id">
                         <img :src="brand.image">
                       
                     </div>
@@ -42,7 +42,7 @@
         </div>
        </div>
        <div class="child3">
-           <div v-for="brand in brands.slice(brands.length - 2,brands.length)" :key="brand.id"><img :src="brand.image"></div>
+           <div v-for="brand in brands.slice(brands.length - 7,brands.length - 5)" :key="brand.id"><img :src="brand.image"></div>
 
        </div>
     </div>
@@ -90,32 +90,34 @@ export default {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    height:500px;
+    height:400px;
 }
 .bottom_header .child1{
     width: 10%;
 }
 .bottom_header .child2{
     padding-top: 20px;
-    width: 50%;
+    width: 53%;
     display: grid;
-    align-content: center;
+    align-content: start;
 }  
 .carousel-item{
     position: relative;
 } 
 .carousel-item img{
     width: 100%;
-    height: 100%;
+    height: 340px;
 }
 
 .bottom_header .child3{
+    padding-top: 20px;
     width: 20%;
     display: grid;
-    align-content: space-around;
+   align-content: start;
 }
 .bottom_header .child3 div {
-  height: 160px;
+  height: 150px;
+  margin-bottom: 40px;
 }
 
 .bottom_header .child3 div img{
@@ -134,7 +136,7 @@ export default {
     display: none;
 }
 .bottom_header .child2{
-   width: 60%;
+   width: 90%;
    padding-top: 20px;
 }
 .bottom_header .child3{

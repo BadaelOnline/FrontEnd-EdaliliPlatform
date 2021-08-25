@@ -71,32 +71,41 @@ export default {
 .first_header{
     background-color: #1c2c34; 
     height: 35px;
-    font-size: 16px;
     border-bottom: 1px solid #575e62;
 }
 .first_header .first_nav{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding-top: 4px;
 }
 .first_header .first_nav .child1{
-    width:35%;
+    width:30%;
     color: #fff;
+    display: flex;
+     justify-content: start;
+    font-size: 12px;
+    align-items: center;
 }
 .first_header .first_nav .child1 div{
     transition: all .5s;
 }
 .first_header .first_nav .child1 div:hover,.first_header .first_nav .child3 div:hover{
-    color: var(--r);
+    color: var(--rhead);
 }
 .first_header .first_nav .child2{
- width: 33%;
+ width: 23%;
+ font-size: 13px;
+ display: flex;
+    justify-content: center;
+align-items: center;
 }
 .first_header .first_nav .child3{
-    width:20%;
+    width:39%;
    color: #fff;
     display: flex;
-    justify-content: center;
+    justify-content: end;
+    font-size: 13px;
+align-items: center;
 }
 .first_header .first_nav .child3 div{
     cursor: pointer;
@@ -108,22 +117,14 @@ export default {
     color: #fff;
     cursor: pointer;
 }
-.first_header .first_nav .child1{
-    display: flex;
-    justify-content: space-around;
-}
-.first_header .first_nav .child2{
-    display: flex;
-    justify-content: center;
-}
 .first_header .first_nav .child2 i{
     margin: 0 5px;
     transition: all .5s;
     padding: 5px;
 }
 .first_header .first_nav .child2 i:hover{
-    color: var(--r);
-    border: 1px solid var(--r);
+    color: var(--rhead);
+    border: 1px solid var(--rhead);
    
 }
 .first_header .first_nav .child3 .currency{
@@ -138,7 +139,7 @@ export default {
     z-index: 2;
     font-size: 16px;
     position: absolute;
-    right: -4px;
+    right: -2px;
     top: 0px;
     color: #fff;
     width: 0;
@@ -148,7 +149,7 @@ export default {
  display: grid; 
 }
 .first_header .first_nav .child3 .currency:hover::after{
-  color: var(--r);
+  color: var(--rhead);
 }
 .first_header .first_nav .child3 .currency .child_currency{
     display: none; 
@@ -163,11 +164,15 @@ export default {
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-.first_header{
-    font-size: 14px;
+.first_header .first_nav .child1{
+    font-size: 11px;
 }
+.first_header .first_nav .child2{
+    width:20%;
+}
+
 .first_header .first_nav .child3{
-    width:33%;
+    width:31%;
 }
 
 }

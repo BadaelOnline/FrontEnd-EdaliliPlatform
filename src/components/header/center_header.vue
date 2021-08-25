@@ -6,8 +6,8 @@
         >
             <div id="loader" class="loader"></div>
         </div>
-        
        <div id="backcover" class="backcover" @click="closeForm()"></div>
+          <div id="cover_dep" class="backcover2" @click="close_dep()"></div>
         <div class="form-popup animate__animated animate__fadeInRight" id="myForm">
             <form action="/action_page.php" class="form-container">
                 <h1>Log<span>in</span></h1>
@@ -248,7 +248,7 @@
         <div class="links">	
     
             <router-link to="/" class="links">
-                <div class="linkText">Blog</div>
+                <div class="linkText">BLOG</div>
             </router-link>
         </div>
         <div class="links">
@@ -278,7 +278,7 @@
                 </div>
             </template>        
         </div>
-        <span style="margin:0 15px;">|</span>  
+        <span style="margin:0 25px;color:#fff">|</span>  
         <div class="contact">
             <i class="fa fa-phone-square" aria-hidden="true" style="margin-right:5px;"></i>
             <span>(+963) 931 824 473</span>
@@ -286,14 +286,68 @@
        </div>
     </div>
     <div class="bottom_navba">
+         <div class="Departments_small" id="Dep">
+            <div class="content-search">
+			<input  type="text" size="50" autocomplete="off" placeholder="Search Item..." name="s">	
+			</div>
+            <div>
+                     <div class="links hov">
+                    <router-link to="/" class="links">
+                     <div class="menu-icon">
+                        <img src="../../../public/img/sections.png" />
+                    </div>
+                    <div class="linkText">Home</div>
+                   
+                    </router-link>
+                </div>
+                <hr>
+                 <div class="links hov">
+                    <router-link to="/products" class="links">
+                     <div class="menu-icon"> <img src="../../../public/img/sections.png" alt=""> </div>
+                    <div class="linkText">Products</div>
+                   
+                    </router-link>
+                </div>
+                <hr>
+                 <div class="links hov"> 
+                    <router-link to="/stores" class="links">
+                        <div class="menu-icon"> <img src="../../../public/img/Store_review_2_.png" alt=""> </div>
+                    <div class="linkText">Stores</div>
+                    
+                    </router-link>
+                </div>
+                <hr>
+                 <div class="links hov">
+                    <router-link to="/festival" class="links">
+                        <div class="menu-icon"> <img src="../../../public/img/sign_shopping.png" alt=""> </div>
+                    <div class="linkText">Fistival</div>
+                   
+                    </router-link>
+                </div>
+                <hr>
+                 <div class="links hov">
+                    <router-link to="/resturants" class="links">
+                       <div class="menu-icon">  <img src="../../../public/img/terrace.png" alt=""> </div>
+                    <div class="linkText">Resturant</div>
+                    
+                    </router-link>
+                </div>
+                <hr>
+                 <div class="links hov">
+                    <router-link to="/doctors" class="links">
+                        <div class="menu-icon"> <img src="../../../public/img/stethoscope.png" alt=""> </div>
+                    <div class="linkText">Doctot</div>
+                    
+                    </router-link>
+                </div>
+            </div>
+            </div>
         <div class="child1"> <!--chain.png -->    
-            <div class="Departments" @click="depart()">
+            <div class="Departments" @click="toggle_vs()">
                 <i class="fa fa-list" aria-hidden="true"></i>
                <span class=" ALL_DEPARTMENTS"> ALL DEPARTMENTS</span>
             </div>
-             <div v-if="departments" class="img_left animate__animated  animate__slideInDown"><img src="../../../public/img/chain.png" alt=""></div>
-            <div v-if="departments" class="img_rigt animate__animated  animate__slideInDown"><img src="../../../public/img/chain.png" alt=""></div>
-            <div v-if="departments" class="contain_Departments animate__animated  animate__slideInDown">
+            <div class="contain_Departments animate__animated  animate__slideInDown">
                 <div class="links hov">
                     <router-link to="/" class="links">
                      <div class="menu-icon">
@@ -304,35 +358,35 @@
                     </router-link>
                 </div>
                  <div class="links hov">
-                    <router-link to="/" class="links">
+                    <router-link to="/products" class="links">
                      <div class="menu-icon"> <img src="../../../public/img/sections.png" alt=""> </div>
                     <div class="linkText">Products</div>
                    
                     </router-link>
                 </div>
                  <div class="links hov"> 
-                    <router-link to="/" class="links">
+                    <router-link to="/stores" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/Store_review_2_.png" alt=""> </div>
                     <div class="linkText">Stores</div>
                     
                     </router-link>
                 </div>
                  <div class="links hov">
-                    <router-link to="/" class="links">
+                    <router-link to="/festival" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/sign_shopping.png" alt=""> </div>
                     <div class="linkText">Fistival</div>
                    
                     </router-link>
                 </div>
                  <div class="links hov">
-                    <router-link to="/" class="links">
+                    <router-link to="/resturants" class="links">
                        <div class="menu-icon">  <img src="../../../public/img/terrace.png" alt=""> </div>
                     <div class="linkText">Resturant</div>
                     
                     </router-link>
                 </div>
                  <div class="links hov">
-                    <router-link to="/" class="links">
+                    <router-link to="/doctors" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/stethoscope.png" alt=""> </div>
                     <div class="linkText">Doctot</div>
                     
@@ -357,7 +411,7 @@
 					</select>
 				</label>
 			</div>
-						<div class="content-search">
+			<div class="content-search">
 				<input class="autosearch-input" type="text" value="" size="50" autocomplete="off" placeholder="Search Item..." name="s">	
 				<div class="search-append"><div class="autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div></div>
 			</div>
@@ -369,11 +423,13 @@
         <div class="child3">
             <div><i class="fa fa-refresh" aria-hidden="true"></i></div>
             <div><i class="fa fa-heart" aria-hidden="true"></i></div>
-            <div @click="gotocart()">
-                <i class="fa fa-shopping-cart">{{ cartItemCount }}</i>
+            <div class="cart" @click="gotocart()">
+                <i class="fa fa-shopping-cart"></i>
+                <div class="cartItemCount">{{ cartItemCount }}</div>
             </div>
-             
+               <div>My Cart</div>
         </div>
+       
           
     </div>
     </div>
@@ -388,7 +444,7 @@ export default {
         const token = localStorage.getItem('token');
         const server = localStorage.getItem('server') || 'admin';
         return {
-           departments: false,
+         
             server: server,
             token: token,
             form: {
@@ -420,9 +476,14 @@ export default {
         }),
     },
     methods: {
-        depart(){
-            this.departments = !this.departments
-        },
+      toggle_vs(){
+          document.getElementById('Dep').classList.toggle("Dep_vs");
+           document.getElementById('cover_dep').classList.add("vs2");
+      },
+      close_dep(){
+           document.getElementById('Dep').classList.remove("Dep_vs");
+           document.getElementById('cover_dep').classList.remove("vs2");
+      },
            goto: function () {
             this.$router.push(`/`);
         },
@@ -580,6 +641,60 @@ export default {
 </script>
 
 <style scoped>
+.Departments_small{
+    background-color: #1c2c34;
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    width: 360px;
+    z-index: 86;
+    left: -360px;
+    transition: all 0.5s;
+}
+.Departments_small .content-search{
+    padding-top: 5px;
+}
+.Departments_small .content-search input{
+    border: 1px solid #eee;
+    padding: 10px;
+}
+.Departments_small .content-search input:focus{
+    outline: none;
+}
+.Departments_small hr{
+    border-top: 1px solid #fff;
+}
+.Departments_small .links{
+    color: #fff;
+    padding-top: 5px;
+}
+.Departments_small .links a{
+    display: flex;
+}
+.Departments_small .links .linkText{
+    font-size: 18px;
+}
+.Departments_small .links:hover{
+    color: var(--rhead);
+}
+.Dep_vs{
+ left: 0;
+}
+.backcover2{
+    background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 85;
+    top:  0;
+    display: none;
+    
+}
+.vs2 {
+    display: block;
+}
 .fa-refresh::before{
     content: '\f021';   
 }
@@ -601,13 +716,14 @@ export default {
 }
 .navba {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .navba .child1{
-    width: 10%;
+    width: 11%;
+    display: flex;
 }
 .navba .child2{
-    width: 60%;
+    width: 45%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -615,13 +731,17 @@ export default {
 .navba .child2 .links{
     color: #fff;
 }
+.navba .child2 .links .linkText{
+    padding: 0;
+    font-size: 14px;
+}
 .navba .child2 .links:hover{
-    color: var(--r);
+    color: var(--rhead);
 }
 .navba .child3{
-    width: 26%;
+    width: 37%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
 }
 .navba .child3 .sign{
@@ -632,7 +752,7 @@ export default {
    color: #fff; 
 }
 .navba .child3 .sign:hover{
-    color: var(--r);
+    color: var(--rhead);
 }
 .bottom_navba{
     display: flex;
@@ -643,7 +763,7 @@ export default {
   position: relative;
 }
 .bottom_navba .child2{
-  width: 45%;
+  width: 58%;
 }
 .bottom_navba .child3{
   width: 20%;
@@ -651,50 +771,82 @@ export default {
 justify-content: space-around;
 font-size: 20px;
 }
-
+.bottom_navba .child3 div{
+    display: grid;
+    align-content: center;
+}
+.bottom_navba .child3 .cart{
+   position: relative;
+    background-color: var(--rhead);
+    border-radius: 50%;
+    padding: 0px 10px;
+    height: 40px;
+    margin-top: 13px;
+    }
+.bottom_navba .child3 .cart:hover{
+  color: #fff;
+    }
+.bottom_navba .child3 .cartItemCount{
+    position: absolute;
+    top: -10px;
+    right: -18px;
+    color: #000;
+    background-color: #fff;
+    padding: 0px 9px;
+    border-radius: 50%;
+    font-size: 15px;
+}
 .bottom_navba .child3 div{
     color: #fff;
     cursor: pointer;
 }
 .bottom_navba .child3 div:hover{
-  color: var(--r);
+  color: var(--rhead);
 }
-.bottom_navba .child1 .img_left{
-    position: absolute;
-    z-index: 3;
-    left: 2%;
-    
-}
-.bottom_navba .child1 .img_rigt{
-    position: absolute;
-    z-index: 3;
-    right: 2%;
-   
-}
-.bottom_navba .child1 .img_left img, .bottom_navba .child1 .img_rigt img{
-    width: 9px;
-}
-
 .bottom_navba .child1 .Departments{
     color: #fff;
-    background-color: var(--r);
+    background-color: var(--rhead);
     padding: 10px 0;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
     width: 100%;
-    cursor: pointer;
-    
+}
+.bottom_navba .child1 .Departments::after{
+    content: "";
+    width: 5px;
+    height: 32px;
+    position: absolute;
+    bottom: -13px;
+    left: 4px;
+    z-index: 99;
+    background: url(../../../public/img/chain.png) no-repeat center center; 
+}
+.bottom_navba .child1 .Departments::before{
+    content: "";
+    width: 5px;
+    height: 32px;
+    position: absolute;
+    bottom: -13px;
+    right: 4px;
+    z-index: 99;
+     background: url(../../../public/img/chain.png) no-repeat center center; 
 }
 
 .bottom_navba .child1 .contain_Departments{
     position: absolute;
-    width: 204px;
-    background-color: #1c2c34;
+    width: 100%;
+    background-color: #27363e;
     height: auto;
     z-index: 2;
-    top: 155%;
-    box-shadow: 0 1px 2px 2px #979797;
+    top: 127%;  
 }
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+.bottom_navba .child1 .contain_Departments{  
+    top: 118%;  
+}
+}
+
 .bottom_navba .child1 .contain_Departments a{
     color: #fff;
     display: flex;
@@ -703,7 +855,7 @@ font-size: 20px;
     transition: all .5s;
 }
 .bottom_navba .child1 .contain_Departments a:hover{
-    color: var(--r);
+    color: var(--rhead);
     padding-left: 25px;
 }
 .menu-icon{
@@ -726,6 +878,9 @@ font-size: 20px;
     overflow: hidden;
     color: #666;
     border-right: 1px solid #ebebeb;
+}
+#sw_woo_search_1 .content-search{
+    width: 90%;
 }
 #sw_woo_search_1 .cat-wrapper::before {
     content: '\f107';
@@ -757,6 +912,7 @@ font-size: 20px;
     color: #666;
     background: #f5f5f5;
     cursor: pointer;
+    opacity: .7;
 }
 #sw_woo_search_1 .autosearch-input {
     width: 100%;
@@ -778,25 +934,65 @@ font-size: 20px;
 
 /* Medium devices (tablets, 768px and up) */
 @media  (max-width: 991.98px) {
+.Departments_small{
+    display: flex;
+    }
 .navba .child2{
         display: none;
     }
 .navba .child3{
-    width: 60%;
+    width: 81%;
+}
+.bottom_navba .child1 .Departments{
+    border-radius: 5px;
+    cursor: pointer;
 }
 .ALL_DEPARTMENTS{
     display: none;
 }
+.bottom_navba .child1 .Departments::after{
+    display: none;
+}
+.bottom_navba .child1 .Departments::before{
+    display: none;
+}
+.bottom_navba .child1 .contain_Departments{
+    display: none;
+}
+.bottom_navba .child1{
+     width:5%;
+}
+.bottom_navba .child2{
+    width:50%;
+}
+.bottom_navba .child3{
+  width: 35%;
+
+}
+
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
 .navba .child3 .contact:hover{
-   color: var(--r);
+   color: var(--rhead);
    cursor: pointer;
 }
 #sw_woo_search_1 .cat-wrapper select {
     width: 100px;
     padding: 0;
+}
+.bottom_navba .child1{
+     width: 30%;
+}
+.bottom_navba .child1 .Departments{
+     width: 25%;
+}
+.bottom_navba .child2{
+    display: none;
+}
+.bottom_navba .child3{
+  width: 60%;
+
 }
 }
 /* _____________________________________________ */
@@ -831,7 +1027,7 @@ font-size: 20px;
 }
 .form-popup h1 {
     font-size: 40px;
-    color: var(--r);
+    color: var(--rhead);
 }
 .form-popup h1 span {
     font-size: 40px;
@@ -886,7 +1082,7 @@ font-size: 20px;
     position: absolute;
     left: -2px;
     top: -2px;
-    background-color: var(--r);
+    background-color: var(--rhead);
     color: #fff;
     padding: 5px 10px;
     border-bottom-right-radius: 20px;
@@ -911,7 +1107,7 @@ font-size: 20px;
 }
 .form-popup2 h1 {
     font-size: 40px;
-    color: var(--r);
+    color: var(--rhead);
 }
 .form-popup2 h1 span {
     font-size: 40px;
@@ -965,7 +1161,7 @@ font-size: 20px;
     position: absolute;
     left: -2px;
     top: -2px;
-    background-color: var(--r);
+    background-color: var(--rhead);
     color: #fff;
     padding: 5px 10px;
     border-bottom-right-radius: 20px;
