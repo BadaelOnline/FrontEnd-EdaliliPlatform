@@ -67,8 +67,6 @@ export default {
         ]),
     },
     mounted() {
-        this.$store.dispatch('loadProducts');
-        this.$store.dispatch('loadStores');
         this.$store.dispatch('loadBrands');
 
     },
