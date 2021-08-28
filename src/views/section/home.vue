@@ -7,42 +7,55 @@
                 <div class="imag"><img src="../../../public/img/banner-left1.png"></div> 
                 <div class="Latest_Products">
                     <h2 style="">Latest Products</h2>
-                    <div class="Products"  v-for=" product in products" :key="product">
+                    <span @click="transproduct()"><i id="fa1" class="fa fa-circle fa-spin" aria-hidden="true"></i></span>
+                    <span @click="transproduct()"><i id="fa2" class="fa fa-circle" aria-hidden="true"></i></span>
+                    <div id="list_prod" class="list-products">
+                        <div class="list-left">
+                        <div class="Products"  v-for=" Offer in Offers" :key="Offer" :store="Offer.store">
                         <div class="imag"><img src="../../../public/img/small-product.jpg" ></div>
                         <div class="details">
                             <div class="stars"><span class="recipe-rating">★★★★<span>☆</span></span></div>
-                            <div class="price">$70.00</div>
-                            <div>{{product.name.slice(0,20)}}</div>
-                            
+                            <div class="price">${{Offer.price}}</div>
+                            <div>chair</div>
                         </div>
                     </div>
+                        </div>
+                        <div class="list-right">
+                        <div class="Products"  v-for=" Offer in Offers" :key="Offer" :store="Offer.store">
+                        <div class="imag"><img src="../../../public/img/small-product.jpg" ></div>
+                        <div class="details">
+                            <div class="stars"><span class="recipe-rating">★★★★<span>☆</span></span></div>
+                            <div class="price">${{Offer.price}}</div>
+                            <div>chair</div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                   
+
                 </div>
+                <div class="imag">
+                    <img src="../../../public/img/banner-left1.png">
+                    </div>  
                                 
              </div>
              <div class="right">
                  <div class="Daily">Daily deals</div>
              <div class="contain_offers">
              
-            <!-- 1 -->
-            <div class="contain">
+            <!-- 1  -->
+            <div class="contain" v-for="Offer in Offers.slice(0,2)" :key="Offer">
                 <div class="offer-details">
-                   <div> <h1>Suitcase</h1></div>
-                   <div><span class="offer_price">$70.00</span> <span class="price">$85.00</span></div>
-
+                   <div><span class="offer_price">${{Offer.price}}</span> <span class="price">${{Offer.selling_price}}</span></div>
+                    
                     <p class="information">
-                        The most delicious and special foods in the restaurant..
+                        {{Offer.quantity}} items left.
                     </p>
-                    <div class="count">
-                    <div class="count-left">
-					<h2>Hurry up!</h2>
-					<p>Offers end in:</p>		
-                    </div>
-                     <div class="count-right">
-					<span class="counter c-1">167</span>
-                    <span class="counter c-2">14</span>
-                    <span class="counter c-3">52</span>
-                    <span class="counter c-4">30</span>		
-                    </div>
+                    <div class="count">       
+					<timercount 
+                    :deadline="Offer.ended_at"
+                    />	
+                    
                     </div>
                     
                 </div>
@@ -59,59 +72,21 @@
                     </ul>
                     </div>
                 </div>
-            </div>
-                <!-- 2 -->
-              <div class="contain">
-                <div class="offer-details">
-                   <div> <h1>Chair</h1></div>
-                   <div><span class="offer_price">$70.00</span> <span class="price">$85.00</span></div>
-
-                    <p class="information">
-                        The most delicious and special foods in the restaurant..
-                    </p>
-                    <div class="count">
-                    <div class="count-left">
-					<h2>Hurry up!</h2>
-					<p>Offers end in:</p>		
-                    </div>
-                     <div class="count-right">
-					<span class="counter c-1">167</span>
-                    <span class="counter c-2">14</span>
-                    <span class="counter c-3">52</span>
-                    <span class="counter c-4">30</span>		
-                    </div>
-                    </div>
-                    
-                </div>
-
-                <div class="offer-image">
-                    <img src="../../../public/img/small-product.jpg"/>
-
-                    <div class="info">
-                    <ul>
-                        <li><i class="fa fa-eye" aria-hidden="true"></i></li>
-                        <li><i class="fa fa-refresh" aria-hidden="true"></i></li>
-                        <li><i class="fa fa-heart" aria-hidden="true"></i></li>
-                        <li><i class="fa fa-shopping-cart"></i></li>     
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            
+            </div>        
             
         </div>
         <div class="big_offer">
             <img src="../../../public/img/cus2.png" >
         </div>
         <div class="title_products">
-        <div class="Daily">Trending Products</div>
-         <div class="section_products">
+        <div class="Daily">Trending Offers</div>
+         <!-- <div class="section_products">
              <div class="list_sec_prod">
                  <i class="fa fa-list" aria-hidden="true"></i>
                  <div class="list_sec" >
                      <ul>
                         <li v-for="(section,i) in Sections.slice(0,4)" :key="i"
-                        :class="{act_li: i === activeItem}" @click="selectItem(i)">{{section.name}}
+                        :class="{act_li: i === activeItem}">{{section.name}}
                         </li>  
                      </ul>
                  </div>
@@ -120,21 +95,22 @@
             :class="{ active_sec: i === activeItem}" @click="selectItem(i)">{{section.name}}
             </span>
            
-         </div>
+         </div> -->
         </div>
           <div class="row">
              <div class="contain_products">
+<!-- spiner reload wating -->
 
-<svg id="spinner" class="spinner spin-hide" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+<!-- <svg id="spinner" class="spinner spin-hide" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-</svg>
-
-
-                 <div class="product-item col-md-3 col-xs-6" v-for=" product in products" :key="product">
+</svg> -->
+                 <div class="product-item col-md-3 col-xs-6" v-for="Offer in Offers.slice(0,4)" :key="Offer">
                      <img src="../../../public/img/product-offer.jpg">
                      <div class="details">
-                        <span class="offer_price">$70.00</span> <span class="price">$85.00</span>
-                         <div>{{product.name.slice(0,product.name.length- 20)}}</div>
+                        <span class="offer_price">${{Offer.price}}</span> <span class="price">${{Offer.selling_price}}</span>
+                     </div>
+                     <div class="parcent_offer">
+                        - {{ Math.floor((Offer.price * 100) / Offer.selling_price) }} %
                      </div>
                  </div>
                 </div>
@@ -143,12 +119,55 @@
             <div class="medium_offer">
              <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
             <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
-            </div>
-
+            </div>    
+             <div class="Daily">Top Stores</div>   
+              <div class="row">
+             <div class="contain_products">
+                 <div class="product-item store-item col-md-3 col-xs-6" v-for="Stor in Stores.slice(0,4)" :key="Stor">
+                     <router-link :to="`/visitstore/${Stor.id}/${Stor.title}`" style="color: #6b6c6c;text-decoration: none;">
+                    <img src="../../../public/img/market-logo.png">
+                    <div class="details">
+                    <h2>{{Stor.title.slice(0,15)}}</h2>
+                    <button>Visite</button>
+                    </div>
+                     </router-link>
+                 </div>
+                </div>
              </div>
+             </div>
+        
+
          </div>
+             <div class="full_body"> 
+                <div class="child-left">
+                    <img v-for="brand in brands.slice(5,7)" 
+                    :key="brand.id" 
+                    :src="brand.image">
+                    </div>
+                <div class="child-center">
+                    <img v-for="brand in brands.slice(10,11)" 
+                    :key="brand.id" 
+                    :src="brand.image">
+                    </div>
+                <div class="child-right"> 
+                    <img v-for="brand in brands.slice(8,10)" 
+                    :key="brand.id" 
+                    :src="brand.image">
+                    </div>
+            </div>
+             <div class="Daily-rsturant">Top Stores</div> 
+            <div class="contain-returant">
+                <div class="restu-item" 
+                v-for="restaurant in restaurants.slice(0,4)"
+                :key="restaurant">
+                <router-link :to="`/visit_restaurant/${restaurant.id}/${restaurant.title}`" style="color: #6b6c6c;text-decoration: none;">
+                    <div><img :src="restaurant.image"></div>
+                    <div class="title"> {{restaurant.title}} </div>
+                </router-link>
+                </div>
+            </div>  
         </div>
-        <!-- products 
+        <!-- products   default-store-banner.png
         <div class="products">
             <h2
                 data-aos="fade-up"
@@ -179,31 +198,48 @@
    
 </template>
 <script>
-// import { mapState } from 'vuex';
+import data from '../../jeson/data';
+import { mapState } from 'vuex';
 import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
 export default {
     name: 'home',
-    props: ['image'],
+     props: {
+    deadline: {
+      type: String,
+      required: true,
+    },
+    speed: {
+      type: Number,
+      default: 1000,
+    },
+    
+  },
     data() {
         return {
-            activeItem: 0,
+            restaurants: data.restaurants,
+            // activeItem: 0,
             showDetails: false,
             chooseDetails: false,
             Sections: [],
-            products: []
+            Offers: []
         };
     },
     components: {
-        // productBody: defineAsyncComponent(() =>
-        //     import(`@/components/global/productBody.vue`)
-        // ),
+         timercount: defineAsyncComponent(() =>
+             import(`@/components/global/timercount.vue`)
+         ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
-        ),
+        )
+        
     },  
     methods: {
-        
+            transproduct(){
+                document.getElementById('list_prod').classList.toggle("trans-list");
+                document.getElementById('fa1').classList.toggle("fa-spin");
+                document.getElementById('fa2').classList.toggle("fa-spin");
+            },
         fetch() {
             var self = this;
             let lang = window.localStorage.getItem('lang');
@@ -211,35 +247,42 @@ export default {
                 .get(`/api/sections/getAll?lang=${lang}`)
                 .then((res) => {
                     self.Sections = res.data.Section;
-                    console.warn('Section: ', res.data.Section);
-                       if( this.activeItem == 0){
-                    this.products = res.data.Section[this.activeItem].product;              
-            }
+                    console.warn('Section: ', res.data.Section);                         
                 })
                 .catch(function (error) {
                     console.warn('------ Error ------: ', error);
                 });
+                axios
+                .get(`/api/offers`)
+                .then((res) => {
+                    this.Offers = res.data.Offer.data;
+                    console.log('Offer: ',  res.data.Offer.data);
+                })
+                .catch(function (error) {
+                    console.warn('------ Error ------: ', error);
+                });
+
         },
-        selectItem(i) {
+        /* selectItem(i) {
             this.activeItem = i;
           
-                document.getElementById('spinner').classList.remove("spin-hide");
-                let lang = window.localStorage.getItem('lang');
-                axios
-                .get(`/api/sections/getAll?lang=${lang}`)
-                .then((res) => {
-                    this.products = res.data.Section[this.activeItem].product;
-                          console.log(this.activeItem);
+                 document.getElementById('spinner').classList.remove("spin-hide");
+                 let lang = window.localStorage.getItem('lang');
+                 axios
+                 .get(`/api/sections/getAll?lang=${lang}`)
+                 .then((res) => {
+                     this.products = res.data.Section[this.activeItem].product;
+                           console.log(this.activeItem);
                 })
-                .catch(function (error) {
-                    console.warn('------ Error ------: ', error);
-                });
-                setTimeout(() => {
-                      document.getElementById('spinner').classList.add("spin-hide");
-                }, 2000);
+                 .catch(function (error) {
+                     console.warn('------ Error ------: ', error);
+                 });
+                 setTimeout(() => {
+                       document.getElementById('spinner').classList.add("spin-hide");
+                 }, 2000);
            
            
-        },
+         }, */
         gotoListView: function (i) {
             this.$router.push(`/ListView/${i}`);
         },
@@ -250,20 +293,29 @@ export default {
     created() {
         this.fetch();
     },
-    computed: {
-        // ...mapState([ 'Sections']),    // 'Categories', 'Brands', 'brands', 'Product'
+  computed: {
+        ...mapState([ 'brands','Product','Stores']),
     },
     mounted() {
-          this.fetch();
-        //  this.$store.dispatch('loadSections');
-        // this.$store.dispatch('loadBrands');
-        // this.$store.dispatch('loadCategories');
-        // this.$store.dispatch('loadProducts');
+        this.$store.dispatch('loadProducts');
+        this.$store.dispatch('loadStores');      
+        
+        this.fetch();
+        
     },
 };
 </script>
 
 <style scoped>
+
+.fa-spin{
+    color: #ff3c20; 
+ 
+}
+.fa-circle{
+   margin: 0 10px;  
+   cursor: pointer;
+}
 .parent{
     display: flex;
     justify-content: space-around;
@@ -279,13 +331,27 @@ export default {
 .parent .left .imag img{
     width: 100%;
 }
+.parent .left .imag img:hover{
+    opacity: .8;
+    cursor: pointer;
+}
 .parent .left .Latest_Products h2{
      padding: 20px 0;
      border-bottom: 2px solid #ff3c20;
 }
+.parent .left .Latest_Products .list-products{
+    display: flex;
+    transform: translateX(-100%);
+    transition: all .5s;
+}
+.trans-list{
+    overflow: hidden;
+    transform: translateX(0%) !important;
+}
 .parent .left .Latest_Products .Products{
     display: flex;
     padding: 10px 0;
+    width: 200px;
 }
 .parent .left .Latest_Products .Products .imag{
    width: 75px;
@@ -317,12 +383,16 @@ export default {
 .parent .right .big_offer img{
     width: 100%;
 }
+.parent .right .big_offer img:hover{
+    opacity: .8;
+    cursor: pointer;
+}
 .parent .right .title_products{
     display: flex;
     width: 99%;
     justify-content: space-between;
 }
-.parent .right .section_products span{
+/* .parent .right .section_products span{
     margin: 0 20px;
     position: relative;
     transition: all .5s;
@@ -344,7 +414,7 @@ export default {
     bottom: -10px;
     height: 2px;
     left: 24%;  
-}
+} */
 .active_sec{
     color: var(--rhead);
 }
@@ -362,6 +432,7 @@ export default {
     justify-content: space-around;
     border-top: 1px solid #eee;
     padding:30px 0;
+    width: 99% !important;
   } 
 .parent .right .contain_offers .contain{
 	/* box-shadow: 0 15px 30px 1px grey;
@@ -370,6 +441,7 @@ export default {
 	overflow: hidden;
     height: 217px;
     padding: 0;	
+     width:50% !important;
 }
 
  .parent .right .offer-details {
@@ -397,61 +469,7 @@ export default {
 .parent .right .offer-details .count{
     display: flex;
 }
-.parent .right .offer-details .count-left{
-    float: left;
-    width: 29%;
-}
-.parent .right .offer-details .count-right{
-    float: right;
-    width: 71%;
-    display: flex;
-    justify-content: space-around;
-}
-.parent .right .offer-details .count-right .counter{
-    position: relative;
-    background-color:#ebebeb;
-    border-radius: 50%;
-    padding: 0px 10px;
-    height: 40px;
-    display: grid;
-    align-content: center;
-    font-weight: bold;
-}
-.parent .right .offer-details .count-right .counter::after{
-    font-size: 10px;
-    opacity: .7;
-    font-size: 10px;
-    opacity: .7;
-    position: absolute;
-    bottom: -20px;
-}
-.parent .right .offer-details .count-right .c-1::after{
-    content: "DAYS";
-    left: 8px;
-}
-.parent .right .offer-details .count-right .c-2::after{
-    content: "HOURS";
-    left: 0;
-}
-.parent .right .offer-details .count-right .c-3::after{
-    content: "MINS";
-    left: 6px;
-}
-.parent .right .offer-details .count-right .c-4::after{
-    content: "SECS";
-    left: 6px;
-}
-.parent .right .offer-details .count-left h2{
-    font-weight: bold;
-}
-.parent .right .contain .offer-details h1{
-	display: inline-block;
-	position: relative;
-	font-size: 20px;
-	color: #344055;
-	margin: 0;
-	font-weight: bold;
-}
+
 
 .contain .offer-details > p {
     font-family: 'EB Garamond', serif;
@@ -533,7 +551,23 @@ export default {
     margin-bottom: 2%;
     position: relative;
     max-width: 22%;
+    cursor: pointer;
 }
+.parent .right .contain_products .store-item{
+    background: linear-gradient(to bottom, #fff,#e4e5e8);
+}
+.parent .right .contain_products .store-item .details h2{
+    font-size: 18px;
+}
+.parent .right .contain_products .store-item button{
+   border: navajowhite;
+    color: #fff;
+    background-color: #ff3c20;
+    padding: 3px 20px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
 .parent .right .contain_products .product-item img{
    width: 100%;
 }
@@ -547,6 +581,18 @@ export default {
     text-decoration-line: line-through;
     margin-left: 10px;
 }
+.parent .right .contain_products .product-item  .parcent_offer{
+    position: absolute;
+    background-color: #ff3c20;
+    color: #fff;
+    border-radius: 50%;
+    padding: 10px 3px;
+    font-size: 13px;
+    font-weight: bold;
+    top: 5%;
+    right: 6%;
+
+}
 .parent .right .medium_offer{
     display: flex;
     width: 99%;
@@ -558,6 +604,10 @@ export default {
 }
 .parent .right .medium_offer div img{
     width: 100%;
+}
+.parent .right .medium_offer div img:hover{
+    opacity: .8;
+    cursor: pointer;
 }
 /* Medium devices (tablets, 768px and up) */
 @media  (max-width: 991.98px) {
@@ -576,6 +626,10 @@ export default {
 .contain_offers .contain{
  width: 100%;
 }
+.parent .right .contain_offers .contain{
+    height:37vw;
+     width:100% !important;
+}
 .contain_offers .contain:nth-child(1){
     display: none;
 }
@@ -585,14 +639,12 @@ export default {
 @media (min-width: 992px) and (max-width: 1199.98px) {
 .parent .right .contain_offers .contain{
     height: 180px;
+    
 }
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
- .parent .right .contain_offers .contain{
-    height: 180px;
-}
-.parent .right .section_products span{
+/* .parent .right .section_products span{
     display: none;
 }
 .parent .right .section_products .list_sec_prod{
@@ -633,17 +685,18 @@ export default {
 }
 .parent .right .section_products .list_sec_prod:hover .list_sec{
     display: block;
-}
+}*/
 .parent .right .contain_products .product-item{
     max-width: 48%;
-}
+} 
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
+
 .parent .right .contain_products .product-item{
     max-width: 31%;
 }
-.parent .right .section_products span{
+/* .parent .right .section_products span{
     display: none;
 }
 .parent .right .section_products .list_sec_prod{
@@ -688,7 +741,7 @@ export default {
 }
 .parent .right .section_products .list_sec_prod:hover .list_sec{
     display: block;
-}
+} */
 }
 /* products */
 .heading {
@@ -700,52 +753,139 @@ export default {
 .heading span {
     color: #315a6e;
 }
-</style>
-<style lang="scss" scoped>
-$offset: 187;
-$duration: 1.4s;
-
-.spinner {
-  animation: rotator $duration linear infinite;
-  position: absolute;
-  z-index: 50;
-    top: 230px;
-    left: 450px;
+.full_body {
+    display: flex;
+    justify-content: space-around;
+    height: 23vw;
+    margin-bottom: 20px;
 }
-.spin-hide{
+.full_body .child-left{
+    width: 23%;
+    display: grid;
+    height: 100%;
+    align-content: space-between;
+}
+.full_body .child-center{
+    width: 48%;
+    height: 100%;
+}
+.full_body .child-right{
+    width: 23%;
+    display: grid;
+    height: 100%;
+    align-content: space-between;
+}
+.full_body .child-center img{
+    width: 100%;height: 100%;
+}
+.full_body .child-center img:hover,.full_body .child-left img:hover,.full_body .child-right img:hover{
+    opacity: .8;
+    cursor: pointer;
+    
+}
+.full_body .child-left img,.full_body .child-right img{
+    width: 100%;
+}
+/* Small devices (landscape phones, 576px and up) */
+@media  (max-width: 767.98px) {
+.full_body {
+    justify-content: center;
+    height: 35vw;  
+}
+.full_body .child-left,.full_body .child-right{
     display: none;
 }
-@keyframes rotator {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(270deg); }
+.full_body .child-center{
+    width: 95%;
+    height: 100%;
 }
+}
+.home .Daily-rsturant{
+    color: #fff;
+    background: #232f3e;
+    padding: 10px 0;
+    border-radius: 4px 4px 0 0;
+    font-weight: bold;
+    width: 130px;
+    margin-left: 10px;
+}
+.home .contain-returant{
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #eee;
+    padding: 30px 0;
+    flex-flow: wrap;
+}
+.home .contain-returant .restu-item{
+    width: 23%;
+    cursor: pointer;
+}
+.home .contain-returant .restu-item div img{
+    width: 100%;
+    height: 170px;
+}
+.home .contain-returant .restu-item .title{
+    color: #797575;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #eee;
 
-.path {
-  stroke-dasharray: $offset;
-  stroke-dashoffset: 0;
-  transform-origin: center;
-  animation:
-    dash $duration ease-in-out infinite, 
-    colors ($duration*4) ease-in-out infinite;
 }
+/* Small devices (landscape phones, 576px and up) */
+@media  (max-width: 767.98px) {
+.home .contain-returant .restu-item{
+    width: 48%;
+}
+}
+</style>
+<style lang="scss" scoped>
+// $offset: 187;
+// $duration: 1.4s;
 
-@keyframes colors {
-  0% { stroke: #4285F4; }
-  25% { stroke: #DE3E35; }
-  50% { stroke: #F7C223; }
-  75% { stroke: #1B9A59; }
-  100% { stroke: #4285F4; }
-}
+// .spinner {
+//   animation: rotator $duration linear infinite;
+//   position: absolute;
+//   z-index: 50;
+//     top: 230px;
+//     left: 450px;
+// }
+// .spin-hide{
+//     display: none;
+// }
+// @keyframes rotator {
+//   0% { transform: rotate(0deg); }
+//   100% { transform: rotate(270deg); }
+// }
 
-@keyframes dash {
- 0% { stroke-dashoffset: $offset; }
- 50% {
-   stroke-dashoffset: $offset/4;
-   transform:rotate(135deg);
- }
- 100% {
-   stroke-dashoffset: $offset;
-   transform:rotate(450deg);
- }
-}
+// .path {
+//   stroke-dasharray: $offset;
+//   stroke-dashoffset: 0;
+//   transform-origin: center;
+//   animation:
+//     dash $duration ease-in-out infinite, 
+//     colors ($duration*4) ease-in-out infinite;
+// }
+
+// @keyframes colors {
+//   0% { stroke: #4285F4; }
+//   25% { stroke: #DE3E35; }
+//   50% { stroke: #F7C223; }
+//   75% { stroke: #1B9A59; }
+//   100% { stroke: #4285F4; }
+// }
+
+// @keyframes dash {
+//  0% { stroke-dashoffset: $offset; }
+//  50% {
+//    stroke-dashoffset: $offset/4;
+//    transform:rotate(135deg);
+//  }
+//  100% {
+//    stroke-dashoffset: $offset;
+//    transform:rotate(450deg);
+//  }
+// }
 </style>

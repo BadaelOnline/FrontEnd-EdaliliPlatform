@@ -1,15 +1,22 @@
 <template>
     <!-- Start About-Us -->
     <div class="about-us">
-        <div class="row">
-            <div class="col-sm-3">
+        <div class="logo">
+             <img
+                    @click="goto"
+                    height="40"
+                    src="../../../public/img/Group.png"
+                />
+        </div>
+        <div class="contain-top">
+            <div class="Know-Us">
                 <h3>{{ $t('GetKnowUs') }}</h3>
                 <ul>
                     <li>
                         <a href="#">{{ $t('AboutUs') }}</a>
                     </li>
                     <li>
-                        <a href="#">{{ $t('CareersPress') }}></a>
+                        <a href="#">{{ $t('CareersPress') }}</a>
                     </li>
                     <li>
                         <a href="#">{{ $t('Releases') }}</a>
@@ -22,21 +29,21 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-3">
+            <div class="Connect">
                 <h3>{{ $t('Connectwith') }}</h3>
                 <ul>
                     <li>
-                        <a href="#">{{ $t('Facebook') }}</a>
+                        <a href="#"><i class="fab fa-facebook-square" aria-hidden="true"></i>{{ $t('Facebook') }}</a>
                     </li>
                     <li>
-                        <a href="#">{{ $t('Twitter') }}</a>
+                        <a href="#"><i class="fab fa-twitter-square" aria-hidden="true"></i>{{ $t('Twitter') }}</a>
                     </li>
                     <li>
-                        <a href="#">{{ $t('Instagram') }}</a>
+                        <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i>{{ $t('Instagram') }}</a>
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-3">
+            <div class="Join-Us">
                 <h3>{{ $t('JoinUs') }}</h3>
                 <ul>
                     <li>
@@ -56,7 +63,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-3">
+            <div class="Let-Help">
                 <h3>{{ $t('LetUsHelp') }}</h3>
                 <ul>
                     <li>
@@ -73,299 +80,224 @@
                     </li>
                 </ul>
             </div>
-            <hr />
-            <div class="imag">
-                <img src="../../../public/img/logo-3.png" />
-            </div>
         </div>
-        <div class="content_buttom">
-            <div class="text-icon">
+        <div class="contain-bottom">
+            <div class="ico">
                 <div class="work-uss">
-                    <div>E-DALELY Points</div>
-                    <img src="../../../public/img/icon-card.png" />
+                    <i class="fas fa-credit-card"></i>
+                    <h4> <span class="sp1">E</span>-<span class="sp2">D</span>ALELY Points</h4>           
+                </div>
+                    <div class="work-uss">
+                 <i class="fab fa-apple"></i>
+                    <h4>App Store</h4>
+                  
+                </div>
+                <div class="work-uss">
+                  <i class="fab fa-google-play"></i>
+                    <h4><span>Get On </span>Google Play</h4>        
+                   
                 </div>
             </div>
-            <div class=" text-ico">
-                <div class="work-us">
-                    <div><span>Get It On</span>Google Play</div>
-                    <img src="../../../public/img/icon-google-play.png" />
+            <div class=" visiter">       
+                <div>
+                    <h5>الزیارات</h5>
+                    <span>0</span>
+                    <span>0</span>
+                    <span>1</span>
+                    <span>5</span>
+                    <span>4</span>
+                    <span>8</span>
                 </div>
-            </div>
-            <div class="text-ico">
-                <div class="work-us" style="padding-top: 3px">
-                    <div>App Store</div>
-                    <img src="../../../public/img/icon-appel.png" />
+                 <div>
+                    <h5>المتصلین</h5>
+                    <span>0</span>
+                    <span>0</span>
+                    <span>0</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>5</span>
                 </div>
-            </div>
-            <div class=" visiter text-center">
-                <ul>
-                    المتصلین<br />
-                    <li>0</li>
-                    <li>0</li>
-                    <li>3</li>
-                    <li>3</li>
-                    <li>1</li>
-                    <li>5</li>
-                </ul>
-            </div>
-            <div class="visiter text-cnter">
-                <ul>
-                    الزیارات
-                    <br />
-                    <li>0</li>
-                    <li>0</li>
-                    <li>1</li>
-                    <li>4</li>
-                    <li>7</li>
-                    <li>9</li>
-                </ul>
+               
             </div>
         </div>
     </div>
+    
 </template>
 <style scoped>
-/* Start About-Us */
 .about-us {
-    height: 420px;
-    background-color: #656668;
+    height: auto;
+    background-color: #1c2c34;
 }
-.about-us h3 {
-    color: #aca59b;
-    margin: 50px 0 50px 0;
+.logo{
+    display: flex;
+    justify-content: flex-start;
 }
-.about-us ul {
-    list-style: none;
-    font-size: 20px;
+.logo img{
+    margin: 20px;
+    cursor: pointer;
 }
-.about-us ul li {
-    margin-bottom: -5px;
-}
-.about-us ul li a {
-    color: #b1afaf;
-}
-.about-us hr {
-    width: 890px;
-    height: 1px;
-    background-color: #424243;
-    margin: 40px auto 20px auto;
-    opacity: 0.7;
-}
-.content_buttom{
-    width: 100%;
-    display: inline-flex;
+/* _____________________ contain-top  __________________ */
+.contain-top{
+    display: flex;
     justify-content: space-around;
 }
-.about-us .text-icon{
-    padding-top: 10px;
-    width: 170px;
-}
-.about-us .work-uss {
-    background-color: black;
+
+.contain-top h3 {
     color: #fff;
-    border-radius: 10px;
-    height: 40px;
-    position: relative;
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    padding-right: 10px;
-    padding-top: 5px;
-    }
-    .about-us .work-uss img {
-    position: absolute;
-    top: 5px;
-    left: 7px;
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    border-bottom: 2px solid #ff3c20;
 }
-.about-us .text-ico{
-    padding-top: 10px;
-    width: 140px;
+.contain-top ul {
+    list-style: none; 
+    padding: 0;
 }
-.about-us .work-us {
-    background-color: black;
-    color: #fff;
-    border-radius: 10px;
-    height: 40px;
-    position: relative;
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    padding-right: 10px;
-    }
-    .about-us .work-us img {
-    position: absolute;
-    top: 5px;
-    left: 20px;
-}
- .about-us .text-ico div{
-    position: relative;
-}  
-.about-us .imag img {
-    position: absolute;
-    left: 50px;
-}
-.about-us .visiter ul {
-    list-style: none;
-    margin: 0;
+.contain-top ul li {
     font-size: 18px;
 }
-.about-us .visiter li {
-    background-color: #fff;
-    width: 15px;
-    height: 29px;
-    display: inline-block;
-    margin: 0.5vh;
+.contain-top ul li a {
+     color: rgb(184, 184, 184);
+     text-decoration: none;
+     transition: all .5s;
 }
-
-
-.about-us .work-us div span {
-    font-size: 9px;
-    display: block;
+.contain-top ul li a i{
+    margin-right: 10px;
 }
+ .contain-top ul li a:hover {
+    font-size: 19px;
+    color: #ff3c20;
+  text-shadow:
+      0 0 7px #ff3c20,
+      0 0 10px #ff3c20,
+      0 0 21px #ff3c20,
+      0 0 42px #ff3c20,
+      0 0 82px #ff3c20,
+      0 0 92px #ff3c20,
+      0 0 102px #ff3c20,
+      0 0 151px #ff3c20;
 
-
-.about-us .dlely-card img {
-    position: absolute;
-    left: 18px;
-    top: 5px;
-}
-
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
- .about-us {
-        height: auto;
-    }
-    .about-us h3 {
-        font-size: 15px;
-    }
-    .content_buttom{
-    width: 100%;
-    display: grid;
-    justify-content: space-around;
-}
-.about-us .imag  {
-    position: relative;
-
-}
-.about-us .imag img {
-    position: absolute;
-    top: 70px;
-    left: -500px;
-}
-.about-us .work-us {
-  margin-left: 16px;
-    }
-    .about-us ul {
-        padding: 0;
-        font-size: 15px;
-    }
-    .about-us hr {
-        width: 450px;
-    }
-    .about-us .visiter ul {
-        font-size: 19px;
-        margin-top: 20px;
-    }
-    .about-us .visiter ul li {
-        width: 20px;
-        height: 28px;
-    }
 }
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .about-us {
-        height: auto;
-    }
-    .about-us h3 {
-        font-size: 15px;
-    }
-    .content_buttom{
+@media (max-width: 767.98px) {
+.logo{
+    display: flex;
+    justify-content: center;
+}
+ .contain-top .logo{
+    justify-content: center;
+}
+.contain-top{
+  flex-flow: wrap;    
+}
+.Know-Us,.Connect, .Join-Us, .Let-Help{
+ width: 45%;
+}
+}
+/* _____________________ contain-bottom  __________________ */
+ .contain-bottom{
     width: 100%;
-    display: grid;
+    display: inline-flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+ .contain-bottom i{
+    color: #ff3c20;
+    font-size: 25px;
+}
+.contain-bottom .ico{
+    width: 70%;
+    display: flex;
     justify-content: space-around;
 }
-.about-us .work-us {
-  margin-left: 16px;
-    }
-    .about-us ul {
-        padding: 0;
-        font-size: 15px;
-    }
-    .about-us hr {
-        width: 450px;
-    }
-    .about-us .visiter ul {
-        font-size: 19px;
-        margin-top: 20px;
-    }
-    .about-us .visiter ul li {
-        width: 20px;
-        height: 28px;
-    }
+.contain-bottom .ico .work-uss{
+    border: 1px solid #ff3c20;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 2px 5px 8px #ff3c20;
+    transition: all .5s;
+}
+.contain-bottom .ico .work-uss:hover{
+    box-shadow:
+      0 0 7px #ff3c20,
+      0 0 10px #ff3c20,
+      0 0 21px #ff3c20;
+}
+.sp1{
+    color: #247ba0;
+    font-weight: bold;
+}
+.sp2{
+    color: #dd222a;
+    font-weight: bold;
+}
+.ico h4{
+    color: #f0705d;
+     transition: all .5s;
+}
+.contain-bottom .ico .work-uss:hover h4{
+   color: #ff3c20;  
+}
+.contain-bottom .visiter{
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+.contain-bottom .visiter h5{
+    color: #fff;
+}
+.contain-bottom .visiter span{
+    color: #fff;
+    background-color: #ff3c20;
+    padding: 5px;
+    margin: 0 2px;
+    border-radius: 3px;
 }
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .about-us h3 {
-        font-size: 22px;
-    }
-    .about-us ul {
-        padding: 0;
-        font-size: 17px;
-    }
-    .about-us hr {
-        width: 650px;
-    }
-    .about-us .visiter ul {
-        font-size: 14px;
-    }
-    .about-us .visiter ul li {
-        width: 13px;
-        height: 22px;
-    }
-.about-us .text-ico{
-    padding-top: 10px;
-    width: 140px;
+@media  (max-width: 991.98px) {
+.ico h4{
+    font-size: 20px;
 }
-.about-us .work-us {
-    background-color: black;
-    color: #fff;
-    border-radius: 10px;
-    height: 40px;
-    position: relative;
-    display: flex;
+.contain-bottom[data-v-78cdd7b8] {
     width: 100%;
-    justify-content: flex-end;
-    padding-right: 10px;
-    }
-    .about-us .work-us img {
-    position: absolute;
-    top: 5px;
-    left: 20px;
+    display: flex;
+    padding-bottom: 30px;
+    flex-direction: column;
+}
+.contain-bottom .ico[data-v-78cdd7b8] {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 25px;
+}
+.contain-bottom .visiter[data-v-78cdd7b8] {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 }
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .about-us {
-        height: 425px;
-    }
-    .about-us hr {
-        width: 800px;
-    }
-    .about-us .visiter ul {
-        font-size: 15px;
-    }
-    .about-us .visiter ul li {
-        width: 17px;
-        height: 24px;
-    }
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .ico h4{
+    font-size: 16px;
 }
-
+}
 /* End About-Us */
-</style>
+</style>  
+<script>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-
-@Options({})
-export default class AppFooter extends Vue {}
+export default {
+    name: 'navbarHeader',
+    data() {
+        return {
+         
+        };
+    }, 
+   
+    methods: {
+     goto: function () {
+            this.$router.push(`/`);
+        },
+    },
+};
 </script>
