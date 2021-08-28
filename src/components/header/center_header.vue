@@ -288,7 +288,8 @@
     <div class="bottom_navba">
          <div class="Departments_small" id="Dep">
             <div class="content-search">
-			<input  type="text" size="50" autocomplete="off" placeholder="Search Item..." name="s">	
+			<input  type="text" autocomplete="off" placeholder="Search Item..." name="s">	
+            
 			</div>
             <div>
                      <div class="links hov">
@@ -347,8 +348,8 @@
                 <i class="fa fa-list" aria-hidden="true"></i>
                <span class=" ALL_DEPARTMENTS"> ALL DEPARTMENTS</span>
             </div>
-            <div class="contain_Departments animate__animated  animate__slideInDown">
-                <div class="links hov">
+            <div class="contain_Departments"  v-if="$route.name == 'home'">
+                <div class="links">
                     <router-link to="/" class="links">
                      <div class="menu-icon">
                         <img src="../../../public/img/sections.png" />
@@ -357,42 +358,79 @@
                    
                     </router-link>
                 </div>
-                 <div class="links hov">
+                 <div class="links">
                     <router-link to="/products" class="links">
                      <div class="menu-icon"> <img src="../../../public/img/sections.png" alt=""> </div>
                     <div class="linkText">Products</div>
                    
                     </router-link>
                 </div>
-                 <div class="links hov"> 
+                 <div class="links"> 
                     <router-link to="/stores" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/Store_review_2_.png" alt=""> </div>
                     <div class="linkText">Stores</div>
                     
                     </router-link>
                 </div>
-                 <div class="links hov">
+                 <div class="links">
                     <router-link to="/festival" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/sign_shopping.png" alt=""> </div>
                     <div class="linkText">Fistival</div>
                    
                     </router-link>
                 </div>
-                 <div class="links hov">
+                 <div class="links">
                     <router-link to="/resturants" class="links">
                        <div class="menu-icon">  <img src="../../../public/img/terrace.png" alt=""> </div>
                     <div class="linkText">Resturant</div>
                     
                     </router-link>
                 </div>
-                 <div class="links hov">
+                 <div class="links">
                     <router-link to="/doctors" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/stethoscope.png" alt=""> </div>
                     <div class="linkText">Doctot</div>
                     
                     </router-link>
                 </div>
+                <div class="links soon">
+            <!-- <router-link to="/instrc" exact class="links"> -->
+                <div class="menu-icon">
+                    <img src="../../../public/img/factory.png" height="30" />
+                </div>
+                <div class="linkText">{{ $t('Factories') }}</div>
+            <!-- </router-link> -->
+        </div>
+
+        <div class="links soon">
+            <!-- <router-link to="/company" class="links"> -->
+                <div class="menu-icon">
+                    <img src="../../../public/img/building.png" height="30" />
+                </div>
+                <div class="linkText">{{ $t('Companies') }}</div>
+            <!-- </router-link> -->
+        </div>
+
+        <div class="links soon">
+            <!-- <router-link to="/professional" class="links"> -->
+                <div class="menu-icon">
+                    <img src="../../../public/img/surface1.png" height="30" />
+                </div>
+                <div class="linkText">{{ $t('ProfessionalsTechnicians') }}</div>
+            <!-- </router-link> -->
+        </div>
+
+        <div class="links soon">
+            <!-- <router-link to="/medic" class="links"> -->
+                <div class="menu-icon">
+                    <img src="../../../public/img/medicine.png" height="30" />
+                </div>
+                <div class="linkText">
+                    {{ $t('PharmaciesMedicines') }}
+                </div>
+                <!-- </router-link> -->
             </div>
+        </div>
         </div>
         <div class="child2">
             <form >
@@ -412,8 +450,8 @@
 				</label>
 			</div>
 			<div class="content-search">
-				<input class="autosearch-input" type="text" value="" size="50" autocomplete="off" placeholder="Search Item..." name="s">	
-				<div class="search-append"><div class="autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div></div>
+				<input class="autosearch-input" type="text" value="" size="50" autocomplete="off" placeholder="Search Item..." name="s">
+                <button><i class="fa fa-search" aria-hidden="true"></i></button>	
 			</div>
 				
 					</div>
@@ -444,7 +482,7 @@ export default {
         const token = localStorage.getItem('token');
         const server = localStorage.getItem('server') || 'admin';
         return {
-         
+                
             server: server,
             token: token,
             form: {
@@ -641,6 +679,12 @@ export default {
 </script>
 
 <style scoped>
+.soon{
+    display: flex;
+    color: #fff;
+    padding: 5px 0 10px 15px;
+    opacity: 0.2;
+}
 .Departments_small{
     background-color: #1c2c34;
     display: none;
@@ -716,10 +760,10 @@ export default {
 }
 .navba {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .navba .child1{
-    width: 11%;
+    padding-left: 15px;
     display: flex;
 }
 .navba .child2{
@@ -739,7 +783,7 @@ export default {
     color: var(--rhead);
 }
 .navba .child3{
-    width: 37%;
+   padding-right: 5px;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -771,17 +815,15 @@ export default {
 justify-content: space-around;
 font-size: 20px;
 }
-.bottom_navba .child3 div{
-    display: grid;
-    align-content: center;
-}
+
 .bottom_navba .child3 .cart{
    position: relative;
     background-color: var(--rhead);
     border-radius: 50%;
     padding: 0px 10px;
-    height: 40px;
-    margin-top: 13px;
+    margin-top: -5px;
+    display: grid;
+    align-content: center;
     }
 .bottom_navba .child3 .cart:hover{
   color: #fff;
@@ -880,7 +922,19 @@ font-size: 20px;
     border-right: 1px solid #ebebeb;
 }
 #sw_woo_search_1 .content-search{
-    width: 90%;
+    width: 100%;
+    display: flex;
+}
+#sw_woo_search_1 .content-search button{
+    border: navajowhite;
+    color: #fff;
+    background-color: #ff3c20;
+    padding: 0 40px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+#sw_woo_search_1 .content-search button:hover{
+    background-color: #c12711;
 }
 #sw_woo_search_1 .cat-wrapper::before {
     content: '\f107';
@@ -926,7 +980,8 @@ font-size: 20px;
     line-height: 40px;
     margin-bottom: 0;
     padding-left: 150px;
-    border-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 }
 #sw_woo_search_1 .autosearch-input:focus {
     outline: none;
@@ -940,9 +995,7 @@ font-size: 20px;
 .navba .child2{
         display: none;
     }
-.navba .child3{
-    width: 81%;
-}
+
 .bottom_navba .child1 .Departments{
     border-radius: 5px;
     cursor: pointer;
@@ -969,7 +1022,9 @@ font-size: 20px;
   width: 35%;
 
 }
-
+#sw_woo_search_1 .content-search button{
+    padding: 0 25px;
+}
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
@@ -1239,6 +1294,12 @@ width: 90%;
     100% {
         transform: rotate(360deg);
     }
+}
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 330.98px) {
+.navba .child3{
+    font-size: 9px;   
+}
 }
 </style>
 

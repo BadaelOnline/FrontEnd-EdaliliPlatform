@@ -84,7 +84,7 @@
         </div>
         <div
             v-for="restaurant in restaurants"
-            :key="restaurant.id"
+            :key="restaurant"
             class="resturant"
             :style="{
                 background: 'url(' + restaurant.image + ') center no-repeat',

@@ -29,7 +29,6 @@
 
 
     <swiper
-    :slides-per-view="(Product.length / 2) + 1"
     :space-between="50"
     @slideChange="onSlideChange"
   >
@@ -56,7 +55,6 @@
             </product>                         
     </swiper-slide>   
   </swiper>
-
 <!-- Item slider end-->
         <!-- show market-->
         <div class="mar">
@@ -170,9 +168,9 @@
                 <div class="col-lg-9 col-sm-8 col-xs-10">
               
     <swiper
-    :slides-per-view="(Product.length / 2) + 1"
     :space-between="50"
     @slideChange="onSlideChange"
+    
   >
     <swiper-slide class="swipre_products">   
             
@@ -615,13 +613,14 @@ $cubeDepth: $cubeHeight;
  // Import Swiper Vue.js components
   import { Swiper, SwiperSlide } from 'swiper/vue';
   // Import Swiper styles
-  import 'swiper/swiper.scss';
+  import "swiper/swiper-bundle.css";
 import { mapState } from 'vuex';
 import { defineAsyncComponent } from 'vue';
 export default {
     data() {
         return {
             urll: '/img/',
+             swiper: null,
         };
     },
     name: 'products',
@@ -643,6 +642,9 @@ export default {
         type: String,
     },
     methods: {
+         onSwiper(swiper) {
+      this.swiper = swiper;
+    },
       onSlideChange() {
         console.log('slide change');
       },

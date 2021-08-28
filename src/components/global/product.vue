@@ -76,12 +76,12 @@
 		text-transform: uppercase;
 		font-weight: 600;
 		letter-spacing: .02em;
-		color: var(--primary);
+		color: #ff3c20;
 	}
 	
 	&-title {
 		margin: 0;
-		font-size: clamp(1.4em, 2.1vw);
+		font-size: 18px;
 		font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
 		
 		a {
@@ -97,7 +97,7 @@
 	&-rating {
 		font-size: 1.2em;
 		letter-spacing: 0.05em;
-		color: var(--primary);
+		color: #ff3c20;
 		
 		span {
 			color: var(--grey);
@@ -116,7 +116,7 @@
 		padding: 6px 14px 6px 12px;
 		border-radius: 4px;
 		border: 2px solid currentColor;
-		color: var(--primary);
+		color:#ff3c20;
 		background: none;
 		cursor: pointer;
 		font-weight: bold;
@@ -126,7 +126,7 @@
 		}
 	}
     &-save:hover{
-        background-color: #5ba2ee;
+        background-color: #ee5c45;
     }
 }
 

@@ -189,7 +189,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(['categories', 'Stores']),
+        ...mapState(['Sections', 'Stores']),
         // Stores: function() {
         //     if (this.selectedCategory.length == 0)
         //         return this.$store.state.stores;
@@ -209,13 +209,15 @@ export default {
     },
     mounted() {
         this.$store.dispatch('loadStores');
+        this.$store.dispatch('loadSections');
+
         window.onscroll = function () {
             var menu_btn = document.getElementById('menu_btn');
             var side = document.getElementById('side');
-            if (window.pageYOffset > 756) {
+            if (window.pageYOffset > 300) {
                 menu_btn.classList.add('fixed');
                 side.classList.add('fixed2');
-            } else if (window.pageYOffset < 756) {
+            } else if (window.pageYOffset < 300) {
                 menu_btn.classList.remove('fixed');
                 side.classList.remove('fixed2');
             }
@@ -260,13 +262,12 @@ export default {
             this.$router.push(`visitStore/${i}/${t}/${w}`);
         },
         fetch() {
-            var self = this;
-            let lang = window.localStorage.getItem('lang');
-            axios
-                .get(`/api/sections/getAll?lang=${lang}`)
+            // let lang = window.localStorage.getItem('lang');
+                axios
+                .get(`/api/offers`)
                 .then((res) => {
-                    self.Sections = res.data.Section;
-                    console.warn('Data SUCCESS: ', res.data.Section);
+                    this.Offers = res.data.Offer.data;
+                    console.log('Offer: ',  res.data.Offer.data);
                 })
                 .catch(function (error) {
                     console.warn('------ Error ------: ', error);
@@ -275,6 +276,7 @@ export default {
     },
     created() {
         this.fetch();
+        
     },
 };
 </script>
@@ -556,7 +558,7 @@ export default {
 .side .cancel {
     display: flex;
     font-size: 22px;
-    color: #5b5b5b;
+    color: #fff;
     cursor: pointer;
 }
 
@@ -645,11 +647,8 @@ $bgColor: hsl($baseHue, $baseSat, $baseLum - 2);
 
         &:checked {
             + .dot {
-                background: linear-gradient(
-                    -45deg,
-                    rgba(247, 251, 255, 0.4) 20%,
-                    rgba(0, 0, 0, 0.2) 100%
-                );
+                background: #ff3c20;
+                box-shadow: 1px 0px 8px 5px #ff3c20;
             }
         }
     }
@@ -657,7 +656,7 @@ $bgColor: hsl($baseHue, $baseSat, $baseLum - 2);
 
 .screen {
     align-items: center;
-    background: linear-gradient(135deg, #e3e2e2, #777);
+    background: #1c2c34;
     box-shadow: inset 5px 5px 7px 5px rgba(0, 0, 0, 0.1),
         inset -5px -5px 7px 5px rgba(247, 251, 255, 0.6);
     flex-direction: column;
@@ -667,6 +666,7 @@ $bgColor: hsl($baseHue, $baseSat, $baseLum - 2);
     height: 100%;
 }
 .dot span {
+    color: #fff;
     padding-left: 30px;
 }
 </style>

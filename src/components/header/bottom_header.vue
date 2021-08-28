@@ -85,6 +85,7 @@ export default {
     justify-content: space-around;
     width: 100%;
     height:400px;
+    margin-bottom: 5px;
 }
 .bottom_header .child1{
     width: 10%;
@@ -98,6 +99,9 @@ export default {
 .carousel-item{
     position: relative;
 } 
+.carousel-inner{
+    width: 105%;
+}
 .carousel-item img{
     width: 100%;
     height: 340px;
@@ -112,14 +116,24 @@ export default {
 .bottom_header .child3 div {
   height: 150px;
   margin-bottom: 40px;
+  width: 110%;
+    margin-left: -10px;
 }
 
 .bottom_header .child3 div img{
     width: 100%;
     height: 100%;  
 }
+.bottom_header .child3 div img:hover{
+    opacity: .8;
+    cursor: pointer;
+}
+ 
 /* Medium devices (tablets, 768px and up) */
 @media  (max-width: 991.98px) {
+.cu5{
+    display: none;
+}
 .bottom_header {
     display: flex;
    flex-flow: wrap;
@@ -133,9 +147,19 @@ export default {
    width: 90%;
    padding-top: 20px;
 }
+.carousel-inner{
+    width: 100%;
+}
 .bottom_header .child3{
     display: none;
 }
 
+}
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+.carousel-item img{
+    width: 100%;
+    height: 200px;
+}
 }
 </style>
