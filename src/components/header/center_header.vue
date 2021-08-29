@@ -226,39 +226,39 @@
         </div>
         <div class="child2"> 
               <div class="links">
-            <router-link to="/" class="links">
-                <div class="linkText">{{ $t('Home') }}</div>
+            <router-link to="/" class="links"  @click="selectItem(0)">
+                <div class="linkText" :class="{ active_sec: activeItem === 0}">{{ $t('Home') }}</div>
             </router-link>
         </div>
          <div class="links">
-            <router-link to="/products" class="links">
-                <div class="linkText">{{ $t('Products') }}</div>
+            <router-link to="/products" class="links"  @click="selectItem(1)">
+                <div class="linkText" :class="{ active_sec: activeItem === 1}">{{ $t('Products') }}</div>
             </router-link>
         </div>
         <div class="links">
-            <router-link to="/stores" class="links">
-                <div class="linkText">{{ $t('Stores') }}</div>
+            <router-link to="/stores" class="links"  @click="selectItem(2)">
+                <div class="linkText" :class="{ active_sec: activeItem === 2}">{{ $t('Stores') }}</div>
             </router-link>
         </div>
          <div class="links hov">
-            <router-link to="/festival" class="links">
-                <div class="linkText">{{ $t('FestivalPerformances') }}</div>
+            <router-link to="/festival" class="links"  @click="selectItem(3)">
+                <div class="linkText" :class="{ active_sec: activeItem === 3}">{{ $t('FestivalPerformances') }}</div>
             </router-link>
         </div>
         <div class="links">	
     
-            <router-link to="/" class="links">
-                <div class="linkText">BLOG</div>
+            <router-link to="/" class="links"  @click="selectItem(4)">
+                <div class="linkText" :class="{ active_sec: activeItem === 4}">BLOG</div>
             </router-link>
         </div>
         <div class="links">
-            <router-link to="/" class="links">
-                <div class="linkText">CONTACT</div>
+            <router-link to="/" class="links"  @click="selectItem(5)">
+                <div class="linkText" :class="{ active_sec: activeItem === 5}">CONTACT</div>
             </router-link>       
         </div>
            <div class="links">
-            <router-link to="/" class="links">
-                <div class="linkText">ABOUT US</div>
+            <router-link to="/" class="links"  @click="selectItem(6)">
+                <div class="linkText" :class="{ active_sec: activeItem === 5}">ABOUT US</div>
             </router-link>
                
         </div>
@@ -465,7 +465,8 @@
                 <i class="fa fa-shopping-cart"></i>
                 <div class="cartItemCount">{{ cartItemCount }}</div>
             </div>
-               <div>My Cart</div>
+               <div>Total - <span style="font-size: 14px;
+color: var(--rhead);font-weight: bold;">$0.00</span></div>
         </div>
        
           
@@ -482,7 +483,7 @@ export default {
         const token = localStorage.getItem('token');
         const server = localStorage.getItem('server') || 'admin';
         return {
-                
+            activeItem: 0,
             server: server,
             token: token,
             form: {
@@ -504,6 +505,7 @@ export default {
             
         };
     }, 
+    
     computed: {
         cartItemCount() {
             return this.$store.state.cartItemCount;
@@ -514,6 +516,9 @@ export default {
         }),
     },
     methods: {
+        selectItem(i) {
+            this.activeItem = i;
+        },
       toggle_vs(){
           document.getElementById('Dep').classList.toggle("Dep_vs");
            document.getElementById('cover_dep').classList.add("vs2");
@@ -679,6 +684,10 @@ export default {
 </script>
 
 <style scoped>
+.active_sec{
+    text-decoration-line: underline;
+    color: var(--rhead);
+}
 .soon{
     display: flex;
     color: #fff;
@@ -783,7 +792,7 @@ export default {
     color: var(--rhead);
 }
 .navba .child3{
-   padding-right: 5px;
+   padding-right: 10px;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -817,26 +826,31 @@ font-size: 20px;
 }
 
 .bottom_navba .child3 .cart{
-   position: relative;
-    background-color: var(--rhead);
+   text-align: center;
     border-radius: 50%;
-    padding: 0px 10px;
-    margin-top: -5px;
-    display: grid;
-    align-content: center;
+    width: 38px;
+    line-height: 38px;
+    height: 38px;
+    position: relative;
+    font-size: 16px;
+    background-color: var(--rhead);
+   
     }
 .bottom_navba .child3 .cart:hover{
   color: #fff;
     }
 .bottom_navba .child3 .cartItemCount{
     position: absolute;
-    top: -10px;
-    right: -18px;
+    top: -8px;
+    right: -12px;
     color: #000;
     background-color: #fff;
-    padding: 0px 9px;
+    padding: 0px 6px;
     border-radius: 50%;
     font-size: 15px;
+    height: 20px;
+    display: grid;
+    align-content: space-evenly;
 }
 .bottom_navba .child3 div{
     color: #fff;
@@ -928,7 +942,7 @@ font-size: 20px;
 #sw_woo_search_1 .content-search button{
     border: navajowhite;
     color: #fff;
-    background-color: #ff3c20;
+    background-color: var(--rhead);
     padding: 0 40px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -963,11 +977,13 @@ font-size: 20px;
     padding: 0 10px 0;
     height: 40px;
     width: 135px;
-    color: #666;
-    background: #f5f5f5;
+    color: #353333;
+    background: #b0b1b3;
     cursor: pointer;
     opacity: .7;
 }
+
+
 #sw_woo_search_1 .autosearch-input {
     width: 100%;
     height: 40px;
@@ -986,7 +1002,15 @@ font-size: 20px;
 #sw_woo_search_1 .autosearch-input:focus {
     outline: none;
 }
-
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 767.98px) {
+#sw_woo_search_1 .cat-wrapper select {
+    display: none;
+}
+#sw_woo_search_1 .autosearch-input {
+ padding-left: 10px;
+}
+}
 /* Medium devices (tablets, 768px and up) */
 @media  (max-width: 991.98px) {
 .Departments_small{

@@ -87,7 +87,7 @@
                     <i class="fas fa-credit-card"></i>
                     <h4> <span class="sp1">E</span>-<span class="sp2">D</span>ALELY Points</h4>           
                 </div>
-                    <div class="work-uss">
+                    <div class="work-us">
                  <i class="fab fa-apple"></i>
                     <h4>App Store</h4>
                   
@@ -146,7 +146,7 @@
     color: #fff;
     margin: 0 0 20px 0;
     font-size: 24px;
-    border-bottom: 2px solid #ff3c20;
+    border-bottom: 2px solid var(--rhead);
 }
 .contain-top ul {
     list-style: none; 
@@ -165,16 +165,16 @@
 }
  .contain-top ul li a:hover {
     font-size: 19px;
-    color: #ff3c20;
+    color: var(--rhead);
   text-shadow:
-      0 0 7px #ff3c20,
-      0 0 10px #ff3c20,
-      0 0 21px #ff3c20,
-      0 0 42px #ff3c20,
-      0 0 82px #ff3c20,
-      0 0 92px #ff3c20,
-      0 0 102px #ff3c20,
-      0 0 151px #ff3c20;
+      0 0 7px var(--rhead),
+      0 0 10px var(--rhead),
+      0 0 21px var(--rhead),
+      0 0 42px var(--rhead),
+      0 0 82px var(--rhead),
+      0 0 92px var(--rhead),
+      0 0 102px var(--rhead),
+      0 0 151px var(--rhead);
 
 }
 /* Small devices (landscape phones, 576px and up) */
@@ -201,7 +201,7 @@
     padding-bottom: 30px;
 }
  .contain-bottom i{
-    color: #ff3c20;
+    color: var(--rhead);
     font-size: 25px;
 }
 .contain-bottom .ico{
@@ -210,18 +210,36 @@
     justify-content: space-around;
 }
 .contain-bottom .ico .work-uss{
-    border: 1px solid #ff3c20;
-    padding: 5px 10px;
+    border: 1px solid var(--rhead);
+    padding: 5px 5px;
     border-radius: 3px;
     cursor: pointer;
-    box-shadow: 2px 5px 8px #ff3c20;
+    box-shadow: 2px 5px 8px var(--rhead);
+    
+    font-size: 24px;
+}
+.contain-bottom .ico .work-uss h4{
+  
+    font-size: 22px;
+}
+.contain-bottom .ico .work-us h4{
+  
+    font-size: 22px;
+}
+.contain-bottom .ico .work-us{
+    border: 1px solid var(--rhead);
+    padding: 5px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 2px 5px 8px var(--rhead);
     transition: all .5s;
+    font-size: 24px;
 }
 .contain-bottom .ico .work-uss:hover{
     box-shadow:
-      0 0 7px #ff3c20,
-      0 0 10px #ff3c20,
-      0 0 21px #ff3c20;
+      0 0 7px var(--rhead),
+      0 0 10px var(--rhead),
+      0 0 21px var(--rhead);
 }
 .sp1{
     color: #247ba0;
@@ -236,7 +254,7 @@
      transition: all .5s;
 }
 .contain-bottom .ico .work-uss:hover h4{
-   color: #ff3c20;  
+   color: var(--rhead);  
 }
 .contain-bottom .visiter{
     width: 30%;
@@ -248,7 +266,7 @@
 }
 .contain-bottom .visiter span{
     color: #fff;
-    background-color: #ff3c20;
+    background-color: var(--rhead);
     padding: 5px;
     margin: 0 2px;
     border-radius: 3px;
@@ -258,19 +276,19 @@
 .ico h4{
     font-size: 20px;
 }
-.contain-bottom[data-v-78cdd7b8] {
+.contain-bottom {
     width: 100%;
     display: flex;
     padding-bottom: 30px;
     flex-direction: column;
 }
-.contain-bottom .ico[data-v-78cdd7b8] {
+.contain-bottom .ico {
     width: 100%;
     display: flex;
     justify-content: space-around;
     padding-bottom: 25px;
 }
-.contain-bottom .visiter[data-v-78cdd7b8] {
+.contain-bottom .visiter {
     width: 100%;
     display: flex;
     justify-content: space-around;

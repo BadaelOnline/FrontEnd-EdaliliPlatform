@@ -26,7 +26,7 @@ export default {
 :root {
     --bl: #247ba0;
     --r: #fb3640;
-    --rhead:#ff3c20;
+    --rhead:#df222a;
 }
 #app {
     font-family: Zen Tokyo Zoo;

@@ -99,7 +99,7 @@ export default {
 align-items: center;
 }
 .first_header .first_nav .child3{
-    padding-right: 15px;
+    padding-right: 20px;
    color: #fff;
     display: flex;
     justify-content: end;
