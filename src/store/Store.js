@@ -14,8 +14,8 @@ const store = createStore({
         Product: [],
         ProductID: [],
         productById: [],
-        Brand: [],
-        Brands: [],
+        // Brand: [],
+        // Brands: [],
         Categories: [],
         CategoryID: null,
         priceArray: [],
@@ -120,9 +120,9 @@ const store = createStore({
         SET_Sections(state, Sections) {
             state.Sections = Sections;
         },
-        SET_Brands(state, Brands) {
-            state.Brands = Brands;
-        },
+        // SET_Brands(state, Brands) {
+        //     state.Brands = Brands;
+        // },
         SET_Categories(state, Categories) {
             state.Categories = Categories;
         },
@@ -228,18 +228,18 @@ const store = createStore({
                     console.log('Error: ', error);
                 });
         },
-        loadBrands({ commit }) {
-            axios
-                .get(`/api/brands/getAll?lang=${lang}`)
-                .then((res) => {
-                    console.log('Brands :', res.data.Brand.data);
-                    let Brands = res.data.Brand.data;
-                    commit('SET_Brands', Brands);
-                })
-                .catch(function (error) {
-                    console.log('Error: ', error);
-                });
-        },
+        // loadBrands({ commit }) {
+        //     axios
+        //         .get(`/api/brands/getAll?lang=${lang}`)
+        //         .then((res) => {
+        //             console.log('Brands :', res.data.Brand.data);
+        //             let Brands = res.data.Brand.data;
+        //             commit('SET_Brands', Brands);
+        //         })
+        //         .catch(function (error) {
+        //             console.log('Error: ', error);
+        //         });
+        // },
         loadCategories({ commit }) {
             axios
                 .get(`/api/categories/getAll?lang=${lang}`)

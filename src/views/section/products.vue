@@ -116,7 +116,7 @@
 <div class="space3d">
         
     
-    <div class="_3dbox">
+    <!-- <div class="_3dbox" v-if="Stores.length > 0"> 
       <div class="_3dface _3dface--front">
          <Subscriber
          v-for="Store in Stores.slice(0, 1)"
@@ -124,7 +124,7 @@
           :title="Store.title"
            />
       </div>
-      <div class="_3dface _3dface--top">         
+      <div class="_3dface _3dface--top" >         
           <Subscriber 
        
         v-for="Store in Stores.slice(1, 2)"
@@ -159,7 +159,7 @@
          :key="Store.pr"
           :title="Store.title"
            /></div>
-    </div>
+    </div> -->
     
 </div>
 
@@ -631,9 +631,9 @@ export default {
             import(`@/components/global/product.vue`)
         ),
         
-        Subscriber: defineAsyncComponent(() =>
-            import(`@/components/global/Subscriber.vue`)
-        ),
+        // Subscriber: defineAsyncComponent(() =>
+        //     import(`@/components/global/Subscriber.vue`)
+        // ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
         ),
@@ -649,20 +649,20 @@ export default {
         console.log('slide change');
       },
     },
-    computed: {
+    computed: {  // 'Stores','Brands',
         ...mapState([
             'Product',
             'brands',
-            'Brands',
+            
             'categories',
-            'Stores',
+           
             'lastStores',
         ]),
     },
     mounted() {
         this.$store.dispatch('loadProducts');
-        this.$store.dispatch('loadStores');
-        this.$store.dispatch('loadBrands');
+        // this.$store.dispatch('loadStores');
+        // this.$store.dispatch('loadBrands');
 
     },
 };

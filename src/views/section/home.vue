@@ -1,5 +1,4 @@
 <template>
-<!-- banner-left1.png -->
         <Cartmini />  
         <div class="home">
          <div class="parent">
@@ -40,8 +39,9 @@
                                 
              </div>
              <div class="right">
-                 <div class="Daily">Daily deals</div>
-             <div class="contain_offers">
+                 <div class="sm-offer"><img src="../../../public/img/cus.jpg" ></div>
+                 <div class="Daily">Daily deals</div> 
+             <div class="contain_offers" v-if="Offers.length > 0">
              
             <!-- 1  -->
             <div class="contain" v-for="Offer in Offers.slice(0,2)" :key="Offer">
@@ -75,6 +75,12 @@
             </div>        
             
         </div>
+        <div class="contain_unavaible" v-else>
+                    <div class="unavaible_product">
+                        <img src="../../../public/img/unavalible.jpg">
+                        <h2>Ops... Offers not available.</h2> 
+                        </div>
+                    </div>
         <div class="big_offer">
             <img src="../../../public/img/cus2.png" >
         </div>
@@ -98,7 +104,7 @@
          </div> -->
         </div>
           <div class="row">
-             <div class="contain_products">
+             <div class="contain_products"  v-if="Offers.length > 0">
 <!-- spiner reload wating -->
 
 <!-- <svg id="spinner" class="spinner spin-hide" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -114,15 +120,21 @@
                      </div>
                  </div>
                 </div>
+                  <div class="contain_unavaible" v-else>
+                    <div class="unavaible_product">
+                        <img src="../../../public/img/unavalible.jpg">
+                        <h2>Ops... Offers not available.</h2> 
+                        </div>
+                    </div>
              </div>
             
             <div class="medium_offer">
              <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
             <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
             </div>    
-             <div class="Daily">Top Stores</div>   
-              <div class="row">
-             <div class="contain_products">
+              <!-- <div class="Daily">Top Stores</div>   
+             <div class="row">
+             <div class="contain_products" v-if="Stores.length > 0">
                  <div class="product-item store-item col-md-3 col-xs-6" v-for="Stor in Stores.slice(0,4)" :key="Stor">
                      <router-link :to="`/visitstore/${Stor.id}/${Stor.title}`" style="color: #6b6c6c;text-decoration: none;">
                     <img src="../../../public/img/market-logo.png">
@@ -133,7 +145,13 @@
                      </router-link>
                  </div>
                 </div>
-             </div>
+                   <div class="contain_unavaible" v-else>
+                    <div class="unavaible_product">
+                        <img src="../../../public/img/unavalible.jpg">
+                        <h2>Ops... Stores not available.</h2> 
+                        </div>
+                    </div>
+             </div>  -->
              </div>
         
 
@@ -155,8 +173,8 @@
                     :src="brand.image">
                     </div>
             </div>
-             <div class="Daily-rsturant">Top Stores</div> 
-            <div class="contain-returant">
+             <div class="Daily-rsturant">Top Restaurants</div> 
+            <div class="contain-returant" v-if="restaurants.length > 0">
                 <div class="restu-item" 
                 v-for="restaurant in restaurants.slice(0,4)"
                 :key="restaurant">
@@ -166,36 +184,8 @@
                 </router-link>
                 </div>
             </div>  
-        </div>
-        <!-- products   default-store-banner.png
-        <div class="products">
-            <h2
-                data-aos="fade-up"
-                data-aos-offset="200"
-                data-aos-delay="50"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="true"
-                class="heading"
-            >
-                Our <span>Products</span>
-            </h2>
-            <div class="container">
-                <div class="row">
-                    <productBody
-                        v-for="prod in Product.slice(0, 4)"
-                        :key="prod.id"
-                        :id="prod.id"
-                        :name="prod.name"
-                        :short_des="prod.short_des"
-                        :long_des="prod.long_des"
-                        :store="prod.store"
-                    ></productBody>
-                </div>
-            </div>
-        </div>-->
-   
+            
+        </div> 
 </template>
 <script>
 import data from '../../jeson/data';
@@ -222,7 +212,8 @@ export default {
             showDetails: false,
             chooseDetails: false,
             Sections: [],
-            Offers: []
+            Offers: [],
+            Stores: [],
         };
     },
     components: {
@@ -243,6 +234,7 @@ export default {
         fetch() {
             var self = this;
             let lang = window.localStorage.getItem('lang');
+            // sections
             axios
                 .get(`/api/sections/getAll?lang=${lang}`)
                 .then((res) => {
@@ -250,17 +242,30 @@ export default {
                     console.warn('Section: ', res.data.Section);                         
                 })
                 .catch(function (error) {
-                    console.warn('------ Error ------: ', error);
+                    console.warn('Error sections ', error.toJSON());
                 });
+                  // offers
                 axios
                 .get(`/api/offers`)
                 .then((res) => {
                     this.Offers = res.data.Offer.data;
                     console.log('Offer: ',  res.data.Offer.data);
+                    
+                    
                 })
                 .catch(function (error) {
-                    console.warn('------ Error ------: ', error);
+                    console.warn(' Error Offer ', error.toJSON());
                 });
+                // stores
+                 axios
+                .get(`/api/stores/getAll?lang=${lang}`)
+                .then((res) => {
+                    console.log('Stores :', res.data.Stores);
+                      this.Stores = res.data.Stores;
+                })
+                 .catch(function (error) {
+                    console.log(' Error Stores ',error.toJSON());
+                 });
 
         },
         /* selectItem(i) {
@@ -294,22 +299,35 @@ export default {
         this.fetch();
     },
   computed: {
-        ...mapState([ 'brands','Product','Stores']),
+        ...mapState([ 'brands','Product']),
     },
     mounted() {
         this.$store.dispatch('loadProducts');
-        this.$store.dispatch('loadStores');      
-        
-        this.fetch();
+        // this.$store.dispatch('loadStores');    ,'Stores'  
         
     },
 };
 </script>
 
 <style scoped>
-
+.contain_unavaible{
+    display: flex;
+    border-top: 1px solid #eee;
+    padding: 30px 0;
+}
+.unavaible_product{
+    background-color: #ecf0f1;
+    height: auto;
+}
+.unavaible_product img{
+   margin-bottom: 25px;
+}
+.unavaible_product h2{
+   font-size: 3em;
+    color: gray;
+}
 .fa-spin{
-    color: #ff3c20; 
+    color: var(--rhead); 
  
 }
 .fa-circle{
@@ -337,21 +355,22 @@ export default {
 }
 .parent .left .Latest_Products h2{
      padding: 20px 0;
-     border-bottom: 2px solid #ff3c20;
+     border-bottom: 2px solid var(--rhead);
+     font-size: 25px;
 }
 .parent .left .Latest_Products .list-products{
     display: flex;
-    transform: translateX(-100%);
+   transform: translateX(-210px);
     transition: all .5s;
 }
 .trans-list{
     overflow: hidden;
-    transform: translateX(0%) !important;
+    transform: translateX(7%) !important;
 }
 .parent .left .Latest_Products .Products{
     display: flex;
     padding: 10px 0;
-    width: 200px;
+    width: 215px;
 }
 .parent .left .Latest_Products .Products .imag{
    width: 75px;
@@ -360,7 +379,7 @@ export default {
     color: #ff9933;
 }
 .parent .left .Latest_Products .Products .details .price{
-    color: #ff3c20;
+    color: var(--rhead);
 }
 /* ___________________ right __________________ */
 .parent .right{
@@ -368,6 +387,13 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+.parent .right .sm-offer{
+    width: 99%;
+padding-bottom: 10px;
+}
+.parent .right .sm-offer img{
+    width: 100%;
 }
 .parent .right .Daily{
     color: #fff;
@@ -457,7 +483,7 @@ export default {
     font-size: 13px;
 }
 .parent .right .offer-details .offer_price{
-    color: #ff3c20;
+    color: var(--rhead);
     font-size: 20px;
     font-weight: 700;
 }
@@ -562,7 +588,7 @@ export default {
 .parent .right .contain_products .store-item button{
    border: navajowhite;
     color: #fff;
-    background-color: #ff3c20;
+    background-color: var(--rhead);
     padding: 3px 20px;
     font-weight: bold;
     border-radius: 3px;
@@ -572,7 +598,7 @@ export default {
    width: 100%;
 }
 .parent .right .contain_products .product-item .offer_price{
-    color: #ff3c20;
+    color: var(--rhead);
     font-size: 20px;
     font-weight: 700;
 }
@@ -583,7 +609,7 @@ export default {
 }
 .parent .right .contain_products .product-item  .parcent_offer{
     position: absolute;
-    background-color: #ff3c20;
+    background-color: var(--rhead);
     color: #fff;
     border-radius: 50%;
     padding: 10px 3px;
