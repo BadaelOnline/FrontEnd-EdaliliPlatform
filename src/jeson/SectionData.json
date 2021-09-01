@@ -49,7 +49,7 @@
             "slug": "buty"
         },
         {
-            "id": 1,
+            "id": 7,
             "name": "العاب",
             "image": "img/S1.png",
             "is_active": "Active",
@@ -57,7 +57,7 @@
             "slug": "buty"
         },
         {
-            "id": 3,
+            "id": 8,
             "name": "موبايلات",
             "image": "img/S1.png",
             "is_active": "Active",

@@ -25,7 +25,7 @@
                         <div>
                             <h2>{{ store.id }}</h2>
                             <h2>{{ store.title }}</h2>
-                            <p>650 m away.</p>
+                            <p>{{ store.space }}</p>
 
                             <div>
                                 <span class="fa fa-star checked"></span>
@@ -87,7 +87,7 @@
             <h2>الفئات</h2>
             <nav
                 class="menu"
-                v-for="section in Sections"
+                v-for="section in Section"
                 :key="section.id"
                 :category="section.category"
             >
@@ -195,21 +195,21 @@ export default {
         };
     },
     computed: {
-        ...mapState(['categories', 'Stores']),
+        ...mapState(['categories', 'Stores', 'Stories', 'Section']),
 
         filteredItems() {
             // filter stores by search without checbox
             if (this.SelectedSection.length == 0)
                 for (var i = 0; i < 1; i++) {
-                    return this.Stores.filter((el) => {
+                    return this.Stories.filter((el) => {
                         var regex = new RegExp(this.search, 'i');
                         return el.title.match(regex);
                     });
                 }
             // filter stores by search and checbox
-            return this.Stores.filter((el) => {
-                for (var s = 0; s < el.section.length; s++) {
-                    if (this.SelectedSection.includes(el.section[s].name))
+            return this.Stories.filter((el) => {
+                for (var s = 0; s < el.sections.length; s++) {
+                    if (this.SelectedSection.includes(el.sections[s].name))
                         if (this.search.length == 0) {
                             return el;
                         } else {

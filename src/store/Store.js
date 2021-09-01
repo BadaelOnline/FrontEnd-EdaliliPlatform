@@ -2,6 +2,8 @@ import { createStore } from 'vuex';
 import axios from 'axios';
 import jeson from '@/jeson/MOCK_DATA.json';
 import data from '@/jeson/data';
+import SectionData from '@/jeson/SectionData';
+import StoriesData from '@/jeson/StoriesData';
 let cartItems = window.localStorage.getItem('cartItems');
 let cartItemCount = window.localStorage.getItem('cartItemCount');
 let lang = window.localStorage.getItem('lang');
@@ -27,6 +29,9 @@ const store = createStore({
         Specialty: [],
         doctor: null,
         ////////////////
+        Section: SectionData.Section,
+        Stories: StoriesData.stores,
+        //////////
         stores: data.stores,
         restaurants: data.restaurants,
         lastStores: jeson[0].lastStores,
