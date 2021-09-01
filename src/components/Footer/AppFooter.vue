@@ -154,6 +154,7 @@
 }
 .contain-top ul li {
     font-size: 18px;
+    line-height: 1.7;
 }
 .contain-top ul li a {
      color: rgb(184, 184, 184);
