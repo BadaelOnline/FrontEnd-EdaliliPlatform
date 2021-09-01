@@ -1,0 +1,68 @@
+{
+    "Section": [
+        {
+            "id": 1,
+            "name": "سمانة",
+            "image": "img/S1.png",
+            "is_active": "Active",
+            "is_approved": 1,
+            "slug": "buty"
+        },
+        {
+            "id": 2,
+            "name": "اكسسوارات",
+            "image": "img/S1.png",
+            "is_active": "Active",
+            "is_approved": 1,
+            "slug": "buty"
+        },
+        {
+            "id": 3,
+            "name": "بقالة",
+            "image": "img/S1.png",
+            "is_active": "Active",
+            "is_approved": 1,
+            "slug": "buty"
+        },
+        {
+            "id": 4,
+            "name": "أزياء",
+            "image": "img/S1.png",
+            "is_active": "Active",
+            "is_approved": 1,
+            "slug": "buty"
+        },
+        {
+            "id": 5,
+            "name": "فواكه",
+            "image": "img/S1.png",
+            "is_active": "Active",
+            "is_approved": 1,
+            "slug": "buty"
+        },
+        {
+            "id": 6,
+            "name": "كمبيوترات",
+            "image": "img/S1.png",
+            "is_active": "Active",
+            "is_approved": 1,
+            "slug": "buty"
+        },
+        {
+            "id": 1,
+            "name": "العاب",
+            "image": "img/S1.png",
+            "is_active": "Active",
+            "is_approved": 1,
+            "slug": "buty"
+        },
+        {
+            "id": 3,
+            "name": "موبايلات",
+            "image": "img/S1.png",
+            "is_active": "Active",
+            "is_approved": 1,
+            "slug": "buty"
+        }
+    ]
+}
