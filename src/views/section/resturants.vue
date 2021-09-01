@@ -31,18 +31,11 @@
             </h2>
         </div>
         <div
-            style="width: 80%; display: flex; justify-content: center"
+            class="filter"
             v-for="restaurant in filterSearch.slice(0, 1)"
             :key="restaurant.id"
         >
-            <div
-                class="menu"
-                :style="{
-                    background:
-                        'url(' + restaurant.image + ') center no-repeat',
-                    backgroundSize: 'cover',
-                }"
-            >
+            <div class="menu" :style="bannerBgImage(restaurant.image)">
                 <div class="title">{{ restaurant.title }}</div>
 
                 <div
@@ -55,14 +48,13 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
-                    <router-link
+                    <!-- <router-link
                         :to="{
                             name: 'visitRestaurant',
                             params: {
                                 id: restaurant.id,
                                 title: restaurant.title,
                                 image: restaurant.image,
-      
                             },
                         }"
                         ><span
@@ -74,7 +66,7 @@
                             "
                             >Visit</span
                         ></router-link
-                    >
+                    > -->
                 </div>
             </div>
         </div>
@@ -82,50 +74,46 @@
         <div class="top_title">
             <h2>More Resturant</h2>
         </div>
-        <div
-            v-for="restaurant in restaurants"
-            :key="restaurant"
-            class="resturant"
-            :style="{
-                background: 'url(' + restaurant.image + ') center no-repeat',
-                backgroundSize: 'cover',
-            }"
-        >
-            <div class="resturant_contain">
-                <div class="title">{{ restaurant.title }}</div>
-                <div>
-                    <p style="color: #fff">
-                        This is a wider card with supporting text below as a
-                        natural lead-in to additional
-                    </p>
-                </div>
-                <div>
-                    <router-link
-                        :to="{
-                            name: 'visitRestaurant',
-                            params: {
-                                id: restaurant.id,
-                                title: restaurant.title,
-                                image: restaurant.image,
-                                short_des: restaurant.short_des,
-                                long_des: restaurant.long_des,
-                                Meals: restaurant.Meals,
-                                Menu: restaurant.Menu,
-                            },
-                        }"
-                    >
-                        <button class="button">
-                            <span>Visit </span>
-                        </button></router-link
-                    >
+        <main v-if="Restaurants.length > 0" class="main">
+            <div
+                v-for="restaurant in Restaurants"
+                :key="restaurant"
+                class="resturant"
+                :style="{
+                    background:
+                        'url(' + restaurant.image + ') center no-repeat',
+                    backgroundSize: 'cover',
+                }"
+            >
+                <div class="resturant_contain">
+                    <div class="title">{{ restaurant.title }}</div>
+                    <div>
+                        <p style="color: #fff">
+                            {{ restaurant.short_description }}
+                        </p>
+                    </div>
+                    <div>
+                        <router-link
+                            :to="`/visitrestaurant/${restaurant.id}/${restaurant.title}`"
+                        >
+                            <button class="button">
+                                <span>Visit </span>
+                            </button></router-link
+                        >
+                    </div>
                 </div>
             </div>
+        </main>
+        <div class="unavaible_product" v-else>
+            <img src="../../../public/img/unavalible.jpg" />
+            <h2>Ops... Restuarant not available.</h2>
         </div>
     </div>
 </template>
 
 <script>
 import data from '../../jeson/data';
+import { mapState } from 'vuex';
 export default {
     name: 'resturants',
     props: ['id', 'title', 'image', 'short_des', 'long_des', 'Meals', 'Menu'],
@@ -143,33 +131,45 @@ export default {
             document.getElementById('btn').classList.toggle('click');
             document.getElementById('menu').classList.toggle('show');
         },
+        bannerBgImage(image) {
+            if (this.Restaurants.image !== '') {
+                return (
+                    'background-image: url("' + image + '") center no-repeat',
+                    'backgroundSize: cover'
+                );
+            } else {
+                return 'background-image: url("../../../public/img/banner-ud1.jpg")';
+            }
+        },
     },
     computed: {
         filterSearch() {
-            return this.restaurants.filter((restaurant) => {
-                  var regex = new RegExp( this.search, 'i' );
-                return restaurant.title.match(regex);
+            return this.Restaurants.filter((Restaurant) => {
+                var regex = new RegExp(this.search, 'i');
+                return Restaurant.title.match(regex);
             });
         },
+        ...mapState(['Restaurants']),
+    },
+    mounted() {
+        this.$store.dispatch('loadRestaurants');
     },
 };
 </script>
 
 <style scoped>
 .contian {
-    display: flex;
     width: 100%;
     flex-wrap: wrap;
     justify-content: space-around;
     background: #d1a776
-    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi+IlPdqo+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF/C1M8uP/ZtYdiuj26UdAdQQSXQErwSOMzt/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo+EEISaeTr9P3wYrGjXqyC1krcKdhMpxEnt5JetoulscpyzhXN5FRpuPHvbeQaKxFAEB6EN+cYN6xD7RYGpXpNndMmZgM5Dcs3YSNFDHUo2LGfZuukSWyUYirJAdYbF3MfqEKmjM+I2EfhA94iG3L7uKrR+GdWD73ydlIB+6hgref1QTlmgmbM3/LeX5GI1Ux1RWpgxpLuZ2+I+IjzZ8wqE4nilvQdkUdfhzI5QDWy+kw5Wgg2pGpeEVeCCA7b85BO3F9DzxB3cdqvBzWcmzbyMiqhzuYqtHRVG2y4x+KOlnyqla8AoWWpuBoYRxzXrfKuILl6SfiWCbjxoZJUaCBj1CjH7GIaDbc9kqBY3W/Rgjda1iqQcOJu2WW+76pZC9QG7M00dffe9hNnseupFL53r8F7YHSwJWUKP2q+k7RdsxyOB11n0xtOvnW4irMMFNV4H0uqwS5ExsmP9AxbDTc9JwgneAT5vTiUSm1E7BSflSt3bfa1tv8Di3R8n3Af7MNWzs49hmauE2wP+ttrq+AsWpFG2awvsuOqbipWHgtuvuaAE+A1Z/7gC9hesnr+7wqCwG8c5yAg3AL1fm8T9AZtp/bbJGwl1pNrE7RuOX7PeMRUERVaPpEs+yqeoSmuOlokqw49pgomjLeh7icHNlG19yjs6XXOMedYm5xH2YxpV2tc0Ro2jJfxC50ApuxGob7lMsxfTbeUv07TyYxpeLucEH1gNd4IKH2LAg5TdVhlCafZvpskfncCfx8pOhJzd76bJWeYFnFciwcYfubRc12Ip/ppIhA1/mSZ/RxjFDrJC5xifFjJpY2Xl5zXdguFqYyTR1zSp1Y9p+tktDYYSNflcxI0iyO4TPBdlRcpeqjK/piF5bklq77VSEaA+z8qmJTFzIWiitbnzR794USKBUaT0NTEsVjZqLaFVqJoPN9ODG70IPbfBHKK+/q/AWR0tJzYHRULOa4MP+W/HfGadZUbfw177G7j/OGbIs8TahLyynl4X4RinF793Oz+BU0saXtUHrVBFT/DnA3ctNPoGbs4hRIjTok8i+algT1lTHi4SxFvONKNrgQFAq2/gFnWMXgwffgYMJpiKYkmW3tTg3ZQ9Jq+f8XN+A5eeUKHWvJWJ2sgJ1Sop+wwhqFVijqWaJhwtD8MNlSBeWNNWTa5Z5kPZw5+LbVT99wqTdx29lMUH4OIG/D86ruKEauBjvH5xy6um/Sfj7ei6UUVk4AIl3MyD4MSSTOFgSwsH/QJWaQ5as7ZcmgBZkzjjU1UrQ74ci1gWBCSGHtuV1H2mhSnO3Wp/3fEV5a+4wz//6qy8JxjZsmxxy5+4w9CDNJY09T072iKG0EnOS0arEYgXqYnXcYHwjTtUNAcMelOd4xpkoqiTYICWFq0JSiPfPDQdnt+4/wuqcXY47QILbgAAAABJRU5ErkJggg==)
-    center / 5000px 100px;
+        url(data:image/png;base64,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)
+        center / 5000px 100px;
 }
-
 .img_boarder {
     position: absolute;
     right: 10%;
-    top:37%;
+    top: 37%;
 }
 .top_title {
     width: 100%;
@@ -191,6 +191,12 @@ export default {
         inset 7px 7px 15px rgba(55, 84, 170, 0),
         inset -7px -7px 20px rgba(255, 255, 255, 0),
         0px 0px 4px rgba(255, 255, 255, 0);
+}
+.filter {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
 .top_title2 {
     width: 100%;
@@ -228,6 +234,14 @@ export default {
     font-size: 30px;
     background-color: #000000ad;
 }
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
 .resturant {
     margin-bottom: 40px;
     border-radius: 0;
@@ -235,7 +249,6 @@ export default {
     width: 45%;
     height: 250px;
 }
-
 .resturant_contain {
     display: flex;
     flex-direction: column;
@@ -273,11 +286,22 @@ export default {
     cursor: pointer;
     margin: 5px;
 }
+.unavaible_product {
+    background-color: #ecf0f1;
+    height: auto;
+    width: 100%;
+}
+.unavaible_product img {
+    margin-bottom: 25px;
+}
+.unavaible_product h2 {
+    font-size: 3em;
+    color: gray;
+}
 </style>
 <style lang="scss" scoped>
 .board {
-    margin-top: 20px;
-    margin-bottom: 175px;
+    margin: 20px auto 175px auto;
     font-size: 2.2rem;
     letter-spacing: 0.15em;
     line-height: 1.5;
