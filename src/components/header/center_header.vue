@@ -382,14 +382,14 @@
                  <div class="links">
                     <router-link to="/resturants" class="links">
                        <div class="menu-icon">  <img src="../../../public/img/terrace.png" alt=""> </div>
-                    <div class="linkText">Resturant</div>
+                    <div class="linkText">Resturants</div>
                     
                     </router-link>
                 </div>
                  <div class="links">
                     <router-link to="/doctors" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/stethoscope.png" alt=""> </div>
-                    <div class="linkText">Doctot</div>
+                    <div class="linkText">Doctors</div>
                     
                     </router-link>
                 </div>

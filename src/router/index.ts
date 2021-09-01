@@ -72,7 +72,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/section/resturants.vue'),
     },
     {
-        path: '/visit_restaurant/:id/:title',
+        path: '/visitrestaurant/:id/:title',
         name: 'visitRestaurant',
         component: () =>
             import('../components/body/restaurant/visitRestaurant.vue'),
@@ -83,11 +83,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/section/instrc.vue'),
     },
     {
-         path: '/stores',
-      name: 'stores',
-         component: () => import('../views/section/stores.vue'),
+        path: '/stores',
+        name: 'stores',
+        component: () => import('../views/section/stores.vue'),
     },
-  
+
     /* Categories */
     {
         path: '/buty',

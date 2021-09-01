@@ -2,6 +2,8 @@ import { createStore } from 'vuex';
 import axios from 'axios';
 import jeson from '@/jeson/MOCK_DATA.json';
 import data from '@/jeson/data';
+import SectionData from '@/jeson/SectionData';
+import StoriesData from '@/jeson/StoriesData';
 let cartItems = window.localStorage.getItem('cartItems');
 let cartItemCount = window.localStorage.getItem('cartItemCount');
 let lang = window.localStorage.getItem('lang');
@@ -14,18 +16,22 @@ const store = createStore({
         Product: [],
         ProductID: [],
         productById: [],
-        // Brand: [],
-        // Brands: [],
         Categories: [],
         CategoryID: null,
         priceArray: [],
+        Restaurants: [],
+        ResCategories: [],
+        RestaurantProducts: [],
+        RestaurantID: null,
         Doctors: [],
         MedicalDevice: [],
         Hospitals: [],
         Specialty: [],
         doctor: null,
         ////////////////
-        // Product: jeson[0].Products,
+        Section: SectionData.Section,
+        Stories: StoriesData.stores,
+        //////////
         stores: data.stores,
         restaurants: data.restaurants,
         lastStores: jeson[0].lastStores,
@@ -132,6 +138,19 @@ const store = createStore({
         Delete_Category(state, itemsId) {
             let Categories = state.Categories.filter((v) => v.id != itemsId);
             state.Categories = Categories;
+        },
+        // restaurant
+        SET_Restaurants(state, Restaurants) {
+            state.Restaurants = Restaurants;
+        },
+        SET_RestaurantID(state, RestaurantID) {
+            state.RestaurantID = RestaurantID;
+        },
+        SET_ResCategories(state, ResCategories) {
+            state.ResCategories = ResCategories;
+        },
+        SET_RestaurantProducts(state, RestaurantProducts) {
+            state.RestaurantProducts = RestaurantProducts;
         },
         //doctors
         SET_Doctors(state, Doctors) {
@@ -270,6 +289,74 @@ const store = createStore({
                 commit('Delete_Category', items.id)
             );
         },
+        // restaurant
+        loadRestaurants({ commit }) {
+            axios
+                .get(`/api/restaurants?lang=${lang}`)
+                .then((res) => {
+                    console.log('Restaurants :', res.data.restaurant.data);
+                    console.log(res.status);
+                    let Restaurants = res.data.restaurant.data;
+                    commit('SET_Restaurants', Restaurants);
+                })
+                .catch(function (error) {
+                    console.log('Error: Restaurant not available.', error);
+                    if (error.res) {
+                        console.log(error.res.status);
+                    }
+                });
+        },
+        loadRestaurant({ commit }, RestaurantID) {
+            axios
+                .get(`/api/restaurants/${RestaurantID}?lang=${lang}`)
+                .then((res) => {
+                    console.log('RestaurantID :', res.data.Restaurant);
+                    console.log(res.status);
+                    let RestaurantID = res.data.Restaurant;
+                    commit('SET_RestaurantID', RestaurantID);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                    if (error.res) {
+                        console.log(error.res.status);
+                    }
+                });
+        },
+        loadResCategories({ commit }) {
+            axios
+                .get(`/api/restaurantcategories?lang=${lang}`)
+                .then((res) => {
+                    console.log('ResCategories :', res);
+                    console.log(res.status);
+                    let ResCategories = res;
+                    commit('SET_ResCategories', ResCategories);
+                })
+                .catch(function (error) {
+                    console.log('Error: ResCategories not available.', error);
+                    if (error.res) {
+                        console.log(error.res.status);
+                    }
+                });
+        },
+        loadRestaurantProducts({ commit }) {
+            axios
+                .get(`/api/restaurantproducts?lang=${lang}`)
+                .then((res) => {
+                    console.log('RestaurantProducts :', res);
+                    console.log(res.status);
+                    let RestaurantProducts = res;
+                    commit('SET_RestaurantProducts', RestaurantProducts);
+                })
+                .catch(function (error) {
+                    console.log(
+                        'Error: RestaurantProducts not available.',
+                        error
+                    );
+                    if (error.res) {
+                        console.log(error.res.status);
+                    }
+                });
+        },
         //doctors
         loadDoctors({ commit }) {
             axios
@@ -333,23 +420,21 @@ const store = createStore({
         },
         //auth
         async signIn({ dispatch }, Credentials) {
-            let res = await axios.post(
-                'http://edalili.e-dalely.com/public/api/auth/login',
-                Credentials
-            )
-            .catch(function (error) {
-                if (error.response) {
-                  console.log(error.response.data);
-                  if(error.response.data.error == 'Unauthorized'){
-                      alert("invaild Email Make Sure Your Email");
-                      window.location.reload();
-                  }
-                  console.log(error.response.status);
-                }
-                
-    
-             })
-
+            let res = await axios
+                .post(
+                    'http://edalili.e-dalely.com/public/api/auth/login',
+                    Credentials
+                )
+                .catch(function (error) {
+                    if (error.response) {
+                        console.log(error.response.data);
+                        if (error.response.data.error == 'Unauthorized') {
+                            alert('invaild Email Make Sure Your Email');
+                            window.location.reload();
+                        }
+                        console.log(error.response.status);
+                    }
+                });
 
             return dispatch('attempt', res.data.access_token);
         },
