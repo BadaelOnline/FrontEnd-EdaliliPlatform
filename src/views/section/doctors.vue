@@ -1,54 +1,122 @@
 <template>
-    <div class="parent">
-  <div
-            id="deno"
-            class="carousel slide"
-            data-ride="carousel"
-        >
-            <div style="padding: 0">
-                <div class="carousel-inner">
-                    <!-- carousel item 1 -->
-                    <div class="carousel-item active">
-                     <img src="../../../public/img/doctor-slide.jpg">
-                      <div class="lorem">
-                        <H2><span class="logo"><span>E</span>-Dalily </span> Provides Complete Healthcare.</H2>
-
-                           <div class="find"><span>Find Doktor</span></div>
-                      </div>
-                    </div>
-                    <!-- carousel item 2 -->
-                    <div class="carousel-item">
-                       <img src="../../../public/img/Medical-slide.jpg">
-                        <div class="lorem">
-                         <H2><span class="logo"><span>E</span>-Dalily </span> Provides Complete Healthcare.</H2>
-                            <div class="find"><span>Medical Device</span></div>
-                      </div>
-                    </div>
-                    <!-- carousel item 3 --> 
-                    <div class="carousel-item">
-                      <img src="../../../public/img/Pharamacy-slide.png">
-                       <div class="lorem">
-                      <H2><span class="logo"><span>E</span>-Dalily </span> Provides Complete Healthcare.</H2>
-                        <div class="find"><span>Find Pharamacy</span></div>
-                      </div>
-                    </div>
-                </div>
-
-                <!-- Left and right controls -->
-                <a class="carousel-control-prev" href="#deno" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#deno" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </a>
+<div class="parent">
+<div class="left">
+  <div class="header">
+    <h1>Top Hospital</h1>
+  </div>
+    <div class="hospital">
+       <img src="../../../public/img/icon-team-builder.svg" alt="">
+      <h2>مشفى الكندي</h2>
+      <p>Monitors activity to identify project roadblocks</p>
+    
+     <span>يبعد 1.5 كم</span>
+    </div>
+    <div class="hospital">
+       <img src="../../../public/img/icon-team-builder.svg" alt="">
+      <h2>مشفى الكندي</h2>
+      <p>Monitors activity to identify project roadblocks</p>
+    
+     <span>يبعد 1.5 كم</span>
+    </div>
+    <div class="hospital">
+       <img src="../../../public/img/icon-team-builder.svg" alt="">
+      <h2>مشفى الكندي</h2>
+      <p>Monitors activity to identify project roadblocks</p>
+    
+     <span>يبعد 1.5 كم</span>
+    </div>
+    <div class="hospital">
+       <img src="../../../public/img/icon-team-builder.svg" alt="">
+      <h2>مشفى الكندي</h2>
+      <p>Monitors activity to identify project roadblocks</p>
+    
+     <span>يبعد 1.5 كم</span>
+    </div>
+    <div class="header phara">
+    <h1>Top Pharamacy</h1>
+  </div>
+      <div class="hospital phar">
+       <img src="../../../public/img/icon-team-builder.svg" alt="">
+      <h2>صيدلية نهى</h2>
+      <p>Monitors activity to identify project roadblocks</p>
+    
+     <span>يبعد 1.5 كم</span>
+    </div>
+        <div class="hospital phar">
+       <img src="../../../public/img/icon-team-builder.svg" alt="">
+      <h2>صيدلية نهى</h2>
+      <p>Monitors activity to identify project roadblocks</p>
+    
+     <span>يبعد 1.5 كم</span>
+    </div>
+        <div class="hospital phar">
+       <img src="../../../public/img/icon-team-builder.svg" alt="">
+      <h2>صيدلية نهى</h2>
+      <p>Monitors activity to identify project roadblocks</p>
+    
+     <span>يبعد 1.5 كم</span>
+    </div>
+        <div class="hospital phar">
+       <img src="../../../public/img/icon-team-builder.svg" alt="">
+      <h2>صيدلية نهى</h2>
+      <p>Monitors activity to identify project roadblocks</p>
+    
+     <span>يبعد 1.5 كم</span>
+    </div>
+</div>
+    <div class="right">
+      <div class="small-menu">
+        <div class="list-icon"><i class="fa fa-list" @click="show()"></i></div>
+        <div class="cover-doc non" id="cover" @click=" show()"></div>
+        <div class="section-medic" id="section">
+          <div class="sec-item">Doctor
+            <div>
+<ul>
+  <li>Doctor</li>
+  <li>Doctor</li>
+  <li>Doctor</li>
+  <li>Doctor</li>
+</ul>
             </div>
+          </div>
+          <div class="sec-item">Medical Device
+                       <div>
+<ul>
+  <li>Device</li>
+  <li>Device</li>
+  <li>Device</li>
+  <li>Device</li>
+</ul>
+            </div>
+          </div>
+          <div class="sec-item">Hospital
+                        <div>
+<ul>
+  <li>Hospital</li>
+  <li>Hospital</li>
+  <li>Hospital</li>
+  <li>Hospital</li>
+</ul>
+            </div>
+          </div>
+          <div class="sec-item">Pharamacy
+                       <div>
+<ul>
+  <li>Pharamacy</li>
+  <li>Pharamacy</li>
+  <li>Pharamacy</li>
+  <li>Pharamacy</li>
+</ul>
+            </div>
+          </div>
         </div>
-     <nav class="menu">
+      </div>
+           <nav class="menu">
   <ol>
     <li class="menu-item">
       <a href="#0" class="widgets">
       
-        <span>Doktors</span>
+        <span>Doctors</span>
         <div class="dots"></div>
       </a>
       <ol class="sub-menu">
@@ -89,21 +157,19 @@
     </li>
   </ol>
 </nav>
-<div class="header">
-    <h1>Some Hospital</h1>
-        <div class="heart-rate">
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="73px" viewBox="0 0 150 73" enable-background="new 0 0 150 73" xml:space="preserve">
-        <polyline fill="none" stroke="#009B9E" stroke-width="3" stroke-miterlimit="10" points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"
-        />
-      </svg>
-      <div class="fade-in"></div>
-      <div class="fade-out"></div>
+
+    <div class="wallpaper"> 
+      <img src="../../../public/img/doctor-slide.jpg" alt="">
+       <div class="lorem">
+                        <H2><span class="logo"><span>E</span>-Dalily </span> Provides Complete Healthcare.</H2>
+
+                           <div class="find"><span>Find Doktor</span></div>
+                      </div>
     </div>
-     <div class="center">
-  <div class="heart">
-    <i class="fa fa-heart" style="color:red"></i>
-  </div>
-</div>
+<div class="contain-hos">
+<div class="header-right">
+    <h1>Top Hospital</h1>
+
   </div>
   <div class="row1-container">
     <div class="box-hos box-down cyan">
@@ -135,63 +201,236 @@
        <p>يبعد 2 كم</p>
     </div>
   </div>
-
-  <div class="header">
-    <h1>Top Doktors</h1>
+  <div class="header-right">
+    <h1>Top Pharamacy</h1>
   </div>
-  <div class="container">
-  <div class="card">
-    <img src="../../../public/img/Doktor.jpg" alt="">
-    <div class="box">
-      <div class="content">
-        <h2>01</h2>
-        <h3>D.Osama Ali</h3>
-        <p>General Surgery Specialist</p>
-        <a href="#">View Profile</a>
-      </div>
+    <div class="row1-container">
+    <div class="box-hos box-down cyan">
+      <h2>صيدلية نهى</h2>
+      <p>Monitors activity to identify project roadblocks</p>
+     <img src="../../../public/img/icon-team-builder.svg" alt="">
+     <p>يبعد 1.5 كم</p>
+    </div>
+
+    <div class="box-hos red">
+      <h2>صيدلية نهى</h2>
+      <p>Scans our talent network to create the optimal team for your project</p>
+      <img src="../../../public/img/icon-team-builder.svg" alt="">
+        <p>يبعد 3 كم</p>
+    </div>
+
+    <div class="box-hos box-down blue">
+      <h2>صيدلية نهى</h2>
+      <p>Uses data from past projects to provide better delivery estimates</p>
+       <img src="../../../public/img/icon-team-builder.svg" alt="">
+           <p>يبعد 1 كم</p>
     </div>
   </div>
-
-  <div class="card">
-     <img src="../../../public/img/Doktor.jpg" alt="">
-    <div class="box">
-      <div class="content">
-       <h2>02</h2>
-        <h3>D.Reem Soultan</h3>
-        <p>Orthodontics Specialist</p>
-        <a href="#">View Profile</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-     <img src="../../../public/img/Doktor.jpg" alt="">
-    <div class="box">
-      <div class="content">
-        <h2>03</h2>
-        <h3>D.May Mohamed</h3>
-        <p>Dermatology and cosmetology specialist</p>
-        <a href="#">View Profile</a>
-      </div>
-    </div>
-  </div>
-   <div class="card">
-      <img src="../../../public/img/Doktor.jpg" alt="">
-    <div class="box">
-      <div class="content">
-        <h2>04</h2>
-        <h3>D.Fras Younes</h3>
-        <p>Urology and venereologist</p>
-        <a href="#">View Profile</a>
-      </div>
+  <div class="row2-container">
+    <div class="box-hos orange">
+      <h2>صيدلية نهى</h2>
+      <p>Regularly evaluates our talent to ensure quality</p>
+      <img src="../../../public/img/icon-team-builder.svg" alt="">
+       <p>يبعد 2 كم</p>
     </div>
   </div>
 </div>
+  <div class="header-right">
+    <h1>Top Doctor</h1>
+            <div class="heart-rate">
+      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="73px" viewBox="0 0 150 73" enable-background="new 0 0 150 73" xml:space="preserve">
+        <polyline fill="none" stroke="#009B9E" stroke-width="3" stroke-miterlimit="10" points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"
+        />
+      </svg>
+      <div class="fade-in"></div>
+      <div class="fade-out"></div>
+    </div>
+     <div class="center">
+  <div class="heart">
+    <i class="fa fa-heart" style="color:red"></i>
+  </div>
+</div>
+  </div>
+  <div class="contain-coctor">
+<div class="wrapper">
+  <div class="card">
+    <div class="front">
+      <h1>D.Fras Younes</h1>
+    </div>
+    <div class="right">
+      <h2>D.Fras Younes</h2>
+      <ul>
+        <li>أخصائي أطفال</li>
+        <li>يعمل لدى مشفى المنى</li>
+      </ul>
+      <button>View Profile</button>
+    </div>
+  </div>
+  <div class="img-wrapper">
+       <img src='../../../public/img/wooden.jpg' alt=''>    
+  </div>
+</div>
+<div class="wrapper">
+  <div class="card">
+    <div class="front">
+      <h1>D.Fras Younes</h1>
+    </div>
+    <div class="right">
+      <h2>D.Fras Younes</h2>
+      <ul>
+        <li>أخصائي أطفال</li>
+        <li>يعمل لدى مشفى المنى</li>
+      </ul>
+      <button>View Profile</button>
+    </div>
+  </div>
+  <div class="img-wrapper">
+       <img src='../../../public/img/wooden.jpg' alt=''>    
+  </div>
+</div>
+<div class="wrapper">
+  <div class="card">
+    <div class="front">
+      <h1>D.Fras Younes</h1>
+    </div>
+    <div class="right">
+      <h2>D.Fras Younes</h2>
+      <ul>
+        <li>أخصائي أطفال</li>
+        <li>يعمل لدى مشفى المنى</li>
+      </ul>
+      <button>View Profile</button>
+    </div>
+  </div>
+  <div class="img-wrapper">
+       <img src='../../../public/img/wooden.jpg' alt=''>    
+  </div>
+</div>
+<div class="wrapper">
+  <div class="card">
+    <div class="front">
+      <h1>D.Fras Younes</h1>
+    </div>
+    <div class="right">
+      <h2>D.Fras Younes</h2>
+      <ul>
+        <li>أخصائي أطفال</li>
+        <li>يعمل لدى مشفى المنى</li>
+      </ul>
+      <button>View Profile</button>
+    </div>
+  </div>
+  <div class="img-wrapper">
+       <img src='../../../public/img/wooden.jpg' alt=''>    
+  </div>
+</div>
+</div>
+  <div class="header-right" style="padding-top:50px">
+    <h1>Medical Device</h1> 
+  </div>
+<!-- Medical Device  -->
+   <div class="contain_Medical" >
+     <div class="small" >
+	 <article class="recipe">
+		<div class="pizza-box">
+		   <img :src="`${image}`" v-if="image" class="new" />
+            <img v-else src="../../../public/img/Medical-devices.png" class="new" />
+		</div>
+		<div class="recipe-content">
+			<p class="recipe-tags">
+				<span class="recipe-tag">Gluten Free</span>
+				<span class="recipe-tag">Main dish</span>
+			</p>
+
+			<h1 class="recipe-title"><a>Monitors</a></h1>
+
+			<p class="recipe-metadata">
+				<span class="recipe-rating">★★★★<span>☆</span></span>
+				<span class="recipe-votes">(12 votes)</span>
+			</p>
+
+			<p class="recipe-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</div>
+	</article>
+</div>
+<!-- 22 -->
+   <div class="small" >
+	 <article class="recipe">
+		<div class="pizza-box">
+		   <img :src="`${image}`" v-if="image" class="new" />
+            <img v-else src="../../../public/img/Medical-devices.png" class="new" />
+		</div>
+		<div class="recipe-content">
+			<p class="recipe-tags">
+				<span class="recipe-tag">Gluten Free</span>
+				<span class="recipe-tag">Main dish</span>
+			</p>
+
+			<h1 class="recipe-title"><a>Monitors</a></h1>
+
+			<p class="recipe-metadata">
+				<span class="recipe-rating">★★★★<span>☆</span></span>
+				<span class="recipe-votes">(12 votes)</span>
+			</p>
+
+			<p class="recipe-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</div>
+	</article>
+</div>
+<!-- 333 -->
+   <div class="small" >
+	 <article class="recipe">
+		<div class="pizza-box">
+		   <img :src="`${image}`" v-if="image" class="new" />
+            <img v-else src="../../../public/img/Medical-devices.png" class="new" />
+		</div>
+		<div class="recipe-content">
+			<p class="recipe-tags">
+				<span class="recipe-tag">Gluten Free</span>
+				<span class="recipe-tag">Main dish</span>
+			</p>
+
+			<h1 class="recipe-title"><a>Monitors</a></h1>
+
+			<p class="recipe-metadata">
+				<span class="recipe-rating">★★★★<span>☆</span></span>
+				<span class="recipe-votes">(12 votes)</span>
+			</p>
+
+			<p class="recipe-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</div>
+	</article>
+</div>
+<!-- 4444 -->
+   <div class="small" >
+	 <article class="recipe">
+		<div class="pizza-box">
+		   <img :src="`${image}`" v-if="image" class="new" />
+            <img v-else src="../../../public/img/Medical-devices.png" class="new" />
+		</div>
+		<div class="recipe-content">
+			<p class="recipe-tags">
+				<span class="recipe-tag">Gluten Free</span>
+				<span class="recipe-tag">Main dish</span>
+			</p>
+
+			<h1 class="recipe-title"><a>Monitors</a></h1>
+
+			<p class="recipe-metadata">
+				<span class="recipe-rating">★★★★<span>☆</span></span>
+				<span class="recipe-votes">(12 votes)</span>
+			</p>
+
+			<p class="recipe-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</div>
+	</article>
+</div>
+ </div>
+    </div>
     </div>
 </template>
 
 <script>
-
 export default {
     name: 'doctors',
     data() {
@@ -201,41 +440,139 @@ export default {
     },
     props: [],
     methods: {
+       show(){
+   
+  document.getElementById('section').classList.toggle("vs");
+   document.getElementById('cover').classList.toggle("non");
+       },
        
     },
     computed: {
     
     },
+    mounted(){
+
+    }
   
 };
 </script>
 <style scoped>
-.carousel-item{
-    position: relative;
+.parent{
+  display: flex;
 }
-.carousel-item img{
-width: 100%;
-height: 55vw;
+/* ____________ left __________________ */
+.parent .left{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
 }
-.carousel-item .lorem{
+.parent .right{
+  width: 75%;
+}
+.contain-hos{
+  display: none;
+}
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 991.98px) {
+.parent .left{
+  display: none;
+  
+}
+.parent .right{
+  width: 100%;
+}
+.contain-hos{
+  display: block;
+}
+}
+.parent .left .header {
+  display: flex;
+  justify-content: center;
+}
+.parent .left .header h1{
+  border-bottom: 2px solid #e63950;
+}
+
+.hospital{
+box-shadow: 0px 30px 40px -20px hsl(229, 6%, 66%);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
+cursor: pointer;
+border-top: 3px solid #e63950;
+border-bottom: 3px solid hsl(229, 6%, 66%);
+margin: 10px 0;
+}
+.parent .left .phara h1{
+border-bottom: 2px solid hsl(228, 45%, 44%); 
+}
+.phar {
+border-top: 3px solid hsl(228, 45%, 44%); 
+}
+.hospital img{
+width: 80px;
+height: 80px;
+border-radius: 50%;
+box-shadow: 0px 30px 40px 14px hsl(229, 6%, 66%);
+}
+.hospital h2{
+font-size: 25px;
+}
+.hospital p{
+opacity: .8;
+}
+.hospital span{
+font-weight: bold;
+opacity: .8;
+text-shadow: 1px 3px 2px #797777;
+}
+ .hospital:hover{
+  box-shadow: 0px 30px 40px -20px hsl(0, 0%, 2.4%);
+  transition: all .5s;
+}
+/* ____________ right __________________ */
+.header-right{
+  display: flex;
+flex-direction: column;
+align-items: start; 
+position: relative;
+}
+.header-right h1{
+  width: auto;
+  background-color: #009b9e;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+
+.wallpaper{
+  position: relative;
+  height: 55vw;
+}
+.wallpaper img{
+  width: 100%;
+}
+.wallpaper .lorem{
     position: absolute;
     font-size: 20px;
-    top: 63%;
+    bottom:  15%;
     left: 1%;
     width: 50%;
     font-weight: bold;
 }
-.carousel-item .lorem h2{
+.wallpaper .lorem h2{
      font-weight: bold;
      margin-bottom: 20px;
 }
-.carousel-item .lorem .logo{
+.wallpaper .lorem .logo{
     color: var(--bl);
 }
-.carousel-item .lorem .logo span{
+.wallpaper .lorem .logo span{
     color: var(--r);
 }
-.carousel-item .lorem .find span{
+.wallpaper .lorem .find span{
     color: #fff;
     background-color: var(--bl);
     padding: 10px 20px;
@@ -249,35 +586,12 @@ height: 55vw;
     color: hsl(228, 45%, 44%); 
 }
 
-h1:first-of-type {
-    font-weight: 200;
-    color:hsl(234, 12%, 34%);
-
-}
-
-h1:last-of-type {
-    color:hsl(234, 12%, 34%);
-}
-
-@media (max-width: 400px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-}
-
 .header {
     text-align: center;
     line-height: 0.8;
     margin-bottom: 50px;
     position: relative;
 }
-
-.header p {
-    margin: 0 auto;
-    line-height: 2;
-    color: hsl(240, 0.8%, 49.8%);
-}
-
 
 .box-hos p {
     color: hsl(240, 0.8%, 49.8%);
@@ -357,125 +671,179 @@ h2 {
 }
  .box-hos:hover{
   box-shadow: 0px 30px 40px -20px hsl(0, 0%, 2.4%);
+  transition: all .5s;
 }
 /* _____________________ doktors _______________________ */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
-.container {
+.contain-coctor{
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 1350px;
-  margin: 40px 0;
+  flex-flow: wrap;
 }
-
-.container .card {
+.wrapper{
+  width: 25%;
+  height: 250px;
   position: relative;
-  min-width: 260px;
-  height:300px;
-  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
-    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
-    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  margin: 30px;
-  transition: 0.5s;
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 767.98px) {
+  .wrapper{
+  width:50%;
+  
+}
+}
+.wrapper .card{
+ width: 100%;
+  height: 250px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-140px);
+  transition: transform 350ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
   cursor: pointer;
 }
-.container .card img{
+
+.wrapper .card > div{
+  position: absolute;
  width: 100%;
-height: 100%;
-border-radius: 15px;
-}
- .container .card:nth-child(1) .box .content a {
-  background: #2196f3;
+  height: 250px;
+  padding: 34px 21px;
+  transition: all 350ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
 }
 
- .container .card:nth-child(2) .box .content a {
-  background: #e91e63;
+.wrapper .front{
+  background: url("../../../public/img/Doktor.jpg") no-repeat;
+  background-size: contain;
+  transform: rotateY(0deg) translateZ(160px); 
+  border-radius: 34px 3px 0 0;
 }
 
- .container .card:nth-child(3) .box .content a {
-  background: #23c186;
+.wrapper .right{ 
+   background-image: linear-gradient(130deg, #76dfd5  50%, #23c186);
+  opacity: 0.08;
+  transform: rotateY(90deg) translateZ(160px);
+  border-radius: 0 0 3px 34px;
 }
- .container .card:nth-child(4) .box .content a {
-  background: #76dfd5;
+
+.wrapper .card:hover{
+  transform: translateZ(-160px) rotateY( -90deg);
 }
- .container .card .box {
+
+.wrapper .card:hover .front{
+  opacity: 0; 
+}
+
+.wrapper .card:hover .right{
+  opacity: 1; 
+}
+
+.wrapper h1{
+     margin: 0;
+    font-size: 32px;
+    letter-spacing: -.25px;
+    transform: translatey(32px);
+    font-family: 'Sarala';
+    font-weight: 700;
+}
+
+
+.wrapper h2{
+  font-size: 21px;
+  transform: translateX(-34px);
+}
+
+
+.wrapper span{
+  margin-left: 13px;
+  opacity: .55;
+}
+
+.wrapper img{
+  transform-origin: top right;
+  transition: transform 300ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  transition-delay: 100ms;
+  transform: translateX(21%) rotateZ(13deg) skewX(3deg);
+  pointer-events: none;
+  border-radius: 26px;
+  width: 35px;
+}
+
+.wrapper .img-wrapper{
+  animation: float 4s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate;
   position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  background: #247ba09c;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  transition: 0.5s;
+  top: 60%; left: 15%;
+  pointer-events: none;
+  backface-visibility: hidden;
 }
 
- .container .card .box:hover {
-  transform: translateY(-50px);
+@keyframes float{
+  0%{
+    transform: translateZ(20px);
+  }
+  100%{
+    transform: translateY(-21px) translateX(-13px) translateZ(30px);
+  }
 }
 
- .container .card .box:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.03);
+.wrapper .card:hover ~ .img-wrapper img{
+  transform: scale(0.9) translateX(77%) translateY(90%) rotateZ(80deg);
 }
 
- .container .card .box .content {
-  padding: 20px;
-  text-align: center;
-}
-
- .container .card .box .content h2 {
-  position: absolute;
-  top: -10px;
-  right: 30px;
-  font-size: 8rem;
-  color: rgba(255, 255, 255, 0.1);
-}
-
- .container .card .box .content h3 {
-  font-size: 1.8rem;
-  color: #fff;
-  z-index: 1;
-  transition: 0.5s;
-  margin-bottom: 15px;
-  width: 225px;
-}
-
- .container .card .box .content p {
-  font-size: 1rem;
+.wrapper ul{
+  padding: 0;
+  font-size: 16px;
   font-weight: 300;
-  color: #ffff;
-  z-index: 1;
-  transition: 0.5s;
+  list-style: none;
 }
 
- .container .card .box .content a {
+.wrapper li{
+  padding-bottom: 8px;
   position: relative;
-  display: inline-block;
-  padding: 8px 20px;
-  background: black;
-  border-radius: 5px;
-  text-decoration: none;
-  color: white;
-  margin-top: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  transition: 0.5s;
+  color: #fff;
+  font-size: 18px;
+
 }
- .container .card .box .content a:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-  background: #fff;
-  color: #000;
+.wrapper button{
+  position: absolute;
+  right: 21px; 
+  bottom: 34px;
+  border: none;
+  box-shadow: none;
+  background: none;
+  color: #fff;
+  font-family: 'Exo 2';
+  font-weight: 300;
+  font-size: 15px;  
+  letter-spacing: -.25px;
+  font-weight: 700;
+  padding: 13px 34px;
+  border-radius: 55px 55px 21px 55px;
+  background-image: linear-gradient(130deg, #76dfd5  50%, #23c186);
+  background-size: 125% 100%;
+  background-position: right;
+  cursor: pointer;
+  box-shadow: 8px 5px 13px rgba(34,34,34,.08);
+  transform: scale(0) skewY(13deg);
+  transition: all 150ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  transform-origin: right bottom;
 }
+
+.wrapper .card:hover button{
+   transform: scale(1) skewY(0);
+}
+
+.wrapper .card:not(:hover) button{
+opacity: 0;
+}
+
+.wrapper button:hover{
+  background-position: left;
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0.33;
+    transform: scale(.89);
+  }
+}
+
 
 </style>
 <style lang="scss" scoped>
@@ -540,7 +908,7 @@ top: 107px;
       width: 150px;
       height: 73px;
       position: relative;
-      margin-left: 60%;
+      margin-left: 50%;
 }
 .fade-in {
       position: absolute;
@@ -608,16 +976,14 @@ justify-content: space-between;
           flex-direction: column;
         }
         li {
-            width: 220px;
+            width: 150px;
             position: relative;
             a {
-                height: 234px;
+                height: 150px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                padding: 1em 0;
-               
+                justify-content: center;               
                 color: #fff;
                 position: relative;
                 z-index: 100;
@@ -644,6 +1010,8 @@ justify-content: space-between;
                 }
                 &.widgets {
                     background: url("../../../public/img/doktors.jpg") no-repeat;
+                    background-size: contain;
+                    
                 } 
                 &.kabo {
                     background: url("../../../public/img/Medical-devices.png") no-repeat;
@@ -653,9 +1021,11 @@ justify-content: space-between;
                 } 
                 &.kabobs {
                     background: url("../../../public/img/hospital.png") no-repeat;
+                    background-size: contain;
                 } 
                 &.contact {
                     background: url("../../../public/img/Pharamacies.jpg") no-repeat;
+                      background-size: contain;
 
                    
                 } 
@@ -690,6 +1060,7 @@ justify-content: space-between;
                     span, i {
                         transform: translateY(0);
                         opacity: 1;
+                        font-size: 22px;
                         color: #1a8fe7;
                         background: linear-gradient(45deg, #9fdfff , #1a8fe7);
                         -webkit-background-clip: text;
@@ -715,8 +1086,8 @@ justify-content: space-between;
                 display: flex;
                 flex-direction: column;
                 position: absolute;
-                width: 120%;
-                transform: translateY(-230px);
+                width: 100%;
+                transform: translateY(-150px);
                 transition: transform 150ms ease;
                 transition: .2s cubic-bezier(.94,1.60,.5,1);  
                 overflow: hidden;
@@ -725,7 +1096,7 @@ justify-content: space-between;
                     transform: translate(-20%, -234px);
                 }
                 .menu-item {
-                    width: 83%;
+                    width: 100%;
                     a {
                         background: #9fdfff;
                         font-size: 18px;
@@ -788,5 +1159,208 @@ justify-content: space-between;
         }
     }
 }
+.small-menu{
+  display: none;
+}
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 991.98px) {
+.menu{
+  display: none;
+}  
+.small-menu{
+  display: block;
+}
+.list-icon{
+  display: flex;
+}
+.list-icon i{
+background-color: #45d3d3;
+padding: 10px;
+color: #fff;
+cursor: pointer;
+}
+.cover-doc{
+  background-color: rgba(0, 0, 0, 0);
+position: fixed;
+width: 100%;
+height: 100%;
+z-index: 85;
+top: 0;
 
+}
+
+.section-medic{
+ background-color: #009b9e;
+ display: flex;
+flex-direction: column;
+position: fixed;
+top: 0px;
+height: 100%;
+width: 55%;
+z-index: 86;
+left: -55%;
+transition: all 0.5s;
+align-items: self-start;
+color: #fff;
+font-size: 24px;
+font-weight: bold;
+}
+.sec-item{
+  margin: 10px;
+cursor: pointer;
+transition: all 0.5s;
+opacity: .7;
+width: 100%;
+display: flex;
+}
+
+.sec-item  div{
+transition: all 0.5s;
+position: absolute;
+right: 10%;
+list-style: none;
+background: #6ebbee;
+padding: 10px 20px;
+opacity: 0;
+width: 200px;
+z-index: 90;
+}
+.sec-item  div ul{
+list-style: none;
+padding: 0;
+}
+.sec-item  div ul li{
+line-height: 1.8;
+transition: all 0.5s;
+cursor: pointer;
+opacity: .7;
+}
+.sec-item  div ul li:hover{
+padding-left: 10px;
+ border-bottom: 2px solid #fff;
+ opacity: 1;
+
+}
+.sec-item:hover{
+ opacity: 1;
+}
+.sec-item:hover div{
+opacity: 1;
+}
+.non{
+display: none;
+}
+.vs{
+  left: 0;
+}
+}
+
+// _____________ medical device _____________________
+.recipe,
+.pizza-box {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.pizza-box {
+	flex: 3 1 30ch;
+	height: 180px;
+	overflow: hidden;
+
+	img {
+		max-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		object-fit: cover;
+		object-position: 50% 50%;
+	}
+}
+
+.recipe {
+	border: 2px solid #F2F2F2;
+	border-radius: 8px;
+	overflow: hidden;
+	
+	&-content {
+	padding: 0;
+	flex: 4 1 40ch;
+    display: grid;
+    align-content: space-between;
+    height: 200px;
+	}
+	
+	&-tags {
+		margin: 0 -8px;
+	}
+
+	&-tag {
+		display: inline-block;
+		margin: 8px;
+		font-size: .875em;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: .02em;
+		color: #009b9e;
+	}
+	
+	&-title {
+		margin: 0;
+		font-size: 18px;
+		font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+		
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+	}
+	
+	&-metadata {
+		margin: 0;
+	}
+	
+	&-rating {
+		font-size: 1.2em;
+		letter-spacing: 0.05em;
+		color: #009b9e;
+		
+		span {
+			color: var(--grey);
+		}
+	}
+	
+	&-votes {
+		font-size: .825em;
+		font-style: italic;
+		color: var(--lightgrey);
+	}
+	
+    &-save:hover{
+        background-color: #ee5c45;
+    }
+}
+
+
+
+/* Body Layout */
+.small {
+	width: 23%;
+	padding: 0;
+	cursor: pointer;
+   
+}
+.contain_Medical{
+  display: flex;
+justify-content: space-around;
+flex-flow: wrap;
+}
+/* Medium devices (tablets, 768px and up) */
+@media  (max-width: 991.98px) {
+  .small {
+	width: 45%;
+
+   
+}
+}
 </style>

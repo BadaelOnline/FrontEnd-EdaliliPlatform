@@ -27,9 +27,9 @@ store.dispatch('attempt', localStorage.getItem('token')).then(() => {
     Aos.init();
     // axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
     if (server == 'admin') {
-        axios.defaults.baseURL = 'http://admin.e-dalely.com/public';
+        axios.defaults.baseURL = 'http://admin.e-dalely.com';
     } else if (server == 'edalily') {
-        axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
+        axios.defaults.baseURL = 'http://edalili.e-dalely.com';
     }
     axios.defaults.headers.common = {
         Authorization: `bearer ${localStorage.getItem('token')}`,
