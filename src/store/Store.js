@@ -308,7 +308,7 @@ const store = createStore({
         },
         loadRestaurant({ commit }, RestaurantID) {
             axios
-                .get(`/api/restaurants/${RestaurantID}?lang=${lang}`)
+                .get(`/api/restaurant/${RestaurantID}?lang=${lang}`)
                 .then((res) => {
                     console.log('RestaurantID :', res.data.Restaurant);
                     console.log(res.status);
