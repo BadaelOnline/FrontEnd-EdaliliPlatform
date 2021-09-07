@@ -72,7 +72,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/section/resturants.vue'),
     },
     {
-        path: '/visitrestaurant/:id/:title',
+        path: '/visitrestaurant/:id',
         name: 'visitRestaurant',
         component: () =>
             import('../components/body/restaurant/visitRestaurant.vue'),

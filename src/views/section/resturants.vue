@@ -10,7 +10,9 @@
                     v-model="search"
                     required
                 />
-                <label for="name" class="form__label">Search Resturant</label>
+                <label for="name" class="form__label">{{
+                    $t('searchRes')
+                }}</label>
             </div>
         </div>
         <div class="img_boarder">
@@ -19,7 +21,7 @@
         </div>
 
         <div v-if="filterSearch.length > 0" class="top_title">
-            <h2>Famouse Resturant</h2>
+            <h2>{{ $t('famouseResturant') }}</h2>
         </div>
         <div v-else-if="filterSearch.length == 0" class="top_title2">
             <h2>
@@ -35,11 +37,27 @@
             v-for="restaurant in filterSearch.slice(0, 1)"
             :key="restaurant.id"
         >
-            <div class="menu" :style="bannerBgImage(restaurant.image)">
+            <div
+                class="menu"
+                :style="[
+                    restaurant.image !== ''
+                        ? {
+                              background:
+                                  'url(' +
+                                  restaurant.image +
+                                  ') center no-repeat',
+                              backgroundSize: 'cover',
+                          }
+                        : {
+                              background: `url(${backgroundUrl}) center no-repeat`,
+                              backgroundSize: 'cover',
+                          },
+                ]"
+            >
                 <div class="title">{{ restaurant.title }}</div>
 
                 <div
-                    @click="VisitStore(item.id, item.title)"
+                    @click="VisitStore(item.id)"
                     class="button1"
                     title="visit this store"
                 >
@@ -48,25 +66,17 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
-                    <!-- <router-link
-                        :to="{
-                            name: 'visitRestaurant',
-                            params: {
-                                id: restaurant.id,
-                                title: restaurant.title,
-                                image: restaurant.image,
-                            },
-                        }"
-                        ><span
+                    <router-link :to="`/visitrestaurant/${restaurant.id}`">
+                        <span
                             style="
                                 margin: 0 50px;
                                 color: #fffb1f;
                                 font-size: 20px;
                                 letter-spacing: 2px;
                             "
-                            >Visit</span
-                        ></router-link
-                    > -->
+                            >Visit
+                        </span></router-link
+                    >
                 </div>
             </div>
         </div>
@@ -79,11 +89,21 @@
                 v-for="restaurant in Restaurants"
                 :key="restaurant"
                 class="resturant"
-                :style="{
-                    background:
-                        'url(' + restaurant.image + ') center no-repeat',
-                    backgroundSize: 'cover',
-                }"
+                id="menu"
+                :style="[
+                    restaurant.image !== ''
+                        ? {
+                              background:
+                                  'url(' +
+                                  restaurant.image +
+                                  ') center no-repeat',
+                              backgroundSize: 'cover',
+                          }
+                        : {
+                              background: `url(${backgroundUrl}) center no-repeat`,
+                              backgroundSize: 'cover',
+                          },
+                ]"
             >
                 <div class="resturant_contain">
                     <div class="title">{{ restaurant.title }}</div>
@@ -93,9 +113,7 @@
                         </p>
                     </div>
                     <div>
-                        <router-link
-                            :to="`/visitrestaurant/${restaurant.id}/${restaurant.title}`"
-                        >
+                        <router-link :to="`/visitrestaurant/${restaurant.id}`">
                             <button class="button">
                                 <span>Visit </span>
                             </button></router-link
@@ -114,11 +132,13 @@
 <script>
 import data from '../../jeson/data';
 import { mapState } from 'vuex';
+import backgroundUrl from '../../../public/img/img4.jpg';
 export default {
     name: 'resturants',
     props: ['id', 'title', 'image', 'short_des', 'long_des', 'Meals', 'Menu'],
     data() {
         return {
+            backgroundUrl,
             restaurants: data.restaurants,
             Menus: data.Menu,
             Meal: data.Meals,
@@ -131,16 +151,22 @@ export default {
             document.getElementById('btn').classList.toggle('click');
             document.getElementById('menu').classList.toggle('show');
         },
-        bannerBgImage(image) {
-            if (this.Restaurants.image !== '') {
-                return (
-                    'background-image: url("' + image + '") center no-repeat',
-                    'backgroundSize: cover'
-                );
-            } else {
-                return 'background-image: url("../../../public/img/banner-ud1.jpg")';
-            }
-        },
+        // bannerBgImage(image) {
+        //     if (image == '') {
+        //         console.log('error');
+        //     } else {
+        //         return (
+        //             'background-image: url("' + image + '") center no-repeat',
+        //             'backgroundSize: cover'
+        //         );
+        //     }
+        // },
+        // bannerBgImage(image) {
+        //     return (
+        //         'background-image: url("' + image + '") center no-repeat',
+        //         'backgroundSize: cover'
+        //     );
+        // },
     },
     computed: {
         filterSearch() {

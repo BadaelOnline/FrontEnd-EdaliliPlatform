@@ -18,13 +18,13 @@
     "Stores": "STORES",
     "Products": "PRODUCTS",
     "Home": "HOME",
-    "AddProfile":"Add Profile ",
-    "Profile":"Profile",
-    "lang":"Language",
-    "SearchScope":"Search Scope",
-    "Governorate":"Governorate",
-    "City":"City",
-    "street":"Street",
+    "AddProfile": "Add Profile ",
+    "Profile": "Profile",
+    "lang": "Language",
+    "SearchScope": "Search Scope",
+    "Governorate": "Governorate",
+    "City": "City",
+    "street": "Street",
 
     "//comment2": "appfootter",
     "GetKnowUs": "Get to Know Us",
@@ -90,18 +90,17 @@
     "ShippingCosts": "Shipping costs",
     "totalPrice": "Total Price :",
     "The Seller": "The Seller",
-    "Check Out" : "Check Out",
+    "Check Out": "Check Out",
     "Cart is Empty": "Cart is Empty",
-    "Continue shopping":"Continue shopping",
-   
+    "Continue shopping": "Continue shopping",
 
     "//comment7": "product",
     "Choose": "Choose",
     "discription": "discription :",
     "Name": "Name :",
     "stores": "stores",
-    "Available in":"available in",
-    "Even":"even",
+    "Available in": "available in",
+    "Even": "even",
     "sorting stores": "sorting stores :",
     "closest to farthest": "Closest to Farthest",
     "farthest to closest": "Farthest to Closest",
@@ -110,13 +109,14 @@
     "Choose a store to view the product price": "Choose a store to view the product price",
     "you can not add to cart without select store": "you can't add to cart without select store",
     "Product Status": "Product Status",
-    "unselect store":"You haven't made a choice yet",
+    "unselect store": "You haven't made a choice yet",
     "Sp": "S.P",
     "select store from here": "select store from here",
-    
-   
 
     "//comment8": "minicart",
     "Buynow": "Buy now",
-    "Gotocart": "Go to the cart"
+    "Gotocart": "Go to the cart",
+
+    "//comment9": "restaurant",
+    "searchRes": "Search Resturant"
 }
