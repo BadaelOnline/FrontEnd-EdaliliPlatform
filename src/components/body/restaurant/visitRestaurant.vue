@@ -46,8 +46,8 @@
             </div>
         </div>
         <div class="cover_resturant">
-            <img src="../../../../public/img/cover_resturant.jpg" />
-
+            <img v-if="RestaurantID.image" :src="RestaurantID.image" />
+            <img v-else src="../../../../public/img/cover_resturant.jpg" />
             <div class="example">Open</div>
             <div class="check_menu">Check Menu</div>
         </div>

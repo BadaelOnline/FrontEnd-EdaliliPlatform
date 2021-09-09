@@ -89,17 +89,16 @@
     "ShippingCosts": "تكاليف االشحن",
     "totalPrice": ": السعر الأجمالي",
     "The Seller": "البائع",
-    "Check Out" : "إتمام الشراء",
+    "Check Out": "إتمام الشراء",
     "Cart is Empty": "عربة التسوق فارغة",
-    "Continue shopping":"متابعة التسوق",
-   
+    "Continue shopping": "متابعة التسوق",
 
     "//comment7": "product",
     "Choose": "أختيار",
     "discription": ": الوصف",
     "Name": ": الأسم",
     "stores": "متاجر",
-    "Even":"حتى",
+    "Even": "حتى",
     "Available in": "متوفر في",
     "sorting stores": ": رتب المتاجر",
     "closest to farthest": "من الأبعد الى الأقرب",
@@ -110,13 +109,14 @@
     "you can not add to cart without select store": "لا يمكنك الاضافة للعربة من دون تحديد متجر",
     "Product Status": "حالة السلعة",
     "unselect store": "لم تقم بالأختيار حتى الآن ",
-    "Sp":"ل.س",
+    "Sp": "ل.س",
     "select store from here": "اختر المتجر من هنا",
-    
-    
-    
 
     "//comment8": "minicart",
     "Buynow": "اشتري الآن",
-    "Gotocart": "الذهاب لعربة التسوق"
+    "Gotocart": "الذهاب لعربة التسوق",
+
+    "//comment9": "restaurant",
+    "searchRes": "البحث عن مطعم",
+    "famouseResturant":"مطعم مشهور"
 }
