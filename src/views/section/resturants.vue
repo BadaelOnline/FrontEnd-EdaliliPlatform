@@ -151,22 +151,6 @@ export default {
             document.getElementById('btn').classList.toggle('click');
             document.getElementById('menu').classList.toggle('show');
         },
-        // bannerBgImage(image) {
-        //     if (image == '') {
-        //         console.log('error');
-        //     } else {
-        //         return (
-        //             'background-image: url("' + image + '") center no-repeat',
-        //             'backgroundSize: cover'
-        //         );
-        //     }
-        // },
-        // bannerBgImage(image) {
-        //     return (
-        //         'background-image: url("' + image + '") center no-repeat',
-        //         'backgroundSize: cover'
-        //     );
-        // },
     },
     computed: {
         filterSearch() {
