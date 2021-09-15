@@ -52,7 +52,7 @@
             <div class="check_menu">Check Menu</div>
         </div>
 
-        <carousel style="margin: 50px 0">
+        <!-- <carousel style="margin: 50px 0">
             <slide v-for="slide in 10" :key="slide">
                 <div class="card 1">
                     <div class="card_image">
@@ -68,7 +68,7 @@
                 <navigation />
                 <pagination />
             </template>
-        </carousel>
+        </carousel> -->
 
         <div class="contain_products">
             <!-- 1 -->
@@ -164,16 +164,12 @@
 
 <script>
 import { mapState } from 'vuex';
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+
+
 
 export default {
     components: {
-        Carousel,
-        Slide,
-        Pagination,
-        Navigation,
+      
     },
     computed: {
         ...mapState(['RestaurantID']),
