@@ -156,6 +156,21 @@
         
 
          </div>
+             <div class="Daily-rsturant">Mobile</div> 
+             <div class="contain-mobile">
+                 <div v-for="mob in filterMobile" :key="mob" style="cursor: pointer;">  
+                    <div>
+                        <img :src="`${mob.image}`" v-if="mob.image" />
+                        <img v-else src="../../../public/img/elc1.png"  />   
+                    </div>    
+                    <h3>
+                        {{mob.name}}
+                    </h3>
+                    <h4>
+                        {{mob.short_des}}
+                    </h4>
+                 </div>
+             </div>
              <div class="full_body"> 
                 <div class="child-left">
                     <img v-for="brand in brands.slice(5,7)" 
@@ -181,14 +196,21 @@
                 <router-link :to="`/visit_restaurant/${restaurant.id}/${restaurant.title}`" style="color: #6b6c6c;text-decoration: none;">
                     <div><img :src="restaurant.image"></div>
                     <div class="title"> {{restaurant.title}} </div>
+                    <div class="title"> {{restaurant.place}} </div>
                 </router-link>
                 </div>
             </div>  
-            
+            <div class="baner-bee"> 
+                <div class="bee">
+                    <img src="../../../public/img/bee.png">
+                </div>
+ 
+            </div>
         </div> 
 </template>
 <script>
 import data from '../../jeson/data';
+import jeson from '@/jeson/MOCK_DATA.json';
 import { mapState } from 'vuex';
 import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
@@ -207,6 +229,7 @@ export default {
   },
     data() {
         return {
+              Produc :jeson[0].Products,
             restaurants: data.restaurants,
             // activeItem: 0,
             showDetails: false,
@@ -300,6 +323,13 @@ export default {
     },
   computed: {
         ...mapState([ 'brands','Product']),
+
+            filterMobile() {
+            // filter stores by search without checbox
+     return this.Produc.filter(x => x.slug === 'mobiles');
+            
+          
+        },
     },
     mounted() {
         this.$store.dispatch('loadProducts');
@@ -770,6 +800,12 @@ padding-bottom: 10px;
 } */
 }
 /* products */
+.contain-mobile{
+    display: flex;
+    overflow-x: scroll;
+    margin-bottom: 30px;
+    scrollbar-width: thin;
+}
 .heading {
     text-align: center;
     font-size: 2rem;
@@ -830,10 +866,9 @@ padding-bottom: 10px;
     color: #fff;
     background: #232f3e;
     padding: 10px 0;
-    border-radius: 4px 4px 0 0;
+    border-radius: 0 4px 0 0;
     font-weight: bold;
     width: 130px;
-    margin-left: 10px;
 }
 .home .contain-returant{
     display: flex;
@@ -841,30 +876,48 @@ padding-bottom: 10px;
     border-top: 1px solid #eee;
     padding: 30px 0;
     flex-flow: wrap;
+    background-color: #1c2c34;
+    margin-bottom: 20px;
 }
 .home .contain-returant .restu-item{
     width: 23%;
     cursor: pointer;
 }
 .home .contain-returant .restu-item div img{
-    width: 100%;
+    width: 60%;
     height: 170px;
+    border-radius: 50%;
 }
 .home .contain-returant .restu-item .title{
-    color: #797575;
+    color: var(--rhead);
     display: flex;
     justify-content: center;
     padding: 5px 0;
     font-size: 20px;
     font-weight: bold;
-    border: 1px solid #eee;
-
 }
 /* Small devices (landscape phones, 576px and up) */
 @media  (max-width: 767.98px) {
 .home .contain-returant .restu-item{
     width: 48%;
 }
+}
+.baner-bee{
+    display: flex;
+    justify-content: center;
+    margin: 2% 0;
+}
+.baner-bee .bee{
+    display: grid;
+    align-content: center;
+    width: 90%;
+}
+.baner-bee .bee img{
+    width: 100%;
+}
+.baner-bee .bee:hover{
+    opacity: .8;
+    cursor: pointer;
 }
 </style>
 <style lang="scss" scoped>

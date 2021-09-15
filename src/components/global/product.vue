@@ -30,6 +30,9 @@
 </div>
 </template>
 <style lang="scss" scoped>
+.recipe{
+	width: 215px;
+}
 .recipe,
 .pizza-box {
 	display: flex;
@@ -134,7 +137,6 @@
 
 /* Body Layout */
 .small {
-	width: 225px;
 	padding: 0;
 	cursor: pointer;
    

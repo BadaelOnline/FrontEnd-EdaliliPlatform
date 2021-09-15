@@ -226,39 +226,39 @@
         </div>
         <div class="child2"> 
               <div class="links">
-            <router-link to="/" class="links"  @click="selectItem(0)">
-                <div class="linkText" :class="{ active_sec: activeItem === 0}">{{ $t('Home') }}</div>
+            <router-link to="/" class="links"  >
+                <div class="linkText" :class="{ active_sec:$route.name === 'home'}">{{ $t('Home') }}</div>
             </router-link>
         </div>
          <div class="links">
-            <router-link to="/products" class="links"  @click="selectItem(1)">
-                <div class="linkText" :class="{ active_sec: activeItem === 1}">{{ $t('Products') }}</div>
+            <router-link to="/products" class="links" >
+                <div class="linkText" :class="{ active_sec: $route.name === 'products'}">{{ $t('Products') }}</div>
             </router-link>
         </div>
         <div class="links">
-            <router-link to="/stores" class="links"  @click="selectItem(2)">
-                <div class="linkText" :class="{ active_sec: activeItem === 2}">{{ $t('Stores') }}</div>
+            <router-link to="/stores" class="links" >
+                <div class="linkText" :class="{ active_sec: $route.name === 'stores'}">{{ $t('Stores') }}</div>
             </router-link>
         </div>
          <div class="links hov">
-            <router-link to="/festival" class="links"  @click="selectItem(3)">
-                <div class="linkText" :class="{ active_sec: activeItem === 3}">{{ $t('FestivalPerformances') }}</div>
+            <router-link to="/festival" class="links"  >
+                <div class="linkText" :class="{ active_sec: $route.name === 'festival'}">{{ $t('FestivalPerformances') }}</div>
             </router-link>
         </div>
         <div class="links">	
     
-            <router-link to="/" class="links"  @click="selectItem(4)">
-                <div class="linkText" :class="{ active_sec: activeItem === 4}">BLOG</div>
+            <router-link to="/" class="links" >
+                <div class="linkText" >BLOG</div>
             </router-link>
         </div>
         <div class="links">
-            <router-link to="/" class="links"  @click="selectItem(5)">
-                <div class="linkText" :class="{ active_sec: activeItem === 5}">CONTACT</div>
+            <router-link to="/" class="links" >
+                <div class="linkText" >CONTACT</div>
             </router-link>       
         </div>
            <div class="links">
-            <router-link to="/" class="links"  @click="selectItem(6)">
-                <div class="linkText" :class="{ active_sec: activeItem === 5}">ABOUT US</div>
+            <router-link to="/" class="links" >
+                <div class="linkText" >ABOUT US</div>
             </router-link>
                
         </div>
@@ -483,7 +483,6 @@ export default {
         const token = localStorage.getItem('token');
         const server = localStorage.getItem('server') || 'admin';
         return {
-            activeItem: 0,
             server: server,
             token: token,
             form: {
@@ -516,9 +515,7 @@ export default {
         }),
     },
     methods: {
-        selectItem(i) {
-            this.activeItem = i;
-        },
+     
       toggle_vs(){
           document.getElementById('Dep').classList.toggle("Dep_vs");
            document.getElementById('cover_dep').classList.add("vs2");
@@ -701,7 +698,7 @@ export default {
     position: fixed;
     top: 0px;
     height: 100%;
-    width: 360px;
+    width: 300px;
     z-index: 86;
     left: -360px;
     transition: all 0.5s;
@@ -736,7 +733,7 @@ export default {
  left: 0;
 }
 .backcover2{
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.2);
     position: fixed;
     width: 100%;
     height: 100%;
@@ -752,7 +749,7 @@ export default {
     content: '\f021';   
 }
 .backcover{
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.2);
     position: fixed;
     width: 100%;
     height: 100%;
