@@ -260,10 +260,6 @@ export default {
     color: #017701;
     border-radius: 7px;
 }
-.cu5 {
-    position: fixed;
-    z-index: 10;
-}
 .warnig_pass {
     color: red;
     display: none;

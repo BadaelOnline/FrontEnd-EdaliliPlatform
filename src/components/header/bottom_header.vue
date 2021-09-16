@@ -1,11 +1,5 @@
 <template>
-  <div class="cu5">
-            <h5>choose server</h5>
-            <select v-model="server" @change="handleserver($event)">
-                <option value="edalily">edalily</option>
-                <option value="admin">admin</option>
-            </select>
-        </div>
+
     <div class="bottom_header" v-if="$route.name == 'home'"> 
              <div class="child1">
        </div>
@@ -49,16 +43,13 @@ import { mapState } from 'vuex';
 export default {
     name: 'banarHeader',
     data() {
-        const server = localStorage.getItem('server') || 'admin';
+       
         return {
-            server: server,
+           
         };
     },
     methods: {
-        handleserver(event) {
-            localStorage.setItem('server', event.target.value);
-            window.location.reload();
-        },
+
        
     },
     computed: {
@@ -74,11 +65,7 @@ export default {
 </script>
 
 <style scoped>
-.cu5{
-    position: fixed;
-    right:  5%;
-    z-index: 80;
-}
+
 /* Start landing */
 .bottom_header {
     display: flex;

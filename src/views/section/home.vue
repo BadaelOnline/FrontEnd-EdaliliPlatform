@@ -1,4 +1,11 @@
 <template>
+  <div class="cu5">
+            <h5>choose server</h5>
+            <select v-model="server" @change="handleserver($event)">
+                <option value="edalily">edalily</option>
+                <option value="admin">admin</option>
+            </select>
+        </div>
         <Cartmini />  
         <div class="home">
          <div class="parent">
@@ -103,14 +110,14 @@
            
          </div> -->
         </div>
-          <div class="row">
+        
              <div class="contain_products"  v-if="Offers.length > 0">
 <!-- spiner reload wating -->
 
 <!-- <svg id="spinner" class="spinner spin-hide" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
 </svg> -->
-                 <div class="product-item col-md-3 col-xs-6" v-for="Offer in Offers.slice(0,4)" :key="Offer">
+                 <div class="product-item" v-for="Offer in Offers.slice(0,4)" :key="Offer">
                      <img src="../../../public/img/product-offer.jpg">
                      <div class="details">
                         <span class="offer_price">${{Offer.price}}</span> <span class="price">${{Offer.selling_price}}</span>
@@ -126,7 +133,7 @@
                         <h2>Ops... Offers not available.</h2> 
                         </div>
                     </div>
-             </div>
+            
             
             <div class="medium_offer">
              <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
@@ -228,7 +235,9 @@ export default {
     
   },
     data() {
+        const server = localStorage.getItem('server') || 'admin';
         return {
+             server: server,
               Produc :jeson[0].Products,
             restaurants: data.restaurants,
             // activeItem: 0,
@@ -249,6 +258,10 @@ export default {
         
     },  
     methods: {
+        handleserver(event) {
+            localStorage.setItem('server', event.target.value);
+            window.location.reload();
+        },
             transproduct(){
                 document.getElementById('list_prod').classList.toggle("trans-list");
                 document.getElementById('fa1').classList.toggle("fa-spin");
@@ -340,6 +353,12 @@ export default {
 </script>
 
 <style scoped>
+.cu5{
+    top: 20%;
+    position: fixed;
+    left:  5%;
+    z-index: 80;
+}
 .contain_unavaible{
     display: flex;
     border-top: 1px solid #eee;
@@ -599,6 +618,7 @@ padding-bottom: 10px;
     padding: 30px 0;
     flex-flow: wrap;
     position: relative;
+    width: 100%;
 }
 .parent .right .contain_products .product-item{
     height: 275px;
