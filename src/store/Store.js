@@ -7,9 +7,12 @@ import StoriesData from '@/jeson/StoriesData';
 let cartItems = window.localStorage.getItem('cartItems');
 let cartItemCount = window.localStorage.getItem('cartItemCount');
 let lang = window.localStorage.getItem('lang');
+let page = window.localStorage.getItem('page_brand') || 1;
 const store = createStore({
     state: {
         // APi
+        Brands: [],
+        page_Brands: null,
         Stores: [],
         store: [],
         Sections: [],
@@ -126,9 +129,12 @@ const store = createStore({
         SET_Sections(state, Sections) {
             state.Sections = Sections;
         },
-        // SET_Brands(state, Brands) {
-        //     state.Brands = Brands;
-        // },
+         SET_Brands(state, Brands) {
+             state.Brands = Brands;
+         },
+         SET_page_Brands(state, page_Brands) {
+            state.page_Brands = page_Brands;
+        },
         SET_Categories(state, Categories) {
             state.Categories = Categories;
         },
@@ -247,18 +253,20 @@ const store = createStore({
                     console.log('Error: ', error);
                 });
         },
-        // loadBrands({ commit }) {
-        //     axios
-        //         .get(`/api/brands/getAll?lang=${lang}`)
-        //         .then((res) => {
-        //             console.log('Brands :', res.data.Brand.data);
-        //             let Brands = res.data.Brand.data;
-        //             commit('SET_Brands', Brands);
-        //         })
-        //         .catch(function (error) {
-        //             console.log('Error: ', error);
-        //         });
-        // },
+         loadBrands({ commit }) {
+             axios
+                 .get(`/api/brands/getAll?page=${page}`)
+                 .then((res) => {
+                     console.log('Brands :', res.data.Brand.data);
+                     let Brands = res.data.Brand.data;
+                     let page_Brands = res.data.Brand.total;
+                     commit('SET_Brands', Brands);
+                     commit('SET_page_Brands', page_Brands);
+                 })
+                 .catch(function (error) {
+                     console.log('Error: ', error);
+                 });
+         },
         loadCategories({ commit }) {
             axios
                 .get(`/api/categories/getAll?lang=${lang}`)

@@ -90,44 +90,9 @@ const routes: Array<RouteRecordRaw> = [
 
     /* Categories */
     {
-        path: '/buty',
-        name: 'buty',
-        component: () => import('../views/categories/buty.vue'),
-    },
-    {
-        path: '/mobile',
-        name: 'mobile',
-        component: () => import('../views/categories/mobile.vue'),
-    },
-    {
-        path: '/computer',
-        name: 'computer',
-        component: () => import('../views/categories/computer.vue'),
-    },
-    {
-        path: '/elctronic',
-        name: 'elctronic',
-        component: () => import('../views/categories/elctronic.vue'),
-    },
-    {
-        path: '/kitchen',
-        name: 'kitchen',
-        component: () => import('../views/categories/kitchen.vue'),
-    },
-    {
-        path: '/education',
-        name: 'education',
-        component: () => import('../views/categories/education.vue'),
-    },
-    {
-        path: '/furniture',
-        name: 'furniture',
-        component: () => import('../views/categories/furniture.vue'),
-    },
-    {
-        path: '/child',
-        name: 'child',
-        component: () => import('../views/categories/child.vue'),
+        path: '/brand_product/:id',
+        name: 'brand_product',
+        component: () => import('../views/categories/brand_product.vue'),
     },
 ];
 
