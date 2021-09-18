@@ -163,21 +163,34 @@
         
 
          </div>
-             <div class="Daily-rsturant">Mobile</div> 
-             <div class="contain-mobile">
-                 <div v-for="mob in filterMobile" :key="mob" style="cursor: pointer;">  
-                    <div>
-                        <img :src="`${mob.image}`" v-if="mob.image" />
-                        <img v-else src="../../../public/img/elc1.png"  />   
-                    </div>    
-                    <h3>
-                        {{mob.name}}
-                    </h3>
-                    <h4>
-                        {{mob.short_des}}
-                    </h4>
-                 </div>
+             <div class="Daily-rsturant">Shop by Brands</div> 
+             <div class="contain-Brands">
+                 <brand v-for="item in Brands"
+                :key="item"
+                :id="item.id"
+                :name="item.name"
+                :image="item.image"
+                style="cursor: pointer;"
+                 />
+ 
              </div>
+            <!-- active -->
+             <nav>
+  <ul class="pagination" style="justify-content: center;">
+    <li class="page-item" :class="{ disabled : page == 1}" @click="Previous">
+      <span class="page-link">Previous</span>
+    </li>
+    
+    <li class="page-item" :class="{ active : pagebrand == pag}"  v-show="pag == page|| pag == ( parseInt(page)+2) || pag == ( parseInt(page)+1) || pag == ( parseInt(page)-1)"
+    v-for="pag in page_Brands" :key="pag">
+        <span class="page-link" @click="getpagebrand(pag)"> {{pag}}</span>
+    </li>
+
+    <li class="page-item" @click="Next">
+      <span class="page-link">Next</span>
+    </li>
+  </ul>
+</nav>
              <div class="full_body"> 
                 <div class="child-left">
                     <img v-for="brand in brands.slice(5,7)" 
@@ -223,7 +236,8 @@ import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
 export default {
     name: 'home',
-     props: {
+     props: 
+      {
     deadline: {
       type: String,
       required: true,
@@ -232,11 +246,14 @@ export default {
       type: Number,
       default: 1000,
     },
+   
     
-  },
+ },
     data() {
         const server = localStorage.getItem('server') || 'admin';
+        const page = window.localStorage.getItem('page_brand') || 1;
         return {
+              page: page,
              server: server,
               Produc :jeson[0].Products,
             restaurants: data.restaurants,
@@ -246,6 +263,8 @@ export default {
             Sections: [],
             Offers: [],
             Stores: [],
+            pagebrand: page,
+            
         };
     },
     components: {
@@ -254,10 +273,29 @@ export default {
          ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
+        ),
+        brand: defineAsyncComponent(() =>
+            import(`@/components/global/brand.vue`)
         )
         
     },  
     methods: {
+        // brand page methods
+        getpagebrand(i){
+            this.pagebrand = i;
+            localStorage.setItem("page_brand",i);
+            this.$store.dispatch('loadBrands');
+            window.location.reload();
+        },
+        Next(){
+            localStorage.setItem("page_brand", localStorage.getItem('page_brand')+1);
+             window.location.reload();
+        },
+       Previous(){
+            localStorage.setItem("page_brand",localStorage.getItem('page_brand')-1);
+             window.location.reload();
+        },
+        //  ___________
         handleserver(event) {
             localStorage.setItem('server', event.target.value);
             window.location.reload();
@@ -327,6 +365,7 @@ export default {
         gotoListView: function (i) {
             this.$router.push(`/ListView/${i}`);
         },
+
         gotoprodetails: function (i) {
             this.$router.push(`/${i}`);
         },
@@ -335,7 +374,7 @@ export default {
         this.fetch();
     },
   computed: {
-        ...mapState([ 'brands','Product']),
+        ...mapState([ 'brands','Product','Brands','page_Brands']),
 
             filterMobile() {
             // filter stores by search without checbox
@@ -346,6 +385,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('loadProducts');
+        this.$store.dispatch('loadBrands');
         // this.$store.dispatch('loadStores');    ,'Stores'  
         
     },
@@ -353,6 +393,12 @@ export default {
 </script>
 
 <style scoped>
+.page-item{
+    cursor: pointer;
+}
+.disabled{
+     cursor: auto;
+}
 .cu5{
     top: 20%;
     position: fixed;
@@ -820,12 +866,17 @@ padding-bottom: 10px;
 } */
 }
 /* products */
-.contain-mobile{
+.contain-Brands{
     display: flex;
+    gap: 10px;
+    margin: 20px 0;
     overflow-x: scroll;
     margin-bottom: 30px;
     scrollbar-width: thin;
+    background-color: #1c2c34;
+    padding: 20px 0;
 }
+
 .heading {
     text-align: center;
     font-size: 2rem;
@@ -905,9 +956,10 @@ padding-bottom: 10px;
 }
 .home .contain-returant .restu-item div img{
     width: 60%;
-    height: 170px;
+    height: 13vw;
     border-radius: 50%;
 }
+
 .home .contain-returant .restu-item .title{
     color: var(--rhead);
     display: flex;
@@ -916,12 +968,7 @@ padding-bottom: 10px;
     font-size: 20px;
     font-weight: bold;
 }
-/* Small devices (landscape phones, 576px and up) */
-@media  (max-width: 767.98px) {
-.home .contain-returant .restu-item{
-    width: 48%;
-}
-}
+
 .baner-bee{
     display: flex;
     justify-content: center;
