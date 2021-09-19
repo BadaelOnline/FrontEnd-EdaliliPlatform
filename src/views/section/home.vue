@@ -1,4 +1,4 @@
-<template>
+<template >
   <div class="cu5">
             <h5>choose server</h5>
             <select v-model="server" @change="handleserver($event)">
@@ -42,7 +42,50 @@
                 </div>
                 <div class="imag">
                     <img src="../../../public/img/banner-left1.png">
-                    </div>  
+                </div>  
+                <div class="last-subcriber">
+                    <div class="title">
+                        <h4>آخر المشتركین</h4>
+                    </div>
+                   
+                    <div class="subcriber">
+                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
+                          <div class="details">
+                        <div class="place">السویداء</div>
+                         <div class="name">سنتر برج الریم</div>  
+                         </div>             
+                    </div>
+
+                    <div class="subcriber">
+                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
+                          <div class="details">
+                        <div class="place">السویداء</div>
+                         <div class="name">سنتر برج الریم</div>  
+                         </div>             
+                    </div>
+                                        <div class="subcriber">
+                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
+                          <div class="details">
+                        <div class="place">السویداء</div>
+                         <div class="name">سنتر برج الریم</div>  
+                         </div>             
+                    </div>
+                                        <div class="subcriber">
+                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
+                          <div class="details">
+                        <div class="place">السویداء</div>
+                         <div class="name">سنتر برج الریم</div>  
+                         </div>             
+                    </div>
+                                        <div class="subcriber">
+                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
+                          <div class="details">
+                        <div class="place">السویداء</div>
+                         <div class="name">سنتر برج الریم</div>  
+                         </div>             
+                    </div>
+
+                </div>
                                 
              </div>
              <div class="right">
@@ -139,15 +182,13 @@
              <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
             <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
             </div>    
-              <!-- <div class="Daily">Top Stores</div>   
-             <div class="row">
-             <div class="contain_products" v-if="Stores.length > 0">
-                 <div class="product-item store-item col-md-3 col-xs-6" v-for="Stor in Stores.slice(0,4)" :key="Stor">
+             <div class="Daily">Shop by Stores</div>   
+             <div class="contain_stores" v-if="Stories.length > 0">
+                 <div class=" store-item" v-for="Stor in Stories" :key="Stor">
                      <router-link :to="`/visitstore/${Stor.id}/${Stor.title}`" style="color: #6b6c6c;text-decoration: none;">
                     <img src="../../../public/img/market-logo.png">
                     <div class="details">
-                    <h2>{{Stor.title.slice(0,15)}}</h2>
-                    <button>Visite</button>
+                    <h4>{{Stor.title.slice(0,15)}}</h4>
                     </div>
                      </router-link>
                  </div>
@@ -158,7 +199,7 @@
                         <h2>Ops... Stores not available.</h2> 
                         </div>
                     </div>
-             </div>  -->
+              
              </div>
         
 
@@ -211,7 +252,7 @@
              <div class="Daily-rsturant">Top Restaurants</div> 
             <div class="contain-returant" v-if="restaurants.length > 0">
                 <div class="restu-item" 
-                v-for="restaurant in restaurants.slice(0,4)"
+                v-for="restaurant in restaurants"
                 :key="restaurant">
                 <router-link :to="`/visit_restaurant/${restaurant.id}/${restaurant.title}`" style="color: #6b6c6c;text-decoration: none;">
                     <div><img :src="restaurant.image"></div>
@@ -234,6 +275,7 @@ import jeson from '@/jeson/MOCK_DATA.json';
 import { mapState } from 'vuex';
 import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
+
 export default {
     name: 'home',
      props: 
@@ -374,7 +416,7 @@ export default {
         this.fetch();
     },
   computed: {
-        ...mapState([ 'brands','Product','Brands','page_Brands']),
+        ...mapState([ 'brands','Product','Brands','page_Brands','Stories']),
 
             filterMobile() {
             // filter stores by search without checbox
@@ -386,7 +428,7 @@ export default {
     mounted() {
         this.$store.dispatch('loadProducts');
         this.$store.dispatch('loadBrands');
-        // this.$store.dispatch('loadStores');    ,'Stores'  
+         this.$store.dispatch('loadStores');      
         
     },
 };
@@ -475,6 +517,39 @@ export default {
 }
 .parent .left .Latest_Products .Products .details .price{
     color: var(--rhead);
+}
+.last-subcriber{
+    margin-top: 20px;
+    background-color: #e3f1f7;
+}
+.last-subcriber .title{
+    color: #fff;
+    background-color: #4cb0db;
+}
+.subcriber{
+    width: 95%;
+    margin: 5px auto;
+    padding: 5px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.subcriber .details{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+    opacity: .8;
+}
+.subcriber .logo{
+    width: 35%;
+}
+.subcriber .logo img{
+    width: 100%;
+    border-radius: 50%;
 }
 /* ___________________ right __________________ */
 .parent .right{
@@ -661,7 +736,7 @@ padding-bottom: 10px;
 .parent .right .contain_products{
     display: flex;
     border-top: 1px solid #eee;
-    padding: 30px 0;
+    padding: 0;
     flex-flow: wrap;
     position: relative;
     width: 100%;
@@ -766,48 +841,6 @@ padding-bottom: 10px;
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-/* .parent .right .section_products span{
-    display: none;
-}
-.parent .right .section_products .list_sec_prod{
-    display: block;
-    color: #fff;
-    background-color: #232f3e;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    position: relative;
-}
-.list_sec{
-      display: none;
-    position: absolute;
-    -webkit-box-shadow: 0 0 2px #ccc;
-    z-index: 5;
-    text-align: left;
-    left: -100px;
-    bottom: -155px;
-    padding: 20px 70px 0 10px;
-    background-color: #fff;
-}
-.list_sec ul{
-    padding: 0;
-    background-color: #fff;
-
-}
-.list_sec ul li {
-    color: rgb(136, 134, 134);
-    list-style: none;
-    margin-bottom: 10px;
-}
-.list_sec ul li:hover {
-     color: #ff3c20 !important;
-}
-.act_li{
-    color: #ff3c20 !important;
-}
-.parent .right .section_products .list_sec_prod:hover .list_sec{
-    display: block;
-}*/
 .parent .right .contain_products .product-item{
     max-width: 48%;
 } 
@@ -818,62 +851,31 @@ padding-bottom: 10px;
 .parent .right .contain_products .product-item{
     max-width: 31%;
 }
-/* .parent .right .section_products span{
-    display: none;
-}
-.parent .right .section_products .list_sec_prod{
-    display: block;
-    color: #fff;
-    background-color: #232f3e;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    position: relative;
-}
-.parent .right .section_products{
-    position: relative;
-}
-.list_sec{
-   display: none;
-    position: absolute;
-    -webkit-box-shadow: 0 0 2px #ccc;
-    z-index: 5;
-    text-align: left;
-    left: -100px;
-    bottom: -155px;
-    padding: 20px 70px 0 10px;
-    background-color: #fff;
-}
-.list_sec ul{
-    padding: 0;
-    background-color: #fff;
 
 }
-
-.list_sec ul li {
-    color: rgb(136, 134, 134);
-    list-style: none;
-    margin-bottom: 10px;
+.contain_stores{
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    width: 100%;
+    scrollbar-width: thin;
 }
-.list_sec ul li:hover {
-     color: #ff3c20 !important;
+.contain_stores .store-item{
+    width:200px;
 }
-.act_li{
-    color: #ff3c20 !important;
-}
-.parent .right .section_products .list_sec_prod:hover .list_sec{
-    display: block;
-} */
+.contain_stores .store-item img{
+    width: 200px;
+    border-radius: 50%;
 }
 /* products */
 .contain-Brands{
     display: flex;
     gap: 10px;
-    margin: 20px 0;
+    margin:  0;
     overflow-x: scroll;
     margin-bottom: 30px;
     scrollbar-width: thin;
-    background-color: #1c2c34;
+    background-color: #e3f1f7;
     padding: 20px 0;
 }
 
@@ -940,14 +942,16 @@ padding-bottom: 10px;
     border-radius: 0 4px 0 0;
     font-weight: bold;
     width: 130px;
+    margin-top: 20px;
 }
 .home .contain-returant{
     display: flex;
-    justify-content: space-around;
+    overflow-x: scroll;
+    width: 100%;
+    scrollbar-width: thin;
     border-top: 1px solid #eee;
     padding: 30px 0;
-    flex-flow: wrap;
-    background-color: #1c2c34;
+    background-color: #e3f1f7;
     margin-bottom: 20px;
 }
 .home .contain-returant .restu-item{
@@ -955,13 +959,13 @@ padding-bottom: 10px;
     cursor: pointer;
 }
 .home .contain-returant .restu-item div img{
-    width: 60%;
-    height: 13vw;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
 }
 
 .home .contain-returant .restu-item .title{
-    color: var(--rhead);
+    color: #666161;
     display: flex;
     justify-content: center;
     padding: 5px 0;

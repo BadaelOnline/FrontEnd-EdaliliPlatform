@@ -15,16 +15,16 @@
     margin-left: 10px;
 }
 .imag{
-    width: 125px;
-    height: 110px;
+    width: 200px;
+    height: 200px;
 }
 .imag img{
-   width: 100%;
+    width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 h4{
-    color: var(--rhead);
+    color: #666161;
     margin-top: 10px;
 }
 </style>
