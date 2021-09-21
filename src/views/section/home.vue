@@ -182,9 +182,16 @@
              <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
             <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
             </div>    
-             <div class="Daily">Shop by Stores</div>   
-             <div class="contain_stores" v-if="Stories.length > 0">
-                 <div class=" store-item" v-for="Stor in Stories" :key="Stor">
+             </div>
+    
+         </div>
+            <div class="Daily-rsturant">Shop by Stores</div>
+            <swiper class="swiper" v-if="Stories.length > 0"
+            :breakpoints="swiperOptions.breakpoints"
+            navigation
+            :pagination="{ clickable: true }">
+            <swiper-slide v-for="Stor in Stories" :key="Stor">
+            <div class=" store-item store">
                      <router-link :to="`/visitstore/${Stor.id}/${Stor.title}`" style="color: #6b6c6c;text-decoration: none;">
                     <img src="../../../public/img/market-logo.png">
                     <div class="details">
@@ -192,42 +199,70 @@
                     </div>
                      </router-link>
                  </div>
-                </div>
+            </swiper-slide>
+            </swiper>   
+         
                    <div class="contain_unavaible" v-else>
                     <div class="unavaible_product">
                         <img src="../../../public/img/unavalible.jpg">
                         <h2>Ops... Stores not available.</h2> 
                         </div>
                     </div>
-              
-             </div>
-        
-
-         </div>
-             <div class="Daily-rsturant">Shop by Brands</div> 
-             <div class="contain-Brands">
-                 <brand v-for="item in Brands"
-                :key="item"
-                :id="item.id"
-                :name="item.name"
-                :image="item.image"
-                style="cursor: pointer;"
-                 />
- 
-             </div>
-            <!-- active -->
-             <nav>
-  <ul class="pagination" style="justify-content: center;">
-    <li class="page-item" :class="{ disabled : page == 1}" @click="Previous">
+                          <div class="full_body"> 
+                <div class="child-left">
+                    <img v-for="brand in brands.slice(10,12)" 
+                    :key="brand.id" 
+                    :src="brand.image">
+                    </div>
+                <div class="child-center">
+                    <img v-for="brand in brands.slice(2,3)" 
+                    :key="brand.id" 
+                    :src="brand.image">
+                    </div>
+                <div class="child-right"> 
+                    <img v-for="brand in brands.slice(3,5)" 
+                    :key="brand.id" 
+                    :src="brand.image">
+                    </div>
+            </div>
+               <div class="Daily-rsturant">Shop by Brands</div>
+            <swiper class="swiper" v-if="Brands.length > 0"
+            :breakpoints="swiperOptions.breakpoints"
+            navigation
+            :pagination="{ clickable: true }">
+             <!-- @swiper="onSwiper"
+            @slideChange="onSlideChange" -->
+            <swiper-slide v-for="item in Brands" :key="item">
+            <div class=" store-item brand">
+                     <router-link :to="`/brand_product/${item.id}`" style="color: #6b6c6c;text-decoration: none;">
+                    <img :src="`${item.image}`" v-if="item.image" />
+                    <img v-else src="../../../public/img/elc1.png"  /> 
+                    <div class="details">
+                     <h4>{{item.name}}</h4>
+                    </div>
+                     </router-link>
+                 </div>
+            </swiper-slide>
+            </swiper>   
+             <div class="contain_unavaible" v-else>
+                    <div class="unavaible_product">
+                        <img src="../../../public/img/unavalible.jpg">
+                        <h2>Brands not available.</h2> 
+                        </div>
+                    </div>
+           <!-- pagination -->
+             <nav v-if="page_Brands !== null">
+  <ul class="pagination" style="justify-content: center;margin-top: 30px;">
+    <li class="page-item" :class="{ disabled : page_brand == 1}" @click="Previousbrand">
       <span class="page-link">Previous</span>
     </li>
     
-    <li class="page-item" :class="{ active : pagebrand == pag}"  v-show="pag == page|| pag == ( parseInt(page)+2) || pag == ( parseInt(page)+1) || pag == ( parseInt(page)-1)"
+    <li class="page-item" :class="{ active : page_brand == pag}"  v-show="pag == page_brand|| pag == ( parseInt(page_brand)+2) || pag == ( parseInt(page_brand)+1) || pag == ( parseInt(page_brand)-1)"
     v-for="pag in page_Brands" :key="pag">
         <span class="page-link" @click="getpagebrand(pag)"> {{pag}}</span>
     </li>
 
-    <li class="page-item" @click="Next">
+    <li class="page-item" @click="Nextbrand">
       <span class="page-link">Next</span>
     </li>
   </ul>
@@ -249,33 +284,110 @@
                     :src="brand.image">
                     </div>
             </div>
-             <div class="Daily-rsturant">Top Restaurants</div> 
-            <div class="contain-returant" v-if="restaurants.length > 0">
-                <div class="restu-item" 
-                v-for="restaurant in restaurants"
-                :key="restaurant">
-                <router-link :to="`/visit_restaurant/${restaurant.id}/${restaurant.title}`" style="color: #6b6c6c;text-decoration: none;">
-                    <div><img :src="restaurant.image"></div>
-                    <div class="title"> {{restaurant.title}} </div>
-                    <div class="title"> {{restaurant.place}} </div>
-                </router-link>
-                </div>
-            </div>  
+            <div class="Daily-rsturant">Top Restaurants</div> 
+            <swiper class="swiper" v-if="restaurants.length > 0"
+            :breakpoints="swiperOptions.breakpoints"
+            navigation
+            :pagination="{ clickable: true }"
+             > 
+            
+            <swiper-slide v-for="item in restaurants" :key="item">
+            <div class=" store-item restaurant">
+                <router-link :to="`/visit_restaurant/${item.id}/${item.title}`" style="color: #6b6c6c;text-decoration: none;">
+                    <img :src="`${item.image}`" v-if="item.image" />
+                    <img v-else src="../../../public/img/elc1.png"  /> 
+                    <div class="details">
+                     <h4>{{item.title}}</h4>
+                     <h4>{{item.place}}</h4>
+                    </div>
+                     </router-link>
+                 </div>
+            </swiper-slide>
+            </swiper> 
+             <div class="contain_unavaible" v-else>
+                    <div class="unavaible_product">
+                        <img src="../../../public/img/unavalible.jpg">
+                        <h2>Brands not available.</h2> 
+                        </div>
+                    </div>
             <div class="baner-bee"> 
                 <div class="bee">
                     <img src="../../../public/img/bee.png">
                 </div>
  
             </div>
+
+            <div class="Daily-rsturant">Shop by Category</div> 
+            
+            <swiper class="swiper"  v-if="Categories.length > 0"
+            :breakpoints="swiperOptions.breakpoints"
+            navigation
+            :pagination="{ clickable: true }">
+            <swiper-slide v-for="item in Categories"  :key="item">
+             <div class="store-item category">
+                 <router-link :to="`/category_product/${item.id}`" style="color: #6b6c6c;text-decoration: none;"> 
+                    <img :src="`${item.image}`" v-if="item.image" />
+                    <img v-else src="../../../public/img/elc1.png"  /> 
+                    <div class="details">
+                    <h4>{{item.name}}</h4>
+                    </div>
+                     </router-link> 
+            </div>
+            </swiper-slide>
+               
+            </swiper>
+                        <div class="contain_unavaible" v-else>
+                    <div class="unavaible_product">
+                        <img src="../../../public/img/unavalible.jpg">
+                        <h2>Category not available.</h2> 
+                        </div>
+                    </div>
+            
+            <!-- pagination -->
+            <nav>
+  <ul class="pagination" style="justify-content: center;" v-if="page_Categories !== null">
+    <li class="page-item" :class="{ disabled : page_Category == 1}" @click="Previouscategory">
+      <span class="page-link">Previous</span>
+    </li>
+    
+    <li class="page-item" :class="{ active : page_Category == pag}"  v-show="pag == page_Category|| pag == ( parseInt(page_Category)+2) || pag == ( parseInt(page_Category)+1) || pag == ( parseInt(page_Category)-1)"
+    v-for="pag in page_Categories" :key="pag">
+        <span class="page-link" @click="getpagecategory(pag)"> {{pag}}</span>
+    </li>
+
+    <li class="page-item" @click="Nextcategory">
+      <span class="page-link">Next</span>
+    </li>
+  </ul>
+</nav>
+ 
+
+ 
         </div> 
 </template>
 <script>
+ import $ from "jquery";
 import data from '../../jeson/data';
 import jeson from '@/jeson/MOCK_DATA.json';
 import { mapState } from 'vuex';
 import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
+// swiper
+// import Swiper core and required components
+import SwiperCore, { Navigation, Pagination, A11y } from "swiper";
 
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from "swiper/vue";
+
+// Import Swiper styles
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
+import "swiper/components/pagination/pagination.scss";
+
+// install Swiper components
+SwiperCore.use([Navigation, Pagination, A11y]);
+
+// Import Swiper styles
 export default {
     name: 'home',
      props: 
@@ -293,11 +405,13 @@ export default {
  },
     data() {
         const server = localStorage.getItem('server') || 'admin';
-        const page = window.localStorage.getItem('page_brand') || 1;
+        const page_brand = window.localStorage.getItem('page_brand') || 1;
+        const page_Category = window.localStorage.getItem('page_Category') || 1;
         return {
-              page: page,
-             server: server,
-              Produc :jeson[0].Products,
+            page_brand: page_brand,
+            page_Category: page_Category,
+            server: server,
+            Produc :jeson[0].Products,
             restaurants: data.restaurants,
             // activeItem: 0,
             showDetails: false,
@@ -305,37 +419,80 @@ export default {
             Sections: [],
             Offers: [],
             Stores: [],
-            pagebrand: page,
-            
+            silde_per_view:6,
+            swiperOptions: { 
+                breakpoints: {
+       
+        300:{  // when window width from 300px to 576px
+            slidesPerView: 2,
+            spaceBetween:50
+       },
+       576:{  // when window width from 576px to 767px
+            slidesPerView: 3,
+            spaceBetween:50
+       },
+        767: { // when window width from 767px to 991px
+            slidesPerView: 4,
+            spaceBetween:50
+        },
+      
+        991: { // when window width from 991px to 1200px
+            slidesPerView: 5,
+            spaceBetween:50
+        },
+         1200: { // when window width from 1200px to higher
+            slidesPerView: 7,
+            spaceBetween:50     
+        },
+        }
+        }
         };
     },
     components: {
-         timercount: defineAsyncComponent(() =>
+         Swiper,
+    SwiperSlide,
+        timercount: defineAsyncComponent(() =>
              import(`@/components/global/timercount.vue`)
          ),
         Cartmini: defineAsyncComponent(() =>
             import(`@/components/cart/Cartmini.vue`)
-        ),
-        brand: defineAsyncComponent(() =>
-            import(`@/components/global/brand.vue`)
         )
         
     },  
     methods: {
         // brand page methods
         getpagebrand(i){
-            this.pagebrand = i;
             localStorage.setItem("page_brand",i);
             this.$store.dispatch('loadBrands');
             window.location.reload();
         },
-        Next(){
-            localStorage.setItem("page_brand", localStorage.getItem('page_brand')+1);
+        Nextbrand(){
+            localStorage.setItem("page_brand", parseInt(this.page_brand)+1);
              window.location.reload();
         },
-       Previous(){
-            localStorage.setItem("page_brand",localStorage.getItem('page_brand')-1);
+       Previousbrand(){
+           if(localStorage.getItem("page_brand") > 1){
+            localStorage.setItem("page_brand",parseInt(this.page_brand)-1);
              window.location.reload();
+           }
+
+        },
+                // category page methods
+        getpagecategory(i){
+            localStorage.setItem("page_Category",i);
+           this.$store.dispatch('loadCategories');  
+            window.location.reload();
+        },
+        Nextcategory(){
+            localStorage.setItem("page_Category", parseInt(this.page_Category)+1);
+             window.location.reload();
+        },
+       Previouscategory(){
+           if(localStorage.getItem("page_Category") > 1){
+            localStorage.setItem("page_Category",parseInt(this.page_Category)-1);
+             window.location.reload();
+           }
+
         },
         //  ___________
         handleserver(event) {
@@ -416,7 +573,7 @@ export default {
         this.fetch();
     },
   computed: {
-        ...mapState([ 'brands','Product','Brands','page_Brands','Stories']),
+        ...mapState([ 'brands','Product','Brands','page_Brands','Stories','Categories','page_Categories']),
 
             filterMobile() {
             // filter stores by search without checbox
@@ -428,13 +585,39 @@ export default {
     mounted() {
         this.$store.dispatch('loadProducts');
         this.$store.dispatch('loadBrands');
-         this.$store.dispatch('loadStores');      
-        
+        this.$store.dispatch('loadStores');      
+        this.$store.dispatch('loadCategories');  
+        // change slide per view 
+        $( document ).ready(function() {
+  if (window.matchMedia("(max-width: 575.98px)").matches) { // If media query matches
+    console.log('Media : extrasmall');
+  } 
+   else if ( window.matchMedia("(min-width: 576px) and (max-width: 767.98px)").matches){
+      console.log('Media : small');
+  }
+   else if (window.matchMedia("(min-width: 768px) and (max-width: 991.98px)").matches){
+      console.log('Media : medem');
+  }
+   else if (window.matchMedia("(min-width: 992px) and (max-width: 1199.98px)").matches){
+      console.log('Media : large');
+  }
+});
+
     },
 };
 </script>
 
 <style scoped>
+/* swiper */
+.swiper{
+ border: 1px solid #eee;
+ padding: 40px 20px;
+}
+.swiper-slide{
+  
+    margin-right: 50px !important;
+}
+/* end swiper */
 .page-item{
     cursor: pointer;
 }
@@ -451,10 +634,12 @@ export default {
     display: flex;
     border-top: 1px solid #eee;
     padding: 30px 0;
+    width: 100%;
 }
 .unavaible_product{
     background-color: #ecf0f1;
     height: auto;
+    width: 100%;
 }
 .unavaible_product img{
    margin-bottom: 25px;
@@ -521,10 +706,15 @@ export default {
 .last-subcriber{
     margin-top: 20px;
     background-color: #e3f1f7;
-}
+    overflow-y: scroll;
+    height: 260px;
+    scrollbar-width: thin;
+    scrollbar-color: #ee555c #475860;
+    }
 .last-subcriber .title{
     color: #fff;
     background-color: #4cb0db;
+    padding: 6px;
 }
 .subcriber{
     width: 95%;
@@ -750,20 +940,7 @@ padding-bottom: 10px;
     max-width: 22%;
     cursor: pointer;
 }
-.parent .right .contain_products .store-item{
-    background: linear-gradient(to bottom, #fff,#e4e5e8);
-}
-.parent .right .contain_products .store-item .details h2{
-    font-size: 18px;
-}
-.parent .right .contain_products .store-item button{
-   border: navajowhite;
-    color: #fff;
-    background-color: var(--rhead);
-    padding: 3px 20px;
-    font-weight: bold;
-    border-radius: 3px;
-}
+
 
 .parent .right .contain_products .product-item img{
    width: 100%;
@@ -851,34 +1028,53 @@ padding-bottom: 10px;
 .parent .right .contain_products .product-item{
     max-width: 31%;
 }
+}
+.home .Daily-rsturant{
+    color: #fff;
+    background: #232f3e;
+    padding: 10px 0;
+    border-radius: 0 4px 0 0;
+    font-weight: bold;
+    width: 130px;
+    margin-top: 20px;
+}
+.store-item {
+    height: 200px;
+    width: 100%;   
+    position: relative;
+}
+.store-item .details{
+    padding: 10px 0;
+}
+.store-item .details h4{
+    text-shadow: 3px 7px 4px #bbb;
+}
+.store-item img{
+    width: 150px;
+    height: 150px;
+    box-shadow: 2px 3px 23px #8e8b8b;
+    transition: all .2s;
 
 }
-.contain_stores{
-    display: flex;
-    gap: 20px;
-    overflow-x: scroll;
-    width: 100%;
-    scrollbar-width: thin;
+.store-item:hover img{
+    box-shadow: 2px 3px 23px #686565;
 }
-.contain_stores .store-item{
-    width:200px;
+.store img{
+    border-top-left-radius: 27%;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 25%;
+    border-bottom-left-radius: 10%;
 }
-.contain_stores .store-item img{
-    width: 200px;
-    border-radius: 50%;
+.brand img{
+    border-radius:2%;
+}
+.restaurant img{
+      border-radius:50%;
+}
+.category img{
+    border-radius: 60px/20px;
 }
 /* products */
-.contain-Brands{
-    display: flex;
-    gap: 10px;
-    margin:  0;
-    overflow-x: scroll;
-    margin-bottom: 30px;
-    scrollbar-width: thin;
-    background-color: #e3f1f7;
-    padding: 20px 0;
-}
-
 .heading {
     text-align: center;
     font-size: 2rem;
@@ -892,7 +1088,7 @@ padding-bottom: 10px;
     display: flex;
     justify-content: space-around;
     height: 23vw;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 .full_body .child-left{
     width: 23%;
@@ -934,43 +1130,6 @@ padding-bottom: 10px;
     width: 95%;
     height: 100%;
 }
-}
-.home .Daily-rsturant{
-    color: #fff;
-    background: #232f3e;
-    padding: 10px 0;
-    border-radius: 0 4px 0 0;
-    font-weight: bold;
-    width: 130px;
-    margin-top: 20px;
-}
-.home .contain-returant{
-    display: flex;
-    overflow-x: scroll;
-    width: 100%;
-    scrollbar-width: thin;
-    border-top: 1px solid #eee;
-    padding: 30px 0;
-    background-color: #e3f1f7;
-    margin-bottom: 20px;
-}
-.home .contain-returant .restu-item{
-    width: 23%;
-    cursor: pointer;
-}
-.home .contain-returant .restu-item div img{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-}
-
-.home .contain-returant .restu-item .title{
-    color: #666161;
-    display: flex;
-    justify-content: center;
-    padding: 5px 0;
-    font-size: 20px;
-    font-weight: bold;
 }
 
 .baner-bee{
@@ -1039,3 +1198,4 @@ padding-bottom: 10px;
 //  }
 // }
 </style>
+
