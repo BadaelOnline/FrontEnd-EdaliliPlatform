@@ -121,6 +121,7 @@ align-items: center;
     transition: all .5s;
     padding: 5px;
 }
+
 .first_header .first_nav .child2 i:hover{
     color: var(--rhead);
     border: 1px solid var(--rhead);
@@ -165,9 +166,14 @@ align-items: center;
 @media (max-width: 575.98px) {
 .first_header .first_nav .child1{
     font-size: 11px;
+    padding-left: 5px;
 }
-
-
+.first_header .first_nav .child2 i{
+    margin: 0 2px;
+}
+.first_header .first_nav .child3{
+    padding-right: 15px; 
+}
 
 
 }

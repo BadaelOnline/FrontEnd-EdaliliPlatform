@@ -72,7 +72,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/section/resturants.vue'),
     },
     {
-        path: '/visitrestaurant/:id',
+        path: '/visitrestaurant/:id/:title',
         name: 'visitRestaurant',
         component: () =>
             import('../components/body/restaurant/visitRestaurant.vue'),
@@ -90,9 +90,14 @@ const routes: Array<RouteRecordRaw> = [
 
     /* Categories */
     {
-        path: '/brand_product/:id',
+        path: '/brand_product/:id_brand',
         name: 'brand_product',
         component: () => import('../views/categories/brand_product.vue'),
+    },
+    {
+        path: '/category_product/:id_category',
+        name: 'category_product',
+        component: () => import('../views/categories/category_product.vue'),
     },
 ];
 

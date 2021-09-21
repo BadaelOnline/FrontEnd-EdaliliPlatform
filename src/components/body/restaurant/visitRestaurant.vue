@@ -168,6 +168,7 @@ import { mapState } from 'vuex';
 
 
 export default {
+    props: ['id', 'title'],
     components: {
       
     },

@@ -23,6 +23,7 @@
     "pettier": "^1.1.0",
     "popper.js": "^1.16.1",
     "semantic-ui-vue": "^0.11.0",
+    "swiper": "^6.4.6",
     "vue": "^3.0.0-beta.1",
     "vue-animate-transitions": "^1.1.2",
     "vue-axios": "^3.2.4",

@@ -11,7 +11,7 @@
   
             <div class="title-brand">
             <h4><span>{{Product.length}}</span> items from search about </h4>
-            <h4>"{{BrandBy_id.name}}"</h4>
+            <h4>"{{CategoryBy_id.name}}"</h4>
             </div>
                 <div
                     class="img"               
@@ -24,7 +24,7 @@
                         data-aos-easing="ease-in-out"
                         data-aos-mirror="true"
                         data-aos-once="true"
-                        :src="BrandBy_id.image"
+                        :src="CategoryBy_id.image"
                     />
                 </div>
         </div>
@@ -479,11 +479,11 @@ import axios from 'axios';
 export default {
     data() {
         return {
-        BrandBy_id:[],
+        CategoryBy_id:[],
         Product:[],
         };
     },
-    name: 'brand_product',
+    name: 'category_product',
     components: {
  
         product: defineAsyncComponent(() =>
@@ -502,11 +502,11 @@ export default {
            
             // sections
             axios
-                .get(`/api/brands/getById/${this.$route.params.id_brand}`)
+                .get(`/api/categories/getById/${this.$route.params.id_brand}`)
                 .then((res) => {
-                    self.BrandBy_id = res.data.Brand;
-                     self.Product = res.data.Brand.product;
-                    console.log('Brand By id: ', res.data.Brand);                         
+                    self.CategoryBy_id = res.data.Category;
+                     self.Product = res.data.Category.product;
+                    console.log('Brand By id: ', res.data.Category);                         
                 })
                 .catch(function (error) {
                     console.warn('Error Brand_id ', error.toJSON());

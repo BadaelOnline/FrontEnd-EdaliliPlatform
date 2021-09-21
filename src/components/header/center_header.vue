@@ -278,7 +278,7 @@
                 </div>
             </template>        
         </div>
-        <span style="margin:0 25px;color:#fff">|</span>  
+        <span class="slach" >|</span>  
         <div class="contact">
             <i class="fa fa-phone-square" aria-hidden="true" style="margin-right:5px;"></i>
             <span>(+963) 931 824 473</span>
@@ -459,8 +459,8 @@
             </form>
         </div>
         <div class="child3">
-            <div><i class="fa fa-refresh" aria-hidden="true"></i></div>
-            <div><i class="fa fa-heart" aria-hidden="true"></i></div>
+            <div style="display: grid;align-content: center;"><i class="fa fa-refresh" aria-hidden="true"></i></div>
+            <div style="display: grid;align-content: center;"><i class="fa fa-heart" aria-hidden="true"></i></div>
             <div class="cart" @click="gotocart()">
                 <i class="fa fa-shopping-cart"></i>
                 <div class="cartItemCount">{{ cartItemCount }}</div>
@@ -803,6 +803,16 @@ export default {
 }
 .navba .child3 .sign:hover{
     color: var(--rhead);
+}
+.navba .child3 .slach{
+    margin:0 15px;
+    color:#fff
+}
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+.navba .child3 .slach{
+    margin:0 5px;
+} 
 }
 .bottom_navba{
     display: flex;
