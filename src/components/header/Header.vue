@@ -19,9 +19,9 @@
             ></i>
             <span>Success Login</span>
         </div>
-        <top_header  id="first_header" />
-        <center_header id="navbar" />
-        <bottom_header id="banarHeader" />
+        <top_header />
+        <center_header />
+        <bottom_header />
     </div>
 </template>
 
@@ -312,25 +312,6 @@ export default {
     padding: 0;
 
 }
-
-/* #first_header {
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  width: 100%;
-}
-
-#navbar {
-  position: fixed;
-  top: 35px;
-  z-index: 100;
-   width: 100%;
-}
-#banarHeader{
-    padding-top: 150px;
-} */
-
-
 .background {
     display: grid;
     align-content: space-between;

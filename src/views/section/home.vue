@@ -330,6 +330,7 @@
                     <img v-else src="../../../public/img/elc1.png"  /> 
                     <div class="details">
                     <h4>{{item.name}}</h4>
+                   
                     </div>
                      </router-link> 
             </div>
@@ -504,21 +505,21 @@ export default {
                 document.getElementById('fa1').classList.toggle("fa-spin");
                 document.getElementById('fa2').classList.toggle("fa-spin");
             },
-        fetch() {
+      async  fetch() {
             var self = this;
             let lang = window.localStorage.getItem('lang');
             // sections
-            axios
+            await axios
                 .get(`/api/sections/getAll?lang=${lang}`)
                 .then((res) => {
                     self.Sections = res.data.Section;
-                    console.warn('Section: ', res.data.Section);                         
+                    console.log('Section: ', res.data.Section);                         
                 })
                 .catch(function (error) {
                     console.warn('Error sections ', error.toJSON());
                 });
                   // offers
-                axios
+              await  axios
                 .get(`/api/offers`)
                 .then((res) => {
                     this.Offers = res.data.Offer.data;
@@ -529,17 +530,6 @@ export default {
                 .catch(function (error) {
                     console.warn(' Error Offer ', error.toJSON());
                 });
-                // stores
-                 axios
-                .get(`/api/stores/getAll?lang=${lang}`)
-                .then((res) => {
-                    console.log('Stores :', res.data.Stores);
-                      this.Stores = res.data.Stores;
-                })
-                 .catch(function (error) {
-                    console.log(' Error Stores ',error.toJSON());
-                 });
-
         },
         /* selectItem(i) {
             this.activeItem = i;
@@ -585,7 +575,7 @@ export default {
     mounted() {
         this.$store.dispatch('loadProducts');
         this.$store.dispatch('loadBrands');
-        this.$store.dispatch('loadStores');      
+        // this.$store.dispatch('loadStores');      
         this.$store.dispatch('loadCategories');  
         // change slide per view 
         $( document ).ready(function() {
