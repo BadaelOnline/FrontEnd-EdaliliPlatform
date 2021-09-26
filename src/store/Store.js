@@ -258,13 +258,13 @@ const store = createStore({
                     console.log('Error: ', error);
                 });
         },
-         loadBrands({ commit }) {
-             axios
+        async  loadBrands({ commit }) {
+          await   axios
                  .get(`/api/brands/getAll?page=${page_brand}&lang=${lang}`)
                  .then((res) => {
                      console.log('Brands :', res.data.Brand.data);
                      let Brands = res.data.Brand.data;
-                     let page_Brands = res.data.Brand.total;
+                     let page_Brands = res.data.Brand.last_page;
                      commit('SET_Brands', Brands);
                      commit('SET_page_Brands', page_Brands);
                  })
@@ -278,7 +278,7 @@ const store = createStore({
                 .then((res) => {
                     console.log('Categories :', res.data.Category.data);
                     let Categories = res.data.Category.data;
-                    let page_Categories = res.data.Category.total;
+                    let page_Categories = res.data.Category.last_page;
                     commit('SET_Categories', Categories);
                     commit('SET_page_Categories', page_Categories);
                 })
