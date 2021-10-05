@@ -6,19 +6,19 @@
                     <div class="inner-border">
                         <img
                             class="corner-decoration corner-left-top"
-                            src="../../../../public/img/corner-decoration.jpg"
+                            src="../../../../public/img/corner-decoration.jpeg"
                         />
                         <img
                             class="corner-decoration corner-right-top"
-                            src="../../../../public/img/corner-decoration.jpg"
+                            src="../../../../public/img/corner-decoration.jpeg"
                         />
                         <img
                             class="corner-decoration corner-right-bottom"
-                            src="../../../../public/img/corner-decoration.jpg"
+                            src="../../../../public/img/corner-decoration.jpeg"
                         />
                         <img
                             class="corner-decoration corner-left-bottom"
-                            src="../../../../public/img/corner-decoration.jpg"
+                            src="../../../../public/img/corner-decoration.jpeg"
                         />
                         <img
                             class="vertical-decoration top"
@@ -46,15 +46,17 @@
             </div>
         </div>
         <div class="cover_resturant">
-            <img v-if="RestaurantID.image" :src="RestaurantID.image" />
-            <img v-else src="../../../../public/img/cover_resturant.jpg" />
+            <!-- <img v-if="RestaurantID.image" :src="RestaurantID.image" /> -->
+            <img  src="../../../../public/img/cover_resturant.jpg" />
             <div class="example">Open</div>
             <div class="check_menu">Check Menu</div>
         </div>
-
-        <!-- <carousel style="margin: 50px 0">
-            <slide v-for="slide in 10" :key="slide">
-                <div class="card 1">
+            <swiper class="swiper" style="padding: 10px 0 60px 0;"
+            :breakpoints="swiperOptions.breakpoints"
+            navigation
+            :pagination="{ clickable: true }">
+            <swiper-slide v-for="slide in 10" :key="slide">
+              <div class="card 1">
                     <div class="card_image">
                         <img src="../../../../public/img/cheese_burger.jpg" />
                     </div>
@@ -62,14 +64,9 @@
                         <p>Foods</p>
                     </div>
                 </div>
-            </slide>
-
-            <template #addons>
-                <navigation />
-                <pagination />
-            </template>
-        </carousel> -->
-
+            </swiper-slide>
+               
+            </swiper>
         <div class="contain_products">
             <!-- 1 -->
             <div class="container">
@@ -164,13 +161,59 @@
 
 <script>
 import { mapState } from 'vuex';
+import data from '../../../jeson/data';
 
+// swiper
+// import Swiper core and required components
+import SwiperCore, { Navigation, Pagination, A11y } from "swiper";
 
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from "swiper/vue";
+
+// Import Swiper styles
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
+import "swiper/components/pagination/pagination.scss";
+
+// install Swiper components
+SwiperCore.use([Navigation, Pagination, A11y]);
 
 export default {
     props: ['id', 'title'],
-    components: {
+     data() {
+        return {    
+        RestaurantID: data.restaurants[this.$route.params.id -1],
+          swiperOptions: { 
+                breakpoints: {
+       
+        300:{  // when window width from 300px to 576px
+            slidesPerView: 2,
+            spaceBetween:50
+       },
+       576:{  // when window width from 576px to 767px
+            slidesPerView: 3,
+            spaceBetween:50
+       },
+        767: { // when window width from 767px to 991px
+            slidesPerView: 4,
+            spaceBetween:50
+        },
       
+        991: { // when window width from 991px to 1200px
+            slidesPerView: 5,
+            spaceBetween:50
+        },
+         1200: { // when window width from 1200px to higher
+            slidesPerView: 7,
+            spaceBetween:50     
+        },
+        }
+        }
+        };
+    },
+    components: {
+        Swiper,
+        SwiperSlide,
     },
     computed: {
         ...mapState(['RestaurantID']),
@@ -188,18 +231,33 @@ export default {
 /* 00000000000000000000 */
 .body {
     height: 300px;
-    background-color: #3c3d3f;
+    background-color: #1c2c34;
 }
+
 .countach {
     font-family: 'MonteCarlo', cursive, 'Aref Ruqaa', serif;
     font-weight: 400;
     font-style: normal;
     font-size: 4.5vw;
     letter-spacing: 4px;
-    padding-top: 0.5em;
+    padding-top: 0;
     color: #fff;
 }
-
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 767.98px) {
+.body {
+    height: 180px;
+}  
+.countach {
+    font-size: 7vw;
+}
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .body {
+    height: 250px;
+}  
+}
 .inner-border {
     display: flex;
     justify-content: center;
@@ -327,7 +385,7 @@ export default {
     position: relative;
     display: flex;
     justify-content: center;
-    height: 55vw;
+    height: 45vw;
 }
 .cover_resturant .check_menu {
     position: absolute;
@@ -343,13 +401,10 @@ export default {
     width: 100%;
     height: 100%;
 }
-.carousel .carousel__pagination {
-    display: none;
-}
 .card {
     margin: 30px auto;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     border-radius: 40px;
     box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
         -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
@@ -398,36 +453,6 @@ export default {
     .card-list {
         /* On small screens, we are no longer using row direction but column */
         flex-direction: column;
-    }
-}
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-    .carousel__slide {
-        width: 100% !important;
-    }
-}
-/* Small devices (landscape phones, 576px and up)   */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .carousel__slide {
-        width: 50% !important;
-    }
-}
-/*  Medium devices (tablets, 768px and up)  */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .carousel__slide {
-        width: 33.3333% !important;
-    }
-}
-/*  Large devices (desktops, 992px and up)  */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    .carousel__slide {
-        width: 25% !important;
-    }
-}
-/* Extra large devices (large desktops, 1200px and up)  */
-@media (min-width: 1200px) {
-    .carousel__slide {
-        width: 25% !important;
     }
 }
 /* 22222222222222222222222222222222 */
