@@ -468,6 +468,7 @@ export default {
 }
 .parent .right{
   width: 75%;
+  padding: 20px;
 }
 .contain-hos{
   display: none;
@@ -1352,7 +1353,7 @@ display: none;
 }
 .contain_Medical{
   display: flex;
-justify-content: space-around;
+justify-content: space-between;
 flex-flow: wrap;
 }
 /* Medium devices (tablets, 768px and up) */

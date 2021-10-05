@@ -367,7 +367,7 @@
         </div> 
 </template>
 <script>
- import $ from "jquery";
+//  import $ from "jquery";
 import data from '../../jeson/data';
 import jeson from '@/jeson/MOCK_DATA.json';
 import { mapState } from 'vuex';
@@ -388,7 +388,6 @@ import "swiper/components/pagination/pagination.scss";
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, A11y]);
 
-// Import Swiper styles
 export default {
     name: 'home',
      props: 
@@ -420,7 +419,6 @@ export default {
             Sections: [],
             Offers: [],
             Stores: [],
-            silde_per_view:6,
             swiperOptions: { 
                 breakpoints: {
        
@@ -577,21 +575,6 @@ export default {
         this.$store.dispatch('loadBrands');
         // this.$store.dispatch('loadStores');      
         this.$store.dispatch('loadCategories');  
-        // change slide per view 
-        $( document ).ready(function() {
-  if (window.matchMedia("(max-width: 575.98px)").matches) { // If media query matches
-    console.log('Media : extrasmall');
-  } 
-   else if ( window.matchMedia("(min-width: 576px) and (max-width: 767.98px)").matches){
-      console.log('Media : small');
-  }
-   else if (window.matchMedia("(min-width: 768px) and (max-width: 991.98px)").matches){
-      console.log('Media : medem');
-  }
-   else if (window.matchMedia("(min-width: 992px) and (max-width: 1199.98px)").matches){
-      console.log('Media : large');
-  }
-});
 
     },
 };

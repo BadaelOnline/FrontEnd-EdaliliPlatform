@@ -66,7 +66,7 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
-                    <router-link :to="`/visitrestaurant/${restaurant.id}`">
+                    <router-link :to="`/visitrestaurant/${restaurant.id}/${restaurant.title}`">
                         <span
                             style="
                                 margin: 0 50px;
@@ -113,7 +113,7 @@
                         </p>
                     </div>
                     <div>
-                        <router-link :to="`/visitrestaurant/${restaurant.id}`">
+                        <router-link :to="`/visitrestaurant/${restaurant.id}/${restaurant.title}`">
                             <button class="button">
                                 <span>Visit </span>
                             </button></router-link
@@ -311,7 +311,7 @@ export default {
 </style>
 <style lang="scss" scoped>
 .board {
-    margin: 20px auto 175px auto;
+    margin: 0 auto 175px auto;
     font-size: 2.2rem;
     letter-spacing: 0.15em;
     line-height: 1.5;
