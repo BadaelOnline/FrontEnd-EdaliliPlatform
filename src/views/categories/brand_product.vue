@@ -325,10 +325,11 @@ cursor: pointer;
     padding: 20px 0;
 }
 .show-brand .img{
-    width: 100%;
+    width: 400px;
+    margin: 0 auto;
 }
 .show-brand .img img{
-    width: 80%;
+    width: 100%;
 }
 .title-brand{
     display: flex;
@@ -345,7 +346,6 @@ cursor: pointer;
     display: flex;
     margin-bottom: 30px;
     flex-flow: wrap;
-  gap: 0px 10px;
     }
 
 .unavaible_product{
