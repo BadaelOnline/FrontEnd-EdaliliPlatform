@@ -42,51 +42,46 @@
                 </div>
                 <div class="imag">
                     <img src="../../../public/img/banner-left1.png">
-                </div>  
-                <div class="last-subcriber">
-                    <div class="title">
+                </div>
+                  <div class="title">
                         <h4>آخر المشتركین</h4>
                     </div>
-                   
-                    <div class="subcriber">
+                                <swiper class="swiper_vertical" 
+            :direction ="'vertical'"
+            :slides-per-view="1"
+            :space-between="50"
+            :speed="1000"
+            :autoHeight="true"
+          
+            :pagination="{ clickable: true }">
+            <swiper-slide class="vertical_slider">   <div class="subcriber">
                           <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
                           <div class="details">
                         <div class="place">السویداء</div>
                          <div class="name">سنتر برج الریم</div>  
-                         </div>             
-                    </div>
-
-                    <div class="subcriber">
-                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
-                          <div class="details">
-                        <div class="place">السویداء</div>
-                         <div class="name">سنتر برج الریم</div>  
-                         </div>             
-                    </div>
-                                        <div class="subcriber">
-                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
-                          <div class="details">
-                        <div class="place">السویداء</div>
-                         <div class="name">سنتر برج الریم</div>  
-                         </div>             
-                    </div>
-                                        <div class="subcriber">
-                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
-                          <div class="details">
-                        <div class="place">السویداء</div>
-                         <div class="name">سنتر برج الریم</div>  
-                         </div>             
-                    </div>
-                                        <div class="subcriber">
-                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
-                          <div class="details">
-                        <div class="place">السویداء</div>
-                         <div class="name">سنتر برج الریم</div>  
-                         </div>             
-                    </div>
-
-                </div>
+                         </div>      
                                 
+                    </div> 
+            </swiper-slide>
+            <swiper-slide class="vertical_slider">   <div class="subcriber">
+                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
+                          <div class="details">
+                        <div class="place">السویداء</div>
+                         <div class="name">سنتر برج الریم</div>  
+                         </div>             
+                    </div> 
+            </swiper-slide>
+            <swiper-slide class="vertical_slider">   <div class="subcriber">
+                          <div class="logo"><img src="../../../public/img/market-logo.png" ></div>
+                          <div class="details">
+                        <div class="place">السویداء</div>
+                         <div class="name">سنتر برج الریم</div>  
+                         </div>             
+                    </div> 
+            </swiper-slide>
+            </swiper>  
+               
+                       
              </div>
              <div class="right">
                  <div class="sm-offer"><img src="../../../public/img/cus.jpg" ></div>
@@ -188,6 +183,7 @@
             <div class="Daily-rsturant">Shop by Stores</div>
             <swiper class="swiper" v-if="Stories.length > 0"
             :breakpoints="swiperOptions.breakpoints"
+            :speed="1000"
             navigation
             :pagination="{ clickable: true }">
             <swiper-slide v-for="Stor in Stories" :key="Stor">
@@ -228,6 +224,7 @@
                <div class="Daily-rsturant">Shop by Brands</div>
             <swiper class="swiper" v-if="Brands.length > 0"
             :breakpoints="swiperOptions.breakpoints"
+            :speed="1000"
             navigation
             :pagination="{ clickable: true }">
              <!-- @swiper="onSwiper"
@@ -287,6 +284,7 @@
             <div class="Daily-rsturant">Top Restaurants</div> 
             <swiper class="swiper" v-if="restaurants.length > 0"
             :breakpoints="swiperOptions.breakpoints"
+            :speed="1000"
             navigation
             :pagination="{ clickable: true }"
              > 
@@ -321,6 +319,7 @@
             
             <swiper class="swiper"  v-if="Categories.length > 0"
             :breakpoints="swiperOptions.breakpoints"
+            :speed="1000"
             navigation
             :pagination="{ clickable: true }">
             <swiper-slide v-for="item in Categories"  :key="item">
@@ -382,8 +381,8 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
+// import "swiper/components/navigation/navigation.scss";
+// import "swiper/components/pagination/pagination.scss";
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, A11y]);
@@ -587,9 +586,16 @@ export default {
  padding: 40px 20px;
 }
 .swiper-slide{
-  
     margin-right: 50px !important;
 }
+.swiper_vertical{
+ border: 1px solid #eee;
+ padding: 0;
+}
+.vertical_slider{
+ margin-right: 0px !important;
+}
+
 /* end swiper */
 .page-item{
     cursor: pointer;
@@ -656,7 +662,7 @@ export default {
 .parent .left .Latest_Products .list-products{
     display: flex;
    transform: translateX(-210px);
-    transition: all .5s;
+    transition: ease 1s;
 }
 .trans-list{
     overflow: hidden;
@@ -676,39 +682,29 @@ export default {
 .parent .left .Latest_Products .Products .details .price{
     color: var(--rhead);
 }
-.last-subcriber{
-    margin-top: 20px;
-    background-color: #e3f1f7;
-    overflow-y: scroll;
-    height: 260px;
-    scrollbar-width: thin;
-    scrollbar-color: #ee555c #475860;
-    }
-.last-subcriber .title{
+
+ .title{
     color: #fff;
     background-color: #4cb0db;
     padding: 6px;
+    margin-top: 20px;
 }
 .subcriber{
-    width: 95%;
-    margin: 5px auto;
-    padding: 5px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 7px;
+    width: 100%;
     cursor: pointer;
 }
 .subcriber .details{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    justify-content: center;
     width: 100%;
     font-weight: bold;
     opacity: .8;
+    margin: 10px 0;
+    font-size: 20px;
 }
 .subcriber .logo{
-    width: 35%;
+    width: 80%;
+    margin: 0 auto;
 }
 .subcriber .logo img{
     width: 100%;
@@ -1006,10 +1002,11 @@ padding-bottom: 10px;
     color: #fff;
     background: #232f3e;
     padding: 10px 0;
-    border-radius: 0 4px 0 0;
+    border-radius: 4px 4px 0 0;
     font-weight: bold;
     width: 130px;
     margin-top: 20px;
+    margin-left: 12px;
 }
 .store-item {
     height: 200px;

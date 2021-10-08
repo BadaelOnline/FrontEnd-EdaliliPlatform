@@ -10,7 +10,7 @@
         </div>
         <div class="child2">
             <div
-                v-for="store in Stores.slice(0, 4)"
+                v-for="store in Stories.slice(0, 4)"
                 :key="store.pr"
                 :store="store"
                 style="margin-bottom: 50px"
@@ -189,7 +189,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(['Sections', 'Stores']),
+        ...mapState(['Sections', 'Stores','Stories']),
         // Stores: function() {
         //     if (this.selectedCategory.length == 0)
         //         return this.$store.state.stores;
@@ -208,7 +208,7 @@ export default {
         // },
     },
     mounted() {
-        this.$store.dispatch('loadStores');
+        // this.$store.dispatch('loadStores');
         this.$store.dispatch('loadSections');
 
         window.onscroll = function () {

@@ -320,7 +320,6 @@ cursor: pointer;
     display: flex;
     margin-bottom: 30px;
     flex-flow: wrap;
-  gap: 0px 10px;
     }
 .show-img {
     width: 100%;

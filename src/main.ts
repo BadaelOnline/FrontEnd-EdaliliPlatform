@@ -14,6 +14,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'normalize.css';
 import '../public/fontawesome-free-5.15.1-web/css/all.css';
 import "jquery";
+// Swiper style : navigation and  pagination
+import '../src/assets/css/navigation.scss';
+import '../src/assets/css/pagination.scss';
 
 // import VueCardCarousel from
 require('./store/subscriber');

@@ -135,6 +135,7 @@
 	padding: 0;
 	cursor: pointer;
    border: 1px solid #eee;
+   margin: 0 auto;
    margin-bottom: 20px;
 }
 .recipe-desc{
