@@ -223,6 +223,7 @@ export default {
     border-bottom-left-radius: 44px;
     color: #000000ad;
     font-size: 3em;
+    text-shadow: 9px 8px 8px #484848;
 }
 .famouse_resturant {
     margin-bottom: 40px;
@@ -334,7 +335,7 @@ export default {
         height: 300px;
         left: 0;
         top: 30%;
-        filter: drop-shadow(20px 10px 20px rgba(0, 0, 0, 0.3));
+        filter: drop-shadow(20px 10px 20px rgba(0, 0, 0, 0.7));
     }
 }
 /* ______________________________________________________________________________ */

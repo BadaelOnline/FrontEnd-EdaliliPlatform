@@ -10,8 +10,7 @@
         <div class="show-brand">
   
             <div class="title-brand">
-            <h4><span>{{Product.length}}</span> items from search about </h4>
-            <h4>"{{BrandBy_id.name}}"</h4>
+            <h4><span>{{Product.length}}</span> items from search about {{BrandBy_id.name}}</h4>
             </div>
                 <div
                     class="img"               
@@ -325,7 +324,7 @@ cursor: pointer;
     padding: 20px 0;
 }
 .show-brand .img{
-    width: 400px;
+    width: 30%;
     margin: 0 auto;
 }
 .show-brand .img img{
@@ -333,10 +332,12 @@ cursor: pointer;
 }
 .title-brand{
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px 0;
+    padding: 10px 10px;
     opacity: .8;
+}
+.title-brand h4{
+    border: 1px solid #eee;
+    padding: 20px;
 }
 .title-brand span{
     color: var(--rhead);

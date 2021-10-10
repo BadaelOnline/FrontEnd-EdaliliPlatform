@@ -1,10 +1,11 @@
 <template>
      <div class="small" @click="gotoprodetails(id)">
 	 <article class="recipe">
-		<div class="pizza-box">
-		   <img :src="`${image}`" v-if="image" class="new" />
-            <img v-else src="../../../public/img/products1.jpg" class="new" />
-		</div>
+		<div v-for="im in product_image" :key="im.pr" class="pizza-box">
+          <img v-if="im.image" v-lazy="`http://edalili.e-dalely.com/public/${im.image}`" />
+            <!-- <img v-else src="../../../public/img/products1.jpg" class="new" /> -->
+        </div>
+	
 		<div class="recipe-content">
 			<p class="recipe-tags">
 				<span class="recipe-tag">Custome Fields</span>
@@ -42,17 +43,15 @@
 	overflow: hidden;
 
 	img {
-		max-width: 100%;
-		min-height: 100%;
-		width: auto;
-		height: auto;
-		object-fit: cover;
+		width: 100%;
+		height: 100%;
+		// object-fit: cover;
 		object-position: 50% 50%;
 	}
 }
 
 .recipe {
-	border-radius: 8px;
+
 	overflow: hidden;
 	width: 200px;
 	
@@ -136,7 +135,7 @@
 	cursor: pointer;
    border: 1px solid #eee;
    margin: 0 auto;
-   margin-bottom: 20px;
+   margin-bottom: 40px;
 }
 .recipe-desc{
 	margin: 0;
@@ -148,7 +147,7 @@
 // import $ from 'jquery';
 export default {
     name: 'product',
-    props: ['id', 'name', 'image', 'short_des', 'long_des', 'store'],
+    props: ['id', 'name', 'product_image', 'short_des', 'long_des', 'store'],
 
 
     methods: {
