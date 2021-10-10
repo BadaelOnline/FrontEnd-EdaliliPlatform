@@ -10,7 +10,7 @@
         <div class="home">
          <div class="parent">
              <div class="left">
-                <div class="imag"><img src="../../../public/img/banner-left1.png"></div> 
+                <div class="imag"><img v-lazy="'img/banner-left1.png'"></div> 
                 <div class="Latest_Products">
                     <h2 style="">Latest Products</h2>
                     <span @click="transproduct()"><i id="fa1" class="fa fa-circle fa-spin" aria-hidden="true"></i></span>
@@ -18,7 +18,7 @@
                     <div id="list_prod" class="list-products">
                         <div class="list-left">
                         <div class="Products"  v-for=" Offer in Offers" :key="Offer" :store="Offer.store">
-                        <div class="imag"><img src="../../../public/img/small-product.jpg" ></div>
+                        <div class="imag"><img v-lazy="'img/small-product.jpg'" ></div>
                         <div class="details">
                             <div class="stars"><span class="recipe-rating">★★★★<span>☆</span></span></div>
                             <div class="price">${{Offer.price}}</div>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="list-right">
                         <div class="Products"  v-for=" Offer in Offers" :key="Offer" :store="Offer.store">
-                        <div class="imag"><img src="../../../public/img/small-product.jpg" ></div>
+                        <div class="imag"><img v-lazy="'img/small-product.jpg'" ></div>
                         <div class="details">
                             <div class="stars"><span class="recipe-rating">★★★★<span>☆</span></span></div>
                             <div class="price">${{Offer.price}}</div>
@@ -41,7 +41,7 @@
 
                 </div>
                 <div class="imag">
-                    <img src="../../../public/img/banner-left1.png">
+                    <img v-lazy="'img/banner-left1.png'">
                 </div>
                   <div class="title">
                         <h4>آخر المشتركین</h4>
@@ -84,7 +84,7 @@
                        
              </div>
              <div class="right">
-                 <div class="sm-offer"><img src="../../../public/img/cus.jpg" ></div>
+                 <div class="sm-offer"><img v-lazy="'img/cus.jpg'" ></div>
                  <div class="Daily">Daily deals</div> 
              <div class="contain_offers" v-if="Offers.length > 0">
              
@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="offer-image">
-                    <img src="../../../public/img/product-offer.jpg" alt="" />
+                    <img v-lazy="'img/product-offer.jpg'" alt="" />
 
                     <div class="info">
                     <ul>
@@ -122,12 +122,12 @@
         </div>
         <div class="contain_unavaible" v-else>
                     <div class="unavaible_product">
-                        <img src="../../../public/img/unavalible.jpg">
+                        <img v-lazy="'img/unavalible.jpg'">
                         <h2>Ops... Offers not available.</h2> 
                         </div>
                     </div>
         <div class="big_offer">
-            <img src="../../../public/img/cus2.png" >
+            <img v-lazy="'img/cus2.png'" >
         </div>
         <div class="title_products">
         <div class="Daily">Trending Offers</div>
@@ -156,7 +156,7 @@
    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
 </svg> -->
                  <div class="product-item" v-for="Offer in Offers.slice(0,4)" :key="Offer">
-                     <img src="../../../public/img/product-offer.jpg">
+                     <img v-lazy="'img/product-offer.jpg'">
                      <div class="details">
                         <span class="offer_price">${{Offer.price}}</span> <span class="price">${{Offer.selling_price}}</span>
                      </div>
@@ -167,15 +167,15 @@
                 </div>
                   <div class="contain_unavaible" v-else>
                     <div class="unavaible_product">
-                        <img src="../../../public/img/unavalible.jpg">
+                        <img v-lazy="'img/unavalible.jpg'">
                         <h2>Ops... Offers not available.</h2> 
                         </div>
                     </div>
             
             
             <div class="medium_offer">
-             <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
-            <div><img src="../../../public/img/banner-ud1.jpg" alt=""></div>
+             <div><img v-lazy="'img/banner-ud1.jpg'" alt=""></div>
+            <div><img v-lazy="'img/banner-ud1.jpg'" alt=""></div>
             </div>    
              </div>
     
@@ -189,7 +189,7 @@
             <swiper-slide v-for="Stor in Stories" :key="Stor">
             <div class=" store-item store">
                      <router-link :to="`/visitstore/${Stor.id}/${Stor.title}`" style="color: #6b6c6c;text-decoration: none;">
-                    <img src="../../../public/img/market-logo.png">
+                    <img v-lazy="'img/market-logo.png'">
                     <div class="details">
                     <h4>{{Stor.title.slice(0,15)}}</h4>
                     </div>
@@ -200,7 +200,7 @@
          
                    <div class="contain_unavaible" v-else>
                     <div class="unavaible_product">
-                        <img src="../../../public/img/unavalible.jpg">
+                        <img v-lazy="'img/unavalible.jpg'">
                         <h2>Ops... Stores not available.</h2> 
                         </div>
                     </div>
@@ -208,17 +208,17 @@
                 <div class="child-left">
                     <img v-for="brand in brands.slice(10,12)" 
                     :key="brand.id" 
-                    :src="brand.image">
+                    v-lazy="brand.image">
                     </div>
                 <div class="child-center">
                     <img v-for="brand in brands.slice(2,3)" 
                     :key="brand.id" 
-                    :src="brand.image">
+                    v-lazy="brand.image">
                     </div>
                 <div class="child-right"> 
                     <img v-for="brand in brands.slice(3,5)" 
                     :key="brand.id" 
-                    :src="brand.image">
+                    v-lazy="brand.image">
                     </div>
             </div>
                <div class="Daily-rsturant">Shop by Brands</div>
@@ -232,8 +232,8 @@
             <swiper-slide v-for="item in Brands" :key="item">
             <div class=" store-item brand">
                      <router-link :to="`/brand_product/${item.id}`" style="color: #6b6c6c;text-decoration: none;">
-                    <img :src="`${item.image}`" v-if="item.image" />
-                    <img v-else src="../../../public/img/elc1.png"  /> 
+                    <img v-lazy="`${item.image}`" v-if="item.image" />
+                    <img v-else v-lazy="'img/elc1.png'"  /> 
                     <div class="details">
                      <h4>{{item.name}}</h4>
                     </div>
@@ -243,7 +243,7 @@
             </swiper>   
              <div class="contain_unavaible" v-else>
                     <div class="unavaible_product">
-                        <img src="../../../public/img/unavalible.jpg">
+                        <img v-lazy="'img/unavalible.jpg'">
                         <h2>Brands not available.</h2> 
                         </div>
                     </div>
@@ -268,17 +268,17 @@
                 <div class="child-left">
                     <img v-for="brand in brands.slice(5,7)" 
                     :key="brand.id" 
-                    :src="brand.image">
+                    v-lazy="brand.image">
                     </div>
                 <div class="child-center">
                     <img v-for="brand in brands.slice(10,11)" 
                     :key="brand.id" 
-                    :src="brand.image">
+                    v-lazy="brand.image">
                     </div>
                 <div class="child-right"> 
                     <img v-for="brand in brands.slice(8,10)" 
                     :key="brand.id" 
-                    :src="brand.image">
+                    v-lazy="brand.image">
                     </div>
             </div>
             <div class="Daily-rsturant">Top Restaurants</div> 
@@ -292,8 +292,8 @@
             <swiper-slide v-for="item in restaurants" :key="item">
             <div class=" store-item restaurant">
                 <router-link :to="`/visit_restaurant/${item.id}/${item.title}`" style="color: #6b6c6c;text-decoration: none;">
-                    <img :src="`${item.image}`" v-if="item.image" />
-                    <img v-else src="../../../public/img/elc1.png"  /> 
+                    <img v-lazy="`${item.image}`" v-if="item.image" />
+                    <img v-else v-lazy="'img/elc1.png'"  /> 
                     <div class="details">
                      <h4>{{item.title}}</h4>
                      <h4>{{item.place}}</h4>
@@ -304,13 +304,13 @@
             </swiper> 
              <div class="contain_unavaible" v-else>
                     <div class="unavaible_product">
-                        <img src="../../../public/img/unavalible.jpg">
+                        <img v-lazy="'img/unavalible.jpg'">
                         <h2>Brands not available.</h2> 
                         </div>
                     </div>
             <div class="baner-bee"> 
                 <div class="bee">
-                    <img src="../../../public/img/bee.png">
+                    <img v-lazy="'img/bee.png'">
                 </div>
  
             </div>
@@ -325,8 +325,8 @@
             <swiper-slide v-for="item in Categories"  :key="item">
              <div class="store-item category">
                  <router-link :to="`/category_product/${item.id}`" style="color: #6b6c6c;text-decoration: none;"> 
-                    <img :src="`${item.image}`" v-if="item.image" />
-                    <img v-else src="../../../public/img/elc1.png"  /> 
+                    <img v-lazy="`${item.image}`" v-if="item.image" />
+                    <img v-else v-lazy="'img/elc1.png'"  /> 
                     <div class="details">
                     <h4>{{item.name}}</h4>
                    
@@ -594,6 +594,10 @@ export default {
 }
 .vertical_slider{
  margin-right: 0px !important;
+}
+
+.swiper_vertical .swiper-wrapper{
+ height: 250px !important;
 }
 
 /* end swiper */

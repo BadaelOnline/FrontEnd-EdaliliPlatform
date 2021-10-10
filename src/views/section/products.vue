@@ -6,23 +6,13 @@
 
 <div class="left">
  <Cartmini />
-        <div class="show-img">
-                <div
-                    class="img"
-                    v-for="brand in brands.slice(0, 2)"
-                    :key="brand.id"
-                >
-                    <img
-                        data-aos="fade-up"
-                        data-aos-offset="200"
-                        data-aos-delay="50"
-                        data-aos-duration="1000"
-                        data-aos-easing="ease-in-out"
-                        data-aos-mirror="true"
-                        data-aos-once="true"
-                        :src="brand.image"
-                    />
-                </div>
+         <div class="show-brand">
+  
+            <div class="title-brand">
+            <h4><span>{{Product.length}}</span> Trending items</h4>
+         
+            </div>
+           
         </div>
         <!-- show  products -->
         <!-- Item slider end-->
@@ -64,11 +54,12 @@
             :id="items.id"
             :image="items.image"
             :short_des="items.short_des"
+            :product_image="items.product_image"
             :name="items.name">
             </product>   
         </div>
     <div class="unavaible_product" v-else>
-        <img src="../../../public/img/unavalible.jpg">
+        <img v-lazy="'img/unavalible.jpg'">
        <h2>Ops... Products not available.</h2> 
       </div>
     </div>
@@ -321,24 +312,22 @@ cursor: pointer;
     margin-bottom: 30px;
     flex-flow: wrap;
     }
-.show-img {
-    width: 100%;
+.show-brand{
+    padding: 20px 0;
+}
+.title-brand{
     display: flex;
-    justify-content: space-around;
+    padding: 10px 10px;
+    opacity: .8;
 }
-.show-img .img{
-    margin: 20px 0;
-    transition: all .5s;
-    cursor: pointer;
-    width: 40%;
+.title-brand h4{
+    border: 1px solid #eee;
+    padding: 20px;
 }
-.show-img .img img{
-    width: 100%;
-    height:100%;
+.title-brand span{
+    color: var(--rhead);
 }
-.show-img .img:hover{
-    transform: scale3d(1.05, 1.05, 1);
-}
+
 .unavaible_product{
     background-color: #ecf0f1;
     height: auto;
@@ -464,10 +453,9 @@ a:active {
 
 </style>
 <script>
-import jeson from '@/jeson/MOCK_DATA.json';
+// import jeson from '@/jeson/MOCK_DATA.json';
 
-//   import { Swiper, SwiperSlide } from 'swiper/vue';
-//   import "swiper/swiper-bundle.css";
+
 
 import { mapState } from 'vuex';
 import { defineAsyncComponent } from 'vue';
@@ -475,13 +463,11 @@ export default {
     data() {
         return {
             urll: '/img/',
-          Product :jeson[0].Products
+        //   Product :jeson[0].Products
         };
     },
     name: 'products',
     components: {
-    //   Swiper,
-    //   SwiperSlide,
         product: defineAsyncComponent(() =>
             import(`@/components/global/product.vue`)
         ),
