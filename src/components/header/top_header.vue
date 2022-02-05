@@ -84,7 +84,7 @@ export default {
      justify-content: start;
     font-size: 12px;
     align-items: center;
-    padding-left: 15px;
+    padding-inline-start: 15px;
 }
 .first_header .first_nav .child1 div{
     transition: all .5s;
@@ -99,7 +99,7 @@ export default {
 align-items: center;
 }
 .first_header .first_nav .child3{
-    padding-right: 20px;
+    padding-inline-end: 20px;
    color: #fff;
     display: flex;
     justify-content: end;
@@ -139,7 +139,6 @@ align-items: center;
     z-index: 2;
     font-size: 16px;
     position: absolute;
-    right: -2px;
     top: 0px;
     color: #fff;
     width: 0;

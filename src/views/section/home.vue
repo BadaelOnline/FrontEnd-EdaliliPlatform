@@ -1,5 +1,5 @@
 <template >
-  <div class="cu5">
+  <div class="cu5" style="display: none;">
             <h5>choose server</h5>
             <select v-model="server" @change="handleserver($event)">
                 <option value="edalily">edalily</option>
@@ -417,6 +417,7 @@ export default {
             chooseDetails: false,
             Sections: [],
             Offers: [],
+                all: [],
             Stores: [],
             swiperOptions: { 
                 breakpoints: {
@@ -526,6 +527,18 @@ export default {
                 })
                 .catch(function (error) {
                     console.warn(' Error Offer ', error.toJSON());
+                });
+                     // offers
+              await  axios
+                .get(`http://badaelonline.com/backend/public/`)
+                .then((res) => {
+                    this.all = res.data;
+                    console.log('all: ',  res.data);
+                    
+                    
+                })
+                .catch(function (error) {
+                    console.warn(' Error home badaal ', error.toJSON());
                 });
         },
         /* selectItem(i) {
