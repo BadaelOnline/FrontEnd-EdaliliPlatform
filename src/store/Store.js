@@ -21,9 +21,11 @@ const store = createStore({
         activities: [],
         activityId: [],
         plans: [],
+        plansId: [],
         Trait: [],
         currencies:[],
         attachment:[],
+        payments:[],
         // ____________ end activities ____________
         Sections: [],
         Product: [],
@@ -139,6 +141,9 @@ const store = createStore({
         SET_plans(state, plans) {
             state.plans = plans;
         },
+        SET_plansId(state, plansId) {
+            state.plansId = plansId;
+        },
         SET_Trait(state, Trait) {
             state.Trait = Trait;
         },
@@ -147,6 +152,9 @@ const store = createStore({
         },
         SET_attachment(state, attachment) {
             state.attachment = attachment;
+        },
+        SET_payments(state, payments) {
+            state.payments = payments;
         },
         SET_Products(state, Product) {
             state.Product = Product;
@@ -260,6 +268,18 @@ const store = createStore({
                     console.log('Error: ', error);
                 });
         },
+        loadPlansId({ commit }, Id) {
+            axios
+                .get(`/api/plans/get-by-activity/${Id}`)
+                .then((res) => {
+                    console.log('plansId :', res.data.plan);
+                    let plansId = res.data.plan;
+                    commit('SET_plansId', plansId);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
         loadTraitStore({ commit }) {
             axios
                 .get(`/api/sections/get`)
@@ -296,7 +316,18 @@ const store = createStore({
                     console.log('Error: ', error);
                 });
         },
-
+        loapayments({ commit }) {
+            axios
+                .get(`/api/payments/get`)
+                .then((res) => {
+                    console.log('payments :', res.data.payments);
+                    let payments = res.data.payments;
+                    commit('SET_payments', payments);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
         loadStores({ commit }) {
             axios
                 .get(`/api/stores/getAll?lang=${lang}`)

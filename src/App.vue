@@ -7,6 +7,9 @@
     <router-view />
     <AppFooter v-if="this.$route.path !== '/signin'" />
 </template>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap');
+</style> 
 <script>
 import { defineAsyncComponent } from 'vue';
 // import $  from "jquery";
@@ -45,7 +48,7 @@ body.style.setProperty("--main-dirction","ltr");
     --rhead:#ED1C24;
 }
 #app {
-    font-family: Zen Tokyo Zoo;
+    font-family: 'Tajawal', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;

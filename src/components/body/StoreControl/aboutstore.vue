@@ -100,9 +100,7 @@
         </div>
     </div>
 </template>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap');
-</style> 
+
 <script>
 import $ from 'jquery';
 export default {
@@ -173,7 +171,7 @@ export default {
 </style>
 <style lang="scss" scoped>
 .parent{
-    font-family: 'Tajawal', sans-serif;
+    
     .top{
     display: flex;
     justify-content: space-between;

@@ -1,11 +1,5 @@
 <template>
 <div class="parent">
-  <div class="conut">
-   <span @click="countStep++">increase +</span>
-   <span @click="countStep--">decrease -</span>
-  <div>countStep <span class="co">{{countStep}}</span></div>
-  
-</div>
    <div id="bacover" class="bacover" @click="closeForm()"></div>
               <div class=" kind animate__animated animate__fadeIn" id="store_kind">
               <div class="contain">
@@ -21,7 +15,7 @@
                   </div>
                   <div>
                     <button @click="closeForm()">إلغاء</button>
-                    <button @click="selectstoresection()" class="active">موافق</button>
+                    <button @click="closeForm()" class="active">موافق</button>
                   </div>
                 </div>
               </div>
@@ -45,14 +39,15 @@
     <div class="temp">
       <div class="colm1">
         <ul v-for="(item,index) in activities" :key="index">
-          <li @click="setid_Activity(index)">{{item}}</li>
+          <li :class="[index == id_Activity ? 'active': '']"
+          @click="setid_Activity(index)">{{item }}{{index}}</li>
         </ul>
       </div>
       <div class="colm2">
-        <span v-if="activity == '' ">الرجاء اختيار النشاط المناسب لك</span>
-        <div class="store-kind" v-if="id_Activity != '' ">
+        <span style="margin: auto;" v-if="activityId == '' ">الرجاء اختيار النشاط المناسب لك</span>
+        <div class="store-kind" v-else>
           <div v-for="item in activityId" :key="item"
-          @click="form.activity_type_id = item.id"
+          @click="setactivity_type_id(item.id)"
           :class="[item.id == id_Activity ? 'active': '']">
             <i class="icofont-building-alt"></i>
             <span>{{item.name}}</span>
@@ -62,7 +57,7 @@
     </div>
 
   </div>
-    <div class="step-template2 animate__animated animate__backInLeft" v-if="countStep==1">
+    <div class="step-template2 animate__animated animate__fadeIn" v-if="countStep==1">
     <h2>قم بأعداد متجرك</h2>
     <div class="temp">
       <form  ref="name" :class="errors ? 'errors' : ''">
@@ -70,30 +65,33 @@
         <div>
           <label for="">اسم المتجر</label>
           <input required type="text" placeholder="25 حرف حد أقصى" :minlength="3" :maxlength="25"
-          @click="invalidateForm" v-model="form.store[0].name">
+          @input="invalidateForm" v-model="form.store[0].name">
         </div>
         <div>
           <label for="">البريد الألكتروني</label>
-          <input required type="email" @click="invalidateForm" v-model="form.social_media.email">
+          <input required type="email"  @input="invalidateForm" v-model="form.social_media.email">
         </div>
         <div>
           <label for="">الرقم الأرضي</label>
-          <input required type="number" @click="invalidateForm" v-model="form.social_media.phone_number">
+          <input required type="tel" minlength="6" maxlength="9"
+           @input="invalidateForm" v-model="form.social_media.phone_number">
         </div>
  
         <div>
           <label for="">رقم الموبايل</label>
           <div class="numb">  
-            <input required type="number" v-model="form.social_media.mobile">
+            <input required type="tel" minlength="10" maxlength="10"
+             @click="invalidateForm" v-model="form.social_media.mobile">
           <select >
-            <option selected :value="`00963`">+963</option>
+            <option selected :value="`00963`"  @input="invalidateForm">+963</option>
           </select>
           </div>
         </div>
             <div>
           <label for="">واتساب</label>
           <div class="numb">  
-            <input required type="number" v-model="form.social_media.whatsapp_number">
+            <input required type="tel" minlength="10" maxlength="10" 
+             @input="invalidateForm" v-model="form.social_media.whatsapp_number">
              <select>
             <option :value="`00963`">+963</option>
           </select>
@@ -101,17 +99,17 @@
         </div>
             <div>
           <label for="">سمة المتجر</label>
-          <button @click="openForm">اختر سمة المتجر الخاص بك</button>
+          <button @click="openForm($event);">اختر سمة المتجر الخاص بك</button>
         </div>
         <div>
           <label for="">شعار المتجر</label>
-          <input required type="file" @change="handlelogo">
+          <input required type="file" @input="invalidateForm" @change="handlelogo">
         </div>  
          <div>
           <label for="">نوع العملة</label>
-          <select class="select" v-model="formData[0].current">
+          <select class="select" id="select" required>
             <option disabled selected>اختر العملة</option>
-            <option  @click="setcurrency(item.id)"
+            <option :value="item.id"  @click="setcurrency(item.id);"
             v-for="item in currencies" :key="item">
             {{item.currency}}
             </option>
@@ -121,20 +119,20 @@
 </form>
     </div>
   </div>
-      <div class="step-template2 step-template3 animate__animated animate__backInLeft" v-if="countStep==2">
+      <div class="step-template2 step-template3 animate__animated animate__fadeIn" v-if="countStep==2">
     <h2>قم  بتحميل الوثائق المطلوبة</h2>
     <div class="temp">
-      <form  ref="name" :class="errors ? 'errors' : ''">
+      <form  ref="attach" :class="error2 ? 'errors' : ''">
         <div class="contain">
           <div v-for="item in attachment" :key="item">
             <label for="">{{item.activity_id}}</label>
-            <input required type="file" id="file1" @change="handlefile($event,item.attachments_type_id)">
+            <input required type="file" id="file1" @input="invalidateAttachForm" @change="handlefile($event);">
           </div>
         </div>
       </form>
     </div>
   </div>
-  <div class="step-template4 animate__animated animate__backInLeft" v-if="countStep==3">
+  <div class="step-template4 animate__animated animate__fadeIn" v-if="countStep==3">
    <div class="title">
      <h2>قم بأختيار الباقة المناسبة لك</h2>
    </div> 
@@ -145,47 +143,38 @@
      </div>
     <div class="card-contain">
 
-   <div class="card" v-for="item in filteredPlans" :key="item" @click="setplan(item.id,item.num_of_months)">
+   <div class="card" :class="`card-${index}`" 
+   v-for="(item,index) in filteredPlans" :key="index" @click="setplan(item.id,item.num_of_month)">
      <h1>{{item.name}}</h1>
-     <h3><strong>{{item.price_per_month}}</strong> ل.س  
+     <h3><strong>{{item.price}}</strong> ل.س  
        <br>
        <span v-if="oneyear">سنويا</span>
        <span v-if="threemonth">كل 3 أشهر</span>
        <span v-if="sixmonth">كل 6 أشهر</span>
        </h3>
-     <p>تتيح لك هذه الباقة بإضافة إلى ما يقارب 100 منتج إلى متجرك</p>
-     <button @click="setCategoryPack('100 منتج') ">أختر الباقة</button>
+     <p>تتيح لك هذه الباقة بإضافة إلى ما يقارب {{item.features.number_of_products}} منتج إلى متجرك</p>
+     <button>أختر الباقة</button>
    </div>
     </div>
   </div>
-    <div class=" step-template5 animate__animated animate__backInLeft" v-if="countStep==4">
+    <div class=" step-template5 animate__animated animate__fadeIn" v-if="countStep==4">
     <h2>قم بأختيار طريقة الدفع</h2>
     <div class="temp">
-      <form  ref="name" :class="errors ? 'errors' : ''">
+      <form :class="errors ? 'errors' : ''">
         <div class="contain">
           <div class="row1">
             <input type="radio"> 
             <label for="">الدفع عند التحقق من الطلب</label>
             <span>؟</span>
           </div>
-          <h5>الدفع عن طريق Syriatel :</h5>
-        <div class="insert-code">
-          <input required type="number" placeholder="كود الجهة المرسلة" v-model="formData[0].syriatelfrom">
-          <span>إلى</span>
-          <input required type="number" placeholder="كود الجهة المستلمة" v-model="formData[0].syriatelto">
-        </div>
-          <h5>الدفع عن طريق MTN :</h5>
-        <div class="insert-code">
-         <input required type="number" placeholder="كود الجهة المرسلة" v-model="formData[0].mtnfrom">
-          <span>إلى</span>
-          <input required type="number" placeholder="كود الجهة المستلمة" v-model="formData[0].mtnto">
-        </div>
-          <h5>الدفع عن طريق السورية للمدفوعات الألكترونية</h5>
-      <div class="insert-code">
-         <input required type="number" placeholder="كود الجهة المرسلة" v-model="formData[0].syrianfrom">
-          <span>إلى</span>
-          <input required type="number" placeholder="كود الجهة المستلمة" v-model="formData[0].syrianto">
-        </div>
+            <div v-for="item in payments" :key="item">
+              <h5>{{item.name}}:</h5>
+              <div class="insert-code">
+              <input @input="setpaymentId(item.id)" required type="number" placeholder="كود الجهة المرسلة">
+              <span>إلى</span>
+              <input required type="number" placeholder="كود الجهة المستلمة">
+              </div>
+            </div>
       </div>
       <div class="code">
         <span> Syriatel - كود أستلام 
@@ -198,20 +187,20 @@
     </div>
   </div>
         <div class="button" v-if="countStep == 0">
-        <button class="active">إلغاء</button>
-        <button :class="activity != '' ? 'actives' : ''" @click="countStep1()">متابعة</button>
+        <button  class="active">إلغاء</button>
+        <button :class="form.activity_type_id != '' ? 'actives' : ''" @click="countStep1()">متابعة</button>
       </div>
         <div class="button" v-if="countStep == 1">
         <button class="active" @click="countStep-=1">رجوع</button>
-        <button class="actives" @click="invalidateForm();countStep2()">متابعة</button>
+        <button :class="errors == false? 'actives' : ''" @click="invalidateForm();countStep2()">متابعة</button>
       </div>
         <div class="button" v-if="countStep == 2">
         <button class="active" @click="countStep-=1">رجوع</button>
-        <button class="actives" @click="countStep3()">متابعة</button>
+        <button :class="error2 == false  ? 'actives' : ''"  @click="countStep3()">متابعة</button>
       </div>
       <div class="button" v-if="countStep == 3">
         <button class="active" @click="countStep-=1">رجوع</button>
-        <button :class="formData[0].size_packge != '' && formData[0].category_packge != '' ? 'actives' : ''" @click="countStep4()">متابعة</button>
+        <button :class="form.plan_id != ''  ? 'actives' : ''" @click="countStep4()">متابعة</button>
       </div>
             <div class="button" v-if="countStep == 4">
         <button class="active" @click="countStep-=1">رجوع</button>
@@ -235,10 +224,12 @@ export default {
         return {  
           threemonth:false,
           sixmonth:false,
-          oneyear:true,
+          oneyear:false,
           user:[],
+          plans:[],
             show:false,
-            errors:false,
+            errors:null,
+            error2:null,
             stepsNumber:4,
             countStep:0,
             id_Activity:'',
@@ -262,56 +253,29 @@ export default {
               "section_id": "",
               "is_active": "1",
               "is_approved": "0",
+              "plan_id": "",
               "logo": {},
               "attachments": [
                  
               ],
-              "subscriptions": [
-              
-              ],
-        },
 
-            formData:[ 
-            {
-               activity:"",
-               ar_name:"",
-               family_name:"",
-               store_name:"",
-               store_section:"",
-               userName:"",
-               email:"",
-               phonenum:"",
-               mobilenum:"",
-               whatsappnum:"",
-               logo:"",
-               current:"اختر العملة",
-               password:"",
-               aprrpassword:"",
-               file1:"",
-               file2:"",
-               file3:"",
-               size_packge:"",
-               category_packge:"",
-               syriatelfrom :"",
-               syriatelto :"",
-               mtnfrom :"",
-               mtnto :"",
-               syrianfrom :"",
-               syrianto :"",
-               contry_number:"00963"
-             }
-            ]
+        },
         };
     },
  
   
   methods:{
-    // step 1 methods
 
+    // step 1 methods
+    
     setid_Activity(i){
       this.id_Activity =i;
       this.$store.dispatch('loadactivityId',this.id_Activity);
       this.$store.dispatch('loadattachmentId',this.id_Activity);
+      this.$store.dispatch('loadPlansId',this.id_Activity);
+    },
+      setactivity_type_id(i){
+      this.form.activity_type_id =i;
     },
     countStep1(){
     // Step One
@@ -324,6 +288,7 @@ export default {
      // step 2 methods
     setcurrency(i){
       this.form.currency_id = i;
+      this.invalidateForm();
     },
      handlelogo(event) {
       this.form.logo = event.target.files[0];
@@ -344,7 +309,6 @@ export default {
                     console.warn('Error user ', error.toJSON());
                 });
             }
-        
         },
     countStep2(){
       // Step Two
@@ -353,44 +317,42 @@ export default {
       if( !this.$refs.name.checkValidity() ){
         this.$refs.name.checkValidity()
       }
+      else if(this.form.section_id == ""){
+        this.openForm();
+      }
+      else if(this.form.currency_id == ""){
+       document.getElementById('select').style.border = "1px solid red";
+      }
       else{
         this.countStep+=1
       }
       } 
 },
     // step 3 methods
-      handlefile(event,id) {
-      this.form.attachments.push({'activity_id':this.id_Activity,'attachments_type_id':id,'path':event.target.files[0]});
+      handlefile(event) {
+      this.form.attachments.push({'path':event.target.files[0]});
       console.log(this.form.attachments);
     },
-    // step 4 methods
-    setplan(id,num_of_months){
-      const d = new Date();
-      const datenow = d.toLocaleDateString();
-      const dateAfter = d.setMonth(d.getMonth() + num_of_months);
-      this.form.subscriptions.push({'plan_id':id,'transaction_id':"1",'start_date':datenow,'end_date':dateAfter,'is_active':"1"});
+    // step 4 methods 
+    setplan(id){
+      this.form.plan_id = id;
     },
-    // step 5 methods
+    // step 5 methods 
     toggle(i){
       if(i == 3){
         this.threemonth = true;
         this.sixmonth = false;
         this.oneyear = false;
-      this.formData[0].size_packge = "كل 3 أشهر";
       }
       else if(i == 6){
         this.threemonth = false;
         this.sixmonth = true;
         this.oneyear = false;
-      this.formData[0].size_packge = "كل 6 أشهر";
-
       }
             else if(i == 1){
         this.threemonth = false;
         this.sixmonth = false;
         this.oneyear = true;
-      this.formData[0].size_packge = " سنويا";
-
       }
     },
 
@@ -415,34 +377,21 @@ export default {
        this.errors = false;
      }
     },
+    invalidateAttachForm() {
+    if( !this.$refs.attach.checkValidity() ){
+       this.error2 = true;
+     }
+     else{
+       this.error2 = false;
+     }
+    },
 
 
 countStep3(){
   // Step three
   if(this.countStep == 2){
-    if(this.formData[0].file1== "" || this.formData[0].file2== "" || this.formData[0].file3== ""){
-   this.$notify({
-    // (optional)
-    // Name of the notification holder
-    group: 'foo',
-    // (optional)
-    // Title (will be wrapped in div.notification-title)
-    title: 'تحميل الوثائق',
-    // Content (will be wrapped in div.notification-content)
-    text: "عليك  بتحميل الوثائق المطلوبة",
-    // (optional)
-    // Class that will be assigned to the notification
-    type: 'error', // error , warn , success , info
-    // (optional, override)
-    // Time (in ms) to keep the notification on screen
-    duration: 5000,
-    // (optional, override)
-    // Time (in ms) to show / hide notifications
-    speed: 1000
-  });
-    }
-      else{
-      this.countStep+=1
+    if(this.error2 == false){
+    this.countStep+=1
     }
          }
          
@@ -450,116 +399,61 @@ countStep3(){
 countStep4(){
   // Step three
   if(this.countStep == 3){
-    if(this.formData[0].size_packge == "" || this.formData[0].category_packge == "" ){
-   this.$notify({
-    // (optional)
-    // Name of the notification holder
-    group: 'foo',
-    // (optional)
-    // Title (will be wrapped in div.notification-title)
-    title: 'اختيار الباقة',
-    // Content (will be wrapped in div.notification-content)
-    text: "عليك  بأختيار الباقة المطلوبة وتحديد مدة الباقة",
-    // (optional)
-    // Class that will be assigned to the notification
-    type: 'error', // error , warn , success , info
-    // (optional, override)
-    // Time (in ms) to keep the notification on screen
-    duration: 5000,
-    // (optional, override)
-    // Time (in ms) to show / hide notifications
-    speed: 1000
-  });
-    }
-      else{
-           this.$notify({
-    // (optional)
-    // Name of the notification holder
-    group: 'foo',
-    // (optional)
-    // Title (will be wrapped in div.notification-title)
-    title: this.formData[0].size_packge,
-    // Content (will be wrapped in div.notification-content)
-    text: this.formData[0].category_packge,
-    // (optional)
-    // Class that will be assigned to the notification
-    type: 'success', // error , warn , success , info
-    // (optional, override)
-    // Time (in ms) to keep the notification on screen
-    duration: 5000,
-    // (optional, override)
-    // Time (in ms) to show / hide notifications
-    speed: 1000
-  });
-      this.countStep+=1
-    }
+   
+  this.countStep+=1
+   
          }
          
 },
 countStep5(){
   // Step three
   if(this.countStep == 4){
-
-if((this.formData[0].syriatelfrom != '' && this.formData[0].syriatelto != '') || (this.formData[0].mtnfrom != '' && this.formData[0].mtnto != '') || (this.formData[0].syrianfrom != '' && this.formData[0].syrianto != '')){
- this.countStep+=1
-}
-else{
-             this.$notify({
-    // (optional)
-    // Name of the notification holder
-    group: 'foo',
-    // (optional)
-    // Title (will be wrapped in div.notification-title)
-    title: 'طريقة الدفع',
-    // Content (will be wrapped in div.notification-content)
-    text: "يجب عليك تحديد طريقة الدفع",
-    // (optional)
-    // Class that will be assigned to the notification
-    type: 'error', // error , warn , success , info
-    // (optional, override)
-    // Time (in ms) to keep the notification on screen
-    duration: 5000,
-    // (optional, override)
-    // Time (in ms) to show / hide notifications
-    speed: 1000
-  });
-}
+     var self = this;
+    // this.countStep+=1
+    // stores register 
+    // ,{
+    //     headers: {'Content-Type': 'multipart/form-data'}
+    // }
+    var formData=new FormData();
+    formData.append('social_media[phone_number]',self.form.social_media.phone_number);
+    formData.append('social_media[whatsapp_number]',self.form.social_media.whatsapp_number);
+    formData.append('social_media[mobile]',self.form.social_media.mobile);
+    formData.append('social_media[email]',self.form.social_media.email);
+    formData.append('store[0][name]',self.form.store[0].name);
+    formData.append('store[0][local]',self.form.store[0].local);
+    formData.append('currency_id',self.form.currency_id);
+    formData.append('activity_type_id',self.form.activity_type_id);
+    formData.append('section_id',self.form.section_id);
+    formData.append('location_id',self.form.location_id);
+    formData.append('owner_id',self.form.owner_id);
+    formData.append('plan_id',self.form.plan_id);
+    formData.append('is_active',self.form.is_active);
+    formData.append('is_approved',self.form.is_approved);
+    formData.append('logo',self.form.logo);
+    formData.append('attachments[0][path]',self.form.attachments[0].path);
+    
+       for (var pair of formData.entries()) {
+           console.log(pair[0]+ ':' + pair[1]); 
+       }
+             axios
+                .post(`api/stores/create`,formData,{
+                  contentType: false,
+                  processData: false,
+                })
+                .then((res) => {
+                    console.log('stores_register : ', res.data);                         
+                })
+                .catch(function (error) {
+                    console.warn('Error stores_register ', error.toJSON());
+                });  
   }
   
   },
-  selectstoresection(){
-    if(this.formData[0].store_section == ''){
-   this.$notify({
-    // (optional)
-    // Name of the notification holder
-    group: 'foo',
-    // (optional)
-    // Title (will be wrapped in div.notification-title)
-    title: 'سمة المتجر',
-    // Content (will be wrapped in div.notification-content)
-    text: "عليك أختيار سمة للمتجر",
-    // (optional)
-    // Class that will be assigned to the notification
-    type: 'error', // error , warn , success , info
-    // (optional, override)
-    // Time (in ms) to keep the notification on screen
-    duration: 5000,
-    // (optional, override)
-    // Time (in ms) to show / hide notifications
-    speed: 1000
-  });
-}
-else{
-   document.getElementById('store_kind').style.display = 'none';
-    document.getElementById('bacover').style.display = 'none';
-}
-  },
-        setCategoryPack(packge) {
-          this.formData[0].category_packge = packge;
-        } ,
-        openForm() {
+        openForm(e) {
+           e.preventDefault();
             document.getElementById('store_kind').style.display = 'flex ';
              document.getElementById('bacover').style.display = 'block ';
+             this.invalidateForm();
         } ,
         closeForm() {
             document.getElementById('store_kind').style.display = 'none ';
@@ -568,62 +462,42 @@ else{
         
   },
     computed: {
-      ...mapState([ 'activities','plans','activityId','Trait','currencies','attachment']),
+    ...mapState([ 'activities','activityId','Trait','currencies','attachment','plansId','payments']), //,'plans'
           // ______________ plans filter ________________
     filteredPlans() {
-          if (this.plans != "") {
-            if (this.oneyear) {
-            return this.plans.filter((el) => {
-              return el.num_of_months == "12";
+            if (this.oneyear == true) {
+            return this.plansId.filter((el) => {
+              return  el.num_of_month == '12';
+           
             });
-          } else if (this.sixmonth) {
-            return this.plans.filter((el) => {
-              return el.sixmonth  == "6";
+          } else if (this.sixmonth == true) {
+            return this.plansId.filter((el) => {
+              return  el.num_of_month == '6';
             });
-          } else if (this.threemonth) {
-            return this.plans.filter((el) => {
-              return el.threemonth  == "3";
+          } else  if (this.threemonth == true){
+            return this.plansId.filter((el) => {
+              return  el.num_of_month == '3';
             });
           }
+          else{
+            return this.plansId;
           }
          
     },
+       
 
     },
    mounted() {
       this.$store.dispatch('loadactivities');
-      this.$store.dispatch('loadPlans');
+      // this.$store.dispatch('loadPlans');
       this.$store.dispatch('loadTraitStore');
       this.$store.dispatch('loadcurrencies');
+      this.$store.dispatch('loapayments');
       this.fetch();
     },
 }
 </script>
 <style lang="scss" scoped>
-.conut{
-  position: fixed;
-  left: 0;
-  top: 165px;
-  width: 130px;
-  display: grid;
-  border: 2px solid #ddd;
-  span{
-  width: 100%;
-  font-weight: bold;
-  background-color: #ddd;
-  cursor: pointer;
-  transition: .3s;
-  &:hover{
-    background-color: #247ba0;
-    color: #fff;
-  }
-  }
-  .co{
-    background-color: transparent;
-    color: red;
-    cursor: auto;
-  }
-}
 .icofont-eye-blocked,.icofont-eye-alt{
   cursor: pointer;
 }
@@ -730,15 +604,18 @@ else{
             transition: .5s;
             border-bottom:1px solid #777;
            &:hover{
-             background-color: #247BA0;
-             color: #fff;
+             color: #212529;
              cursor: pointer;
            }
                @media (max-width:568px) {
                  padding: 10px 10px 10px 10px;
                  font-size: 20px;
                }
+          &.active{
+            box-shadow: 0px 5px 5px rgb(167, 167, 167);
           }
+          }
+          
         }
       }
       .colm2{
@@ -799,7 +676,7 @@ else{
       border: 1px solid #ddd;
       border-radius: 10px;
       box-shadow: 1px 2px 12px #b5b5b5;
-      background-color: #fff9f9ed;
+      background-color: #ffffff;
       padding: 15px;
       display: flex;
       flex-wrap: wrap;
@@ -893,10 +770,13 @@ else{
       //   }
       // }
     }
-    form.errors {
-  :invalid {
+    form {
+  input:invalid {
     border-color: red;
   }
+    input:valid {
+  border: 2px solid #247ba0;
+}
 }
   }
   }
@@ -964,7 +844,7 @@ else{
       }
     .card-contain{
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       flex-wrap: wrap;
       width: 100%;
       @media (max-width:568px) {
@@ -983,16 +863,14 @@ else{
         transition: .5s;
         margin-bottom: 20px;
         &:hover{
-          border-width: 4px;
-          border-style: solid;
-          background: linear-gradient(#fff,#fff) padding-box, linear-gradient(to right, #6161ff, #fd5252) border-box;
-          border: 3px solid transparent;
           border-radius: 10px;
           transform: translateY(-20px);
           button{
-          color: #fff;
-          background-color: #DE222A;
-          border-radius: 5px;
+             &:hover{
+              box-shadow: 0px 3px 5px #ddd;
+              border-radius: 5px;
+             }
+       
         }
         }
         h1{
@@ -1060,6 +938,22 @@ else{
           background-color: transparent;
           transition: .5s;
         }
+      }
+      $cardlist: 2 7 12 17 22 27 32 37 42 ;
+      @each $li in $cardlist {
+      .card-#{$li}{
+        border-width: 4px;
+        border-style: solid;
+        background: linear-gradient(#fff,#fff) padding-box, linear-gradient(to right, #6161ff, #fd5252) border-box;
+        border: 3px solid transparent;
+        border-radius: 10px;
+        transform: translateY(-20px);
+        button{
+        color: #fff;
+        background-color: #DE222A;
+        border-radius: 5px;
+        }  
+      }
       }
     }
   }

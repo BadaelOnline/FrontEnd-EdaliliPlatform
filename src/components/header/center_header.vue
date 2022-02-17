@@ -12,7 +12,7 @@
         
           <!-- _________________________ Register ______________________ -->
         <div class="forms-parent">
-        <div class="form-popup " id="myForm">
+        <div class="form-popup animate__animated animate__fadeIn" id="myForm">
             <form ref="sig" :class="errors ? 'errors' : ''"
             action="/action_page.php" class="form-container">
             <span class="cancel" @click="closeForm()"
@@ -56,7 +56,7 @@
             </form>
         </div>
    <!-- _________________________ Register ______________________ -->
-        <div class="form-popup2 " id="myForm2">
+        <div class="form-popup2 animate__animated animate__fadeIn" id="myForm2">
             <form ref="reg" :class="errors ? 'errors' : ''"
                 action="/action_page.php"
                 class="form-container2 form_register"
@@ -138,7 +138,7 @@
             </form>
         </div> 
         <!-- forget password -->
-             <div class="form-popup3 " id="myForm3">
+             <div class="form-popup3 animate__animated animate__fadeIn" id="myForm3">
             <form ref="pass" :class="errors ? 'errors' : ''"
             action="/action_page.php" class="form-container3">
             <span class="cancel" @click="closeForm()"
@@ -164,7 +164,7 @@
             </form>
         </div>
            <!-- succes send password -->
-             <div class="form-popup4 " id="myForm4">
+             <div class="form-popup4 animate__animated animate__fadeIn" id="myForm4">
             <form ref="name" :class="errors ? 'errors' : ''"
             action="/action_page.php" class="form-container3">
             <span class="cancel" @click="closeForm()"
@@ -563,6 +563,9 @@ export default {
             if(this.authenticated){
                  this.$router.push(`/activities`);
             }
+            else{
+              this.openForm()   
+            }
         },
          toggle_vs(){
           document.getElementById('Dep').classList.toggle("Dep_vs");
@@ -730,7 +733,7 @@ export default {
           submit1() {
               var self = this;
               self.invalidateReg();
-              if(self.errors == false){
+              if(self.errors == true){
                 self.$notify({
                 // (optional)
                 // Name of the notification holder
