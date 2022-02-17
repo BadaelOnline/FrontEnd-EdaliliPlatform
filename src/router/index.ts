@@ -2,6 +2,21 @@ import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
     {
+        path: '/activities',
+        name: 'activities',
+        component: () => import('../views/section/activities.vue'),
+    }, 
+    {
+        path: '/store',
+        component: () => import('../components/body/StoreControl/aboutstore.vue'),
+        name: 'Store',
+    },
+    {
+        path: '/storeaccount',
+        component: () => import('../components/body/StoreControl/storeaccount.vue'),
+        name: 'storeaccount',
+    },
+    {
         path: '/visitstore/:id/:title',
         component: () => import('../components/body/Stores/visitStore.vue'),
         name: 'visitStore',

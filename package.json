@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.12.1",
+    "@kyvg/vue3-notification": "^2.3.4",
     "@popperjs/core": "^2.9.2",
     "@vue/composition-api": "^1.1.1",
     "animate.css": "^4.1.1",
