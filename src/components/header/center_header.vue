@@ -16,13 +16,12 @@
             <form ref="sig" :class="errors ? 'errors' : ''"
             action="/action_page.php" class="form-container">
             <span class="cancel" @click="closeForm()"
-                    ><i class="fa fa-window-close"></i
-                ></span>
+                    ><img src="../../../public/img/Icons/close.svg" alt=""></span>
                 <div class="head">
                 <h3>مرحبا بك في</h3>
                 <h1>E-<span>DALELY</span></h1>
                 </div>
-              <h3 style="text-align: center;">تسجيل الدخول</h3>
+              <h3 style="text-align: center;font-size: 24px;line-height: 29px;margin-top:15px">تسجيل الدخول</h3>
                <div>
                     <label ><b>البريد الألكتروني:</b></label>
                     <input
@@ -32,7 +31,7 @@
                     @click="invalidateSign()"
                 />
                </div>
-               <div>
+               <div class="eye">
                
                 <label ><b>كلمة المرور:</b></label>
 
@@ -44,12 +43,12 @@
                     minlength="8"
                     @click="invalidateSign()"
                 />
-                <i v-if="show" @click="showPass()" class="fa fa-eye" aria-hidden="true" style="color:#808080;cursor: pointer;"></i>
-                <i v-else @click="showPass()" class="fa fa-eye-slash" style="color:#808080;cursor: pointer;" aria-hidden="true"></i>
+                 <img v-if="show" @click="showPass()" src="../../../public/img/Icons/eye_visible.svg" alt=""> 
+                 <img v-else @click="showPass()" src="../../../public/img/Icons/eye_invisible.svg" alt=""> 
                </div>
                 <div @click="forgetForm()" class="create" style="font-size: 14px;text-align: center;">هل نسيت كلمة المرور؟</div>
                 <span @click="submit()" class="btn">تسجيل الدخول</span>
-                <div style="font-size: 14px;">
+                <div style="font-size: 14px;text-align: center;">
                  <span>ليس لديك حساب؟</span>
                 <span  @click="registerForm()" class="create">إنشاء حساب جديد</span>
                 </div> 
@@ -63,13 +62,12 @@
             >
               
                 <span class="cancel" @click="closeForm()"
-                    ><i class="fa fa-window-close"></i
-                ></span>
+                    ><img src="../../../public/img/Icons/close.svg" alt=""></span>
                 <div class="head">
                 <h3>مرحبا بك في</h3>
                 <h1>E-<span>DALELY</span></h1>
                 </div>
-                  <h3 style="text-align: center;">إنشاء حساب جديد</h3>
+                  <h3 style="text-align: center;font-size: 24px;">إنشاء حساب جديد</h3>
                 <div class="name">
                <div>
                 <label ><b>اسم الأول:</b></label>
@@ -101,7 +99,16 @@
                     @click="invalidateReg()"
                 />
               </div>
-                <div>
+               <div>
+                    <label><b>اسم المستخدم:</b></label>
+                    <input
+                    type="text"
+                    v-model="formRegister.username"
+                    required
+                    @click="invalidateReg()"
+                />
+              </div>
+                <div class="eye">
                     <label ><b>كلمة المرور:</b></label>
                      <input
                     type="password"
@@ -111,13 +118,12 @@
                     minlength="8"
                     @click="invalidateReg()"
                 />
-                <span style="opacity: 0.6;font-size: 14px;font-weight: bold;">
-                    يجب أن تحتوي كلمة السر على الأقل 8 أحرف.
-                    </span>
+                    <img v-if="show2" @click="showPass2()" src="../../../public/img/Icons/eye_visible.svg" alt=""> 
+                 <img v-else @click="showPass2()" src="../../../public/img/Icons/eye_invisible.svg" alt=""> 
                </div>
-                <div>
+                <div class="eye">
                 <label><b>تأكبد كلمة المرور:</b></label>
-                <input
+                <input style="margin-bottom:0px"
                 :style="[ SurePassword != formRegister.password ? {'border' :'1px solid #ed1c24'} : {}]"
                     type="password"
                     id="myInput3"
@@ -126,11 +132,16 @@
                     minlength="8"
                     @click="invalidateReg()"
                 />
-                <i v-if="show2" @click="showPass2()" class="fa fa-eye" aria-hidden="true" style="color:#808080;cursor: pointer;"></i>
-                <i v-else @click="showPass2()" class="fa fa-eye-slash" style="color:#808080;cursor: pointer;" aria-hidden="true"></i>
+                 <span style="opacity: 0.6;font-size: 14px;font-weight: 500;">
+                    يجب أن تحتوي كلمة السر على الأقل 8 أحرف.
+                    <br>
+                    حرف واحد كبير.رقم واحد.رمز واحد.
+                    </span>
+                 <img v-if="show2" @click="showPass2()" src="../../../public/img/Icons/eye_visible.svg" alt=""> 
+                 <img v-else @click="showPass2()" src="../../../public/img/Icons/eye_invisible.svg" alt=""> 
                 </div>
                
-                <span @click="submit1()" class="btn">إنشاء حساب جديد</span>
+                <span @click="submit1()" class="btn" style="margin-top:20px">إنشاء حساب جديد</span>
                  <div style="font-size: 14px;text-align: center;">
                  <span> لديك حساب بالفعل؟</span>
                 <span  @click="loginrForm()" class="create">تسجيل الدخول</span>
@@ -142,8 +153,7 @@
             <form ref="pass" :class="errors ? 'errors' : ''"
             action="/action_page.php" class="form-container3">
             <span class="cancel" @click="closeForm()"
-                    ><i class="fa fa-window-close"></i
-                ></span>
+                    ><img src="../../../public/img/Icons/close.svg" alt=""></span>
               <h3 style="text-align: center;">هل نسيت كلمة المرور؟</h3>
               <p style="font-weight: bold;;text-align: center;">أدخل البريد الألكتروني الخاص بك وسوف نرسل لك رابطا لإعادة تعيين كلمة المرور الخاص بك</p>
                <div>
@@ -157,9 +167,9 @@
                </div>
               
                 <span @click="successForm()" class="btn">التالي</span>
-                <div style="font-size: 14px;">
+                <div style="font-size: 14px;text-align: center;">
                
-                <span style="text-align: center;" @click="loginrForm()" class="create">العودة إلى تسجيل الدخول</span>
+                <span  @click="loginrForm()" class="create">العودة إلى تسجيل الدخول</span>
                 </div> 
             </form>
         </div>
@@ -168,8 +178,7 @@
             <form ref="name" :class="errors ? 'errors' : ''"
             action="/action_page.php" class="form-container3">
             <span class="cancel" @click="closeForm()"
-                    ><i class="fa fa-window-close"></i
-                ></span>
+                    ><img src="../../../public/img/Icons/close.svg" alt=""></span>
              <div class="head">
                
                 <h1  style="text-align: center;"><span>تم إرسال بريد إلكتروني لإعادة تعيين كلمة المرور</span></h1>
@@ -864,8 +873,23 @@ export default {
     border-color: #ed1c24 !important;
   }
  }
+ .eye{
+     position: relative;
+     img{
+         position: absolute;
+         top: 35px;
+         left: 5px;
+     }
+     input[type='password']{
+        padding: 0px 30px;
+     }
+ }
+    b{
+        font-weight: 500;
+    }
 </style>
 <style scoped>
+
 .active_sec{
     text-decoration-line: underline;
     color: var(--rhead);
@@ -1288,14 +1312,16 @@ export default {
     display: none;
     position: fixed;
     border: 2px solid #FFFFFF;
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 100;
     text-align: start;
 }
 .form-popup .head{
-   display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
+    line-height: 34px;
+    margin-top: 30px;
 }
 .form-popup .create{
     cursor: pointer;
@@ -1303,8 +1329,7 @@ export default {
     transition: .3s;
 }
 .create:hover{
-    font-weight: bold;
-    text-decoration: underline;
+   text-decoration: underline;
 }
 .form-popup  h3{
     font-weight: bold;
@@ -1327,7 +1352,7 @@ export default {
 .form-container {
      width: 385px;
     height: 453px;
-    padding: 10px;
+    padding: 20px;
     background-color: #FFFFFF;
     display: grid;
     align-content: space-around;
@@ -1335,6 +1360,7 @@ export default {
 
 .form-popup label,.form-popup2 label,.form-popup3 label,.form-popup4 label{
     color: #808080;
+    margin-bottom: 5px;
 }
 /* Full-width input fields */
 .form-popup  input[type='text'],
@@ -1342,7 +1368,7 @@ export default {
 .form-popup  input[type='password'] {
     width: 100%;
     height: 30px;
-    margin: 5px 0 12px 0;
+    margin: 0 0 12px 0;
     background: #FFFFFF;
     text-align: end;
     border-radius: 5px;
@@ -1355,7 +1381,7 @@ export default {
 .form-popup2  input[type='password'] {
     width: 100%;
     height: 30px;
-    margin: 5px 0 12px 0;
+    margin: 0 0 12px 0;
     background: #FFFFFF;
     text-align: end;
     border-radius: 5px;
@@ -1367,7 +1393,7 @@ export default {
 .form-popup3  input[type='password'] {
     width: 100%;
     height: 30px;
-    margin: 5px 0 12px 0;
+    margin: 0 0 12px 0;
     background: #FFFFFF;
     text-align: end;
     border-radius: 5px;
@@ -1379,18 +1405,21 @@ export default {
     background-color: var(--bl);
     color: white;
     padding: 10px 20px;
-    border: none;
     cursor: pointer;
     width: 100%;
     margin-bottom: 10px;
-    border: 1px solid #808080;
+    border: none;
+    transition: .3s;
 }
-
+.form-popup .btn:hover,.form-popup2 .btn:hover,.form-popup3 .btn:hover,.form-popup4 .btn:hover {
+    background-color: #217193;
+    
+}
 /* Add a red background color to the cancel button */
 .form-popup .cancel,.form-popup2 .cancel,.form-popup3 .cancel,.form-popup4 .cancel {
     position: absolute;
-    left: -3px;
-    top: -3px;
+    right: 10px;
+    top: 10px;
     color: #808080;
     padding: 5px 10px;
     border-bottom-right-radius: 20px;
@@ -1403,7 +1432,7 @@ export default {
     display: none;
     position: fixed;
     border: 2px solid #FFFFFF;
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 100;
     text-align: start;
 }
@@ -1425,7 +1454,6 @@ justify-content: space-between;
     transition: .3s;
 }
 .create:hover{
-    font-weight: bold;
     text-decoration: underline;
 }
 .form-popup2  h3{
@@ -1448,8 +1476,8 @@ justify-content: space-between;
 /* Add styles to the form container */
 .form-container2 {
     width: 385px;
-    height: 545px;
-    padding: 10px;
+    height: 575px;
+    padding: 20px;
     background-color: #FFFFFF;
     display: grid;
     align-content: space-around;
@@ -1476,7 +1504,7 @@ width: 90%;
     display: none;
     position: fixed;
     border: 2px solid #FFFFFF;
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 100;
     text-align: start;
 }
@@ -1511,7 +1539,7 @@ width: 90%;
 .form-container3 {
      width: 385px;
     height: 350px;
-    padding: 10px;
+    padding: 20px;
     background-color: #FFFFFF;
     display: grid;
     align-content: space-around;
@@ -1522,7 +1550,7 @@ width: 90%;
     display: none;
     position: fixed;
     border: 2px solid #FFFFFF;
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 100;
     text-align: start;
 }
@@ -1557,7 +1585,7 @@ width: 90%;
 .form-container4 {
      width: 385px;
     height: 300px;
-    padding: 10px;
+    padding: 20px;
     background-color: #FFFFFF;
     display: grid;
     align-content: space-around;

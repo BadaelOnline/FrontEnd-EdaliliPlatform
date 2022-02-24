@@ -4,7 +4,8 @@
               <div class=" kind animate__animated animate__fadeIn" id="store_kind">
               <div class="contain">
                   <div class="item" v-for=" item in Trait" :key="item">
-                  <input required type="radio" name="store" :value="item.id" v-model="form.section_id">
+                  <input required type="radio" name="store" @input="setSectionName(item.name)"
+                  :value="item.id" v-model="form.section_id">
                     <span>{{item.name}}</span>
                 </div>
     
@@ -38,8 +39,9 @@
     <h2>أختر نشاطك</h2>
     <div class="temp">
       <div class="colm1">
-        <ul v-for="(item,index) in activities" :key="index">
-          <li :class="[index == id_Activity ? 'active': '']"
+        <ul>
+          <li  v-for="(item,index) in activities" :key="index" :class="[index == id_Activity ? 'active': '']"
+         :style="[activities.length > 4 ? {'padding': '10px 20px'} : {}]"
           @click="setid_Activity(index)">{{item }}{{index}}</li>
         </ul>
       </div>
@@ -47,10 +49,27 @@
         <span style="margin: auto;" v-if="activityId == '' ">الرجاء اختيار النشاط المناسب لك</span>
         <div class="store-kind" v-else>
           <div v-for="item in activityId" :key="item"
-          @click="setactivity_type_id(item.id)"
-          :class="[item.id == id_Activity ? 'active': '']">
-            <i class="icofont-building-alt"></i>
-            <span>{{item.name}}</span>
+          @click="setactivity_type_id(item.id,item.name)"
+          @mouseover="item.name == 'متجر تجزئة'? store_kind = 'متجر تجزئة': store_kind = 'متجر جملة'" 
+          @mouseleave="store_kind = ''"
+          :id="`s${item.id}`"
+          :style="[item.name ==  store_kind ? 'color': '#247ba0']">
+        <span  v-if="item.name == 'متجر تجزئة'">
+           <img v-if="store_kind == 'متجر تجزئة' || store_kinds== 'متجر تجزئة'" 
+          src="../../../public/img/Icons/retail_store/retail_store_active.svg" alt="">
+          <img v-else
+          src="../../../public/img/Icons/retail_store/retail_store-inactive.svg" alt="">
+           
+        </span>
+        <span v-if="item.name == 'متجر جملة'">
+           <img v-if="store_kind == 'متجر جملة'|| store_kinds== 'متجر جملة' "
+          src="../../../public/img/Icons/wholesale_store/wholesale_store_active.svg" alt="">
+            <img v-else 
+          src="../../../public/img/Icons/wholesale_store/wholesale_store_inactive.svg" alt="">
+         
+        </span>
+      
+            <span style="margin-inline-start: 15px;">{{item.name}}</span>
             </div>
         </div>
       </div>
@@ -63,24 +82,24 @@
       <form  ref="name" :class="errors ? 'errors' : ''">
         <div class="colm1">
         <div>
-          <label for="">اسم المتجر</label>
+          <label class="required" for="">اسم المتجر</label>
           <input required type="text" placeholder="25 حرف حد أقصى" :minlength="3" :maxlength="25"
           @input="invalidateForm" v-model="form.store[0].name">
         </div>
         <div>
-          <label for="">البريد الألكتروني</label>
+          <label class="required" for="">البريد الألكتروني</label>
           <input required type="email"  @input="invalidateForm" v-model="form.social_media.email">
         </div>
         <div>
-          <label for="">الرقم الأرضي</label>
-          <input required type="tel" minlength="6" maxlength="9"
+          <label class="required" for="">الرقم الأرضي</label>
+          <input required type="tel" minlength="6" maxlength="11"
            @input="invalidateForm" v-model="form.social_media.phone_number">
         </div>
  
         <div>
-          <label for="">رقم الموبايل</label>
+          <label class="required" for="">رقم الموبايل</label>
           <div class="numb">  
-            <input required type="tel" minlength="10" maxlength="10"
+            <input required type="tel" minlength="9" maxlength="9"
              @click="invalidateForm" v-model="form.social_media.mobile">
           <select >
             <option selected :value="`00963`"  @input="invalidateForm">+963</option>
@@ -88,9 +107,9 @@
           </div>
         </div>
             <div>
-          <label for="">واتساب</label>
+          <label class="required" for="">واتساب</label>
           <div class="numb">  
-            <input required type="tel" minlength="10" maxlength="10" 
+            <input required type="tel" minlength="9" maxlength="9" 
              @input="invalidateForm" v-model="form.social_media.whatsapp_number">
              <select>
             <option :value="`00963`">+963</option>
@@ -98,18 +117,21 @@
           </div>
         </div>
             <div>
-          <label for="">سمة المتجر</label>
-          <button @click="openForm($event);">اختر سمة المتجر الخاص بك</button>
+          <label class="required" for="">سمة المتجر</label>
+          <button id="but" @click="openForm">
+            <span v-if="section_name == ''">اختر سمة المتجر الخاص بك</span>
+            <span v-else>{{section_name}}</span>
+            </button>
         </div>
         <div>
-          <label for="">شعار المتجر</label>
+          <label class="required" for="">شعار المتجر</label>
           <input required type="file" @input="invalidateForm" @change="handlelogo">
         </div>  
          <div>
-          <label for="">نوع العملة</label>
-          <select class="select" id="select" required>
-            <option disabled selected>اختر العملة</option>
-            <option :value="item.id"  @click="setcurrency(item.id);"
+          <label class="required" for="">نوع العملة</label>
+          <select class="select" id="sel" v-model="form.currency_id" @change="setcurrency">
+            <option disabled selected >اختر العملة</option>
+            <option :value="item.id" 
             v-for="item in currencies" :key="item">
             {{item.currency}}
             </option>
@@ -125,8 +147,8 @@
       <form  ref="attach" :class="error2 ? 'errors' : ''">
         <div class="contain">
           <div v-for="item in attachment" :key="item">
-            <label for="">{{item.activity_id}}</label>
-            <input required type="file" id="file1" @input="invalidateAttachForm" @change="handlefile($event);">
+            <label for="">{{item.name}}</label>
+            <input required type="file" id="file1" @input="invalidateAttachForm" @change="handlefile($event,item.id);">
           </div>
         </div>
       </form>
@@ -153,7 +175,10 @@
        <span v-if="sixmonth">كل 6 أشهر</span>
        </h3>
      <p>تتيح لك هذه الباقة بإضافة إلى ما يقارب {{item.features.number_of_products}} منتج إلى متجرك</p>
-     <button>أختر الباقة</button>
+     <button v-if="form.plan_id== ''">أختر الباقة</button>
+     <button class="chosen" v-else>تم أختيار الباقة
+        <img src="../../../public/img/Icons/Active.svg" alt="">
+     </button>
    </div>
     </div>
   </div>
@@ -170,7 +195,7 @@
             <div v-for="item in payments" :key="item">
               <h5>{{item.name}}:</h5>
               <div class="insert-code">
-              <input @input="setpaymentId(item.id)" required type="number" placeholder="كود الجهة المرسلة">
+              <input required type="number" placeholder="كود الجهة المرسلة">
               <span>إلى</span>
               <input required type="number" placeholder="كود الجهة المستلمة">
               </div>
@@ -192,15 +217,15 @@
       </div>
         <div class="button" v-if="countStep == 1">
         <button class="active" @click="countStep-=1">رجوع</button>
-        <button :class="errors == false? 'actives' : ''" @click="invalidateForm();countStep2()">متابعة</button>
+        <button class="actives" :class="errors == false? 'actives' : ''" @click="invalidateForm();countStep2()">متابعة</button>
       </div>
         <div class="button" v-if="countStep == 2">
         <button class="active" @click="countStep-=1">رجوع</button>
-        <button :class="error2 == false  ? 'actives' : ''"  @click="countStep3()">متابعة</button>
+        <button class="actives" :class="error2 == false  ? 'actives' : ''"  @click="countStep3()">متابعة</button>
       </div>
       <div class="button" v-if="countStep == 3">
         <button class="active" @click="countStep-=1">رجوع</button>
-        <button :class="form.plan_id != ''  ? 'actives' : ''" @click="countStep4()">متابعة</button>
+        <button class="actives" :class="form.plan_id != ''  ? 'actives' : ''" @click="countStep4()">متابعة</button>
       </div>
             <div class="button" v-if="countStep == 4">
         <button class="active" @click="countStep-=1">رجوع</button>
@@ -227,6 +252,9 @@ export default {
           oneyear:false,
           user:[],
           plans:[],
+          store_kind:"",
+          store_kinds:"",
+          section_name:"",
             show:false,
             errors:null,
             error2:null,
@@ -246,7 +274,7 @@ export default {
                       "local": "en"
                   }
               ],
-              "currency_id": "",
+              "currency_id": "اختر العملة",
               "location_id": "1",
               "activity_type_id": "",
               "owner_id": "1",
@@ -274,8 +302,10 @@ export default {
       this.$store.dispatch('loadattachmentId',this.id_Activity);
       this.$store.dispatch('loadPlansId',this.id_Activity);
     },
-      setactivity_type_id(i){
+      setactivity_type_id(i,d){
       this.form.activity_type_id =i;
+      document.getElementById(`s${i}`).classList.add('active');
+      this.store_kinds = d;
     },
     countStep1(){
     // Step One
@@ -286,9 +316,11 @@ export default {
       }   
     },
      // step 2 methods
-    setcurrency(i){
-      this.form.currency_id = i;
-      this.invalidateForm();
+    setcurrency(){
+     
+    if(this.form.currency_id != ""){
+   document.getElementById('sel').style.border = "1px solid #ccc";
+    }
     },
      handlelogo(event) {
       this.form.logo = event.target.files[0];
@@ -310,6 +342,9 @@ export default {
                 });
             }
         },
+    setSectionName(name){
+      this.section_name = name;
+        },
     countStep2(){
       // Step Two
       if(this.countStep == 1){
@@ -318,10 +353,12 @@ export default {
         this.$refs.name.checkValidity()
       }
       else if(this.form.section_id == ""){
-        this.openForm();
+        document.getElementById('but').style.border = "1px solid red";
       }
-      else if(this.form.currency_id == ""){
-       document.getElementById('select').style.border = "1px solid red";
+
+      else if(this.form.currency_id == "" || this.form.currency_id == "اختر العملة"){
+       document.getElementById('sel').style.border = "1px solid red";
+    
       }
       else{
         this.countStep+=1
@@ -329,8 +366,8 @@ export default {
       } 
 },
     // step 3 methods
-      handlefile(event) {
-      this.form.attachments.push({'path':event.target.files[0]});
+      handlefile(event,id) {
+      this.form.attachments.push({'path':event.target.files[0],'attachments_type_id':id});
       console.log(this.form.attachments);
     },
     // step 4 methods 
@@ -430,7 +467,13 @@ countStep5(){
     formData.append('is_active',self.form.is_active);
     formData.append('is_approved',self.form.is_approved);
     formData.append('logo',self.form.logo);
-    formData.append('attachments[0][path]',self.form.attachments[0].path);
+
+    for (var i; i <self.form.attachments.length;i++){
+    formData.append(`attachments[${i}][path]`,self.form.attachments[0].path);
+    formData.append(`attachments[${i}][attachments_type_id]`,self.form.attachments[0].attachments_type_id);
+    
+    }
+ 
     
        for (var pair of formData.entries()) {
            console.log(pair[0]+ ':' + pair[1]); 
@@ -441,7 +484,10 @@ countStep5(){
                   processData: false,
                 })
                 .then((res) => {
-                    console.log('stores_register : ', res.data);                         
+                    console.log('stores_register : ', res.data);  
+                    if(res.data.status == true){
+                    this.countStep+=1
+                    }                      
                 })
                 .catch(function (error) {
                     console.warn('Error stores_register ', error.toJSON());
@@ -453,11 +499,14 @@ countStep5(){
            e.preventDefault();
             document.getElementById('store_kind').style.display = 'flex ';
              document.getElementById('bacover').style.display = 'block ';
-             this.invalidateForm();
+            
         } ,
         closeForm() {
             document.getElementById('store_kind').style.display = 'none ';
-             document.getElementById('bacover').style.display = 'none ';
+            document.getElementById('bacover').style.display = 'none ';
+            if(this.form.section_id != ""){
+               document.getElementById('but').style.border = "1px solid #ccc";
+               }
         }    ,
         
   },
@@ -502,19 +551,23 @@ countStep5(){
   cursor: pointer;
 }
 .parent{
-  background-color: #f7f7f7;
+  background-color: #E8E8E8 ;
 }
 .container{
   direction: rtl;
   .step-count{
     display: flex;
     justify-content: flex-start;
-    padding:10px 0 50px 0;
+    padding:15px 10px 45px 0;
     @media (max-width:767.98px) {
     justify-content: space-around;
     }
     div{
-      padding: 5px 20px;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin: 0 0 0 100px;
       border: 2px dashed #777;
       border-radius: 50%;
@@ -551,10 +604,10 @@ countStep5(){
       span{
         position: absolute;
         color: #808080;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 200;
         width: 115px;
-        bottom: -35px;
+        bottom: -25px;
         left: 50%;
         transform: translateX(-50%);
       }
@@ -579,30 +632,35 @@ countStep5(){
     h2{
       text-align: start;
       font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: bold;
     }
     .temp{
       display: flex;
-      border: 1px solid #ddd;
-      border-radius: 10px;
+      border-radius: 20px;
       box-shadow: 1px 2px 12px #b5b5b5;
-      min-height: 220px;
+      min-height: 368px;
       .colm1{
         border: 1px solid #acacac;
-        border-top-right-radius: 10px;
+        border-top-right-radius: 20px;
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 10px;
+        border-bottom-right-radius: 20px;
+        background-color: #fff;
+        border-top: none;
+        overflow: hidden;
         ul{
           padding: 0;
           margin: 0;
           list-style: none;
           li{
-            padding: 10px 10px 10px 20px;
+            padding: 30px 20px;
             text-align: start;
             color: #777;
             font-size: 22px;
             transition: .5s;
-            border-bottom:1px solid #777;
+             border-top:1px solid #acacac;
+             width: 191px;
            &:hover{
              color: #212529;
              cursor: pointer;
@@ -613,9 +671,11 @@ countStep5(){
                }
           &.active{
             box-shadow: 0px 5px 5px rgb(167, 167, 167);
+             color: #313030;;
           }
           }
-          
+         
+           
         }
       }
       .colm2{
@@ -625,11 +685,13 @@ countStep5(){
         justify-content: center;
         font-size: 30px;
         color: #777;
+        background-color: #F5F5F5;
         border: 1px solid #acacac;
-        border-top-left-radius: 10px;
+        border-top-left-radius: 20px;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 10px;
+        border-bottom-left-radius: 20px;
+        border-right: 0;
         .store-kind{
         display: flex;
         width: 100%;
@@ -639,21 +701,33 @@ countStep5(){
         div{
           background-color: #fff;
           box-shadow: 1px 3px 10px #ccc;
-          padding: 10px 25px;
           border-radius: 7px;
           font-size: 22px;
-          transition: .5s;
           cursor: pointer;
           margin: 10px 0;
-          min-width: 200px;
+          min-width: 254px;
+          height: 60px;
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          padding: 0 20px;
           i{
             margin-inline-start: 10px;
           }
+          span{
+            color: #313030;
+            font-size: 20px;
+          }
           &:hover{
+            span{
             color: #247BA0;
+            }
+          
           }
           &.active{
-            color: #247BA0;
+           span{
+              color: #247BA0 !important;
+           }
           }
         }
          @media (max-width:568px) {
@@ -670,6 +744,8 @@ countStep5(){
     h2{
       text-align: start;
       font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: bold;
     }
     .temp{
       form{
@@ -677,6 +753,7 @@ countStep5(){
       border-radius: 10px;
       box-shadow: 1px 2px 12px #b5b5b5;
       background-color: #ffffff;
+      min-height: 368px;
       padding: 15px;
       display: flex;
       flex-wrap: wrap;
@@ -690,8 +767,10 @@ countStep5(){
           display: flex;
           flex-direction: column;
           label{
-            font-size: 18px;
+            font-size: 16px;
             color: #5e5d5d;
+            line-height: 19px;
+            font-weight: 400;
           }
           input{
             width: 70%;
@@ -771,9 +850,13 @@ countStep5(){
       // }
     }
     form {
-  input:invalid {
-    border-color: red;
-  }
+      .required::after{
+        content: '*';
+        color: red;
+      }
+  // input:invalid {
+  //   border-color: red;
+  // }
     input:valid {
   border: 2px solid #247ba0;
 }
@@ -782,6 +865,7 @@ countStep5(){
   }
   .step-template3{
     .temp{
+      min-height: 368px;
       form{
         min-height: 340px;
       .contain{
@@ -927,16 +1011,29 @@ countStep5(){
           }
         }
         button{
-          width: 155px;
-          height: 35px;
+          width: 174px;
+          height: 42px;
           border: none;
           font-size: 18px;
-          font-weight: bold;
+          font-weight: 500;
           color: #DE222A;
           letter-spacing: 1px;
           cursor: pointer;
           background-color: transparent;
           transition: .5s;
+        }
+        .chosen{
+          width: 174px;
+          height: 42px;
+          border: none;
+          font-size: 18px;
+          font-weight: 500;
+          color: #fff;
+          letter-spacing: 1px;
+          cursor: pointer;
+          background-color: #DE222A;
+          transition: .5s;
+          border-radius: 5px;
         }
       }
       $cardlist: 2 7 12 17 22 27 32 37 42 ;
@@ -961,8 +1058,11 @@ countStep5(){
     h2{
       text-align: start;
       font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: bold;
     }
     form{
+      background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 10px;
       box-shadow: 1px 2px 12px #b5b5b5;
@@ -1052,21 +1152,19 @@ countStep5(){
         margin-inline-start: 20px;
         background-color: transparent;
         border: 1px solid #B0AFAF;
-        padding: 5px 30px;
+        width: 110px;
+        height: 32px;
         border-radius: 5px;
         color: #B0AFAF;
-        font-size: 20px;
+        font-size: 16px;
         cursor: pointer;
         transition: .5s;
-        &:hover{
-          background-color: #247BA0;
-          color: #fff;
-        }
+      
         &.active{
            border: 1px solid #247BA0;
             color: #247BA0;
             &:hover{
-         
+         background-color: #247BA0;
           color: #fff;
         }
         }
