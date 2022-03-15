@@ -1,19 +1,19 @@
 <template>
 
- <div
+ <!-- <div
             v-if="!authenticated"
             class="content_loader hidden"
             id="content_loader"
         >
             <div id="loader" class="loader"></div>
-        </div>
+        </div> -->
        <div id="backcover" class="backcover" @click="closeForm()"></div>
           <div id="cover_dep" class="backcover2" @click="close_dep()"></div>
         
           <!-- _________________________ Register ______________________ -->
         <div class="forms-parent">
         <div class="form-popup animate__animated animate__fadeIn" id="myForm">
-            <form ref="sig" :class="errors ? 'errors' : ''"
+            <form 
             action="/action_page.php" class="form-container">
             <span class="cancel" @click="closeForm()"
                     ><img src="../../../public/img/Icons/close.svg" alt=""></span>
@@ -22,27 +22,32 @@
                 <h1>E-<span>DALELY</span></h1>
                 </div>
               <h3 style="text-align: center;font-size: 24px;line-height: 29px;margin-top:15px">تسجيل الدخول</h3>
-               <div>
+               <div style="position: relative;">
                     <label ><b>البريد الألكتروني:</b></label>
                     <input
                     type="email"
+                    id="email_sign"
                     v-model="formSign.email"
                     required
-                    @click="invalidateSign()"
+                    @input="invalidateSign()"
+
                 />
+                  <Icon icon="bx:error" />
                </div>
-               <div class="eye">
+               <div class="eye" style="position: relative;">
                
                 <label ><b>كلمة المرور:</b></label>
 
                 <input
                     type="password"
                     id="myInput"
+                    ref="password_sign"
                     v-model="formSign.password"
                     required
                     minlength="8"
-                    @click="invalidateSign()"
+                    @input="invalidateSign()"
                 />
+                 <Icon icon="bx:error" />
                  <img v-if="show" @click="showPass()" src="../../../public/img/Icons/eye_visible.svg" alt=""> 
                  <img v-else @click="showPass()" src="../../../public/img/Icons/eye_invisible.svg" alt=""> 
                </div>
@@ -56,7 +61,7 @@
         </div>
    <!-- _________________________ Register ______________________ -->
         <div class="form-popup2 animate__animated animate__fadeIn" id="myForm2">
-            <form ref="reg" :class="errors ? 'errors' : ''"
+            <form 
                 action="/action_page.php"
                 class="form-container2 form_register"
             >
@@ -68,70 +73,58 @@
                 <h1>E-<span>DALELY</span></h1>
                 </div>
                   <h3 style="text-align: center;font-size: 24px;">إنشاء حساب جديد</h3>
-                <div class="name">
-               <div>
-                <label ><b>اسم الأول:</b></label>
-                <input
-                    type="text"
-                    v-model="formRegister.first_name"
-                    required
-                    minlength="3"
-                    @click="invalidateReg()"
-                />
-               </div>
-                <div>
-                <label><b>اسم العائلة: </b></label>
-                <input
-                    type="text"
-                    v-model="formRegister.last_name"
-                    required
-                    minlength="3"
-                    @click="invalidateReg()"
-                />
-                 </div>
-                </div>
-              <div>
-                    <label><b>البريد الألكتروني:</b></label>
-                    <input
-                    type="email"
-                    v-model="formRegister.email"
-                    required
-                    @click="invalidateReg()"
-                />
-              </div>
-               <div>
+              <div style="position: relative;">
                     <label><b>اسم المستخدم:</b></label>
                     <input
                     type="text"
+                    :minlength="4"
+                    id="user_rigster"
+                    ref="user_rigster"
                     v-model="formRegister.username"
                     required
-                    @click="invalidateReg()"
+                    @input="invalidateReg()"
                 />
+                <Icon icon="bx:error" />
               </div>
-                <div class="eye">
+              <div style="position: relative;">
+                    <label><b>البريد الألكتروني:</b></label>
+                    <input
+                    type="email"
+                    id="email_rigster"
+                    v-model="formRegister.email"
+                    required
+                    @input="invalidateReg()"
+                />
+                <Icon icon="bx:error" />
+              </div>
+               
+                <div class="eye" style="position: relative;">
                     <label ><b>كلمة المرور:</b></label>
                      <input
                     type="password"
                     id="myInput2"
+                    ref="myInput2"
                     v-model="formRegister.password"
                     required
                     minlength="8"
-                    @click="invalidateReg()"
+                    @input="invalidateReg()"
                 />
-                    <img v-if="show2" @click="showPass2()" src="../../../public/img/Icons/eye_visible.svg" alt=""> 
+                <Icon icon="bx:error" />
+                 <img v-if="show2" @click="showPass2()" src="../../../public/img/Icons/eye_visible.svg" alt=""> 
                  <img v-else @click="showPass2()" src="../../../public/img/Icons/eye_invisible.svg" alt=""> 
                </div>
-                <div class="eye">
+                <div class="eye" style="position: relative;">
                 <label><b>تأكبد كلمة المرور:</b></label>
                 <input style="margin-bottom:0px"
-                :style="[ SurePassword != formRegister.password ? {'border' :'1px solid #ed1c24'} : {}]"
                     type="password"
                     id="myInput3"
+                    ref="myInput3"
                     v-model="SurePassword"
                     required
                     minlength="8"
-                    @click="invalidateReg()"
+                    @input="invalidateReg()"
                 />
+                <Icon icon="bx:error" />
                  <span style="opacity: 0.6;font-size: 14px;font-weight: 500;">
                     يجب أن تحتوي كلمة السر على الأقل 8 أحرف.
                     <br>
@@ -150,7 +143,7 @@
         </div> 
         <!-- forget password -->
              <div class="form-popup3 animate__animated animate__fadeIn" id="myForm3">
-            <form ref="pass" :class="errors ? 'errors' : ''"
+            <form 
             action="/action_page.php" class="form-container3">
             <span class="cancel" @click="closeForm()"
                     ><img src="../../../public/img/Icons/close.svg" alt=""></span>
@@ -162,7 +155,7 @@
                     type="email"
                     v-model="formSign.email"
                     required
-                    @click="invalidatepass()"
+                  
                 />
                </div>
               
@@ -175,7 +168,7 @@
         </div>
            <!-- succes send password -->
              <div class="form-popup4 animate__animated animate__fadeIn" id="myForm4">
-            <form ref="name" :class="errors ? 'errors' : ''"
+            <form 
             action="/action_page.php" class="form-container3">
             <span class="cancel" @click="closeForm()"
                     ><img src="../../../public/img/Icons/close.svg" alt=""></span>
@@ -489,10 +482,15 @@
 </template>
 
 <script>
+import $  from "jquery";
 import { mapGetters, mapActions } from 'vuex';
+import { Icon } from '@iconify/vue';
 // import { defineAsyncComponent } from 'vue';
 export default {
     name: 'navbarHeader',
+    components: {
+		Icon,
+	},
     data() {
         const token = localStorage.getItem('token');
         const server = localStorage.getItem('server') || 'admin';
@@ -501,15 +499,14 @@ export default {
             show2: false,
             server: server,
             token: token,
-            errors: false,
+            sign_status:false,
+            rig_status:false,
             SurePassword:"",
             formSign: {
                 "email": "",
                 "password": ""
             },
              formRegister:{
-                "first_name": "",
-                "last_name": "",
                 "username": "",
                 "is_active": 1,
                 "email": "",
@@ -541,31 +538,65 @@ export default {
     methods: {
         
     invalidateSign() {
-    if( !this.$refs.sig.checkValidity() ){
-       this.errors = true;
+    if(!this.reg.test(this.formSign.email) ){
+        $('#email_sign').css("border", "2px solid red");
+        $('#email_sign + svg').css("display", "block");
+        this.sign_status = false;
+
      }
-     else{
-       this.errors = false;
+     else if(this.reg.test(this.formSign.email)){
+        $('#email_sign').css("border", "2px solid #247ba0");
+        $('#email_sign + svg').css("display", "none");
      }
+     if( !this.$refs.password_sign.checkValidity() ){
+        $('#myInput').css("border", "2px solid red");
+        $('#myInput + svg').css("display", "block");
+        this.sign_status = false;
+     }
+     else if(this.$refs.password_sign.checkValidity()){
+        $('#myInput').css("border", "2px solid #247ba0");
+        $('#myInput + svg').css("display", "none");
+        this.sign_status = true;
+     }
+
     },
     invalidateReg() {
-    if( !this.$refs.reg.checkValidity() ){
-       this.errors = true;
+    if(!this.reg.test(this.formRegister.email) ){
+    $('#email_rigster').css("border", "2px solid red");
+    $('#email_rigster + svg').css("display", "block");
+    this.rig_status = false;
+    }
+    else if(this.reg.test(this.formRegister.email)){
+        $('#email_rigster').css("border", "2px solid #247ba0");
+        $('#email_rigster + svg').css("display", "none");
      }
-     else if(this.SurePassword != this.formRegister.password){
-        this.errors = false;
+    if(!this.$refs.user_rigster.checkValidity() ){
+    $('#user_rigster').css("border", "2px solid red");
+    $('#user_rigster + svg').css("display", "block");
+    this.rig_status = false;
+    }
+    else if(this.$refs.user_rigster.checkValidity()){
+        $('#user_rigster').css("border", "2px solid #247ba0");
+        $('#user_rigster + svg').css("display", "none");
      }
-     else{
-         
-       this.errors = false;
+    if( !this.$refs.myInput2.checkValidity() ){
+        $('#myInput2').css("border", "2px solid red");
+        $('#myInput2 + svg').css("display", "block");
+        this.rig_status = false;
      }
-    },
-    invalidatepass() {
-    if( !this.$refs.pass.checkValidity() ){
-       this.errors = true;
+     else if(this.$refs.myInput2.checkValidity()){
+        $('#myInput2').css("border", "2px solid #247ba0");
+        $('#myInput2 + svg').css("display", "none");
      }
-     else{
-       this.errors = false;
+     if( !this.$refs.myInput3.checkValidity() || this.SurePassword != this.formRegister.password){
+        $('#myInput3').css("border", "2px solid red");
+        $('#myInput3 + svg').css("display", "block");
+        this.rig_status = false;
+     }
+     else if(this.$refs.myInput3.checkValidity() && this.SurePassword == this.formRegister.password){
+        $('#myInput3').css("border", "2px solid #247ba0");
+        $('#myInput3 + svg').css("display", "none");
+        this.rig_status = true;
      }
     },
         addActivity(){
@@ -654,178 +685,52 @@ export default {
       submit() {
           var self = this;
           self.invalidateSign();
-          if(self.errors == true){
-             self.$notify({
-            // (optional)
-            // Name of the notification holder
-            group: 'foo',
-            // (optional)
-            // Title (will be wrapped in div.notification-title)
-            title: 'Sorry!!',
-            // Content (will be wrapped in div.notification-content)
-            text: "invalid input",
-            // (optional)
-            // Class that will be assigned to the notification
-            type: 'error', // error , warn , success , info
-            // (optional, override)
-            // Time (in ms) to keep the notification on screen
-            duration: 3000,
-            // (optional, override)
-            // Time (in ms) to show / hide notifications
-            speed: 1000
-        });
-          }
-          else{
+          if(self.sign_status == true){
                 self.signIn(self.formSign);
-                document
-                    .getElementById('content_loader')
-                    .classList.remove('hidden');
+                $('#spiner').css("display", "flex");
                 setTimeout(function () {
-                  document
-                    .getElementById('content_loader')
-                    .classList.add('hidden');
-                }, 2500);
-                setTimeout(function () {
-                  if(localStorage.getItem('token') != null){
-            self.$notify({
-            // (optional)
-            // Name of the notification holder
-            group: 'foo',
-            // (optional)
-            // Title (will be wrapped in div.notification-title)
-            title: 'Success',
-            // Content (will be wrapped in div.notification-content)
-            text: "Thank you for Sign in",
-            // (optional)
-            // Class that will be assigned to the notification
-            type: 'success', // error , warn , success , info
-            // (optional, override)
-            // Time (in ms) to keep the notification on screen
-            duration: 3000,
-            // (optional, override)
-            // Time (in ms) to show / hide notifications
-            speed: 1000
-        });
-         document.getElementById('backcover').style.display = 'none';
-         document.getElementById('myForm').style.display = "none";
-
+                  if(localStorage.getItem('token') == null){
+                    $('#spiner').css("display", "none");
+                    $('#backcover').css("display", "none");
+                    $('#myForm').css("display", "none");
+                    alert("Login Failed");
                   }
-        else{
-            self.$notify({
-            // (optional)
-            // Name of the notification holder
-            group: 'foo',
-            // (optional)
-            // Title (will be wrapped in div.notification-title)
-            title: 'Sorry!!',
-            // Content (will be wrapped in div.notification-content)
-            text: "something is wrong please try sign again",
-            // (optional)
-            // Class that will be assigned to the notification
-            type: 'error', // error , warn , success , info
-            // (optional, override)
-            // Time (in ms) to keep the notification on screen
-            duration: 3000,
-            // (optional, override)
-            // Time (in ms) to show / hide notifications
-            speed: 1000
-        });
+                  else if(localStorage.getItem('token') != null){
+                    $('#spiner').css("display", "none");
+                    $('#backcover').css("display", "none");
+                    $('#myForm').css("display", "none");
+                    alert("Login Successful");
                   }
                 }, 3000);
             //    setTimeout(function () {
             //         window.location.reload();
             //     }, 4500);
           }
-              
-            
         },
           submit1() {
               var self = this;
               self.invalidateReg();
-              if(self.errors == true){
-                self.$notify({
-                // (optional)
-                // Name of the notification holder
-                group: 'foo',
-                // (optional)
-                // Title (will be wrapped in div.notification-title)
-                title: 'Sorry!!',
-                // Content (will be wrapped in div.notification-content)
-                text: "invalid input",
-                // (optional)
-                // Class that will be assigned to the notification
-                type: 'error', // error , warn , success , info
-                // (optional, override)
-                // Time (in ms) to keep the notification on screen
-                duration: 3000,
-                // (optional, override)
-                // Time (in ms) to show / hide notifications
-                speed: 1000
-            });
-              }
-              else{
+              if(self.rig_status == true){
                 self.register(self.formRegister);
-                document.getElementById('content_loader').classList.remove('hidden');
-
+                $('#spiner').css("display", "flex");
                 setTimeout(function () {
-                    document
-                        .getElementById('content_loader')
-                        .classList.add('hidden');
-                }, 2500);
-
-            setTimeout(function () {
-                if(localStorage.getItem('token') != null){
-                    self.$notify({
-                    // (optional)
-                    // Name of the notification holder
-                    group: 'foo',
-                    // (optional)
-                    // Title (will be wrapped in div.notification-title)
-                    title: 'Success',
-                    // Content (will be wrapped in div.notification-content)
-                    text: "Thank you for register",
-                    // (optional)
-                    // Class that will be assigned to the notification
-                    type: 'success', // error , warn , success , info
-                    // (optional, override)
-                    // Time (in ms) to keep the notification on screen
-                    duration: 3000,
-                    // (optional, override)
-                    // Time (in ms) to show / hide notifications
-                    speed: 1000
-                });
-                document.getElementById('backcover').style.display = 'none';
-                document.getElementById('myForm2').style.display = "none";
-
+                  if(localStorage.getItem('token') == null){
+                    $('#spiner').css("display", "none");
+                    $('#backcover').css("display", "none");
+                    $('#myForm').css("display", "none");
+                    alert("Rigster Failed");
                   }
-        else{
-            self.$notify({
-            // (optional)
-            // Name of the notification holder
-            group: 'foo',
-            // (optional)
-            // Title (will be wrapped in div.notification-title)
-            title: 'Sorry!!',
-            // Content (will be wrapped in div.notification-content)
-            text: "something is wrong please try register again",
-            // (optional)
-            // Class that will be assigned to the notification
-            type: 'error', // error , warn , success , info
-            // (optional, override)
-            // Time (in ms) to keep the notification on screen
-            duration: 3000,
-            // (optional, override)
-            // Time (in ms) to show / hide notifications
-            speed: 1000
-        });
+                  else if(localStorage.getItem('token') != null){
+                    $('#spiner').css("display", "none");
+                    $('#backcover').css("display", "none");
+                    $('#myForm').css("display", "none");
+                    alert("Rigster Successful");
                   }
                 }, 3000);
-                // setTimeout(function () {
-                //     window.location.reload();
-                // }, 4500);
-              }
-                
-            
+            //    setTimeout(function () {
+            //         window.location.reload();
+            //     }, 4500);
+          }
         },
         gotocart() {
             this.$router.push(`/Cart`);
@@ -868,25 +773,25 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
- form.errors {
-  :invalid {
-    border-color: #ed1c24 !important;
-  }
- }
  .eye{
      position: relative;
      img{
          position: absolute;
-         top: 35px;
+         top: 42px;
          left: 5px;
-     }
-     input[type='password']{
-        padding: 0px 30px;
      }
  }
     b{
         font-weight: 500;
     }
+input + svg{
+    position: absolute;
+    top: 36px;
+    right: 12px;
+    font-size: 23px;
+    color: red;
+    display: none;
+}
 </style>
 <style scoped>
 
@@ -1315,6 +1220,8 @@ export default {
     border-radius: 10px;
     z-index: 100;
     text-align: start;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .form-popup .head{
     display: flex;
@@ -1367,38 +1274,41 @@ export default {
 .form-popup  input[type='email'],
 .form-popup  input[type='password'] {
     width: 100%;
-    height: 30px;
+    height: 44px;
     margin: 0 0 12px 0;
     background: #FFFFFF;
     text-align: end;
     border-radius: 5px;
     outline: none;
     border: 1px solid #808080;
+    padding: 0px 25px;
 }
 
 .form-popup2  input[type='text'],
 .form-popup2  input[type='email'],
 .form-popup2  input[type='password'] {
     width: 100%;
-    height: 30px;
+    height: 44px;
     margin: 0 0 12px 0;
     background: #FFFFFF;
     text-align: end;
     border-radius: 5px;
     outline: none;
     border: 1px solid #808080;
+    padding: 0px 25px;
 }
 .form-popup3  input[type='text'],
 .form-popup3  input[type='email'],
 .form-popup3  input[type='password'] {
     width: 100%;
-    height: 30px;
+    height: 44px;
     margin: 0 0 12px 0;
     background: #FFFFFF;
     text-align: end;
     border-radius: 5px;
     outline: none;
     border: 1px solid #808080;
+    padding: 0px 25px;
 }
 /* Set a style for the submit/login button */
 .form-popup .btn,.form-popup2 .btn,.form-popup3 .btn,.form-popup4 .btn {
@@ -1435,6 +1345,8 @@ export default {
     border-radius: 10px;
     z-index: 100;
     text-align: start;
+    top: 50%;
+transform: translateY(-50%);
 }
 .form-popup2 .name{
 display: flex;
@@ -1507,6 +1419,8 @@ width: 90%;
     border-radius: 10px;
     z-index: 100;
     text-align: start;
+    top: 50%;
+transform: translateY(-50%);
 }
 .form-popup3 .head{
    display: flex;
@@ -1553,6 +1467,8 @@ width: 90%;
     border-radius: 10px;
     z-index: 100;
     text-align: start;
+    top: 50%;
+transform: translateY(-50%);
 }
 .form-popup4 .head{
    display: flex;
