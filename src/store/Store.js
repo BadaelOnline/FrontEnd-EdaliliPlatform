@@ -236,7 +236,7 @@ const store = createStore({
             axios
                 .get(`api/activity_type/activity`)
                 .then((res) => {
-                    console.log('activities :', res.data);
+                    // console.log('activities :', res.data);
                     let activities = res.data;
                     commit('SET_activities', activities);
                 })
@@ -248,7 +248,7 @@ const store = createStore({
             axios
                 .get(`api/activity_type/get-by-activity/${Id}`)
                 .then((res) => {
-                    console.log('activityId :', res.data.activity_Type);
+                    // console.log('activityId :', res.data.activity_Type);
                     let activityId = res.data.activity_Type;
                     commit('SET_activityId', activityId);
                 })
@@ -260,7 +260,7 @@ const store = createStore({
             axios
                 .get(`/api/plans/get`)
                 .then((res) => {
-                    console.log('plans :', res.data.plan);
+                    // console.log('plans :', res.data.plan);
                     let plans = res.data.plan;
                     commit('SET_plans', plans);
                 })
@@ -272,7 +272,7 @@ const store = createStore({
             axios
                 .get(`/api/plans/get-by-activity/${Id}`)
                 .then((res) => {
-                    console.log('plansId :', res.data.plan);
+                    // console.log('plansId :', res.data.plan);
                     let plansId = res.data.plan;
                     commit('SET_plansId', plansId);
                 })
@@ -284,7 +284,7 @@ const store = createStore({
             axios
                 .get(`/api/sections/get`)
                 .then((res) => {
-                    console.log('Trait :', res.data.Section);
+                    // console.log('Trait :', res.data.Section);
                     let Trait = res.data.Section;
                     commit('SET_Trait', Trait);
                 })
@@ -296,7 +296,7 @@ const store = createStore({
             axios
                 .get(`/api/currencies/get`)
                 .then((res) => {
-                    console.log('currencies :', res.data.Currency);
+                    // console.log('currencies :', res.data.Currency);
                     let currencies = res.data.Currency;
                     commit('SET_currencies', currencies);
                 })
@@ -308,7 +308,7 @@ const store = createStore({
             axios
                 .get(`api/attachments/get-by-activity/${Id}`)
                 .then((res) => {
-                    console.log('attachment :', res.data.attachment);
+                    // console.log('attachment :', res.data.attachment);
                     let attachment = res.data.attachment;
                     commit('SET_attachment', attachment);
                 })
@@ -320,7 +320,7 @@ const store = createStore({
             axios
                 .get(`/api/payments/get`)
                 .then((res) => {
-                    console.log('payments :', res.data.payments);
+                    // console.log('payments :', res.data.payments);
                     let payments = res.data.payments;
                     commit('SET_payments', payments);
                 })
@@ -573,23 +573,19 @@ const store = createStore({
             });
         },
         //__________ signIn _______
-        async signIn({ dispatch }, Credentials) {
-            let res = await axios
+        async  signIn({ dispatch }, Credentials) {
+            await axios
                 .post(
                     '/api/auth/login',
                     Credentials
                 )
-                // .then((res) => {
-                //     console.log('res token :', res.data.user["1"]);
-                   
-                // })
+                .then((res) => {
+                    console.log('res_sign_In :', res.data);
+                    dispatch('attempt', res.data.user["1"]);
+                })
                 .catch(function (error) {
-                    if (error.response) {
-                        console.log(error.response.data);
-                        console.log('Error_sign_In: ',error.response.status);
-                    }
+                    console.log('Error_sign_In: ',error);
                 });
-            return dispatch('attempt', res.data.user["1"]);
         },
         async attempt({ commit, state }, token) {
             if (token) {
@@ -612,27 +608,23 @@ const store = createStore({
             // }
         },
         //__________ Register _______
-        async register({ dispatch }, Credentials) {
+        async  register({ dispatch }, Credentials) {
             const headers = {
                 'Content-Type': 'application/json',
               }
-            let res = await axios
-                .post(
-                    'api/auth/register',
-                    Credentials,
-                    {headers: headers}
-                )
-                // .then((res) => {
-                //     console.log('res token :', res.data.access_token);
-                   
-                // })
+            await axios
+            .post(
+                'api/auth/register',
+                Credentials,
+                {headers: headers}
+            )
+                .then((res) => {
+                    console.log('res_rigster :', res.data);
+                    dispatch('attempt', res.data.access_token);
+                })
                 .catch(function (error) {
-                    if (error.response) {
-                        console.log(error.response);
-                        console.log('Error_sign_In: ',error.response.status);
-                    }
+                    console.log('Error_res_rigster: ',error);
                 });
-            return dispatch('attemp', res.data.access_token);
         },
         async attemp({ commit  }, token) {
             if (token) {

@@ -20,7 +20,6 @@ import "jquery";
 import '../src/assets/css/navigation.scss';
 import '../src/assets/css/pagination.scss';
 import Notifications from '@kyvg/vue3-notification'
-
 // import VueCardCarousel from
 require('./store/subscriber');
 // store.dispatch('attempt', localStorage.getItem('token'));

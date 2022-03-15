@@ -4,8 +4,13 @@
     <notifications group="foo" 
     position="top center" 
     class="notifications" />
+    <div id="spiner" class="spiner">
+    <img class="img1" src="../public/img/Icons/ED.svg" alt="">
+    <img class="img2" src="../public/img/Icons/Needle.svg" alt="">
+  </div>
     <router-view />
     <AppFooter v-if="this.$route.path !== '/signin'" />
+    
 </template>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap');
@@ -76,7 +81,30 @@ body {
 /* Extra large devices (large desktops, 1200px and up)  */
 @media (min-width: 1200px) {
 }
-
+.spiner{
+  position: fixed;
+  left: 50%;
+  top: 45%;
+  transform: translateX(-50%);
+  width: 151px;
+  display: flex;
+  z-index: 1000;
+  display: none;
+  .img1{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .img2{
+    position: relative;
+    left: 60%;
+    animation: mymove 2s infinite linear;
+  }
+}
+@keyframes mymove {
+  from {transform: rotateZ(0deg);}
+  to   {transform: rotateZ(360deg);}
+}
 .container {
   padding-left: 15px;
   padding-right: 15px;

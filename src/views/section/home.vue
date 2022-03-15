@@ -370,7 +370,7 @@
 import data from '../../jeson/data';
 import jeson from '@/jeson/MOCK_DATA.json';
 import { mapState } from 'vuex';
-import axios from 'axios';
+// import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
 // swiper
 // import Swiper core and required components
@@ -503,44 +503,44 @@ export default {
                 document.getElementById('fa1').classList.toggle("fa-spin");
                 document.getElementById('fa2').classList.toggle("fa-spin");
             },
-      async  fetch() {
-            var self = this;
-            let lang = window.localStorage.getItem('lang');
-            // sections
-            await axios
-                .get(`/api/sections/getAll?lang=${lang}`)
-                .then((res) => {
-                    self.Sections = res.data.Section;
-                    console.log('Section: ', res.data.Section);                         
-                })
-                .catch(function (error) {
-                    console.warn('Error sections ', error.toJSON());
-                });
-                  // offers
-              await  axios
-                .get(`/api/offers`)
-                .then((res) => {
-                    this.Offers = res.data.Offer.data;
-                    console.log('Offer: ',  res.data.Offer.data);
+    //   async  fetch() {
+    //         var self = this;
+    //         let lang = window.localStorage.getItem('lang');
+    //         // sections
+    //         await axios
+    //             .get(`/api/sections/getAll?lang=${lang}`)
+    //             .then((res) => {
+    //                 self.Sections = res.data.Section;
+    //                 console.log('Section: ', res.data.Section);                         
+    //             })
+    //             .catch(function (error) {
+    //                 console.warn('Error sections ', error.toJSON());
+    //             });
+    //               // offers
+    //           await  axios
+    //             .get(`/api/offers`)
+    //             .then((res) => {
+    //                 this.Offers = res.data.Offer.data;
+    //                 console.log('Offer: ',  res.data.Offer.data);
                     
                     
-                })
-                .catch(function (error) {
-                    console.warn(' Error Offer ', error.toJSON());
-                });
-                     // offers
-              await  axios
-                .get(`http://badaelonline.com/backend/public/`)
-                .then((res) => {
-                    this.all = res.data;
-                    console.log('all: ',  res.data);
+    //             })
+    //             .catch(function (error) {
+    //                 console.warn(' Error Offer ', error.toJSON());
+    //             });
+    //                  // offers
+    //           await  axios
+    //             .get(`http://badaelonline.com/backend/public/`)
+    //             .then((res) => {
+    //                 this.all = res.data;
+    //                 console.log('all: ',  res.data);
                     
                     
-                })
-                .catch(function (error) {
-                    console.warn(' Error home badaal ', error.toJSON());
-                });
-        },
+    //             })
+    //             .catch(function (error) {
+    //                 console.warn(' Error home badaal ', error.toJSON());
+    //             });
+    //     },
         /* selectItem(i) {
             this.activeItem = i;
           
@@ -570,7 +570,7 @@ export default {
         },
     }, 
     created() {
-        this.fetch();
+        // this.fetch();
     },
   computed: {
         ...mapState([ 'brands','Product','Brands','page_Brands','Stories','Categories','page_Categories']),
