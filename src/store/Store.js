@@ -32,6 +32,7 @@ const store = createStore({
         MedicalDevice: [],
         Hospitals: [],
         Specialty: [],
+        Offers: [],
         doctor: null,
         ////////////////
         Section: SectionData.Section,
@@ -178,6 +179,9 @@ const store = createStore({
         },
         SET_Specialty(state, Specialty) {
             state.Specialty = Specialty;
+        },
+        SET_Offers(state,Offers){
+            state.Offers = Offers;
         },
         //auth
         SET_TOKEN(state, token) {
@@ -428,6 +432,18 @@ const store = createStore({
                     console.log('DoctorById :', res);
                     let doctor = res;
                     commit('SET_Doctor', doctor);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadOffers({ commit }) {
+            axios
+                .get(`/api/offer?lang=${lang}`)
+                .then((res) => {
+                    console.log('Offers :', res.data.Offer.data);
+                    let Offers =res.data.Offer.data;
+                    commit('SET_Offers', Offers);
                 })
                 .catch(function (error) {
                     console.log('Error: ', error);

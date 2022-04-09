@@ -10,20 +10,21 @@
         </div>
         <div class="child2">
             <div
-                v-for="store in Stories.slice(0, 4)"
-                :key="store.pr"
-                :store="store"
+                v-for="offer in Offers"
+                :key="offer.pr"
+                :offer="offer"
                 style="margin-bottom: 50px"
             >
                 <div class="ch2">
                     <div class="date">
-                        <div>15/8/2021</div>
-                        08:30 AM
-                        <div></div>
+                        <div>{{offer.started_at}}</div>
+                        <div>{{offer.ended_at}}</div>
                     </div>
-                    <div class="title">
-                        الریم سنتر- سوبر ماركت
-                        <img
+                    <div class="title" v-for="storeproduct in offer.store_product" :key="storeproduct.pr">
+                        <div v-for="storeproduct1 in storeproduct.store.store_translation" :key="storeproduct1.pr">
+                            {{storeproduct1.name}}
+                        </div>
+                         <img
                             class="rounded-circle"
                             src="../../../public/img/market-logo.png"
                             height="70"
@@ -32,22 +33,18 @@
                 </div>
                 <div class="card" style="margin-top: 40px">
                     <div class="discription">
-                        الشامبو الأفضل لمعالجة القشرة یحتوي على كربونات الزنك ,
-                        یساعد على محاربة القشور عن طریق ترطیب فروة الرأس حسم 10
-                        % على جمیع أنواع الشامبو
+                        {{offer.short_desc}}
                     </div>
-                    <span class="name">Head & Shoulders</span>
-                    <hr class="hr" />
+                    <!-- <span class="name">Head & Shoulders</span> -->
+                    <!-- <hr class="hr" /> -->
                     <div class="conten_price">
                         <div>
-                            <span
+                            <span v-for="storeproduct in offer.store_product" :key="storeproduct.pr"
                                 style="
                                     text-decoration-line: line-through;
-                                    opacity: 0.5;
-                                "
-                                >5500</span
-                            >
-                            <span>4900 ل.س</span>
+                                    opacity: 0.5;"
+                                >{{ storeproduct.price }}</span>
+                            <span>{{offer.offer_price}} ل.س</span>
                         </div>
 
                         <div>
@@ -87,11 +84,11 @@
                             <span class="follow">الأعجاب بالعرض</span>
                         </div>
                     </div>
-                    <div class="action">
+                    <!-- <div class="action">
                         <h5>70.000</h5>
                         <h5>30</h5>
                         <h5>120.000</h5>
-                    </div>
+                    </div> -->
                     <div class="contact">
                         <div></div>
                         <div class="get_offer">أطلب العرض</div>
@@ -164,7 +161,7 @@
 <script>
 // import $ from 'jquery';
 import { mapState } from 'vuex';
-import axios from 'axios';
+// import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
 export default {
     props: ['id', 'title', 'section', 'Product', 'brand'],
@@ -189,7 +186,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(['Sections', 'Stores','Stories']),
+        ...mapState(['Sections', 'Stores','Stories','Offers']),
         // Stores: function() {
         //     if (this.selectedCategory.length == 0)
         //         return this.$store.state.stores;
@@ -208,9 +205,9 @@ export default {
         // },
     },
     mounted() {
-        // this.$store.dispatch('loadStores');
+        this.$store.dispatch('loadOffers');
         this.$store.dispatch('loadSections');
-
+        
         window.onscroll = function () {
             var menu_btn = document.getElementById('menu_btn');
             var side = document.getElementById('side');
@@ -261,22 +258,20 @@ export default {
         gotoview: function (i, t, w) {
             this.$router.push(`visitStore/${i}/${t}/${w}`);
         },
-        fetch() {
-            // let lang = window.localStorage.getItem('lang');
-                axios
-                .get(`/api/offers`)
-                .then((res) => {
-                    this.Offers = res.data.Offer.data;
-                    console.log('Offer: ',  res.data.Offer.data);
-                })
-                .catch(function (error) {
-                    console.warn('------ Error ------: ', error);
-                });
-        },
+        // fetch() {
+        //         axios
+        //         .get(`http://127.0.0.1:8000/api/offer`)
+        //         .then((res) => {
+        //             this.Offers = res.data.Offer.data;
+        //             console.log('Offer: ',  res.data.Offer.data);
+        //         })
+        //         .catch(function (error) {
+        //             console.log('------ Error ------: ', error);
+        //         });
+        // },
     },
     created() {
-        this.fetch();
-        
+        // this.fetch();
     },
 };
 </script>
@@ -304,20 +299,25 @@ export default {
     font-weight: bold;
     opacity: 0.8;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    gap: 20px;
 }
 .parent .child2 .ch2 .title::after {
     content: 'السويداء-طريق القنوات';
     position: absolute;
     opacity: 0.4;
-    top: 46px;
-    right: 70px;
+    top: 60px;
+    right: 100px;
 }
 .parent .child2 .ch2 .title::before {
     content: 'الجمال والعناية بالبشرة';
     position: absolute;
     opacity: 0.4;
-    top: 68px;
-    right: 70px;
+    top: 85px;
+    right: 100px;
 }
 
 .parent .child2 .date {
