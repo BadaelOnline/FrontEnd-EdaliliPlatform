@@ -159,7 +159,7 @@
 <script>
 // import $ from 'jquery';
 import { mapState } from 'vuex';
-import axios from 'axios';
+// import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
 export default {
     props: ['id', 'title', 'section', 'Product', 'brand'],
@@ -176,7 +176,7 @@ export default {
     },
     data() {
         return {
-            Offers: [],
+            // Offers: [],
             Sections: [],
             viewProductsInStore: [],
             rating: 0,
@@ -185,7 +185,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(['Sections', 'Stores','Stories']),
+        ...mapState(['Sections', 'Stores','Stories','Offers']),
         // Stores: function() {
         //     if (this.selectedCategory.length == 0)
         //         return this.$store.state.stores;
@@ -204,7 +204,7 @@ export default {
         // },
     },
     mounted() {
-        // this.$store.dispatch('loadOffers');
+        this.$store.dispatch('loadOffers');
         this.$store.dispatch('loadSections');
         
         window.onscroll = function () {
@@ -257,20 +257,20 @@ export default {
         gotoview: function (i, t, w) {
             this.$router.push(`visitStore/${i}/${t}/${w}`);
         },
-        fetch() {
-                axios
-                .get(`http://127.0.0.1:8000/api/offer/getAll`)
-                .then((res) => {
-                    this.Offers = res.data.Offer.data;
-                    console.log('Offer: ',  res.data.Offer.data);
-                })
-                .catch(function (error) {
-                    console.log('------ Error ------: ', error);
-                });
-        },
+        // fetch() {
+        //         axios
+        //         .get(`http://127.0.0.1:8000/api/offer/getAll`)
+        //         .then((res) => {
+        //             this.Offers = res.data.Offer.data;
+        //             console.log('Offer: ',  res.data.Offer.data);
+        //         })
+        //         .catch(function (error) {
+        //             console.log('------ Error ------: ', error);
+        //         });
+        // },
     },
     created() {
-        this.fetch();
+        // this.fetch();
     },
 };
 </script>
