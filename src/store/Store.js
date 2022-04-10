@@ -439,7 +439,7 @@ const store = createStore({
         },
         loadOffers({ commit }) {
             axios
-                .get(`/api/offer?lang=${lang}`)
+                .get(`/api/offer/getAll?lang=${lang}`)
                 .then((res) => {
                     console.log('Offers :', res.data.Offer.data);
                     let Offers =res.data.Offer.data;

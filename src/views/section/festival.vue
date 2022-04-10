@@ -20,11 +20,9 @@
                         <div>{{offer.started_at}}</div>
                         <div>{{offer.ended_at}}</div>
                     </div>
-                    <div class="title" v-for="storeproduct in offer.store_product" :key="storeproduct.pr">
-                        <div v-for="storeproduct1 in storeproduct.store.store_translation" :key="storeproduct1.pr">
-                            {{storeproduct1.name}}
-                        </div>
-                         <img
+                    <div class="title" v-for="storeproduct in offer.store_product_details" :key="storeproduct.pr">
+                            {{storeproduct.store_product.store.name}}
+                        <img
                             class="rounded-circle"
                             src="../../../public/img/market-logo.png"
                             height="70"
@@ -39,7 +37,7 @@
                     <!-- <hr class="hr" /> -->
                     <div class="conten_price">
                         <div>
-                            <span v-for="storeproduct in offer.store_product" :key="storeproduct.pr"
+                            <span v-for="storeproduct in offer.store_product_details" :key="storeproduct.pr"
                                 style="
                                     text-decoration-line: line-through;
                                     opacity: 0.5;"
@@ -161,7 +159,7 @@
 <script>
 // import $ from 'jquery';
 import { mapState } from 'vuex';
-// import axios from 'axios';
+import axios from 'axios';
 import { defineAsyncComponent } from 'vue';
 export default {
     props: ['id', 'title', 'section', 'Product', 'brand'],
@@ -178,6 +176,7 @@ export default {
     },
     data() {
         return {
+            Offers: [],
             Sections: [],
             viewProductsInStore: [],
             rating: 0,
@@ -186,7 +185,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(['Sections', 'Stores','Stories','Offers']),
+        ...mapState(['Sections', 'Stores','Stories']),
         // Stores: function() {
         //     if (this.selectedCategory.length == 0)
         //         return this.$store.state.stores;
@@ -205,7 +204,7 @@ export default {
         // },
     },
     mounted() {
-        this.$store.dispatch('loadOffers');
+        // this.$store.dispatch('loadOffers');
         this.$store.dispatch('loadSections');
         
         window.onscroll = function () {
@@ -258,20 +257,20 @@ export default {
         gotoview: function (i, t, w) {
             this.$router.push(`visitStore/${i}/${t}/${w}`);
         },
-        // fetch() {
-        //         axios
-        //         .get(`http://127.0.0.1:8000/api/offer`)
-        //         .then((res) => {
-        //             this.Offers = res.data.Offer.data;
-        //             console.log('Offer: ',  res.data.Offer.data);
-        //         })
-        //         .catch(function (error) {
-        //             console.log('------ Error ------: ', error);
-        //         });
-        // },
+        fetch() {
+                axios
+                .get(`http://127.0.0.1:8000/api/offer/getAll`)
+                .then((res) => {
+                    this.Offers = res.data.Offer.data;
+                    console.log('Offer: ',  res.data.Offer.data);
+                })
+                .catch(function (error) {
+                    console.log('------ Error ------: ', error);
+                });
+        },
     },
     created() {
-        // this.fetch();
+        this.fetch();
     },
 };
 </script>
