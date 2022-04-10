@@ -21,7 +21,7 @@
                         <div>{{offer.ended_at}}</div>
                     </div>
                     <div class="title" v-for="storeproduct in offer.store_product_details" :key="storeproduct.pr">
-                            {{storeproduct.store_product.store.name}}
+                            {{storeproduct.store_product.name}}
                         <img
                             class="rounded-circle"
                             src="../../../public/img/market-logo.png"
