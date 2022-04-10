@@ -7,18 +7,6 @@
         >
             <div id="loader" class="loader"></div>
         </div>
-
-        <div
-            v-if="authenticated"
-            class="alert animate__animated animate__swing"
-            id="alert"
-        >
-            <i
-                class="fa fa-check-square"
-                style="font-size: 22px; margin: 10px"
-            ></i>
-            <span>Success Login</span>
-        </div>
         <top_header />
         <center_header />
         <bottom_header />
@@ -27,7 +15,6 @@
 
 <script>
 // import $ from 'jquery';
-import { mapGetters, mapActions } from 'vuex';
 import jeson from '@/jeson/MOCK_DATA.json';
 import top_header from '@/components/header/top_header.vue';
 import center_header from '@/components/header/center_header';
@@ -42,19 +29,13 @@ export default {
     },
     props: ['title', 'description', 'id', 'price'],
     data() {
-        const lang = localStorage.getItem('lang') || 'en';
+        const lang = localStorage.getItem('lang') || 'ar';
         const token = localStorage.getItem('token');
         const server = localStorage.getItem('server') || 'admin';
         return {
             lang: lang,
             server: server,
             token: token,
-            form: {
-                name: '',
-                email: '',
-                password: '',
-                error: '',
-            },
             reg: /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
             statusEmail: null,
             statusPass: null,
@@ -77,61 +58,9 @@ export default {
         cartItemCount() {
             return this.$store.state.cartItemCount;
         },
-        ...mapGetters({
-            authenticated: 'authenticated',
-            user: 'user',
-        }),
+
     },
     methods: {
-        showPass() {
-            var x = document.getElementById('myInput');
-            if (x.type === 'password') {
-                x.type = 'text';
-            } else {
-                x.type = 'password';
-            }
-        },
-        showPass2() {
-            var x = document.getElementById('myInput2');
-            if (x.type === 'password') {
-                x.type = 'text';
-            } else {
-                x.type = 'password';
-            }
-        },
-        openForm() {
-            document.getElementById('myForm').style.display = 'block';
-            document.getElementById('myForm2').style.display = 'block';
-            document.getElementById('myForm2').classList.add('animate__fadeInRight');
-            document.getElementById('myForm').classList.add('animate__fadeInRight');
-        },
-        closewarn() {
-            document.getElementById('warn').style.display = 'none';
-        },
-        registerForm() {
-            document.getElementById('myForm').style.zIndex = 8;
-            document.getElementById('myForm2').style.zIndex = 9;
-        },
-        loginrForm() {
-            document.getElementById('myForm').style.zIndex = 9;
-            document.getElementById('myForm2').style.zIndex = 8;
-        },
-        closeForm() {
-            document
-                .getElementById('myForm2')
-                .classList.add('animate__fadeOut');
-            document.getElementById('myForm').classList.add('animate__fadeOut');
-            setTimeout(function () {
-                document
-                    .getElementById('myForm2')
-                    .classList.remove('animate__fadeOut');
-                document
-                    .getElementById('myForm')
-                    .classList.remove('animate__fadeOut');
-                document.getElementById('myForm').style.display = 'none';
-                document.getElementById('myForm2').style.display = 'none';
-            }, 1000);
-        },
         gotocart() {
             this.$router.push(`/Cart`);
         },
@@ -179,61 +108,10 @@ export default {
             localStorage.setItem('server', event.target.value);
             window.location.reload();
         },
-        ...mapActions({
-            signOutActions: 'signOut',
-        }),
-        // auth logout
-        signOut() {
-            this.signOutActions().then(() => {
-                document
-                    .getElementById('content_loader')
-                    .classList.remove('hidden');
-
-                setTimeout(function () {
-                    if (localStorage.getItem('token') == null) {
-                        document
-                            .getElementById('content_loader')
-                            .classList.add('hidden');
-                    }
-                }, 1000);
-                this.$router.replace({
-                    name: 'home',
-                });
-            });
-        },
-        ...mapActions({
-            signIn: 'signIn',
-            register: 'register',
-        }),
-        submit() {
-            if (this.statusEmail == true && this.statusPass == true) {
-                this.signIn(this.form);
-
-                document
-                    .getElementById('content_loader')
-                    .classList.remove('hidden');
-                setTimeout(function () {
-                    document.getElementById('alert').style.display = 'none';
-                }, 5000);
-            }
-        },
-        submit1() {
-            if (this.statusEmail == true && this.statusPass == true) {
-                this.register(this.form);
-                document
-                    .getElementById('content_loader')
-                    .classList.remove('hidden');
-
-                setTimeout(function () {
-                    document
-                        .getElementById('content_loader')
-                        .classList.add('hidden');
-                }, 3000);
-                setTimeout(function () {
-                    window.location.reload();
-                }, 3000);
-            }
-        },
+       
+   
+     
+       
     },
     mounted(){
      
@@ -246,19 +124,6 @@ export default {
 <style scoped>
 * {
     font-size: 15px;
-}
-.alert {
-    justify-content: center;
-    font-size: 18px;
-    left: 35%;
-    position: fixed;
-    top: 41%;
-    z-index: 77;
-    width: 400px;
-    height: 68px;
-    background-color: #a7d9a7;
-    color: #017701;
-    border-radius: 7px;
 }
 .warnig_pass {
     color: red;
@@ -312,6 +177,7 @@ export default {
     padding: 0;
 
 }
+
 .background {
     display: grid;
     align-content: space-between;

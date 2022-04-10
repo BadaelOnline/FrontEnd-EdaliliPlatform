@@ -14,18 +14,19 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'normalize.css';
 import '../public/fontawesome-free-5.15.1-web/css/all.css';
+import "../public/css/icofont.css";
 import "jquery";
 // Swiper style : navigation and  pagination
 import '../src/assets/css/navigation.scss';
 import '../src/assets/css/pagination.scss';
-
+import Notifications from '@kyvg/vue3-notification'
 // import VueCardCarousel from
 require('./store/subscriber');
 // store.dispatch('attempt', localStorage.getItem('token'));
 //  axios.defaults.headers['Accept-Language'] = lang;
 
 const lang: string = localStorage.getItem('lang') || 'en';
-const server: string = localStorage.getItem('server') || 'admin';
+const server: string = localStorage.getItem('server') || 'edalily';
 document.documentElement.lang = lang;
 store.dispatch('attempt', localStorage.getItem('token')).then(() => {
     Aos.init();
@@ -38,7 +39,7 @@ store.dispatch('attempt', localStorage.getItem('token')).then(() => {
     axios.defaults.headers.common = {
         Authorization: `bearer ${localStorage.getItem('token')}`,
     };
-    const app = createApp(App).use(store).use(VueLazyLoad).use(router, axios).use(i18n, VueI18n);
+    const app = createApp(App).use(store).use(Notifications).use(VueLazyLoad).use(router, axios).use(i18n, VueI18n);
     app.config.globalProperties.axios = axios;
 
     app.mount('#app');

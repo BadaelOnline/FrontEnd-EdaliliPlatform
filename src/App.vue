@@ -1,9 +1,20 @@
 <template>
      <!-- <AppHeader />  -->
     <Header /> 
+    <notifications group="foo" 
+    position="top center" 
+    class="notifications" />
+    <div id="spiner" class="spiner">
+    <img class="img1" src="../public/img/Icons/ED.svg" alt="">
+    <img class="img2" src="../public/img/Icons/Needle.svg" alt="">
+  </div>
     <router-view />
     <AppFooter v-if="this.$route.path !== '/signin'" />
+    
 </template>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap');
+</style> 
 <script>
 import { defineAsyncComponent } from 'vue';
 // import $  from "jquery";
@@ -17,24 +28,43 @@ export default {
             import(`@/components/Footer/AppFooter.vue`)
         ),
 },
+  mounted() {
+var body =  document.getElementById("body");
+    if( localStorage.getItem('lang') == 'ar'){
+body.style.setProperty("--main-dirction","rtl")
+}
+else{
+body.style.setProperty("--main-dirction","ltr");
+}
+  },
 
 }
-
 
 </script>
 <style lang="scss">
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 :root {
-    --bl: #247ba0;
-    --r: #fb3640;
-    --rhead:#df222a;
+    --bl: #247BA0;
+    --r: #ED1C24;
+    --rhead:#ED1C24;
 }
 #app {
-    font-family: Zen Tokyo Zoo;
+    font-family: 'Tajawal', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     // color: #11559d;
     font-size: 16px;
+}
+body {
+  font-family: "Amiri", serif;
+  margin: 0;
+  direction: var(--main-dirction);
+  background-color: #00000005;
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
@@ -50,5 +80,56 @@ export default {
 }
 /* Extra large devices (large desktops, 1200px and up)  */
 @media (min-width: 1200px) {
+}
+.spiner{
+  position: fixed;
+  left: 50%;
+  top: 45%;
+  transform: translateX(-50%);
+  width: 151px;
+  display: flex;
+  z-index: 1000;
+  display: none;
+  .img1{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .img2{
+    position: relative;
+    left: 60%;
+    animation: mymove 2s infinite linear;
+  }
+}
+@keyframes mymove {
+  from {transform: rotateZ(0deg);}
+  to   {transform: rotateZ(360deg);}
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.vue-notification {
+  font-size: 22px !important;
 }
 </style>

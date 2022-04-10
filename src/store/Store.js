@@ -17,6 +17,16 @@ const store = createStore({
         page_Categories: null,
         Stores: [],
         store: [],
+        // ____________ start activities ____________
+        activities: [],
+        activityId: [],
+        plans: [],
+        plansId: [],
+        Trait: [],
+        currencies:[],
+        attachment:[],
+        payments:[],
+        // ____________ end activities ____________
         Sections: [],
         Product: [],
         ProductID: [],
@@ -123,6 +133,30 @@ const store = createStore({
         SET_Store(state, store) {
             state.store = store;
         },
+        SET_activities(state, activities) {
+            state.activities = activities;
+        },
+        SET_activityId(state, activityId) {
+            state.activityId = activityId;
+        },        
+        SET_plans(state, plans) {
+            state.plans = plans;
+        },
+        SET_plansId(state, plansId) {
+            state.plansId = plansId;
+        },
+        SET_Trait(state, Trait) {
+            state.Trait = Trait;
+        },
+        SET_currencies(state, currencies) {
+            state.currencies = currencies;
+        },
+        SET_attachment(state, attachment) {
+            state.attachment = attachment;
+        },
+        SET_payments(state, payments) {
+            state.payments = payments;
+        },
         SET_Products(state, Product) {
             state.Product = Product;
         },
@@ -201,6 +235,102 @@ const store = createStore({
         },
         removeItem: (context, payload) => {
             context.commit('removeItem', payload);
+        },
+        loadactivities({ commit }) {
+            axios
+                .get(`api/activity_type/activity`)
+                .then((res) => {
+                    // console.log('activities :', res.data);
+                    let activities = res.data;
+                    commit('SET_activities', activities);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadactivityId({ commit }, Id) {
+            axios
+                .get(`api/activity_type/get-by-activity/${Id}`)
+                .then((res) => {
+                    // console.log('activityId :', res.data.activity_Type);
+                    let activityId = res.data.activity_Type;
+                    commit('SET_activityId', activityId);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadPlans({ commit }) {
+            axios
+                .get(`/api/plans/get`)
+                .then((res) => {
+                    // console.log('plans :', res.data.plan);
+                    let plans = res.data.plan;
+                    commit('SET_plans', plans);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadPlansId({ commit }, Id) {
+            axios
+                .get(`/api/plans/get-by-activity/${Id}`)
+                .then((res) => {
+                    // console.log('plansId :', res.data.plan);
+                    let plansId = res.data.plan;
+                    commit('SET_plansId', plansId);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadTraitStore({ commit }) {
+            axios
+                .get(`/api/sections/get`)
+                .then((res) => {
+                    // console.log('Trait :', res.data.Section);
+                    let Trait = res.data.Section;
+                    commit('SET_Trait', Trait);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadcurrencies({ commit }) {
+            axios
+                .get(`/api/currencies/get`)
+                .then((res) => {
+                    // console.log('currencies :', res.data.Currency);
+                    let currencies = res.data.Currency;
+                    commit('SET_currencies', currencies);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadattachmentId({ commit }, Id) {
+            axios
+                .get(`api/attachments/get-by-activity/${Id}`)
+                .then((res) => {
+                    // console.log('attachment :', res.data.attachment);
+                    let attachment = res.data.attachment;
+                    commit('SET_attachment', attachment);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loapayments({ commit }) {
+            axios
+                .get(`/api/payments/get`)
+                .then((res) => {
+                    // console.log('payments :', res.data.payments);
+                    let payments = res.data.payments;
+                    commit('SET_payments', payments);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
         },
         loadStores({ commit }) {
             axios
@@ -453,21 +583,16 @@ const store = createStore({
         async signIn({ dispatch }, Credentials) {
             let res = await axios
                 .post(
-                    'http://edalili.e-dalely.com/public/api/auth/login',
+                    '/api/auth/login',
                     Credentials
                 )
+                .then((res) => {
+                    console.log('res_sign_In :', res.data);
+                    dispatch('attempt', res.data.user["1"]);
+                })
                 .catch(function (error) {
-                    if (error.response) {
-                        console.log(error.response.data);
-                        if (error.response.data.error == 'Unauthorized') {
-                            alert('invaild Email Make Sure Your Email');
-                            window.location.reload();
-                        }
-                        console.log(error.response.status);
-                    }
+                    console.log('Error_sign_In: ',error);
                 });
-
-            return dispatch('attempt', res.data.access_token);
         },
         async attempt({ commit, state }, token) {
             if (token) {
@@ -489,25 +614,30 @@ const store = createStore({
             //     commit('SET_USER', null);
             // }
         },
-        signOut({ commit }) {
-            const token = localStorage.getItem('token');
-            return axios.post(`api/auth/logout?${token}`).then(() => {
-                commit('SET_TOKEN', null);
-                commit('SET_USER', null);
-            });
+        //__________ Register _______
+        async  register({ dispatch }, Credentials) {
+            const headers = {
+                'Content-Type': 'application/json',
+              }
+            await axios
+            .post(
+                'api/auth/register',
+                Credentials,
+                {headers: headers}
+            )
+                .then((res) => {
+                    console.log('res_rigster :', res.data);
+                    dispatch('attempt', res.data.access_token);
+                })
+                .catch(function (error) {
+                    console.log('Error_res_rigster: ',error);
+                });
         },
-        //Register
-        async register({ dispatch }, Credentials) {
-            let res = await axios.post(
-                'http://edalili.e-dalely.com/public/api/auth/register',
-                Credentials
-            );
-            console.log(res.data);
-            return dispatch('attempt1', res.data.access_token);
-        },
-        async attempt1({ commit }, token) {
+        async attemp({ commit  }, token) {
+            if (token) {
+                commit('SET_TOKEN', token);
+            }
             console.log(token);
-            commit('SET_TOKEN1', token);
             // try {
             //   let res = await axios.get("auth/me", {
             //     headers: {

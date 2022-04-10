@@ -115,12 +115,10 @@ export default {
     opacity: .8;
     cursor: pointer;
 }
- 
+
 /* Medium devices (tablets, 768px and up) */
 @media  (max-width: 991.98px) {
-.cu5{
-    display: none;
-}
+
 .bottom_header {
     display: flex;
    flex-flow: wrap;
