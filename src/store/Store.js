@@ -579,9 +579,18 @@ const store = createStore({
                     console.log('Error: ', error);
                 });
         },
-        //auth
-        async signIn({ dispatch }, Credentials) {
-            let res = await axios
+         //auth 
+        //  __________ signOut _______
+        signOut({ commit }) {
+            const token = localStorage.getItem('token');
+            return axios.post(`api/auth/logout?${token}`).then(() => {
+                commit('SET_TOKEN', null);
+                commit('SET_USER', null);
+            });
+        },
+        //__________ signIn _______
+        async  signIn({ dispatch }, Credentials) {
+            await axios
                 .post(
                     '/api/auth/login',
                     Credentials
