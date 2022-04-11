@@ -5,11 +5,11 @@
                 <div class="first-card">
                     <div class="folowers">
                         <ul>
-                            <li><Icon icon="subway:netwark" /> <span>0 متابعين</span></li>
+                            <li><Icon icon="ooui:network" style="transform: rotateZ(45deg);" /> <span>0 متابعين</span></li>
                             <li><Icon icon="carbon:phone-filled" /> <span>+963 16 322 555</span></li>
                             <li><Icon icon="bx:mobile" /> <span>+963 992 123 456</span></li>
-                            <li><Icon icon="eva:car-outline" /> <span>شحن وتوصيل متوفر ضمن المدينة و باقي المحافظات</span></li>
-                            <li class="open-time"><Icon icon="bx:time-five" /> <span>10 AM - 10 PM مفتوح</span></li>
+                            <li><Icon icon="ri:truck-line" /> <span>شحن وتوصيل متوفر ضمن المدينة و باقي المحافظات</span></li>
+                            <li class="open-time"><Icon icon="bx:time-five" /><span class="open"><strong>10 AM - 10 PM</strong> مفتوح</span></li>
                         </ul>
                     </div>
                     <div class="location">
@@ -18,7 +18,7 @@
                             <span>ريف دمشق - جرمانا - ساحة الرئيس - بجانب بنك بيمو</span>
                         </div>
                     <!--Google map-->
-                    <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 100%">
+                    <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 250px">
                     <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
                         style="width: 100%;height: 100%;" allowfullscreen></iframe>
                     </div>
@@ -30,68 +30,82 @@
                       <div class="rating-user">
                           <h5>مراجعات المستخدمين للمتجر</h5>
                           <div class="rating">
-                                <Icon icon="emojione:star" />
-                                <Icon icon="emojione:star" />
-                                <Icon icon="emojione:star" />
-                                <Icon icon="emojione:star" />
-                                <Icon icon="emojione:star" /> 
+                                <Icon icon="carbon:star-filled" />
+                                <Icon icon="carbon:star-filled" />
+                                <Icon icon="carbon:star-filled" />
+                                <Icon icon="carbon:star-filled" />
+                                <Icon icon="carbon:star-filled" />
                                 <span> 5 من 5</span>
                           </div>
                           <div class="rate">
                             <div>
                                   <span>5 نجوم</span>
-                                  <span>
+                                  <span class="star-rate">
+                                   
+                                    <span>
+                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
-                                   <Icon icon="carbon:star-filled" />
+                                   </span>
                                     <span>(20)</span>
                                   </span>
                             </div>
                             <div>
                                   <span>4 نجوم</span>
-                                  <span>
-                                   <Icon icon="carbon:star-filled" />
+                                  <span class="star-rate">
+                                       <span>
+                                           <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
+                                       </span>
+                                   
 
                                     <span>(0)</span>
                                   </span>
                             </div>
                             <div>
                                   <span>3 نجوم</span>
-                                  <span>
-                                   <Icon icon="carbon:star-filled" />
+                                  <span class="star-rate">
+                                       <span>
+                                            <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
+                                       </span>
+                                  
 
                                     <span>(0)</span>
                                   </span>
                             </div>
                             <div>
                                   <span>نجمتان</span>
-                                  <span>
+                                  <span class="star-rate">
+                                       <span>
+                                           <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" />
-                                   <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
+                                       </span>
+                                   
                                     <span>(0)</span>
                                   </span>
                             </div>
                             <div>
                                   <span>نجمة واحدة</span>
-                                  <span>
-                                   <Icon icon="carbon:star-filled" />
+                                  <span class="star-rate">
+                                   <span>
+                                    <Icon icon="carbon:star-filled" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
                                    <Icon icon="carbon:star-filled" class="un-checked" />
+                                   </span>
                                     <span>(0)</span>
                                   </span>
                             </div>
@@ -137,7 +151,7 @@
 import { Icon } from '@iconify/vue';
 // import $ from 'jquery';
 export default {
-    name: 'aboutstore',
+    name: 'about',
     data() {
         return {
         };
@@ -185,15 +199,19 @@ $ButtonColor: #247ba0;
             color: #808080;
             font-size: 20px;
         }
-    .open-time{
-        color: $ButtonColor;
-        font-weight: 500;
-    }
+    
     &:nth-child(1){
         span{
         color: #808080;   
         }
     }
+    }
+    .open-time{
+        .open{
+        margin-inline-start: 5px;
+        color: $ButtonColor;
+        font-weight: 500;
+        }
     }
     }
     }
@@ -220,7 +238,7 @@ $ButtonColor: #247ba0;
         color: #ffce31;
     }  
     svg.un-checked{
-        color: #E8E8E8;
+        color: #d2d2d2;
     }
     padding: 20px;
     background-color: #fff;
@@ -260,6 +278,9 @@ $ButtonColor: #247ba0;
                 }
                 span{
                     font-weight: 500;
+                }
+                .star-rate{
+                   width: 150px;
                 }
             }
         }
@@ -324,6 +345,7 @@ $ButtonColor: #247ba0;
             margin: 0 10px;
             .date{
                 color: #808080;
+                margin-block-start: -5px;
             }
         }
         .proccess-pay{

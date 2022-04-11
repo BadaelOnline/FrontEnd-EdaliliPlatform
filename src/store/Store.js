@@ -580,11 +580,11 @@ const store = createStore({
                     Credentials
                 )
                 .then((res) => {
-                    console.log('res_sign_In :', res.data);
+                    console.log('login_In :', res.data);
                     dispatch('attempt', res.data.user["1"]);
                 })
                 .catch(function (error) {
-                    console.log('Error_sign_In: ',error);
+                    console.log('login_In: ',error);
                 });
         },
         async attempt({ commit, state }, token) {

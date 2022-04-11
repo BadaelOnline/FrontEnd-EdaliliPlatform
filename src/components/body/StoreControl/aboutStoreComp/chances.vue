@@ -157,7 +157,7 @@
 import { Icon } from '@iconify/vue';
 import $ from 'jquery';
 export default {
-    name: 'aboutstore',
+    name: 'chances',
     data() {
         return {
         showChanceState:null,
@@ -234,9 +234,9 @@ background-color: #e8e8e8;
         padding: 0;
         transition: .5s;
         &.active{
-            height: 430px;
+            height: 450px;
             overflow: visible;
-            padding: 10px 0;
+            padding: 20px 0;
             @media (max-width: 767.98px) {
                 height: auto;
             }
@@ -252,8 +252,10 @@ background-color: #e8e8e8;
             div{
             display: flex;
             flex-direction: column; 
+            margin-bottom: 10px;
             label{
             color: #808080;
+            margin-bottom: 5px;
             }
             input{
                 background: #FFFFFF;
@@ -282,6 +284,7 @@ background-color: #e8e8e8;
             display: flex;
             flex-direction: row;
             align-items: center;
+            margin-bottom: 0;
             width: 100%;
             span{
                 color: #808080;
@@ -295,6 +298,7 @@ background-color: #e8e8e8;
             display: flex;
             flex-direction: row;
             align-items: center;
+            margin: 0;
             label{
                 margin-bottom: 0;
                 margin-inline-end: 10px;
@@ -339,7 +343,7 @@ font-size: 16px;
 line-height: 19px;
 text-align: start;
 color: #000000;
-margin: 20px 0;
+margin: 20px 0 10px;
 }
 .last-chance-item{
 width: 100%;
@@ -412,7 +416,7 @@ transition: .5s;
         transition: .3s;
         cursor: pointer;
         &:hover{
-            color: $ButtonColor;
+            color: #000;
         }
     }
 }
@@ -449,7 +453,7 @@ transition: .5s;
 }
 .fotter{
     position: absolute;
-    bottom: -2px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;

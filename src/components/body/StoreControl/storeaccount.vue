@@ -267,9 +267,12 @@ export default {
     display: none;
     }
     .smsidebar{
-    display: none;
     background: #1C2C34;
     color: #fff;
+    /* Medium devices (tablets, 768px and up) */
+    @media (min-width: 991.98px)  {
+         display: none !important;
+    }
     @media  (max-width: 991.98px) {
     width: 40px;
     height: 50px;

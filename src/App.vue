@@ -41,6 +41,9 @@ body.style.setProperty("--main-dirction","ltr");
 }
 
 </script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap');
+</style> 
 <style lang="scss">
 * {
   -webkit-box-sizing: border-box;
@@ -54,14 +57,12 @@ body.style.setProperty("--main-dirction","ltr");
 }
 #app {
     font-family: 'Tajawal', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-align: center;
     // color: #11559d;
     font-size: 16px;
 }
 body {
-  font-family: "Amiri", serif;
+  font-family: 'Tajawal', sans-serif;
   margin: 0;
   direction: var(--main-dirction);
   background-color: #00000005;

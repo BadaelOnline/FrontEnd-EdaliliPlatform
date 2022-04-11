@@ -8,16 +8,16 @@
                 <h2>Admin</h2>
             </div>
             <div class="setting">
-               <i class="fas fa-search"></i>
-               <i class="far fa-bell"></i>
-                <i class="far fa-comment"></i>
+                <Icon icon="carbon:search" />
+                <Icon icon="ion:notifications-outline" />
+                <Icon icon="bx:message-rounded" />
                 <button class="hid-lg packge">ترقية الباقة</button>
-                 <router-link class="hid-lg" to="/storeControl"> <button class="setting-form">فتح لوحة التحكم</button></router-link>
-                <i class="fas fa-sign-out-alt" style="transform: rotatey(180deg);"></i>
+                 <router-link class="hid-lg" to="/storeaccount"> <button class="setting-form">فتح لوحة التحكم</button></router-link>
+               <Icon icon="bx:log-out" />
             </div>
             <div class="sh-sm">
                 <button class=" packge">ترقية الباقة</button>
-                 <router-link to="/storeControl"> <button class="setting-form">فتح لوحة التحكم</button></router-link>
+                 <router-link to="/storeaccount"> <button class="setting-form">فتح لوحة التحكم</button></router-link>
                 </div>
         </div>
         <div
@@ -31,14 +31,14 @@
         </div>
             <div class="carousel-inner text-center">
                 <div class="carousel-item active" data-interval="2000">
-                    <img style="height: 38vw;min-height: 250px;"
+                    <img style="height:350px;background-color: #FAFF00;"
                         src=""
                         class="d-block w-100"
                         alt=""
                     />
                 </div>
                 <div class="carousel-item">
-                    <img style="height: 38vw;min-height: 250px;"
+                    <img style="height:350px;background-color: #FAFF00;"
                         src=""
                         class="d-block w-100"
                         alt=""
@@ -117,7 +117,7 @@
             <div class="category">
                 <ul class="categor">
                     <li @click="addactive('products');ShowProductSection()" :class="[sections == 'products' ? 'active' : '']">المنتجات <Icon icon="dashicons:arrow-down" /></li>
-                    <li @click="addactive('offers')" :class="[sections == 'offers' ? 'active' : '']">العروضات</li>offers
+                    <li @click="addactive('offers')" :class="[sections == 'offers' ? 'active' : '']">العروضات</li>
                     <li @click="addactive('events')" :class="[sections == 'events' ? 'active' : '']">الفعاليات</li>
                     <li @click="addactive('chances')" :class="[sections == 'chances' ? 'active' : '']">فرص العمل</li>
                     <li @click="addactive('about')" :class="[sections == 'about' ? 'active' : '']" >حول المتجر</li>
@@ -131,7 +131,7 @@
                 </button >
                 <div class="sett" v-if="sett">
                     <div><Icon icon="bx:error" /> <span>الإبلاغ عن مشكلة</span></div>
-                    <div><Icon icon="carbon:copy-link" /> <span>نسخ رابط المتجر</span></div>
+                    <div><Icon icon="akar-icons:link-chain" /> <span>نسخ رابط المتجر</span></div>
                 </div>
                 <button class="but2" @click="sett=!sett"><span><Icon icon="charm:menu-meatball" /></span></button>
             </div>
@@ -165,7 +165,7 @@ export default {
     name: 'aboutstore',
     data() {
         return {
-            sections:'about',
+            sections:'products',
             storeID: {},
             Products: [],
             ShowDetails: false,
@@ -213,6 +213,8 @@ export default {
     about: defineAsyncComponent(() => import("../StoreControl/aboutStoreComp/about.vue")),
     chances: defineAsyncComponent(() => import("../StoreControl/aboutStoreComp/chances.vue")),
     events: defineAsyncComponent(() => import("../StoreControl/aboutStoreComp/events.vue")),
+    offers: defineAsyncComponent(() => import("../StoreControl/aboutStoreComp/offers.vue")),
+    products: defineAsyncComponent(() => import("../StoreControl/aboutStoreComp/products.vue")),
     },
 
     methods:{
@@ -237,6 +239,7 @@ export default {
 </script>
 
 <style scoped>
+
 .backcover{
     background-color: rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -271,25 +274,40 @@ export default {
 .carousel-inner {
     width: 100%;
 }
+.carousel-control-next,
+.carousel-control-prev {
+    opacity: 1;
+}
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
     width: 40px;
     height: 50px;
 }
+.carousel-control-next-icon{
+    background-image: url("../../../../public/img/arrow.png");
+}
+.carousel-control-prev-icon{
+    background-image: url("../../../../public/img/arrow.png");
+    transform: rotateZ(180deg);
+}
+.carouselSlide{
+    height: 350px;
+}
 .carousel-inner {
-    background-color: #FAFF00;;
+    background-color: #FAFF00;
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19); */
 }
 </style>
 <style lang="scss" scoped>
 $ButtonColor: #247ba0;
+$HoverColor: #1D7094;
 .parent{
     
     .top{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 10px 20px;
     position: relative;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     .name{
@@ -326,28 +344,28 @@ $ButtonColor: #247ba0;
         .packge{
         border-width: 4px;
         border-style: solid;
-        background: linear-gradient(#fff,#fff) padding-box, linear-gradient(to right, #6161ff, #fd5252) border-box;
+        background: linear-gradient(#fff,#fff) padding-box, linear-gradient(to right, #fd5252, $ButtonColor) border-box;
         border: 2px solid transparent;
-        padding: 5px 10px;
+        padding: 8px 15px;
         border-radius: 50px;
         color: #DE222A;
-        transition: .3s;
-        margin: 0 5px;
+        transition: 1.5s;
+        margin: 0 10px;
         &:hover{
            color: #fff;
-           background: linear-gradient(#6161ff, #fd5252) padding-box, linear-gradient(to right, #6161ff, #fd5252) border-box;
+           background: linear-gradient(to right,#fd5252,  $ButtonColor) padding-box, linear-gradient(to right,#fd5252 , $ButtonColor) border-box;
         }
     }
     .setting-form{
         padding: 10px 15px;
         color: #fff;
-        background-color: #247BA0;
+        background-color: $ButtonColor;
         border: none;
         border-radius: 5px;
         transition: .3s;
-        margin: 0 5px;
+        margin: 0 10px;
         &:hover{
-        background-color:  #2EA9DD;
+        background-color: $HoverColor;
         }
     }
     }
@@ -369,23 +387,18 @@ $ButtonColor: #247ba0;
     .hid-lg{
         display: none;
     }   
-   
     }
-    i{
+    svg{
         color: #808080;
-        font-size: 25px;
+        font-size: 50px;
         padding: 10px;
         transition: .3s;
+        margin: 0 10px;
         &:hover{
         background-color: #eee;
         border-radius: 5px;
         cursor: pointer;
         }
-    
-    /* Small devices (landscape phones, 576px and up) */
-    @media  (max-width: 767.98px) {
-    font-size: 20px;   
-    }    
     }
     .sh-ic{
         display: none;
@@ -405,34 +418,39 @@ $ButtonColor: #247ba0;
     .packge{
         border-width: 4px;
         border-style: solid;
-        background: linear-gradient(#fff,#fff) padding-box, linear-gradient(to right, #6161ff, #fd5252) border-box;
+        background: linear-gradient(#fff,#fff) padding-box, linear-gradient(to right, #fd5252, $ButtonColor) border-box;
         border: 2px solid transparent;
-        padding: 5px 10px;
+        padding: 8px 15px;
         border-radius: 50px;
         color: #DE222A;
-        transition: .3s;
-        margin: 0 5px;
+         transition: 1.5s;
+        margin: 0 10px;
         &:hover{
            color: #fff;
-           background: linear-gradient(#6161ff, #fd5252) padding-box, linear-gradient(to right, #6161ff, #fd5252) border-box;
+           background: linear-gradient(to right,#fd5252,  $ButtonColor) padding-box, linear-gradient(to right,#fd5252 , $ButtonColor) border-box;
         }
     }
     .setting-form{
         padding: 10px 15px;
         color: #fff;
-        background-color: #247BA0;
+        background-color: $ButtonColor;
         border: none;
         border-radius: 5px;
         transition: .3s;
         margin: 0 5px;
         &:hover{
-        background-color:  #2EA9DD;
+        background-color:  $HoverColor;
         }
     }
     }
     }
 }
 .bottom{
+    display: flex;
+    justify-content: space-between;
+    // padding: 10px 20px;
+    flex-wrap: wrap;
+    position: relative;
     .product-category{
     position: absolute;
     background-color: #fff;
@@ -478,7 +496,7 @@ $ButtonColor: #247ba0;
     }
     }
     .section-ca{
-    padding: 0 5px;
+    padding: 0 10px;
     text-align: start;  
     ul{
         list-style: none;
@@ -497,14 +515,12 @@ $ButtonColor: #247ba0;
     }
     }  
     }
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    flex-wrap: wrap;
-    position: relative;
+    
     .store-name{
         display: flex;
     align-items: center;
+    padding: 10px 0;
+    padding-inline-start: 20px;
     .imag{
     width: 55px;
     height: 55px;
@@ -527,6 +543,8 @@ $ButtonColor: #247ba0;
     .categ{ 
     display: none;
     width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
     .swiper-wrapper{
         align-items: center;
         .swiper-slide{
@@ -551,9 +569,9 @@ $ButtonColor: #247ba0;
         position: absolute;
         width: 0;
         // width: 150%;
-        height: 6px;
-        background-color: #247BA0;
-        bottom: -6px;
+        height: 9px;
+        background-color: $ButtonColor;
+        bottom: -19px;
         left: 50%;
         transform: translateX(-50%);
         border-radius: 10px;
@@ -576,6 +594,8 @@ $ButtonColor: #247ba0;
     align-items: center;
     flex: 1;
     justify-content: space-around;
+    overflow: hidden;
+    padding: 10px 0;
     /* Medium devices (tablets, 768px and up) */
     @media  (max-width: 991.98px) {
         display: none;
@@ -598,9 +618,9 @@ $ButtonColor: #247ba0;
         position: absolute;
         width: 0;
         // width: 150%;
-        height: 6px;
-        background-color: #247BA0;
-        bottom: -27px;
+        height: 9px;
+        background-color: $ButtonColor;
+        bottom: -29px;
         left: 50%;
         transform: translateX(-50%);
         border-radius: 10px;
@@ -623,8 +643,10 @@ $ButtonColor: #247ba0;
     display: flex;
     align-items: center; 
     position: relative;
+    padding: 10px 0;
+    padding-inline-end: 20px;
     .but1{
-        background-color: #247BA0;
+        background-color: $ButtonColor;
         border: none;
         border-radius: 5px;
         padding: 8px 20px;
@@ -653,6 +675,9 @@ $ButtonColor: #247ba0;
                 border-radius: 5px;
                 
             }
+            span{
+                font-size: 14px;
+            }
             }
             &::after{
                 content: '';
@@ -669,7 +694,7 @@ $ButtonColor: #247ba0;
         color: #247BA0;
         background-color: #fff;
         border-radius: 5px;
-        border: 1px solid #247BA0;
+        border: 1px solid $ButtonColor;
         margin-inline-start: 10px;
 
         span{

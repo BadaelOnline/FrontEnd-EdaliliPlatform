@@ -14,9 +14,9 @@
                        <UploadImages @changed="handleImages" :max="3" />
                       <Icon icon="ep:close" class="close" @click="showAddPic = false" />
                   </div>
-                  <button><Icon icon="bxs:edit" /> إنشاء </button>
+                  <button class="create"><Icon icon="bxs:edit" /> إنشاء </button>
                   <div class="create-pict" @click="showAddPic = true"><Icon icon="uiw:picture" /> <span>صورة/فيديو</span></div>
-                  <span class="hide" @click="showEventState = false">إلفاء</span>
+                  <span class="hide" @click="showEventState = false">غ</span>
               </div>
             </div>
             <div class="last-chance-item" 
@@ -33,9 +33,9 @@
                     <div class="sett">
                         <Icon icon="entypo:dots-three-horizontal" @click="settshow = index" />
                         <div class="settshow" v-if="settshow == index">
-                            <div><Icon icon="clarity:edit-line" /><span>تعديل المنشور</span></div>
+                            <div><Icon icon="bytesize:edit" /><span>تعديل المنشور</span></div>
                             <div><Icon icon="fluent:delete-24-regular" /> <span>حذف المنشور</span></div>
-                            <div><Icon icon="mi:notification-off" /> <span>إيقاف تشغيل الإشعارات لهذا المنشور</span></div>
+                            <div><Icon icon="carbon:notification-off" /> <span>إيقاف تشغيل الإشعارات لهذا المنشور</span></div>
                             <div><Icon icon="bi:pin-angle" /><span>تثبيت المنشور في أعلى الصفحة</span></div>
                         </div>
                     </div>
@@ -51,8 +51,8 @@
                             <span>1 مشاركة </span>
                         </div>
                         <div class="share-event">
-                            <div @click="like = !like" :class="[like? 'active':'']">
-                                <Icon icon="ant-design:like-filled" v-if="like" />
+                            <div @click="like = index" :class="[like ==index ? 'active':'']">
+                                <Icon icon="ant-design:like-filled" v-if="like == index " />
                                 <Icon icon="uiw:like-o" v-else />
                                  <span >إعجاب </span>
                                  </div>
@@ -66,25 +66,30 @@
                 </div>
               </div>
                 <div class="comment-post" v-if="comment == index">
-                   <div class="fields">
+                   <div class="fields" @click="settshow2 = -1">
                         <div class="imag"></div>
                         <input type="text" placeholder="أضف تعليق...">
                    </div>
                    <div class="other-comm">
                         <div class="info">
-                             <div class="imag"></div>
-                            <div class="name">user1233</div>
-                            <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.</p>
-                            <div class="date">
+                             <div @click="settshow2 = -1" class="imag"></div>
+                            <div @click="settshow2 = -1" class="name">user1233</div>
+                            <p @click="settshow2 = -1">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.</p>
+                            <div class="date" @click="settshow2 = -1">
                                 <span>دقيقنين</span>
                                 <span class="replay" @click="replay_comment = index">رد</span>
                             </div>
-                            <div class="fields" v-if="replay_comment == index">
+                            <div class="fields" v-if="replay_comment == index" @click="settshow2 = -1">
                                 <div class="imag"></div>
                                 <input type="text">
                             </div>
                             <div class="sett">
-                                 <Icon icon="entypo:dots-three-horizontal" />
+                                 <Icon icon="entypo:dots-three-horizontal" @click="settshow2 = index" />
+                                 <div class="settshow" v-if="settshow2 == index"  >
+                                    <div><span>حذف التعليق</span></div>
+                                    <div> <span>حظر الالمستخدم</span></div>
+                                    <div><span>الإبلاغ عن التعليق</span></div>
+                                 </div>
                             </div>
                         </div>
                    </div>
@@ -98,20 +103,20 @@
 
 <script>
 
-
 import { Icon } from '@iconify/vue';
 // import $ from 'jquery';
 import UploadImages from "vue-upload-drop-images";
 export default {
-    name: 'aboutstore',
+    name: 'events',
     data() {
         return {
         settshow:-1,
+        settshow2:-1,
         showEventState:false,
         showAddPic:true,
         imgShare:[],
         file:[],
-        like:false,
+        like:-1,
         comment:-1,
         replay_comment:-1,
         share:false,
@@ -122,6 +127,7 @@ export default {
     Icon,  
     UploadImages
     },
+ 
     methods:{
         handleImages(e) {
             this.file = e;
@@ -246,6 +252,13 @@ background-color: #e8e8e8;
         &:hover{
             background: $HoverColor;
         }
+        }
+        .create{
+            font-size: 14px;
+            font-weight: bold;
+            svg{
+                font-size: 24px;
+            }
         }
         .create-pict{
             color: $ButtonColor;
@@ -545,7 +558,43 @@ transition: .5s;
             cursor: pointer;
       
         }
+
             }
+            .settshow{
+              color: #000;
+            position: absolute;
+            z-index: 5;
+            top: 106%;
+            left: 0;
+            padding: 10px;
+            background: #FFFFFF;
+            box-shadow: 0px 0px 10px #808080;
+            border-radius: 10px;
+            width: 160px;
+            height: auto;
+            display: grid;
+            text-align: start;
+            div{
+            transition: .3s;
+            cursor: pointer;
+            padding:  5px;
+            font-size: 13px;
+            &:hover{
+                background: #f0eded;
+                border-radius: 5px;
+                
+            }
+            }
+            &::after{
+                content: '';
+                border-style: solid;
+                border-width: 10px;
+                border-color: transparent transparent #FFFFFF transparent;
+                position: absolute;
+                top: -20px;
+                left: 10px;
+            }
+   }
         }
         .fields{
         display: flex;
