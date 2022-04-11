@@ -42,6 +42,7 @@ const store = createStore({
         MedicalDevice: [],
         Hospitals: [],
         Specialty: [],
+        Offers: [],
         doctor: null,
         ////////////////
         Section: SectionData.Section,
@@ -212,6 +213,9 @@ const store = createStore({
         },
         SET_Specialty(state, Specialty) {
             state.Specialty = Specialty;
+        },
+        SET_Offers(state,Offers){
+            state.Offers = Offers;
         },
         //auth
         SET_TOKEN(state, token) {
@@ -563,18 +567,21 @@ const store = createStore({
                     console.log('Error: ', error);
                 });
         },
-        //auth 
-        //  __________ signOut _______
-        signOut({ commit }) {
-            const token = localStorage.getItem('token');
-            return axios.post(`api/auth/logout?${token}`).then(() => {
-                commit('SET_TOKEN', null);
-                commit('SET_USER', null);
-            });
+        loadOffers({ commit }) {
+            axios
+                .get(`/api/offer/getAll?lang=${lang}`)
+                .then((res) => {
+                    console.log('Offers :', res.data.Offer.data);
+                    let Offers =res.data.Offer.data;
+                    commit('SET_Offers', Offers);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
         },
-        //__________ signIn _______
-        async  signIn({ dispatch }, Credentials) {
-            await axios
+        //auth
+        async signIn({ dispatch }, Credentials) {
+            let res = await axios
                 .post(
                     '/api/auth/login',
                     Credentials
