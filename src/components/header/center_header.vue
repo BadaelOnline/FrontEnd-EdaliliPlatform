@@ -689,18 +689,18 @@ export default {
                 self.signIn(self.formSign);
                 $('#spiner').css("display", "flex");
                 setTimeout(function () {
-                  if(localStorage.getItem('token') == null){
-                    $('#spiner').css("display", "none");
-                    $('#backcover').css("display", "none");
-                    $('#myForm').css("display", "none");
-                    alert("Login Failed");
-                  }
-                  else if(localStorage.getItem('token') != null){
-                    $('#spiner').css("display", "none");
-                    $('#backcover').css("display", "none");
-                    $('#myForm').css("display", "none");
-                    alert("Login Successful");
-                  }
+                    if(localStorage.getItem('token') != null){
+                        $('#spiner').css("display", "none");
+                        $('#backcover').css("display", "none");
+                        $('#myForm').css("display", "none");
+                        alert("Login Successful");
+                    }
+                    else if(localStorage.getItem('token') == null){
+                        $('#spiner').css("display", "none");
+                        $('#backcover').css("display", "none");
+                        $('#myForm').css("display", "none");
+                        alert("Login Failed");
+                    }
                 }, 3000);
             //    setTimeout(function () {
             //         window.location.reload();
