@@ -125,7 +125,9 @@
                    </div>
                </div>
                <div class="offers-contain">
+              
                <div class="offer-item" v-for="item in 4" :key="item">
+                     <router-link :to="`/productDetails`" style="color: #000000;text-decoration: none;">
                   <div class="imag"> <img src="@/../public/img/pic1.png" alt=""></div>
                   <p>هاتف ريدمي نوت 10s ثنائي الشريحة بذاكرة رام 6 جيجابايت وذاكرة داخلية 128 جيجابايت ويدعم تقنية 4G LTE أزرق محيطي - إصدار عالمي</p>
                     <div class="discount">خصم 100%</div>
@@ -141,7 +143,9 @@
                           <Icon icon="carbon:star-filled" class="checked" />
                           <span>(20)</span>
                     </div>
+                     </router-link>
                </div>
+               
            </div>
            <div class="offers-contain">
                <div class="offer-item" v-for="item in 4" :key="item">
@@ -450,6 +454,7 @@ $HoverColor: #1D7094;
             height: 481px;
             margin: 14px 5px;
             border-radius: 10px;
+            cursor: pointer;
             .imag{
                 width: 250px;
                 height: 250px;

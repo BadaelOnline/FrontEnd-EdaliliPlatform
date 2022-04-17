@@ -46,7 +46,7 @@
                   <div class="title">
                         <h4>آخر المشتركین</h4>
                     </div>
-                                <swiper class="swiper_vertical" 
+            <swiper class="swiper_vertical" 
             :direction ="'vertical'"
             :slides-per-view="1"
             :space-between="50"
