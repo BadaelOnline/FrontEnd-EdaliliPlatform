@@ -10,7 +10,7 @@
                <i class="far fa-bell"></i>
                 <i class="far fa-comment"></i>
                 <button class="packge">ترقية الباقة</button>
-                 <router-link to="/store"> <button class="setting-form">صفحة المتجر</button></router-link>
+                 <router-link to="/store/1"> <button class="setting-form">صفحة المتجر</button></router-link>
                 <i class="fas fa-sign-out-alt"></i>
             </div>
         </div> 
@@ -43,7 +43,7 @@
                      <img src="../../../../public/img/Icons/4Sales/SalesOutline.svg" alt="">
                      <span>  المبيعات</span>
                 </div>
-                <div @click="componentSidebar = 'products'"
+                <div @click="componentSidebar = 'showProduct'"
                 :class="{ active:componentSidebar === 'products'}" class="list">
                      <img src="../../../../public/img/Icons/5Products/ProductsOutline.svg" alt="">
                      <span>  المنتجات</span>
@@ -138,7 +138,6 @@ export default {
         drop2: false,
         drop3: false,
         dropside: false,
-        componentSidebar:'acount',
         };
     },
     props: [''],
@@ -146,7 +145,10 @@ export default {
     acount: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/acount.vue`)),
     order: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/order.vue`)),
     sale: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/sale.vue`)),
-    products: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/products.vue`)),
+    showProduct: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/showProduct.vue`)),
+    addProduct: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/addProduct.vue`)),
+    AssignProducts: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/AssignProducts.vue`)),
+    editProduct: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/editProduct.vue`)),
     ship: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/ship.vue`)),
     shipOption: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/shipOption.vue`)),
     pay: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/pay.vue`)),
@@ -156,7 +158,16 @@ export default {
     categori: defineAsyncComponent(() =>import(`@/components/body/StoreControl/component/categori.vue`)),
 
     },
-  
+  computed:{
+        componentSidebar: {
+      get() {
+        return this.$store.state.componentSidebar;
+      },
+      set(componentSidebar) {
+        this.$store.commit("SET_Component", componentSidebar);
+      },
+    },
+  },
     methods:{
         opendrop1(){
             this.drop1 = !this.drop1;
@@ -184,6 +195,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .parent{
     font-family: 'Tajawal', sans-serif;
     .top{

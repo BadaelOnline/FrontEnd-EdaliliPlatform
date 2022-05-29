@@ -16,7 +16,7 @@
                     <div><i class="fas fa-map-marker" aria-hidden="true"></i> </div>
                      <span>|</span> 
                      <div  @click="handleChange()">
-                         <span v-if="lang == 'en'">English</span>
+                         <span v-if="lang == 'ar'">English</span>
                          <span v-else>العربية</span>
                        <i class="fas fa-globe" style="margin: 0 5px;"></i>
                      </div>

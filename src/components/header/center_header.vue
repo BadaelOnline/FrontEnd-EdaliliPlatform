@@ -347,16 +347,16 @@
         <div class="child1">
             <div class="all-act" @click="toggle_vs()">
                 <i class="fa fa-bars" aria-hidden="true"></i>
-            <span>جميع الأنشطة</span>
+            <span>{{ $t('Allactivities') }}</span>
             </div>
-                <div class="Departments_small" id="Dep">
+                <div class="Departments_small" id="Dep" :style="[lang == 'ar' ? ' right: -250px;':' left: -250px;']">
             <div>
                      <div class="link-Dep hov">
                     <router-link to="/" class="links">
                      <div class="menu-icon">
                         <img src="../../../public/img/sections.png" />
                     </div>
-                    <div class="linkText">Home</div>
+                    <div class="linkText">{{ $t('Home') }}</div>
                    
                     </router-link>
                 </div>
@@ -364,7 +364,7 @@
                  <div class="link-Dep  hov">
                     <router-link to="/products" class="links">
                      <div class="menu-icon"> <img src="../../../public/img/sections.png" alt=""> </div>
-                    <div class="linkText">Products</div>
+                    <div class="linkText">{{ $t('Products') }}</div>
                    
                     </router-link>
                 </div>
@@ -372,7 +372,7 @@
                  <div class="link-Dep  hov"> 
                     <router-link to="/stores" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/Store_review_2_.png" alt=""> </div>
-                    <div class="linkText">Stores</div>
+                    <div class="linkText">{{ $t('Stores') }}</div>
                     
                     </router-link>
                 </div>
@@ -380,7 +380,7 @@
                  <div class="link-Dep  hov">
                     <router-link to="/festival" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/sign_shopping.png" alt=""> </div>
-                    <div class="linkText">Fistival</div>
+                    <div class="linkText">{{ $t('FestivalPerformances') }}</div>
                    
                     </router-link>
                 </div>
@@ -388,7 +388,7 @@
                  <div class="link-Dep  hov">
                     <router-link to="/resturants" class="links">
                        <div class="menu-icon">  <img src="../../../public/img/terrace.png" alt=""> </div>
-                    <div class="linkText">Resturant</div>
+                    <div class="linkText">{{ $t('RestaurantsCafes') }}</div>
                     
                     </router-link>
                 </div>
@@ -396,26 +396,54 @@
                  <div class="link-Dep  hov">
                     <router-link to="/doctors" class="links">
                         <div class="menu-icon"> <img src="../../../public/img/stethoscope.png" alt=""> </div>
-                    <div class="linkText">Doctot</div>
+                    <div class="linkText">{{ $t('Doctors') }}</div>
                     
                     </router-link>
                 </div>
             </div>
             </div>
+                 <!-- start Section side bar  -->
+              <div class="Departments_small2" id="Dep2" :style="[lang == 'ar' ? ' right: -350px;':' left: -350px;']">
+                <div class="title">
+                    <span style="margin-inline-end: 10px;">{{ $t('Sections') }}</span>
+                    <span class="E-">E-</span>
+                    <span class="DALELY">DALELY</span>
+                </div>
+                <div class="category">
+                    <div class="item" 
+                    v-for="(item,index) in 3" :key="index"
+                    @click="showCategory = (index+1)">
+                        <span>{{ $t('Section') }} {{index+1}}</span>
+                         <i class="fas fa-angle-down"></i>
+                    </div>  
+                    <!-- start Category side bar  -->
+                    <div class="Departments_small2" id="Dep3" v-if=" showCategory != false"
+                         style="z-index: 99;"
+                         :class="[lang == 'ar' && showCategory != false ? ' Dep_vs_ar':' Dep_vs_en']">
+                            <div class="title" @click="showCategory = false">
+                                <i class="fas fa-arrow-right" ></i>
+                                <span style="margin:0 10px;">{{ $t('Section') }} {{showCategory}}</span>
+                            </div>
+                            <div class="category">
+                                <div class="item" 
+                                @click="$router.push(`/products/${inde+1}`)"
+                                v-for="(item,inde) in 3" :key="inde">
+                                    <span>{{ $t('Category') }} {{inde+1}}</span>
+                                </div>   
+                            </div>
+                        </div> 
+                          <!-- end Category side bar  -->
+                </div>
+            </div>
+                 <!-- end Section side bar  -->
         </div>
         <div class="child2">
     <div class="links">
-            <router-link to="/" class="links"  >
-                <div class="linkText">
-                    <select>
-                    <option selected disabled>جميع الأنشطة</option>
-                    </select>
-                    </div>
-            </router-link>
-        </div>
-         <div class="links">
-            <router-link to="/products" class="links" >
-                <div class="linkText">{{ $t('Products') }}</div>
+            <router-link to="" class="links"  >
+                <div class="linkText d-flex align-items-center" @click="toggle_vs2()"> 
+                  <span class="m-1">{{ $t('Products') }}</span>
+                  <i class="fas fa-angle-down"></i>
+                </div>
             </router-link>
         </div>
         <div class="links">
@@ -431,38 +459,38 @@
         <div class="links">	
     
             <router-link to="/" class="links" >
-                <div class="linkText" >مطاعم ومقاهي</div>
+                <div class="linkText" >{{ $t('RestaurantsCafes') }}</div>
             </router-link>
         </div>
         <div class="links">
             <router-link to="/" class="links" >
-                <div class="linkText" >أطباء</div>
+                <div class="linkText" >{{ $t('Doctors') }}</div>
             </router-link>       
         </div>
            <div class="links">
             <router-link to="/" class="links" >
-                <div class="linkText" >صيدليات وأدوية</div>
+                <div class="linkText" >{{ $t('PharmaciesMedicines') }}</div>
             </router-link>
                
         </div>
         <div class="links">
             <router-link to="/activities" class="links" >
-                <div class="linkText" >موارد بشرية</div>
+                <div class="linkText" >{{ $t('Humanresources') }}</div>
             </router-link>
         </div>  
         <div class="links">
             <router-link to="/activities" class="links" >
-                <div class="linkText" >قاموس الأعمال</div>
+                <div class="linkText" >{{ $t('BusinessDictionary') }}</div>
             </router-link>
         </div> 
         <div class="links fers">
             <router-link to="/activities" class="links" >
-                <div class="linkText" >فرص العمل</div>
+                <div class="linkText" >{{ $t('Jobschances') }} </div>
             </router-link>
         </div>          
         <div class="links">
             <router-link to="/activities" class="links" >
-                <div class="linkText" >فعاليات</div>
+                <div class="linkText" >{{ $t('events') }}</div>
             </router-link>
         </div> 
         </div>
@@ -471,7 +499,7 @@
             <div class="add-activity" @click="addActivity">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 <button>
-                    أضف نشاطك
+                    {{ $t('Addactivities') }}
                 </button>
             </div>
         </div>
@@ -492,11 +520,14 @@ export default {
 		Icon,
 	},
     data() {
+        const lang = localStorage.getItem('lang') || 'ar';
         const token = localStorage.getItem('token');
         const server = localStorage.getItem('server') || 'admin';
         return {
+            showCategory: false,
             show: false,
             show2: false,
+            lang: lang,
             server: server,
             token: token,
             sign_status:false,
@@ -608,12 +639,41 @@ export default {
             }
         },
          toggle_vs(){
-          document.getElementById('Dep').classList.toggle("Dep_vs");
-           document.getElementById('cover_dep').classList.add("vs2");
+             if(this.lang == 'ar'){
+            document.getElementById('Dep').classList.toggle("Dep_vs_ar");
+            document.getElementById('cover_dep').classList.add("vs2");
+             }
+             else{
+            document.getElementById('Dep').classList.toggle("Dep_vs_en");
+            document.getElementById('cover_dep').classList.add("vs2");
+             }
+          
       },
+      toggle_vs2(){
+          if(this.lang == 'ar'){
+            document.getElementById('Dep2').classList.toggle("Dep_vs_ar");
+            document.getElementById('cover_dep').classList.add("vs2");
+             }
+             else{
+            document.getElementById('Dep2').classList.toggle("Dep_vs_en");
+            document.getElementById('cover_dep').classList.add("vs2");
+             }
+      },
+    
       close_dep(){
-           document.getElementById('Dep').classList.remove("Dep_vs");
-           document.getElementById('cover_dep').classList.remove("vs2");
+           if(this.lang == 'ar'){
+                document.getElementById('cover_dep').classList.remove("vs2");
+                document.getElementById('Dep').classList.remove("Dep_vs_ar");
+                document.getElementById('Dep2').classList.remove("Dep_vs_ar");
+                document.getElementById('Dep3').classList.remove("Dep_vs_ar");
+             }
+             else{
+            document.getElementById('cover_dep').classList.remove("vs2");
+            document.getElementById('Dep').classList.remove("Dep_vs_en");
+            document.getElementById('Dep2').classList.remove("Dep_vs_en");
+            document.getElementById('Dep3').classList.remove("Dep_vs_en");
+             }
+         
       },
            goto: function () {
             this.$router.push(`/`);
@@ -936,10 +996,7 @@ input + svg{
     display: flex;
     justify-content: space-between;
 }
-.bottom_navba .child1{
-    display: none;
 
-}
 .bottom_navba .child2{
     display: flex;
     justify-content: space-around;
@@ -950,8 +1007,7 @@ input + svg{
    background-color: var(--rhead);
    color: #fff;
 }
-/* Medium devices (tablets, 768px and up) */
-@media (max-width: 991.98px) {
+
    .bottom_navba .child1{
     display: flex;
     align-items: center;
@@ -961,6 +1017,16 @@ input + svg{
      width: 120px;
     justify-content: space-around;
     cursor: pointer;
+     display: none;
+}
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 991.98px) {
+    .bottom_navba .child2{
+        display: none;
+    }
+    .bottom_navba .child1 .all-act{
+    display: block;
+    }
 }
 .bottom_navba .child1 .Departments_small{
     position: fixed;
@@ -970,18 +1036,63 @@ input + svg{
     width: 250px;
     height: 100%;
     padding-top: 20px;
-    right: -250px;
     transition: .5s;
 }
-.Dep_vs{
+.bottom_navba .child1 .Departments_small2{
+     position: fixed;
+    background-color: #fff;
+    z-index: 98;
+    top: 0;
+    width: 350px;
+    height: 100%;
+   
+    transition: .5s;
+    color: #000;
+}
+.bottom_navba .child1 .Departments_small2 .title{
+    text-align: start;
+    padding: 20px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+.bottom_navba .child1 .Departments_small2 .E-{
+    color: #ed1c24;
+}
+.bottom_navba .child1 .Departments_small2 .DALELY{
+    color: #247ba0;
+}
+.bottom_navba .child1 .Departments_small2 .category .item{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s;
+}
+.bottom_navba .child1 .Departments_small2 .category .item:hover{
+    background-color: #f0f0f0;
+}
+.Dep_vs_ar{
  right: 0 !important;
+}
+.Dep_vs_en{
+ left: 0 !important;
 }
 .bottom_navba .child1 .link-Dep .links{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     color: #fff;
     text-decoration: none;
     transition: .3s;
+    padding: 0 20px;
+}
+.bottom_navba .child1 .link-Dep .links .linkText{
+    margin-inline-start: 10px;
 }
 .bottom_navba .child1 .link-Dep .links:hover{
     color: var(--rhead);
@@ -990,7 +1101,7 @@ input + svg{
     width: 20px;
     margin: 0 5px;
 }
-.bottom_navba .child2,.navba .child2,.navba .child3 .lovly,.navba .child3 .address{
+.navba .child2,.navba .child3 .lovly,.navba .child3 .address{
    display: none;
 } 
 .navba .child3{
@@ -998,7 +1109,6 @@ input + svg{
 }
 .navba .child3 .cart{
     margin-inline-end: 10px;
-}
 }
 /* .bottom_navba .child2 .links{
     margin: 0 5px;
@@ -1021,11 +1131,6 @@ input + svg{
    background-color: #247BA0;
    padding: 0 2px;
    border-radius: 3px;
-}
-.bottom_navba .child2 .linkText select {
-    border: none;
-    background-color: transparent;
-    color: #fff;
 }
 .bottom_navba .child2 .linkText{
  transition: .3s;
