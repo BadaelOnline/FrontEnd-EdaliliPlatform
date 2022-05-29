@@ -12,14 +12,19 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/section/activities.vue'),
     }, 
     {
-        path: '/store',
+        path: '/store/:id',
         component: () => import('../components/body/StoreControl/aboutstore.vue'),
         name: 'Store',
     },
     {
-        path: '/storeaccount',
+        path: '/storeaccount/:id',
         component: () => import('../components/body/StoreControl/storeaccount.vue'),
         name: 'storeaccount',
+    },
+    {
+        path: '/storeditproduct/:id_store/:id_product',
+        component: () => import('../components/body/StoreControl/component/editProduct.vue'),
+        name: 'storeditproduct',
     },
     {
         path: '/visitstore/:id/:title',
@@ -34,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     /* ProductDetalis */
     {
-        path: '/products/:id',
+        path: '/prodetails/:product_id',
         component: () => import('../components/global/prodetails.vue'),
     },
     {
@@ -55,7 +60,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/section/festival.vue'),
     },
     {
-        path: '/products',
+        path: '/products/:categoty_id',
         name: 'products',
         component: () => import('../views/section/products.vue'),
     },

@@ -130,10 +130,10 @@
                      <router-link :to="`/productDetails`" style="color: #000000;text-decoration: none;">
                   <div class="imag"> <img src="@/../public/img/pic1.png" alt=""></div>
                   <p>هاتف ريدمي نوت 10s ثنائي الشريحة بذاكرة رام 6 جيجابايت وذاكرة داخلية 128 جيجابايت ويدعم تقنية 4G LTE أزرق محيطي - إصدار عالمي</p>
-                    <div class="discount">خصم 100%</div>
+                 
                     <div class="price"> 
-                        <span class="n-price">1,000,000 ل.س</span>
-                        <span class="o-price">1,000,000 ل.س</span>
+                     <span class="n-price">1,000,000</span>-
+                        <span class="n-price">1,000,000</span> <span>ل.س</span>
                     </div>
                     <div class="rate">
                           <Icon icon="carbon:star-filled" class="checked" />
@@ -151,10 +151,10 @@
                <div class="offer-item" v-for="item in 4" :key="item">
                   <div class="imag"> <img src="@/../public/img/pic1.png" alt=""></div>
                   <p>هاتف ريدمي نوت 10s ثنائي الشريحة بذاكرة رام 6 جيجابايت وذاكرة داخلية 128 جيجابايت ويدعم تقنية 4G LTE أزرق محيطي - إصدار عالمي</p>
-                    <div class="discount">خصم 100%</div>
+                 
                     <div class="price"> 
-                        <span class="n-price">1,000,000 ل.س</span>
-                        <span class="o-price">1,000,000 ل.س</span>
+                     <span class="n-price">1,000,000</span>-
+                        <span class="n-price">1,000,000</span> <span>ل.س</span>
                     </div>
                     <div class="rate">
                           <Icon icon="carbon:star-filled" class="checked" />
@@ -171,10 +171,10 @@
                <div class="offer-item" v-for="item in 4" :key="item">
                   <div class="imag"> <img src="@/../public/img/pic1.png" alt=""></div>
                   <p>هاتف ريدمي نوت 10s ثنائي الشريحة بذاكرة رام 6 جيجابايت وذاكرة داخلية 128 جيجابايت ويدعم تقنية 4G LTE أزرق محيطي - إصدار عالمي</p>
-                    <div class="discount">خصم 100%</div>
+                   
                     <div class="price"> 
-                        <span class="n-price">1,000,000 ل.س</span>
-                        <span class="o-price">1,000,000 ل.س</span>
+                     <span class="n-price">1,000,000</span>-
+                        <span class="n-price">1,000,000</span> <span>ل.س</span>
                     </div>
                     <div class="rate">
                           <Icon icon="carbon:star-filled" class="checked" />
@@ -480,7 +480,7 @@ $HoverColor: #1D7094;
             }
             .price{
                 display: flex;
-                justify-content: space-between;
+                
                 margin-bottom: 15px;
                 .n-price{
                 font-weight: 700;
@@ -488,6 +488,7 @@ $HoverColor: #1D7094;
                 line-height: 27px;
                 text-align: start;
                 color: #000000;
+                margin: 0 5px;
                 }
                 .o-price{
                 font-weight: 700;

@@ -9,8 +9,16 @@ let cartItemCount = window.localStorage.getItem('cartItemCount');
 let lang = window.localStorage.getItem('lang');
 let page_brand = window.localStorage.getItem('page_brand') || 1;
 let page_Category = window.localStorage.getItem('page_Category') || 1;
+//  ***************** Start Store Control *****************
+let ProductToStoreItems = window.localStorage.getItem('ProductToStoreItems');
+let componentSidebar = window.localStorage.getItem('componentSidebar');
+//  ***************** End Store Control *****************
 const store = createStore({
     state: {
+        //  ***************** Start Store Control *****************
+        ProductToStoreItems: ProductToStoreItems ? JSON.parse(ProductToStoreItems) : [],
+        componentSidebar: componentSidebar ? JSON.parse(componentSidebar) : "acount",
+        //  ***************** End Store Control *****************
         // APi
         Brands: [],
         page_Brands: null,
@@ -60,9 +68,39 @@ const store = createStore({
         user: null,
     },
     mutations: {
+ //  ***************** Start Store Control *****************
+        SET_Component(state, componentSidebar) {
+            state.componentSidebar = componentSidebar;
+            this.commit('savedata2');
+          },
+        ProductToStoreItems: (state, connections) => {
+            state.ProductToStoreItems = connections;
+        },
+        addProductToStore(state, payload) {
+            let item = payload;
+            item = { ...item };
+            state.ProductToStoreItems.push(item);
+            this.commit('savedata1');
+        },
+        savedata1(state) {
+            window.localStorage.setItem(
+                'ProductToStoreItems', 
+                JSON.stringify(state.ProductToStoreItems)
+            );
+        },
+        savedata2(state) {
+            window.localStorage.setItem(
+                'componentSidebar', 
+                JSON.stringify(state.componentSidebar)
+            );
+        },
+
+ //  ***************** End Store Control *****************
+
         increment(state) {
             state.count++;
         },
+       
         cartItems: (state, connections) => {
             state.cartItems = connections;
         },
@@ -88,6 +126,8 @@ const store = createStore({
             this.commit('savedata');
         },
         savedata(state) {
+          
+            
             window.localStorage.setItem(
                 'cartItems',
                 JSON.stringify(state.cartItems)
@@ -230,6 +270,15 @@ const store = createStore({
         },
     },
     actions: {
+        //  ***************** Start Store Control *****************
+        addProductToStore: (context, payload) => {
+            context.commit('addProductToStore', payload);
+        },
+        //  ***************** End Store Control *****************
+
+        addProductToStore: (context, payload) => {
+            context.commit('addProductToStore', payload);
+        },
         addToCart: (context, payload) => {
             context.commit('addToCart', payload);
         },

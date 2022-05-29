@@ -39,7 +39,7 @@
             <img src="../../../../../public/img/Icons/Export.svg" alt="">
             <img src="../../../../../public/img/Icons/Print.svg" alt="">
             </div>
-              <button class="but1">إضافة منتج</button>
+              <button class="but1" @click="componentSidebar = 'addProduct'">إضافة منتج</button>
         </div>
          </div>
       <div class="rw2" >
@@ -91,61 +91,26 @@
               </div>
       </div>
       <hr>
-       <div class="rw2" 
-        style="margin-bottom: 10px;
-        border-bottom: 1px solid #aaa;
-        padding-bottom: 10px;">
-            <div>za553322</div>
-            <div><span>اسم المنتج</span></div>
+       <div class="rw2 rw2-item" v-for="item in products" :key="item">
+            <div>{{item.id}}</div>
+            <div><span>{{item.product_translation[0].name}}</span></div>
             <div><span>الفىة/الفىة الفرعية</span></div>
             <div>
-                <span style="color:#247ba0">800.000</span>
+               <span v-if="item.store_product[0]"><span v-if="item.store_product[0].store_product_details[0]"  style="color:#247ba0"> {{item.store_product[0].store_product_details[0].price}} </span></span> 
+                <!-- <span >20 </span> -->
                 <span>ل.س</span>
             </div>
            
-            <div><span>20</span></div>
-            <div>تاريخ الإضافة</div>
-            <div class="d-flex justify-content-between">
-                <button class="but1">تعديل</button>
-                <button class="butdelet">حذف</button>
-            </div>
-      </div>
-            <div class="rw2" 
-        style="margin-bottom: 10px;
-        border-bottom: 1px solid #aaa;
-        padding-bottom: 10px;">
-            <div>za553322</div>
-            <div><span>اسم المنتج</span></div>
-            <div><span>الفىة/الفىة الفرعية</span></div>
             <div>
-                <span style="color:#247ba0">800.000</span>
-                <span>ل.س</span>
-            </div>
-           
-            <div><span>20</span></div>
+                 <span v-if="item.store_product[0]"><span v-if="item.store_product[0].store_product_details[0]"  style="color:#247ba0"> {{item.store_product[0].store_product_details[0].quantity}} </span></span> 
+                <!-- <span>20</span> -->
+                </div>
             <div>تاريخ الإضافة</div>
             <div class="d-flex justify-content-between">
-                <button class="but1">تعديل</button>
-                <button class="butdelet">حذف</button>
+                <button class="but1" @click="goto(item.id)">تعديل</button>
+                <button class="butdelet" @click="deletProduct(item.id)">حذف</button>
             </div>
       </div>
-             <div class="rw2">
-            <div>za553322</div>
-            <div><span>اسم المنتج</span></div>
-            <div><span>الفىة/الفىة الفرعية</span></div>
-            <div>
-                <span style="color:#247ba0">800.000</span>
-                <span>ل.س</span>
-            </div>
-           
-            <div><span>20</span></div>
-            <div>تاريخ الإضافة</div>
-            <div class="d-flex justify-content-between">
-                <button class="but1">تعديل</button>
-                <button class="butdelet">حذف</button>
-            </div>
-      </div>
-
       </div>
       <div class="small-card">
         <div class="action">
@@ -167,7 +132,7 @@
             </div>
         </div>
         <!-- order 1 -->
-        <div class="orders">
+        <div class="orders"  v-for="item in products" :key="item">
              <hr>
             <div class="top">
             <div class="user">
@@ -186,8 +151,8 @@ font-size: 12px;"></i>
             </div>
             <div class="content">
                 <div>
-                    <span>id المنتج</span>
-                    <span style="font-weight:bold;color:#247ba0">za553322</span>
+                    <span>{{item.id}} </span>
+                    <span style="font-weight:bold;color:#247ba0">{{item.product_translation[0].name}}</span>
                 </div>
                 <div>
                     <span>الفئة</span>
@@ -195,104 +160,34 @@ font-size: 12px;"></i>
                 </div>
                 <div>
                     <span>العدد</span>
-                    <span style="font-weight:bold;color:#247ba0">20</span>
+                    <!-- <span style="font-weight:bold;color:#247ba0">20</span> -->
+                    <span v-if="item.store_product[0]"><span v-if="item.store_product[0].store_product_details[0]"  style="font-weight:bold;color:#247ba0"> {{item.store_product[0].store_product_details[0].quantity}} </span></span> 
                 </div>
                 <div>
                     <span>المجموع</span>
-                    <span style="font-weight:bold;color:#247ba0">800.000</span>
+                    <!-- <span style="font-weight:bold;color:#247ba0">800.000</span> -->
+                     <span v-if="item.store_product[0]"><span v-if="item.store_product[0].store_product_details[0]"  style="font-weight:bold;color:#247ba0"> {{item.store_product[0].store_product_details[0].price}} </span></span> 
                 </div>
                 <div>
-                <button class="but1">تعديل</button>
-                <button class="butdelet">حذف</button>
+                <button class="but1" @click="goto(item.id)">تعديل</button>
+                <button class="butdelet" @click="deletProduct(item.id)">حذف</button>
                 </div>
             </div>
         </div>
-               <!-- order 2 -->
-             <div class="orders">
-             <hr>
-            <div class="top">
-            <div class="user">
-                <div style="display: flex;align-items: center;color:#247ba0">
-                <i class="fa fa-cubes" aria-hidden="true" style="margin-inline-end: 5px;"></i>
-                <span>اسم المنتج</span>
-                </div>
-                <div style="opacity:.5;font-size: 12px;">
-                  <span>1/1/2021</span>
-                  <i class="fa fa-arrow-left" aria-hidden="true" style="margin: 0 8px;
-font-size: 12px;"></i>
-                  <span>10/2/2022</span>
-                </div>
-            </div>
-  
-            </div>
-            <div class="content">
-                <div>
-                    <span>id المنتج</span>
-                    <span style="font-weight:bold;color:#247ba0">za553322</span>
-                </div>
-                <div>
-                    <span>الفئة</span>
-                    <span style="font-weight:bold;color:#247ba0">الفئة/الفئة الفرعية</span>
-                </div>
-                <div>
-                    <span>العدد</span>
-                    <span style="font-weight:bold;color:#247ba0">20</span>
-                </div>
-                <div>
-                    <span>المجموع</span>
-                    <span style="font-weight:bold;color:#247ba0">800.000</span>
-                </div>
-                <div>
-                <button class="but1">تعديل</button>
-                <button class="butdelet">حذف</button>
-                </div>
-            </div>
-        </div>
-                   <!-- order 3 -->
-                <div class="orders">
-             <hr>
-            <div class="top">
-            <div class="user">
-                <div style="display: flex;align-items: center;color:#247ba0">
-                <i class="fa fa-cubes" aria-hidden="true" style="margin-inline-end: 5px;"></i>
-                <span>اسم المنتج</span>
-                </div>
-                <div style="opacity:.5;font-size: 12px;">
-                  <span>1/1/2021</span>
-                  <i class="fa fa-arrow-left" aria-hidden="true" style="margin: 0 8px;
-font-size: 12px;"></i>
-                  <span>10/2/2022</span>
-                </div>
-            </div>
-  
-            </div>
-            <div class="content">
-                <div>
-                    <span>id المنتج</span>
-                    <span style="font-weight:bold;color:#247ba0">za553322</span>
-                </div>
-                <div>
-                    <span>الفئة</span>
-                    <span style="font-weight:bold;color:#247ba0">الفئة/الفئة الفرعية</span>
-                </div>
-                <div>
-                    <span>العدد</span>
-                    <span style="font-weight:bold;color:#247ba0">20</span>
-                </div>
-                <div>
-                    <span>المجموع</span>
-                    <span style="font-weight:bold;color:#247ba0">800.000</span>
-                </div>
-                <div>
-                <button class="but1">تعديل</button>
-                <button class="butdelet">حذف</button>
-                </div>
-            </div>
-        </div>
+        
       </div>
     </div>
 </template>
 <style lang="scss" scoped>
+h5{
+    font-weight: bold;
+}
+.rw2-item{
+    margin-bottom: 10px;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 10px;
+    align-items: center;
+}
 .parent{
     padding: 30px;
     width: calc(100% - 220px);
@@ -383,6 +278,7 @@ font-size: 12px;"></i>
     display: flex;
     justify-content: space-around;
     flex-wrap: nowrap;
+    
     div{
     width: 120px;
     span{
@@ -550,17 +446,60 @@ font-size: 12px;"></i>
 </style>
 <script>
 // import $ from 'jquery';
+import axios from 'axios';
 export default {
-    name: 'order',
+    name: 'showProduct',
+    data() {
+        return {
+        products: [],
+        };
+    },
     props: [],
-
-
     methods: {
-       
+        goto(id){
+        this.$router.push(`/storeditproduct/${this.$route.params.id}/${id}`);
+        },
+        async deletProduct(id) {
+            // let lang = window.localStorage.getItem('lang'); حذف
+            // sections
+            await axios
+                .put(`/api/stores/delete/${id}`)
+                .then((res) => {
+                    console.log('Success Delete products: ', res.data);                         
+                })
+                .catch(function (error) {
+                    console.warn('Error Delete products ', error.toJSON());
+                }); 
+        },
+         async fetch() {
+            var self = this;
+            // let lang = window.localStorage.getItem('lang'); 
+            // sections
+            await axios
+                .get(`/api/stores/view-product-in-store/${this.$route.params.id}`)
+                .then((res) => {
+                    self.products = res.data['Product in Store'];
+                    this.fetch();
+                    // console.log('products: ', res.data['Product in Store']);                         
+                })
+                .catch(function (error) {
+                    console.warn('Error products ', error.toJSON());
+                }); 
+        },
     },
-    computed: {
-         
+     computed:{
+        componentSidebar: {
+      get() {
+        return this.$store.state.componentSidebar;
+      },
+      set(componentSidebar) {
+        this.$store.commit("SET_Component", componentSidebar);
+      },
     },
+  },
+    mounted(){
+        this.fetch();
+    }
    
 };
 </script>

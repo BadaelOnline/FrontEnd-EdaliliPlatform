@@ -659,7 +659,7 @@
                     <span
                         >سيتم التواصل معك من قبل أحد مندوبينا خلال 48 ساعة</span
                     >
-                    <router-link to="/storeaccount">
+                    <router-link to="/storeaccount/1">
                         <button>الذهاب إلى صفحة المتجر</button>
                     </router-link>
                 </div>

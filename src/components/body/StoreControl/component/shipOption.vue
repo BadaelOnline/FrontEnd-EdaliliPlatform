@@ -201,7 +201,7 @@
 <script>
 // import $ from 'jquery';
 export default {
-    name: 'shipping',
+    name: 'shipOption',
     props: [],
 
 

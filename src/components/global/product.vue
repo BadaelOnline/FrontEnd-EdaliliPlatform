@@ -1,9 +1,9 @@
 <template>
      <div class="small" @click="gotoprodetails(id)">
 	 <article class="recipe">
-		<div v-for="im in product_image" :key="im.pr" class="pizza-box">
-          <img v-if="im.image" v-lazy="`http://edalili.e-dalely.com/public/${im.image}`" />
-            <!-- <img v-else src="../../../public/img/products1.jpg" class="new" /> -->
+		<div  class="pizza-box">
+          <!-- <img v-lazy="`http://edalili.e-dalely.com/public/${im.image}`" /> -->
+            <img  src="../../../public/img/products1.jpg" class="new" />
         </div>
 	
 		<div class="recipe-content">
@@ -12,9 +12,11 @@
 			
 			</p>
 
-			<h1 class="recipe-title"><a> {{ name}}</a></h1>
+			<h1 class="recipe-title"><a> 
+				name
+				</a></h1>
 
-			<p class="recipe-desc">{{short_des}}.</p>
+			<p class="recipe-desc">short_des.</p>
 			
 			<p class="recipe-metadata">
 				<span class="recipe-rating">★★★★<span>☆</span></span>
@@ -152,7 +154,7 @@ export default {
 
     methods: {
         gotoprodetails: function (i) {
-            this.$router.push(`/products/${i}`);
+            this.$router.push(`/prodetails/${i}`);
         },
     },
     computed: {
