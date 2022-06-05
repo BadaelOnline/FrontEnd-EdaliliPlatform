@@ -1,6 +1,7 @@
 <template>
         <div class="content-body">
              <div id="cover_dep4" class="backcover4" @click="close_dep()"></div>
+             <component :is="`miniCart`" />
             <div class="Departments_small4" id="Dep4" 
                          :style="[lang == 'ar' ? ' right: -400px;':' left: -400px;']">
                             <div class="title" >
@@ -14,6 +15,7 @@
                             </div>
                             <div class="category">
                                 <div class="item" 
+                                @click="storeChosen = true"
                                 v-for="(item,inde) in 10" :key="inde">
                                 <div class="info">
                                     <div class="imag"></div>
@@ -115,11 +117,11 @@
                             <option  value="2">2</option>
                             <option  value="3">3</option>
                         </select>
-                      <button class="subscribe" @click="toggle_vs()">
+                        <button class="add" @click="toggle_cart()">إضافة إلى عربة التسوق</button>
+                        <button class="subscribe" @click="toggle_vs()">
                             قارن الأسعار
                             <i class="fas fa-chevron-circle-left"></i>
                         </button>
-                        <button class="add">إضافة إلى عربة التسوق</button>
                         <button class="liked" @click="toggle"><span :class="{ 'heart-active': toggled }"
                                 class="heart"
                             ></span></button>
@@ -412,6 +414,7 @@ import "swiper/swiper.scss";
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, A11y]);
+import { defineAsyncComponent } from "vue";
 export default {
     name: 'products',
     data() {
@@ -458,8 +461,20 @@ export default {
     Icon,  
     Swiper,
     SwiperSlide,
+    miniCart: defineAsyncComponent(() => import("./cartShop/miniCart.vue")),
     },
     methods:{
+         toggle_cart(){
+         if(this.lang == 'ar'){
+            document.getElementById('shoppingCover').classList.add("vs-cover");
+            document.getElementById('cart').classList.add("vs-cart-ar");
+             }
+             else{
+            document.getElementById('shoppingCover').classList.add("vs-cover");
+            document.getElementById('cart').classList.add("vs-cart-en");
+             }
+      },
+      
          toggle_vs(){
           if(this.lang == 'ar'){
             document.getElementById('Dep4').classList.toggle("Dep_vs_ar");
@@ -477,7 +492,7 @@ export default {
              
              }
              else{
-            document.getElementById('cover_dep4').classList.remove("vs2");
+            document.getElementById('cover_dep4').classList.remove("vs-cover");
             document.getElementById('Dep4').classList.remove("Dep_vs_en");
             
              }
@@ -520,8 +535,9 @@ svg.checked{
         color: #d2d2d2;
         font-size: 20px;
     }
+
 .Departments_small4{
-     position: fixed;
+    position: fixed;
     background-color: #fff;
     z-index: 98;
     top: 0;

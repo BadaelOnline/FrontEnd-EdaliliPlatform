@@ -127,7 +127,7 @@
                <div class="offers-contain">
               
                <div class="offer-item" v-for="item in 4" :key="item">
-                     <router-link :to="`/productDetails`" style="color: #000000;text-decoration: none;">
+                     <router-link :to="`/productdetails`" style="color: #000000;text-decoration: none;">
                   <div class="imag"> <img src="@/../public/img/pic1.png" alt=""></div>
                   <p>هاتف ريدمي نوت 10s ثنائي الشريحة بذاكرة رام 6 جيجابايت وذاكرة داخلية 128 جيجابايت ويدعم تقنية 4G LTE أزرق محيطي - إصدار عالمي</p>
                  

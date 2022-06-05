@@ -194,11 +194,13 @@
 
 import { Icon } from '@iconify/vue';
 import $ from 'jquery';
+import axios from 'axios';
 export default {
     name: 'products',
     data() {
         return {
-            showSide: false
+            showSide: false,
+            products:[]
         };
     },
     components: {
@@ -215,7 +217,25 @@ export default {
         $("#sidebar").css("right","-250px");
         $("#cover").css("display","none");
         },
-        },     
+           async fetch() {
+            var self = this;
+            // let lang = window.localStorage.getItem('lang'); 
+            // product-category
+            await axios
+                .get(`/api/stores/product-category/${self.$route.params.categoty_id}`)
+                .then((res) => {
+                    self.products = res.data.Category;
+                  
+                    console.log('products: ', self.products);                         
+                })
+                .catch(function (error) {
+                    console.warn('Error products ', error.toJSON());
+                }); 
+        },
+        },    
+        mounted(){
+        this.fetch();
+        } 
 };
 </script>
 

@@ -43,30 +43,21 @@
         </div>
          </div>
       <div class="rw2" >
-             <div><span>id المنتج</span></div>
+             <!-- <div><span>id المنتج</span></div> -->
              <div><span>اسم المنتج</span></div>
              <div><span>الفئة</span></div>
-             <div><span>السعر</span></div>
              <div><span>العدد</span></div>
              <div><span>تاريخ الإضافة</span></div>
              <div><span>Action</span></div>
       </div>  
       <hr>
         <div class="rw2">
-            <div><input type="text"></div>
+           
             <div><input type="text"></div>
             <div>    
                 <select>
                 <option selected>اختر...</option>
             </select></div>
-            <div>
-                <div class="from">
-                    <input type="text" placeholder="من">
-                </div>
-                <div class="from">
-                    <input type="text" placeholder="إلى">
-                </div>
-            </div>
             <div>
             <div class="from">
                     <input type="text" placeholder="من">
@@ -92,14 +83,13 @@
       </div>
       <hr>
        <div class="rw2 rw2-item" v-for="item in products" :key="item">
-            <div>{{item.id}}</div>
+            <!-- <div>{{item.id}}</div> -->
             <div><span>{{item.product_translation[0].name}}</span></div>
             <div><span>الفىة/الفىة الفرعية</span></div>
-            <div>
+            <!-- <div>
                <span v-if="item.store_product[0]"><span v-if="item.store_product[0].store_product_details[0]"  style="color:#247ba0"> {{item.store_product[0].store_product_details[0].price}} </span></span> 
-                <!-- <span >20 </span> -->
                 <span>ل.س</span>
-            </div>
+            </div> -->
            
             <div>
                  <span v-if="item.store_product[0]"><span v-if="item.store_product[0].store_product_details[0]"  style="color:#247ba0"> {{item.store_product[0].store_product_details[0].quantity}} </span></span> 
@@ -150,10 +140,10 @@ font-size: 12px;"></i>
   
             </div>
             <div class="content">
-                <div>
+                <!-- <div>
                     <span>{{item.id}} </span>
                     <span style="font-weight:bold;color:#247ba0">{{item.product_translation[0].name}}</span>
-                </div>
+                </div> -->
                 <div>
                     <span>الفئة</span>
                     <span style="font-weight:bold;color:#247ba0">الفئة/الفئة الفرعية</span>
@@ -163,11 +153,10 @@ font-size: 12px;"></i>
                     <!-- <span style="font-weight:bold;color:#247ba0">20</span> -->
                     <span v-if="item.store_product[0]"><span v-if="item.store_product[0].store_product_details[0]"  style="font-weight:bold;color:#247ba0"> {{item.store_product[0].store_product_details[0].quantity}} </span></span> 
                 </div>
-                <div>
+                <!-- <div>
                     <span>المجموع</span>
-                    <!-- <span style="font-weight:bold;color:#247ba0">800.000</span> -->
                      <span v-if="item.store_product[0]"><span v-if="item.store_product[0].store_product_details[0]"  style="font-weight:bold;color:#247ba0"> {{item.store_product[0].store_product_details[0].price}} </span></span> 
-                </div>
+                </div> -->
                 <div>
                 <button class="but1" @click="goto(item.id)">تعديل</button>
                 <button class="butdelet" @click="deletProduct(item.id)">حذف</button>
@@ -280,23 +269,30 @@ h5{
     flex-wrap: nowrap;
     
     div{
-    width: 120px;
+    width: 100%;
+    margin: 0 10px;
     span{
     font-size: 14px;
     }
     input{
-    width: 70%;
+    width: 100%;
+    height: 40px;
     border: 1px solid #9d9d9d;
     border-radius: 5px;
     outline: none;
+    padding: 0 10px;
     }
     select{
-    width: 70%;
+    width: 100%;
+    height: 40px;
     }
     .from{
     margin-bottom: 10px;
     display: flex;
     justify-content: space-around;
+    img{
+        margin-inline-end: 10px;
+    }
     }
     }
        .action{
@@ -311,12 +307,14 @@ h5{
         .but1{
         background-color: #247BA0;
         border: none;
-         color: #fff;
+        color: #fff;
+        height: 40px;
         }
         .but2{
         background-color: transparent;
         border: 1px solid #666464;
         color: #222121;
+        height: 40px;
         }
     }
     }
@@ -397,7 +395,7 @@ h5{
 }
 .but1{
     color: #fff;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     background-color: #247BA0;
@@ -409,7 +407,7 @@ h5{
 }
 .butdelet{
     color: #fff;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     background-color: #DE222A;
@@ -421,7 +419,7 @@ h5{
 }
 .butsucc{
     color: #fff;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     background-color: #42BF16;
@@ -433,7 +431,7 @@ h5{
 }
 .butinfo{
     color: #fff;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     background-color: #0196D6;
@@ -465,7 +463,8 @@ export default {
             await axios
                 .put(`/api/stores/delete/${id}`)
                 .then((res) => {
-                    console.log('Success Delete products: ', res.data);                         
+                    console.log('Success Delete products: ', res.data);  
+                      this.fetch();                       
                 })
                 .catch(function (error) {
                     console.warn('Error Delete products ', error.toJSON());
@@ -479,8 +478,8 @@ export default {
                 .get(`/api/stores/view-product-in-store/${this.$route.params.id}`)
                 .then((res) => {
                     self.products = res.data['Product in Store'];
-                    this.fetch();
-                    // console.log('products: ', res.data['Product in Store']);                         
+                  
+                    console.log('products: ', res.data['Product in Store']);                         
                 })
                 .catch(function (error) {
                     console.warn('Error products ', error.toJSON());

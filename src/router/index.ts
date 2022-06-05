@@ -2,7 +2,7 @@ import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '/productDetails',
+        path: '/productdetails',
         name: 'productDetails',
         component: () => import('../components/body/StoreControl/aboutStoreComp/productDetails.vue'),
     }, 
@@ -31,12 +31,33 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../components/body/Stores/visitStore.vue'),
         name: 'visitStore',
     },
-    /* cart shop */
+    /* start cart shop */
     {
-        path: '/Cart',
-        component: () => import('../components/cart/Cart.vue'),
+        path: '/cart',
+        component: () => import('../components/global/cartShop/Cart.vue'),
         props: true,
     },
+    {
+        path: '/addressshipping',
+        component: () => import('../components/global/cartShop/AdressShipping.vue'),
+        props: true,
+    },
+    {
+        path: '/shipping',
+        component: () => import('../components/global/cartShop/Shipping.vue'),
+        props: true,
+    },
+    {
+        path: '/paying',
+        component: () => import('../components/global/cartShop/paying.vue'),
+        props: true,
+    },
+    {
+        path: '/confirm',
+        component: () => import('../components/global/cartShop/confirm.vue'),
+        props: true,
+    },
+      /* end cart shop */
     /* ProductDetalis */
     {
         path: '/prodetails/:product_id',
