@@ -115,7 +115,7 @@
          <div class="rw">
         <div class="row1">
             <div class="paje">
-                <h6>اسم المنتج</h6>
+                <h6>{{ProductName}}</h6>
             </div>
         </div>
         <div class="other">
@@ -125,8 +125,7 @@
          </div>
          <div class="section-edit">
              <span @click="sectionEdit=1" :class="[sectionEdit == 1?'active':'']">عام</span>
-             <span @click="sectionEdit=2" :class="[sectionEdit == 2?'active':'']">custome field</span>
-             <span @click="sectionEdit=3" :class="[sectionEdit == 3?'active':'']">الصور</span>
+             <span @click="sectionEdit=2" :class="[sectionEdit == 2?'active':'']">الصور</span>
          </div>
             <form class="form-enter1" v-if="sectionEdit == 1">
                 <div>
@@ -150,57 +149,27 @@
                     <input type="text">
                 </div>
             </form>
-            <form class="form-enter2" v-if="sectionEdit == 2">
+             <form class="form-enter2" v-if="sectionEdit == 2">
                 <div class="rw2" >
-                    <div> <input type="checkbox" disabled></div>
              <div><span>الصورة</span></div>
-             <div><span>الاسم</span></div>
-             <div class="wid30"><span>السعر</span></div>
-             <div class="wid30"><span>الكمية</span></div>
-             <div class="wid30"><span>ملاحظات</span></div>
-      </div>  
-      <hr>
-    
-       <div  class="rw2 rw2-item" v-for="(item,index) in productsDet" :key="index">
-           <div> <input type="checkbox"></div>
-            <div class="imag"><img src="" alt=""></div>
-            <div >{{ProductName}}</div>
-            <div class="wid30">
-                <!-- <input type="text" @keypress="acceptNumber($event)" v-model="store_product[index].products.price">   -->
-                <input type="text" :value="item.price">  
-            </div>
-            <div class="wid30" value="1">
-                <input type="text">
-            </div>
-            <div class="wid30">
-               <textarea name="" id="" cols="23" rows="4"></textarea>
-            </div>
-      </div>
-     
-            </form>
-             <form class="form-enter2" v-if="sectionEdit == 3">
-                <div class="rw2" >
-                    <div> <input type="checkbox" disabled></div>
-             <div><span>الصورة</span></div>
-             <div><span>الاسم</span></div>
-             <div class="wid30"><span>الترتيب</span></div>
-             <div class="wid30"><span>الصورة الأساسية</span></div>
-             <div class="wid30"><span>الصورة الصغيرة</span></div>
+             <div class="wid30"><span>الاسم</span></div>
+             <div><span>الترتيب</span></div>
+             <div><span>الصورة الأساسية</span></div>
+             <div><span>الصورة الصغيرة</span></div>
              <div></div>
       </div>  
       <hr>
        <div class="rw2 rw2-item" v-for="(item,index) in 2" :key="index">
-            <div> <input type="checkbox"></div>
             <div class="imag"><img src="" alt=""></div>
-            <div>{{ProductName}}</div>
-            <div class="wid30">
+            <div class="wid30">{{ProductName}}</div>
+            <div>
                 <!-- <input type="text" @keypress="acceptNumber($event)" v-model="store_product[index].products.price">   -->
                 <input type="text" >  
             </div>
-            <div class="wid30">
+            <div>
                 <input class="rad" :name="`s${index}`" type="radio">
             </div>
-            <div class="wid30">
+            <div>
                  <input class="rad" :name="`s${index}`" type="radio">
             </div>
             <div class="">
@@ -224,8 +193,7 @@
         </div>
         <div class="section-edit">
              <span @click="sectionEdit=1" :class="[sectionEdit == 1?'active':'']">عام</span>
-             <span @click="sectionEdit=2" :class="[sectionEdit == 2?'active':'']">custome field</span>
-             <span @click="sectionEdit=3" :class="[sectionEdit == 3?'active':'']">الصور</span>
+             <span @click="sectionEdit=2" :class="[sectionEdit == 2?'active':'']">الصور</span>
          </div>
         <!-- order 1 -->
         <form class="form-enter1" v-if="sectionEdit == 1">
@@ -251,34 +219,6 @@
                 </div>
             </form>
         <div class="orders" v-if="sectionEdit == 2">
-            <div class="top">
-            <div class="user">
-               <div class="imag"><img src="" alt=""></div>
-
-            </div>
-  
-            </div>
-            <div class="content">
-                <div>
-                    <span>الاسم </span>
-                    <span style="font-weight:bold;color:#247ba0">name</span>
-                </div>
-                <div>
-                    <span>السعر</span>
-                    <input type="text">
-                </div>
-                <div>
-                    <span>الكمية</span>
-                    <input type="text">
-                   
-                </div>
-                <div>
-                <button class="butdelet">حذف</button>
-                </div>
-            </div> 
-            <hr>
-        </div>
-        <div class="orders" v-if="sectionEdit == 3">
             <div class="top">
             <div class="user">
                <div class="imag"><img src="" alt=""></div>
@@ -321,16 +261,13 @@
 h5{
     font-weight: bold;
 }
-.rad{
-    height: 20px;
-}
 .rw2-item{
     margin-bottom: 10px;
     border-bottom: 1px solid #aaa;
     padding-bottom: 10px;
     align-items: center;
     .imag{
-    width: 100px;
+    width: 100px !important;
     height: 100px;
     background-color: #ddd;
     img{
@@ -542,7 +479,7 @@ h5{
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        width: 20%;
+        width: 40%;
         @media (max-width:568px) {
         width: 100%;
         margin-bottom: 10px;
@@ -561,7 +498,7 @@ h5{
     display: flex;
     justify-content: end;
     flex-wrap: wrap;
-    width: 80%;
+    width: 60%;
     @media (max-width:568px) {
         width: 100%;
         justify-content: center;
@@ -667,10 +604,15 @@ h5{
     font-size: 14px;
     }
     input{
-    width: 70%;
+    width: 90%;
     border: 1px solid #9d9d9d;
     border-radius: 5px;
     outline: none;
+    height: 40px;
+    padding: 0 10px;
+    }
+    .rad{
+        width: 20px;
     }
     select{
     width: 70%;
@@ -945,7 +887,7 @@ export default {
         products: [],
         productsDet:[],
         ProductName:"",
-        sectionEdit:3,
+        sectionEdit:2,
        
         store_product: [
             {
